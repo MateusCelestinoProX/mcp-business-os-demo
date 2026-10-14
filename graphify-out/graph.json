@@ -12565,7 +12565,7 @@
       "file_type": "code",
       "norm_label": "mastersovereignbar",
       "source_file": "src/components/layout/Navbar.tsx",
-      "source_location": "L265"
+      "source_location": "L262"
     },
     {
       "id": "src_components_layout_navbar_navlinks",
@@ -15021,7 +15021,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/layout/Navbar.tsx",
-      "source_location": "L119",
+      "source_location": "L116",
       "weight": 1.0
     },
     {
@@ -32335,7 +32335,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/layout/Navbar.tsx",
-      "source_location": "L265",
+      "source_location": "L262",
       "weight": 1.0
     },
     {
@@ -36038,5 +36038,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "c5f6610834aa568d6fbc8f1455ce5d92a268ea83"
+  "built_at_commit": "5ff897e7b9113c0f862d68f27bc9b6864f592107"
 }

@@ -33,8 +33,8 @@ export interface NavLinkItem {
 
 export const navLinks: NavLinkItem[] = [
   { name: "Portal Institucional", href: "/", icon: Shield },
-  { name: "Comunidade VIP", href: "/comunidade", icon: Users, badge: "PRO" },
-  { name: "Free Library", href: "/biblioteca", icon: FolderGit2, badge: "COFRE" },
+  { name: "Comunidade VIP", href: "/comunidade", icon: Users },
+  { name: "Free Library", href: "/biblioteca", icon: FolderGit2 },
 ];
 
 export function Navbar() {
@@ -92,9 +92,6 @@ export function Navbar() {
             <div className="flex items-center gap-1.5">
               <span className="font-bold text-sm tracking-wide text-white">
                 MATEUS CELESTINO
-              </span>
-              <span className="text-[10px] font-black uppercase px-1.5 py-0.5 rounded bg-red-600/30 text-red-400 border border-red-500/40">
-                PRO
               </span>
             </div>
             <span className="text-[10px] tracking-widest text-neutral-400 font-mono">

@@ -1691,7 +1691,7 @@
       "file_type": "code",
       "norm_label": "navlinkitem",
       "source_file": "src/components/layout/Navbar.tsx",
-      "source_location": "L28"
+      "source_location": "L27"
     },
     {
       "id": "src_lib_auth_unified_auth_unifieduser",
@@ -3606,7 +3606,7 @@
       "file_type": "code",
       "norm_label": "navbar()",
       "source_file": "src/components/layout/Navbar.tsx",
-      "source_location": "L41"
+      "source_location": "L40"
     },
     {
       "id": "src_lib_auth_unified_auth_getstoreduser",
@@ -12565,7 +12565,7 @@
       "file_type": "code",
       "norm_label": "mastersovereignbar",
       "source_file": "src/components/layout/Navbar.tsx",
-      "source_location": "L278"
+      "source_location": "L265"
     },
     {
       "id": "src_components_layout_navbar_navlinks",
@@ -12576,7 +12576,7 @@
       "file_type": "code",
       "norm_label": "navlinks",
       "source_file": "src/components/layout/Navbar.tsx",
-      "source_location": "L35"
+      "source_location": "L34"
     },
     {
       "id": "src_lib_auth_unified_auth_default_guest_user",
@@ -15021,7 +15021,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/layout/Navbar.tsx",
-      "source_location": "L120",
+      "source_location": "L119",
       "weight": 1.0
     },
     {
@@ -15033,7 +15033,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/layout/Navbar.tsx",
-      "source_location": "L47",
+      "source_location": "L46",
       "weight": 1.0
     },
     {
@@ -15045,7 +15045,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/layout/Navbar.tsx",
-      "source_location": "L67",
+      "source_location": "L66",
       "weight": 1.0
     },
     {
@@ -15057,7 +15057,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/layout/Navbar.tsx",
-      "source_location": "L71",
+      "source_location": "L70",
       "weight": 1.0
     },
     {
@@ -18544,7 +18544,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/layout/Navbar.tsx",
-      "source_location": "L17",
+      "source_location": "L16",
       "weight": 1.0
     },
     {
@@ -18556,7 +18556,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/layout/Navbar.tsx",
-      "source_location": "L18",
+      "source_location": "L17",
       "weight": 1.0
     },
     {
@@ -18568,7 +18568,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/layout/Navbar.tsx",
-      "source_location": "L19",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -18580,7 +18580,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/layout/Navbar.tsx",
-      "source_location": "L20",
+      "source_location": "L19",
       "weight": 1.0
     },
     {
@@ -18592,7 +18592,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/layout/Navbar.tsx",
-      "source_location": "L20",
+      "source_location": "L19",
       "weight": 1.0
     },
     {
@@ -18604,7 +18604,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/layout/Navbar.tsx",
-      "source_location": "L20",
+      "source_location": "L19",
       "weight": 1.0
     },
     {
@@ -18616,7 +18616,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/layout/Navbar.tsx",
-      "source_location": "L20",
+      "source_location": "L19",
       "weight": 1.0
     },
     {
@@ -18628,7 +18628,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/layout/Navbar.tsx",
-      "source_location": "L20",
+      "source_location": "L19",
       "weight": 1.0
     },
     {
@@ -22940,7 +22940,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/layout/Navbar.tsx",
-      "source_location": "L17",
+      "source_location": "L16",
       "weight": 1.0
     },
     {
@@ -22952,7 +22952,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/layout/Navbar.tsx",
-      "source_location": "L18",
+      "source_location": "L17",
       "weight": 1.0
     },
     {
@@ -22964,7 +22964,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/layout/Navbar.tsx",
-      "source_location": "L19",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -22976,7 +22976,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/layout/Navbar.tsx",
-      "source_location": "L20",
+      "source_location": "L19",
       "weight": 1.0
     },
     {
@@ -32335,7 +32335,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/layout/Navbar.tsx",
-      "source_location": "L278",
+      "source_location": "L265",
       "weight": 1.0
     },
     {
@@ -32346,7 +32346,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/layout/Navbar.tsx",
-      "source_location": "L28",
+      "source_location": "L27",
       "weight": 1.0
     },
     {
@@ -32357,7 +32357,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/layout/Navbar.tsx",
-      "source_location": "L35",
+      "source_location": "L34",
       "weight": 1.0
     },
     {
@@ -32368,7 +32368,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/layout/Navbar.tsx",
-      "source_location": "L41",
+      "source_location": "L40",
       "weight": 1.0
     },
     {
@@ -36038,5 +36038,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "b21619980981eb51f0713345af52066311b4c736"
+  "built_at_commit": "c5f6610834aa568d6fbc8f1455ce5d92a268ea83"
 }
