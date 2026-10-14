@@ -204,7 +204,9 @@ export function Navbar() {
               <img
                 src={currentUser.avatar}
                 alt="Avatar"
-                className="w-6 h-6 rounded-full border border-white/20"
+                width={24}
+                height={24}
+                className="w-6 h-6 rounded-full border border-white/20 object-cover flex-shrink-0"
               />
               <div className="flex flex-col text-left">
                 <span className="text-[11px] font-bold leading-tight">

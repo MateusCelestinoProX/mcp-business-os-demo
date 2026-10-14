@@ -1458,9 +1458,9 @@
     "semantic_hash": ""
   },
   "src/components/layout/Navbar.tsx": {
-    "mtime": 1791999190.3115919,
-    "seen": 1792000233.102426,
-    "ast_hash": "0aec7506cace6635de78b71a4d431b1e",
+    "mtime": 1792008230.5874872,
+    "seen": 1792008315.283776,
+    "ast_hash": "be3a056c644267445b72f9e9bd49adc8",
     "semantic_hash": ""
   },
   "src/components/members/MemberCard.tsx": {
