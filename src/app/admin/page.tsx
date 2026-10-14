@@ -17,9 +17,6 @@ import {
   AlertTriangle,
   RefreshCw,
   Search,
-  UserCheck,
-  UserX,
-  Trash2,
   Plus,
   Download,
   Activity,
@@ -27,25 +24,22 @@ import {
   Cpu,
   Layers,
   Globe,
-  Sparkles,
   Copy,
   Phone,
   Mail,
   TrendingUp,
   LogOut,
-  Filter,
   Check,
   Server,
-  DollarSign,
-  ArrowUpRight,
   Eye,
+  Inbox,
+  UserPlus,
 } from "lucide-react";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 import {
-  UserRole,
   UnifiedUser,
   getStoredUser,
   setStoredUser,
@@ -78,6 +72,26 @@ interface FormItem {
   shaderBg?: string;
 }
 
+interface MemberItem {
+  id: string;
+  name: string;
+  email: string;
+  role?: string;
+  tier?: string;
+  status?: string;
+  createdAt?: string;
+}
+
+interface TransactionItem {
+  id: string;
+  customer: string;
+  plan: string;
+  amount: number;
+  status: string;
+  method: string;
+  date: string;
+}
+
 export default function AdminPanelPage() {
   const [currentUser, setCurrentUser] = useState<UnifiedUser | null>(null);
   const [isClientReady, setIsClientReady] = useState(false);
@@ -91,33 +105,18 @@ export default function AdminPanelPage() {
   const [loginError, setLoginError] = useState<string | null>(null);
   const [isAuthenticating, setIsAuthenticating] = useState(false);
 
-  // Estados de Dados Administrativos
+  // Estados de Dados Administrativos 100% Reais (Inicialmente Vazios)
   const [isLoadingData, setIsLoadingData] = useState(false);
   const [leadsList, setLeadsList] = useState<LeadItem[]>([]);
   const [formsList, setFormsList] = useState<FormItem[]>([]);
+  const [membersList, setMembersList] = useState<MemberItem[]>([]);
+  const [transactions, setTransactions] = useState<TransactionItem[]>([]);
+
+  // Filtros & Ações
   const [searchQuery, setSearchQuery] = useState("");
   const [leadSourceFilter, setLeadSourceFilter] = useState<"all" | "tiktok" | "meta" | "organic">("all");
   const [toastMsg, setToastMsg] = useState<string | null>(null);
   const [copiedId, setCopiedId] = useState<string | null>(null);
-
-  // Lista de Membros da Comunidade VIP
-  const [membersList, setMembersList] = useState([
-    { id: "m1", name: "Mateus Celestino Pro", email: "mateus@mateuscelestinopro.com", role: "admin", tier: "max", date: "Hoje", status: "active" },
-    { id: "m2", name: "Carlos Eduardo Mod", email: "moderador@mateuscelestinopro.com", role: "moder", tier: "vip", date: "Ontem", status: "active" },
-    { id: "m3", name: "Mariana Silva", email: "mariana.silva@gmail.com", role: "user", tier: "vip", date: "12/10/2026", status: "active" },
-    { id: "m4", name: "Lucas Rocha", email: "lucas.rocha@techcorp.io", role: "user", tier: "pro", date: "10/10/2026", status: "active" },
-    { id: "m5", name: "Beatriz Oliveira", email: "beatriz.designer@outlook.com", role: "visitante", tier: "free", date: "08/10/2026", status: "active" },
-    { id: "m6", name: "Rafael Mendes", email: "rafael.mendes@agenciamkt.com.br", role: "user", tier: "vip", date: "06/10/2026", status: "active" },
-  ]);
-
-  // Transações Financeiras (Mercado Pago / Checkout)
-  const [transactions] = useState([
-    { id: "tx-9941", customer: "Mariana Silva", plan: "Comunidade VIP Anual", amount: 1497.00, status: "approved", method: "Mercado Pago (PIX)", date: "Hoje, 14:22" },
-    { id: "tx-9940", customer: "Lucas Rocha", plan: "Pack Shaders WebGL Max", amount: 297.00, status: "approved", method: "Cartão de Crédito", date: "Ontem, 19:40" },
-    { id: "tx-9939", customer: "Rafael Mendes", plan: "Comunidade VIP Mensal", amount: 197.00, status: "approved", method: "Mercado Pago (PIX)", date: "12/10/2026" },
-    { id: "tx-9938", customer: "Juliana Duarte", plan: "Form Builder Enterprise", amount: 690.00, status: "pending", method: "Boleto Bancário", date: "11/10/2026" },
-    { id: "tx-9937", customer: "Marcos Paulo", plan: "Acesso Galadriel APK", amount: 97.00, status: "approved", method: "PIX Direto", date: "10/10/2026" },
-  ]);
 
   const showToast = (msg: string) => {
     setToastMsg(msg);
@@ -138,39 +137,42 @@ export default function AdminPanelPage() {
     setIsClientReady(true);
   }, []);
 
-  // Busca dados reais da plataforma
+  // Busca dados reais das rotas de API da plataforma (SEM MOCK)
   const fetchDashboardData = async () => {
     setIsLoadingData(true);
     try {
-      const [leadsRes, formsRes] = await Promise.all([
-        fetch("/api/leads?limit=50").then((r) => r.json()).catch(() => ({})),
-        fetch("/api/forms").then((r) => r.json()).catch(() => ({})),
+      const [leadsRes, formsRes, membersRes, financeRes] = await Promise.all([
+        fetch("/api/leads?limit=100").then((r) => r.json()).catch(() => ({ success: false, leads: [] })),
+        fetch("/api/forms").then((r) => r.json()).catch(() => ({ success: false, data: [] })),
+        fetch("/api/members").then((r) => r.json()).catch(() => ({ success: false, members: [] })),
+        fetch("/api/finance").then((r) => r.json()).catch(() => ({ success: false, transactions: [] })),
       ]);
 
       if (leadsRes.success && Array.isArray(leadsRes.leads)) {
         setLeadsList(leadsRes.leads);
       } else {
-        // Fallback robusto com dados enriquecidos se a API estiver a frio
-        setLeadsList([
-          { id: "l-01", name: "Danilo Albuquerque", email: "danilo.mkt@vanguarda.io", phone: "11988776655", source: "tiktok", utmCampaign: "vanta_launch_2026", createdAt: "2026-10-14T15:30:00Z", status: "novo" },
-          { id: "l-02", name: "Camila Fernandes", email: "camila.ai@studioflux.com", phone: "21976543210", source: "meta", utmCampaign: "shaders_vip_retargeting", createdAt: "2026-10-14T14:15:00Z", status: "contatado" },
-          { id: "l-03", name: "Gabriel Siqueira", email: "gabriel@siqueiradesign.com.br", phone: "31991234567", source: "organic", utmCampaign: "portal_artigo_176", createdAt: "2026-10-14T11:00:00Z", status: "convertido" },
-          { id: "l-04", name: "Priscila Vasconcelos", email: "p.vasconcelos@growthlab.co", phone: "41984561230", source: "tiktok", utmCampaign: "tiktok_ads_brand_scaling", createdAt: "2026-10-13T18:45:00Z", status: "novo" },
-          { id: "l-05", name: "Leonardo Ferraz", email: "leo.ferraz@autotech.dev", phone: "51998765432", source: "meta", utmCampaign: "meta_leads_form_builder", createdAt: "2026-10-13T16:20:00Z", status: "qualificado" },
-        ]);
+        setLeadsList([]);
       }
 
       if (formsRes.success && Array.isArray(formsRes.data)) {
         setFormsList(formsRes.data);
       } else {
-        setFormsList([
-          { id: "master-form-01", title: "Qualificação Executiva & Onboarding VIP", description: "Formulário cinemático para seleção de membros Pro X", slug: "onboarding-executivo", submissionCount: 142, isActive: true, updatedAt: "Hoje", shaderBg: "Balatro Carmesim" },
-          { id: "lead-magnet-form", title: "Captura de Leads — E-book Automação Soberana", description: "Funil de entrada de tráfego pago TikTok & Meta Ads", slug: "automacao-soberana", submissionCount: 387, isActive: true, updatedAt: "Ontem", shaderBg: "Ripple Grid Dark" },
-          { id: "feedback-form", title: "Pesquisa de Satisfação & NPS Membros", description: "Avaliação da nova área de membros e shaders WebGL", slug: "nps-plataforma-2026", submissionCount: 89, isActive: true, updatedAt: "10/10/2026", shaderBg: "Liquid Chrome" },
-        ]);
+        setFormsList([]);
+      }
+
+      if (membersRes.success && Array.isArray(membersRes.members)) {
+        setMembersList(membersRes.members);
+      } else {
+        setMembersList([]);
+      }
+
+      if (financeRes.success && Array.isArray(financeRes.transactions)) {
+        setTransactions(financeRes.transactions);
+      } else {
+        setTransactions([]);
       }
     } catch (err) {
-      console.warn("Aviso ao carregar dados do admin:", err);
+      console.warn("Aviso ao carregar dados reais do admin:", err);
     } finally {
       setIsLoadingData(false);
     }
@@ -189,7 +191,6 @@ export default function AdminPanelPage() {
     setIsAuthenticating(true);
 
     try {
-      // 1. Tenta autenticar na rota oficial de verificação
       const res = await fetch("/api/auth/verify-password", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -198,10 +199,9 @@ export default function AdminPanelPage() {
 
       const data = res ? await res.json() : null;
 
-      // 2. Valida credenciais (API ou fallback soberano oficial)
       const isFallbackSuccess =
         loginEmail.trim().toLowerCase() === "mateus@mateuscelestinopro.com" &&
-        (loginPassword === "MateusProX@2026!" || loginPassword === "admin123" || data?.success);
+        (loginPassword === "MateusProX@2026!" || data?.success);
 
       if (data?.success || isFallbackSuccess) {
         setStoredUser(DEMO_USERS.admin);
@@ -223,7 +223,7 @@ export default function AdminPanelPage() {
     showToast("Sessão encerrada com sucesso.");
   };
 
-  // Filtragem de Leads
+  // Filtragem de Leads Reais
   const filteredLeads = useMemo(() => {
     return leadsList.filter((lead) => {
       const matchesSearch =
@@ -245,7 +245,7 @@ export default function AdminPanelPage() {
   // Exportação de Leads em CSV
   const handleExportCSV = () => {
     if (filteredLeads.length === 0) {
-      showToast("Nenhum lead disponível para exportação com os filtros atuais.");
+      showToast("Nenhum lead real disponível para exportação com os filtros atuais.");
       return;
     }
 
@@ -264,13 +264,47 @@ export default function AdminPanelPage() {
     const encodedUri = encodeURI(csvContent);
     const link = document.createElement("a");
     link.setAttribute("href", encodedUri);
-    link.setAttribute("download", `leads_mcp_soberano_${new Date().toISOString().slice(0, 10)}.csv`);
+    link.setAttribute("download", `leads_reais_${new Date().toISOString().slice(0, 10)}.csv`);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
 
     showToast("Arquivo CSV exportado com sucesso.");
   };
+
+  // Cálculos Financeiros 100% Dinâmicos e Reais
+  const totalRevenue = useMemo(() => {
+    return transactions.reduce((acc, t) => acc + (t.amount || 0), 0);
+  }, [transactions]);
+
+  const ticketMedio = useMemo(() => {
+    return transactions.length > 0 ? totalRevenue / transactions.length : 0;
+  }, [transactions, totalRevenue]);
+
+  const approvedTransactionsCount = useMemo(() => {
+    return transactions.filter((t) => t.status === "approved").length;
+  }, [transactions]);
+
+  const approvalRate = useMemo(() => {
+    return transactions.length > 0 ? (approvedTransactionsCount / transactions.length) * 100 : 0;
+  }, [transactions, approvedTransactionsCount]);
+
+  // Cálculos de Origem de Tráfego 100% Reais
+  const trafficDistribution = useMemo(() => {
+    if (leadsList.length === 0) {
+      return { tiktok: 0, meta: 0, organic: 0, total: 0 };
+    }
+    const tiktokCount = leadsList.filter((l) => l.source.toLowerCase().includes("tiktok")).length;
+    const metaCount = leadsList.filter((l) => l.source.toLowerCase().includes("meta") || l.source.toLowerCase().includes("facebook")).length;
+    const organicCount = leadsList.length - tiktokCount - metaCount;
+
+    return {
+      tiktok: Math.round((tiktokCount / leadsList.length) * 100),
+      meta: Math.round((metaCount / leadsList.length) * 100),
+      organic: Math.round((Math.max(0, organicCount) / leadsList.length) * 100),
+      total: leadsList.length,
+    };
+  }, [leadsList]);
 
   if (!isClientReady) {
     return (
@@ -288,7 +322,6 @@ export default function AdminPanelPage() {
     return (
       <div className="min-h-[82vh] flex items-center justify-center px-4 py-12">
         <div className="max-w-md w-full bg-[#07070a]/90 backdrop-blur-3xl rounded-3xl p-8 border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.85)] relative overflow-hidden">
-          {/* Luz de Fundo Carmesim */}
           <div className="absolute -top-24 -right-24 w-48 h-48 bg-[#8a0012]/20 rounded-full blur-3xl pointer-events-none" />
 
           <div className="flex items-center justify-center mb-6">
@@ -367,21 +400,6 @@ export default function AdminPanelPage() {
                 </>
               )}
             </Button>
-
-            {/* Acesso rápido discreto para ambiente de homologação */}
-            <div className="pt-3 text-center border-t border-white/5">
-              <button
-                type="button"
-                onClick={() => {
-                  setStoredUser(DEMO_USERS.admin);
-                  setCurrentUser(DEMO_USERS.admin);
-                  showToast("Acesso concedido via Sessão Master de Homologação.");
-                }}
-                className="text-[11px] text-neutral-500 hover:text-neutral-300 transition-colors"
-              >
-                Acessar via Sessão Master Local
-              </button>
-            </div>
           </form>
 
           <div className="mt-6 text-center">
@@ -511,7 +529,7 @@ export default function AdminPanelPage() {
       {/* ABA 1: VISÃO GERAL */}
       {activeTab === "overview" && (
         <div className="space-y-6">
-          {/* Grid de KPIs Soberanos */}
+          {/* Grid de KPIs Soberanos Reais */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <GlassCard className="p-5 space-y-2 bg-[#09080c]/90 border border-white/10">
               <div className="flex items-center justify-between text-neutral-400">
@@ -520,9 +538,7 @@ export default function AdminPanelPage() {
               </div>
               <div className="text-3xl font-black text-white tracking-tight">{totalLeadsCount}</div>
               <div className="flex items-center justify-between text-[11px] pt-1">
-                <span className="text-emerald-400 font-medium flex items-center gap-1">
-                  <TrendingUp className="w-3 h-3" /> +18.4%
-                </span>
+                <span className="text-neutral-400 font-medium">Base Oficial</span>
                 <span className="text-neutral-500">TikTok & Meta Ads</span>
               </div>
             </GlassCard>
@@ -534,7 +550,7 @@ export default function AdminPanelPage() {
               </div>
               <div className="text-3xl font-black text-white tracking-tight">{totalSubmissionsCount}</div>
               <div className="flex items-center justify-between text-[11px] pt-1">
-                <span className="text-emerald-400 font-medium">3 Formulários Ativos</span>
+                <span className="text-neutral-400 font-medium">{totalFormsCount} Formulários Ativos</span>
                 <span className="text-neutral-500">Shaders WebGL</span>
               </div>
             </GlassCard>
@@ -546,8 +562,8 @@ export default function AdminPanelPage() {
               </div>
               <div className="text-3xl font-black text-amber-300 tracking-tight">{membersList.length}</div>
               <div className="flex items-center justify-between text-[11px] pt-1">
-                <span className="text-amber-400 font-medium">4 VIPs / 1 Admin</span>
-                <span className="text-neutral-500">Acesso Restrito</span>
+                <span className="text-neutral-400 font-medium">Cadastrados no Banco</span>
+                <span className="text-neutral-500">Área VIP</span>
               </div>
             </GlassCard>
 
@@ -556,9 +572,13 @@ export default function AdminPanelPage() {
                 <span className="text-[10px] font-mono uppercase tracking-wider">FATURAMENTO CONSOLIDADO</span>
                 <CreditCard className="w-4 h-4 text-emerald-400" />
               </div>
-              <div className="text-3xl font-black text-emerald-400 tracking-tight">R$ 51.641,00</div>
+              <div className="text-3xl font-black text-emerald-400 tracking-tight">
+                R$ {totalRevenue.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
+              </div>
               <div className="flex items-center justify-between text-[11px] pt-1">
-                <span className="text-emerald-400 font-medium">96.2% de Aprovação</span>
+                <span className="text-neutral-400 font-medium">
+                  {transactions.length > 0 ? `${approvalRate.toFixed(1)}% Aprovação` : "Sem transações"}
+                </span>
                 <span className="text-neutral-500">Mercado Pago</span>
               </div>
             </GlassCard>
@@ -576,44 +596,53 @@ export default function AdminPanelPage() {
                 <span className="text-[10px] font-mono text-neutral-400">UTM TRACKING</span>
               </div>
 
-              <div className="space-y-4">
-                <div className="space-y-1.5">
-                  <div className="flex justify-between text-xs">
-                    <span className="text-neutral-300 font-medium">TikTok Ads</span>
-                    <span className="font-mono text-white">45%</span>
-                  </div>
-                  <div className="w-full h-2 rounded-full bg-black/60 overflow-hidden">
-                    <div className="h-full bg-gradient-to-r from-red-600 to-[#8a0012] rounded-full" style={{ width: "45%" }} />
-                  </div>
+              {trafficDistribution.total === 0 ? (
+                <div className="py-6 text-center space-y-2">
+                  <Inbox className="w-8 h-8 text-neutral-600 mx-auto" />
+                  <p className="text-xs text-neutral-400">
+                    Aguardando primeiros leads para calcular divisão de canais.
+                  </p>
                 </div>
+              ) : (
+                <div className="space-y-4">
+                  <div className="space-y-1.5">
+                    <div className="flex justify-between text-xs">
+                      <span className="text-neutral-300 font-medium">TikTok Ads</span>
+                      <span className="font-mono text-white">{trafficDistribution.tiktok}%</span>
+                    </div>
+                    <div className="w-full h-2 rounded-full bg-black/60 overflow-hidden">
+                      <div className="h-full bg-gradient-to-r from-red-600 to-[#8a0012] rounded-full" style={{ width: `${trafficDistribution.tiktok}%` }} />
+                    </div>
+                  </div>
 
-                <div className="space-y-1.5">
-                  <div className="flex justify-between text-xs">
-                    <span className="text-neutral-300 font-medium">Meta Ads (Instagram / FB)</span>
-                    <span className="font-mono text-white">35%</span>
+                  <div className="space-y-1.5">
+                    <div className="flex justify-between text-xs">
+                      <span className="text-neutral-300 font-medium">Meta Ads (Instagram / FB)</span>
+                      <span className="font-mono text-white">{trafficDistribution.meta}%</span>
+                    </div>
+                    <div className="w-full h-2 rounded-full bg-black/60 overflow-hidden">
+                      <div className="h-full bg-gradient-to-r from-blue-600 to-indigo-800 rounded-full" style={{ width: `${trafficDistribution.meta}%` }} />
+                    </div>
                   </div>
-                  <div className="w-full h-2 rounded-full bg-black/60 overflow-hidden">
-                    <div className="h-full bg-gradient-to-r from-blue-600 to-indigo-800 rounded-full" style={{ width: "35%" }} />
-                  </div>
-                </div>
 
-                <div className="space-y-1.5">
-                  <div className="flex justify-between text-xs">
-                    <span className="text-neutral-300 font-medium">Tráfego Orgânico (Artigos & Portal)</span>
-                    <span className="font-mono text-white">20%</span>
-                  </div>
-                  <div className="w-full h-2 rounded-full bg-black/60 overflow-hidden">
-                    <div className="h-full bg-gradient-to-r from-emerald-500 to-emerald-800 rounded-full" style={{ width: "20%" }} />
+                  <div className="space-y-1.5">
+                    <div className="flex justify-between text-xs">
+                      <span className="text-neutral-300 font-medium">Tráfego Orgânico (Artigos & Portal)</span>
+                      <span className="font-mono text-white">{trafficDistribution.organic}%</span>
+                    </div>
+                    <div className="w-full h-2 rounded-full bg-black/60 overflow-hidden">
+                      <div className="h-full bg-gradient-to-r from-emerald-500 to-emerald-800 rounded-full" style={{ width: `${trafficDistribution.organic}%` }} />
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
 
               <div className="pt-3 border-t border-white/5">
                 <Link
                   href="/builder/dashboard"
                   className="text-xs text-red-400 hover:text-red-300 flex items-center justify-between font-medium group"
                 >
-                  <span>Abrir métricas aprofundadas</span>
+                  <span>Abrir métricas de formulários</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
@@ -702,6 +731,7 @@ export default function AdminPanelPage() {
                 variant="secondary"
                 size="sm"
                 onClick={handleExportCSV}
+                disabled={filteredLeads.length === 0}
                 className="gap-1.5 text-xs border-white/10 hover:border-white/20"
               >
                 <Download className="w-3.5 h-3.5" />
@@ -762,8 +792,14 @@ export default function AdminPanelPage() {
               <tbody className="divide-y divide-white/5">
                 {filteredLeads.length === 0 ? (
                   <tr>
-                    <td colSpan={6} className="py-8 text-center text-neutral-500 font-mono text-xs">
-                      Nenhum lead encontrado para os critérios selecionados.
+                    <td colSpan={6} className="py-12 text-center">
+                      <div className="max-w-sm mx-auto space-y-2">
+                        <Inbox className="w-8 h-8 text-neutral-600 mx-auto" />
+                        <div className="text-white font-medium text-xs">Nenhum lead registrado no momento</div>
+                        <p className="text-[11px] text-neutral-500 leading-relaxed">
+                          Os contatos capturados pelos formulários do portal e campanhas de anúncios (TikTok Ads e Meta Ads) serão listados aqui em tempo real.
+                        </p>
+                      </div>
                     </td>
                   </tr>
                 ) : (
@@ -869,51 +905,66 @@ export default function AdminPanelPage() {
             </div>
           </div>
 
-          {/* Cards de Formulários */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {formsList.map((form) => (
-              <div
-                key={form.id}
-                className="p-5 rounded-2xl bg-black/40 border border-white/10 space-y-3.5 hover:border-[#8a0012]/50 transition-all flex flex-col justify-between"
-              >
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-white/5 text-neutral-400 border border-white/5">
-                      SLUG: /{form.slug}
-                    </span>
-                    <Badge variant="success" dot className="text-[9px]">ATIVO</Badge>
+          {formsList.length === 0 ? (
+            <div className="p-12 text-center rounded-2xl border border-white/5 bg-black/20 space-y-3">
+              <FileCode2 className="w-10 h-10 text-neutral-600 mx-auto" />
+              <div className="text-white font-medium text-sm">Nenhum formulário ativo no banco de dados</div>
+              <p className="text-xs text-neutral-400 max-w-md mx-auto">
+                Crie um novo formulário com transições WebGL e distribuição de links públicos.
+              </p>
+              <Link href="/builder" className="inline-block pt-2">
+                <Button variant="fired" size="sm" className="gap-2">
+                  <Plus className="w-4 h-4" />
+                  <span>Criar Primeiro Formulário</span>
+                </Button>
+              </Link>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {formsList.map((form) => (
+                <div
+                  key={form.id}
+                  className="p-5 rounded-2xl bg-black/40 border border-white/10 space-y-3.5 hover:border-[#8a0012]/50 transition-all flex flex-col justify-between"
+                >
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-white/5 text-neutral-400 border border-white/5">
+                        SLUG: /{form.slug}
+                      </span>
+                      <Badge variant="success" dot className="text-[9px]">ATIVO</Badge>
+                    </div>
+                    <h3 className="text-sm font-bold text-white">{form.title}</h3>
+                    <p className="text-xs text-neutral-400 line-clamp-2">
+                      {form.description || "Formulário cinemático para coleta e qualificação de dados."}
+                    </p>
                   </div>
-                  <h3 className="text-sm font-bold text-white">{form.title}</h3>
-                  <p className="text-xs text-neutral-400 line-clamp-2">
-                    {form.description || "Formulário cinemático para coleta e qualificação de dados."}
-                  </p>
+
+                  <div className="pt-3 border-t border-white/5 space-y-3">
+                    <div className="flex items-center justify-between text-xs text-neutral-400">
+                      <span>Respostas Coletadas:</span>
+                      <span className="font-mono font-bold text-white">{form.submissionCount || 0}</span>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <Link href={`/f/${form.id}`} className="flex-1">
+                        <Button variant="secondary" size="sm" className="w-full text-[11px] gap-1 justify-center border-white/10">
+                          <Eye className="w-3 h-3" />
+                          <span>Visualizar Link</span>
+                        </Button>
+                      </Link>
+
+                      <Link href="/builder" className="flex-1">
+                        <Button variant="fired" size="sm" className="w-full text-[11px] gap-1 justify-center">
+                          <FileCode2 className="w-3 h-3" />
+                          <span>Editar</span>
+                        </Button>
+                      </Link>
+                    </div>
+                  </div>
                 </div>
-
-                <div className="pt-3 border-t border-white/5 space-y-3">
-                  <div className="flex items-center justify-between text-xs text-neutral-400">
-                    <span>Respostas Coletadas:</span>
-                    <span className="font-mono font-bold text-white">{form.submissionCount || 0}</span>
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <Link href={`/f/${form.id}`} className="flex-1">
-                      <Button variant="secondary" size="sm" className="w-full text-[11px] gap-1 justify-center border-white/10">
-                        <Eye className="w-3 h-3" />
-                        <span>Visualizar Link</span>
-                      </Button>
-                    </Link>
-
-                    <Link href="/builder" className="flex-1">
-                      <Button variant="fired" size="sm" className="w-full text-[11px] gap-1 justify-center">
-                        <FileCode2 className="w-3 h-3" />
-                        <span>Editar</span>
-                      </Button>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </GlassCard>
       )}
 
@@ -927,19 +978,16 @@ export default function AdminPanelPage() {
                 <span>Membros da Comunidade VIP & Operadores</span>
               </h2>
               <p className="text-xs text-neutral-400">
-                Controle de permissões, papéis de acesso e status de assinaturas.
+                Lista oficial sincronizada diretamente com a tabela <code className="text-red-400">members</code> do Supabase.
               </p>
             </div>
 
-            <Button
-              variant="secondary"
-              size="sm"
-              onClick={() => showToast("Modal para convite de membro preparado.")}
-              className="gap-1.5 text-xs border-white/10"
-            >
-              <Plus className="w-3.5 h-3.5" />
-              <span>Convidar Membro</span>
-            </Button>
+            <Link href="/comunidade/cadastro">
+              <Button variant="secondary" size="sm" className="gap-1.5 text-xs border-white/10">
+                <UserPlus className="w-3.5 h-3.5" />
+                <span>Cadastrar Novo Membro</span>
+              </Button>
+            </Link>
           </div>
 
           <div className="overflow-x-auto border border-white/10 rounded-2xl bg-black/30">
@@ -950,53 +998,47 @@ export default function AdminPanelPage() {
                   <th className="py-3 px-4">E-mail</th>
                   <th className="py-3 px-4">Papel</th>
                   <th className="py-3 px-4">Nível / Tier</th>
-                  <th className="py-3 px-4">Data</th>
-                  <th className="py-3 px-4 text-right">Ações</th>
+                  <th className="py-3 px-4">Data de Cadastro</th>
+                  <th className="py-3 px-4 text-right">Status</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-white/5">
-                {membersList.map((m) => (
-                  <tr key={m.id} className="hover:bg-white/[0.02] transition-colors">
-                    <td className="py-3 px-4 font-semibold text-white">{m.name}</td>
-                    <td className="py-3 px-4 text-neutral-400 font-mono">{m.email}</td>
-                    <td className="py-3 px-4">
-                      <span
-                        className={cn(
-                          "px-2 py-0.5 rounded text-[10px] font-bold uppercase",
-                          m.role === "admin"
-                            ? "bg-red-500/20 text-red-400 border border-red-500/30"
-                            : m.role === "moder"
-                            ? "bg-amber-500/20 text-amber-300 border border-amber-500/30"
-                            : "bg-neutral-800 text-neutral-300"
-                        )}
-                      >
-                        {m.role}
-                      </span>
-                    </td>
-                    <td className="py-3 px-4 uppercase font-mono font-bold text-neutral-300">
-                      {m.tier}
-                    </td>
-                    <td className="py-3 px-4 text-neutral-400">{m.date}</td>
-                    <td className="py-3 px-4 text-right space-x-2">
-                      {isMaxAdmin && m.role !== "admin" && (
-                        <button
-                          onClick={() => showToast(`Permissões de ${m.name} sincronizadas!`)}
-                          className="px-2.5 py-1 rounded-lg bg-white/10 hover:bg-white/20 text-white text-[10px] font-semibold transition-colors"
-                        >
-                          Alterar Nível
-                        </button>
-                      )}
-                      {m.role !== "admin" && (
-                        <button
-                          onClick={() => showToast(`Acesso do membro ${m.name} modificado.`)}
-                          className="px-2.5 py-1 rounded-lg bg-red-950/40 hover:bg-red-900/40 text-red-300 border border-red-800/40 text-[10px] font-semibold transition-colors"
-                        >
-                          Suspender
-                        </button>
-                      )}
+                {membersList.length === 0 ? (
+                  <tr>
+                    <td colSpan={6} className="py-12 text-center">
+                      <div className="max-w-sm mx-auto space-y-2">
+                        <Users className="w-8 h-8 text-neutral-600 mx-auto" />
+                        <div className="text-white font-medium text-xs">Nenhum membro cadastrado na base oficial</div>
+                        <p className="text-[11px] text-neutral-500 leading-relaxed">
+                          Novos alunos e membros registrados em <code className="text-neutral-400">/comunidade/cadastro</code> serão sincronizados aqui automaticamente.
+                        </p>
+                      </div>
                     </td>
                   </tr>
-                ))}
+                ) : (
+                  membersList.map((m) => (
+                    <tr key={m.id} className="hover:bg-white/[0.02] transition-colors">
+                      <td className="py-3 px-4 font-semibold text-white">{m.name}</td>
+                      <td className="py-3 px-4 text-neutral-400 font-mono">{m.email}</td>
+                      <td className="py-3 px-4">
+                        <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-neutral-800 text-neutral-300">
+                          {m.role || "user"}
+                        </span>
+                      </td>
+                      <td className="py-3 px-4 uppercase font-mono font-bold text-neutral-300">
+                        {m.tier || "free"}
+                      </td>
+                      <td className="py-3 px-4 text-neutral-400">
+                        {m.createdAt ? new Date(m.createdAt).toLocaleDateString("pt-BR") : "Recente"}
+                      </td>
+                      <td className="py-3 px-4 text-right">
+                        <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-emerald-950/40 text-emerald-400 border border-emerald-800/40">
+                          {m.status || "Ativo"}
+                        </span>
+                      </td>
+                    </tr>
+                  ))
+                )}
               </tbody>
             </table>
           </div>
@@ -1010,10 +1052,10 @@ export default function AdminPanelPage() {
             <div>
               <h2 className="text-lg font-bold text-white flex items-center gap-2">
                 <CreditCard className="w-5 h-5 text-emerald-400" />
-                <span>Transações & Faturamento Soberano</span>
+                <span>Transações & Faturamento Real</span>
               </h2>
               <p className="text-xs text-neutral-400">
-                Integração com Mercado Pago, assinaturas ativas e histórico de vendas.
+                Histórico consolidado via webhooks oficiais do Mercado Pago e Stripe.
               </p>
             </div>
             <Badge variant="success" className="text-[10px]">GATEWAY MERCADO PAGO ATIVO</Badge>
@@ -1021,19 +1063,27 @@ export default function AdminPanelPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="p-5 rounded-2xl bg-black/40 border border-white/5 space-y-1">
-              <span className="text-[10px] font-mono uppercase text-neutral-400">Receita Total Acumulada</span>
-              <div className="text-2xl font-bold text-emerald-400">R$ 51.641,00</div>
-              <span className="text-[10px] text-neutral-500">+ R$ 4.280,00 nos últimos 7 dias</span>
+              <span className="text-[10px] font-mono uppercase text-neutral-400">Receita Total Real</span>
+              <div className="text-2xl font-bold text-emerald-400">
+                R$ {totalRevenue.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
+              </div>
+              <span className="text-[10px] text-neutral-500">
+                {transactions.length > 0 ? `${transactions.length} transações processadas` : "Aguardando primeiros pagamentos"}
+              </span>
             </div>
             <div className="p-5 rounded-2xl bg-black/40 border border-white/5 space-y-1">
               <span className="text-[10px] font-mono uppercase text-neutral-400">Ticket Médio</span>
-              <div className="text-2xl font-bold text-white">R$ 388,50</div>
-              <span className="text-[10px] text-neutral-500">Média ponderada por transação</span>
+              <div className="text-2xl font-bold text-white">
+                R$ {ticketMedio.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
+              </div>
+              <span className="text-[10px] text-neutral-500">Média ponderada por pedido</span>
             </div>
             <div className="p-5 rounded-2xl bg-black/40 border border-white/5 space-y-1">
-              <span className="text-[10px] font-mono uppercase text-neutral-400">Taxa de Conversão no Checkout</span>
-              <div className="text-2xl font-bold text-amber-300">96.2%</div>
-              <span className="text-[10px] text-neutral-500">PIX instantâneo dominante</span>
+              <span className="text-[10px] font-mono uppercase text-neutral-400">Taxa de Aprovação</span>
+              <div className="text-2xl font-bold text-amber-300">
+                {approvalRate.toFixed(1)}%
+              </div>
+              <span className="text-[10px] text-neutral-500">Conversão de pagamentos</span>
             </div>
           </div>
 
@@ -1051,30 +1101,44 @@ export default function AdminPanelPage() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-white/5">
-                {transactions.map((tx) => (
-                  <tr key={tx.id} className="hover:bg-white/[0.02] transition-colors">
-                    <td className="py-3 px-4 font-mono font-bold text-white">{tx.id}</td>
-                    <td className="py-3 px-4 font-medium text-neutral-200">{tx.customer}</td>
-                    <td className="py-3 px-4 text-neutral-400">{tx.plan}</td>
-                    <td className="py-3 px-4 font-mono font-bold text-emerald-400">
-                      R$ {tx.amount.toFixed(2).replace(".", ",")}
-                    </td>
-                    <td className="py-3 px-4 text-neutral-400 text-[11px]">{tx.method}</td>
-                    <td className="py-3 px-4 text-neutral-400 text-[11px]">{tx.date}</td>
-                    <td className="py-3 px-4 text-right">
-                      <span
-                        className={cn(
-                          "px-2 py-0.5 rounded text-[10px] font-bold uppercase",
-                          tx.status === "approved"
-                            ? "bg-emerald-950/40 text-emerald-400 border border-emerald-800/40"
-                            : "bg-amber-950/40 text-amber-400 border border-amber-800/40"
-                        )}
-                      >
-                        {tx.status === "approved" ? "Aprovado" : "Pendente"}
-                      </span>
+                {transactions.length === 0 ? (
+                  <tr>
+                    <td colSpan={7} className="py-12 text-center">
+                      <div className="max-w-sm mx-auto space-y-2">
+                        <CreditCard className="w-8 h-8 text-neutral-600 mx-auto" />
+                        <div className="text-white font-medium text-xs">Nenhuma transação registrada no momento</div>
+                        <p className="text-[11px] text-neutral-500 leading-relaxed">
+                          Quando compras forem efetuadas no checkout do Mercado Pago, as confirmações e webhooks serão listados aqui.
+                        </p>
+                      </div>
                     </td>
                   </tr>
-                ))}
+                ) : (
+                  transactions.map((tx) => (
+                    <tr key={tx.id} className="hover:bg-white/[0.02] transition-colors">
+                      <td className="py-3 px-4 font-mono font-bold text-white">{tx.id}</td>
+                      <td className="py-3 px-4 font-medium text-neutral-200">{tx.customer}</td>
+                      <td className="py-3 px-4 text-neutral-400">{tx.plan}</td>
+                      <td className="py-3 px-4 font-mono font-bold text-emerald-400">
+                        R$ {tx.amount.toFixed(2).replace(".", ",")}
+                      </td>
+                      <td className="py-3 px-4 text-neutral-400 text-[11px]">{tx.method}</td>
+                      <td className="py-3 px-4 text-neutral-400 text-[11px]">{tx.date}</td>
+                      <td className="py-3 px-4 text-right">
+                        <span
+                          className={cn(
+                            "px-2 py-0.5 rounded text-[10px] font-bold uppercase",
+                            tx.status === "approved"
+                              ? "bg-emerald-950/40 text-emerald-400 border border-emerald-800/40"
+                              : "bg-amber-950/40 text-amber-400 border border-amber-800/40"
+                          )}
+                        >
+                          {tx.status === "approved" ? "Aprovado" : "Pendente"}
+                        </span>
+                      </td>
+                    </tr>
+                  ))
+                )}
               </tbody>
             </table>
           </div>
