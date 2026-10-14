@@ -1452,15 +1452,15 @@
     "semantic_hash": ""
   },
   "src/components/layout/Footer.tsx": {
-    "mtime": 1792011712.4809914,
-    "seen": 1792012067.953096,
-    "ast_hash": "2b066ab82bee391f29a37c71e3e5fd9d",
+    "mtime": 1792019183.5159118,
+    "seen": 1792019248.7071161,
+    "ast_hash": "57da66a92fd2bf373983fa7ace118897",
     "semantic_hash": ""
   },
   "src/components/layout/Navbar.tsx": {
-    "mtime": 1792011626.3433049,
-    "seen": 1792012067.9530969,
-    "ast_hash": "c10f0fc58e53ed905f74a03da1cc23b5",
+    "mtime": 1792019071.4643874,
+    "seen": 1792019248.707118,
+    "ast_hash": "2378c513cb17db283a3138a7799f1b91",
     "semantic_hash": ""
   },
   "src/components/members/MemberCard.tsx": {
@@ -2928,9 +2928,9 @@
     "semantic_hash": ""
   },
   "public/comunidade/index.html": {
-    "mtime": 1792000087.3525927,
-    "seen": 1792000233.1088378,
-    "ast_hash": "5ccc9a53011d6818ac4a7a8392f6730a",
+    "mtime": 1792019116.0401876,
+    "seen": 1792019248.714068,
+    "ast_hash": "40b2e91e4d5d68fec108b6c9c9cd958d",
     "semantic_hash": ""
   },
   "public/comunidade/effects/CREATIVE EFFECT's/ANCESTRAL HAND STATUE RENDER/ChatGPT_Image_17_de_jul._de_2025_15_25_13.webp": {

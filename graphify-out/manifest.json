@@ -246,9 +246,9 @@
     "semantic_hash": ""
   },
   "next.config.ts": {
-    "mtime": 1792007914.0015619,
-    "seen": 1792007952.593516,
-    "ast_hash": "e234cb168239e7d775f412def7cb807a",
+    "mtime": 1792021029.0727408,
+    "seen": 1792021184.2289221,
+    "ast_hash": "6bdefe282afe1bea9de021b642875b7d",
     "semantic_hash": ""
   },
   "package.json": {
@@ -264,9 +264,9 @@
     "semantic_hash": ""
   },
   "src/data/siteData.json": {
-    "mtime": 1791992423.608159,
-    "seen": 1791992460.468431,
-    "ast_hash": "2fdc2ca2b9b2bb0bee60b57a1d73b699",
+    "mtime": 1792020878.537317,
+    "seen": 1792021184.231404,
+    "ast_hash": "e1db8cfcd52ea81053f1ba2360431bbe",
     "semantic_hash": ""
   },
   "tsconfig.json": {
@@ -13830,15 +13830,15 @@
     "semantic_hash": ""
   },
   "src/components/portal/RecursosSection.tsx": {
-    "mtime": 1792004467.496357,
-    "seen": 1792005104.7437701,
-    "ast_hash": "e73ae7a0b6086f8646cf3f39b3e8cfc7",
+    "mtime": 1792020965.2158358,
+    "seen": 1792021184.230894,
+    "ast_hash": "0ab52ec555e33398041f8d321a5b23bb",
     "semantic_hash": ""
   },
   "src/components/portal/ShopSection.tsx": {
-    "mtime": 1792004484.1609688,
-    "seen": 1792005104.7437708,
-    "ast_hash": "cc70db54c647e5775d03a501bad6472e",
+    "mtime": 1792020930.4898467,
+    "seen": 1792021184.230895,
+    "ast_hash": "b697ef69f8c8bf30f2c16923c66f27fb",
     "semantic_hash": ""
   },
   "src/components/portal/SobreSection.tsx": {
@@ -13917,6 +13917,1560 @@
     "mtime": 1792008690.279447,
     "seen": 1792008975.157814,
     "ast_hash": "cf9db6d47b5b22a502ff882ca89dcaba",
+    "semantic_hash": ""
+  },
+  "tests/shop_recursos_notion.test.mjs": {
+    "mtime": 1792021154.7737296,
+    "seen": 1792021184.232049,
+    "ast_hash": "01c4ee004e892d5e1b858d985579c930",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/1.gif": {
+    "mtime": 1792020791.802713,
+    "seen": 1792021184.242904,
+    "ast_hash": "dd49c8656d46635bf9578d94f88472c9",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/Icone_de_Sacola_com_Simbolo_de_Dolar.png": {
+    "mtime": 1792020791.8148646,
+    "seen": 1792021184.242906,
+    "ast_hash": "f24f7792b55c7bac1e6c8ed2bb472870",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/R E C U R S O S/AUTOMATION PACK/8c72209d-a545-4a69-9bf1-e800ab833543.png": {
+    "mtime": 1792020791.8195827,
+    "seen": 1792021184.2429068,
+    "ast_hash": "39d2e35866b8bf3a23651566b7ca011e",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/R E C U R S O S/AUTOMATION PACK/ChatGPT_Image_6_de_mai._de_2025_18_09_22.png": {
+    "mtime": 1792020791.82481,
+    "seen": 1792021184.242909,
+    "ast_hash": "58ee7d84eaf71e56531685d425d3f36b",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/R E C U R S O S/AUTOMATION PACK/ChatGPT_Image_6_de_mai._de_2025_18_18_26.png": {
+    "mtime": 1792020791.8327818,
+    "seen": 1792021184.2429109,
+    "ast_hash": "77d87dcb54c923f0c9a9ca7172edde89",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/R E C U R S O S/AUTOMATION PACK/ChatGPT_Image_6_de_mai._de_2025_18_18_33.png": {
+    "mtime": 1792020791.8407292,
+    "seen": 1792021184.242913,
+    "ast_hash": "f9ef1ed15add971767e20f8c61388111",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/R E C U R S O S/AUTOMATION PACK/ChatGPT_Image_6_de_mai._de_2025_18_19_57.png": {
+    "mtime": 1792020791.846734,
+    "seen": 1792021184.242914,
+    "ast_hash": "5420365a678e0a9a4f5cfe4f631ef25d",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/R E C U R S O S/AUTOMATION PACK/ChatGPT_Image_6_de_mai._de_2025_18_20_01.png": {
+    "mtime": 1792020791.8522542,
+    "seen": 1792021184.2429152,
+    "ast_hash": "e6063ceb39166270617e3ee1b8874c57",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/R E C U R S O S/AUTOMATION PACK/ChatGPT_Image_6_de_mai._de_2025_18_22_47.png": {
+    "mtime": 1792020791.8580818,
+    "seen": 1792021184.242916,
+    "ast_hash": "1f64552ebb77ca450f99528ce2803f5f",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/R E C U R S O S/AUTOMATION PACK/ChatGPT_Image_6_de_mai._de_2025_21_17_47.png": {
+    "mtime": 1792020791.8652673,
+    "seen": 1792021184.242917,
+    "ast_hash": "18f31b67f8f3e3d9a7c99e9bdebe009f",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/R E C U R S O S/AUTOMATION PACK/Robo_com_Energia_Vermelha_Radiante.png": {
+    "mtime": 1792020791.86937,
+    "seen": 1792021184.2429178,
+    "ast_hash": "9ff18151e1265950d52cd8ea1754dcdc",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/R E C U R S O S/AUTOMATION PACK/blank-icon.png": {
+    "mtime": 1792020791.870148,
+    "seen": 1792021184.24292,
+    "ast_hash": "0c9482063d9289e62b0b5a906f392a4c",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/R E C U R S O S/THE ULTIMATE WORDPRESS PACK/40a121c9-f7f9-43cd-8529-fb0bbd47e7fe.png": {
+    "mtime": 1792020791.8775275,
+    "seen": 1792021184.2429209,
+    "ast_hash": "e6cb3855b7a60be24862665d1ba8434e",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/R E C U R S O S/THE ULTIMATE WORDPRESS PACK/6d5f9fc6-60bd-4510-b1fc-5fbee0775a24.png": {
+    "mtime": 1792020791.8808434,
+    "seen": 1792021184.242922,
+    "ast_hash": "8014b7ba6420fb03b6ed0cee99aa9ce3",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/R E C U R S O S/THE ULTIMATE WORDPRESS PACK/Automacao_e_Controle_em_Neon.png": {
+    "mtime": 1792020791.8859656,
+    "seen": 1792021184.242923,
+    "ast_hash": "2e4994dd74666f9e991d782e62e190f3",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/R E C U R S O S/THE ULTIMATE WORDPRESS PACK/ChatGPT_Image_14_de_mai._de_2025_13_29_42.png": {
+    "mtime": 1792020791.888668,
+    "seen": 1792021184.242924,
+    "ast_hash": "574eb8c900c25d97a45e8da55f265228",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/R E C U R S O S/THE ULTIMATE WORDPRESS PACK/Circuitos_Vermelhos_e_Rede_Futurista.png": {
+    "mtime": 1792020791.8957808,
+    "seen": 1792021184.2429252,
+    "ast_hash": "cccba4fa6cf0e4ed263a19563deb9e26",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/R E C U R S O S/THE ULTIMATE WORDPRESS PACK/Elementos_de_UI_em_Acao.png": {
+    "mtime": 1792020791.9005969,
+    "seen": 1792021184.2429261,
+    "ast_hash": "5420365a678e0a9a4f5cfe4f631ef25d",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/R E C U R S O S/THE ULTIMATE WORDPRESS PACK/Elementos_em_Chamas__Prototipagem_Digital.png": {
+    "mtime": 1792020791.9091156,
+    "seen": 1792021184.242927,
+    "ast_hash": "8bde9a66ed8ad5f485c8f53f5cb286b6",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/R E C U R S O S/THE ULTIMATE WORDPRESS PACK/Foguete_em_Chamas_Neon.png": {
+    "mtime": 1792020791.915284,
+    "seen": 1792021184.242928,
+    "ast_hash": "d31de7b4d040d01368b5015a83f67bef",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/R E C U R S O S/THE ULTIMATE WORDPRESS PACK/Gerente_de_automacao_em_ambiente_cibernetico.png": {
+    "mtime": 1792020791.922019,
+    "seen": 1792021184.242929,
+    "ast_hash": "a7858a8b7f9481a17d60610ddab84dca",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/R E C U R S O S/THE ULTIMATE WORDPRESS PACK/Homem_Programando_na_Luz_Vermelha.png": {
+    "mtime": 1792020791.9284554,
+    "seen": 1792021184.24293,
+    "ast_hash": "833e326231207724e9e304090ae5dc9f",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/R E C U R S O S/THE ULTIMATE WORDPRESS PACK/Icone_WordPress_em_Chamas_e_Circuitos 1.png": {
+    "mtime": 1792020791.931646,
+    "seen": 1792021184.242931,
+    "ast_hash": "57e0720790fbd368150dc050b96ba008",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/R E C U R S O S/THE ULTIMATE WORDPRESS PACK/Icone_WordPress_em_Chamas_e_Circuitos.png": {
+    "mtime": 1792020791.9354339,
+    "seen": 1792021184.242932,
+    "ast_hash": "a2649937c7e14edf9ba7216709c6ca43",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/R E C U R S O S/THE ULTIMATE WORDPRESS PACK/Lampada_Neon_com_Raio_Eletrico.png": {
+    "mtime": 1792020791.9439223,
+    "seen": 1792021184.242932,
+    "ast_hash": "7f708f2a1172d90458d7b6dd532f379b",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/R E C U R S O S/THE ULTIMATE WORDPRESS PACK/Logo_Elementor_em_Chamas_Intensamente_Iluminado 1.png": {
+    "mtime": 1792020791.9463384,
+    "seen": 1792021184.242933,
+    "ast_hash": "365a7c9eeef2bd1dbe4ad7f99b6c34fc",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/R E C U R S O S/THE ULTIMATE WORDPRESS PACK/Logo_Elementor_em_Chamas_Intensamente_Iluminado.png": {
+    "mtime": 1792020791.9526677,
+    "seen": 1792021184.242934,
+    "ast_hash": "365a7c9eeef2bd1dbe4ad7f99b6c34fc",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/R E C U R S O S/THE ULTIMATE WORDPRESS PACK/a5c822b0-22e2-45a9-91c7-6564cebd6f91.png": {
+    "mtime": 1792020791.9549923,
+    "seen": 1792021184.242935,
+    "ast_hash": "b5e15daf725e633a1313b98594a945df",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/cover.gif": {
+    "mtime": 1792020809.8954015,
+    "seen": 1792021184.2429361,
+    "ast_hash": "dd49c8656d46635bf9578d94f88472c9",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/icon_recursos.png": {
+    "mtime": 1792020809.912633,
+    "seen": 1792021184.242937,
+    "ast_hash": "f24f7792b55c7bac1e6c8ed2bb472870",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/packs/automation_pack/8c72209d-a545-4a69-9bf1-e800ab833543.png": {
+    "mtime": 1792020809.919119,
+    "seen": 1792021184.242938,
+    "ast_hash": "39d2e35866b8bf3a23651566b7ca011e",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/packs/automation_pack/ChatGPT_Image_6_de_mai._de_2025_18_09_22.png": {
+    "mtime": 1792020809.9229658,
+    "seen": 1792021184.242939,
+    "ast_hash": "58ee7d84eaf71e56531685d425d3f36b",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/packs/automation_pack/ChatGPT_Image_6_de_mai._de_2025_18_18_26.png": {
+    "mtime": 1792020809.9321463,
+    "seen": 1792021184.242941,
+    "ast_hash": "77d87dcb54c923f0c9a9ca7172edde89",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/packs/automation_pack/ChatGPT_Image_6_de_mai._de_2025_18_18_33.png": {
+    "mtime": 1792020809.9402878,
+    "seen": 1792021184.242941,
+    "ast_hash": "f9ef1ed15add971767e20f8c61388111",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/packs/automation_pack/ChatGPT_Image_6_de_mai._de_2025_18_19_57.png": {
+    "mtime": 1792020809.947555,
+    "seen": 1792021184.2429419,
+    "ast_hash": "5420365a678e0a9a4f5cfe4f631ef25d",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/packs/automation_pack/ChatGPT_Image_6_de_mai._de_2025_18_20_01.png": {
+    "mtime": 1792020809.950702,
+    "seen": 1792021184.242944,
+    "ast_hash": "e6063ceb39166270617e3ee1b8874c57",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/packs/automation_pack/ChatGPT_Image_6_de_mai._de_2025_18_22_47.png": {
+    "mtime": 1792020809.959021,
+    "seen": 1792021184.242945,
+    "ast_hash": "1f64552ebb77ca450f99528ce2803f5f",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/packs/automation_pack/ChatGPT_Image_6_de_mai._de_2025_21_17_47.png": {
+    "mtime": 1792020809.9646733,
+    "seen": 1792021184.2429461,
+    "ast_hash": "18f31b67f8f3e3d9a7c99e9bdebe009f",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/packs/automation_pack/Robo_com_Energia_Vermelha_Radiante.png": {
+    "mtime": 1792020809.9689994,
+    "seen": 1792021184.242947,
+    "ast_hash": "9ff18151e1265950d52cd8ea1754dcdc",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/packs/automation_pack/blank-icon.png": {
+    "mtime": 1792020809.9711137,
+    "seen": 1792021184.242949,
+    "ast_hash": "0c9482063d9289e62b0b5a906f392a4c",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/packs/wordpress_pack/40a121c9-f7f9-43cd-8529-fb0bbd47e7fe.png": {
+    "mtime": 1792020809.9771328,
+    "seen": 1792021184.24295,
+    "ast_hash": "e6cb3855b7a60be24862665d1ba8434e",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/packs/wordpress_pack/6d5f9fc6-60bd-4510-b1fc-5fbee0775a24.png": {
+    "mtime": 1792020809.9811094,
+    "seen": 1792021184.242951,
+    "ast_hash": "8014b7ba6420fb03b6ed0cee99aa9ce3",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/packs/wordpress_pack/Automacao_e_Controle_em_Neon.png": {
+    "mtime": 1792020809.986077,
+    "seen": 1792021184.2429519,
+    "ast_hash": "2e4994dd74666f9e991d782e62e190f3",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/packs/wordpress_pack/ChatGPT_Image_14_de_mai._de_2025_13_29_42.png": {
+    "mtime": 1792020809.9903092,
+    "seen": 1792021184.242954,
+    "ast_hash": "574eb8c900c25d97a45e8da55f265228",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/packs/wordpress_pack/Circuitos_Vermelhos_e_Rede_Futurista.png": {
+    "mtime": 1792020809.9958518,
+    "seen": 1792021184.242954,
+    "ast_hash": "cccba4fa6cf0e4ed263a19563deb9e26",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/packs/wordpress_pack/Elementos_de_UI_em_Acao.png": {
+    "mtime": 1792020810.0013316,
+    "seen": 1792021184.242955,
+    "ast_hash": "5420365a678e0a9a4f5cfe4f631ef25d",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/packs/wordpress_pack/Elementos_em_Chamas__Prototipagem_Digital.png": {
+    "mtime": 1792020810.0076776,
+    "seen": 1792021184.242957,
+    "ast_hash": "8bde9a66ed8ad5f485c8f53f5cb286b6",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/packs/wordpress_pack/Foguete_em_Chamas_Neon.png": {
+    "mtime": 1792020810.0135536,
+    "seen": 1792021184.242958,
+    "ast_hash": "d31de7b4d040d01368b5015a83f67bef",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/packs/wordpress_pack/Gerente_de_automacao_em_ambiente_cibernetico.png": {
+    "mtime": 1792020810.0194209,
+    "seen": 1792021184.242958,
+    "ast_hash": "a7858a8b7f9481a17d60610ddab84dca",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/packs/wordpress_pack/Homem_Programando_na_Luz_Vermelha.png": {
+    "mtime": 1792020810.0254977,
+    "seen": 1792021184.242959,
+    "ast_hash": "833e326231207724e9e304090ae5dc9f",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/packs/wordpress_pack/Icone_WordPress_em_Chamas_e_Circuitos 1.png": {
+    "mtime": 1792020810.0381496,
+    "seen": 1792021184.24296,
+    "ast_hash": "57e0720790fbd368150dc050b96ba008",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/packs/wordpress_pack/Icone_WordPress_em_Chamas_e_Circuitos.png": {
+    "mtime": 1792020810.0416062,
+    "seen": 1792021184.242962,
+    "ast_hash": "a2649937c7e14edf9ba7216709c6ca43",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/packs/wordpress_pack/Lampada_Neon_com_Raio_Eletrico.png": {
+    "mtime": 1792020810.0474126,
+    "seen": 1792021184.242962,
+    "ast_hash": "7f708f2a1172d90458d7b6dd532f379b",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/packs/wordpress_pack/Logo_Elementor_em_Chamas_Intensamente_Iluminado 1.png": {
+    "mtime": 1792020810.0534735,
+    "seen": 1792021184.242964,
+    "ast_hash": "365a7c9eeef2bd1dbe4ad7f99b6c34fc",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/packs/wordpress_pack/Logo_Elementor_em_Chamas_Intensamente_Iluminado.png": {
+    "mtime": 1792020810.0565667,
+    "seen": 1792021184.242965,
+    "ast_hash": "365a7c9eeef2bd1dbe4ad7f99b6c34fc",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/recursos/packs/wordpress_pack/a5c822b0-22e2-45a9-91c7-6564cebd6f91.png": {
+    "mtime": 1792020810.062436,
+    "seen": 1792021184.242966,
+    "ast_hash": "b5e15daf725e633a1313b98594a945df",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/4.gif": {
+    "mtime": 1792020791.0396464,
+    "seen": 1792021184.2429671,
+    "ast_hash": "308fb051029e8d8c5339fb1d16a21181",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/1.gif": {
+    "mtime": 1792020791.0755298,
+    "seen": 1792021184.242968,
+    "ast_hash": "026ceecc89c26d7fd582cfa7e88caacf",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/Cerebro_Cibernetico_e_Redes_de_Dados.png": {
+    "mtime": 1792020791.096444,
+    "seen": 1792021184.242968,
+    "ast_hash": "f93270c8072e177ba0521a69fd874d1e",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/I A PRO (CURSO)/ChatGPT_Image_10_de_jun._de_2025_20_54_00.png": {
+    "mtime": 1792020791.1131873,
+    "seen": 1792021184.242969,
+    "ast_hash": "3a358251d0bf440bda6eb6518e978d27",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/I A PRO (CURSO)/ChatGPT_Image_29_de_jun._de_2025_18_12_34.png": {
+    "mtime": 1792020791.123582,
+    "seen": 1792021184.2429702,
+    "ast_hash": "9986d2c20834e361d36449858f0b2742",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/I A PRO (CURSO)/ChatGPT_Image_29_de_jun._de_2025_18_34_41.png": {
+    "mtime": 1792020791.130019,
+    "seen": 1792021184.242971,
+    "ast_hash": "f7c983901b8d01bc6d18267b2ee4f46d",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/I A PRO (CURSO)/ChatGPT_Image_29_de_jun._de_2025_19_08_39.png": {
+    "mtime": 1792020791.1388848,
+    "seen": 1792021184.242972,
+    "ast_hash": "62a0b09607e02ae181dea9a93ec5c0e3",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/I A PRO (CURSO)/ChatGPT_Image_29_de_jun._de_2025_23_06_41.png": {
+    "mtime": 1792020791.1467903,
+    "seen": 1792021184.2429729,
+    "ast_hash": "ed4563451c6eea7b1f248d23e21263eb",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/I A PRO (CURSO)/Documento_de_Privacidade_Neon.png": {
+    "mtime": 1792020791.155846,
+    "seen": 1792021184.242974,
+    "ast_hash": "ce75337732369d10ba2b62db5dee2056",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/I A PRO (CURSO)/Foguete_em_Chamas_Neon.png": {
+    "mtime": 1792020791.1596644,
+    "seen": 1792021184.242974,
+    "ast_hash": "d31de7b4d040d01368b5015a83f67bef",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/I A PRO (CURSO)/Homem_Programando_na_Luz_Vermelha.png": {
+    "mtime": 1792020791.1673174,
+    "seen": 1792021184.242975,
+    "ast_hash": "833e326231207724e9e304090ae5dc9f",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/I A PRO (CURSO)/I.A_PRO.png": {
+    "mtime": 1792020791.1721957,
+    "seen": 1792021184.242976,
+    "ast_hash": "18b38b37e589d604ae66eb638c185fa6",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/I A PRO (CURSO)/MCP_SITEMAP_COVERS_IA_PRO.gif": {
+    "mtime": 1792020791.1965132,
+    "seen": 1792021184.242976,
+    "ast_hash": "089a0d2c04a2a0791350af0c648c63b2",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/I A PRO (CURSO)/N8N_em_Chamas.png": {
+    "mtime": 1792020791.2210212,
+    "seen": 1792021184.2429771,
+    "ast_hash": "59ca18cc5b4569c079c03fc41f7df7c2",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE MAKE PACK/2fe14466-6ffb-4b64-b330-fe68066a1826.png": {
+    "mtime": 1792020791.2313154,
+    "seen": 1792021184.242978,
+    "ast_hash": "2bd6cdc68b5e6fbb10dc6118a3f518dd",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE MAKE PACK/ChatGPT_Image_9_de_jun._de_2025_14_20_44.png": {
+    "mtime": 1792020791.243536,
+    "seen": 1792021184.242979,
+    "ast_hash": "9b15f7f25b1b4b66395beec69681fc61",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE MAKE PACK/ChatGPT_Image_9_de_jun._de_2025_19_06_30.png": {
+    "mtime": 1792020791.250963,
+    "seen": 1792021184.242979,
+    "ast_hash": "3f84f772da37e694bde9436ef5c25981",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE MAKE PACK/ChatGPT_Image_9_de_jun._de_2025_19_06_31.png": {
+    "mtime": 1792020791.2575037,
+    "seen": 1792021184.24298,
+    "ast_hash": "11198dd176a559a5d5dbee57a29dbb67",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE MAKE PACK/ChatGPT_Image_9_de_jun._de_2025_19_06_33.png": {
+    "mtime": 1792020791.263848,
+    "seen": 1792021184.2429812,
+    "ast_hash": "f27b95462bf27bd0984dc54a9dbd24d3",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE MAKE PACK/ChatGPT_Image_9_de_jun._de_2025_20_18_41.png": {
+    "mtime": 1792020791.273414,
+    "seen": 1792021184.2429812,
+    "ast_hash": "8f0a28225a030fb7d9a008407806621a",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE MAKE PACK/ChatGPT_Image_9_de_jun._de_2025_20_18_46.png": {
+    "mtime": 1792020791.2801545,
+    "seen": 1792021184.242982,
+    "ast_hash": "8b7a422d77cedd796a9b6112387116f7",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE MAKE PACK/ChatGPT_Image_9_de_jun._de_2025_20_18_54.png": {
+    "mtime": 1792020791.288554,
+    "seen": 1792021184.2429829,
+    "ast_hash": "c1cbffd3816c20ad5d34afe6872ba4e8",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE MAKE PACK/ChatGPT_Image_9_de_jun._de_2025_20_37_36.png": {
+    "mtime": 1792020791.2980487,
+    "seen": 1792021184.2429838,
+    "ast_hash": "dde08da8329bf00158b62b8dc946923c",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE MAKE PACK/Elon-Musk.jpg": {
+    "mtime": 1792020791.2994273,
+    "seen": 1792021184.242985,
+    "ast_hash": "ffdbc31075d0509085690026d352bcd5",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE MAKE PACK/blank-icon 1.png": {
+    "mtime": 1792020791.3005505,
+    "seen": 1792021184.242986,
+    "ast_hash": "0c9482063d9289e62b0b5a906f392a4c",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE MAKE PACK/blank-icon.png": {
+    "mtime": 1792020791.3009114,
+    "seen": 1792021184.242987,
+    "ast_hash": "0c9482063d9289e62b0b5a906f392a4c",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE MAKE PACK/file_0000000012cc61f7b6294d5b4d4bab8a.png": {
+    "mtime": 1792020791.303633,
+    "seen": 1792021184.242989,
+    "ast_hash": "a86bcab11a54e5f8382618958fd397bf",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE MAKE PACK/file_000000002e94622f99caf9fe0e069536.png": {
+    "mtime": 1792020791.3105557,
+    "seen": 1792021184.24299,
+    "ast_hash": "085ba0f582a1ac32a55c3f0cc95ff52e",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE MAKE PACK/file_000000008734622fb44ffd609fdd2640.png": {
+    "mtime": 1792020791.3140202,
+    "seen": 1792021184.2429912,
+    "ast_hash": "7f667a696bf8ddb2522d2613ac044cbf",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE MAKE PACK/file_00000000a81461f7ab0609163957b39b.png": {
+    "mtime": 1792020791.3227355,
+    "seen": 1792021184.2429929,
+    "ast_hash": "77ccf053c7c3a90bfb424e0d3218515b",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE MAKE PACK/file_00000000aff861f7b2e2519555da49f1.png": {
+    "mtime": 1792020791.3289864,
+    "seen": 1792021184.2429938,
+    "ast_hash": "aa05c1cdc0f10be76c5c0e756a7d94b6",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE MAKE PACK/file_00000000b07061fd8f8e946017aac649.png": {
+    "mtime": 1792020791.335102,
+    "seen": 1792021184.242995,
+    "ast_hash": "089f5ce5aa414a0b3a64d3e6fa7ec8ce",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE MAKE PACK/file_00000000b40061fd99fefef3df7694e7.png": {
+    "mtime": 1792020791.3428357,
+    "seen": 1792021184.242996,
+    "ast_hash": "a0f859ca2dc385e35296b28f50b10573",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE MAKE PACK/file_00000000e5e461f7baa54f6ccaa73405.png": {
+    "mtime": 1792020791.3492641,
+    "seen": 1792021184.242997,
+    "ast_hash": "0caadeec3d054f96cf03059532193c03",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE MAKE PACK/file_00000000fe3861f7ac82e77c1eefdd16 1.png": {
+    "mtime": 1792020791.3582113,
+    "seen": 1792021184.2429981,
+    "ast_hash": "b6ee4f86caa97960787e09cf0de7924e",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE MAKE PACK/file_00000000fe3861f7ac82e77c1eefdd16.png": {
+    "mtime": 1792020791.364956,
+    "seen": 1792021184.242999,
+    "ast_hash": "b6ee4f86caa97960787e09cf0de7924e",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE MAKE PACK/show-photo.jpg": {
+    "mtime": 1792020791.3708856,
+    "seen": 1792021184.243,
+    "ast_hash": "df4a19692a2a4facce75f20a3c201ba3",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE MAKE PACK/sundar-pichai-1.webp": {
+    "mtime": 1792020791.3720653,
+    "seen": 1792021184.243001,
+    "ast_hash": "0f4879d145eb9501d0d6372beada31b7",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE N8N PACK/Acordo_Futurista__Homem_e_Robo.png": {
+    "mtime": 1792020791.376237,
+    "seen": 1792021184.2430022,
+    "ast_hash": "46fd65446eb0b80acd40dff71e7c394a",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE N8N PACK/Aperto_de_Maos__Homem_e_Robo.png": {
+    "mtime": 1792020791.3845274,
+    "seen": 1792021184.243003,
+    "ast_hash": "abfa74705b65e067d9d8706d6af56206",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE N8N PACK/Cerebro_em_Chamas_e_Energia_Eletrica.png": {
+    "mtime": 1792020791.3889487,
+    "seen": 1792021184.2430038,
+    "ast_hash": "7a92a0665b46e36dda0bcbbfe14f85af",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE N8N PACK/ChatGPT_Image_16_de_mai._de_2025_13_33_04.png": {
+    "mtime": 1792020791.3922973,
+    "seen": 1792021184.243005,
+    "ast_hash": "4bec01e48d92e64e0ad56cf3d72b8de3",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE N8N PACK/ChatGPT_Image_30_de_abr._de_2025_02_51_06.png": {
+    "mtime": 1792020791.3980274,
+    "seen": 1792021184.243006,
+    "ast_hash": "48d3bae25b3a3ad3d6b5f596a7a82192",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE N8N PACK/ChatGPT_Image_30_de_abr._de_2025_03_51_06.png": {
+    "mtime": 1792020791.4050052,
+    "seen": 1792021184.243007,
+    "ast_hash": "b3b689c7f71ff81d382dfdeb896e1423",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE N8N PACK/ChatGPT_Image_30_de_abr._de_2025_03_51_10.png": {
+    "mtime": 1792020791.407786,
+    "seen": 1792021184.243008,
+    "ast_hash": "2e4994dd74666f9e991d782e62e190f3",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE N8N PACK/ChatGPT_Image_30_de_abr._de_2025_03_52_12.png": {
+    "mtime": 1792020791.4122136,
+    "seen": 1792021184.243008,
+    "ast_hash": "25c252a74352c697fb8a594b3c155580",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE N8N PACK/ChatGPT_Image_9_de_jun._de_2025_14_01_12.png": {
+    "mtime": 1792020791.4180198,
+    "seen": 1792021184.243009,
+    "ast_hash": "0617db5c2d6466fb1ea7a6cd0420f0ce",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE N8N PACK/ChatGPT_Image_9_de_jun._de_2025_15_06_09.png": {
+    "mtime": 1792020791.4245565,
+    "seen": 1792021184.24301,
+    "ast_hash": "51cb6bdddc095a75edeefd8bb0ca7408",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE N8N PACK/Chave_Neon_sobre_Fundo_Escuro.png": {
+    "mtime": 1792020791.4311337,
+    "seen": 1792021184.243011,
+    "ast_hash": "c3c7ed29dcd9a265822de23c0a843c93",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE N8N PACK/Robo_Central_em_Sala_Futurista.png": {
+    "mtime": 1792020791.4375637,
+    "seen": 1792021184.2430122,
+    "ast_hash": "dca32cc0199bf39cc3a6379800f1db93",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE N8N PACK/file_00000000b8b061f78ca7ae10cc5a9985.png": {
+    "mtime": 1792020791.4452252,
+    "seen": 1792021184.2430131,
+    "ast_hash": "8ce46f4ecc3a6f73605134799c4df3c4",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE N8N PACK/file_00000000c430622f8b53f8ca1926ea6f.png": {
+    "mtime": 1792020791.4478896,
+    "seen": 1792021184.2430139,
+    "ast_hash": "7fc0971b56e6812f66d6d56ac866c4bb",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE TYPEBOT PACK/Acordo_Futurista_em_Neon.png": {
+    "mtime": 1792020791.4532886,
+    "seen": 1792021184.2430139,
+    "ast_hash": "c8d77c326894c935c97d6d93ac68b37f",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE TYPEBOT PACK/Aperto_de_mao_digitalizado_futurista.png": {
+    "mtime": 1792020791.4617243,
+    "seen": 1792021184.2430148,
+    "ast_hash": "eff4e4cb116a1c8b4fdc094cd495c126",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE TYPEBOT PACK/Captura_de_Tela_2025-06-09_as_1.24.22_PM.png": {
+    "mtime": 1792020791.466288,
+    "seen": 1792021184.243016,
+    "ast_hash": "2e856b7f426455aa39691b21ac9a50b0",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE TYPEBOT PACK/Captura_de_Tela_2025-06-09_as_1.24.40_PM.png": {
+    "mtime": 1792020791.470461,
+    "seen": 1792021184.243016,
+    "ast_hash": "a71212939636cc4a3b1d452374592eb2",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE TYPEBOT PACK/Captura_de_Tela_2025-06-09_as_1.24.46_PM.png": {
+    "mtime": 1792020791.4732645,
+    "seen": 1792021184.243017,
+    "ast_hash": "f5a7b0a4b2b7c9c67f50f6624f9b1965",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE TYPEBOT PACK/ChatGPT_Image_30_de_abr._de_2025_04_00_30.png": {
+    "mtime": 1792020791.4758708,
+    "seen": 1792021184.243018,
+    "ast_hash": "753637e53766596f5d936789afca45c5",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE TYPEBOT PACK/ChatGPT_Image_30_de_abr._de_2025_04_00_34.png": {
+    "mtime": 1792020791.4815307,
+    "seen": 1792021184.243019,
+    "ast_hash": "143584368ad4198a8ba14167d6d8455a",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE TYPEBOT PACK/ChatGPT_Image_30_de_abr._de_2025_04_00_37.png": {
+    "mtime": 1792020791.487848,
+    "seen": 1792021184.24302,
+    "ast_hash": "5133fdcfd43eaeca54e932fbe50c577a",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE TYPEBOT PACK/ChatGPT_Image_9_de_jun._de_2025_11_34_03.png": {
+    "mtime": 1792020791.4944806,
+    "seen": 1792021184.243021,
+    "ast_hash": "4a2a891ab00b48f77503c145de340b8e",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE TYPEBOT PACK/ChatGPT_Image_9_de_jun._de_2025_11_56_30.png": {
+    "mtime": 1792020791.500663,
+    "seen": 1792021184.243022,
+    "ast_hash": "6bc0c6a594b00deca636dbe590ada9a4",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE TYPEBOT PACK/ChatGPT_Image_9_de_jun._de_2025_13_14_33.png": {
+    "mtime": 1792020791.5095656,
+    "seen": 1792021184.2430232,
+    "ast_hash": "23801d02f377c543c08485b9e52b008d",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE TYPEBOT PACK/ChatGPT_Image_9_de_jun._de_2025_13_25_45.png": {
+    "mtime": 1792020791.515516,
+    "seen": 1792021184.2430239,
+    "ast_hash": "e53fa92bcaac5af32c1b0002787d9b55",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE TYPEBOT PACK/ChatGPT_Image_9_de_jun._de_2025_13_38_09.png": {
+    "mtime": 1792020791.5236793,
+    "seen": 1792021184.2430248,
+    "ast_hash": "b9c31e6515081ff7ec0184b4c014fdce",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE TYPEBOT PACK/ChatGPT_Image_9_de_jun._de_2025_13_53_44.png": {
+    "mtime": 1792020791.5302787,
+    "seen": 1792021184.243026,
+    "ast_hash": "70b29de3c298b4bedba18f15acff8373",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE TYPEBOT PACK/Desenvolvedor_Futurista_em_Ambiente_Digital.png": {
+    "mtime": 1792020791.537423,
+    "seen": 1792021184.243027,
+    "ast_hash": "bb1f671938aa2b99e23cc3b019de5b88",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE TYPEBOT PACK/Homem_de_negocios_e_robo_ao_aperto_de_mao.png": {
+    "mtime": 1792020791.543221,
+    "seen": 1792021184.243028,
+    "ast_hash": "2c83912f1cf9de061dcfb8ab8b4eb095",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE TYPEBOT PACK/Icone_de_robo_com_no_brilhante.png": {
+    "mtime": 1792020791.5482714,
+    "seen": 1792021184.243028,
+    "ast_hash": "cf6013bedd54987cf8dcd11a502fca25",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE TYPEBOT PACK/Profissional_e_Robo_em_Neon.png": {
+    "mtime": 1792020791.553511,
+    "seen": 1792021184.2430289,
+    "ast_hash": "471af4a58df0d60f990d709864933550",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE TYPEBOT PACK/file_00000000a904622f8c19d4b082fd8487.png": {
+    "mtime": 1792020791.5619571,
+    "seen": 1792021184.24303,
+    "ast_hash": "cbb373ad0bd727d87a1528e5f790cfd7",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/PRODUTOS/PRODUTOS/ULTIMATE TYPEBOT PACK/file_00000000ba68622fb86d96d8ce000fb9.png": {
+    "mtime": 1792020791.5669858,
+    "seen": 1792021184.24303,
+    "ast_hash": "f9ddca901b5df8cc49243e4f66021236",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/SERVI\u00c7OS/5.gif": {
+    "mtime": 1792020791.5879636,
+    "seen": 1792021184.24304,
+    "ast_hash": "07cce10700235594d279adf04a7472b1",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/SERVI\u00c7OS/Cerebro_digital_em_neon.png": {
+    "mtime": 1792020791.5954158,
+    "seen": 1792021184.2430458,
+    "ast_hash": "0c08922221e2be53a0f6baacf10344a5",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/SERVI\u00c7OS/Sem t\u00edtulo/A I AGENTS/30_de_abr._de_2025_02_39_38.png": {
+    "mtime": 1792020791.602321,
+    "seen": 1792021184.24305,
+    "ast_hash": "5e326358f1c588859b552b7bc3723c49",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/SERVI\u00c7OS/Sem t\u00edtulo/A I AGENTS/Automacao_de_Rede_em_Neon.png": {
+    "mtime": 1792020791.6057928,
+    "seen": 1792021184.2430542,
+    "ast_hash": "943bef1ed51070b67160cb637944eb5f",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/SERVI\u00c7OS/Sem t\u00edtulo/A I AGENTS/ChatGPT_Image_16_de_mai._de_2025_13_37_37.png": {
+    "mtime": 1792020791.6120067,
+    "seen": 1792021184.243059,
+    "ast_hash": "3e98ea780af5d6863e8bc35bf401dd97",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/SERVI\u00c7OS/Sem t\u00edtulo/A I AGENTS/ChatGPT_Image_30_de_abr._de_2025_02_43_38.png": {
+    "mtime": 1792020791.619324,
+    "seen": 1792021184.243063,
+    "ast_hash": "1a9911b8d12d7f05eb15237e5bab1050",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/SERVI\u00c7OS/Sem t\u00edtulo/A I AGENTS/ChatGPT_Image_30_de_abr._de_2025_02_45_05.png": {
+    "mtime": 1792020791.6257145,
+    "seen": 1792021184.243066,
+    "ast_hash": "9599061ecd3d4d24ee90e31777fae650",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/SERVI\u00c7OS/Sem t\u00edtulo/A I AGENTS/ChatGPT_Image_30_de_abr._de_2025_03_00_47.png": {
+    "mtime": 1792020791.6311088,
+    "seen": 1792021184.243069,
+    "ast_hash": "2554898e7eda1d460822f1c3be67a705",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/SERVI\u00c7OS/Sem t\u00edtulo/A I AGENTS/ChatGPT_Image_30_de_abr._de_2025_03_11_02.png": {
+    "mtime": 1792020791.6353402,
+    "seen": 1792021184.243073,
+    "ast_hash": "12f28f2d22fef11541d7accd17c6a996",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/SERVI\u00c7OS/Sem t\u00edtulo/A I AGENTS/ChatGPT_Image_30_de_abr._de_2025_03_53_50.png": {
+    "mtime": 1792020791.6445684,
+    "seen": 1792021184.243076,
+    "ast_hash": "e59d85266780862e5cbdc6efc2e275fb",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/SERVI\u00c7OS/Sem t\u00edtulo/A I AGENTS/ChatGPT_Image_30_de_abr._de_2025_04_00_24.png": {
+    "mtime": 1792020791.6480434,
+    "seen": 1792021184.243079,
+    "ast_hash": "cc0319c8c29fac2e48c4b57767680ec3",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/SERVI\u00c7OS/Sem t\u00edtulo/A I AGENTS/ChatGPT_Image_30_de_abr._de_2025_04_00_27.png": {
+    "mtime": 1792020791.6545184,
+    "seen": 1792021184.243083,
+    "ast_hash": "28f7c28f6b3ef9be1893031e8198a679",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/SERVI\u00c7OS/Sem t\u00edtulo/A I AGENTS/ChatGPT_Image_30_de_abr._de_2025_04_04_58.png": {
+    "mtime": 1792020791.6577587,
+    "seen": 1792021184.243086,
+    "ast_hash": "57a096015e39a6ec9d97ce22d290a75a",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/SERVI\u00c7OS/Sem t\u00edtulo/A I AGENTS/Conversa_Neon_em_Estilo_Vetorial.png": {
+    "mtime": 1792020791.6638267,
+    "seen": 1792021184.24309,
+    "ast_hash": "233172ea3883c625c2ec1c264a98eaa1",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/SERVI\u00c7OS/Sem t\u00edtulo/A I AGENTS/Encontro_no_Mundo_Vermelho.png": {
+    "mtime": 1792020791.6668596,
+    "seen": 1792021184.243093,
+    "ast_hash": "d9fe707d4e9e5b7de668972ef71f56ba",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/SERVI\u00c7OS/Sem t\u00edtulo/A I AGENTS/Estudo_Noturno_a_Luz_Vermelha.png": {
+    "mtime": 1792020791.6724515,
+    "seen": 1792021184.243096,
+    "ast_hash": "ed178cea2f20fc8ff3359fd9e39b3b33",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/SERVI\u00c7OS/Sem t\u00edtulo/A I AGENTS/Produto_Educacional_e_Conhecimento.png": {
+    "mtime": 1792020791.6758738,
+    "seen": 1792021184.2431,
+    "ast_hash": "62128231545667d45d24416d6fdb22dd",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/SERVI\u00c7OS/Sem t\u00edtulo/A I AGENTS/Robo_Elegante_em_Neon_Vermelho.png": {
+    "mtime": 1792020791.6835365,
+    "seen": 1792021184.243103,
+    "ast_hash": "2a31edb1ea31338c0e071faed39f3d97",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/SERVI\u00c7OS/Sem t\u00edtulo/A I AGENTS/Robo_em_Luz_Neon_Vermelha.png": {
+    "mtime": 1792020791.68696,
+    "seen": 1792021184.243107,
+    "ast_hash": "2920f79349f57db48030bdda0e3960ac",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/SERVI\u00c7OS/Sem t\u00edtulo/A I AGENTS/Trabalho_Futurista_em_Neon.png": {
+    "mtime": 1792020791.6937404,
+    "seen": 1792021184.24311,
+    "ast_hash": "b2b2448ce69e8f83b9860a86e352af58",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/SERVI\u00c7OS/Sem t\u00edtulo/P\u00c1GINA DE LINKS (SUPERIOR/Acordo_Futurista_na_Cidade_Neon.png": {
+    "mtime": 1792020791.7024038,
+    "seen": 1792021184.243114,
+    "ast_hash": "9ce7345dcaa373e1097c933fde396ef4",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/SERVI\u00c7OS/Sem t\u00edtulo/P\u00c1GINA DE LINKS (SUPERIOR/ChatGPT_Image_9_de_jun._de_2025_21_13_48.png": {
+    "mtime": 1792020791.710794,
+    "seen": 1792021184.243118,
+    "ast_hash": "c17ba755a4bd6833f596f632ec262f2b",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/SERVI\u00c7OS/Sem t\u00edtulo/P\u00c1GINA DE LINKS (SUPERIOR/ChatGPT_Image_9_de_jun._de_2025_21_29_52.png": {
+    "mtime": 1792020791.7210917,
+    "seen": 1792021184.2431219,
+    "ast_hash": "c1833e33d85686b68dce4956e42c51b0",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/SERVI\u00c7OS/Sem t\u00edtulo/P\u00c1GINA DE LINKS (SUPERIOR/ChatGPT_Image_9_de_jun._de_2025_21_36_10.png": {
+    "mtime": 1792020791.7248142,
+    "seen": 1792021184.243125,
+    "ast_hash": "69beb15bb83ef40a92be0e8a25831c38",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/SERVI\u00c7OS/Sem t\u00edtulo/P\u00c1GINA DE LINKS (SUPERIOR/ChatGPT_Image_9_de_jun._de_2025_21_37_55 1.png": {
+    "mtime": 1792020791.7327714,
+    "seen": 1792021184.243129,
+    "ast_hash": "816c98830a03605b4ea08729af571840",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/SERVI\u00c7OS/Sem t\u00edtulo/P\u00c1GINA DE LINKS (SUPERIOR/ChatGPT_Image_9_de_jun._de_2025_21_37_55.png": {
+    "mtime": 1792020791.740301,
+    "seen": 1792021184.2431319,
+    "ast_hash": "816c98830a03605b4ea08729af571840",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/SERVI\u00c7OS/Sem t\u00edtulo/P\u00c1GINA DE LINKS (SUPERIOR/Chave_Neon_sobre_Fundo_Escuro.png": {
+    "mtime": 1792020791.7466748,
+    "seen": 1792021184.243136,
+    "ast_hash": "c3c7ed29dcd9a265822de23c0a843c93",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/SERVI\u00c7OS/Sem t\u00edtulo/P\u00c1GINA DE LINKS (SUPERIOR/MULKSOM.gif": {
+    "mtime": 1792020791.7661104,
+    "seen": 1792021184.243139,
+    "ast_hash": "f3c8e5fcce4997e660c7dbfd2b515e76",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/COMPRE AGORA/SERVI\u00c7OS/Sem t\u00edtulo/P\u00c1GINA DE LINKS (SUPERIOR/fe0015d6-ea28-4b2b-bf57-ab775cdebd1b.png": {
+    "mtime": 1792020791.7783022,
+    "seen": 1792021184.2431428,
+    "ast_hash": "e6fc2ae33045d8383edefc206db72659",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/ChatGPT_Image_30_de_abr._de_2025_00_18_26.png": {
+    "mtime": 1792020791.7816215,
+    "seen": 1792021184.243144,
+    "ast_hash": "718f4bf0123dee0c347ab8e37d27ee09",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/ChatGPT_Image_9_de_jun._de_2025_22_34_04.png": {
+    "mtime": 1792020791.7878516,
+    "seen": 1792021184.243145,
+    "ast_hash": "5123920c6cd8647939dc3ac42d715aad",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/cover.gif": {
+    "mtime": 1792020809.3200643,
+    "seen": 1792021184.243146,
+    "ast_hash": "308fb051029e8d8c5339fb1d16a21181",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/hero_art.png": {
+    "mtime": 1792020809.3262413,
+    "seen": 1792021184.243147,
+    "ast_hash": "5123920c6cd8647939dc3ac42d715aad",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/icon_shop.png": {
+    "mtime": 1792020809.3325214,
+    "seen": 1792021184.243148,
+    "ast_hash": "718f4bf0123dee0c347ab8e37d27ee09",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/curso_iapro/ChatGPT_Image_10_de_jun._de_2025_20_54_00.png": {
+    "mtime": 1792020809.6136925,
+    "seen": 1792021184.243148,
+    "ast_hash": "3a358251d0bf440bda6eb6518e978d27",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/curso_iapro/ChatGPT_Image_29_de_jun._de_2025_18_12_34.png": {
+    "mtime": 1792020809.6198268,
+    "seen": 1792021184.24315,
+    "ast_hash": "9986d2c20834e361d36449858f0b2742",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/curso_iapro/ChatGPT_Image_29_de_jun._de_2025_18_34_41.png": {
+    "mtime": 1792020809.6300664,
+    "seen": 1792021184.2431512,
+    "ast_hash": "f7c983901b8d01bc6d18267b2ee4f46d",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/curso_iapro/ChatGPT_Image_29_de_jun._de_2025_19_08_39.png": {
+    "mtime": 1792020809.6373107,
+    "seen": 1792021184.2431512,
+    "ast_hash": "62a0b09607e02ae181dea9a93ec5c0e3",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/curso_iapro/ChatGPT_Image_29_de_jun._de_2025_23_06_41.png": {
+    "mtime": 1792020809.6462395,
+    "seen": 1792021184.243152,
+    "ast_hash": "ed4563451c6eea7b1f248d23e21263eb",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/curso_iapro/Documento_de_Privacidade_Neon.png": {
+    "mtime": 1792020809.6516933,
+    "seen": 1792021184.2431529,
+    "ast_hash": "ce75337732369d10ba2b62db5dee2056",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/curso_iapro/Foguete_em_Chamas_Neon.png": {
+    "mtime": 1792020809.6570895,
+    "seen": 1792021184.2431538,
+    "ast_hash": "d31de7b4d040d01368b5015a83f67bef",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/curso_iapro/Homem_Programando_na_Luz_Vermelha.png": {
+    "mtime": 1792020809.6626613,
+    "seen": 1792021184.243155,
+    "ast_hash": "833e326231207724e9e304090ae5dc9f",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/curso_iapro/I.A_PRO.png": {
+    "mtime": 1792020809.66661,
+    "seen": 1792021184.243156,
+    "ast_hash": "18b38b37e589d604ae66eb638c185fa6",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/curso_iapro/MCP_SITEMAP_COVERS_IA_PRO.gif": {
+    "mtime": 1792020809.6841552,
+    "seen": 1792021184.243157,
+    "ast_hash": "089a0d2c04a2a0791350af0c648c63b2",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/curso_iapro/N8N_em_Chamas.png": {
+    "mtime": 1792020809.6965277,
+    "seen": 1792021184.243158,
+    "ast_hash": "59ca18cc5b4569c079c03fc41f7df7c2",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/make/2fe14466-6ffb-4b64-b330-fe68066a1826.png": {
+    "mtime": 1792020809.481021,
+    "seen": 1792021184.243159,
+    "ast_hash": "2bd6cdc68b5e6fbb10dc6118a3f518dd",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/make/ChatGPT_Image_9_de_jun._de_2025_14_20_44.png": {
+    "mtime": 1792020809.4928787,
+    "seen": 1792021184.24316,
+    "ast_hash": "9b15f7f25b1b4b66395beec69681fc61",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/make/ChatGPT_Image_9_de_jun._de_2025_19_06_30.png": {
+    "mtime": 1792020809.499032,
+    "seen": 1792021184.24316,
+    "ast_hash": "3f84f772da37e694bde9436ef5c25981",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/make/ChatGPT_Image_9_de_jun._de_2025_19_06_31.png": {
+    "mtime": 1792020809.5056891,
+    "seen": 1792021184.2431612,
+    "ast_hash": "11198dd176a559a5d5dbee57a29dbb67",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/make/ChatGPT_Image_9_de_jun._de_2025_19_06_33.png": {
+    "mtime": 1792020809.5133896,
+    "seen": 1792021184.2431622,
+    "ast_hash": "f27b95462bf27bd0984dc54a9dbd24d3",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/make/ChatGPT_Image_9_de_jun._de_2025_20_18_41.png": {
+    "mtime": 1792020809.519769,
+    "seen": 1792021184.2431629,
+    "ast_hash": "8f0a28225a030fb7d9a008407806621a",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/make/ChatGPT_Image_9_de_jun._de_2025_20_18_46.png": {
+    "mtime": 1792020809.5262706,
+    "seen": 1792021184.2431629,
+    "ast_hash": "8b7a422d77cedd796a9b6112387116f7",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/make/ChatGPT_Image_9_de_jun._de_2025_20_18_54.png": {
+    "mtime": 1792020809.5329776,
+    "seen": 1792021184.2431638,
+    "ast_hash": "c1cbffd3816c20ad5d34afe6872ba4e8",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/make/ChatGPT_Image_9_de_jun._de_2025_20_37_36.png": {
+    "mtime": 1792020809.5414174,
+    "seen": 1792021184.243165,
+    "ast_hash": "dde08da8329bf00158b62b8dc946923c",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/make/Elon-Musk.jpg": {
+    "mtime": 1792020809.5424328,
+    "seen": 1792021184.243166,
+    "ast_hash": "ffdbc31075d0509085690026d352bcd5",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/make/blank-icon 1.png": {
+    "mtime": 1792020809.5448155,
+    "seen": 1792021184.243166,
+    "ast_hash": "0c9482063d9289e62b0b5a906f392a4c",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/make/blank-icon.png": {
+    "mtime": 1792020809.5451858,
+    "seen": 1792021184.243167,
+    "ast_hash": "0c9482063d9289e62b0b5a906f392a4c",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/make/file_0000000012cc61f7b6294d5b4d4bab8a.png": {
+    "mtime": 1792020809.5479288,
+    "seen": 1792021184.243168,
+    "ast_hash": "a86bcab11a54e5f8382618958fd397bf",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/make/file_000000002e94622f99caf9fe0e069536.png": {
+    "mtime": 1792020809.5505917,
+    "seen": 1792021184.243169,
+    "ast_hash": "085ba0f582a1ac32a55c3f0cc95ff52e",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/make/file_000000008734622fb44ffd609fdd2640.png": {
+    "mtime": 1792020809.5586956,
+    "seen": 1792021184.24317,
+    "ast_hash": "7f667a696bf8ddb2522d2613ac044cbf",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/make/file_00000000a81461f7ab0609163957b39b.png": {
+    "mtime": 1792020809.5622404,
+    "seen": 1792021184.243171,
+    "ast_hash": "77ccf053c7c3a90bfb424e0d3218515b",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/make/file_00000000aff861f7b2e2519555da49f1.png": {
+    "mtime": 1792020809.5703816,
+    "seen": 1792021184.243171,
+    "ast_hash": "aa05c1cdc0f10be76c5c0e756a7d94b6",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/make/file_00000000b07061fd8f8e946017aac649.png": {
+    "mtime": 1792020809.5752985,
+    "seen": 1792021184.2431722,
+    "ast_hash": "089f5ce5aa414a0b3a64d3e6fa7ec8ce",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/make/file_00000000b40061fd99fefef3df7694e7.png": {
+    "mtime": 1792020809.5824437,
+    "seen": 1792021184.2431731,
+    "ast_hash": "a0f859ca2dc385e35296b28f50b10573",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/make/file_00000000e5e461f7baa54f6ccaa73405.png": {
+    "mtime": 1792020809.58981,
+    "seen": 1792021184.2431738,
+    "ast_hash": "0caadeec3d054f96cf03059532193c03",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/make/file_00000000fe3861f7ac82e77c1eefdd16 1.png": {
+    "mtime": 1792020809.597566,
+    "seen": 1792021184.2431738,
+    "ast_hash": "b6ee4f86caa97960787e09cf0de7924e",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/make/file_00000000fe3861f7ac82e77c1eefdd16.png": {
+    "mtime": 1792020809.6034071,
+    "seen": 1792021184.243175,
+    "ast_hash": "b6ee4f86caa97960787e09cf0de7924e",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/make/show-photo.jpg": {
+    "mtime": 1792020809.609496,
+    "seen": 1792021184.243176,
+    "ast_hash": "df4a19692a2a4facce75f20a3c201ba3",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/make/sundar-pichai-1.webp": {
+    "mtime": 1792020809.6099114,
+    "seen": 1792021184.243176,
+    "ast_hash": "0f4879d145eb9501d0d6372beada31b7",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/n8n/Acordo_Futurista__Homem_e_Robo.png": {
+    "mtime": 1792020809.4196017,
+    "seen": 1792021184.243177,
+    "ast_hash": "46fd65446eb0b80acd40dff71e7c394a",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/n8n/Aperto_de_Maos__Homem_e_Robo.png": {
+    "mtime": 1792020809.4244316,
+    "seen": 1792021184.243178,
+    "ast_hash": "abfa74705b65e067d9d8706d6af56206",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/n8n/Cerebro_em_Chamas_e_Energia_Eletrica.png": {
+    "mtime": 1792020809.4280486,
+    "seen": 1792021184.243179,
+    "ast_hash": "7a92a0665b46e36dda0bcbbfe14f85af",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/n8n/ChatGPT_Image_16_de_mai._de_2025_13_33_04.png": {
+    "mtime": 1792020809.4336112,
+    "seen": 1792021184.243179,
+    "ast_hash": "4bec01e48d92e64e0ad56cf3d72b8de3",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/n8n/ChatGPT_Image_30_de_abr._de_2025_02_51_06.png": {
+    "mtime": 1792020809.4364948,
+    "seen": 1792021184.24318,
+    "ast_hash": "48d3bae25b3a3ad3d6b5f596a7a82192",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/n8n/ChatGPT_Image_30_de_abr._de_2025_03_51_06.png": {
+    "mtime": 1792020809.440729,
+    "seen": 1792021184.243181,
+    "ast_hash": "b3b689c7f71ff81d382dfdeb896e1423",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/n8n/ChatGPT_Image_30_de_abr._de_2025_03_51_10.png": {
+    "mtime": 1792020809.4422524,
+    "seen": 1792021184.243181,
+    "ast_hash": "2e4994dd74666f9e991d782e62e190f3",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/n8n/ChatGPT_Image_30_de_abr._de_2025_03_52_12.png": {
+    "mtime": 1792020809.4469862,
+    "seen": 1792021184.2431822,
+    "ast_hash": "25c252a74352c697fb8a594b3c155580",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/n8n/ChatGPT_Image_9_de_jun._de_2025_14_01_12.png": {
+    "mtime": 1792020809.44915,
+    "seen": 1792021184.2431831,
+    "ast_hash": "0617db5c2d6466fb1ea7a6cd0420f0ce",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/n8n/ChatGPT_Image_9_de_jun._de_2025_15_06_09.png": {
+    "mtime": 1792020809.4558148,
+    "seen": 1792021184.2431831,
+    "ast_hash": "51cb6bdddc095a75edeefd8bb0ca7408",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/n8n/Chave_Neon_sobre_Fundo_Escuro.png": {
+    "mtime": 1792020809.4605463,
+    "seen": 1792021184.243184,
+    "ast_hash": "c3c7ed29dcd9a265822de23c0a843c93",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/n8n/Robo_Central_em_Sala_Futurista.png": {
+    "mtime": 1792020809.4636497,
+    "seen": 1792021184.2431848,
+    "ast_hash": "dca32cc0199bf39cc3a6379800f1db93",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/n8n/file_00000000b8b061f78ca7ae10cc5a9985.png": {
+    "mtime": 1792020809.4699466,
+    "seen": 1792021184.243186,
+    "ast_hash": "8ce46f4ecc3a6f73605134799c4df3c4",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/n8n/file_00000000c430622f8b53f8ca1926ea6f.png": {
+    "mtime": 1792020809.4728944,
+    "seen": 1792021184.243186,
+    "ast_hash": "7fc0971b56e6812f66d6d56ac866c4bb",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/typebot/Acordo_Futurista_em_Neon.png": {
+    "mtime": 1792020809.3388546,
+    "seen": 1792021184.243187,
+    "ast_hash": "c8d77c326894c935c97d6d93ac68b37f",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/typebot/Aperto_de_mao_digitalizado_futurista.png": {
+    "mtime": 1792020809.3410902,
+    "seen": 1792021184.243188,
+    "ast_hash": "eff4e4cb116a1c8b4fdc094cd495c126",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/typebot/Captura_de_Tela_2025-06-09_as_1.24.22_PM.png": {
+    "mtime": 1792020809.3422177,
+    "seen": 1792021184.243188,
+    "ast_hash": "2e856b7f426455aa39691b21ac9a50b0",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/typebot/Captura_de_Tela_2025-06-09_as_1.24.40_PM.png": {
+    "mtime": 1792020809.3481913,
+    "seen": 1792021184.243189,
+    "ast_hash": "a71212939636cc4a3b1d452374592eb2",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/typebot/Captura_de_Tela_2025-06-09_as_1.24.46_PM.png": {
+    "mtime": 1792020809.3504968,
+    "seen": 1792021184.24319,
+    "ast_hash": "f5a7b0a4b2b7c9c67f50f6624f9b1965",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/typebot/ChatGPT_Image_30_de_abr._de_2025_04_00_30.png": {
+    "mtime": 1792020809.3532176,
+    "seen": 1792021184.243191,
+    "ast_hash": "753637e53766596f5d936789afca45c5",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/typebot/ChatGPT_Image_30_de_abr._de_2025_04_00_34.png": {
+    "mtime": 1792020809.3544645,
+    "seen": 1792021184.243192,
+    "ast_hash": "143584368ad4198a8ba14167d6d8455a",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/typebot/ChatGPT_Image_30_de_abr._de_2025_04_00_37.png": {
+    "mtime": 1792020809.3583682,
+    "seen": 1792021184.243192,
+    "ast_hash": "5133fdcfd43eaeca54e932fbe50c577a",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/typebot/ChatGPT_Image_9_de_jun._de_2025_11_34_03.png": {
+    "mtime": 1792020809.3613641,
+    "seen": 1792021184.2431931,
+    "ast_hash": "4a2a891ab00b48f77503c145de340b8e",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/typebot/ChatGPT_Image_9_de_jun._de_2025_11_56_30.png": {
+    "mtime": 1792020809.3654065,
+    "seen": 1792021184.243194,
+    "ast_hash": "6bc0c6a594b00deca636dbe590ada9a4",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/typebot/ChatGPT_Image_9_de_jun._de_2025_13_14_33.png": {
+    "mtime": 1792020809.370001,
+    "seen": 1792021184.2431948,
+    "ast_hash": "23801d02f377c543c08485b9e52b008d",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/typebot/ChatGPT_Image_9_de_jun._de_2025_13_25_45.png": {
+    "mtime": 1792020809.3745751,
+    "seen": 1792021184.2431948,
+    "ast_hash": "e53fa92bcaac5af32c1b0002787d9b55",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/typebot/ChatGPT_Image_9_de_jun._de_2025_13_38_09.png": {
+    "mtime": 1792020809.381744,
+    "seen": 1792021184.243196,
+    "ast_hash": "b9c31e6515081ff7ec0184b4c014fdce",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/typebot/ChatGPT_Image_9_de_jun._de_2025_13_53_44.png": {
+    "mtime": 1792020809.38619,
+    "seen": 1792021184.243197,
+    "ast_hash": "70b29de3c298b4bedba18f15acff8373",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/typebot/Desenvolvedor_Futurista_em_Ambiente_Digital.png": {
+    "mtime": 1792020809.3965497,
+    "seen": 1792021184.243198,
+    "ast_hash": "bb1f671938aa2b99e23cc3b019de5b88",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/typebot/Homem_de_negocios_e_robo_ao_aperto_de_mao.png": {
+    "mtime": 1792020809.398502,
+    "seen": 1792021184.243198,
+    "ast_hash": "2c83912f1cf9de061dcfb8ab8b4eb095",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/typebot/Icone_de_robo_com_no_brilhante.png": {
+    "mtime": 1792020809.4017107,
+    "seen": 1792021184.2432,
+    "ast_hash": "cf6013bedd54987cf8dcd11a502fca25",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/typebot/Profissional_e_Robo_em_Neon.png": {
+    "mtime": 1792020809.4077024,
+    "seen": 1792021184.2432,
+    "ast_hash": "471af4a58df0d60f990d709864933550",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/typebot/file_00000000a904622f8c19d4b082fd8487.png": {
+    "mtime": 1792020809.411526,
+    "seen": 1792021184.243201,
+    "ast_hash": "cbb373ad0bd727d87a1528e5f790cfd7",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/products/typebot/file_00000000ba68622fb86d96d8ce000fb9.png": {
+    "mtime": 1792020809.4139864,
+    "seen": 1792021184.243202,
+    "ast_hash": "f9ddca901b5df8cc49243e4f66021236",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/services/ai_agents/30_de_abr._de_2025_02_39_38.png": {
+    "mtime": 1792020809.7008548,
+    "seen": 1792021184.2432032,
+    "ast_hash": "5e326358f1c588859b552b7bc3723c49",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/services/ai_agents/Automacao_de_Rede_em_Neon.png": {
+    "mtime": 1792020809.7086208,
+    "seen": 1792021184.2432032,
+    "ast_hash": "943bef1ed51070b67160cb637944eb5f",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/services/ai_agents/ChatGPT_Image_16_de_mai._de_2025_13_37_37.png": {
+    "mtime": 1792020809.7132156,
+    "seen": 1792021184.243204,
+    "ast_hash": "3e98ea780af5d6863e8bc35bf401dd97",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/services/ai_agents/ChatGPT_Image_30_de_abr._de_2025_02_43_38.png": {
+    "mtime": 1792020809.720028,
+    "seen": 1792021184.243205,
+    "ast_hash": "1a9911b8d12d7f05eb15237e5bab1050",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/services/ai_agents/ChatGPT_Image_30_de_abr._de_2025_02_45_05.png": {
+    "mtime": 1792020809.7320611,
+    "seen": 1792021184.2432058,
+    "ast_hash": "9599061ecd3d4d24ee90e31777fae650",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/services/ai_agents/ChatGPT_Image_30_de_abr._de_2025_03_00_47.png": {
+    "mtime": 1792020809.7414367,
+    "seen": 1792021184.2432058,
+    "ast_hash": "2554898e7eda1d460822f1c3be67a705",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/services/ai_agents/ChatGPT_Image_30_de_abr._de_2025_03_11_02.png": {
+    "mtime": 1792020809.7461798,
+    "seen": 1792021184.243207,
+    "ast_hash": "12f28f2d22fef11541d7accd17c6a996",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/services/ai_agents/ChatGPT_Image_30_de_abr._de_2025_03_53_50.png": {
+    "mtime": 1792020809.753394,
+    "seen": 1792021184.243208,
+    "ast_hash": "e59d85266780862e5cbdc6efc2e275fb",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/services/ai_agents/ChatGPT_Image_30_de_abr._de_2025_04_00_24.png": {
+    "mtime": 1792020809.76048,
+    "seen": 1792021184.243208,
+    "ast_hash": "cc0319c8c29fac2e48c4b57767680ec3",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/services/ai_agents/ChatGPT_Image_30_de_abr._de_2025_04_00_27.png": {
+    "mtime": 1792020809.7632704,
+    "seen": 1792021184.243209,
+    "ast_hash": "28f7c28f6b3ef9be1893031e8198a679",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/services/ai_agents/ChatGPT_Image_30_de_abr._de_2025_04_04_58.png": {
+    "mtime": 1792020809.7666783,
+    "seen": 1792021184.24321,
+    "ast_hash": "57a096015e39a6ec9d97ce22d290a75a",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/services/ai_agents/Conversa_Neon_em_Estilo_Vetorial.png": {
+    "mtime": 1792020809.7723575,
+    "seen": 1792021184.243211,
+    "ast_hash": "233172ea3883c625c2ec1c264a98eaa1",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/services/ai_agents/Encontro_no_Mundo_Vermelho.png": {
+    "mtime": 1792020809.7764554,
+    "seen": 1792021184.243212,
+    "ast_hash": "d9fe707d4e9e5b7de668972ef71f56ba",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/services/ai_agents/Estudo_Noturno_a_Luz_Vermelha.png": {
+    "mtime": 1792020809.782354,
+    "seen": 1792021184.243213,
+    "ast_hash": "ed178cea2f20fc8ff3359fd9e39b3b33",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/services/ai_agents/Produto_Educacional_e_Conhecimento.png": {
+    "mtime": 1792020809.7870512,
+    "seen": 1792021184.2432141,
+    "ast_hash": "62128231545667d45d24416d6fdb22dd",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/services/ai_agents/Robo_Elegante_em_Neon_Vermelho.png": {
+    "mtime": 1792020809.7938983,
+    "seen": 1792021184.2432141,
+    "ast_hash": "2a31edb1ea31338c0e071faed39f3d97",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/services/ai_agents/Robo_em_Luz_Neon_Vermelha.png": {
+    "mtime": 1792020809.7986653,
+    "seen": 1792021184.243215,
+    "ast_hash": "2920f79349f57db48030bdda0e3960ac",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/services/ai_agents/Trabalho_Futurista_em_Neon.png": {
+    "mtime": 1792020809.8064072,
+    "seen": 1792021184.2432158,
+    "ast_hash": "b2b2448ce69e8f83b9860a86e352af58",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/services/link_tree/Acordo_Futurista_na_Cidade_Neon.png": {
+    "mtime": 1792020809.8104649,
+    "seen": 1792021184.243217,
+    "ast_hash": "9ce7345dcaa373e1097c933fde396ef4",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/services/link_tree/ChatGPT_Image_9_de_jun._de_2025_21_13_48.png": {
+    "mtime": 1792020809.8205314,
+    "seen": 1792021184.243218,
+    "ast_hash": "c17ba755a4bd6833f596f632ec262f2b",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/services/link_tree/ChatGPT_Image_9_de_jun._de_2025_21_29_52.png": {
+    "mtime": 1792020809.82783,
+    "seen": 1792021184.243219,
+    "ast_hash": "c1833e33d85686b68dce4956e42c51b0",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/services/link_tree/ChatGPT_Image_9_de_jun._de_2025_21_36_10.png": {
+    "mtime": 1792020809.8341165,
+    "seen": 1792021184.2432199,
+    "ast_hash": "69beb15bb83ef40a92be0e8a25831c38",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/services/link_tree/ChatGPT_Image_9_de_jun._de_2025_21_37_55 1.png": {
+    "mtime": 1792020809.8425748,
+    "seen": 1792021184.243221,
+    "ast_hash": "816c98830a03605b4ea08729af571840",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/services/link_tree/ChatGPT_Image_9_de_jun._de_2025_21_37_55.png": {
+    "mtime": 1792020809.8489728,
+    "seen": 1792021184.243221,
+    "ast_hash": "816c98830a03605b4ea08729af571840",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/services/link_tree/Chave_Neon_sobre_Fundo_Escuro.png": {
+    "mtime": 1792020809.8558714,
+    "seen": 1792021184.243222,
+    "ast_hash": "c3c7ed29dcd9a265822de23c0a843c93",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/services/link_tree/MULKSOM.gif": {
+    "mtime": 1792020809.8730092,
+    "seen": 1792021184.243223,
+    "ast_hash": "f3c8e5fcce4997e660c7dbfd2b515e76",
+    "semantic_hash": ""
+  },
+  "public/assets/notion/shop/services/link_tree/fe0015d6-ea28-4b2b-bf57-ab775cdebd1b.png": {
+    "mtime": 1792020809.8856435,
+    "seen": 1792021184.2432241,
+    "ast_hash": "e6fc2ae33045d8383edefc206db72659",
     "semantic_hash": ""
   }
 }
