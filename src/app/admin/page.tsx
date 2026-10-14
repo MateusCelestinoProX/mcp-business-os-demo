@@ -691,12 +691,12 @@ export default function AdminPanelPage() {
 
                 <div className="p-4 rounded-xl bg-black/40 border border-white/5 space-y-2 hover:border-white/15 transition-all">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-white">Biblioteca Galadriel</span>
+                    <span className="text-xs font-bold text-white">Free Library</span>
                     <Badge variant="success" dot className="text-[9px]">ONLINE</Badge>
                   </div>
                   <p className="text-[11px] text-neutral-400">406 recursos catalogados e APK Mobile dedicado</p>
                   <Link href="/biblioteca" className="text-[11px] text-red-400 hover:underline inline-flex items-center gap-1">
-                    <span>Abrir Biblioteca</span>
+                    <span>Abrir Free Library</span>
                     <ExternalLink className="w-3 h-3" />
                   </Link>
                 </div>

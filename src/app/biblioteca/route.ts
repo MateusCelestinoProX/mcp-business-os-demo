@@ -17,7 +17,7 @@ export async function GET() {
       },
     });
   } catch (error) {
-    console.error('Erro ao servir a Biblioteca Galadriel original:', error);
+    console.error('Erro ao servir a Free Library original:', error);
     return new NextResponse('Erro ao carregar a interface da biblioteca.', { status: 500 });
   }
 }

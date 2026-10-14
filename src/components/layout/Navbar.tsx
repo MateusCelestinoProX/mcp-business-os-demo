@@ -9,7 +9,6 @@ import {
   FolderGit2,
   Menu,
   X,
-  Sparkles,
   Crown,
   LogOut,
   LogIn,
@@ -35,7 +34,7 @@ export interface NavLinkItem {
 export const navLinks: NavLinkItem[] = [
   { name: "Portal Institucional", href: "/", icon: Shield },
   { name: "Comunidade VIP", href: "/comunidade", icon: Users, badge: "PRO" },
-  { name: "Biblioteca Galadriel", href: "/biblioteca", icon: FolderGit2, badge: "COFRE" },
+  { name: "Free Library", href: "/biblioteca", icon: FolderGit2, badge: "COFRE" },
 ];
 
 export function Navbar() {
@@ -183,13 +182,6 @@ export function Navbar() {
                   <span>Entrar</span>
                 </Button>
               </Link>
-
-              <Link href="/comunidade">
-                <Button variant="fired" size="sm" className="gap-1.5 text-xs shadow-md">
-                  <Sparkles className="w-3.5 h-3.5" />
-                  <span>Área de Membros</span>
-                </Button>
-              </Link>
             </div>
           )}
         </div>
@@ -259,11 +251,6 @@ export function Navbar() {
                 <Link href="/comunidade/login" onClick={() => setMobileMenuOpen(false)}>
                   <Button variant="secondary" size="md" className="w-full justify-center">
                     Entrar
-                  </Button>
-                </Link>
-                <Link href="/comunidade" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant="fired" size="md" className="w-full justify-center">
-                    Área de Membros
                   </Button>
                 </Link>
               </div>

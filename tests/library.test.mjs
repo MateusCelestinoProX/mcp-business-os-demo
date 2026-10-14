@@ -150,7 +150,7 @@ describe('Cofre da Biblioteca Oculta de Recursos — Suíte Completa de Testes',
       'src/components/library/SearchHeader.tsx',
       'src/components/library/CatalogGrid.tsx',
       'src/components/library/ResourceViewer.tsx',
-      'src/app/biblioteca/page.tsx',
+      'src/app/biblioteca/route.ts',
       'src/app/biblioteca/[id]/page.tsx',
     ];
 

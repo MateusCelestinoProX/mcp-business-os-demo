@@ -69,7 +69,7 @@ export async function POST(request: NextRequest) {
       file: resource.file,
       downloadCount: newCount,
       downloadUrl: `/api/library/download?id=${resource.id}`,
-      message: 'Download registrado com sucesso pela telemetria Galadriel',
+      message: 'Download registrado com sucesso pela telemetria Free Library',
     });
   } catch (error: any) {
     console.error('Erro ao processar telemetria de download:', error);

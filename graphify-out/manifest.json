@@ -1452,15 +1452,15 @@
     "semantic_hash": ""
   },
   "src/components/layout/Footer.tsx": {
-    "mtime": 1791992615.1000648,
-    "seen": 1791992645.2271721,
-    "ast_hash": "1ccf9ea60a05f9025e68b6e3223570d7",
+    "mtime": 1792011712.4809914,
+    "seen": 1792012067.953096,
+    "ast_hash": "2b066ab82bee391f29a37c71e3e5fd9d",
     "semantic_hash": ""
   },
   "src/components/layout/Navbar.tsx": {
-    "mtime": 1792010460.2819302,
-    "seen": 1792010869.253522,
-    "ast_hash": "edb03cdf0da70e0dced36b894ce089b2",
+    "mtime": 1792011626.3433049,
+    "seen": 1792012067.9530969,
+    "ast_hash": "c10f0fc58e53ed905f74a03da1cc23b5",
     "semantic_hash": ""
   },
   "src/components/members/MemberCard.tsx": {
@@ -1608,9 +1608,9 @@
     "semantic_hash": ""
   },
   "src/app/api/library/route.ts": {
-    "mtime": 1791992878.3632872,
-    "seen": 1791992902.7253141,
-    "ast_hash": "802d2706677a5ddeff43e3026d873874",
+    "mtime": 1792011755.250941,
+    "seen": 1792012067.952383,
+    "ast_hash": "d7e76acf563c3b84213e93d420859eec",
     "semantic_hash": ""
   },
   "src/components/shaders/Galaxy.tsx": {
@@ -1638,9 +1638,9 @@
     "semantic_hash": ""
   },
   "src/app/api/library/download/route.ts": {
-    "mtime": 1791993190.50613,
-    "seen": 1791993225.194259,
-    "ast_hash": "ee1f0f9c9775929b0585e7a99a346bd4",
+    "mtime": 1792011746.2568884,
+    "seen": 1792012067.952381,
+    "ast_hash": "8a817af577448d7d657ef47efc1ccc0f",
     "semantic_hash": ""
   },
   "src/components/builder/FormRunner.tsx": {
@@ -1752,9 +1752,9 @@
     "semantic_hash": ""
   },
   "src/components/library/ResourceDetailViewer.tsx": {
-    "mtime": 1791992771.446814,
-    "seen": 1791992775.811399,
-    "ast_hash": "b4fcc383473d0e806ace616f3bf6328b",
+    "mtime": 1792011765.275554,
+    "seen": 1792012067.953171,
+    "ast_hash": "c73b8cc5182aa67af80781f8d5050b5e",
     "semantic_hash": ""
   },
   "src/components/portal/EcosystemShowcase.tsx": {
@@ -1872,9 +1872,9 @@
     "semantic_hash": ""
   },
   "src/lib/library/catalog.ts": {
-    "mtime": 1791994745.028443,
-    "seen": 1791994821.625035,
-    "ast_hash": "874bfe476a292f18e5f9ed2089ce5daa",
+    "mtime": 1792011777.0333343,
+    "seen": 1792012067.954396,
+    "ast_hash": "a127715bd20557cf573a27607e23990d",
     "semantic_hash": ""
   },
   "src/app/builder/f/[id]/page.tsx": {
@@ -1968,9 +1968,9 @@
     "semantic_hash": ""
   },
   "src/app/biblioteca/[id]/page.tsx": {
-    "mtime": 1791993082.2165916,
-    "seen": 1791993138.036011,
-    "ast_hash": "a00b73f8fbda0bae9d5d58b581eeb01f",
+    "mtime": 1792011726.8764143,
+    "seen": 1792012067.9525602,
+    "ast_hash": "937b501bca7cf405ae712510a8edefe5",
     "semantic_hash": ""
   },
   "src/app/f/[id]/page.tsx": {
@@ -1998,9 +1998,9 @@
     "semantic_hash": ""
   },
   "tests/library.test.mjs": {
-    "mtime": 1791993196.2221968,
-    "seen": 1791993225.195959,
-    "ast_hash": "2f8e8d20ea016b2b287315f27953e923",
+    "mtime": 1792012050.5913239,
+    "seen": 1792012067.9546618,
+    "ast_hash": "1a678ac221d17cf48326619f7900aefe",
     "semantic_hash": ""
   },
   "tests/portal_marketing.test.ts": {
@@ -13860,21 +13860,21 @@
     "semantic_hash": ""
   },
   "src/app/biblioteca/route.ts": {
-    "mtime": 1791997909.0760236,
-    "seen": 1791998304.917813,
-    "ast_hash": "4a9fda9763d248546e67871d7b307a99",
+    "mtime": 1792011737.3274915,
+    "seen": 1792012067.9525619,
+    "ast_hash": "40eb39cfc2d6e790e1c9a08d41132e9d",
     "semantic_hash": ""
   },
   "tests/sovereign_stitch.test.mjs": {
-    "mtime": 1792000897.8504076,
-    "seen": 1792000910.652788,
-    "ast_hash": "95f985dedc4d0445d96b85cd04efecaf",
+    "mtime": 1792011937.2416756,
+    "seen": 1792012067.954741,
+    "ast_hash": "3adb391dfa59545570fc6e0b6f9c434e",
     "semantic_hash": ""
   },
   "src/app/admin/page.tsx": {
-    "mtime": 1792010677.9927118,
-    "seen": 1792010869.25234,
-    "ast_hash": "3907e3ac714f4234f54f4f5212eaf924",
+    "mtime": 1792011638.1705542,
+    "seen": 1792012067.952033,
+    "ast_hash": "33b6d2729841e5725fba470c7a00387c",
     "semantic_hash": ""
   },
   "src/lib/auth/unified-auth.ts": {

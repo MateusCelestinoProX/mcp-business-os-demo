@@ -7,7 +7,7 @@ describe('Sovereign Master Stitch & Navigation Tests', () => {
       { name: 'Portal Institucional', url: 'http://localhost:3000/' },
       { name: 'Comunidade VIP', url: 'http://localhost:3000/comunidade' },
       { name: 'Form Builder', url: 'http://localhost:3000/builder' },
-      { name: 'Biblioteca Galadriel', url: 'http://localhost:3000/biblioteca' },
+      { name: 'Free Library', url: 'http://localhost:3000/biblioteca' },
     ];
 
     for (const page of pages) {
