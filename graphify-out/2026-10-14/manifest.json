@@ -1458,9 +1458,9 @@
     "semantic_hash": ""
   },
   "src/components/layout/Navbar.tsx": {
-    "mtime": 1791994146.4912338,
-    "seen": 1791994209.398008,
-    "ast_hash": "141f1f2f8906d80de6dd2cc161efb483",
+    "mtime": 1791999190.3115919,
+    "seen": 1792000233.102426,
+    "ast_hash": "0aec7506cace6635de78b71a4d431b1e",
     "semantic_hash": ""
   },
   "src/components/members/MemberCard.tsx": {
@@ -1842,9 +1842,9 @@
     "semantic_hash": ""
   },
   "src/app/builder/page.tsx": {
-    "mtime": 1791998176.7928803,
-    "seen": 1791998304.917879,
-    "ast_hash": "a453faa54fb0e4718b6eb44375796412",
+    "mtime": 1791999753.8082864,
+    "seen": 1792000233.1019819,
+    "ast_hash": "79c42a153b2085c99757fcecd4374946",
     "semantic_hash": ""
   },
   "src/components/comunidade/CommunityFeed.tsx": {
@@ -2076,9 +2076,9 @@
     "semantic_hash": ""
   },
   "public/comunidade/app.js": {
-    "mtime": 1791994393.4725423,
-    "seen": 1791994554.1746051,
-    "ast_hash": "a44fa36395a4113e715cc11a856f0993",
+    "mtime": 1791999976.2365212,
+    "seen": 1792000233.101255,
+    "ast_hash": "e0e3534780b12a86ed51969024f22ef6",
     "semantic_hash": ""
   },
   "public/comunidade/netlify/functions/create-payment.js": {
@@ -2928,9 +2928,9 @@
     "semantic_hash": ""
   },
   "public/comunidade/index.html": {
-    "mtime": 1791998067.773139,
-    "seen": 1791998304.925996,
-    "ast_hash": "e788894460bb96bc1e363162d05c001b",
+    "mtime": 1792000087.3525927,
+    "seen": 1792000233.1088378,
+    "ast_hash": "5ccc9a53011d6818ac4a7a8392f6730a",
     "semantic_hash": ""
   },
   "public/comunidade/effects/CREATIVE EFFECT's/ANCESTRAL HAND STATUE RENDER/ChatGPT_Image_17_de_jul._de_2025_15_25_13.webp": {
@@ -13872,9 +13872,21 @@
     "semantic_hash": ""
   },
   "tests/sovereign_stitch.test.mjs": {
-    "mtime": 1791998272.3512402,
-    "seen": 1791998304.9205718,
-    "ast_hash": "31ea02b9a34c4fa9a33042091c33a989",
+    "mtime": 1792000106.7975016,
+    "seen": 1792000233.1040618,
+    "ast_hash": "83e8d70182e0ae77583015560c70eb93",
+    "semantic_hash": ""
+  },
+  "src/app/admin/page.tsx": {
+    "mtime": 1792000172.7990022,
+    "seen": 1792000233.101353,
+    "ast_hash": "343d7d0b8213f983d7c6ea8e097daf9c",
+    "semantic_hash": ""
+  },
+  "src/lib/auth/unified-auth.ts": {
+    "mtime": 1791999140.6448333,
+    "seen": 1792000233.103603,
+    "ast_hash": "257a08f6a384118da453b5663083c96f",
     "semantic_hash": ""
   }
 }

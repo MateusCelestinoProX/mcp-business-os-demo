@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 
 import LiquidGlassBackground from '@/components/portal/LiquidGlassBackground';
+import PortalNavbar from '@/components/portal/PortalNavbar';
 import OriginalHeader from '@/components/portal/OriginalHeader';
 import MainNotionLayout from '@/components/portal/MainNotionLayout';
 import RecursosSection from '@/components/portal/RecursosSection';
@@ -120,7 +121,16 @@ export default function HomePage() {
 
       <main className="flex-1 relative z-10">
         {/* =========================================================================
-            1. HEADER AUTÊNTICO COM CAPA ANIMADA & SHADER 01: GRID SCAN
+            MAPA DE NAVEGAÇÃO SETORIAL ORIGINAL EM VIDRO LÍQUIDO (PORTAL NAVBAR)
+            ========================================================================= */}
+        <PortalNavbar
+          onNavigate={handleNavigate}
+          onOpenSearch={handleOpenSearch}
+          profileWhatsapp={siteData?.profile?.whatsapp}
+        />
+
+        {/* =========================================================================
+            1. HEADER AUTÊNTICO COM CAPA ANIMADA & SHADER 01: GRID SCAN (HERO CENTRALIZADO)
             ========================================================================= */}
         <OriginalHeader
           profile={siteData?.profile || {}}

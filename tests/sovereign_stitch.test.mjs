@@ -54,6 +54,21 @@ describe('Sovereign Master Stitch & Navigation Tests', () => {
     assert.ok(html.includes('Form Builder Cinemático') || html.includes('/builder'), 'Painel admin deve conter o Form Builder Cinemático');
   });
 
+  it('2.2 O Portal Institucional (/) deve conter o Mapa de Navegação Setorial e o Hero Centralizado', async () => {
+    const res = await fetch('http://localhost:3000/');
+    assert.strictEqual(res.status, 200);
+    const html = await res.text();
+    // Validar presença do mapa de navegação e seções do acervo
+    assert.ok(
+      html.includes('id="portal-navigation-map"') || html.includes('PortalNavbar') || html.includes('Artigos (176)'),
+      'Portal deve conter o Mapa de Navegação Setorial original'
+    );
+    assert.ok(
+      html.includes('id="home"') || html.includes('MATEUS CELESTINO PRO X'),
+      'Portal deve conter o Hero com a identidade oficial centralizada'
+    );
+  });
+
   it('3. Rotas de backend obrigatórias devem estar ativas no servidor local', async () => {
     const endpoints = [
       { url: 'http://localhost:3000/api/leads', method: 'GET', expectedStatus: 200 },
