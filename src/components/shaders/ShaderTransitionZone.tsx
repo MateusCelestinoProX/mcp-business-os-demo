@@ -21,7 +21,7 @@ export default function ShaderTransitionZone({
   to = 'SISTEMA',
   index = '01 // 02',
   className = '',
-  accentColor = '#ff073a',
+  accentColor = '#8a0012',
 }: ShaderTransitionZoneProps) {
   return (
     <div className={`relative w-full overflow-hidden z-20 ${className}`}>
@@ -48,33 +48,13 @@ export default function ShaderTransitionZone({
           style={{ backgroundColor: accentColor }}
         />
 
-        {/* Linha laser ultra fina com gradiente */}
+        {/* Linha laser ultra fina e elegante em vermelho obscurecido — 100% livre de ruído textual */}
         <div
           className="w-full h-[1px]"
           style={{
-            background: `linear-gradient(to right, transparent, ${accentColor}99, transparent)`,
+            background: `linear-gradient(to right, transparent, ${accentColor}66, transparent)`,
           }}
         />
-
-        {/* Badge Flutuante da Zona de Transição */}
-        <div className="mt-4 inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/[0.03] backdrop-blur-xl border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.9)]">
-          <span
-            className="w-1.5 h-1.5 rounded-full animate-pulse"
-            style={{
-              backgroundColor: accentColor,
-              boxShadow: `0 0 8px ${accentColor}`,
-            }}
-          />
-          <span className="font-mono text-[9px] sm:text-[10px] tracking-widest text-zinc-400 font-bold uppercase">
-            ZONA DE TRANSIÇÃO • {from} <span style={{ color: accentColor }}>➔</span> {to}
-          </span>
-          <span
-            className="hidden sm:inline font-mono text-[9px] font-semibold border-l border-white/10 pl-2"
-            style={{ color: `${accentColor}B3` }}
-          >
-            {index}
-          </span>
-        </div>
       </div>
     </div>
   );

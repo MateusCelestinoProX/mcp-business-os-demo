@@ -79,14 +79,14 @@ export function ShopSection({ shopData, onOpenContact }: ShopSectionProps) {
 
   return (
     <section id="shop" className="py-20 relative overflow-hidden">
-      {/* SHADER 4: Balatro (Personal OS - Energetic Fired Neon Blaster Red) */}
+      {/* Balatro Shader — Vermelho Obscurecido */}
       <BalatroShader
         className="z-0 mix-blend-screen"
-        color1="#ff073a"
-        color2="#9b0016"
-        color3="#0e0003"
-        contrast={3.2}
-        opacity={0.38}
+        color1="#8a0012"
+        color2="#420008"
+        color3="#000000"
+        contrast={2.2}
+        opacity={0.28}
       />
 
       {/* Zonas de Transição Internas com Blur e Escurecimento Progressivo */}
@@ -98,14 +98,10 @@ export function ShopSection({ shopData, onOpenContact }: ShopSectionProps) {
         {/* Section Header em Vidro Líquido */}
         <div className="glass-crystal p-8 sm:p-10 rounded-3xl mb-12">
           <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full glass-pill-red text-xs font-mono text-[#ff073a] uppercase tracking-wider font-bold">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full glass-pill-red text-xs font-mono text-[#a80018] uppercase tracking-wider font-bold">
               <ShoppingBag className="w-3.5 h-3.5" />
               <span>LOJA VIRTUAL & SERVIÇOS PRO</span>
             </div>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full glass-pill text-[10px] font-mono font-bold text-[#ff073a] border border-[#ff073a]/30">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#ff073a] shadow-[0_0_8px_#ff073a] animate-ping" />
-              SHADER 04: BALATRO VORTEX
-            </span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
             Soluções & Serviços Inteligentes

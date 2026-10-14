@@ -37,6 +37,13 @@ export { default as ShaderTransitionZone } from './ShaderTransitionZone';
 export type { ShaderTransitionZoneProps } from './ShaderTransitionZone';
 
 export { default as ShaderSelector } from './ShaderSelector';
-export type { ShaderSelectorProps } from './ShaderSelector';
+export { default as LineWavesShader } from './LineWavesShader';
+export type { LineWavesShaderProps } from './LineWavesShader';
+
+export { default as LiquidChromeShader } from './LiquidChromeShader';
+export type { LiquidChromeShaderProps } from './LiquidChromeShader';
+
+export { default as SilkShader } from './SilkShader';
+export type { SilkShaderProps } from './SilkShader';
 
 export * from '@/lib/shaders/webgl-utils';

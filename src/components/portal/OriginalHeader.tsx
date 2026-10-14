@@ -71,46 +71,28 @@ export function OriginalHeader({ profile, onNavigate }: OriginalHeaderProps) {
             alt="Mateus Celestino Pro X Cover Cyberpunk"
             className="w-full h-full object-cover object-[center_40%] scale-102 transform filter brightness-[0.62] contrast-[1.2]"
           />
-          {/* SHADER 1: GridScan (Personal OS - Energetic Fired Neon Blaster Red) */}
+          {/* GridScan Shader com Vermelho Obscurecido */}
           <GridScanShader
             className="z-1 mix-blend-screen"
-            opacity={0.85}
-            linesColor="#38000a"
-            scanColor="#ff073a"
-            bloomIntensity={0.95}
-            scanGlow={0.7}
+            opacity={0.55}
+            linesColor="#160003"
+            scanColor="#9e0015"
+            bloomIntensity={0.65}
+            scanGlow={0.45}
           />
           {/* Camadas de Fusão com Vanta Black 100% e Especular de Vidro */}
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/35 pointer-events-none" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-transparent to-black/80 pointer-events-none" />
           <div className="absolute inset-0 bg-radial from-transparent via-black/40 to-black/95 pointer-events-none" />
           {/* Linha de Refração Carmesim Inferior do Cover */}
-          <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#ff073a] to-transparent opacity-80" />
+          <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#8a0012] to-transparent opacity-80" />
         </div>
 
-        {/* Top Floating Glass Badges — Centralizados */}
-        <div className="relative z-10 w-full max-w-4xl mx-auto flex flex-wrap items-center justify-center gap-3 mb-8 sm:mb-10">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill border border-[#ff073a]/30 shadow-lg">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#ff073a] shadow-[0_0_8px_#ff073a] animate-ping" />
-            <span className="font-mono text-[10px] text-[#ff073a] font-bold tracking-widest uppercase">
-              SHADER 01: GRID SCAN // NEON BLASTER
-            </span>
-          </div>
-          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full glass-pill border border-white/20 shadow-lg">
-            <span className="w-2 h-2 rounded-full bg-[#ff073a] animate-pulse shadow-[0_0_10px_#ff073a]" />
-            <span className="font-mono text-[11px] text-zinc-200 font-bold tracking-widest uppercase">
-              APPLE LIQUID GLASS // VANTA EDITION
-            </span>
-          </div>
-        </div>
-
-        {/* =========================================================================
-            NÚCLEO CENTRAL DO HERO — PERFEITAMENTE CENTRALIZADO
-            ========================================================================= */}
+        {/* NÚCLEO CENTRAL DO HERO — PERFEITAMENTE CENTRALIZADO */}
         <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center justify-center">
           
-          {/* Ícone de Vidro Lapidado com Halo Sangue Ultra Fired — Centralizado */}
-          <div className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-3xl p-2 glass-crystal shadow-[0_25px_60px_rgba(0,0,0,0.98),0_0_40px_rgba(255,7,58,0.55)] shrink-0 group mb-6 transition-transform duration-500 hover:scale-105">
+          {/* Ícone de Vidro Lapidado com Halo Sangue Obscurecido */}
+          <div className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-3xl p-2 glass-crystal shadow-[0_25px_60px_rgba(0,0,0,0.98),0_0_35px_rgba(138,0,18,0.45)] shrink-0 group mb-6 transition-transform duration-500 hover:scale-105">
             <div className="w-full h-full rounded-2xl overflow-hidden bg-black border border-white/20">
               <img
                 src={profile?.siteIcon || '/assets/site_icon.webp'}
@@ -118,15 +100,7 @@ export function OriginalHeader({ profile, onNavigate }: OriginalHeaderProps) {
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
               />
             </div>
-            <span className="absolute -top-1.5 -right-1.5 w-4 h-4 rounded-full bg-[#ff073a] shadow-[0_0_16px_#ff073a] animate-pulse border-2 border-black" />
-          </div>
-
-          {/* Badge de Pioneirismo */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-pill-red mb-4 shadow-[0_0_20px_rgba(255,7,58,0.3)]">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#ff073a] shadow-[0_0_8px_#ff073a] animate-ping" />
-            <span className="text-[10px] sm:text-xs font-mono tracking-widest text-[#ff073a] font-bold uppercase">
-              O PRIMEIRO SITE SOBRE AUTOMAÇÃO DO BRASIL — 100% REFATORADO
-            </span>
+            <span className="absolute -top-1.5 -right-1.5 w-4 h-4 rounded-full bg-[#9e0015] shadow-[0_0_12px_#9e0015] animate-pulse border-2 border-black" />
           </div>
 
           {/* Título Monumental Soberano */}

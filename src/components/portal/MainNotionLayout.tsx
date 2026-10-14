@@ -71,14 +71,14 @@ export function MainNotionLayout({
 
   return (
     <section id="publicacoes" className="py-12 w-full relative overflow-hidden">
-      {/* SHADER 2: RippleGrid (Personal OS - Energetic Fired Neon Blaster Red) */}
+      {/* RippleGrid Shader — Vermelho Obscurecido */}
       <RippleGridShader
         className="z-0 mix-blend-screen"
-        gridColor="#ff073a"
-        rippleIntensity={0.07}
-        gridSize={13.0}
-        glowIntensity={0.32}
-        opacity={0.45}
+        gridColor="#8a0012"
+        rippleIntensity={0.06}
+        gridSize={14.0}
+        glowIntensity={0.2}
+        opacity={0.32}
       />
 
       {/* Zonas de Transição Internas com Blur e Escurecimento Progressivo */}
@@ -94,19 +94,15 @@ export function MainNotionLayout({
         <div className="glass-crystal p-6 sm:p-8 rounded-3xl mb-8 border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.85)]">
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 pb-6 border-b border-white/[0.08]">
             
-            {/* Título & Badge Minimalista */}
+            {/* Título & Contador Minimalista */}
             <div>
               <div className="flex flex-wrap items-center gap-2.5">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#ff073a] shadow-[0_0_12px_#ff073a] animate-pulse" />
+                <span className="w-2.5 h-2.5 rounded-full bg-[#9e0015] shadow-[0_0_12px_#9e0015] animate-pulse" />
                 <h2 className="text-xl sm:text-2xl lg:text-3xl font-black text-white tracking-tight uppercase">
                   PUBLICAÇÕES & GUIAS TÉCNICOS
                 </h2>
-                <span className="px-3 py-1 rounded-full glass-pill text-xs font-mono font-bold text-[#ff073a] border border-[#ff073a]/30">
+                <span className="px-3 py-1 rounded-full glass-pill text-xs font-mono font-bold text-[#a80018] border border-[#a80018]/30">
                   {filteredArticles.length} GUIAS
-                </span>
-                <span className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full glass-pill text-[10px] font-mono font-bold text-[#ff073a] border border-[#ff073a]/30">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#ff073a] shadow-[0_0_8px_#ff073a] animate-ping" />
-                  SHADER 02: RIPPLE GRID
                 </span>
               </div>
               <p className="text-xs sm:text-sm text-zinc-400 font-light mt-1.5">

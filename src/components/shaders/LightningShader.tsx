@@ -126,15 +126,15 @@ export default function LightningShader({
         
         float dist = abs(uv.x);
         
-        vec3 neonRed = vec3(1.0, 0.027, 0.227);
-        vec3 fireOrange = vec3(1.0, 0.28, 0.05);
-        vec3 coreWhite = vec3(1.0, 0.92, 0.85);
+        vec3 darkBlood = vec3(0.35, 0.0, 0.04);
+        vec3 deepCrimson = vec3(0.62, 0.01, 0.08);
+        vec3 rubyCore = vec3(0.82, 0.02, 0.12);
 
         float flash = mix(0.015, 0.075, hash11(iTime * uSpeed * 1.5));
         float energy = pow(flash / max(dist, 0.001), 1.05) * uIntensity;
 
-        vec3 col = mix(neonRed, fireOrange, clamp(energy * 0.4, 0.0, 1.0));
-        col = mix(col, coreWhite, clamp((energy - 1.2) * 0.7, 0.0, 1.0));
+        vec3 col = mix(darkBlood, deepCrimson, clamp(energy * 0.45, 0.0, 1.0));
+        col = mix(col, rubyCore, clamp((energy - 1.1) * 0.6, 0.0, 1.0));
         col *= energy;
 
         float alpha = clamp(max(col.r, max(col.g, col.b)), 0.0, 1.0);

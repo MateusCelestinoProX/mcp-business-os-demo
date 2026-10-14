@@ -25,6 +25,7 @@ import ContatoSection from '@/components/portal/ContatoSection';
 import ArticleModal, { ArticleData } from '@/components/portal/ArticleModal';
 import LegalModal from '@/components/portal/LegalModal';
 import ShaderTransitionZone from '@/components/shaders/ShaderTransitionZone';
+import ShaderBackground from '@/components/shaders/ShaderBackground';
 import { MetricsBanner } from '@/components/portal/MetricsBanner';
 import { EcosystemShowcase } from '@/components/portal/EcosystemShowcase';
 import { GlassCard } from '@/components/ui/GlassCard';
@@ -217,10 +218,13 @@ export default function HomePage() {
         {/* =========================================================================
             6. SEÇÃO DE PROVA SOCIAL E CASOS DE SUCESSO COMPROVADOS
             ========================================================================= */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full relative">
-          <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-pill-red text-xs font-mono text-[#ff073a] uppercase tracking-widest font-bold">
-              <Star className="w-3.5 h-3.5 fill-[#ff073a]" />
+        <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full relative overflow-hidden">
+          {/* Fundo Cinemático com Shader LineWaves em Vermelho Obscurecido */}
+          <ShaderBackground mode="linewaves" colorHex="#8a0012" opacity={0.22} fixed={false} />
+
+          <div className="text-center max-w-3xl mx-auto mb-16 space-y-3 relative z-10">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-pill-red text-xs font-mono text-[#a80018] uppercase tracking-widest font-bold">
+              <Star className="w-3.5 h-3.5 fill-[#a80018]" />
               <span>RESULTADOS COMPROVADOS EM CAMPO</span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
@@ -299,15 +303,19 @@ export default function HomePage() {
             10. BANNER FINAL DE FECHAMENTO SOBERANO
             ========================================================================= */}
         <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
-          <div className="glass-crystal p-8 sm:p-14 rounded-3xl text-center space-y-6 border border-red-500/30 shadow-[0_0_50px_rgba(255,7,58,0.2)] relative overflow-hidden">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-600/20 border border-red-500/40 text-xs font-mono text-red-400 font-bold uppercase tracking-wider">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>ENGENHARIA DE SOFTWARE SOBERANA</span>
-            </div>
+          <div className="glass-crystal p-8 sm:p-14 rounded-3xl text-center space-y-6 border border-red-500/30 shadow-[0_0_50px_rgba(138,0,18,0.3)] relative overflow-hidden">
+            {/* Fundo Cinemático Liquid Chrome em Vermelho Obscurecido */}
+            <ShaderBackground mode="liquidchrome" colorHex="#8a0012" opacity={0.25} fixed={false} />
 
-            <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight max-w-3xl mx-auto">
-              Pronto para Unificar e Escalar Seu Ecossistema Tecnológico?
-            </h2>
+            <div className="relative z-10 space-y-6">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-950/40 border border-red-800/40 text-xs font-mono text-red-400 font-bold uppercase tracking-wider">
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>ENGENHARIA DE SOFTWARE SOBERANA</span>
+              </div>
+
+              <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight max-w-3xl mx-auto">
+                Pronto para Unificar e Escalar Seu Ecossistema Tecnológico?
+              </h2>
 
             <p className="text-sm sm:text-base text-neutral-300 font-light max-w-2xl mx-auto leading-relaxed">
               Junte-se à comunidade restrita, acesse o cofre com mais de 400 recursos confidenciais
@@ -327,6 +335,7 @@ export default function HomePage() {
                   <ArrowRight className="w-4 h-4" />
                 </Button>
               </Link>
+            </div>
             </div>
           </div>
         </section>

@@ -1980,9 +1980,9 @@
     "semantic_hash": ""
   },
   "src/app/page.tsx": {
-    "mtime": 1791994533.414201,
-    "seen": 1791994554.1754172,
-    "ast_hash": "29331287ed9cb7bb1866b577f1ad9436",
+    "mtime": 1792000790.0655215,
+    "seen": 1792000910.650833,
+    "ast_hash": "d031566ba4799ff49b68fce1091d7f81",
     "semantic_hash": ""
   },
   ".agents/teamwork/worker_shaders/handoff.md": {
@@ -13776,9 +13776,9 @@
     "semantic_hash": ""
   },
   "src/components/portal/OriginalHeader.tsx": {
-    "mtime": 1791994302.5980792,
-    "seen": 1791994308.303492,
-    "ast_hash": "e8701ea5bcf25cd8935713be4f38648d",
+    "mtime": 1792000758.006638,
+    "seen": 1792000910.651627,
+    "ast_hash": "5988bc999abe03f19062b6dc7b0a452f",
     "semantic_hash": ""
   },
   "src/app/api/contact/route.ts": {
@@ -13872,9 +13872,9 @@
     "semantic_hash": ""
   },
   "tests/sovereign_stitch.test.mjs": {
-    "mtime": 1792000106.7975016,
-    "seen": 1792000233.1040618,
-    "ast_hash": "83e8d70182e0ae77583015560c70eb93",
+    "mtime": 1792000897.8504076,
+    "seen": 1792000910.652788,
+    "ast_hash": "95f985dedc4d0445d96b85cd04efecaf",
     "semantic_hash": ""
   },
   "src/app/admin/page.tsx": {
@@ -13887,6 +13887,12 @@
     "mtime": 1791999140.6448333,
     "seen": 1792000233.103603,
     "ast_hash": "257a08f6a384118da453b5663083c96f",
+    "semantic_hash": ""
+  },
+  "src/components/portal/PortalNavbar.tsx": {
+    "mtime": 1792000736.9706776,
+    "seen": 1792000910.651628,
+    "ast_hash": "03a6f5afa5c3964b72cb582ed5d84ea3",
     "semantic_hash": ""
   }
 }

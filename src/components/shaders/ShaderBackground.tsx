@@ -10,6 +10,9 @@ import RippleGridShader from './RippleGridShader';
 import LightningShader from './LightningShader';
 import FaultyTerminalShader from './FaultyTerminalShader';
 import CinematicCanvas from './CinematicCanvas';
+import LineWavesShader from './LineWavesShader';
+import LiquidChromeShader from './LiquidChromeShader';
+import SilkShader from './SilkShader';
 import { isWebGLSupported, hexToHueShift } from '@/lib/shaders/webgl-utils';
 
 export type ShaderBackgroundMode = 
@@ -21,21 +24,24 @@ export type ShaderBackgroundMode =
   | 'ripple' 
   | 'lightning' 
   | 'terminal'
-  | 'cinematic';
+  | 'cinematic'
+  | 'linewaves'
+  | 'liquidchrome'
+  | 'silk';
 
 export interface ShaderBackgroundProps {
   /**
    * Modo do shader ativo em segundo plano
-   * Padrão: 'galaxy'
+   * Padrão: 'linewaves'
    */
   mode?: ShaderBackgroundMode;
   /**
-   * Cor primária da marca em formato hexadecimal (#FF073A)
+   * Cor primária em formato hexadecimal (#8A0012 - Vermelho Obscurecido)
    */
   colorHex?: string;
   /**
    * Nível de opacidade global da camada de shaders
-   * Padrão: 0.8
+   * Padrão: 0.35
    */
   opacity?: number;
   /**
@@ -62,9 +68,9 @@ export interface ShaderBackgroundProps {
  * com fallback elegante e automático em CSS puro caso a aceleração WebGL esteja ausente.
  */
 export default function ShaderBackground({
-  mode = 'galaxy',
-  colorHex = '#ff073a',
-  opacity = 0.8,
+  mode = 'linewaves',
+  colorHex = '#8a0012',
+  opacity = 0.4,
   fixed = true,
   isFixed,
   className = '',
@@ -202,6 +208,29 @@ export default function ShaderBackground({
         <CinematicCanvas 
           shaderStep={1}
           colorHex={colorHex}
+        />
+      )}
+
+      {mode === 'linewaves' && (
+        <LineWavesShader 
+          color1={colorHex}
+          color2="#3a0006"
+          color3="#9e0015"
+          opacity={opacity}
+        />
+      )}
+
+      {mode === 'liquidchrome' && (
+        <LiquidChromeShader 
+          baseColor={colorHex}
+          opacity={opacity}
+        />
+      )}
+
+      {mode === 'silk' && (
+        <SilkShader 
+          color={colorHex}
+          opacity={opacity}
         />
       )}
     </div>

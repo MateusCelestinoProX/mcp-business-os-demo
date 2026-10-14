@@ -79,13 +79,13 @@ export function RecursosSection({ recursos, onOpenContact }: RecursosSectionProp
 
   return (
     <section id="recursos" className="py-20 relative overflow-hidden">
-      {/* SHADER 3: Lightning (Personal OS - Energetic Fired Neon Blaster Red) */}
+      {/* Lightning Shader — Vermelho Obscurecido */}
       <LightningShader
         className="z-0 mix-blend-screen"
-        speed={1.1}
-        intensity={1.7}
+        speed={1.0}
+        intensity={1.2}
         size={1.1}
-        opacity={0.45}
+        opacity={0.28}
       />
 
       {/* Zonas de Transição Internas com Blur e Escurecimento Progressivo */}
@@ -97,14 +97,10 @@ export function RecursosSection({ recursos, onOpenContact }: RecursosSectionProp
         {/* Section Header em Vidro Líquido */}
         <div className="glass-crystal p-8 sm:p-10 rounded-3xl mb-12">
           <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full glass-pill-red text-xs font-mono text-[#ff073a] uppercase tracking-wider font-bold">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full glass-pill-red text-xs font-mono text-[#a80018] uppercase tracking-wider font-bold">
               <Layers className="w-3.5 h-3.5" />
               <span>KITS & RECURSOS OFICIAIS DE AUTOMAÇÃO</span>
             </div>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full glass-pill text-[10px] font-mono font-bold text-[#ff073a] border border-[#ff073a]/30">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#ff073a] shadow-[0_0_8px_#ff073a] animate-ping" />
-              SHADER 03: ARC LIGHTNING
-            </span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
             Recursos Prontos Para Produção

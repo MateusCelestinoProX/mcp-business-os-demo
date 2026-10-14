@@ -1,22 +1,22 @@
 @import "tailwindcss";
 
 :root {
-  --vanta-black: #030305;
-  --neon-red: #ff073a;
-  --neon-red-bright: #ff0033;
-  --neon-blood: #800010;
-  --glass-surface: rgba(12, 12, 15, 0.65);
-  --glass-border: rgba(255, 255, 255, 0.12);
-  --glass-specular: rgba(255, 255, 255, 0.28);
+  --vanta-black: #000000;
+  --neon-red: #a80018;
+  --neon-red-bright: #9e0015;
+  --neon-blood: #52000a;
+  --glass-surface: rgba(10, 10, 12, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-specular: rgba(255, 255, 255, 0.22);
 
-  /* Form Builder SaaS Dynamic Brand Accent & Glass */
-  --accent-color: #FF0033;
-  --accent-glow: rgba(255, 0, 51, 0.45);
-  --accent-subtle: rgba(255, 0, 51, 0.15);
-  --accent-border: rgba(255, 0, 51, 0.55);
-  --glass-frame: rgba(14, 14, 22, 0.65);
-  --glass-card: rgba(20, 20, 30, 0.55);
-  --glass-input: rgba(10, 10, 16, 0.75);
+  /* Form Builder SaaS Dynamic Brand Accent & Glass em Vermelho Obscurecido */
+  --accent-color: #8a0012;
+  --accent-glow: rgba(138, 0, 18, 0.35);
+  --accent-subtle: rgba(138, 0, 18, 0.12);
+  --accent-border: rgba(138, 0, 18, 0.4);
+  --glass-frame: rgba(12, 12, 16, 0.7);
+  --glass-card: rgba(16, 16, 22, 0.6);
+  --glass-input: rgba(8, 8, 12, 0.8);
 }
 
 * {

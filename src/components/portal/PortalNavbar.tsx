@@ -98,17 +98,14 @@ export function PortalNavbar({
           className="group flex items-center gap-2.5 glass-crystal px-3.5 py-1.5 rounded-2xl shadow-[0_15px_35px_rgba(0,0,0,0.85)] hover:border-[#ff073a]/50 transition-all duration-300 cursor-pointer"
           title="Ir para o topo do portal"
         >
-          <div className="relative flex items-center justify-center w-7 h-7 rounded-xl bg-gradient-to-br from-[#ff073a] to-[#800010] shadow-[0_0_15px_rgba(255,7,58,0.7)] border border-white/30 shrink-0">
+          <div className="relative flex items-center justify-center w-7 h-7 rounded-xl bg-gradient-to-br from-[#9e0015] to-[#400007] shadow-[0_0_15px_rgba(158,0,21,0.6)] border border-white/20 shrink-0">
             <span className="font-mono text-[11px] font-black text-white tracking-tighter">MC</span>
-            <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-[#ff073a] animate-ping" />
-            <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-white shadow-[0_0_8px_#ff073a]" />
+            <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-[#9e0015] animate-ping" />
+            <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-white shadow-[0_0_8px_#9e0015]" />
           </div>
           <div className="text-left hidden sm:block">
-            <span className="block text-[11px] font-mono font-bold tracking-widest text-white group-hover:text-[#ff073a] transition-colors leading-tight">
+            <span className="block text-[11px] font-mono font-bold tracking-widest text-white group-hover:text-[#a80018] transition-colors leading-tight">
               MATEUS CELESTINO
-            </span>
-            <span className="block text-[9px] font-mono tracking-wider text-[#ff073a] font-semibold leading-tight">
-              PRO X // 100% VIDRO LÍQUIDO
             </span>
           </div>
         </button>

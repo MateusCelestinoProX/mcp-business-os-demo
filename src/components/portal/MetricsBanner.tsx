@@ -41,11 +41,11 @@ const metrics: MetricItem[] = [
   },
   {
     id: "performance",
-    label: "Motor Gráfico WebGL",
+    label: "Desempenho Visual",
     value: "60 FPS",
-    subtext: "Shaders Three.js & OGL em tempo real",
+    subtext: "Renderização fluida e zero latência",
     icon: Zap,
-    badge: "CINEMATIC",
+    badge: "SISTEMA",
   },
 ];
 
@@ -70,10 +70,10 @@ export function MetricsBanner() {
 
         <div className="flex items-center gap-2">
           <Badge variant="outline" className="text-[10px] tracking-widest uppercase">
-            POSTGRESQL + DRIZZLE ORM
+            POSTGRESQL UNIFICADO
           </Badge>
           <Badge variant="red" dot className="text-[10px] tracking-widest uppercase">
-            APPLE GLASS 2026
+            LIQUID GLASS
           </Badge>
         </div>
       </div>

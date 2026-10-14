@@ -35,14 +35,14 @@ export function SobreSection({ profile }: SobreSectionProps) {
 
   return (
     <section id="sobre" className="py-24 relative overflow-hidden">
-      {/* SHADER 5: FaultyTerminal (Personal OS - Energetic Fired Neon Blaster Red) */}
+      {/* FaultyTerminal Shader — Vermelho Obscurecido */}
       <FaultyTerminalShader
         className="z-0 mix-blend-screen"
-        tint="#ff073a"
+        tint="#8a0012"
         scale={1.35}
-        scanlineIntensity={0.75}
-        glitchAmount={0.85}
-        opacity={0.35}
+        scanlineIntensity={0.65}
+        glitchAmount={0.45}
+        opacity={0.22}
       />
 
       {/* Zonas de Transição Internas com Blur e Escurecimento Progressivo */}
@@ -54,19 +54,15 @@ export function SobreSection({ profile }: SobreSectionProps) {
         {/* Header em Vidro */}
         <div className="glass-crystal p-8 sm:p-10 rounded-3xl mb-14">
           <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full glass-pill-red text-xs font-mono text-[#ff073a] uppercase tracking-wider font-bold">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full glass-pill-red text-xs font-mono text-[#a80018] uppercase tracking-wider font-bold">
               <User className="w-3.5 h-3.5" />
               <span>QUEM ESTÁ POR TRÁS</span>
             </div>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full glass-pill text-[10px] font-mono font-bold text-[#ff073a] border border-[#ff073a]/30">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#ff073a] shadow-[0_0_8px_#ff073a] animate-ping" />
-              SHADER 05: FAULTY TERMINAL
-            </span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
             Sobre Mateus Celestino
           </h2>
-          <p className="mt-2 text-lg font-mono text-[#ff073a] font-bold">
+          <p className="mt-2 text-lg font-mono text-[#a80018] font-bold">
             T.I. & Digital Marketing Automation Specialist
           </p>
         </div>
