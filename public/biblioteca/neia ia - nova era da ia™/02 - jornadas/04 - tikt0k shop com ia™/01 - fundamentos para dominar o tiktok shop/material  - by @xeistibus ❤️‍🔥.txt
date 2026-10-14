@@ -1,0 +1,262 @@
+Material
+
+01 — Introdução ao TikTok Shop: Oportunidades e Estratégias de Vendas
+
+https://www.loom.com/share/1421e195804b45b2b2cc9b28ed7d93eb
+
+02 — Como Criar Imagens Eficazes para Vender no TikTok Shop
+
+https://www.loom.com/share/5563950127234cf58919b3e719fd55ca
+
+03 — PT 01 / Criando Vídeos com Influencers de IA para Divulgação no TikTok Shop
+
+https://www.loom.com/share/cec388896b4a479185a47f19b81258eb
+
+04 — PT 02 / Criando Vídeos com Influencers de IA para Divulgação no TikTok Shop
+
+https://www.loom.com/share/086ee846ed1043e9982150bd22913c3b
+
+05 — Replicar, Adaptar e Escalar: Modelando Vídeos e Perfis de Sucesso no TikTok Shop
+
+https://www.loom.com/share/9c6a10a3b7e44f3c9d5eb0c0bd446802
+
+Prompt Cena 01
+
+Vertical 9:16, duration exactly 4.0 seconds.Single continuous static shot.Framing starts Medium Close-up (chest up) and shifts toward Medium Shot only because the subject steps backward.Silent. No speech. Lips relaxed and closed (smile can be closed-lip).
+
+VIBE / BEHAVIOR
+
+The subject behaves like casually checking the outfit in the mirror — natural, calm confidence, subtle unforced closed-lip smile.Posture stays slightly asymmetrical and alive (soft breathing + tiny balance corrections). No “pose lock”.
+
+TIMELINE OF ACTIONS (4.0s)
+
+[0.0s – 0.9s] Strap showcase (single hold-lift):
+
+The subject uses one hand only to grab one tank-top strap (regata alça).
+
+She performs one clean lift: gently raises the strap upward to show its quality and tension.
+
+The motion is controlled: lift → brief display hold → release (no tug bursts, no repeated impulses).
+
+No rubbing/smoothing/scratching. No re-grip loops.
+
+[0.9s – 2.2s] Step back (smooth, continuous):
+
+While releasing the strap and lowering the hand away from it, she takes one slow, subtle step backward (less than 0.5m).
+
+The step is calm and natural, not rushed.
+
+She maintains a friendly closed-lip smile and eye engagement with the mirror/camera.
+
+[2.2s – 3.2s] Right-side body angle (character’s right):
+
+She angles/turns her body to her own right (the subject’s right, not the viewer’s).
+
+It’s a partial turn / slight lean to show the side of the outfit (not a full rotation).
+
+Arms remain natural and relaxed; no extra posing.
+
+[3.2s – 4.0s] Return to front (final frame):
+
+She smoothly returns to a front-facing stance centered in the mirror.
+
+Holds a calm final position with micro-movements (breathing, tiny posture settling).
+
+Expression remains pleasant and confident, closed-lip.
+
+CONTEXT
+
+Camera remains static; lighting consistent; mirror-check aesthetic.No cuts. No zoom. No stylized effects.
+
+RESTRICTIONS
+
+No camera shake, no warping, no distorted anatomy, no extra fingers, no sudden lighting changes, no text overlays, no logos.Keep subject identity generic.No running, no dancing rhythm, no continuous strap contact, no repeated strap tugs.
+
+Prompt Cena 02
+
+Vertical 9:16, duration exactly 4.0 seconds.Single continuous static shot.Framing starts Medium Close-up (chest up) and shifts toward Medium Shot only because the subject subtly steps/back-shifts.Silent. No speech. Lips relaxed and closed (smile can be closed-lip).
+
+VIBE / BEHAVIOR
+
+The subject behaves like casually checking the outfit in the mirror — natural, calm confidence, subtle unforced closed-lip smile.Posture stays slightly asymmetrical and alive (soft breathing + tiny balance corrections). No “pose lock”.
+
+TIMELINE OF ACTIONS (4.0s)
+
+[0.0s – 0.8s] Front-facing start (initial frame):
+
+She begins front-facing, centered in the mirror.
+
+Eye contact with the mirror/camera, calm friendly presence.
+
+Arms relaxed and natural at her sides (no posing yet).
+
+[0.8s – 2.0s] Side angle (subject turns to her right):
+
+She smoothly angles her body to her own right (the subject’s right, not the viewer’s).
+
+This is a partial turn / half-profile to show the side view of the outfit — not a back view.
+
+Movement is slow and controlled; shoulders and hips align naturally; arms remain relaxed.
+
+[2.0s – 3.2s] Return to front:
+
+She returns smoothly to front-facing, re-centering in the mirror.
+
+Keeps micro-movements (breathing, tiny posture settling), no big gestures.
+
+[3.2s – 4.0s] Transition into final frame (hand on hip):
+
+While staying front-facing, she brings her left hand (the subject’s left) to rest on her waist/hip in a casual, confident way.
+
+Final frame holds stable: left hand on hip, the other arm relaxed; expression pleasant and composed, closed-lip.
+
+CONTEXT
+
+Camera remains static; lighting consistent; mirror-check aesthetic.No cuts. No zoom. No stylized effects.
+
+RESTRICTIONS
+
+No camera shake, no warping, no distorted anatomy, no extra fingers, no sudden lighting changes, no text overlays, no logos.Keep subject identity generic.No running, no dancing rhythm, no full body spin, no back-facing pose.
+
+Prompt Cena 03
+Vertical 9:16, duration exactly 4.0 seconds.Single continuous static shot.Framing starts Medium Close-up (chest up) and may feel slightly wider only due to subtle body sway (no camera movement).Silent. No speech. Lips relaxed and closed (smile can be closed-lip).
+
+VIBE / BEHAVIOR
+
+The subject behaves like casually checking the outfit in the mirror — natural, calm confidence, elegant and commercial.Posture stays slightly asymmetrical and alive (soft breathing + tiny balance corrections). No “pose lock”.
+
+TIMELINE OF ACTIONS (4.0s)
+
+[0.0s – 0.6s] Initial frame (hand on hip):
+
+She begins front-facing, centered in the mirror, with her left hand on her waist/hip (subject’s left).
+
+Eye contact with the mirror/camera.
+
+Friendly closed-lip smile, relaxed shoulders.
+
+[0.6s – 2.4s] Gentle look showcase (body sway + head tilt):
+
+Keeping the left hand on the hip, she performs a slow, controlled weight shift: subtly to her left, then to her right (small range, no stepping away, stays in the same spot).
+
+In sync with the sway, she adds small head inclines: gently tilts head slightly left, then slightly right (tilt only — not turning the neck to look away).
+
+The movement is elegant and natural, clearly aimed at showing how the outfit sits and moves.
+
+[2.4s – 3.4s] Settle to center (still smiling):
+
+She returns to a centered stance, maintaining micro-movements (breathing, tiny posture adjustments).
+
+Smile remains pleasant and composed.
+
+[3.4s – 4.0s] Transition to final frame (hand leaves hip):
+
+She smoothly removes the left hand from the hip and lets it drop to a natural resting position by her side.
+
+Ends front-facing, stable, calm expression (still friendly, lips closed).
+
+CONTEXT
+
+Camera remains static; lighting consistent; mirror-check aesthetic.No cuts. No zoom. No stylized effects.
+
+RESTRICTIONS
+
+No camera shake, no warping, no distorted anatomy, no extra fingers, no sudden lighting changes, no text overlays, no logos.Keep subject identity generic.No running, no dancing rhythm, no stepping out of place, no exaggerated head movements.
+
+Prompt Cena 04
+
+Vertical 9:16, duration exactly 4.0 seconds.Single continuous static shot.Framing starts Medium Close-up (chest up) and remains consistent (no camera movement).Silent. No speech. Lips relaxed and closed (smile can be subtle/closed-lip).
+
+VIBE / BEHAVIOR
+
+The subject behaves like casually checking the outfit in the mirror — natural, calm confidence, elegant and commercial.Posture stays alive (soft breathing + tiny balance corrections), but no body repositioning at the start beyond micro-movements. No “pose lock”.
+
+TIMELINE OF ACTIONS (4.0s)
+
+[0.0s – 0.7s] Initial frame (hair touch begins, body stays still):
+
+She starts front-facing, centered in the mirror.
+
+She begins a single continuous hair-touch sequence (one ongoing action, not repeated cycles), using one or both hands lightly.
+
+Body remains still (no sway/turn), only natural micro-movements (breathing).
+
+[0.7s – 2.8s] Hair-touch showcase (elegant, controlled):
+
+She continues gently adjusting/playing with hair volume in a smooth, elegant manner—no aggressive brushing, no looping “fix-fix-fix”.
+
+Eye contact stays mostly on the mirror/camera; expression friendly and composed (closed-lip).
+
+[2.8s – 3.4s] Release hair (prepare transition):
+
+She lets the hair fall naturally and lowers both hands away from the hair to a relaxed resting position (no re-grip).
+
+Briefly stabilizes front-facing.
+
+[3.4s – 4.0s] Final transition (slight lean to her left + partial side angle):
+
+She makes a subtle body inclination/angle to her left (subject’s left), becoming slightly side-on to show the outfit’s side line.
+
+Not a full turn; just a gentle lean/half-profile that blends into the final frame.
+
+Ends stable, hands down, calm expression.
+
+CONTEXT
+
+Camera remains static; lighting consistent; mirror-check aesthetic.No cuts. No zoom. No stylized effects.
+
+RESTRICTIONS
+
+No camera shake, no warping, no distorted anatomy, no extra fingers, no sudden lighting changes, no text overlays, no logos.Keep subject identity generic.No dancing rhythm, no stepping away, no exaggerated hair flipping, no full side/back rotation.
+
+Prompt Cena 05
+
+Vertical 9:16, duration exactly 4.0 seconds.Single continuous static shot.Framing starts Medium Shot (waist/chest area visible) and shifts to a Medium Close-up only because the subject walks toward the camera.Silent. No speech. Lips relaxed and closed at start; smile grows naturally (no exaggerated mouth shapes).
+
+VIBE / BEHAVIOR
+
+Natural, calm confidence, commercial “call-to-action” energy, friendly and approachable.Movement is smooth and human (soft steps, subtle breathing). No “pose lock”.
+
+TIMELINE OF ACTIONS (4.0s)
+
+[0.0s – 0.6s] Initial frame (front-facing start):
+
+She begins front-facing, centered, looking into the camera/mirror view.
+
+Expression: pleasant and calm, closed-lip (no teeth).
+
+[0.6s – 2.6s] Walk forward + downward point begins:
+
+She takes slow, steady steps toward the camera (no rushing, no bouncing).
+
+With one hand only, she raises the hand to chest level and makes a clear downward pointing gesture with the index finger (indicating “link below”).
+
+Gesture is controlled: point downward and hold/softly pulse once (no repetitive tapping loops).
+
+[2.6s – 3.6s] Approach closer + smile grows:
+
+She continues walking in, now closer to a Medium Close-up.
+
+Her expression becomes warmer: the closed-lip smile becomes more pronounced (still no teeth).
+
+The pointing hand remains directed downward briefly, then relaxes slightly while staying readable.
+
+[3.6s – 4.0s] Final frame (close, friendly finish):
+
+She stops near the camera, stable.
+
+Ends with a confident, friendly closed-lip smile, eyes engaged.
+
+Hand settles naturally (no extra gestures), matching the final frame.
+
+CONTEXT
+
+Camera remains static; lighting consistent; clean commercial look.No cuts. No zoom. No stylized effects.
+
+RESTRICTIONS
+
+No camera shake, no warping, no distorted anatomy, no extra fingers, no sudden lighting changes, no text overlays, no logos.Keep subject identity generic.No dancing rhythm, no fast stepping, no exaggerated pointing or repeated tapping.
+
+----- 06 — Editando Vídeo de TikTok Shop no CapCut
+
+https://www.loom.com/share/a399cf0705b14726a6586ebbc0dc2538

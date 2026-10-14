@@ -1,0 +1,454 @@
+06 - Capítulo 2: Prompts Avançados e Controle Cinematográfico
+
+2.1 Controle cinematográfico
+
+No primeiro capítulo, você aprendeu a criar um prompt do Veo 3 desde o início, incorporando componentes básicos. Também aprendeu como tornar os prompts mais eficazes com descrições detalhadas e inclusão de tipos específicos de tomadas, ângulos de câmera e estética de vídeo. Neste capítulo, você aprenderá prompts avançados para controle cinematográfico.
+
+
+
+
+
+O que é controle cinematográfico?
+
+No contexto do Veo 3, o Controle Cinematográfico é a capacidade de ir além da simples descrição de uma cena e começar a agir como um diretor. Significa usar uma linguagem específica e intencional nos prompts para comandar a apresentação visual do seu vídeo, ditando o movimento da câmera e o clima geral, para criar um vídeo com impacto emocional deliberado e uma qualidade profissional, semelhante à de um filme.
+
+The Sentence é um curta-metragem que resume perfeitamente o que o Veo 3 pode alcançar nas mãos de uma mente criativa e capaz. O criador tem uma visão e sabe como utilizar o controle cinematográfico para transformar essa visão em um resultado. Recomendo fortemente que você assista a esse filme.
+
+https://youtu.be/mTdYMw9r_14?si=EN5eIZXQc6g-N2pe
+
+Ao final deste capítulo, você terá o poder criativo e o conhecimento técnico para dar vida às suas ideias com curtas-metragens e conteúdo de vídeo que parecem pertencer à tela grande.
+
+
+
+2.2 Movimento da câmera: Além da Tomada Estática
+
+Embora o Capítulo 1 tenha se concentrado no enquadramento estático, as tomadas profissionais envolvem movimentos para guiar o olhar e revelar informações.
+
+
+
+Os movimentos da câmera são usados para transformar o espectador de um observador passivo em um participante ativo, acrescentando dinamismo e energia a uma cena. Eles desempenham uma função narrativa crucial, acompanhando a ação, revelando novas informações ou orientando a atenção do público para detalhes importantes. Em última análise, esses movimentos deliberados criam uma experiência mais imersiva e emocionalmente envolvente do que uma simples tomada estática jamais conseguiria.
+
+
+
+Movimentos fundamentais
+
+
+
+
+
+Panorâmica
+
+É quando a câmera gira horizontalmente da esquerda para a direita ou da direita para a esquerda a partir de uma posição fixa. Sua finalidade geralmente é acompanhar o movimento de um personagem em uma cena ou revelar lentamente a extensão de um local.
+
+----- Vídeo 01
+
+Inclinação
+
+É quando a câmera gira verticalmente, para cima ou para baixo, a partir de uma posição fixa. Normalmente, sua finalidade é revelar a altura de um objeto ou personagem (por exemplo, inclinar um prédio alto) ou acompanhar uma ação vertical, como a queda de um objeto.
+
+----- Vídeo 02
+
+Dolly
+
+É quando a câmera inteira se move fisicamente para frente em direção a um objeto (um "dolly in") ou para trás, afastando-se dele (um "dolly out"). Um dolly in é usado para criar intimidade e focar na reação emocional de um personagem, enquanto um dolly out pode revelar um contexto maior ou criar uma sensação de distanciamento.
+
+----- Vídeo 03
+
+Caminhão
+
+É quando toda a câmera se move fisicamente para o lado, paralelamente ao objeto. Sua finalidade é seguir o tema à medida que ele se move, mantendo a mesma distância dele e mantendo-o no quadro.
+
+----- Vídeo 04
+
+Movimentos cinematográficos avançados
+
+
+
+
+
+Dolly Zoom ou Vertigo Shot
+
+Esse é um poderoso efeito na câmera obtido ao mover fisicamente a câmera em direção ou para longe de um tema e, ao mesmo tempo, aplicar zoom na lente na direção oposta. Isso mantém o objeto do mesmo tamanho no quadro, mas faz com que o plano de fundo pareça se esticar ou se comprimir drasticamente, criando uma distorção visual desorientadora. É usado para visualizar externamente o momento de intenso sofrimento psicológico de um personagem, uma percepção repentina ou a sensação de que seu mundo se tornou instável.
+
+----- Vídeo 05
+
+Foco em rack
+
+Essa é uma técnica de câmera em que o foco da lente é deliberadamente deslocado de um assunto para outro dentro da mesma tomada, tudo sem cortes. Isso cria o efeito de um objeto que vai do foco nítido para o desfocado, enquanto um segundo objeto em um plano de profundidade diferente vai simultaneamente do desfocado para o nítido. É uma poderosa ferramenta de direção usada para orientar a atenção do público, revelar uma nova informação importante ou criar uma ligação narrativa direta entre dois personagens ou objetos na cena.
+
+----- Vídeo 06
+
+Embora este guia abranja os movimentos fundamentais da câmera, a linguagem do cinema é vasta e repleta de técnicas criativas. Movimentos como tomadas de grua que se elevam no ar, panorâmicas que criam uma energia chocante e tomadas de rastreamento complexas que percorrem uma cena fazem parte do kit de ferramentas de um diretor. Eu o encorajo a explorar essas técnicas avançadas por conta própria e a experimentá-las em seus prompts para trazer um nível ainda maior de dinamismo e estilo profissional aos seus vídeos do Veo 3.
+
+Aprendizado adicional:
+
+https://youtu.be/IiyBo-qLDeM?si=0ePxyIWCTTrt51dN
+
+Como adicionar movimento de câmera aos prompts do Veo 3
+
+Para adicionar o movimento da câmera a um prompt, você deve descrever a ação da câmera como se fosse o assunto principal, usando verbos claros e direcionais. O melhor local para esse comando é no início do prompt, logo após o tipo de tomada, para que a IA estabeleça o movimento antes de renderizar o conteúdo da cena.Exemplo de prompt:
+
+The camera performs a slow pan from right to left, revealing a single coffee cup sitting on a wooden table.
+
+Output:
+
+----- Vídeo 07
+
+Dica profissional: Para obter resultados mais eficazes, vincule o movimento da câmera diretamente à ação do sujeito (por exemplo, "A câmera executa uma tomada rápida de caminhão, movendo-se lateralmente para seguir um homem que corre"). Além disso, use advérbios descritivos como "lento", "suave" ou "errático" para controlar a velocidade e a sensação do movimento, proporcionando maior controle de direção.
+
+
+
+2.3 Negative prompts (Prompts negativos) {color="yellow_bg"}
+
+O que são prompts negativos?
+
+Os prompts negativos funcionam como um "veto do diretor", dando a você a capacidade crucial de proibir explicitamente a IA de incluir elementos ou comportamentos específicos no seu vídeo. Essa é uma ferramenta essencial para refinar o resultado e evitar erros comuns, como a geração automática de legendas com diálogos ou movimentos de câmera indesejados.
+
+Ao dizer à IA o que não deve ser feito, você obtém um nível mais preciso de controle para quando uma instrução positiva não for suficiente para alcançar o resultado desejado.
+
+Os avisos negativos mais comuns são usados para resolver problemas frequentes e reforçar escolhas criativas específicas. Normalmente, eles são adicionados ao final de um prompt usando o comando --no.
+
+
+
+Veja abaixo alguns dos exemplos mais úteis:
+
+----- Imagem 01 - Prompt Negativo
+
+Outros exemplos úteis:
+
+----- Imagem 02 - Prompt Negativo
+
+Dica profissional: Use os prompts negativos como um bisturi, não como um martelo. Seu primeiro instinto deve ser sempre o de usar descrições fortes e positivas para orientar a IA em direção ao que você deseja. Por exemplo, em vez de solicitar um personagem - sem sorrir - é muito mais eficaz solicitar um personagem com uma expressão séria e estoica.
+
+Reserve os prompts negativos para a solução de problemas, como a remoção de erros técnicos persistentes, como legendas (-sem legendas) ou a eliminação de um elemento indesejado específico que a IA continua gerando apesar de suas instruções positivas.
+
+
+
+Prompts negativos em ação:
+
+Prompt:
+
+A shadowy, demonic figure materializes out of thin air in a burst of swirling black smoke and flickering red embers. Its eyes glow with a sinister light as it steps forward, the air around it warping subtly. In a deep, echoing voice, it growls the words, "Your prompts will fail… because you suck at prompting."
+
+Saída:
+
+----- Vídeo 08
+
+Como você pode ver, o resultado gerado contém algumas liberdades criativas tomadas pela IA. Em geral, os elementos incluídos fazem sentido e se encaixam na cena. No entanto, para fins de demonstração, vamos supor que você não queira que o resultado tenha velas, tochas ou algo do gênero. Podemos descrever um ambiente diferente, adicionar um prompt negativo ou ambos.
+
+Vamos tentar adicionar um prompt negativo e ver o que acontece.
+
+
+
+Novo prompt:
+
+A shadowy, demonic figure materializes out of thin air in a burst of swirling black smoke and flickering red embers. Its eyes glow with a sinister light as it steps forward, the air around it warping subtly. In a deep, echoing voice, it growls the words, "Your prompts will fail… because you suck at prompting." --no stone, no candelabra, torches
+
+Output:
+
+----- Vídeo 09
+
+O prompt negativo funcionou como pretendido; não há velas, tochas ou candelabros. No entanto, uma fonte de luz na forma de um globo de luz ainda foi gerada.
+
+Isso aconteceu porque a IA é um mecanismo poderoso, mas muito literal. Nosso prompt descreveu uma figura que precisava ser iluminada e você vetou com sucesso as primeiras opções de fontes de luz - os candelabros e as tochas. No entanto, o objetivo principal da IA ainda era criar uma cena iluminada, então ela encontrou criativamente uma nova solução que não violava suas regras específicas.
+
+
+
+
+
+Isso destaca o fato de que a solicitação de vídeo é como trabalhar com um gênio; é poderosa, mas muito literal. Se você desejar um grande banquete, mas disser "nada de frango ou carne bovina", o gênio obedecerá perfeitamente e simplesmente lhe trará um banquete de peixe e carne de porco, pois sua instrução principal ainda era fornecer um banquete. Isso mostra que, para obter o resultado exato que deseja, suas instruções positivas devem ser tão específicas quanto as negativas.
+
+
+
+2.4 O construtor de cenas: Costurando sua visão
+
+O Scene Builder é a sua ferramenta de referência para o controle cinematográfico real no Veo 3. Em vez de gerar apenas um clipe por vez, ele permite criar uma sequência completa de várias filmagens, como se estivesse costurando cenas em um minifilme. Pense nisso como uma linha do tempo visual em que cada "bloco de prompt" atua como sua própria cena, com movimentos de câmera, ângulos e ações exclusivos.
+
+O que é ótimo é que você pode manter os personagens, o estilo e o fluxo consistentes em cada tomada, o que é fundamental quando se está tentando contar uma história suave e coerente. Se o seu objetivo é ir além dos clipes simples, o Scene Builder é onde a mágica realmente começa.
+
+Visão geral da interface:
+
+----- Imagem 03
+
+A barra de prompt do Scene Builder é onde seu vídeo começa. Esse menu permite que você direcione a IA usando três métodos distintos: Text to Video (Texto para vídeo ) para criar uma cena puramente a partir de uma descrição escrita, Frames to Video (Quadros para vídeo ) para dar vida a uma imagem estática com movimento ou Ingredients to Video (Ingredientes para vídeo ) para combinar vários recursos visuais, como personagens e objetos, em uma única tomada dinâmica.
+
+----- Imagem 04
+
+Aqui, depois de gerar a primeira cena com nosso personagem principal, basta clicar no ícone "+" na linha do tempo para adicionar um novo bloco de prompt e direcionar a ação para a próxima tomada na sequência.
+
+Você tem duas opções:
+
+
+
+
+
+Ir para:
+
+Uma função generativa usada para criar uma nova cena que seja temática ou narrativamente baseada no clipe selecionado, mas que não seja uma continuação direta da ação. Ela permite que você "pule" para uma ideia nova, mas relacionada, usando o primeiro clipe como contexto.
+
+
+
+
+
+Estender:
+
+Uma função usada para criar uma continuação direta e contínua de um clipe, usando o último quadro da tomada selecionada como o primeiro quadro da nova tomada.
+
+
+
+No momento em que este guia foi escrito, a função Extend só funcionava com o modelo Veo 2. Mas agora (Nov 2025) já está disponível para os modelos mais recentes como o Veo 3.1.
+
+----- Imagem 05
+
+Depois de gerar o segundo vídeo, passamos a criar um terceiro para continuar a cena. Você pode repetir esse processo quantas vezes forem necessárias para continuar construindo sua história.
+
+
+
+Se não quiser que o próximo vídeo comece a partir do quadro final da cena anterior, basta gerar um novo clipe sem usar as funções Jump to ou Extend.
+
+----- Imagem 06
+
+O Scene Builder lhe dá controle total sobre o ritmo da sua narrativa. Se quiser reordenar as cenas, primeiro clique no botão "Arrange" (Organizar ) na linha do tempo (ao lado do botão de download); isso desbloqueará os clipes, permitindo que você clique e arraste-os para a sequência desejada.
+
+----- Imagem 07 e 08
+
+Cada vídeo individual continha alguns segundos extras e um deles tinha um erro próximo ao final. Essas partes foram cortadas do resultado final - um processo que também pode ser feito diretamente na interface do Scene Builder. Basta arrastar as alças para a esquerda ou para a direita para cortar o vídeo.
+
+
+
+Com três clipes gerados e unidos, vamos ver o resultado final:
+
+Esse vídeo é um ótimo exemplo do que é possível fazer quando uma visão criativa clara é combinada com um bom conhecimento da ferramenta. Com instruções bem pensadas, um pouco de paciência para refinar os resultados e disposição para experimentar, você pode criar sequências cinematográficas que parecem realmente refinadas. Esse tipo de controle criativo está ao seu alcance à medida que você continua a se sentir mais confortável com a linguagem dos prompts.
+
+
+
+Prompts usados:
+
+
+
+
+
+Vídeo 1: Grant caminhando em um beco.
+
+{
+  "description": "A cinematic shot of Grant, a 50-year-old man with long white hair, a full white beard, and dark aviator sunglasses, stepping slowly into a dimly lit urban alley. He wears a sharp black tailored suit and a thick gold chain with a large ornate 'G' pendant. The alley is narrow, lined with old brick walls, flickering neon signs, puddles reflecting light, and scattered crates. Grant pauses midway, tilting his head slightly as if sensing a presence.",
+  "style": "cinematic, photorealistic",
+  "camera": "slow dolly-in from low angle behind Grant, following him into the alley, then cutting to a medium shot as he stops and scans the space",
+  "lighting": "low-key lighting with blue and orange urban tones, slight mist in the air from sewer grates, ambient light from signs above",
+  "environment": "gritty urban alley at night, graffiti-covered walls, puddles, dumpsters, and neon signage overhead",
+  "elements": [
+    "Grant in black suit, white hair flowing slightly in breeze",
+    "gold chain with 'G' pendant catching light",
+    "neon flicker",
+    "light fog near ground",
+    "rats scattering from trash bags",
+    "puddle reflections"
+  ],
+  "motion": "Grant walks with slow, heavy steps, his coat slightly trailing; camera glides behind and then around to his front",
+  "ending": "Grant stops at the center of the alley, head turned slightly as if he's noticed something",
+  "text": "none",
+  "keywords": [
+    "cinematic standoff",
+    "urban alley night",
+    "mystery character entrance",
+    "slow motion",
+    "tense atmosphere",
+    "Grant character"
+  ]
+}
+
+
+
+Vídeo 2: Grant segue uma figura sombria.
+
+{
+  "description": "In the same alley, the camera reveals a dark silhouette slowly stepping from the far shadows. The figure is tall, wearing a long coat and fedora, features obscured by darkness. Only faint glints of metal on his boots and belt buckle reflect the light. The atmosphere thickens as the figure stops just under a flickering neon sign across from Grant.",
+  "style": "cinematic noir, high-contrast photorealism",
+  "camera": "long lens zoom-in from Grant’s POV, slight handheld feel to create tension; cuts to over-the-shoulder behind Grant as the figure becomes visible",
+  "lighting": "deep shadows with streaks of overhead neon light, occasional flashes from a distant flickering sign",
+  "environment": "same gritty alley, more of the far end now visible with garbage bins, broken light fixtures, and fire escape ladders above",
+  "elements": [
+    "mysterious silhouette in trench coat and fedora",
+    "flickering neon sign above",
+    "loose newspaper blown by wind",
+    "dripping pipe",
+    "distant siren flashes bouncing off walls"
+  ],
+  "motion": "shadow figure steps out slowly, then stops completely, shoulders squared at Grant",
+  "ending": "The two figures stand in silent opposition across the alley, a slow tension brewing",
+  "text": "none",
+  "keywords": [
+    "cinematic standoff",
+    "shadowy figure",
+    "urban night noir",
+    "mystery character reveal",
+    "Grant standoff",
+    "tension buildup"
+  ]
+}
+
+
+
+Vídeo 3: A figura revela sua identidade.
+
+{
+  "description": "In the same dimly lit urban alley, a man in a long, weathered trench coat and detective-style fedora stands motionless with his back to the camera. The camera begins a slow push-in. Fog curls around his feet. The flickering neon light above paints him in harsh blue and orange strokes. He slowly turns — revealing a half-human, half-cybernetic face. One eye gleams red with mechanical precision; metal plating covers his cheek and jaw, etched with circuit-like patterns. He stares directly at the viewer and calmly says, 'I always keep my promises.'",
+  "style": "cinematic, photorealistic sci-fi noir",
+  "camera": "slow dolly-in from behind the man at shoulder height, transitioning to a medium-close frontal shot as he completes his turn",
+  "lighting": "low-key moody lighting with neon spill (blue/orange), mist from nearby vents catches and diffuses the light; backlight rim highlights silhouette",
+  "environment": "same gritty alleyway — cracked bricks, dripping pipes, trash bags, mist, and flickering neon signs above",
+  "elements": [
+    "man in trench coat and fedora",
+    "neon sign flickering above",
+    "mist curling around his boots",
+    "cybernetic facial plating",
+    "red glowing cyber-eye",
+    "distant ambient sirens",
+    "graffiti-covered brick walls"
+  ],
+  "motion": "the man stands still, then rotates slowly toward camera; as his face is revealed, the red cybernetic eye flickers online; subtle steam vents and swaying coat enhance movement",
+  "ending": "the man stares into camera and says with cold precision: 'I always keep my promises.' The red eye pulses slightly as the frame holds on his cybernetic face",
+  "text": "none",
+  "keywords": [
+    "cybernetic reveal",
+    "detective noir",
+    "urban alley sci-fi",
+    "slow turn",
+    "futuristic standoff",
+    "cyber eye",
+    "Veo cinematic close-up",
+    "no explosion",
+    "character reveal"
+  ]
+}
+
+Você deve ter notado que usamos prompts JSON neste exemplo. Essa técnica avançada de prompting será abordada em uma seção posterior do guia de domínio. Dito isso, também é possível obter resultados semelhantes usando prompts de linguagem natural, embora o JSON ofereça um controle mais preciso sobre elementos individuais, como tempo, movimentos de câmera e estrutura da cena.
+
+
+
+Quadros para vídeo
+
+No momento da redação deste guia, o recurso Frames to Video só está disponível no Veo 2, o que significa que o áudio não está incluído. No entanto, ainda é uma opção útil se você quiser ter maior controle sobre os quadros inicial e final dos seus vídeos e não precisar de som.
+
+----- Imagem 09 e 10
+
+Aqui está um exemplo de geração com quadros de ponto inicial e final definidos.
+
+Clicar no ícone da câmera permite adicionar movimentos de câmera diretamente, portanto, não é necessário incluí-los no prompt. Entretanto, como esse recurso ainda não está disponível no Veo 3, você ainda precisará usar instruções de ângulo e movimento da câmera no prompt ao usar esse modelo.
+
+Resultado:
+
+Vídeo 10
+
+Vamos tentar uma abordagem diferente: 
+
+Imagem 11
+
+Neste caso, estamos usando apenas um quadro de referência no início do vídeo e combinando-o com um movimento de câmera. Essa abordagem ajuda a IA a se concentrar na criação de uma filmagem suave e dinâmica, sem a dificuldade adicional de fazer a correspondência com um quadro final, o que às vezes pode levar a inconsistências visuais.
+
+
+
+Resultado:
+
+Vídeo 11
+
+A cena agora flui mais naturalmente, ao contrário de quando é forçada a corresponder a um quadro final que não se encaixa perfeitamente.
+
+
+
+Mais dicas:
+
+
+
+
+
+Mantenha a simplicidade: Não sobrecarregue seu prompt com muitos pontos de enredo ou visuais conflitantes. Instruções claras e focadas tendem a produzir transições mais suaves e resultados mais refinados.
+
+
+
+Use estrategicamente os quadros salvos: Sempre que você encontrar um quadro forte, use o recurso "Save Frame as Asset" (Salvar quadro como ativo). Essa é uma ótima maneira de manter a consistência visual em vários clipes ou até mesmo em projetos diferentes.
+
+
+
+Conte uma história coesa: Combine clipes de quadros para vídeo e de texto para vídeo para criar narrativas mais longas. Use elementos repetidos - como o mesmo personagem ou objeto - e transições de câmera bem pensadas para unir tudo.
+
+
+
+Bloqueie seus quadros: Antes de clicar em gerar, certifique-se de ter confirmado os quadros inicial e final usando os botões "+". Ignorar essa etapa pode resultar em resultados inesperados ou desalinhados.
+
+
+
+Melhore a cinemática com o movimento da câmera: Aprimore a cena escolhendo os movimentos da câmera manualmente. Experimente panorâmicas lentas, tomadas de rastreamento ou zooms para adicionar profundidade emocional ou destacar a ação. Alinhe esses movimentos com seu prompt para obter um impacto mais forte.
+
+
+
+Editar para fluir: depois que o vídeo for gerado, use o editor de linha do tempo para cortar pausas incômodas, suavizar as transições e aumentar o ritmo para manter a cena envolvente.
+
+
+
+
+
+O Scene Builder é a sua sala de edição digital, o local onde as tomadas individuais são transformadas em uma história atraente. Abordamos as funções básicas de como adicionar, organizar e solicitar novas tomadas, mas o verdadeiro domínio vem da experiência prática. Recomendo enfaticamente que você abra a interface e simplesmente brinque - experimente diferentes combinações de tomadas, teste as transições e veja como você pode tecer suas próprias narrativas, pois a melhor maneira de aprender a linguagem cinematográfica é começar a dirigir suas próprias cenas.
+
+
+
+2.5 Resumo do capítulo e exercício prático
+
+Neste capítulo, deixamos de ser arquitetos e passamos a ser diretores. Aprendemos a comandar a câmera virtual dominando os movimentos fundamentais, como pan, tilt, dolly e truck, bem como técnicas cinematográficas avançadas, como o zoom do dolly e o foco de rack.
+
+Também obtivemos um controle mais preciso sobre o resultado da IA usando avisos negativos como um "veto do diretor" para evitar erros indesejados.
+
+Por fim, reunimos todos esses elementos no Scene Builder, aprendendo a unir várias tomadas em uma sequência narrativa coesa.
+
+
+
+Agora é hora de colocar essa teoria em prática com cinco desafios distintos. Cada um dos exercícios a seguir foi criado para testar um aspecto diferente do controle cinematográfico que abordamos neste capítulo, desde o domínio de movimentos de câmera específicos até a criação de uma sequência narrativa completa no Scene Builder, solidificando o seu domínio sobre o prompting avançado.
+
+
+
+Exercício 1: Dominando o movimento básico da câmera
+
+
+
+
+
+Tarefa: Crie um prompt que use um único movimento básico de câmera de sua escolha. Em seguida, gere um vídeo usando seu prompt.
+
+----- Vídeo 12
+
+Exercício 2: Movimento avançado de câmera
+
+
+
+
+
+Tarefa: Crie um prompt que use um movimento de câmera avançado de sua escolha. Em seguida, gere um vídeo usando seu prompt.
+
+----- Vídeo 13
+
+Exercício 3: O poder do veto
+
+
+
+
+
+Tarefa: Analise um vídeo gerado anteriormente no Flow e refine o prompt adicionando um prompt negativo para remover quaisquer elementos indesejados do resultado.
+
+----- Vídeo 14
+
+Dica: use o recurso Jump To para manter a consistência do plano de fundo entre as cenas. Depois disso, corte as partes desnecessárias para limpar a sequência.
+
+
+
+Exercício 5: Construção de cenas com continuidade
+
+
+
+
+
+Tarefa: Crie uma cena composta de três vídeos, cada um mostrando o mesmo personagem executando uma ação diferente.
+
+----- Vídeo 15
+
+Continue aprendendo.
+

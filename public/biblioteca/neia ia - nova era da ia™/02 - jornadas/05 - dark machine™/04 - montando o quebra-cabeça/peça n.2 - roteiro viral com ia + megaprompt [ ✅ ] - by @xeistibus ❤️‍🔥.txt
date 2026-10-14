@@ -1,0 +1,885 @@
+Peça N.2 - Roteiro Viral com IA + MEGAPROMPT [ ✅ ]
+
+https://www.loom.com/share/5db853ac1d81479d9368173b81950619
+
+
+O que é um Roteiro Viral?
+
+Um roteiro viral é uma estrutura narrativa estrategicamente desenvolvida para maximizar o potencial de retenção, compartilhamento e engajamento do seu conteúdo. Para canais dark, isso significa criar histórias que provocam curiosidade imediata e geram conexão profunda com o público.
+
+Componentes Essenciais
+
+
+
+
+
+Hook poderoso
+
+
+
+Estrutura narrativa envolvente
+
+
+
+Pontos de tensão
+
+
+
+Momentos de revelação
+
+
+
+Call-to-action estratégico
+
+Por que é fundamental?
+
+➤ Aumenta retenção da audiência ➤ Potencializa compartilhamentos ➤ Fortalece conexão emocional ➤ Gera expectativa para próximos conteúdos ➤ Estabelece autoridade no nicho
+
+MEGAPROMPT ( Exemplo no ChatGPT → https://chatgpt.com/share/67abaa55-c820-8000-8502-f27c460af47b )
+
+<SYSTEM>
+Você é um roteirista estratégico especializado em conteúdo viral para canais dark. Sua missão é extrair a essência do manifesto fornecido, incorporar profundamente sua personalidade e desenvolver roteiros altamente impactantes.
+
+<INPUT_REQUIRED>
+
+#1. MANIFESTO DO CANAL
+"Compartilhe o manifesto completo do seu canal, incluindo:
+- Propósito central
+- Valores fundamentais
+- Tom de voz
+- Público-alvo
+- Abordagens proibidas"
+
+#2. FORMATO
+"Especifique:
+- Plataforma (YouTube/Instagram/TikTok)
+- Duração desejada"
+
+#3. TEMA
+"Qual história/mensagem você quer transmitir?"
+
+<WORKFLOW>
+
+#🎯 FASE 1: ANÁLISE PROFUNDA
+
+1. Extração do DNA do Canal
+"Com base no seu manifesto, identifico:
+• Tom de voz principal: [análise]
+• Gatilhos emocionais centrais: [análise]
+• Elementos proibidos: [análise]
+• Promessa central: [análise]"
+
+2. Validação do Tema
+"Analisando seu tema sob a lente do manifesto:
+• Alinhamento com propósito: [análise]
+• Potencial de impacto: [análise]
+• Pontos de transformação: [análise]"
+
+❓ CHECKPOINT 1:
+"Confirme se capturei corretamente a essência do seu canal e tema."
+
+#📋 FASE 2: ESTRUTURAÇÃO NARRATIVA
+
+Apresentarei um esboço detalhado seguindo as métricas:
+- YouTube 15min = ~2000 palavras
+- YouTube 10min = ~1300 palavras
+- Instagram 90s = ~200 palavras
+- Shorts 30s = ~75 palavras
+
+ESTRUTURA:
+-------------------------------------------
+[HOOK INICIAL] - XXX palavras
+• Desenvolvimento completo do gancho inicial
+• Exemplo real da abertura
+• Demonstração do tom/personalidade
+• Gatilhos emocionais planejados
+
+[DESENVOLVIMENTO 1] - XXX palavras
+• Seção completa do primeiro ponto
+• Exemplos/histórias planejadas
+• Elementos de tensão
+• Transições emocionais
+
+[DESENVOLVIMENTO 2] - XXX palavras
+• Continuação detalhada
+• Pontos de virada
+• Momentos de revelação
+• Intensificação narrativa
+
+[CONCLUSÃO] - XXX palavras
+• Fechamento impactante
+• Call-to-action planejado
+• Transformação final
+• Loop emocional completo
+-------------------------------------------
+
+❓ CHECKPOINT 2:
+"O que achou desta estrutura? Quer ajustar algo antes de desenvolvermos completamente?"
+
+#📝 FASE 3: DESENVOLVIMENTO COMPLETO
+
+Após sua aprovação, desenvolverei cada seção:
+1. Seguindo fielmente o tom do manifesto
+2. Mantendo densidade adequada de palavras
+3. Incorporando gatilhos emocionais
+4. Criando loops de tensão/resolução
+
+🎯 MÉTRICAS DE QUALIDADE
+Cada seção será validada por:
+• Fidelidade ao manifesto
+• Impacto emocional
+• Potencial viral
+• Densidade narrativa
+
+❓ CHECKPOINT FINAL:
+"Desenvolvemos tudo conforme planejado? Quer ajustar algum elemento?"
+
+<RULES>
+1. Nunca ser genérico
+2. Sempre incorporar o tom do manifesto
+3. Manter densidade narrativa adequada
+4. Criar exemplos específicos
+5. Desenvolver loops emocionais completos
+
+<DENSITY_METRICS>
+• Vídeo 15min = 2000-2500 palavras
+• Vídeo 10min = 1300-1700 palavras
+• Vídeo 5min = 650-850 palavras
+• Reels 90s = 200-225 palavras
+• Shorts 30s = 60-75 palavras
+
+<STORYTELLING_ELEMENTS>
+• Hook poderoso
+• Tensão crescente
+• Pontos de virada
+• Momentos "wow"
+• Resolução transformadora
+
+### Vamos começar? Forneça seu manifesto, formato desejado e tema central.
+
+
+Anatomia do Roteiro Viral
+
+1. Hook (Primeiros segundos)
+
+
+
+
+
+Promessa poderosa
+
+
+
+Quebra de padrão
+
+
+
+Curiosidade imediata
+
+
+
+Validação social
+
+2. Desenvolvimento (60% do tempo)
+
+
+
+
+
+Storytelling envolvente
+
+
+
+Pontos de prova
+
+
+
+Momentos "aha"
+
+
+
+Quebras de expectativa
+
+3. Revelação Principal (30% do tempo)
+
+
+
+
+
+Virada narrativa
+
+
+
+Insight transformador
+
+
+
+Prova definitiva
+
+
+
+Momento "mind-blown"
+
+4. Call-to-Action (10% do tempo)
+
+
+
+
+
+Próximos passos claros
+
+
+
+Senso de urgência
+
+
+
+Benefício imediato
+
+
+
+Loop de engajamento
+
+Elementos de Viralização
+
+Gatilhos Emocionais
+
+
+
+
+
+Curiosidade
+
+
+
+Surpresa
+
+
+
+Indignação
+
+
+
+Revelação
+
+
+
+Pertencimento
+
+Padrões Narrativos
+
+
+
+
+
+Descoberta surpreendente
+
+
+
+Verdade oculta
+
+
+
+Conspiração revelada
+
+
+
+Conhecimento privilegiado
+
+
+
+Transformação pessoal
+
+Framework de Criação
+
+1. Preparação
+
+
+
+
+
+Pesquisa do tema
+
+
+
+Identificação de ângulos únicos
+
+
+
+Coleta de evidências
+
+
+
+Mapeamento de objeções
+
+2. Estruturação
+
+
+
+
+
+Outline principal
+
+
+
+Pontos de tensão
+
+
+
+Momentos de prova
+
+
+
+Ganchos narrativos
+
+3. Refinamento
+
+
+
+
+
+Otimização do hook
+
+
+
+Ajuste de ritmo
+
+
+
+Fortalecimento de provas
+
+
+
+Polimento do CTA
+
+4. Validação
+
+
+
+
+
+Checklist de viralização
+
+
+
+Teste de narrativa
+
+
+
+Verificação de provas
+
+
+
+Análise de objeções
+
+Modelos de Prompts
+
+1. ESTRUTURAÇÃO INICIAL
+
+
+"Desenvolva uma estrutura viral completa para um vídeo de 12 minutos sobre [TEMA]. O material deve:
+
+# 1. HOOK DEVASTADOR (40 SEGUNDOS)
+- Pattern interrupt impossível de ignorar
+- Promessa transformadora chocante
+- Loop de curiosidade instantâneo
+- Prova social devastadora de abertura
+- Elemento de impossibilidade de parar
+
+# 2. DESENVOLVIMENTO ESTRATÉGICO
+- 6-8 capítulos interconectados
+- Loops de tensão crescentes
+- Revelações estrategicamente posicionadas
+- Provas sociais distribuídas
+- Momentos "não posso acreditar"
+
+# 3. ELEMENTOS DE RETENÇÃO
+Para cada bloco de 2 minutos:
+- 1 mini-hook secundário
+- 2 provas sociais estratégicas
+- 1 momento de transformação
+- 3 loops de curiosidade
+- 1 ponto de virada emocional
+
+# 4. PADRÕES PSICOLÓGICOS
+- Gatilhos de dopamina a cada 20-30s
+- Loops de identificação forçada
+- Pontos de tensão crescente
+- Momentos de alívio estratégico
+- Gatilhos de antecipação
+
+# 5. VALIDAÇÃO DE ESTRUTURA
+Confirme para cada seção:
+- Força do gancho emocional
+- Potencial de retenção
+- Elementos virais ativos
+- Densidade narrativa
+- Poder de transformação"
+
+
+
+2. DESENVOLVIMENTO DO ESBOÇO
+
+"Desenvolva um esboço detalhado que garanta retenção máxima em 12 minutos de conteúdo. Forneça:
+
+# 1. MAPEAMENTO COMPLETO
+**[HOOK] - 40 segundos (100 palavras)**
+- Pattern interrupt específico
+- Promessa principal detalhada
+- Loop de tensão inicial
+- Elemento de prova social
+- Gatilho de impossibilidade
+
+**[CAPÍTULO 1] - XX segundos (XXX palavras)**
+- Tensão principal trabalhada
+- Casos práticos utilizados
+- Gatilhos emocionais ativos
+- Pontos de virada planejados
+- Transições invisíveis
+
+**[DESENVOLVA CADA CAPÍTULO SEGUINTE]**
+
+# 2. ELEMENTOS DE RETENÇÃO/CAPÍTULO
+- Densidade narrativa (150-170 palavras/min)
+- Loops psicológicos ativos
+- Pontos de tensão específicos
+- Momentos de transformação
+- Ganchos para próxima parte
+
+# 3. VALIDAÇÃO TÉCNICA
+Para cada segmento:
+- Contagem precisa de palavras
+- Timing específico
+- Loops emocionais completos
+- Elementos virais planejados
+- Pontos de retenção ativos
+
+# 4. MÉTRICAS DE IMPACTO
+Confirme em cada parte:
+- Força do storytelling
+- Potencial de engajamento
+- Clareza da mensagem
+- Poder de transformação
+- Elementos de viralização"
+
+
+3. DESENVOLVIMENTO POR CAPÍTULOS
+
+"Vamos desenvolver cada capítulo isoladamente, garantindo máximo impacto. Para cada seção:
+
+#1. ELEMENTOS TÉCNICOS
+- Contagem exata de palavras (150-170/min)
+- Timing preciso por segmento
+- Densidade emocional planejada
+- Pontos de tensão mapeados
+- Transições preparadas
+
+#2. PADRÕES DE RETENÇÃO
+- Hook secundário de abertura
+- Desenvolvimento crescente
+- Prova social estratégica
+- Momento "não posso acreditar"
+- Mini-clímax emocional
+
+#3. ELEMENTOS PSICOLÓGICOS
+- Gatilhos de dopamina ativos
+- Loops de curiosidade forçada
+- Pontos de identificação
+- Momentos de transformação
+- Ganchos de continuidade
+
+#4. VALIDAÇÃO DE QUALIDADE
+Confirme antes de prosseguir:
+- Força narrativa mantida
+- Densidade adequada
+- Transições naturais
+- Impacto emocional
+- Potencial viral
+
+#5. ELEMENTOS DE COESÃO
+- Conexão com capítulo anterior
+- Preparação para próximo
+- Manutenção do tema central
+- Força da promessa principal
+- Desenvolvimento do storytelling
+
+Pause após cada capítulo para validação completa antes de continuar."
+
+
+4. DESENVOLVIMENTO COMPLETO
+
+"Desenvolva o roteiro completo mantendo máxima força viral e densidade psicológica. Garanta:
+
+#1. PADRÕES DE DENSIDADE
+Para cada minuto de conteúdo:
+- 150-170 palavras estratégicas
+- 3 pontos de tensão ativos
+- 2 gatilhos emocionais
+- 1 elemento de prova social
+- 1 momento de transformação
+
+#2. ELEMENTOS DE RETENÇÃO
+A cada 20-30 segundos:
+- Mini-hook secundário
+- Loop de curiosidade
+- Ponto de identificação
+- Gatilho de dopamina
+- Elemento de antecipação
+
+#3. PADRÕES PSICOLÓGICOS
+Distribua estrategicamente:
+- Momentos "não posso acreditar"
+- Revelações impossíveis
+- Cases transformadores
+- Provas irrefutáveis
+- Pontos de virada emocional
+
+#4. ESTRUTURA DE VIRALIZAÇÃO
+Garanta em cada segmento:
+- Elemento compartilhável
+- Ponto de discussão
+- Gatilho de identificação
+- Loop de engajamento
+- Fator de inevitabilidade
+
+#5. VALIDAÇÃO CONSTANTE
+Confirme a cada 2 minutos:
+- Força narrativa mantida
+- Densidade psicológica ativa
+- Elementos virais funcionais
+- Transições invisíveis
+- Potencial de retenção"
+
+
+5. EXPANSÃO ESTRATÉGICA
+
+"Expanda este roteiro para 15 minutos, adicionando 5 capítulos que multipliquem seu potencial viral. Cada novo capítulo deve:
+
+#1. MÉTRICAS TÉCNICAS
+Manter rigorosamente:
+- 150-170 palavras/minuto
+- 3-4 loops psicológicos
+- 2-3 pontos de tensão
+- 1-2 revelações estratégicas
+- Múltiplos gatilhos de retenção
+
+#2. ELEMENTOS DE AMPLIFICAÇÃO
+Incorporar em cada capítulo:
+- Novo caso impossível
+- Prova social devastadora
+- Momento "não acredito"
+- Loop de curiosidade forçada
+- Ponto de discussão inevitável
+
+#3. PADRÕES DE RETENÇÃO
+Garantir por segmento:
+- Hook secundário poderoso
+- Desenvolvimento crescente
+- Clímax estratégico
+- Transição invisível
+- Ponte emocional
+
+#4. VALIDAÇÃO DE IMPACTO
+Confirmar em cada adição:
+- Força narrativa multiplicada
+- Densidade mantida
+- Elementos virais ativos
+- Loops completos
+- Potencial de compartilhamento
+
+#5. COESÃO ESTRATÉGICA
+Assegurar para cada capítulo:
+- Conexão com tema central
+- Ampliação da promessa
+- Força do storytelling
+- Intensificação emocional
+- Preparação para clímax
+
+#6. ELEMENTOS DE VIRALIZAÇÃO
+Distribuir estrategicamente:
+- Momentos compartilháveis
+- Pontos de discussão
+- Gatilhos emocionais
+- Loops de engajamento
+- Fatores de inevitabilidade
+
+#Valide cada novo capítulo antes de prosseguir, garantindo que cada adição:
+- Multiplica impacto original
+- Mantém qualidade narrativa
+- Intensifica transformação
+- Força engajamento natural
+- Maximiza potencial viral"
+
+
+Checklist de Viralização
+
+
+
+
+
+[ ] Hook memorável nos primeiros segundos
+
+
+
+[ ] Promessa clara e atraente
+
+
+
+[ ] Estrutura narrativa fluida
+
+
+
+[ ] Pontos de tensão estratégicos
+
+
+
+[ ] Provas convincentes
+
+
+
+[ ] Revelação impactante
+
+
+
+[ ] Call-to-action persuasivo
+
+Métricas de Sucesso
+
+
+
+
+
+Retenção nos primeiros 30s
+
+
+
+Tempo médio de visualização
+
+
+
+Taxa de compartilhamento
+
+
+
+Comentários qualitativos
+
+
+
+Retorno de audiência
+
+Próximos Passos
+
+
+
+
+
+1. Escolha seu tema principal
+
+
+
+2. Aplique o framework
+
+
+
+3. Teste diferentes hooks
+
+
+
+4. Analise métricas
+
+
+
+5. Refine e repita
+
+
+
+Bônus:
+
+Regra de Ouro do Gancho
+
+Prometa algo grande, mas sempre entregue algo gigantesco.
+
+O Equilíbrio Crucial
+
+
+
+
+
+Seu gancho deve ser impactante
+
+
+
+MAS precisa ser 100% verdadeiro
+
+
+
+E você PRECISA entregar o que prometeu
+
+
+
+Idealmente, supere a expectativa criada
+
+Exemplos Equilibrados
+
+✅ Gancho Forte + Entrega Real
+
+"Aqui na minha mão tenho o atestado de óbito das hashtags..."
+
+(E no vídeo você realmente prova com dados e estudos porque hashtags morreram)
+
+❌ Gancho Exagerado + Entrega Fraca
+
+"DESCOBRI O SEGREDO DO ALGORITMO!!"
+
+(E no vídeo são apenas dicas básicas de SEO)
+
+Estrutura Responsável
+
+1. Seja Intrigante, Mas Honesto
+
+"Tem pessoas que vão querer minha cabeça depois de eu te mostrar isso..."
+
+
+
+
+
+
+Gera curiosidade imediata
+
+
+
+Promete revelação impactante
+
+
+
+Prepara para informação valiosa
+
+2. Use Elementos de Validação
+
+"Olha a merda que aconteceu comigo porque eu não sabia disso..."
+
+
+
+
+
+
+História real e pessoal
+
+
+
+Gancho emocional forte
+
+
+
+Lição verdadeira aprendida
+
+3. Crie Expectativa Real
+
+"Esse hack vai te trazer resultados absurdos se você fizer exatamente assim..."
+
+
+
+
+
+
+Promessa específica
+
+
+
+Condição clara
+
+
+
+Resultado alcançável
+
+Exemplos Práticos que Funcionam
+
+1. "Era segredo mas eu descobri que..." (quando realmente descobriu algo exclusivo)
+
+
+
+2. "Definitivamente esse é um dos sites que deveria ser proibido" (quando mostra algo realmente revolucionário)
+
+
+
+3. "Eu vou virar uma chave na sua cabeça agora" (quando entrega uma mudança real de perspectiva)
+
+O segredo é: seja impactante, mas sempre entregue mais do que promete.
+
+Por que isso funciona
+
+1. Credibilidade
+
+
+Baseado em fatos reais
+
+
+Evidências comprováveis
+
+
+Pesquisa genuína
+
+
+1. Engajamento
+
+
+Desperta curiosidade natural
+
+
+Promete valor real
+
+
+Mantém mistério apropriado
+
+
+1. Reputação
+
+Constrói autoridade
+
+Gera confiança
+
+Cria público fiel
+
+
+Lembre-se Sempre
+
+Seu público é inteligente
+
+
+Confiança é tudo
+
+
+Um viral desonesto pode destruir sua reputação
+
+
+
+Credibilidade leva tempo para construir e segundos para perder
+
+Dica Final
+
+Antes de usar um gancho, pergunte-se:
+
+
+1. Posso realmente entregar isso?
+
+
+
+2. Tenho evidências suficientes?
+
+
+
+3. O impacto prometido é real?
+
+
+
+4. Meu público sairá satisfeito?
+
+Se respondeu "sim" para todas, você tem um gancho poderoso E responsável.
+
+MATERIAL NO NOTION → 
+
+
+https://pelainteligencia.notion.site/Criando-Roteiros-Virais-para-Canais-Dark-com-IA-1973492a369a80a59baff022aec15bc8
+
+
+Este guia faz parte da Trilha de Canais Dark da Comunidade Nova Era da IA e serve como referência para a aula sobre Roteiros Virais em Canais Dark.

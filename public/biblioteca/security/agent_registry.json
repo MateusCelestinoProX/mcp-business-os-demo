@@ -1,0 +1,73 @@
+{
+  "agents": {
+    "omnisocial_master": {
+      "name": "OmniSocial Master Engine",
+      "token_hash": "a40369a6bce6dde0407fa662604f39c51b2a42b8feb7d75c7d0e058536babf87",
+      "role": "admin",
+      "permissions": [
+        "read",
+        "write",
+        "search",
+        "export",
+        "manage"
+      ],
+      "created_at": "2026-10-10T14:30:00Z"
+    },
+    "antigravity_mac": {
+      "name": "Google Antigravity Mac Instance",
+      "token_hash": "c5286506de1b5a3ce846c026e105f7b3f9aa155b4a3a86a7b552005ca2b19a5a",
+      "role": "admin",
+      "permissions": [
+        "read",
+        "write",
+        "search",
+        "export",
+        "manage"
+      ],
+      "created_at": "2026-10-10T14:30:00Z"
+    },
+    "reverse_prompter": {
+      "name": "Reverse Prompt Studio",
+      "token_hash": "daaf41b6c25a563d151c2ceaab4565408af535debb5bb53a83aa5dc676b28124",
+      "role": "contributor",
+      "permissions": [
+        "read",
+        "write",
+        "search"
+      ],
+      "created_at": "2026-10-10T14:30:00Z"
+    },
+    "media_generator": {
+      "name": "Media Generator Engine",
+      "token_hash": "3eb4eb75923966238c7a70d2d84076f6261a72b9e7a635f409fb932bc430cf77",
+      "role": "contributor",
+      "permissions": [
+        "read",
+        "write",
+        "search"
+      ],
+      "created_at": "2026-10-10T14:30:00Z"
+    },
+    "copiloto_reuniao": {
+      "name": "Copiloto Reuniao Agent",
+      "token_hash": "93e49457c555c3f3c10e18f4aa11a027df9b275ed793338f129228ad9f6ab567",
+      "role": "contributor",
+      "permissions": [
+        "read",
+        "write",
+        "search"
+      ],
+      "created_at": "2026-10-10T14:30:00Z"
+    },
+    "vps_external_agent": {
+      "name": "VPS Remote Agent",
+      "token_hash": "350124d180bb5f1e7c6c402039e94194fc87bbc9d4ef24493561931e04151393",
+      "role": "reader",
+      "permissions": [
+        "read",
+        "search"
+      ],
+      "created_at": "2026-10-10T14:30:00Z"
+    }
+  }
+}

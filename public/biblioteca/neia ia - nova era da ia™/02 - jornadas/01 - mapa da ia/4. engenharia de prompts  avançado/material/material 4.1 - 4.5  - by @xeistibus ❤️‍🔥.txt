@@ -1,0 +1,742 @@
+4.1 - Introdução a Engenharia de Prompts
+
+Introdução à Engenharia de Prompts: Desbloqueando o Potencial dos Modelos de Linguagem
+
+Introdução
+
+Bem-vindos à fascinante jornada da Engenharia de Prompts! Imagine ter o poder de orientar modelos de linguagem avançados para realizar tarefas complexas com precisão e eficiência, apenas fornecendo as instruções certas. É exatamente isso que a Engenharia de Prompts nos permite fazer.
+
+Nesta aula, vamos explorar os fundamentos da Engenharia de Prompts e como ela pode revolucionar a forma como interagimos com modelos de linguagem. Desde a geração de texto criativo até a solução de problemas complexos, a Engenharia de Prompts abre um mundo de possibilidades para aproveitar todo o potencial desses modelos poderosos.
+
+Ao longo desta aula, você aprenderá:
+
+
+
+
+
+O que é a Engenharia de Prompts e por que ela é tão importante
+
+
+
+Como criar prompts eficazes para diferentes tarefas e domínios
+
+
+
+Técnicas avançadas de Engenharia de Prompts para obter resultados excepcionais
+
+
+
+Aplicações práticas da Engenharia de Prompts em negócios e no atendimento ao cliente
+
+Então, prepare-se para mergulhar nesse mundo empolgante e descobrir como a Engenharia de Prompts pode transformar a maneira como você utiliza os modelos de linguagem para impulsionar seus resultados. Vamos começar!
+
+O que é a Engenharia de Prompts?
+
+Imagine que você tem um assistente virtual incrivelmente poderoso, capaz de realizar uma ampla gama de tarefas, desde escrever um artigo até analisar sentimentos em feedbacks de clientes. Mas há um desafio: como você pode comunicar efetivamente o que deseja que o assistente faça? É aí que entra a Engenharia de Prompts.
+
+A Engenharia de Prompts é a arte e a ciência de projetar instruções (prompts) que orientam os modelos de linguagem a realizar tarefas específicas de maneira ideal. É como dar um roteiro bem escrito para um ator talentoso – quanto melhor o roteiro, melhor será o desempenho.
+
+Os prompts são essencialmente instruções em linguagem natural que descrevem a tarefa que queremos que o modelo de linguagem realize. Por exemplo:
+
+​Traduza o seguinte texto do inglês para o português:"The quick brown fox jumps over the lazy dog."​​
+
+Nesse caso, o prompt claramente especifica a tarefa (tradução) e fornece o contexto necessário (o texto a ser traduzido e os idiomas de origem e destino).
+
+A Engenharia de Prompts vai além de simplesmente fornecer instruções básicas. Ela envolve a criação estratégica de prompts que:
+
+
+
+
+
+São claros, concisos e não ambíguos
+
+
+
+Fornecem contexto suficiente para o modelo entender a tarefa
+
+
+
+Utilizam técnicas como exemplos (few-shot learning) e encadeamento de pensamento (chain-of-thought) para guiar o modelo à resposta desejada
+
+
+
+São otimizados para o modelo de linguagem específico sendo usado
+
+Dominar a arte da Engenharia de Prompts permite que você aproveite ao máximo os modelos de linguagem, obtendo resultados de alta qualidade e alinhados com seus objetivos.
+
+Por que a Engenharia de Prompts é importante?
+
+A Engenharia de Prompts é a chave para desbloquear todo o potencial dos modelos de linguagem. Aqui estão algumas razões pelas quais ela é tão crucial:
+
+
+
+
+
+Melhor desempenho: Prompts bem projetados podem melhorar significativamente a qualidade e a precisão dos resultados gerados pelos modelos de linguagem. Com os prompts certos, você pode obter respostas mais relevantes, coerentes e alinhadas com suas necessidades.
+
+
+
+Adaptabilidade: Os modelos de linguagem são ferramentas incrivelmente versáteis, capazes de realizar uma ampla gama de tarefas. A Engenharia de Prompts permite que você adapte esses modelos para tarefas específicas, desde a geração de conteúdo até a análise de sentimentos, simplesmente ajustando os prompts.
+
+
+
+Eficiência: Com prompts bem elaborados, você pode obter os resultados desejados com menos iterações e ajustes. Isso economiza tempo e recursos, permitindo que você se concentre em outras áreas importantes do seu negócio ou projeto.
+
+
+
+Controle: A Engenharia de Prompts coloca você no comando. Ao projetar prompts estratégicos, você pode orientar o modelo de linguagem para gerar resultados que estejam alinhados com suas metas, valores e diretrizes específicas.
+
+
+
+Inovação: A capacidade de criar prompts eficazes abre caminho para aplicações inovadoras dos modelos de linguagem. Você pode explorar novas formas de utilizar esses modelos para resolver problemas complexos, gerar insights valiosos e criar experiências envolventes para seus clientes ou usuários.
+
+Na próxima seção, vamos mergulhar nas técnicas práticas para criar prompts eficazes e explorar exemplos reais de como a Engenharia de Prompts pode ser aplicada em diferentes contextos. Prepare-se para levar suas habilidades com modelos de linguagem para o próximo nível!
+
+Criando Prompts Eficazes
+
+Agora que entendemos a importância da Engenharia de Prompts, vamos explorar algumas técnicas práticas para criar prompts eficazes. Lembre-se, um bom prompt deve ser claro, conciso e fornecer o contexto necessário para o modelo de linguagem entender e realizar a tarefa desejada.
+
+1. Seja específico e direto
+
+Ao criar um prompt, seja o mais específico possível sobre o que você deseja que o modelo faça. Evite ambiguidades e instruções vagas. Por exemplo, em vez de dizer "escreva sobre inteligência artificial", tente algo como:
+
+​Escreva um artigo introdutório de 500 palavras sobre inteligência artificial, abordando sua definição, história, aplicações atuais e potencial futuro. O artigo deve ser acessível para leigos e incluir exemplos concretos.
+
+
+
+
+Esse prompt fornece detalhes claros sobre o tipo de conteúdo desejado, o público-alvo e os pontos-chave a serem abordados.
+
+2. Forneça exemplos (Few-Shot Learning)
+
+Uma técnica poderosa na Engenharia de Prompts é o Few-Shot Learning, onde você fornece exemplos da tarefa desejada para orientar o modelo. Por exemplo, se você quiser que o modelo gere títulos chamativos para artigos de blog, você pode fornecer alguns exemplos:
+
+
+
+Gere títulos chamativos para os seguintes tópicos de artigos de blog:Tópico: Dicas para economizar dinheiroTítulo: 10 Hacks Geniais para Economizar Dinheiro Sem Sacrificar Seu Estilo de VidaTópico: Benefícios da meditaçãoTítulo: A Ciência Comprova: Meditação Pode Transformar Sua VidaTópico: Receitas saudáveis e saborosasTítulo:
+
+
+
+Ao fornecer exemplos, você está mostrando ao modelo exatamente o tipo de saída que espera, o que pode melhorar significativamente a qualidade dos resultados.
+
+3. Use o Chain-of-Thought Prompting
+
+O Chain-of-Thought Prompting é uma técnica onde você orienta o modelo a explicar seu raciocínio passo a passo antes de chegar à resposta final. Isso é especialmente útil para tarefas que exigem raciocínio lógico ou resolução de problemas. Por exemplo:
+
+
+
+Pergunta: João tinha 5 maçãs. Ele deu 2 para Maria e comeu 1. Quantas maçãs João tem agora?Passo 1: Identifique quantas maçãs João tinha no início.João tinha 5 maçãs no início.Passo 2: Determine quantas maçãs João deu para Maria.João deu 2 maçãs para Maria.Passo 3: Determine quantas maçãs João comeu.João comeu 1 maçã.Passo 4: Subtraia as maçãs dadas e comidas do total inicial.Maçãs restantes = Maçãs iniciais - Maçãs dadas - Maçãs comidasMaçãs restantes = 5 - 2 - 1 = 2Portanto, João tem 2 maçãs agora.
+
+
+
+Ao orientar o modelo a explicar seu raciocínio, você pode obter respostas mais precisas e transparentes.
+
+4. Otimize para o modelo específico
+
+Diferentes modelos de linguagem podem responder de forma diferente aos mesmos prompts. Portanto, é importante otimizar seus prompts para o modelo específico que você está usando. Isso pode envolver ajustar o comprimento do prompt, o nível de detalhe fornecido ou até mesmo o estilo de linguagem usado.
+
+Por exemplo, alguns modelos podem responder melhor a prompts mais longos e descritivos, enquanto outros podem preferir prompts mais curtos e diretos. Experimente diferentes abordagens e veja o que funciona melhor para o seu modelo.
+
+Aplicações Práticas da Engenharia de Prompts
+
+A Engenharia de Prompts pode ser aplicada em uma ampla gama de contextos, desde a criação de conteúdo até o atendimento ao cliente. Aqui estão alguns exemplos de como você pode usar a Engenharia de Prompts em seu negócio ou projeto:
+
+1. Geração de conteúdo
+
+Você pode usar modelos de linguagem com prompts bem projetados para gerar diversos tipos de conteúdo, como:
+
+
+
+
+
+Artigos de blog
+
+
+
+Descrições de produtos
+
+
+
+Roteiros de vídeo
+
+
+
+Postagens em redes sociais
+
+
+
+E-mails marketing
+
+Por exemplo, você pode fornecer um prompt como:
+
+
+
+Escreva uma postagem de blog de 800 palavras sobre os benefícios da yoga para a saúde mental. A postagem deve incluir:- Uma introdução envolvente- 5 benefícios específicos da yoga para a saúde mental, cada um com uma explicação detalhada- Dicas práticas para incorporar a yoga na rotina diária- Uma conclusão inspiradora que incentive os leitores a experimentar a yogaUse um tom amigável e acessível, como se estivesse conversando com um amigo.
+
+
+
+Esse prompt detalhado orienta o modelo a gerar um artigo de blog completo, com todas as seções e elementos necessários.
+
+2. Análise de sentimentos
+
+A Engenharia de Prompts pode ser usada para realizar análise de sentimentos em feedbacks de clientes, reviews de produtos ou menções nas redes sociais. Por exemplo:
+
+
+
+Analise o sentimento do seguinte feedback de cliente e forneça uma classificação (Positivo, Neutro ou Negativo):"O produto chegou dentro do prazo, mas a embalagem estava um pouco danificada. No geral, estou satisfeito com a qualidade do produto em si."Sentimento: NeutroExplicação: Embora o cliente esteja satisfeito com a qualidade do produto e a entrega dentro do prazo, a menção à embalagem danificada traz um aspecto negativo ao feedback. Portanto, o sentimento geral é neutro, equilibrando os pontos positivos e negativos mencionados.
+
+
+
+Ao usar prompts estratégicos, você pode obter insights valiosos sobre a percepção dos clientes em relação à sua marca, produtos ou serviços.
+
+3. Chatbots e assistentes virtuais
+
+A Engenharia de Prompts é essencial para criar chatbots e assistentes virtuais envolventes e úteis. Você pode usar prompts para orientar o modelo a:
+
+
+
+
+
+Responder perguntas frequentes
+
+
+
+Fornecer recomendações personalizadas
+
+
+
+Solucionar problemas técnicos
+
+
+
+Oferecer suporte emocional
+
+Por exemplo:
+
+
+
+Cliente: Olá, estou tendo problemas para fazer login na minha conta. Pode me ajudar?Assistente: Claro, ficaria feliz em ajudar! Aqui estão algumas etapas que você pode seguir para solucionar problemas de login:1. Verifique se você está usando o endereço de e-mail e a senha corretos. Lembre-se de que as senhas são sensíveis a maiúsculas e minúsculas.2. Se você não se lembrar da sua senha, tente usar a opção "Esqueci minha senha" para redefinir.3. Certifique-se de que sua conexão com a internet esteja estável. Às vezes, uma conexão ruim pode causar problemas de login.4. Tente limpar o cache e os cookies do seu navegador e faça login novamente.5. Se você ainda estiver tendo problemas, entre em contato com nossa equipe de suporte para obter assistência adicional.Espero que isso ajude! Se você tiver mais alguma dúvida, é só me avisar.
+
+​
+
+Ao fornecer prompts detalhados e exemplos de conversação, você pode treinar seu chatbot ou assistente virtual para fornecer respostas úteis e empáticas, melhorando a experiência do usuário.
+
+Conclusão
+
+Nesta aula, exploramos os fundamentos da Engenharia de Prompts e como ela pode ser usada para aproveitar ao máximo os modelos de linguagem. Aprendemos que prompts bem projetados são essenciais para obter resultados de alta qualidade e alinhados com nossos objetivos.
+
+Discutimos técnicas práticas para criar prompts eficazes, como ser específico e direto, fornecer exemplos (Few-Shot Learning), usar o Chain-of-Thought Prompting e otimizar para o modelo específico sendo usado.
+
+Também vimos exemplos de como a Engenharia de Prompts pode ser aplicada em diferentes contextos, desde a geração de conteúdo até a análise de sentimentos e a criação de chatbots envolventes.
+
+Agora é a sua vez de colocar esses conhecimentos em prática. Comece experimentando diferentes técnicas de Engenharia de Prompts em seus próprios projetos. Teste prompts variados, avalie os resultados e refine sua abordagem com base no que funciona melhor para você.
+
+Lembre-se de que a Engenharia de Prompts é uma habilidade que se aprimora com a prática. Quanto mais você explorar e experimentar, melhores serão os resultados que obterá dos modelos de linguagem.
+
+Não tenha medo de ser criativo e pensar fora da caixa. A Engenharia de Prompts abre um mundo de possibilidades para inovar e resolver problemas de maneiras novas e empolgantes.
+
+Se você quiser se aprofundar ainda mais no assunto, aqui estão alguns recursos adicionais:
+
+
+
+
+
+A Survey of Prompt Engineering for Language Models (Lu et al., 2023)
+
+
+
+Prompt Engineering Guide (Guia abrangente com exemplos e melhores práticas)
+
+
+
+Awesome Prompt Engineering (Coleção de recursos, ferramentas e exemplos de Engenharia de Prompts)
+
+Estou animado para ver o que você criará com suas novas habilidades de Engenharia de Prompts. Lembre-se, o céu é o limite quando se trata de aproveitar o poder dos modelos de linguagem.
+
+Agora, vamos abordar algumas perguntas comuns que você pode ter sobre a Engenharia de Prompts.
+
+Perguntas e Respostas
+
+1. Preciso ser um programador para fazer Engenharia de Prompts?
+
+Não, você não precisa ser um programador para fazer Engenharia de Prompts. Embora conhecimentos básicos de programação possam ser úteis para tarefas mais avançadas, a essência da Engenharia de Prompts é a capacidade de comunicar efetivamente com os modelos de linguagem usando a linguagem natural.
+
+O que você precisa é de um bom entendimento de como os modelos de linguagem funcionam, quais são suas capacidades e limitações, e como projetar prompts que orientem o modelo a gerar os resultados desejados. Com prática e experimentação, qualquer pessoa pode desenvolver habilidades de Engenharia de Prompts.
+
+2. Quais são as melhores práticas para testar e refinar prompts?
+
+Testar e refinar seus prompts é uma parte essencial da Engenharia de Prompts. Aqui estão algumas melhores práticas:
+
+
+
+
+
+Comece simples: Comece com prompts básicos e adicione complexidade gradualmente. Isso ajuda a identificar quais elementos do prompt são mais eficazes.
+
+
+
+Varie os parâmetros: Experimente diferentes configurações de temperatura, comprimento máximo de resposta e outros parâmetros para ver como eles afetam os resultados.
+
+
+
+Teste em diferentes contextos: Teste seus prompts em diferentes cenários e com diferentes entradas para avaliar sua robustez e capacidade de generalização.
+
+
+
+Avalie a qualidade: Avalie cuidadosamente a qualidade das respostas geradas. Elas são relevantes, coerentes e alinhadas com o que você esperava?
+
+
+
+Itere e refine: Com base nos resultados dos seus testes, faça ajustes nos seus prompts e teste novamente. A Engenharia de Prompts é um processo iterativo de refinamento contínuo.
+
+Lembre-se de documentar seus experimentos e manter um registro das diferentes versões dos seus prompts. Isso ajudará você a acompanhar o que funciona e o que não funciona ao longo do tempo.
+
+3. Como posso lidar com respostas inadequadas ou tendenciosas de um modelo de linguagem?
+
+Lidar com respostas inadequadas ou tendenciosas é um desafio importante na Engenharia de Prompts. Aqui estão algumas estratégias que você pode usar:
+
+
+
+
+
+Seja específico nas suas instruções: Deixe claro no seu prompt que você deseja respostas apropriadas e não tendenciosas. Por exemplo: "Por favor, forneça uma resposta objetiva e factual, evitando qualquer linguagem tendenciosa ou ofensiva."
+
+
+
+Use prompts de filtro: Você pode usar prompts de filtro para remover conteúdo inadequado das respostas do modelo. Por exemplo: "Remova qualquer linguagem ofensiva, preconceituosa ou inapropriada da seguinte resposta: [resposta gerada]"
+
+
+
+Ajuste os parâmetros do modelo: Experimente ajustar parâmetros como a temperatura para controlar a aleatoriedade e a criatividade das respostas do modelo. Valores mais baixos de temperatura podem gerar respostas mais conservadoras e menos propensas a conteúdo inadequado.
+
+
+
+Treine o modelo com dados apropriados: Se você estiver treinando seu próprio modelo, certifique-se de usar dados de treinamento que sejam apropriados, diversos e livres de vieses. Isso pode ajudar a mitigar respostas tendenciosas.
+
+Lembre-se de que nenhuma estratégia é infalível e os modelos de linguagem podem ocasionalmente gerar respostas inadequadas, apesar dos melhores esforços. É importante monitorar continuamente as saídas do modelo e ter um plano para lidar com respostas problemáticas quando elas surgirem.
+
+Palavras Finais
+
+Parabéns por concluir esta introdução à Engenharia de Prompts! Você agora tem uma base sólida para começar a explorar e aplicar essas técnicas em seus próprios projetos.
+
+Lembre-se de que a Engenharia de Prompts é um campo em rápida evolução, com novas técnicas e abordagens surgindo o tempo todo. Mantenha-se atualizado com as últimas pesquisas e desenvolvimentos para aprimorar continuamente suas habilidades.
+
+Mais importante ainda, divirta-se experimentando e explorando as possibilidades infinitas que a Engenharia de Prompts oferece. Com criatividade, perseverança e uma compreensão sólida dos princípios fundamentais, você pode usar o poder dos modelos de linguagem para criar soluções verdadeiramente inovadoras e transformadoras.
+
+Boa sorte em sua jornada de Engenharia de Prompts! Estou ansioso para ver as coisas incríveis que você criará.
+
+4.2 - Glossário - Engenharia de Prompts
+
+Glossário Engenharia de Prompts
+
+
+
+
+
+01. AI (Artificial Intelligence) - Inteligência Artificial: A capacidade das máquinas de realizar tarefas que normalmente requerem inteligência humana.
+
+
+
+02. LLM (Large Language Model) - Modelo de Linguagem Grande: Modelos de IA treinados em grandes quantidades de texto para gerar e entender a linguagem humana.
+
+
+
+03. Fine-tuning - Ajuste fino: O processo de treinar adicionalmente um modelo pré-treinado com dados específicos para uma tarefa ou domínio.
+
+
+
+04. RLHF (Reinforcement Learning from Human Feedback) - Aprendizado por Reforço com Feedback Humano: Uma técnica usada para treinar modelos de linguagem para se comportar de acordo com as preferências humanas.
+
+
+
+05. Prompt: O texto inicial fornecido ao modelo de linguagem para gerar uma resposta.
+
+
+
+06. Prompt engineering - Engenharia de prompt: A arte e a ciência de criar prompts eficazes para obter resultados desejados dos modelos de linguagem.
+
+
+
+07. Token: As menores unidades de texto (palavras, subpalavras ou caracteres) com as quais os modelos de linguagem trabalham.
+
+
+
+08. Context window - Janela de contexto: A quantidade de texto que um modelo de linguagem pode considerar ao gerar uma resposta.
+
+
+
+09. Temperature - Temperatura: Um parâmetro que controla a aleatoriedade das previsões do modelo durante a geração de texto.
+
+
+
+10. RAG (Retrieval Augmented Generation) - Geração Aumentada por Recuperação: Uma técnica que combina a recuperação de informações com a geração de modelos de linguagem para melhorar a precisão e a relevância do texto gerado.
+
+
+
+11. Open Source - Código Aberto: Software cujo código-fonte é disponibilizado publicamente, permitindo que qualquer pessoa o use, estude, modifique e distribua livremente.
+
+
+
+12. Alucinar: Quando um modelo de linguagem gera informações incorretas, imprecisas ou fictícias que não estão baseadas em fatos reais ou no contexto fornecido.
+
+4.3 - Tokenização
+
+Tokenização em LLMs
+
+Quer saber por que você deveria aprender isso?
+
+
+
+
+
+Por que o LLM não consegue soletrar palavras? Tokenização.
+
+
+
+Por que o LLM não consegue realizar tarefas super simples de processamento de strings, como reverter uma string? Tokenização.
+
+
+
+Por que o LLM é pior em idiomas que não são em inglês (por exemplo, japonês)? Tokenização.
+
+
+
+Por que o LLM é ruim em aritmética simples? Tokenização.
+
+
+
+Por que eu deveria preferir usar YAML ao invés de JSON com LLMs? Tokenização.
+
+
+
+Qual é a verdadeira raiz do sofrimento? Tokenização. 😂
+
+Dominar a Tokenização é essencial para se comunicar de forma eficaz com IAs e extrair delas todo o potencial
+
+Então bora aprender!
+
+Por que é Importante?
+
+Para entender por que a tokenização é importante, precisamos pensar em dois aspectos dos modelos implantados: limites de tokens e precificação de tokens.
+
+Limites de Tokens. Cada modelo tem uma janela de contexto definida como o número máximo de tokens que pode processar por solicitação única. Por exemplo, modelos antigos de gpt-3.5-turbo têm um limite de 4K tokens (contexto) para cada solicitação. O limite de tokens é compartilhado entre o prompt e a conclusão. Como a conclusão é adicionada ao prompt para gerar o próximo token, torna-se necessário ajustar ambos dentro da janela de contexto total para uma única solicitação.
+
+Precificação de Tokens. Como em qualquer API, o uso da implantação do modelo incorre em custos baseados no tipo e versão do modelo. Atualmente, a precificação do modelo está vinculada ao número de tokens usados, com diferentes pontos de preço possíveis para cada tipo ou versão de modelo.
+
+Introdução à Tokenização:
+
+No mundo dos LLMs, a tokenização é o processo de dividir textos em pedaços menores, conhecidos como tokens.
+
+
+
+
+
+Um token pode ser um único caractere, uma fração de palavra ou uma palavra inteira.
+
+
+
+Muitas palavras comuns são representadas por um único token.
+
+
+
+Palavras menos comuns são representadas por múltiplos tokens.
+
+Imagine que cada palavra, ou até mesmo partes de palavras, é um quebra-cabeça. A tokenização é o que nos permite separar cada peça desse quebra-cabeça para que a máquina possa entender e, posteriormente, juntar essas peças novamente para formar uma imagem completa.
+
+Por exemplo, o texto acima tem 99 tokens, pode testar aqui.
+
+
+
+A Importância da Tokenização:
+
+Por que isso é crucial?
+
+Bem, sem a tokenização, os LLMs seriam como um turista perdido em uma cidade estrangeira sem um mapa.
+
+Os tokens são como coordenadas no mapa, guiando o modelo através da complexidade da linguagem humana, permitindo que ele faça previsões precisas sobre o que vem a seguir no texto ou como responder a uma pergunta.
+
+Se liga agora no “mapa da IA” no texto da imagem que te mostrei no parágrafo anterior: [2822, 29452, 8924, 445, 11237, 82, 11, 264, 4037, 48476, 4046, 297, 59996, 409, 29932, 404, 1495, 437, 991, 10696, 64, 49019, 3026, 4692, 11, 71583, 13652, 8112, 11460, 13, 38891, 1744, 19394, 95747, 11, 6033, 39583, 41349, 81282, 409, 11091, 89223, 11, 4046, 4543, 1744, 14720, 1824, 8393, 17930, 13, 362, 4037, 48476, 4046, 297, 1744, 12155, 52603, 4941, 277, 19394, 1069, 17930, 951, 325, 1744, 14720, 1824, 8393, 17930, 3429, 1744, 264, 29830, 54506, 2278, 64, 96537, 384, 11, 46000, 12826, 11, 503, 3935, 277, 4043, 300, 1069, 46378, 88019, 3429, 1376, 277, 10832, 63997, 71301, 13]​
+
+Isso ai são os Tokens.
+
+Por exemplo “No” é 2882, “ mundo” é 29452, e assim por diante.
+
+
+
+Tá difícil de entender? Vamos continuar que vai ficar mais fácil.
+
+Imagine que você está jogando um videogame onde cada objeto, personagem ou ação é representado por um número único. Em nosso jogo, o mundo da inteligência artificial, esses números são chamados de tokens, e o mapa que estamos seguindo é composto exatamente por eles.
+
+A sequência numérica que mencionei antes, essa longa lista de números, é como se fosse um código secreto. Cada número representa uma peça específica do nosso grande quebra-cabeça de linguagem. Por exemplo, o número 2822 pode representar a palavra "No", e 29452 pode representar " mundo". Esses números não são aleatórios; eles são cuidadosamente selecionados e organizados por um processo chamado tokenização.
+
+Então, quando vemos [2822, 29452, 8924, 445...], não estamos apenas olhando para números; estamos vendo uma história sendo contada em uma linguagem que os modelos de IA, como os LLMs, podem entender. É como se estivéssemos traduzindo português para o idioma da inteligência artificial.
+
+Confesso que meu lado nerd gosta de entender sobre isso.
+
+Mas se você não entender isso, você vai perder muitas noites de sono, grana e talvez até cabelo. hehe
+
+Então vamos continuar.
+
+A Essência da Tokenização:
+
+Após treinados, os tokenizadores têm duas funções primordiais: encode(), que traduz de strings para tokens, e decode(), que faz o caminho inverso.
+
+Para tornar isso mais palpável, imagine que você está enviando uma mensagem codificada a um amigo, onde cada palavra é substituída por um número baseado em um livro de códigos que ambos têm. Somente quem tem o livro de códigos (ou, neste caso, o algoritmo de tokenização) pode traduzir essa mensagem de volta para o português.
+
+Isso é exatamente o que acontece na tokenização em LLMs. Transformamos texto em uma sequência de números (tokens) que o modelo pode "ler" e processar. E assim como em nosso jogo imaginário, esses tokens são a chave para desbloquear significados, responder perguntas, ou até mesmo criar textos novos e interessantes.
+
+Métodos de Tokenização:
+
+
+
+
+
+Tokenização Baseada em Palavras: O método mais direto, dividindo o texto em palavras individuais. É como desmontar um Lego, peça por peça, onde cada peça é uma palavra.
+
+
+
+Tokenização Baseada em Subpalavras: Essa técnica vai um passo além, dividindo palavras em fragmentos menores. Isso é especialmente útil para lidar com palavras novas ou raras. Imagine cortar cada peça de Lego em partes ainda menores para entender melhor cada detalhe.
+
+
+
+Tokenização Baseada em Caracteres: Aqui, cada caractere é um token. É como se disséssemos que cada átomo de cada peça de Lego importa. Essa abordagem é útil para idiomas com muitos caracteres, como o chinês.
+
+Desafios da Tokenização:
+
+
+
+
+
+Eficiência vs. Precisão: Encontrar o equilíbrio certo entre cortar o texto em pedaços pequenos o suficiente para ser gerenciável, mas não tão pequenos que percam o significado, é uma arte.
+
+
+
+Variações Linguísticas: Diferentes línguas e dialetos podem exigir abordagens de tokenização distintas. É como se as peças de Lego mudassem de forma dependendo da cidade que você está tentando construir.
+
+Técnicas Avançadas de Prompt
+
+Engenharia Reversa de Prompt Use ferramentas como o TikTokenizer para ver exatamente como seu prompt é tokenizado. Compare diferentes formatos e veja qual é mais eficiente.
+
+Exemplo: JSON: {"produto": "camiseta", "descrição": "100% algodão, várias cores", "preço": 29.99} Tokens: 27
+
+YAML: produto: camiseta descrição: 100% algodão, várias cores preço: 29.99 Tokens: 21
+
+Atividades Práticas:
+
+Experimento de Tokenização: Escolha um parágrafo de texto e tente aplicar diferentes métodos de tokenização manualmente. Observe como o significado é afetado.
+
+Recursos Adicionais
+
+Ferramentas:
+
+https://tiktokenizer.vercel.app/
+
+Esse é melhor vídeo sobre o assunto:
+
+https://hundredblocks.github.io/transcription_demo/
+
+https://www.youtube.com/watch?v=zduSFxRajkE&t=6711s
+
+Fontes:
+
+
+
+
+
+Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, Ł., & Polosukhin, I. (2017). Attention Is All You Need. Neural Information Processing Systems.
+
+
+
+Sennrich, R., Haddow, B., & Birch, A. (2016). Neural Machine Translation of Rare Words with Subword Units. Association for Computational Linguistics.
+
+4.4 - Qual IA escolher GPT-4, Claude, Llama3?
+
+Como Escolher o Melhor Modelo de IA
+
+Com a explosão de modelos de Inteligência Artificial disponíveis atualmente, escolher o mais adequado para cada projeto pode ser uma tarefa desafiadora. Neste tutorial, vamos aprender como comparar e selecionar o melhor modelo de IA de acordo com nossas necessidades e orçamento.
+
+Testando Modelos com Plataformas Online
+
+Uma das formas mais práticas de avaliar diferentes modelos de IA é utilizando plataformas online que permitem comparar seu desempenho, custo e tempo de resposta. Alguns exemplos são:
+
+
+
+
+
+Open Router: Permite testar modelos como GPT-3.5, Cohere, Google e outros, configurando parâmetros e interpretando resultados.
+
+
+
+Playground da Anthropic: Possibilita experimentar o modelo Claude em um ambiente interativo.
+
+
+
+Playground da OpenAI: Oferece acesso aos modelos GPT-3.5 e GPT-4 para testes e prototipagem.
+
+Categorias de Modelos: Abertos vs Fechados
+
+Os modelos de IA podem ser divididos em duas grandes categorias:
+
+
+
+
+
+Modelos Abertos: São gratuitos e podem ser executados localmente em seu próprio computador. Para isso, recomenda-se usar ferramentas como o LM Studio. Exemplos: Llama, GPT-J, GPT-NeoX.
+
+
+
+Modelos Fechados: São pagos e acessados através de APIs. Geralmente são mais avançados e oferecem melhor desempenho. Exemplos: GPT-4, Claude, Anthropic.
+
+Escolhendo o Modelo Certo para Cada Tarefa
+
+Diferentes modelos se destacam em tarefas específicas. Aqui estão algumas recomendações baseadas em uso prático:
+
+Tarefas Simples e Testes
+
+
+
+
+
+Mistral e Llama: Disponíveis gratuitamente via API no site do Grok. Ideais para testes rápidos e tarefas menos complexas.
+
+Tarefas Complexas, Chatbots e Automações
+
+
+
+
+
+GPT-4 e Claude: Modelos avançados com excelente desempenho em tarefas sofisticadas, como tratamento de dados, cálculos, chatbots e automações. O Claude (da Anthropic) oferece melhor custo-benefício em comparação ao GPT-4.
+
+
+
+GPT-3.5: Amplamente substituído pelo Claude, que apresenta desempenho superior a um custo mais acessível.
+
+Processamento de Linguagem Natural
+
+
+
+
+
+Raiko: Excelente para resumos, tratamento de texto e conversas longas. Supera o GPT-3.5 em qualidade e é significativamente mais barato que o GPT-4.
+
+Janelas de Contexto Extensas
+
+
+
+
+
+Gemini: Recomendado quando é necessário lidar com janelas de contexto acima de 200 mil tokens.
+
+IA Conversacional
+
+
+
+
+
+Personal AI (anteriormente Inflection): Considerada a melhor IA para conversação, tendo sido treinada com base em diálogos terapêuticos.
+
+Cálculos Avançados
+
+
+
+
+
+Wolfram: Indicado para tarefas que envolvem cálculos complexos e resolução de problemas matemáticos.
+
+Comparando Modelos na Prática
+
+Para ilustrar as diferenças entre modelos, vejamos um exemplo prático de geração de um cardápio vegano utilizando três opções: Claude, Sonnet e Raiko.
+
+Após realizar os testes, conclui-se que:
+
+
+
+
+
+O Sonnet apresenta o pior custo-benefício entre os três.
+
+
+
+O Claude entrega os resultados mais completos e bem estruturados, porém seu custo é significativamente superior aos demais.
+
+
+
+O Raiko oferece um excelente equilíbrio entre qualidade e preço, sendo uma escolha sólida para a maioria dos casos.
+
+Conclusão
+
+Ao escolher um modelo de IA, é fundamental considerar o tipo de tarefa, a qualidade necessária e o orçamento disponível. Modelos com bom custo-benefício, como o Raiko, são recomendados para a maioria dos projetos. Já modelos de ponta como o GPT-4 devem ser reservados para situações que realmente exijam seu alto desempenho.
+
+Lembre-se de sempre testar e comparar diferentes opções antes de tomar uma decisão. Plataformas online e playgrounds são ótimas ferramentas para explorar e avaliar modelos de forma prática.
+
+Com essas dicas em mente, você estará bem equipado para selecionar o modelo de IA ideal para seu próximo projeto. Bons testes e boa sorte em sua jornada com Inteligência Artificial!
+
+4.5 - Zero-Shot vs Few-Shot
+
+Zero-Shot vs Few-Shot
+
+O que é Zero-Shot Prompting?
+
+Imagine que você está conversando com um especialista muito inteligente, como um médico ou um advogado. Você faz uma pergunta sobre um assunto que ele domina, e ele responde na hora, sem precisar de nenhum exemplo ou contexto adicional. Isso é zero-shot: a capacidade de realizar uma tarefa sem nenhum exemplo prévio.
+
+IAs gigantes como o GPT-4 e o Claude conseguem fazer zero-shot em várias tarefas, graças ao enorme volume de dados que elas "estudaram" e aos métodos especiais de treinamento, como instruct tuning (ajuste por instrução) e RLHF (aprendizado por reforço com feedback humano). Legal né?
+
+Exemplo de Zero-Shot
+
+Digamos que você queira classificar um texto como positivo, negativo ou neutro (análise de sentimento). Com zero-shot, basta escrever assim:
+
+
+
+Prompt:Classifique o texto a seguir como positivo, negativo ou neutro.Texto: Eu achei o atendimento razoável, mas o produto deixou a desejar.Sentimento:
+
+
+
+
+
+Output:Neutro
+
+
+
+Viu? Não precisou dar nenhum exemplo. A IA já sabe o que é "sentimento" e consegue analisar o texto sozinha.
+
+
+
+Quando usar Zero-Shot?
+
+
+
+
+
+Quando a tarefa é simples e direta, como classificação binária, extração de entidades, etc.
+
+
+
+Quando você não tem bons exemplos para fornecer.
+
+
+
+Quando quer economizar tokens e deixar espaço para mais instrução ou contexto.
+
+O que é Few-Shot Prompting?
+
+Voltando à analogia do especialista, imagine que agora você está falando de um assunto que ele não conhece tão bem. Para te ajudar, você dá alguns exemplos de perguntas e respostas sobre o tema, e aí sim ele consegue responder coisas parecidas. Isso é few-shot: fornecer alguns exemplos (geralmente de 1 a 10) para a IA "estudar" e se adaptar à tarefa.
+
+Few-shot é muito útil quando o zero-shot não funciona bem. Os exemplos ajudam a IA a entender exatamente o que você quer e seguir o mesmo formato nas respostas.
+
+
+
+Exemplo de Few-Shot
+
+Vamos tentar uma tarefa mais desafiadora: interpretar código Python e explicar o que ele faz.
+
+
+
+Prompt:def soma(a, b):    return a + bExplique o código acima:O código define uma função chamada "soma" que recebe dois parâmetros (a e b) e retorna a soma desses parâmetros.def fatorial(n):    if n == 0:        return 1    else:        return n * fatorial(n-1)Explique o código acima:
+
+
+
+
+
+
+
+

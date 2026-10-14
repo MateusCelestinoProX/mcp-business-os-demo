@@ -1,0 +1,631 @@
+Aula 3 e Aula 4
+
+AULA 3 — O ALGORITMO DO REFLEXO™
+
+https://www.loom.com/share/95216fe394084cd788fc50369335d211
+
+
+Transformando imagem em prompt JSON com o agente MIRR0R™
+
+
+
+CONVERSA DEMONSTRADA NA AULA USANDO O MIRROR:
+
+https://chatgpt.com/share/69376156-98c4-8012-9a49-e4f722ea57a3 (OS PROMPTS ESTÃO AQUI)
+
+MIRR0R™  v.2 exclusivo para o Gemini: 
+
+https://gemini.google.com/gem/1U777vVbjD036U4LxTwppXmINe1Ds7pEX?usp=sharing
+
+O que essa aula entrega
+
+Você vai ver como usar o agente MIRR0R™ para transformar uma imagem de referência em um prompt JSON detalhado, pronto para gerar uma nova IA com estética, intenção e contexto definidos.
+
+Esse processo é o coração da engenharia reversa da imagem.
+
+Você envia uma imagem, e o agente devolve uma descrição estruturada que recria (ou reinterpreta) aquela presença visual.
+
+
+
+Ferramentas utilizadas
+
+
+
+
+
+Navegador de internet (de preferência desktop)
+
+
+
+Agente MIRR0R™ (via ChatGPT com suporte a imagem)
+
+
+
+Imagem copiada do Pinterest (ou outra fonte)
+
+
+
+Obsidian (ou Notion, Google Docs etc) para salvar seus prompts (opcional, mas recomendado)
+
+
+
+Etapas do processo
+
+1. Abra o agente MIRR0R™
+
+Não é necessário digitar nada para iniciar.
+
+Você pode apenas colar a imagem direto no chat (Ctrl + V ou Cmd + V).
+
+Dica: você não precisa baixar a imagem.
+
+No Pinterest, clique com o botão direito → “Copiar imagem” → Cole direto no chat.
+
+
+
+2. Adicione instruções se quiser ajustes específicos
+
+O agente já sabe extrair a imagem em JSON completo.
+
+Mas se você quiser mais controle sobre o resultado, adicione instruções no momento do envio.
+
+Exemplos de instruções que você pode dar:
+
+
+
+
+
+“Substitua a logo da blusa por uma da Nike”
+
+
+
+“Troque a cor da roupa para vermelho”
+
+
+
+“Mantenha a mesma pose, mas mude o cenário para uma cafeteria”
+
+
+
+“Use a mesma aparência, mas com maquiagem leve”
+
+
+
+“Formato da imagem: 9:16, fundo branco, sem texto”
+
+
+
+Quanto mais clara a sua intenção, mais preciso será o prompt gerado.
+
+
+
+3. Receba o prompt JSON completo
+
+O agente vai retornar uma estrutura pronta, geralmente incluindo:
+
+
+
+
+
+Descrição do rosto, pele, olhos, cabelo
+
+
+
+Roupas, acessórios, estilo
+
+
+
+Expressão facial
+
+
+
+Cenário e iluminação
+
+
+
+Estilo estético geral (cinemático, retrato, etc)
+
+
+
+Formato de imagem (você pode forçar 9:16, 4:5, etc)
+
+
+
+Detalhes técnicos (textura, foco, realismo, etc)
+
+
+
+4. Ajuste se necessário
+
+Na maioria dos casos, você pode usar o prompt do jeito que ele vem.
+
+Mas, se o resultado visual não atingir o nível desejado, você pode:
+
+
+
+
+
+Voltar ao MIRR0R e dar feedback:
+
+
+
+“Esse prompt tá bom, mas a roupa veio muito genérica. Faz ela com jaqueta jeans.”
+
+
+
+“A pele tá muito plástica, quero uma aparência mais real com poros aparentes.”
+
+
+
+“Adiciona pelos faciais finos e textura de pele realista.”
+
+
+
+Ou colar outra imagem como referência adicional e dizer:
+
+
+
+“Use essa imagem como base para a pose, mas mantenha a aparência anterior.”
+
+Você não precisa editar o JSON manualmente.
+
+Peça ao MIRR0R pra ajustar por você.
+
+
+
+5. Salve o prompt (opcional, mas profissional)
+
+Se o prompt gerar uma IA que te agradou, salve ele para uso futuro.
+
+
+
+Recomenda-se usar o Obsidian, Notion ou Google Docs.
+
+Exemplo de organização no Obsidian:
+
+/Influencers
+  /Selfies
+    - Prompt_Clara_01.json
+    - Prompt_Clara_MirrorShot.json
+  /Lifestyle
+    - Prompt_Luana_CafeLook.json
+
+
+Você pode reusar esses prompts para gerar:
+
+
+
+
+
+Novas poses
+
+
+
+Novos cenários com a mesma aparência
+
+
+
+Variações para stories, reels ou produtos diferentes
+
+
+
+Aplicações avançadas
+
+O MIRR0R™ não serve apenas pra gerar imagem nova.
+
+Ele também pode:
+
+
+
+
+
+Analisar uma imagem que você já gerou (ou encontrou)
+
+
+
+Criar um prompt com base nessa imagem
+
+
+
+Aplicar esse prompt como edição posterior (ex: upscaling, ajuste de textura, remoção de elementos, etc)
+
+Exemplo:
+
+Você gerou uma imagem com a aparência que ama, mas a pele parece muito plástica.
+
+
+
+Envie a imagem pro MIRR0R
+
+
+
+Diga:
+
+
+
+“Gere um prompt para refinar essa imagem, adicionando textura de poros e suavizando o brilho da pele. Formato 9:16.”
+
+Depois disso, use o novo prompt no NanoBanana Pro para gerar uma nova versão com os ajustes aplicados.
+
+
+
+Resultados esperados ao final da aula
+
+
+
+
+
+Você terá um prompt JSON gerado a partir de uma imagem real
+
+
+
+Esse prompt estará pronto para ser usado na próxima etapa (geração de imagem)
+
+
+
+Você poderá reutilizar ou ajustar o prompt no futuro
+
+
+
+Você entenderá como dar comandos adicionais e criar variações por intenção
+
+
+
+Atalho mental da aula:
+
+
+
+“O prompt é o reflexo da intenção. A imagem só serve pra acionar o espelho certo.”
+
+
+
+Próxima aula: SÍNTESE DE PRESENÇA™
+
+Você vai usar o prompt gerado aqui para renderizar a imagem da sua IA com aparência humana realista.
+
+AULA 4 — SÍNTESE DE PRESENÇA™
+
+https://www.loom.com/share/76cbfa9cdeab48a5884db94b59abd4fa
+
+Gerando sua IA com aparência humana realista a partir do prompt criado com o MIRR0R™
+
+
+
+MIRR0R: https://chatgpt.com/g/g-6981bec6e5e081918fdeb452b534fc6d-nksid-mirr0r-v3
+
+MIRR0R™  v.2 exclusivo para o Gemini:
+
+https://gemini.google.com/gem/1U777vVbjD036U4LxTwppXmINe1Ds7pEX?usp=sharing
+
+CONVERSAS & PROMPTS COM O MIRR0R™: 
+
+https://chatgpt.com/share/6938e89e-3a80-8012-a65a-4bb580c3976a
+https://chatgpt.com/share/6938e9ce-ccf4-8012-b0f2-2c953390c4b4
+https://chatgpt.com/share/6938e9ec-4d80-8012-a9eb-c00914ac326f
+https://chatgpt.com/share/6938ea2a-6cc8-8012-900f-1f1714344324
+
+MIRR0R™  v.2 exclusivo para o Gemini:
+
+https://gemini.google.com/gem/1U777vVbjD036U4LxTwppXmINe1Ds7pEX?usp=sharing
+
+O que essa aula entrega
+
+Aqui você vai usar o prompt gerado na etapa anterior para renderizar sua influenciadora IA com aparência natural, carisma visual e fidelidade à intenção original.
+
+É onde a IA começa a ganhar forma visível.
+
+Você não está “criando uma imagem bonita”.
+
+Você está sintetizando presença.
+
+
+
+Ferramentas utilizadas
+
+
+
+
+
+Hailuo (hailuo.ai)
+
+
+
+Gemini (Google)
+
+
+
+(ou outra IA que suporte o modelo Nano Banana Pro)
+
+
+
+Prompt JSON (gerado pelo MIRR0R™)
+
+
+
+Editor de imagens (opcional, para pequenos ajustes)
+
+
+
+Pastas para organizar suas variações (recomendado)
+
+
+
+Observação importante
+
+
+
+O modelo que estamos usando neste curso é o Nano Banana Pro.
+
+
+
+No momento da gravação, é o mais avançado e consistente para resultados realistas.
+
+
+
+Caso surja outro modelo superior no futuro, o fluxo de criação permanece o mesmo.
+
+
+
+O que muda é a base, não os princípios.
+
+
+
+Etapas do processo
+
+1. Acesse a IA com suporte ao modelo Nano Banana Pro
+
+Hoje, você pode usar:
+
+
+
+
+
+Hailuo (recomendado – maior controle de resolução e proporção)
+
+
+
+Gemini (Google) (mais limitado)
+
+
+
+Machine Studio (a ferramenta de IA exclusiva aqui da comunidade ΝΞΙΔ) disponível em breve.
+
+
+
+2. Configurações no Hailuo (modelo ideal)
+
+
+
+Se estiver usando o Hailuo, configure:
+
+
+
+
+
+Modelo: Nano Banana Pro
+
+
+
+Proporção: 9:16 (ideal para Reels, Stories, Shorts)
+
+
+
+Resolução: 4K (para máxima qualidade — pode escolher 1K ou 2K se quiser testar)
+
+
+
+Prompt: cole o texto do MIRR0R (retire o formato JSON se necessário)
+
+
+
+⚠️ O Hailuo as vezes não aceita prompt com formatação JSON.
+
+
+
+Você pode pedir ao MIRR0R para entregar o mesmo conteúdo em texto.
+
+
+
+3. Geração de variações
+
+Geralmente, você gera:
+
+
+
+
+
+4 variações por prompt
+
+
+
+Escolhe a que mais corresponde à sua intenção original
+
+
+
+“Intenção” é a palavra-chave aqui.
+
+
+
+Não existe imagem boa se você não sabe o que está buscando.
+
+
+
+A clareza do que você quer ver é o que define se a imagem ficou satisfatória ou não.
+
+
+
+4. O que define uma boa imagem
+
+Critérios objetivos que você pode aplicar:
+
+
+
+
+
+A imagem entrega o que você visualizou quando criou o prompt?
+
+
+
+A pele parece natural (com textura, poros, sem aparência plástica)?
+
+
+
+A expressão é coerente com o estilo da persona?
+
+
+
+Não há erros anatômicos, duplicações, artefatos visuais?
+
+
+
+O estilo geral (cenário, roupa, iluminação) está fiel à ideia original?
+
+
+
+Se sim: a imagem está pronta.
+
+
+
+Se não: prossiga para ajustes.
+
+
+
+5. Quando descartar uma imagem
+
+Você pode ignorar uma imagem se:
+
+
+
+
+
+Está muito distante da estética ou intenção
+
+
+
+Possui erros grotescos (rosto distorcido, anatomia errada)
+
+
+
+Pele está com aspecto de boneca/plástico
+
+
+
+A IA criou elementos que você não pediu
+
+
+
+Roupa, cenário ou expressão destoam completamente do esperado
+
+Importante: se todas as variações estão ruins, o problema não é o gerador — é o prompt.
+
+Volte para o MIRR0R, explique o que não funcionou, e refine.
+
+
+
+6. Edição (quando necessária)
+
+
+
+
+
+A maioria das imagens já vem com composição pronta (estética, luz, filtro)
+
+
+
+Caso você queira melhorar algo (ex: remover ruído, ajustar brilho, corte), faça com cuidado
+
+
+
+Alterações demais tendem a piorar o realismo
+
+
+
+Se precisar aplicar filtro ou edição, mantenha a naturalidade da IA como prioridade
+
+
+
+7. Quando refazer o prompt
+
+Se mesmo após 4, 8 variações você ainda sente que não chegou:
+
+
+
+
+
+Volte ao MIRR0R
+
+
+
+Comente com clareza o que está errado (ex: “quero pele com textura, expressão mais séria, fundo neutro”)
+
+
+
+Se necessário, envie a imagem gerada como exemplo e peça correção baseada nela
+
+Você não precisa consertar na marra.
+
+Peça pra refinar o prompt com base no erro.
+
+
+
+8. Salvando e organizando as imagens
+
+
+
+
+
+Salve apenas as que você realmente vai usar
+
+
+
+Organize por tipo de imagem, intenção ou persona
+
+
+
+Recomendação: criar pastas por categoria (ex: Selfie, Lifestyle, Produto, Externa)
+
+Exemplo de organização:
+
+/Influencer_Clara
+  - Clara_StoryLook01.png
+  - Clara_Outdoor02.png
+  - Clara_PromoProduct03.png
+
+
+Essas imagens podem ser reutilizadas como base para novas gerações ou vídeos.
+
+
+
+Resultado esperado ao final da aula
+
+
+
+
+
+Você gerou pelo menos uma imagem com qualidade profissional
+
+
+
+A imagem tem aparência humana realista
+
+
+
+Está pronta para ser animada na próxima aula com o agente S1NTH™
+
+
+
+Atalho mental da aula:
+
+
+
+“Imagem boa não é a mais bonita.
+
+
+
+É a que obedece sua intenção com perfeição.”
+
+
+
+Próxima aula: ENGENHARIA DE COMPORTAMENTO™
+
+Você vai transformar a imagem gerada aqui em vídeo com movimento, voz e intenção — ativando o S1NTH™ pela primeira vez.

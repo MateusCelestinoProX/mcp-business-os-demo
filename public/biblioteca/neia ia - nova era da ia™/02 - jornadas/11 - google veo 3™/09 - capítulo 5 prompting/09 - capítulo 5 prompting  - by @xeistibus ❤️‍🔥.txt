@@ -1,0 +1,410 @@
+09 - Capítulo 5: Prompting de precisão com JSON
+
+5.1 Introdução: De diretor a arquiteto
+
+
+
+Há um método simples para tornar seus prompts muito mais eficazes e instantaneamente mais claros para a IA. É algo que quase dá a sensação de que você está exercendo uma superpotência de prompts. Ele é chamado de JavaScript Object Notation (Notação de Objeto JavaScript), ou JSON, para abreviar.
+
+
+
+O JSON é uma maneira simples de armazenar e compartilhar dados para que tanto humanos quanto computadores possam entendê-los.
+
+Você pode pensar nele como uma lista de compras bem organizada e escrita em um formato muito específico - ele tem rótulos (chaves) e valores (as informações reais), e está sempre organizado de uma forma que os computadores podem ler facilmente.
+
+Por exemplo:
+
+{
+  "name": "Alex",
+  "age": 25,
+  "isStudent": true
+}
+
+
+
+No exemplo acima, vemos:
+
+
+
+
+
+"name" é o rótulo e "Alex" é o valor.
+
+
+
+"age" é o rótulo, e 25 é o valor.
+
+
+
+"isStudent" é o rótulo, e true significa sim.
+
+
+
+Ela é usada em quase todos os lugares - sites, aplicativos e APIs - para enviar e receber informações em um formato limpo e previsível.
+
+Enquanto a linguagem natural é como falar com um diretor, o JSON é como entregar a ele um projeto arquitetônico detalhado. Na solicitação de imagens e vídeos, essa estrutura é eficaz porque organiza cada elemento da sua solicitação em seções claras e rotuladas que a IA pode interpretar sem adivinhação.
+
+A capacidade de reutilização do JSON o torna uma ferramenta poderosa para a geração de imagens e vídeos, pois permite que você salve uma solicitação perfeitamente estruturada que pode ser usada várias vezes sem perder a clareza ou os detalhes.
+
+Depois de definir elementos como estilo, tema, cenário e movimento da câmera, é possível ajustar rapidamente apenas o que for necessário e manter o restante intacto, garantindo resultados consistentes em várias gerações. Isso não apenas acelera o processo criativo, mas também facilita a manutenção da continuidade em projetos com várias cenas, proporcionando sempre um controle preciso sobre o resultado final.
+
+
+
+Neste capítulo, você aprenderá sobre o prompting JSON e algumas maneiras simples de usar essa técnica sem precisar formatá-la manualmente.
+
+
+
+
+
+
+
+5.2 A anatomia de um prompt JSON
+
+Pares de chave-valor
+
+Em sua essência, o JSON funciona por meio de pares - uma chave (o rótulo) e um valor (a informação). A chave informa à IA que tipo de informação ela está vendo, enquanto o valor fornece os detalhes reais. Essa estrutura clara garante que a IA saiba exatamente como interpretar cada parte de seu prompt sem confusão.
+
+Objetos principais
+
+Esses são os principais blocos de construção dos prompts JSON do Veo 3. Cada objeto tem uma função específica na formação da imagem ou do vídeo gerado:
+
+
+
+
+
+description (descrição) — A narrativa principal e vívida da cena. É aqui que a transformação explosiva, a montagem de elementos e o momento cinematográfico geral são descritos em detalhes.
+
+
+
+
+
+
+
+style (estilo) — Descreve o tom visual e o estilo de renderização, por exemplo: "cinematic, photorealistic", "gritty", "magical", "futuristic". Indica ao Veo 3 a aparência e a sensação desejadas.
+
+
+
+
+
+
+
+camera (câmera) — Especifica movimentos, ângulos e transições da câmera, por exemplo: dolly, crane, orbit, fixed, handheld. Adiciona dinamismo à cena.
+
+
+
+
+
+
+
+lighting (iluminação) — Define a configuração de luz e quaisquer mudanças durante a sequência, por exemplo: golden hour glow, neon city lights, dramatic spotlights.
+
+
+
+
+
+
+
+environment (ambiente) — O cenário físico ou pano de fundo, por exemplo: "futuristic industrial corridor", "sunlit café".
+
+
+
+
+
+
+
+elements (elementos) — Lista dos componentes visuais da cena: adereços, personagens, efeitos, detalhes do ambiente — tudo o que o Veo 3 deve renderizar.
+
+
+
+
+
+
+
+motion (movimento) — A coreografia da ação: como os elementos se movem, se montam, se transformam ou interagem dinamicamente na sequência.
+
+
+
+
+
+
+
+ending (final) — A composição final, descrevendo como a tomada termina.
+
+
+
+
+
+
+
+text (texto) — Qualquer sobreposição de texto para o vídeo, por exemplo: slogans, ou "none" quando não houver.
+
+
+
+
+
+
+
+keywords (palavras-chave) — Lista de tags relevantes para reforçar o direcionamento do prompt, geralmente incluindo proporção, estilo, assunto e efeitos especiais.
+
+
+
+
+
+Há outros modelos de prompt JSON com diferentes pares de chaves; no entanto, este é o que recomendamos para obter o máximo de clareza, flexibilidade e consistência em projetos complexos de geração de imagens e vídeos.
+
+
+
+Aqui está um modelo JSON que você pode usar:
+
+{
+  "description": "[Detailed scene description with explosion/transformation and assembly of multiple elements]",
+  "style": "[Visual style — always cinematic/photorealistic, can include tone like 'gritty', 'magical', 'futuristic']",
+  "camera": "[Camera movement description — dolly, crane, orbit, fixed, handheld, etc.]",
+  "lighting": "[Lighting setup and transitions — e.g., golden hour, neon glow, dramatic spotlight]",
+  "environment": "[Setting description — interior/exterior, specific location, how it transforms]",
+  "elements": [
+    "[List each important visual element — props, characters, effects, background features]"
+  ],
+  "motion": "[Describe how elements move, assemble, explode, transform — choreography of action]",
+  "ending": "[Final composed scene — how the video ends visually]",
+  "text": "[Text overlay or 'none']",
+  "keywords": [
+    "[Relevant keywords — aspect ratio, subject tags, special effects, style descriptors]"
+  ]
+}
+
+
+
+Aqui está um exemplo de um prompt JSON que apresenta nosso personagem original, Grant.
+
+{
+  "description": "Inside a dimly lit, smoke-filled underground speakeasy, a crowd of sharply dressed gangsters leans forward in tense anticipation. At the center of the room, under a single swinging overhead bulb, stands Grant — a 50-year-old man with long, flowing white hair, a full white beard, and dark reflective aviator sunglasses. He wears a flawlessly tailored black suit, heavy golden chain with a large ornate 'G' pendant, and leather gloves. His voice echoes as he delivers a bold proclamation: 'We have a new way of generating money now, using Artificial Intelligence.' The gang murmurs in awe. Without breaking eye contact, Grant drops a heavy duffel bag onto the worn wooden floor — the impact sends a muffled *thud*, and the zipper bursts open to reveal stacks of cash that spill out dramatically. The bills scatter toward the camera in slow motion, lit by a faint green glow as if charged with digital energy. Neon reflections from a hidden bar catch on the edges of the money, adding a surreal modern touch to the old-world gangster aesthetic.",
+  "style": "cinematic, neo-noir, photorealistic",
+  "camera": "starts with a slow dolly toward Grant from behind the crowd, over-the-shoulder framing his speech; cuts to a low angle as the duffel hits the ground, bills tumbling in slow motion toward the lens; final shot is a wide pull-back revealing the captivated gangsters",
+  "lighting": "single overhead bulb casting sharp shadows, warm amber tones mixed with faint neon blue and green accents from the bar; light catches the edges of flying bills",
+  "environment": "underground speakeasy with wooden floors, brick walls, vintage furniture, smoky haze, and a neon bar in the background",
+  "elements": [
+    "Grant (white hair, beard, aviators, black suit, gold 'G' pendant)",
+    "crowd of gangsters in tailored suits, fedoras, cigars",
+    "smoky air and dim light",
+    "swinging overhead bulb",
+    "heavy duffel bag filled with cash",
+    "stacks of money spilling out",
+    "green glow suggesting AI/digital energy",
+    "neon bar reflections on wood floor"
+  ],
+  "motion": "camera moves slowly toward Grant during speech, duffel drop shown in slow motion with bills scattering toward lens, money spins and flutters mid-air before landing; subtle crowd head turns and whispers add realism",
+  "ending": "Grant smirks slightly as the last bill lands at his feet, the room silent except for the faint hum of the neon lights",
+  "text": "none",
+  "keywords": [
+    "Grant speech",
+    "gangster meeting",
+    "AI money",
+    "cash explosion",
+    "neo-noir",
+    "cinematic",
+    "slow motion bills",
+    "photorealistic",
+    "speakeasy",
+    "neo-gangster"
+  ]
+}
+
+
+
+Vamos ver os resultados:
+
+Vídeo 01
+
+ocê deve usar prompts JSON o tempo todo?
+
+O JSON é ideal para a geração de vídeos quando você precisa de controle preciso sobre vários aspectos de uma cena, como descrição, estilo, movimento da câmera, iluminação, ambiente e elementos-chave. Seu formato estruturado permite que os criadores definam cada componente com clareza, facilitando para a IA interpretar instruções complexas sem ambiguidade.
+
+A linguagem natural é preferível quando você deseja transmitir rapidamente uma ideia, definir um tom ou experimentar conceitos criativos sem gastar tempo estruturando cada detalhe. Ela é especialmente útil para brainstorming, iteração rápida ou quando se trabalha com cenas mais simples que não exigem detalhamentos extensos de parâmetros.
+
+Conhecer tanto o JSON quanto o prompt de linguagem natural lhe dá flexibilidade. Você pode escolher o JSON para obter precisão técnica e consistência, e a linguagem natural para obter velocidade e fluxo criativo, permitindo que você se adapte às necessidades de qualquer projeto ou fluxo de trabalho.
+
+Vamos comparar os dois estilos de prompt:
+
+A cinematic scene inside an ancient library at night. Books float off the shelves and open by themselves. Light beams stream from their pages, creating swirling shapes in the air. The shelves shift and the walls transform into an infinite cosmic space filled with constellations. The camera slowly moves around as the magic unfolds.
+
+Vídeo 02
+
+{
+  "description": "Cinematic, hyper-detailed sequence inside an ancient candlelit library. Massive oak bookshelves rise into the shadows. A single, ornate tome on a central pedestal trembles, then bursts open with a shockwave of golden light. Hundreds of books lift from the shelves in a graceful spiral, their pages flipping wildly. From each page, glowing constellations, mythical beasts, and flowing streams of ink emerge in mid-air, assembling into a vast, living celestial map. The library floor splits apart, revealing a glowing river of stardust that cascades upward toward the vaulted ceiling, which dissolves to reveal an infinite cosmos.",
+  "style": "cinematic, photorealistic magical realism",
+  "camera": "begins with a slow dolly toward the central pedestal, transitions into a smooth orbital shot around the spiraling books, ends in a rising crane shot revealing the full celestial transformation",
+  "lighting": "warm golden candlelight mixed with radiant beams from the glowing books and cosmic elements; shadows dance across the walls",
+  "environment": "grand, ancient library with towering oak shelves, spiral staircases, and candlelit alcoves; transforms into an open cosmic expanse",
+  "elements": [
+    "ornate central tome on pedestal",
+    "hundreds of floating books",
+    "spiraling pages and glowing ink",
+    "constellations forming in mid-air",
+    "mythical beasts made of starlight",
+    "river of stardust emerging from floor",
+    "vaulted ceiling dissolving into cosmos"
+  ],
+  "motion": "central tome bursts open in slow motion, golden shockwave lifting surrounding books into spiraling orbits; glowing shapes assemble mid-air; floor transformation flows upward; camera moves continuously without cuts",
+  "ending": "entire library suspended within a cosmic void, books floating like satellites around the viewer",
+  "text": "none",
+  "keywords": [
+    "magical library",
+    "book transformation",
+    "cosmic reveal",
+    "golden light explosion",
+    "floating books",
+    "hyper-realistic",
+    "cinematic",
+    "magical realism",
+    "no text"
+  ]
+}
+
+
+Vídeo 03
+
+Embora ambos os resultados sejam visualmente impressionantes, o prompt JSON oferece um resultado de qualidade visivelmente superior.
+
+
+
+
+
+
+
+Limitações e críticas
+
+Embora o prompt JSON seja poderoso, os críticos observam que, para tarefas criativas, como escrever histórias ou gerar conteúdo com nuances, a estrutura rígida do JSON pode restringir o desempenho do modelo, pois transfere a IA para um modo técnico que prioriza o formato em detrimento da criatividade. Além disso, o JSON pode introduzir ineficiência de tokens devido à sua sintaxe (por exemplo, colchetes e aspas), o que pode aumentar os custos em sistemas baseados em tokens. Alternativas como Markdown ou XML podem, às vezes, oferecer uma estrutura semelhante com menos sobrecarga.
+
+
+
+Tente criar seus próprios prompts JSON e experimente diferentes combinações de valores-chave para ver como cada alteração afeta o resultado final. Essa abordagem prática não só aprofunda sua compreensão de como a IA interpreta as instruções estruturadas, mas também o ajuda a descobrir possibilidades criativas exclusivas que podem ser mais difíceis de alcançar apenas com a linguagem natural.
+
+
+
+
+
+
+
+5.3 O código de trapaça: Ferramentas automatizadas de prompts
+
+Ao começar este capítulo, você pode ter ficado um pouco apreensivo com a possibilidade de aprender mais uma forma de estruturar prompts, especialmente logo após aquela longa lição sobre prompts em linguagem natural. Mas não se preocupe - criar prompts JSON é muito menos intimidador do que parece, e você não precisará forçar o cérebro para pegar o jeito.
+
+Aqui está uma ferramenta incrível que você pode usar, criada por mim:
+
+
+
+
+Com esse GPT, basta descrever seu cenário e solicitar um prompt. Por padrão, ela gera prompts formatados em JSON, mas você também pode colar qualquer prompt que queira converter em JSON.
+
+Aqui está outra ferramenta para facilitar a estruturação do JSON:
+
+
+
+É semelhante ao preenchimento de uma pequena pesquisa. Embora possa levar mais tempo do que usar nossa ferramenta, ela é ideal se você preferir preencher cuidadosamente cada objeto central do seu prompt JSON.
+
+
+
+Lembre-se: Mesmo que você esteja automatizando a criação de um prompt com o ChatGPT ou outras ferramentas de IA, os fundamentos do prompt ainda se aplicam. Você precisa ser descritivo, específico e ter uma visão clara do resultado que deseja. Quanto melhor você articular suas ideias, mais precisos e de alta qualidade serão os resultados gerados.
+
+
+
+
+
+
+
+5.4 Resumo do capítulo e exercício prático
+
+Neste capítulo, você explorou o JSON como a ferramenta definitiva para a solicitação de precisão, passando do papel de um diretor para o de um arquiteto.
+
+Você aprendeu como seu formato estruturado de pares de valores-chave elimina as suposições inerentes à linguagem natural, oferecendo controle inequívoco sobre cada elemento de uma cena.
+
+Você também descobriu como as ferramentas automatizadas podem servir como um "código de trapaça", traduzindo suas ideias criativas em JSON perfeitamente formatado, sem exigir que você escreva tudo à mão.
+
+Agora, o exercício a seguir o desafiará a aplicar essa abordagem arquitetônica aos seus próprios conceitos criativos.
+
+
+
+O exercício prático a seguir fará com que você crie prompts JSON a partir de um modelo e use as ferramentas automatizadas que apresentamos no guia.
+
+
+
+
+
+Exercício 1: Linguagem natural para JSON
+
+Tarefa: Primeiro, crie um prompt de linguagem natural da mesma forma que você fez nos capítulos anteriores. Em seguida, use o modelo fornecido para converter manualmente seu prompt em JSON.
+
+{
+  "description": "[Detailed scene description with explosion/transformation and assembly of multiple elements]",
+  "style": "[Visual style — always cinematic/photorealistic, can include tone like 'gritty', 'magical', 'futuristic']",
+  "camera": "[Camera movement description — dolly, crane, orbit, fixed, handheld, etc.]",
+  "lighting": "[Lighting setup and transitions — e.g., golden hour, neon glow, dramatic spotlight]",
+  "environment": "[Setting description — interior/exterior, specific location, how it transforms]",
+  "elements": [
+    "[List each important visual element — props, characters, effects, background features]"
+  ],
+  "motion": "[Describe how elements move, assemble, explode, transform — choreography of action]",
+  "ending": "[Final composed scene — how the video ends visually]",
+  "text": "[Text overlay or 'none']",
+  "keywords": [
+    "[Relevant keywords — aspect ratio, subject tags, special effects, style descriptors]"
+  ]
+}
+
+
+
+
+
+
+Exercício 2: Tornando as coisas um pouco mais fáceis
+
+Tarefa: Use o gerador de avisos do link abaixo e crie um aviso detalhado para o Veo 3. Crie uma situação que envolva seu personagem original.
+
+
+
+
+
+
+
+Exercício 3: O método mais fácil
+
+Tarefa: Use nosso gerador de prompts para criar um prompt JSON. Peça ideias à própria IA ou peça que ela converta um prompt de linguagem natural existente que você já tenha em sua biblioteca de prompts.
+
+
+
+
+
+
+
+
+
+
+
+Obrigado pela leitura!
+
+Juntos, exploramos a anatomia fundamental de um prompt, aprendemos a dirigir a câmera virtual com controle cinematográfico e demos vida às nossas cenas com o poder do diálogo e do som.
+
+Você passou da compreensão dos componentes básicos de um prompt para a direção de sequências complexas e com várias tomadas, equipando-o com as principais habilidades necessárias para traduzir qualquer ideia em um vídeo atraente.
+
+Lembre-se de que a apresentação de sugestões é uma habilidade e, como qualquer ofício, melhora com a prática, a paciência e a disposição para experimentar.
+
+As técnicas deste guia são seu kit de ferramentas básicas, mas sua própria criatividade é a ferramenta mais poderosa que você possui.
+
+Não tenha medo de quebrar as regras, tentar combinações incomuns e levar a IA aos seus limites.
+
+As histórias mais incríveis geralmente estão logo após a borda de um prompt que você ainda não escreveu.
+
+Agora vá em frente e crie algo incrível.
+
+
+
+
+
+
+
+Continue aprendendo.
+
+Att,
+
+Luighi Feodrippe

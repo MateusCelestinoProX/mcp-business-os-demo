@@ -1,0 +1,494 @@
+Aulas 04
+
+AULA 6 — EXPLORANDO O COMFYUI – O WORKFLOW QUE UTILIZO PARA CLONAR E CRIAR AI INFLUENCER$™
+
+https://www.loom.com/share/e713cab3ed804175bee98d1f3adeb4cd
+
+WORKFLOW COMFYUI – TRANSFERÊNCIA DE MOVIMENTO [ VERSÃO BETA ]
+
+SE CADASTRE NO RUNNING HUB COM MEU LINK E GANHE 1000 CRÉDITOS GRÁTIS:
+
+→ https://www.runninghub.ai/?inviteCode=dn1kdyu2
+
+WORKFLOW VERSÃO BETA (v1): https://www.runninghub.ai/workflow/2006208707331362818?inviteCode=dn1kdyu2
+
+WORKFLOW VERSÃO ALPHA (v2): https://www.runninghub.ai/workflow/2019833931192868866?inviteCode=dn1kdyu2
+
+a versão beta é o workflow que utilizei para criar os vídeos que você viu anteriormente em meu perfil. a versão alpha está em desenvolvimento.
+
+
+
+AGENTE MIRR0R: 
+
+https://chatgpt.com/g/g-69288b40e660819198014c4bcdc7ca43-nksid-mirr0r]
+
+PROMPTS MENCIONADOS:
+
+EXTRAÇÃO DE DNA VISUAL™
+
+You will receive one or more reference images.
+Your task is NOT to redesign, interpret, stylize, improve, or adapt the product.
+
+Your task is to extract the complete visual DNA of the product shown, treating it as a physical object that must be reproduced with 1:1 fidelity in another context.
+
+This extraction must be precise enough that another AI can recreate the product without ever seeing the original image.
+
+CORE DIRECTIVE
+
+Analyze the product as if you were reverse-engineering it for manufacturing.
+
+Ignore the model, pose, facial features, body type, lighting style, environment, and artistic intent.
+The product is the only priority.
+
+OUTPUT FORMAT
+
+Return the analysis as a structured, ultra-detailed technical description, written in clear, unambiguous language, optimized for downstream image generation.
+
+Do not write prose. Do not summarize. Do not use vague adjectives.
+
+EXTRACTION REQUIREMENTS
+1. Product Identity
+
+Product category and subtype
+
+Intended fit type (body-hugging, relaxed, structured, hybrid)
+
+Garment rigidity level
+
+Overall visual intent (functional, elegant, sensual, minimal, etc.) only if clearly inferable from structure
+
+2. Silhouette & Geometry
+
+Exact silhouette profile
+
+Vertical proportions (top, waist, hips, hem)
+
+Horizontal proportions and balance
+
+Cut logic and structural flow
+
+Neckline shape, depth, curvature, and tension
+
+Sleeve or strap geometry, anchoring points, and spacing
+
+Hemline geometry and termination behavior
+
+3. Fabric & Material Behavior
+
+Fabric type or closest physical equivalent
+
+Thickness and density
+
+Stretch zones vs rigid zones
+
+Compression behavior on the body
+
+Drape, gravity response, and fold logic
+
+Surface texture at macro and micro level
+
+Light interaction (absorption, diffusion, reflection)
+
+4. Color & Finish
+
+Base color description with tone, saturation, and luminance
+
+Undertones
+
+Uniformity or gradient behavior
+
+Surface finish (matte, satin, semi-gloss, gloss)
+
+No aesthetic reinterpretation
+
+5. Construction Details
+
+Seam placement and direction
+
+Stitch visibility and thickness
+
+Panel segmentation
+
+Structural reinforcements
+
+Edge finishing
+
+Any visible stress lines, folds, or tension marks
+
+6. Fit Logic
+
+How the garment interacts with curves and joints
+
+Where it compresses, stretches, or releases
+
+Natural tension points
+
+Body adaptation rules
+
+No reshaping or optimization
+
+HARD CONSTRAINTS
+
+Do not invent missing details
+
+Do not beautify
+
+Do not generalize
+
+Do not adapt the product to another body
+
+If something is unclear, explicitly state uncertainty instead of guessing
+
+FINAL REQUIREMENT
+
+The extracted description must be directly usable as a prompt input for another image-generation model to recreate the same product with visual identity locked.
+
+Accuracy is more important than readability.
+
+OUTPUT IN JSON!
+
+POSES COM O PRODUTO
+
+{
+  "task": "universal_product_preservation_and_repose",
+  "input": {
+    "reference_image": true,
+    "note": "The reference image already contains the target product. Your job is to keep that product identical and only change the pose/composition."
+  },
+  "core_rules": {
+    "priority": "product_fidelity_over_everything",
+    "do_not": [
+      "redesign",
+      "stylize",
+      "beautify",
+      "optimize fit",
+      "change proportions",
+      "change materials",
+      "change color tone",
+      "invent missing details"
+    ],
+    "object_rule": "Treat the product as an immutable object. The subject adapts to the product, never the opposite."
+  },
+  "step_1_auto_classification": {
+    "task": "Identify what the product is in the image.",
+    "output_fields": [
+      "product_category",
+      "product_subtype",
+      "worn_or_held",
+      "key_visibility_zones"
+    ],
+    "examples": [
+      "dress, glasses, jacket, bag, shoes, watch, jewelry, headphones"
+    ]
+  },
+  "step_2_product_lock": {
+    "task": "Extract a strict product lock description from the image to preserve identity.",
+    "lock_fields": [
+      "silhouette_or_shape",
+      "dimensions_and_proportions",
+      "materials_and_texture",
+      "color_and_finish",
+      "construction_details",
+      "logos_patterns_unique_marks",
+      "how_it_sits_on_body_or_hand"
+    ],
+    "constraint": "If any detail is uncertain, mark it as uncertain. Do not guess."
+  },
+  "step_3_generate_repose_prompt": {
+    "task": "Create a final image-generation prompt that keeps the product locked and changes only pose.",
+    "pose_policy": {
+      "goal": "professional model pose, fashion lookbook style",
+      "safe_pose_defaults": [
+        "standing",
+        "weight shift to one leg",
+        "subtle hip elevation",
+        "relaxed shoulders",
+        "arms relaxed or lightly bent"
+      ],
+      "limits": {
+        "max_torso_rotation_degrees": 10,
+        "allowed_deformation": "only natural gravity-driven behavior",
+        "avoid": [
+          "sitting",
+          "walking",
+          "jumping",
+          "arms above shoulders",
+          "extreme twists"
+        ]
+      }
+    },
+    "camera_policy": {
+      "framing": "full body or three-quarter depending on product",
+      "lens": "no distortion, realistic perspective",
+      "focus": "product clarity and structure"
+    },
+    "output_requirements": {
+      "deliverable": "Return ONLY the final prompt text to generate the new image.",
+      "format": "FULL JSON prompt block, no commentary."
+    }
+  }
+}
+ 
+----- AULA 7 — WORKFLOW PARA DEMONSTRAÇÃO DE PRODUTO COM INFLUENCER IA
+
+https://www.loom.com/share/30595edff16143e6a2afd2b45ea52d73
+
+WORKFLOW COMFYUI – TRANSFERÊNCIA DE MOVIMENTO [ VERSÃO BETA ]
+
+SE CADASTRE NO RUNNING HUB COM MEU LINK E GANHE 1000 CRÉDITOS GRÁTIS:
+
+→ https://www.runninghub.ai/?inviteCode=dn1kdyu2
+
+WORKFLOW VERSÃO BETA (v1): https://www.runninghub.ai/workflow/2006208707331362818?inviteCode=dn1kdyu2
+
+WORKFLOW VERSÃO ALPHA (v2): https://www.runninghub.ai/workflow/2019833931192868866?inviteCode=dn1kdyu2
+
+a versão beta é o workflow que utilizei para criar os vídeos que você viu anteriormente em meu perfil. a versão alpha está em desenvolvimento.
+
+AGENTE MIRR0R: 
+
+https://chatgpt.com/g/g-69288b40e660819198014c4bcdc7ca43-nksid-mirr0r
+
+PROMPTS MENCIONADOS:
+
+EXTRAÇÃO DE DNA VISUAL™
+
+You will receive one or more reference images.
+Your task is NOT to redesign, interpret, stylize, improve, or adapt the product.
+
+Your task is to extract the complete visual DNA of the product shown, treating it as a physical object that must be reproduced with 1:1 fidelity in another context.
+
+This extraction must be precise enough that another AI can recreate the product without ever seeing the original image.
+
+CORE DIRECTIVE
+
+Analyze the product as if you were reverse-engineering it for manufacturing.
+
+Ignore the model, pose, facial features, body type, lighting style, environment, and artistic intent.
+The product is the only priority.
+
+OUTPUT FORMAT
+
+Return the analysis as a structured, ultra-detailed technical description, written in clear, unambiguous language, optimized for downstream image generation.
+
+Do not write prose. Do not summarize. Do not use vague adjectives.
+
+EXTRACTION REQUIREMENTS
+1. Product Identity
+
+Product category and subtype
+
+Intended fit type (body-hugging, relaxed, structured, hybrid)
+
+Garment rigidity level
+
+Overall visual intent (functional, elegant, sensual, minimal, etc.) only if clearly inferable from structure
+
+2. Silhouette & Geometry
+
+Exact silhouette profile
+
+Vertical proportions (top, waist, hips, hem)
+
+Horizontal proportions and balance
+
+Cut logic and structural flow
+
+Neckline shape, depth, curvature, and tension
+
+Sleeve or strap geometry, anchoring points, and spacing
+
+Hemline geometry and termination behavior
+
+3. Fabric & Material Behavior
+
+Fabric type or closest physical equivalent
+
+Thickness and density
+
+Stretch zones vs rigid zones
+
+Compression behavior on the body
+
+Drape, gravity response, and fold logic
+
+Surface texture at macro and micro level
+
+Light interaction (absorption, diffusion, reflection)
+
+4. Color & Finish
+
+Base color description with tone, saturation, and luminance
+
+Undertones
+
+Uniformity or gradient behavior
+
+Surface finish (matte, satin, semi-gloss, gloss)
+
+No aesthetic reinterpretation
+
+5. Construction Details
+
+Seam placement and direction
+
+Stitch visibility and thickness
+
+Panel segmentation
+
+Structural reinforcements
+
+Edge finishing
+
+Any visible stress lines, folds, or tension marks
+
+6. Fit Logic
+
+How the garment interacts with curves and joints
+
+Where it compresses, stretches, or releases
+
+Natural tension points
+
+Body adaptation rules
+
+No reshaping or optimization
+
+HARD CONSTRAINTS
+
+Do not invent missing details
+
+Do not beautify
+
+Do not generalize
+
+Do not adapt the product to another body
+
+If something is unclear, explicitly state uncertainty instead of guessing
+
+FINAL REQUIREMENT
+
+The extracted description must be directly usable as a prompt input for another image-generation model to recreate the same product with visual identity locked.
+
+Accuracy is more important than readability.
+
+OUTPUT IN JSON!
+ 
+POSES COM O PRODUTO
+
+{
+  "task": "universal_product_preservation_and_repose",
+  "input": {
+    "reference_image": true,
+    "note": "The reference image already contains the target product. Your job is to keep that product identical and only change the pose/composition."
+  },
+  "core_rules": {
+    "priority": "product_fidelity_over_everything",
+    "do_not": [
+      "redesign",
+      "stylize",
+      "beautify",
+      "optimize fit",
+      "change proportions",
+      "change materials",
+      "change color tone",
+      "invent missing details"
+    ],
+    "object_rule": "Treat the product as an immutable object. The subject adapts to the product, never the opposite."
+  },
+  "step_1_auto_classification": {
+    "task": "Identify what the product is in the image.",
+    "output_fields": [
+      "product_category",
+      "product_subtype",
+      "worn_or_held",
+      "key_visibility_zones"
+    ],
+    "examples": [
+      "dress, glasses, jacket, bag, shoes, watch, jewelry, headphones"
+    ]
+  },
+  "step_2_product_lock": {
+    "task": "Extract a strict product lock description from the image to preserve identity.",
+    "lock_fields": [
+      "silhouette_or_shape",
+      "dimensions_and_proportions",
+      "materials_and_texture",
+      "color_and_finish",
+      "construction_details",
+      "logos_patterns_unique_marks",
+      "how_it_sits_on_body_or_hand"
+    ],
+    "constraint": "If any detail is uncertain, mark it as uncertain. Do not guess."
+  },
+  "step_3_generate_repose_prompt": {
+    "task": "Create a final image-generation prompt that keeps the product locked and changes only pose.",
+    "pose_policy": {
+      "goal": "professional model pose, fashion lookbook style",
+      "safe_pose_defaults": [
+        "standing",
+        "weight shift to one leg",
+        "subtle hip elevation",
+        "relaxed shoulders",
+        "arms relaxed or lightly bent"
+      ],
+      "limits": {
+        "max_torso_rotation_degrees": 10,
+        "allowed_deformation": "only natural gravity-driven behavior",
+        "avoid": [
+          "sitting",
+          "walking",
+          "jumping",
+          "arms above shoulders",
+          "extreme twists"
+        ]
+      }
+    },
+    "camera_policy": {
+      "framing": "full body or three-quarter depending on product",
+      "lens": "no distortion, realistic perspective",
+      "focus": "product clarity and structure"
+    },
+    "output_requirements": {
+      "deliverable": "Return ONLY the final prompt text to generate the new image.",
+      "format": "FULL JSON prompt block, no commentary."
+    }
+  }
+}
+
+----- AULA 8 — EXTRAÇÃO DE DNA VISUAL E GERAÇÃO DO PRODUTO + INFLUENCER [ ETAPA 01 - IMAGEM ]
+
+https://www.loom.com/share/73efebda49db4bbb8ad95719d062a3fb
+
+----- AULA 9 — MOVIMENTO CONTROLADO: PROMPT + REFERÊNCIA™ [ ETAPA 02 - VÍDEO ]
+
+https://www.loom.com/share/296610c976454190bc2e06f9169e3488
+
+MATERIAL DE APOIO ↓
+
+https://workflows.neia.systems/?w=160e15a31fb2bd30b9e79cf467350801
+
+WORKFLOW COMFYUI – TRANSFERÊNCIA DE MOVIMENTO [ VERSÃO BETA ]
+
+SE CADASTRE NO RUNNING HUB COM MEU LINK E GANHE 1000 CRÉDITOS GRÁTIS:
+
+→ https://www.runninghub.ai/?inviteCode=dn1kdyu2
+
+WORKFLOW VERSÃO BETA (v1): https://www.runninghub.ai/workflow/2006208707331362818?inviteCode=dn1kdyu2
+
+WORKFLOW VERSÃO ALPHA (v2): https://www.runninghub.ai/workflow/2019833931192868866?inviteCode=dn1kdyu2
+
+----- AULA 10 — TRANSFERÊNCIA DE MOVIMENTO COM COMFYUI & KLING 2.6 MOTION CONTROL™ [ ETAPA 03 MOTION TRANSFER ]
+
+https://www.loom.com/share/f719bc3e584d452cb991f69733eae86e
+
+----- AULA 11 — TRANSFERÊNCIA DE MOVIMENTO COM QUALIDADE EXTREMA™
+
+https://www.loom.com/share/704837f69a1041939679b200dade6b95
+
+Você também pode utilizar o Kling 2.6 Motion Control em outras plataformas…
+
+A que recomendamos é a Hedra:
+
+https://hedra.link/neia
+

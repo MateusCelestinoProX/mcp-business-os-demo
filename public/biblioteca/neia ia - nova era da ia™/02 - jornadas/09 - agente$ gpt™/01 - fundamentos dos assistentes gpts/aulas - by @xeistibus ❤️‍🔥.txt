@@ -1,0 +1,217 @@
+Aulas
+
+1.1 -  Se você ainda não possui um "Agente" GPT, você está anos-luz atrasado.
+
+https://www.loom.com/share/e30436cc2c604c04bd764101e6d903e7
+
+Explorando GPTs Personalizados e Assistentes de IA
+
+1. Introdução aos GPTs Personalizados 0:00
+
+
+
+
+
+Apresentação da jornada sobre GPDs personalizados.
+
+
+
+Diferença entre GPDs e assistentes GPDs.
+
+
+
+Importância de sair da interface tradicional de uso de IA.
+
+ 
+
+2. O que são GPTs Personalizados? 1:35
+
+
+
+
+
+GPTs personalizados foram introduzidos em 6 de novembro de 2023.
+
+
+
+Permitem que a IA se especialize em áreas específicas.
+
+
+
+Exemplos de uso: criar clones de personalidades como Albert Einstein.
+
+ 
+
+3. Como Criar GPDs Personalizados 3:03
+
+
+
+
+
+Possibilidade de direcionar a inteligência artificial para um propósito específico.
+
+
+
+Exemplos de aplicações: mentores de negócios, finanças, etc.
+
+
+
+A importância da criatividade na criação de GPTs.
+
+ 
+
+4. O que é GPT? 4:24
+
+
+
+
+
+GPT significa Generative Pre-trained Transformer.
+
+
+
+Desenvolvido pela OpenAI e outras empresas.
+
+
+
+Base para a criação de diferentes sistemas de geração de texto.
+
+ 
+
+5. Diferença entre Assistentes e Agentes de IA 8:10
+
+
+
+
+
+Assistentes: precisam de instruções do usuário para funcionar.
+
+
+
+Agentes: possuem mais autonomia e podem executar tarefas automaticamente.
+
+
+
+Exemplos de assistentes e agentes em uso.
+
+ 
+
+6. Aplicações Práticas de GPTs e Assistentes 12:15
+
+
+
+
+
+Assistentes podem ser usados para tarefas repetitivas e personalizadas.
+
+
+
+Importância de criar assistentes para diferentes funções no dia a dia.
+
+
+
+Possibilidade de integrar assistentes para se tornarem agentes.
+
+ 
+
+7. Conclusão e Próximos Passos 15:22
+
+
+
+
+
+Recapitulação da importância de GPTs personalizados.
+
+
+
+Convite para perguntas e interação na comunidade.
+
+
+
+Anúncio de aulas futuras para aprofundar o conhecimento.
+
+
+
+Material Complementar:
+
+https://whimsical.com/gpts-personalizados-9Lo95RN2W69j4ziwF3C6PU
+
+1.2 - Por Dentro das Engrenagens: Maneiras de Criar Assistentes Eficientes
+
+
+Por Dentro das Engrenagens: Maneiras de Criar Assistentes Eficientes
+
+https://www.loom.com/share/6c0930b980cf4223a348ac7b053f918e
+
+Guia para Criar GPTs Personalizados no ChatGPT
+
+1. Introdução ao Conteúdo Atemporal
+
+	•	O conteúdo é atemporal e não ficará obsoleto.
+
+	•	Foco nos fundamentos e na base de informações.
+
+	•	Atualizações constantes na comunidade ΝΞΙA.
+
+2. Acesso e Criação de GPTs
+
+	•	Necessário ser assinante do ChatGPT para criar GPTs personalizados.
+
+	•	A loja de GPTs funciona como uma “App Store” onde você cria e publica suas aplicações.
+
+3. Potencial de Monetização
+
+	•	É possível criar assistentes que resolvem problemas reais e podem ser monetizados.
+
+	•	Permite automatizar tarefas manuais e processos empresariais.
+
+4. Tipos de Agentes e Dicas de Criação
+
+	•	Existem três tipos de agentes que podem ser criados.
+
+	•	Boas práticas para criar agentes precisos e eficientes.
+
+5. Criação de GPTs Personalizados
+
+	•	Você pode usar modelos da comunidade ou criar o seu do zero.
+
+	•	Inserir dados exclusivos aumenta o nível de personalização.
+
+6. Clareza e Direção
+
+	•	É essencial ter clareza sobre o que você deseja que o assistente faça.
+
+	•	Dados específicos geram resultados melhores e mais consistentes.
+
+7. Modos de Criação
+
+	•	Modo Criar: guiado e simples, porém gera respostas genéricas.
+
+	•	Modo Configurar: detalhado, com controle completo do comportamento do agente.
+
+8. Segurança e Engenharia Reversa
+
+	•	Incluir informações sensíveis no GPT pode gerar riscos de segurança.
+
+	•	Proteger dados privados é fundamental.
+
+9. Ações e Integrações
+
+	•	Você pode criar ações que permitem ao agente interagir com outras ferramentas e APIs.
+
+10. Benefícios de GPTs Personalizados
+
+	•	Economia de tempo e consistência nas respostas.
+
+	•	Adaptação de escrita e estilo para diferentes clientes e contextos.
+
+11. Conclusão e Próximos Passos
+
+	•	Reflexão sobre oportunidades de monetização.
+
+	•	Preparação para a aula prática de criação de GPTs.
+
+
+
+Material Complementar:
+https://whimsical.com/gpts-personalizados-9Lo95RN2W69j4ziwF3C6PU

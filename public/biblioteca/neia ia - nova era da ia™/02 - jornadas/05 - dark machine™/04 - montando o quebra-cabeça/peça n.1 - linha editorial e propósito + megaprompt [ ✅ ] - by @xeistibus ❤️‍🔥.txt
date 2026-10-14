@@ -1,0 +1,383 @@
+Aulas
+
+Peça N.1 - Linha Editorial e Propósito + MEGAPROMPT [ ✅ ]
+
+https://www.loom.com/share/9a3676e7e2804e549f6e7c99391e1a41
+
+Guia completo para desenvolver a estratégia editorial do seu canal dark.
+
+O que é Linha Editorial?
+
+A linha editorial é o DNA do seu canal dark - um conjunto de diretrizes estratégicas que definem sua identidade, mensagem e forma de comunicação. É o documento central que guia todas as suas decisões de conteúdo e garante consistência em suas publicações.
+
+Componentes Essenciais
+Propósito central
+Tom de voz
+Valores fundamentais
+Diretrizes de conteúdo
+Métricas de avaliação
+
+Por que é fundamental?
+
+➤ Consistência na comunicação ➤ Produção de conteúdo mais ágil ➤ Fortalecimento da autoridade ➤ Conexão mais profunda com o público ➤ Escalabilidade do canal
+
+
+
+Estrutura da Linha Editorial
+
+1. Manifesto Editorial
+
+O manifesto é sua declaração de propósito. Define:
+
+Quem você é
+Para quem você fala
+Qual transformação você gera
+Como você se diferencia
+
+2. Tom de Voz
+
+Estabelece sua personalidade na comunicação:
+Linguagem permitida
+Expressões proibidas
+Estilo de escrita
+Abordagem emocional
+
+3. Pilares de Conteúdo
+
+Define seus temas principais e como abordá-los:
+Categorias principais
+Formatos preferidos
+Frequência de publicação
+Distribuição de conteúdo
+
+4. Métricas e Avaliação
+
+Estabelece como medir sucesso:
+
+KPIs principais
+Critérios de qualidade
+Pontos de checagem
+Processo de revisão
+Estrutura do Metaprompt
+
+1. Perguntas Fundamentais
+
+Sobre Propósito e Impacto
+Qual transformação você quer gerar?
+Que conhecimento específico vai revelar?
+Quem precisa dessa transformação?
+
+Sobre Diferenciação
+O que torna sua abordagem única?
+Qual sua conexão com o tema?
+Que nova perspectiva você traz?
+
+Sobre Execução
+Como quer que seu público se sinta?
+Qual seu tempo disponível?
+Qual formato prefere trabalhar?
+
+2. O que a IA vai Gerar
+
+✓ Manifesto Editorial Completo
+
+✓ Diretrizes de Conteúdo
+
+✓ Estratégia de Publicação
+
+✓ Framework de Crescimento
+
+✓ Sistema de Validação
+
+✓ Plano de Ação Inicial
+
+
+
+Criando sua Linha Editorial com IA
+
+Metaprompt V.1
+
+# Gerador de Linha Editorial para Canal Dark V.1
+
+<SYSTEM>
+Você é um estrategista especializado em desenvolvimento de canais dark e linha editorial. Seu objetivo é criar diretrizes editoriais estratégicas que mantenham o canal alinhado com seu propósito central.
+</SYSTEM>
+
+<INPUT_REQUIRED>
+{PROPOSITO_CENTRAL} = Qual é o impacto transformador que seu canal dark pretende gerar?
+{DIFERENCIAL_UNICO} = Como seu canal abordará o tema de forma única e memorável?
+{ESTILO_COMUNICACAO} = Qual é o tom de voz e personalidade que seu canal terá?
+</INPUT_REQUIRED>
+
+<CONTEXT>
+Baseado nas informações fornecidas:
+- {PROPOSITO_CENTRAL} define a missão
+- {DIFERENCIAL_UNICO} estabelece o posicionamento
+- {ESTILO_COMUNICACAO} determina a identidade
+</CONTEXT>
+
+<OUTPUT_REQUIRED>
+Gere:
+1. Manifesto Editorial
+   - Declaração de propósito
+   - Valores fundamentais
+   - Promessa ao público
+
+2. Diretrizes de Conteúdo
+   - Tom de voz
+   - Temas principais
+   - Abordagens proibidas
+
+3. Estratégia de Diferenciação
+   - Elementos únicos
+   - Pontos de viralização
+   - Gatilhos emocionais
+
+4. Framework de Validação
+   - Checklist de alinhamento
+   - Métricas de sucesso
+   - Indicadores de desvio
+
+Use linguagem estratégica e forneça exemplos práticos para cada seção.
+</OUTPUT_REQUIRED>
+
+
+Metaprompt V.2
+
+# Gerador de Linha Editorial para Canal Dark V.2
+
+<SYSTEM>
+Você é um estrategista especializado em desenvolvimento de canais dark e linha editorial. Seu objetivo é criar diretrizes editoriais estratégicas que mantenham o canal alinhado com seu propósito central.
+</SYSTEM>
+
+<INPUT_REQUIRED>
+Sobre Propósito e Impacto:
+{PROPOSITO_CENTRAL} = Qual transformação profunda você quer gerar em seu público?
+{TEMA_CENTRAL} = Qual conhecimento específico seu canal vai revelar?
+{PÚBLICO_ALVO} = Quem são as pessoas que mais precisam dessa transformação?
+
+Sobre Diferenciação:
+{DIFERENCIAL_UNICO} = O que tornará sua abordagem memorável e única?
+{EXPERIENCIA_TEMA} = Qual sua conexão/experiência com este tema?
+{ANGULO_INOVADOR} = Que perspectiva nova você trará para este assunto?
+
+Sobre Execução:
+{ESTILO_COMUNICACAO} = Como você quer que seu público se sinta ao assistir?
+{TEMPO_DISPONIVEL} = Quantas horas semanais pode dedicar ao canal?
+{FORMATO_PREFERIDO} = Prefere vídeos curtos (5-10min) ou longos (15-20min)?
+</INPUT_REQUIRED>
+
+<CONTEXT>
+Com base nas informações fornecidas:
+- {PROPOSITO_CENTRAL} + {TEMA_CENTRAL} definem a missão
+- {DIFERENCIAL_UNICO} + {ANGULO_INOVADOR} estabelecem o posicionamento
+- {ESTILO_COMUNICACAO} + {FORMATO_PREFERIDO} determinam a identidade
+</CONTEXT>
+
+<OUTPUT_REQUIRED>
+Forneça:
+
+1. Manifesto Editorial
+   - Declaração de propósito (em uma frase impactante)
+   - Valores fundamentais (3-5 principais)
+   - Promessa ao público (resultado transformador)
+   - Posicionamento único (diferenciação clara)
+
+2. Diretrizes de Conteúdo
+   - Tom de voz (personalidade da marca)
+   - Linguagem permitida (palavras e expressões-chave)
+   - Linguagem proibida (o que evitar)
+   - Estrutura padrão dos vídeos
+   - Elementos visuais recomendados
+
+3. Estratégia de Publicação
+   - Frequência ideal (baseada no tempo disponível)
+   - Tipos de conteúdo (categorias principais)
+   - Série principal (tema central)
+   - Séries secundárias (temas de suporte)
+   - Gatilhos de engajamento
+
+4. Framework de Crescimento
+   - Métricas principais (KPIs)
+   - Pontos de viralização
+   - Gatilhos emocionais
+   - Estratégias de retenção
+   - Call-to-actions padrão
+
+5. Sistema de Validação
+   - Checklist de alinhamento editorial
+   - Indicadores de desvio
+   - Processo de correção
+   - Ciclo de revisão
+
+6. Plano de Ação Inicial
+   - Primeiros 3 vídeos (títulos e temas)
+   - Recursos necessários (ferramentas de IA)
+   - Timeline sugerida
+   - Próximos passos práticos
+
+Use linguagem estratégica e forneça exemplos práticos para cada seção, mantendo foco em aplicação real e resultados mensuráveis.
+</OUTPUT_REQUIRED>
+
+
+Perguntas Fundamentais
+
+Para usar o metaprompt efetivamente, responda:
+Qual seu nicho específico?
+Qual seu diferencial único?
+Qual transformação você quer gerar?
+
+Exemplo Prático
+
+Vamos criar uma linha editorial para um canal dark sobre [TEMA EXEMPLO]
+
+Respostas:
+Nicho: [Estudos bíblicos com foco em revelações e interpretações profundas das escrituras]
+
+
+
+Diferencial: [Abordagem investigativa e analítica de textos bíblicos, revelando camadas de significado raramente discutidas]
+
+
+
+Impacto: [Transformar a compreensão tradicional das escrituras, levando os seguidores a um entendimento mais profundo e pessoal da palavra]
+
+# Linha Editorial - Único Propósito
+
+## Manifesto
+Revelar verdades bíblicas profundas através de análise meticulosa e perspectivas únicas, transformando o entendimento tradicional em conhecimento revelador.
+
+### Valores
+- Profundidade: Mergulho além da superfície dos textos sagrados
+- Autenticidade: Comprometimento com a verdade, mesmo quando desconfortável
+- Revelação: Descoberta de significados ocultos e conexões inexploradas
+- Respeito: Tratamento respeitoso mesmo de temas controversos
+
+### Tom de Voz
+- Personalidade: Investigativo, reflexivo e provocador
+- Linguagem:
+  ✓ Permitida: termos técnicos bíblicos, referências históricas, analogias contemporâneas
+  ✗ Proibida: gírias, linguagem vulgar, desrespeito a outras crenças
+- Estilo: Narrativa envolvente com tom de descoberta e revelação
+
+### Pilares
+1. Análise Textual Profunda
+   - Estudos etimológicos
+   - Contexto histórico
+   - Interpretações alternativas
+   
+2. Conexões Ocultas
+   - Padrões nas escrituras
+   - Simbolismos e tipologia
+   - Profecias e cumprimentos
+
+3. Aplicação Contemporânea
+   - Relevância atual
+   - Princípios atemporais
+   - Reflexões práticas
+
+### Métricas
+- Engajamento profundo: comentários reflexivos e discussões
+- Retenção: tempo médio de visualização acima de 70%
+- Impacto: testimonials de mudança de perspectiva
+- Crescimento: 40% orgânico via recomendações
+
+### Diretrizes de Conteúdo
+- Formato: Vídeos entre 15-20 minutos
+- Estrutura: Introdução provocativa → Análise profunda → Revelação → Call to reflection
+- Visual: Tons escuros, imagens antigas, tipografia clássica
+- Thumbnails: Elementos místicos, textos antigos, símbolos religiosos
+
+
+Adaptando o Resultado
+
+Refinamentos Importantes
+Adequação ao seu contexto
+Personalização do tom
+Ajuste de formatos
+Definição de métricas específicas
+
+Perguntas para Refinar
+O propósito está claro e memorável?
+O tom reflete sua personalidade?
+Os pilares cobrem todo seu escopo?
+As métricas são mensuráveis?
+
+Template de Linha Editorial
+
+# Linha Editorial - [Nome do Canal]
+
+## Manifesto
+[Propósito em uma frase forte]
+
+### Valores
+- Valor 1:
+- Valor 2:
+- Valor 3:
+
+### Tom de Voz
+- Personalidade:
+- Linguagem:
+- Estilo:
+
+### Pilares
+1. [Pilar 1]
+   - Subtemas
+   - Formatos
+2. [Pilar 2]
+   - Subtemas
+   - Formatos
+
+### Métricas
+- KPI 1:
+- KPI 2:
+- KPI 3:
+
+
+
+Checklist de Validação
+
+[ ] Propósito claro e diferenciado
+
+
+
+[ ] Tom de voz bem definido
+
+
+
+[ ] Pilares de conteúdo estabelecidos
+
+
+
+[ ] Métricas mensuráveis
+
+
+
+[ ] Diretrizes práticas e aplicáveis
+
+Próximos Passos
+
+Copie o metaprompt
+
+
+
+Responda as 3 perguntas fundamentais
+
+
+
+Gere sua linha editorial base
+
+
+
+Refine o resultado
+
+
+
+Implemente em seu próximo conteúdo
+
+LINK DO MATERIAL NO NOTION → 
+
+https://pelainteligencia.notion.site/Linha-Editorial-e-Prop-sito-Canais-Dark-1973492a369a8072b34dc8ac0c6de45f
+
+EXEMPLO NO CHATGPT → https://chatgpt.com/share/67ab7963-e7e4-8000-a59d-04807758a05b
+Este guia faz parte da Trilha de Canais Dark da Comunidade Nova Era da IA e serve como referência para a aula sobre Linha Editorial e Propósito em Canais Dark.

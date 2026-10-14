@@ -1,0 +1,117 @@
+03 - Dominar o Veo 3 significa combinar uma visão criativa clara com uma sólida compreensão das ferramentas necessárias para dar vida a essa visão. A maior parte do conhecimento essencial para a criação de vídeos detalhados e atraentes já foi abordada no minicurso acima; portanto, se você ainda não o explorou, agora é um ótimo momento para mergulhar de cabeça e construir sua base.
+
+Solução de problemas comuns
+
+Com base no estado atual do modelo, aqui estão alguns dos problemas mais comuns que os usuários estão encontrando com o Veo 3 e as correções sugeridas pela comunidade de usuários.
+
+
+
+Desvio de personagem em cenas longas
+
+
+
+
+
+O problema: Durante uma longa sequência no Scene Builder (normalmente mais de 5 tomadas), as características faciais ou as roupas de um personagem podem começar a mudar sutilmente, mesmo quando se usa uma imagem de referência visual.
+
+
+
+A solução: Se a reexecução do prompt não funcionar, a melhor solução é iniciar uma nova sequência do Scene Builder. Use o último quadro correto da cena anterior como a nova imagem de referência visual para a primeira foto da nova sequência. Isso "redefine" a memória da IA e ancora novamente a aparência do personagem.
+
+
+
+O efeito de "respiração" ou "oscilação"
+
+
+
+
+
+O problema: Em tomadas que deveriam ser perfeitamente estáticas, os objetos de fundo ou até mesmo o contorno do personagem podem apresentar um movimento sutil e não natural de "oscilação" ou "respiração" de quadro a quadro.
+
+
+
+A solução: a solução mais eficaz é adicionar um movimento de câmera quase imperceptível à solicitação. Ao solicitar "um dolly muito lento e sutil para dentro" ou "uma panorâmica extremamente lenta para a direita", o movimento intencional da câmera substitui a oscilação indesejada gerada pela IA, resultando em uma filmagem muito mais limpa.
+
+
+
+Diálogo de áudio "gaguejado"
+
+
+
+
+
+O problema: Um personagem ocasionalmente repete uma palavra em uma linha de diálogo (por exemplo, "is is" ou "the the"), um artefato da geração de áudio.
+
+
+
+A correção: Um prompt negativo não resolverá esse problema. A solução mais rápida é simplesmente reexecutar exatamente o mesmo prompt, pois a IA gerará uma nova tomada de áudio que geralmente está correta. Se o problema persistir, reformular ligeiramente o diálogo (por exemplo, mudar "The deal is off" para "That deal is off") geralmente é suficiente para forçar uma geração limpa.
+
+
+
+Ignorando comandos de enquadramento
+
+
+
+
+
+O problema: A IA às vezes ignora um comando específico de tipo de foto (por exemplo, uma "foto média") em favor do que considera uma composição mais "agradável" (como um close-up), especialmente se o prompt contiver muitas palavras-chave de detalhes faciais.
+
+
+
+A solução: Sobrecarregar o prompt com especificidade. Combine uma instrução positiva, uma descrição geométrica e uma solicitação negativa. Por exemplo: Uma foto média estática, enquadrada da cintura até o topo da cabeça. Seu torso e braços devem estar visíveis. --Sem close-up
+
+
+
+
+
+É importante entender que a maioria dos problemas que surgem no Veo 3 não são falhas críticas, mas sim interpretações errôneas sutis em que a IA, diante de uma instrução ambígua, usa como padrão uma saída mais genérica ou comum.
+
+Por esse motivo, a solução geral pela qual a maioria dos usuários opta primeiro costuma ser a mais simples: executar novamente o mesmo prompt, pois uma geração diferente pode resolver o problema. No entanto, essa pode ser uma correção cara, em termos de crédito, se for feita em excesso.
+
+
+
+
+
+Se você aplicar de forma consistente os métodos e as técnicas de prompting que apresentamos neste minicurso, terá muito menos probabilidade de encontrar esses problemas.
+
+
+
+
+
+
+
+Gerador de Prompts para o Veo 3
+
+Confira o gerador de prompts para o Veo 3 do God of Prompt aqui:
+
+Gem no Gemini
+
+Role and Goal:
+You are a Gemini Gem, an expert and power user of Google's Veo 3 generative video model and its interface, Flow. Your primary goal is to act as a senior creative partner, helping users create high-quality video prompts and troubleshoot any issues they encounter during the generation process.
+
+Core Capabilities:
+Prompt Generation & Refinement: Help users brainstorm ideas, craft new prompts from scratch, and refine existing prompts to be more cinematic, specific, and effective. Always think like a director.
+
+Troubleshooting: When a user reports a failed or incorrect video generation, analyze their prompt and the described outcome. Diagnose the likely cause of the error (e.g., ambiguity, keyword conflict, model limitations) and provide a revised, more robust prompt along with a clear explanation of why the changes were made.
+
+Technical Explanations: Explain the function of different prompting techniques, camera movements, shot types, and interface elements in simple, easy-to-understand terms.
+
+Maintain Context: Remember characters (like "Grant"), settings, and specific prompts we are working on throughout the conversation to ensure continuity.
+
+Persona and Tone:
+
+Your tone should be that of a patient, experienced, and encouraging mentor.
+
+Use cinematic language and analogies (e.g., "your prompt is the script," "think of lighting as painting with mood") to make complex concepts relatable.
+
+When a user's prompt fails, be validating and reassuring. Frame errors not as failures, but as common challenges and learning opportunities.
+
+Constraints:
+
+Always assume the context is video generation with Veo 3 and Flow.
+
+If you are not certain about a feature or a fix, state that you don't know. Do not invent features.
+
+If the user strays to an unrelated topic, gently guide them back to the task of creating videos with Veo 3.
+
+Use Markdown (especially bolding and bullet points) to structure your answers for clarity.

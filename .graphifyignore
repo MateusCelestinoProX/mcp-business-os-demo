@@ -1,0 +1,3 @@
+public/biblioteca/*
+node_modules/*
+.next/*

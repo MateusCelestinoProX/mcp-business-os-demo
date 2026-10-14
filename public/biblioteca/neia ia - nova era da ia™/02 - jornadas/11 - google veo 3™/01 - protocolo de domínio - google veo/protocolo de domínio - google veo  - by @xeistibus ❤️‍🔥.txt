@@ -1,0 +1,135 @@
+Protocolo de Domínio - Google Veo
+
+
+O que é o Google Veo?
+O Veo é o mais recente modelo de geração de vídeo com IA do Google que permite aos usuários criar vídeos de alta qualidade a partir de um simples texto ou imagem. Ele é conhecido por sua capacidade de produzir visuais de 1080p com física realista e áudio nativo, incluindo diálogo sincronizado, efeitos sonoros e música de fundo.
+
+Ele foi projetado para oferecer aos criadores um alto grau de controle, permitindo que eles produzam narrativas atraentes e cenas cinematográficas sem a necessidade de amplos recursos de produção de vídeo.
+
+Principais recursos:
+Geração de áudio nativo: 
+
+O Veo pode gerar e sincronizar diálogos, efeitos sonoros e música de fundo diretamente no vídeo, o que é um avanço significativo em relação aos modelos que produzem apenas vídeos silenciosos.
+
+Esse clipe, que apresenta o personagem 'Grant', foi gerado inteiramente pelo Veo 3 para demonstrar suas habilidades avançadas de áudio e criação de personagens. Ele destaca duas áreas principais: Áudio de alta fidelidade (observe a clareza e a nitidez de seu sussurro, sem distorção) e sincronização labial precisa (observe como os movimentos da boca correspondem precisamente às palavras sussurradas).
+
+
+Vídeo 01
+
+
+
+
+Alta fidelidade visual:
+
+
+
+O modelo produz vídeos com resolução de 1080p e é conhecido por sua capacidade de criar física realista, movimentos naturais e visuais detalhados
+
+Vídeo 02
+
+Este clipe, gerado inteiramente pelo Veo 3, demonstra o domínio do modelo em detalhes realistas. Observe os três elementos principais: Visuais detal hados na pele cerosa da fruta e na condensação do vidro, física realista do respingo e da carbonatação borbulhante e o movimento natural da fruta afundando na água.
+
+Este clipe, gerado inteiramente pelo Veo 3, demonstra o domínio do modelo em detalhes realistas. Observe os três elementos principais: Visuais detal hados na pele cerosa da fruta e na condensação do vidro, física realista do respingo e da carbonatação borbulhante e o movimento natural da fruta afundando na água.
+
+Generate image-upload
+
+Os ingredientes da imagem são gerados no Flow.
+
+Vídeo 03
+
+O vídeo gerado usando as imagens.
+
+
+
+Essa sequência de ação foi gerada no Flow com o Veo 2 usando duas imagens separadas como ponto de partida: uma para o personagem e outra para a arma. É um excelente exemplo da capacidade do modelo de combinar entradas e criar cenas dinâmicas, destacando duas áreas principais: Combinação multimodal (observe como a IA integrou perfeitamente o personagem e a katana em chamas em uma única cena) e Animação dinâmica (observe o movimento fluido do corte da espada).
+
+
+
+Adesão aprimorada ao prompt:
+
+
+
+O Veo 3 foi projetado para entender e seguir melhor os prompts de texto complexos e detalhados, oferecendo aos criadores um controle mais preciso sobre o resultado final.
+
+Vídeo 04
+
+Prompt:
+
+A single, continuous shot in a minimalist, modern room with clean lines and sparse furniture. The lighting is soft and even. Our character, Grant—a 50-year-old man with a long white beard and hair, wearing a simple, dark cashmere sweater—sits in a sleek armchair.
+
+He slowly picks up a small, antique brass compass from a side table. His expression is neutral as he looks at it. The camera begins a slow, tight push-in on his face.
+
+As the camera moves, execute a dramatic dolly zoom (a "Vertigo shot"). The background appears to stretch away from him while his face remains the same size in the frame, visually representing a sudden, profound internal realization. His eyes widen slightly.
+
+At the peak of the dolly zoom, execute a seamless rack focus. The focus pulls sharply from Grant's face to the blank, white wall directly behind him. As the wall comes into focus, it simultaneously dissolves, becoming a window into a chaotic memory: a photorealistic, three-masted schooner pitching violently on a dark, stormy sea at night. Waves crash over the deck, and rain lashes down. The sound of howling wind and thunder subtly fades in.
+
+The clip ends on this powerful, superimposed image, with Grant's out-of-focus silhouette still visible in the foreground.
+
+
+
+
+Fazer com que o vídeo corresponda à sua visão pode exigir algumas iterações e refinamentos. Mais adiante neste guia, abordaremos com mais detalhes a otimização de prompts e técnicas mais avançadas de construção de cenas.
+
+
+
+Controle criativo:
+
+
+
+O Veo 3 oferece recursos como inpainting e scenebuilder, que permitem um controle mais modular sobre diferentes aspectos do vídeo, desde a edição de uma parte específica de um quadro até a manutenção da consistência dos personagens em várias tomadas.
+
+O Scenebuilder é uma interface baseada em linha do tempo que permite dirigir vídeos complexos e com várias tomadas, atribuindo um prompt exclusivo a cada tomada individual e garantindo a consistência visual em toda a sequência.
+
+
+
+Exploraremos o Scenebuilder em mais detalhes posteriormente neste guia.
+
+
+
+
+
+
+
+Modelos do Veo
+
+Atualmente, o Veo 3 tem dois modelos: Fast e Quality.
+
+
+
+
+
+Veo 3 - Qualidade: Esse é o modelo padrão e de última geração. Leva mais tempo para gerar um vídeo, mas produz a mais alta qualidade possível, com física mais precisa, melhor iluminação, detalhes mais intrincados e maior aderência a prompts complexos. Esse modelo é usado quando você está criando uma tomada final para o seu projeto.
+
+
+
+Veo 3 - Rápido: Esta é uma versão mais leve e otimizada do modelo. Ela gera vídeos significativamente mais rápidos, mas ao custo de alguns detalhes visuais e complexidade. Ele é usado para prototipagem rápida, teste de uma ideia imediata ou verificação rápida de um ângulo de câmera antes de se comprometer com uma renderização mais longa e de maior qualidade.
+
+
+
+
+
+Há também modelos mais antigos disponíveis na interface Flow, como o Veo 2 Fast e o Quality.
+
+Por que usar o Veo 3?
+
+
+
+
+
+Se você é um profissional de marketing de conteúdo ou proprietário de uma pequena empresa, o Veo 3 permite produzir rapidamente vídeos de alta qualidade e aparência profissional para campanhas publicitárias e mídias sociais. Você pode gerar diversas variações de um único conceito em uma fração do tempo e do custo que seriam necessários com os métodos de produção tradicionais.
+
+
+
+
+
+
+
+Se você for um cineasta ou animador, o Veo 3 oferece controle criativo avançado e ferramentas para manter a consistência entre as cenas. É possível usar os recursos para controlar os movimentos da câmera, animar imagens existentes e garantir a consistência dos personagens, o que ajuda na criação de storyboards e na visualização de ideias cinematográficas complexas sem uma equipe de produção completa.
+
+
+
+
+
+
+
+Se você for um educador ou designer instrucional, o Veo 3 simplifica a criação de materiais de aprendizagem envolventes e dinâmicos. Você pode gerar facilmente videoclipes curtos e visualmente atraentes com diálogos sincronizados e efeitos sonoros para ilustrar tópicos complexos, criar explicadores animados ou criar módulos de treinamento interativos.

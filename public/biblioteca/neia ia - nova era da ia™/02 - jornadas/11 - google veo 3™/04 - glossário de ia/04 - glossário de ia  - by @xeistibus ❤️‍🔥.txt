@@ -1,0 +1,409 @@
+04 - Tokens de instrução: Um trecho de texto que informa a um modelo de IA o que fazer ou como responder.
+
+
+
+
+
+Biblioteca de prompts: Uma coleção selecionada de prompts pré-escritos que os usuários podem consultar ou reutilizar para gerar resultados consistentes e eficazes.
+
+
+
+
+
+Tokens de contexto: Uma unidade de texto que a IA usa para entender a conversa até o momento, incluindo mensagens, instruções ou referências anteriores.
+
+
+
+
+
+Depuração de prompts: O processo de analisar e refinar um prompt para obter respostas mais claras, mais precisas ou mais úteis de uma IA.
+
+
+
+
+
+Modelo de linguagem grande: Um sistema de IA treinado em grandes quantidades de dados de texto para gerar linguagem semelhante à humana e entender instruções complexas.
+
+
+
+
+
+Gemini: família de modelos de IA de ponta do Google DeepMind que compreende e gera texto, imagens, áudio, vídeo e código em uma única estrutura.
+
+
+
+
+
+Google: Empresa multinacional americana de tecnologia conhecida principalmente por seu mecanismo de busca, que tem como objetivo organizar as informações do mundo e torná-las universalmente acessíveis e úteis.
+
+
+
+
+
+Imagen: Uma série de modelos de texto para imagem desenvolvidos pelo Google DeepMind que geram imagens fotorrealistas de alta qualidade a partir de solicitações de texto em linguagem natural.
+
+
+
+
+
+Prompting multimodal: O processo de interagir com um modelo de IA usando vários tipos de entrada - como texto, imagens, áudio ou vídeo - em um único prompt para receber uma resposta coesa e ciente do contexto.
+
+
+
+
+
+IA (Inteligência Artificial): A simulação da inteligência humana em máquinas que podem executar tarefas e aprender com a experiência.
+
+
+
+
+
+Android: Um sistema operacional móvel desenvolvido pelo Google, baseado em uma versão modificada do kernel do Linux e em outros softwares de código aberto, projetado principalmente para dispositivos móveis baseados em telas sensíveis ao toque, como smartphones e tablets.
+
+
+
+
+
+Prompt: Uma declaração ou pergunta dada a um modelo de IA para orientar sua resposta ou comportamento.
+
+
+
+
+
+Engenharia de prompts: O processo de projetar, refinar e otimizar prompts para obter os resultados desejados dos modelos de IA.
+
+
+
+
+
+Backwards Design: Uma abordagem ao design instrucional que começa com os resultados de aprendizagem desejados e trabalha de trás para frente para criar atividades e módulos.
+
+
+
+
+
+Aprendizagem baseada em projetos: Uma abordagem educacional em que os alunos aprendem por meio de projetos do mundo real, promovendo o pensamento crítico e as habilidades de resolução de problemas.
+
+
+
+
+
+Resultado: O resultado ou objetivo desejado de uma experiência ou projeto de aprendizagem.
+
+
+
+
+
+Módulo: Uma unidade autônoma em um curso que se concentra em um tópico específico ou em um conjunto de tópicos relacionados.
+
+
+
+
+
+Objetivos de aprendizado: Declarações claras e mensuráveis que descrevem o que os alunos devem ser capazes de fazer ou entender após a conclusão de uma lição ou módulo.
+
+
+
+
+
+Exemplos do mundo real: Instâncias ou cenários da vida cotidiana que ilustram a aplicação de conceitos ou princípios.
+
+
+
+
+
+Atividades: Tarefas ou exercícios envolventes criados para reforçar o aprendizado e aplicar o conhecimento de forma prática.
+
+
+
+
+
+Instruções passo a passo: Instruções claras e sequenciais que orientam os alunos em uma atividade ou processo.
+
+
+
+
+
+Roteiro de vídeo: Um documento escrito que descreve o conteúdo e a estrutura de uma videoaula, garantindo uma apresentação clara e organizada.
+
+
+
+
+
+Perguntas para discussão: Perguntas instigantes que levam os alunos a se envolverem em pensamento crítico, reflexão e discussão.
+
+
+
+
+
+Expandir o aprendizado: Sugestões ou oportunidades para que os alunos explorem recursos adicionais ou ampliem sua compreensão além do material principal.
+
+
+
+
+
+Complexidade: O nível de complexidade, dificuldade ou sofisticação do conteúdo ou das tarefas apresentadas aos alunos.
+
+
+
+
+
+Variedade de frases: O uso de diferentes estruturas, comprimentos e estilos de frases para acrescentar variedade e interesse ao conteúdo escrito ou falado.
+
+
+
+
+
+Explosão: Uma mistura de frases curtas e longas que adiciona ritmo e ênfase à comunicação escrita ou falada.
+
+
+
+
+
+Refinamento iterativo: Um processo de melhoria ou ajuste contínuo dos prompts com base em feedback e avaliação.
+
+
+
+
+
+Prompts de várias voltas: Prompts que envolvem várias interações ou trocas com um modelo de IA, criando uma experiência de conversação.
+
+
+
+
+
+Profundidade da conversa: O nível de engajamento e interação de ida e volta obtido por meio de prompts de várias voltas.
+
+
+
+
+
+Análise de resposta de IA: O exame e a avaliação dos resultados gerados por um modelo de IA em resposta a diferentes prompts.
+
+
+
+
+
+Saídas seguras: Respostas de IA que aderem às diretrizes éticas e não causam danos ou riscos aos usuários ou à sociedade.
+
+
+
+
+
+Prompts específicos de domínio: Prompts adaptados a setores, campos ou áreas temáticas específicos para gerar resultados contextualmente relevantes.
+
+
+
+
+
+Prompts criativos: Prompts criados para estimular resultados de IA imaginativos e artísticos, como narração de histórias, poesia ou música.
+
+
+
+
+
+Considerações éticas: Os princípios éticos e as implicações que surgem no design e no uso de prompts de IA.
+
+
+
+
+
+Uso indevido de IA: As consequências prejudiciais ou não intencionais que podem ocorrer quando os prompts de IA são usados de forma inadequada ou maliciosa.
+
+
+
+
+
+Privacidade: A proteção de informações e dados pessoais nas interações de IA, garantindo a confidencialidade do usuário.
+
+
+
+
+
+Equidade: Garantir que os prompts e as respostas da IA sejam livres de preconceitos e tratem todos os indivíduos de forma equitativa.
+
+
+
+
+
+Prestação de contas: A responsabilidade e a propriedade dos resultados e do impacto dos prompts de IA e de seus produtos resultantes.
+
+
+
+
+
+Impacto social: A influência e as consequências mais amplas dos prompts de IA na sociedade, incluindo aspectos sociais, econômicos e culturais.
+
+
+
+
+
+Diretrizes do projeto: Instruções e requisitos específicos para o projeto principal, fornecendo uma estrutura para a implementação.
+
+
+
+
+
+Revisão: Uma avaliação abrangente ou recapitulação do material do curso, reforçando os principais conceitos e resumindo a jornada de aprendizado.
+
+
+
+
+
+Projeto Capstone: O projeto final que integra o conhecimento e as habilidades adquiridas ao longo do curso, aplicando a engenharia imediata a um cenário do mundo real.
+
+
+
+
+
+Roteiro: Um guia visual ou escrito que descreve as etapas sequenciais e os marcos de um projeto ou jornada de aprendizado.
+
+
+
+
+
+Gerente de projeto especializado: Um indivíduo que supervisiona o planejamento, a execução e a entrega de um projeto, garantindo seu sucesso e o cumprimento dos cronogramas.
+
+
+
+
+
+Conselhos acionáveis: Recomendações ou sugestões práticas que podem ser implementadas para atingir metas ou resultados específicos.
+
+
+
+
+
+Plano de projeto: Um documento detalhado que descreve os objetivos, as tarefas, os cronogramas e os recursos necessários para a execução bem-sucedida de um projeto.
+
+
+
+
+
+Métodos de avaliação: Técnicas e critérios usados para avaliar a eficácia, a qualidade ou o impacto de prompts e respostas de IA.
+
+
+
+
+
+Documentação: O processo de registro e manutenção de registros das atividades, observações, percepções e resultados do projeto.
+
+
+
+
+
+Processo iterativo: Uma abordagem cíclica em que melhorias e ajustes são feitos por meio de ciclos repetidos de avaliação e refinamento.
+
+
+
+
+
+Preconceito: preconceito ou favoritismo que pode ser introduzido de forma não intencional nos prompts de IA, levando a resultados tendenciosos ou comportamento discriminatório.
+
+
+
+
+
+Inclusão: Garantir que os prompts e as respostas da IA sejam acessíveis e inclusivos para indivíduos de diversas origens e habilidades.
+
+
+
+
+
+Iteração: Cada ciclo ou rodada de refinamento e melhoria de prompts e respostas de IA com base em feedback e avaliação.
+
+
+
+
+
+Adaptação: A capacidade de ajustar e modificar prompts e estratégias com base em novas informações, mudanças nas circunstâncias ou requisitos em evolução.
+
+
+
+
+
+Material básico: O conteúdo e os conceitos fundamentais abordados no curso, formando a base para o aprendizado e o desenvolvimento de habilidades.
+
+
+
+
+
+Aprendizado contínuo: A busca contínua de conhecimento e desenvolvimento de habilidades além do escopo do curso, mantendo-se atualizado sobre os avanços na engenharia de prompts.
+
+
+
+
+
+Solução de prompts: O conjunto completo de prompts projetado para resolver um problema específico ou alcançar um resultado desejado.
+
+
+
+
+
+Experiência do usuário: A experiência geral e a satisfação dos usuários ao interagir com prompts de IA e os resultados resultantes.
+
+
+
+
+
+Melhores práticas: Métodos ou abordagens estabelecidos que comprovadamente são eficazes e produzem resultados de alta qualidade na engenharia de prompts.
+
+
+
+
+
+Engenheiro de prompts: Um profissional especializado em design, desenvolvimento e refinamento de prompts para modelos de IA
+
+
+
+
+
+Elaboração de prompts: A habilidade de formular cuidadosamente prompts para obter respostas específicas ou orientar o comportamento de modelos de IA.
+
+
+
+
+
+Prompting de disparo zero: A solicitação direta (também conhecida como Zero-shot) é o tipo mais simples de solicitação. Ele não fornece exemplos para o modelo, apenas a instrução. Você também pode formular a instrução como uma pergunta ou dar ao modelo uma "função", como visto no segundo exemplo abaixo
+
+
+
+
+
+Prompting de cadeia de raciocínio (C-o-T): No prompting de cadeia de raciocínio, a pergunta de entrada é seguida por uma série de etapas intermediárias de raciocínio em linguagem natural que levam à resposta final. Pense nisso como a divisão de uma tarefa complicada em partes pequenas e lógicas.
+
+
+
+
+
+Prompting de cadeia de raciocínio multimodal (CoT): Uma técnica avançada de prompting em que um modelo de IA é orientado a raciocinar passo a passo em vários tipos de entrada, como texto, imagens, áudio ou vídeo, para solucionar problemas complexos ou gerar respostas mais ricas e conscientes do contexto.
+
+
+
+
+
+Prompting da árvore do pensamento (T-o-T):
+
+A eficácia do prompting CoT vem de sua capacidade de dividir uma solução de problema complexa em uma sequência de etapas menores e mais simples. O estímulo da árvore de pensamentos (ToT) também divide um problema em uma sequência de etapas menores - ou pensamentos - quesão resolvidos individualmente. Entretanto, a abordagem não restringe o modelo a produzir essas etapas de uma só vez. Em vez disso, cada pensamento é gerado ou resolvido de forma independente e passado para a próxima etapa da solução do problema, o que permite ao modelo
+
+
+
+
+
+Explorar várias opções para cada pensamento de solução de problemas.
+
+
+
+Avaliar se determinados pensamentos aproximam o modelo de uma solução final.
+
+
+
+Realizar o retrocesso quando determinados pensamentos forem considerados um beco sem saída.
+
+
+
+Pesquisar em um espaço combinatório de possíveis etapas de solução de problemas para encontrar a melhor solução final. </aside>
+
+
+
+Observe que este glossário oferece uma lista abrangente de termos relacionados à engenharia de prompt, garantindo que os alunos tenham uma compreensão clara dos principais conceitos e da terminologia usados no curso. Se tiver mais alguma dúvida ou precisar que outros termos sejam acrescentados ao glossário, entre em contato comigo.

@@ -1,0 +1,21 @@
+Aulas
+
+2.1 - Desenvolvendo a nossa Primeira Ferramenta apenas Conversando com a Máquina
+
+https://www.loom.com/share/f62a536a626b4e628a2028fc8afc4b69
+
+Google AI Studio:
+
+https://aistudio.google.com
+
+2.2 - Acelerando o Desenvolvimento da Ferramenta: do MVP ao Controle Total com Vibe Coding
+
+https://www.loom.com/share/d28c703e302446e8a7a8155084618bf9
+
+IDE WINDSURF:
+
+https://windsurf.com/
+
+CODEX:
+
+https://openai.com/pt-BR/index/introducing-codex/

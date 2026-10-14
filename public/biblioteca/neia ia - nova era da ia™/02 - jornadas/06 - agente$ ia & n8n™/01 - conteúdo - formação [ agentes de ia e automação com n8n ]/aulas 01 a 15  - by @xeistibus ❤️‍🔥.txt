@@ -1,0 +1,63 @@
+Aulas 01 a 15
+
+01. O que são Agentes de IA
+
+https://www.loom.com/share/682628aa6efe451ba0c01a8141f3edc8
+
+02. Engenharia de Prompt
+
+https://www.loom.com/share/0a06103b523f461fb991569db87c2e12
+
+03. Ferramentas No Code/Low Code para Agentes
+
+https://www.loom.com/share/fbbb16b61fe54a34b8839ced794657f8
+
+04. Instalando o N8N
+
+https://www.loom.com/share/a1c70d8704ec43618d8baf2a9edb8b84
+
+https://bit.ly/4t2Ll97
+
+05. Overview N8N
+
+https://www.loom.com/share/d4998c953aae4930a68b8e09e564f1f9
+
+06. API Oficial vs NÃO oficial
+
+https://www.loom.com/share/f7b251e81ef24a3f986e0896b2bfedce
+
+07. Conectando o WhatsApp no N8N
+
+https://www.loom.com/share/85fe3503f89b451b89cf007909a0258a
+
+08. Importando o Agente e adicionando memória
+
+https://www.loom.com/share/0ee6ce3e63cb413bbec5692691014283
+
+09. Adicionando chave de API da OpenAI
+
+https://www.loom.com/share/878e4e9fecb6465084bd48699542fb42
+
+10. Agrupamento de Mensagens
+
+https://www.loom.com/share/c3f78317966749e886a862b9b516b038
+
+11. Reconhecimento de Áudios
+
+https://www.loom.com/share/0a51045f4c7d44c4a86cb6ee0c0f3cf3
+
+12. Quebra de Texto na Resposta do Agente
+
+https://www.loom.com/share/b5c0350c86d94b1db16865a4b4bfa4c3
+
+13. Envio de Mídia no WhatsApp
+
+https://www.loom.com/share/47846aa3f725489e9264d77981553979
+
+14. Conectando Google Calendar e Registrando Reuniões
+
+https://www.loom.com/share/92d85f772b8c4a5785e295db6995800b
+
+15. Colocando o agente no ar
+
+https://www.loom.com/share/4a02cc882238491ba5587bc30833ebac

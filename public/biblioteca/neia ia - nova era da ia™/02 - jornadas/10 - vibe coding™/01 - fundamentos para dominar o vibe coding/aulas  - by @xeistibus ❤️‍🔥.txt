@@ -1,0 +1,26 @@
+Aulas
+
+1.1 - Vibe Coding: A Arte de Criar Aplicações apenas Conversando com a IA
+
+https://www.loom.com/share/2246acfd73c0425a90294fb895ab5c03
+
+Nessa aula você vai entender, de forma prática, o que é vibe-coding: a arte de criar aplicações, sites e sistemas apenas conversando com a IA, mesmo que você não saiba nada sobre programação.
+
+Vamos falar sobre como transformar ideias em produtos (MVP), usando prompts bem estruturados, entender o papel da IA no processo (ela escreve o código, você define a visão) e os cuidados essenciais com segurança e dados.
+
+Ao final, você terá clareza sobre o fluxo completo, da ideia ao deploy, e como usar vibe-coding a seu favor para construir coisas incríveis.
+
+
+
+Material Complementar:
+https://whimsical.com/aula-01-T3maaDDcwaJZHfxK1u24Mb
+
+1.2 - Explorando Possibilidades de Monetização através do Vibe Coding
+
+https://www.loom.com/share/89bb9a6f66f143fe8d0ef84160f63fc0
+
+Nessa aula você entra na parte prática do vibe coding.
+
+Vamos pegar uma ideia simples e transformar em uma aplicação real: uma ferramenta que usa o modelo Nano Banana para gerar fotos profissionais a partir de uma imagem enviada pelo usuário.
+
+Você vai ver como descrever a lógica em linguagem humana, deixar a IA cuidar do código, ajustar interface, testar o fluxo e já enxergar formas de monetizar isso na vida real, seja criando MVPs rápidos, prestando serviços como freela ou lançando produtos digitais.

@@ -1,0 +1,655 @@
+AULA 1 — INFLUENCER$ IA™ // [ O PROTOCOLO ]
+
+https://www.loom.com/share/b392b4f64c2348c496e6c9886078df75
+
+Objetivo da Aula
+
+Ensinar como escolher a imagem de referência que vai servir de base para gerar sua influenciadora IA — com intenção, agilidade e estética compatível com o que você quer alcançar.
+
+
+
+Essa imagem não é usada para ser copiada.
+
+
+
+Ela é usada como inspiração estética para engenharia reversa.
+
+
+
+Você vai extrair o espírito visual dela e transformar em presença digital.
+
+
+
+Ferramentas usadas
+
+
+
+
+
+pinterest.com
+
+
+
+Pasta pessoal no Pinterest (opcional)
+
+
+
+Navegador aberto no desktop
+
+
+
+Agente MIRR0R™ (acessado via ChatGPT com suporte a imagem)
+
+
+
+Antes de buscar qualquer imagem
+
+Você PRECISA saber o que quer criar.
+
+
+
+A maioria trava porque começa a buscar sem clareza.
+
+
+
+E aí se afoga num mar de imagens bonitas, mas desconectadas.
+
+Pergunte antes:
+
+
+
+
+
+Eu quero uma IA em clima casual?
+
+
+
+Estou criando uma personagem de selfie? Lifestyle? Anúncio?
+
+
+
+Quero algo sorridente? Neutro? Misterioso?
+
+Exemplo de intenção clara:
+
+
+
+“Quero gerar uma IA que pareça estar fazendo um vídeo selfie de produto, com uma vibe natural, fundo limpo e roupa clara.”
+
+
+
+Passo a passo — Buscando no Pinterest
+
+
+
+
+
+Acesse o Pinterest.com
+
+→ Faça login na sua conta (se tiver pastas salvas)
+
+
+
+Pesquise por palavras-chave específicas
+
+Exemplos:
+
+
+
+
+
+“Girl aesthetic”
+
+
+
+“Influencer selfie”
+
+
+
+“Mirror photo”
+
+
+
+“Cozy lifestyle girl”
+
+
+
+“Outdoor fashion girl”
+
+
+
+“Beauty product girl holding phone”
+
+
+
+Clique nas imagens que te chamarem atenção
+
+O Pinterest vai abrir sugestões com base naquela.
+
+Isso te ajuda a encontrar versões melhores da mesma imagem ou com estilo parecido.
+
+
+
+Crie uma pasta (opcional)
+
+Você pode organizar por:
+
+
+
+
+
+Selfies
+
+
+
+Lifestyle
+
+
+
+Produtos
+
+
+
+Cenas externas
+
+
+
+Curadoria realista
+
+
+
+
+
+Você não precisa salvar tudo
+
+
+
+Vá filtrando: geralmente até 5 imagens por busca já são mais que suficientes
+
+
+
+Imagens que você deve evitar
+
+
+
+
+
+Baixa qualidade / pixeladas
+
+
+
+Editadas demais / com filtros pesados
+
+
+
+Com muitos elementos no fundo (poluição visual)
+
+
+
+Muito “posadas” / com estética de ensaio profissional
+
+
+
+Imagens que parecem banco de imagem genérico
+
+
+
+Rosto muito pequeno ou virado demais
+
+
+
+O que você busca na imagem
+
+
+
+
+
+Uma estética que comunique intenção
+
+
+
+Boa luz e ângulo
+
+
+
+Cores coerentes com a ideia
+
+
+
+Pose ou expressão que já sugira a vibe da IA que você quer criar
+
+
+
+Modelo que seja atraente ou intrigante o suficiente pra gerar presença real
+
+
+
+A imagem não precisa estar perfeita.
+
+
+
+Ela precisa ser
+
+visualizável
+
+
+
+Dica de ouro
+
+Quando clicar em uma imagem que você gostou,
+
+olhe as imagens relacionadas que o Pinterest mostrar embaixo.
+
+Ali quase sempre aparecem:
+
+
+
+
+
+Mesma foto em melhor resolução
+
+
+
+Fotos da mesma sessão / estilo / pessoa
+
+
+
+Cenas parecidas com composição mais limpa
+
+
+
+Como você envia a imagem para o MIRR0R™
+
+
+
+
+
+Não precisa baixar a imagem.
+
+
+
+No desktop, clique com o botão direito > “Copiar imagem”
+
+
+
+Abra o agente MIRR0R™
+
+
+
+Cole a imagem (Ctrl + V / Cmd + V) direto no prompt
+
+Pronto. A imagem vai ser lida pelo agente e transformada em um prompt JSON para gerar a IA visual na próxima etapa.
+
+
+
+Observações finais
+
+
+
+
+
+Você pode usar a mesma imagem várias vezes com prompts diferentes
+
+
+
+Ou pode usar a mesma IA para criar novos contextos e roupas
+
+
+
+Pode misturar duas ou mais imagens para fundir referências visuais (avançado, mas funcional)
+
+
+
+Resultado esperado ao final da aula:
+
+
+
+
+
+Você selecionou de 1 a 3 imagens reais com intenção definida
+
+
+
+Entendeu o que evita e o que prioriza
+
+
+
+Tem ao menos 1 imagem pronta pra jogar no MIRR0R™
+
+----- AULA 2 — DNA VISUAL™
+
+https://www.loom.com/share/ebb0ec2c936f4d62b2af76114632246e
+
+Objetivo da Aula
+
+Ensinar como escolher a imagem de referência que vai servir de base para gerar sua influenciadora IA — com intenção, agilidade e estética compatível com o que você quer alcançar.
+
+
+
+Essa imagem não é usada para ser copiada.
+
+
+
+Ela é usada como inspiração estética para engenharia reversa.
+
+
+
+Você vai extrair o espírito visual dela e transformar em presença digital.
+
+
+
+Ferramentas usadas
+
+
+
+
+
+Pinterest.com
+
+
+
+Pasta pessoal no Pinterest (opcional)
+
+
+
+Navegador aberto no desktop
+
+
+
+Agente MIRR0R™ (acessado via ChatGPT com suporte a imagem)
+
+
+
+Antes de buscar qualquer imagem
+
+Você PRECISA saber o que quer criar.
+
+
+
+A maioria trava porque começa a buscar sem clareza.
+
+
+
+E aí se afoga num mar de imagens bonitas, mas desconectadas.
+
+Pergunte antes:
+
+
+
+
+
+Eu quero uma IA em clima casual?
+
+
+
+Estou criando uma personagem de selfie? Lifestyle? Anúncio?
+
+
+
+Quero algo sorridente? Neutro? Misterioso?
+
+Exemplo de intenção clara:
+
+
+
+“Quero gerar uma IA que pareça estar fazendo um vídeo selfie de produto, com uma vibe natural, fundo limpo e roupa clara.”
+
+
+
+Passo a passo — Buscando no Pinterest
+
+
+
+
+
+Acesse o Pinterest.com
+
+→ Faça login na sua conta (se tiver pastas salvas)
+
+
+
+Pesquise por palavras-chave específicas
+
+Exemplos:
+
+
+
+
+
+“Girl aesthetic”
+
+
+
+“Influencer selfie”
+
+
+
+“Mirror photo”
+
+
+
+“Cozy lifestyle girl”
+
+
+
+“Outdoor fashion girl”
+
+
+
+“Beauty product girl holding phone”
+
+
+
+Clique nas imagens que te chamarem atenção
+
+O Pinterest vai abrir sugestões com base naquela.
+
+Isso te ajuda a encontrar versões melhores da mesma imagem ou com estilo parecido.
+
+
+
+Crie uma pasta (opcional)
+
+Você pode organizar por:
+
+
+
+
+
+Selfies
+
+
+
+Lifestyle
+
+
+
+Produtos
+
+
+
+Cenas externas
+
+
+
+Curadoria realista
+
+
+
+
+
+Você não precisa salvar tudo
+
+
+
+Vá filtrando: geralmente até 5 imagens por busca já são mais que suficientes
+
+
+
+Imagens que você deve evitar
+
+
+
+
+
+Baixa qualidade / pixeladas
+
+
+
+Editadas demais / com filtros pesados
+
+
+
+Com muitos elementos no fundo (poluição visual)
+
+
+
+Muito “posadas” / com estética de ensaio profissional
+
+
+
+Imagens que parecem banco de imagem genérico
+
+
+
+Rosto muito pequeno ou virado demais
+
+
+
+O que você busca na imagem
+
+
+
+
+
+Uma estética que comunique intenção
+
+
+
+Boa luz e ângulo
+
+
+
+Cores coerentes com a ideia
+
+
+
+Pose ou expressão que já sugira a vibe da IA que você quer criar
+
+
+
+Modelo que seja atraente ou intrigante o suficiente pra gerar presença real
+
+
+
+A imagem não precisa estar perfeita.
+
+
+
+Ela precisa ser
+
+visualizável
+
+
+
+Dica de ouro
+
+Quando clicar em uma imagem que você gostou,
+
+olhe as imagens relacionadas que o Pinterest mostrar embaixo.
+
+Ali quase sempre aparecem:
+
+
+
+
+
+Mesma foto em melhor resolução
+
+
+
+Fotos da mesma sessão / estilo / pessoa
+
+
+
+Cenas parecidas com composição mais limpa
+
+
+
+Como você envia a imagem para o MIRR0R™
+
+
+
+
+
+Não precisa baixar a imagem.
+
+
+
+No desktop, clique com o botão direito > “Copiar imagem”
+
+
+
+Abra o agente MIRR0R™
+
+
+
+Cole a imagem (Ctrl + V / Cmd + V) direto no prompt
+
+Pronto. A imagem vai ser lida pelo agente e transformada em um prompt JSON para gerar a IA visual na próxima etapa.
+
+
+
+Observações finais
+
+
+
+
+
+Você pode usar a mesma imagem várias vezes com prompts diferentes
+
+
+
+Ou pode usar a mesma IA para criar novos contextos e roupas
+
+
+
+Pode misturar duas ou mais imagens para fundir referências visuais (avançado, mas funcional)
+
+
+
+Resultado esperado ao final da aula:
+
+
+
+
+
+Você selecionou de 1 a 3 imagens reais com intenção definida
+
+
+
+Entendeu o que evita e o que prioriza
+
+
+
+Tem ao menos 1 imagem pronta pra jogar no MIRR0R™
+
+
+
+PROMPT MIRROR
+
+
+
+Vou te enviar uma imagem para servir como referência-mãe.
+
+Use o SEU fluxo normal de análise visual e engenharia reversa, mas com estas prioridades explícitas:
+
+1. Fidelidade visual absoluta - Sempre que tiver escolha entre ser genérico ou específico, escolha o específico. - Descreva o que você vê, não o que você supõe. - Não tente “embelezar” ou otimizar a cena; o objetivo é capturar com máxima precisão como a imagem realmente é.
+
+2. Detalhamento máximo onde houver informação - Se a imagem te permite ver textura, nuance de cor, microdetalhes de pele, tecido, reflexo, expressão ou cenário, você deve levar isso em conta nas descrições internas. - Evite termos vagos como “nice”, “cool”, “beautiful” e prefira descrições concretas de forma, cor, material, luz e expressão.
+
+3. Zero extrapolação de contexto - Não invente história, localização, marca, época, profissão, relação entre pessoas ou narrativa. - Trabalhe apenas com o que está visualmente presente no quadro.
+
+4. Idioma da saída - Mesmo que este comando esteja em português, todas as descrições de texto que você gerar dentro do seu formato de saída padrão devem estar em inglês natural, como se fossem prompts prontos para modelos de geração de imagem.
+
+5. Formato de resposta - Não me envie explicações em prosa nem comentários. - Depois de aplicar essas prioridades no seu processamento interno, devolva apenas o seu objeto de saída padrão, já ajustado a essas instruções, com todo o conteúdo descritivo em inglês.

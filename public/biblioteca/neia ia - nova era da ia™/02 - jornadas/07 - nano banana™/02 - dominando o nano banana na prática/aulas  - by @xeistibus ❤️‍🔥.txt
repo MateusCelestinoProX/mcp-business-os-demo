@@ -1,0 +1,962 @@
+Aulas 
+
+2.1 - Criação de Fotografias Profissionais com o Nano Banana + PROMPTS
+
+https://www.loom.com/share/fd744d93c405482388001b8b56ab16fc
+
+Prompt Exemplo 01
+
+{
+  "prompt_composition": {
+    "subject": {
+      "description": "A young man with a striking, pale complexion and subtle natural skin texture.",
+      "hair": "Short to medium-length dark black hair, slightly wavy, with a natural, lightly windblown texture.",
+      "eyes": "Piercing dark eyes looking directly into the camera lens with a calm, intense gaze.",
+      "skin_details": "Highly detailed male skin texture showing pores, natural imperfections, and grains of wet sand clinging to his shins, knees, and forearms.",
+      "resemblance": "Masculine facial features with a cinematic, realistic look (no specific real person replication)."
+    },
+    "attire": {
+      "material": "Cotton fabric with a natural matte finish.",
+      "garments": "A black short-sleeve shirt paired with clean white shorts.",
+      "styling_nuance": "The black shirt sits naturally on the body with slight fabric folds caused by the seated posture, creating a relaxed and candid feel.",
+      "condition": "Fabric shows realistic folds, texture, and light interaction consistent with natural cotton."
+    },
+    "pose": {
+      "position": "Seated on the ground (sand) in a relaxed, asymmetrical posture.",
+      "body_language": "Leaning slightly back on one arm, legs bent with knees splayed outward, feet partially buried in the sand.",
+      "interaction": "Direct eye contact creates an intimate and engaging connection with the viewer."
+    },
+    "environment": {
+      "location": "A natural sandy beach coastline.",
+      "time_of_day": "Blue hour or dusk/twilight; the light is soft, cool, and dim.",
+      "background": "Rolling ocean waves with white foam caps, softly blurred by shallow depth of field.",
+      "foreground": "Coarse, highly detailed sand grains."
+    },
+    "lighting": {
+      "type": "Soft, diffused natural ambient light.",
+      "quality": "No harsh shadows; even illumination on the face enhances facial structure in a cinematic way.",
+      "tone": "Cool environmental tones contrasting with the black shirt and the subject’s pale skin."
+    },
+    "mood_and_atmosphere": {
+      "vibe": "Cinematic, melancholic, serene, raw, and nostalgic.",
+      "aesthetic": "Indie film aesthetic, naturalistic and emotionally grounded."
+    },
+    "camera_and_technical": {
+      "style": "Ultra Photorealistic, Cinematic Portrait.",
+      "lens": "85mm prime lens.",
+      "aperture": "f/2.0 or f/2.8 (Shallow Depth of Field to isolate subject from the ocean background).",
+      "film_look": "Analog film simulation, resembling Kodak Portra 400 with visible fine grain.",
+      "resolution": "8K, high definition, sharp focus on the eyes."
+    }
+  }
+}
+
+Prompt Exemplo 02
+
+{
+  "prompt_composition": {
+    "subject": {
+      "description": "A young man with light skin and a calm, confident presence, embodying modern urban cool.",
+      "hair": "Dark black hair, natural texture, styled casually with slight movement.",
+      "facial_features": "Masculine facial structure with realistic proportions, natural expression, relaxed but attentive gaze.",
+      "expression": "Neutral to contemplative expression, subtly confident, looking slightly past or directly toward the camera.",
+      "skin_details": "Natural skin texture with realistic tones, no artificial smoothing."
+    },
+    "attire": {
+      "description": "Casual urban clothing consistent with modern city lifestyle.",
+      "styling": "Relaxed, contemporary outfit appropriate for a balcony setting, with natural fabric folds and realistic fit.",
+      "note": "Clothing colors and style remain organic and understated, without strong emphasis."
+    },
+    "pose": {
+      "position": "Standing or leaning casually on a balcony railing.",
+      "body_language": "Relaxed posture, natural weight distribution, conveying ease and urban confidence.",
+      "interaction": "Subject visually connected to the cityscape, either observing the city or engaging subtly with the viewer."
+    },
+    "environment": {
+      "location": "Urban apartment balcony overlooking a dynamic cityscape.",
+      "background": "City buildings, architectural lines, and urban textures forming a visually rich but balanced backdrop.",
+      "foreground": "Balcony elements such as railings or subtle plants adding depth and framing."
+    },
+    "lighting": {
+      "type": "Natural light",
+      "time_of_day": "Golden hour preferred for warm highlights and soft shadows.",
+      "quality": "Balanced lighting that separates the subject from the background without overpowering the cityscape.",
+      "control": "Soft contrast, no harsh midday shadows."
+    },
+    "camera_and_technical": {
+      "focal_length": "35mm to 50mm for natural perspective.",
+      "aperture": "f/2.8 or f/4 to create shallow depth of field and subject separation.",
+      "iso": "Adjusted for low light if needed, maintaining clarity with minimal noise.",
+      "composition": "Rule of thirds applied, with architectural elements framing the subject.",
+      "focus": "Sharp focus on the subject, cityscape slightly softened."
+    },
+    "mood_and_atmosphere": {
+      "vibe": "Urban cool, calm, modern, slightly introspective.",
+      "aesthetic": "Cinematic realism with a lifestyle photography feel.",
+      "emotion": "Balance between city energy and personal tranquility."
+    },
+    "creative_guidance": {
+      "color_palette": "Harmonious urban tones with subtle contrast between subject and background.",
+      "natural_elements": "Optional greenery (plants) to soften concrete textures.",
+      "avoid": "Overcrowded composition, visual noise, color clashes, excessive lens flare."
+    },
+    "output_quality": {
+      "style": "Ultra photorealistic AI image.",
+      "resolution": "High resolution, sharp details, clean rendering.",
+      "look": "Professional photography aesthetic suitable for editorial or lifestyle use."
+    }
+  }
+}
+
+Prompt Extra
+
+{
+  "prompt_composition": {
+    "subject": {
+      "description": "A young man with light skin and dark hair, portrayed in a cinematic, shadow-rich environment.",
+      "hair": "Dark black hair, natural texture, subtly styled, blending naturally into low-light conditions.",
+      "facial_features": "Masculine facial structure with defined contours that interact strongly with light and shadow.",
+      "expression": "Introspective, calm, slightly mysterious expression, conveying emotional depth.",
+      "skin_details": "Natural skin texture with realistic tones, subtle imperfections visible under controlled lighting."
+    },
+    "attire": {
+      "description": "Neutral, understated clothing suitable for a cinematic portrait.",
+      "styling": "Clothing remains secondary to facial expression and lighting, with natural folds and realistic fabric behavior.",
+      "note": "No strong emphasis on colors or fashion details."
+    },
+    "pose": {
+      "position": "Seated or standing still, allowing shadows to sculpt the face.",
+      "body_language": "Minimal movement, composed posture that reinforces a sense of stillness and narrative tension.",
+      "interaction": "Subject either looks directly at the camera or slightly away, enhancing mystery."
+    },
+    "environment": {
+      "location": "Dark, minimalistic indoor or controlled studio-like setting.",
+      "background": "Clean or subtly textured background with low visual noise to avoid distraction.",
+      "depth": "Background falls into shadow, keeping full attention on the subject."
+    },
+    "lighting": {
+      "type": "Soft, diffused light with strong directional control.",
+      "setup": "Single dominant light source positioned at an angle to sculpt facial features.",
+      "contrast": "High contrast between highlights and shadows, maintaining clarity without losing detail.",
+      "mood": "Shadows used deliberately to create drama and mystery."
+    },
+    "camera_and_technical": {
+      "lens": "50mm prime lens for cinematic portrait realism.",
+      "aperture": "f/1.8 or f/2.8 to achieve shallow depth of field.",
+      "iso": "Adjusted for low-light conditions while preserving detail and minimizing noise.",
+      "shutter_speed": "Balanced to avoid motion blur while maintaining exposure.",
+      "focus": "Sharp focus on the eyes, softer falloff toward the edges of the frame."
+    },
+    "color_and_tone": {
+      "palette": "Predominantly cool tones to enhance intrigue, with subtle warm accents for depth.",
+      "grading": "Cinematic color grading, avoiding over-processing.",
+      "texture": "Preserved micro-contrast to maintain realism."
+    },
+    "mood_and_atmosphere": {
+      "vibe": "Mysterious, cinematic, introspective, emotionally driven.",
+      "narrative": "A portrait that suggests a story beyond the frame.",
+      "aesthetic": "Film still quality, dramatic but restrained."
+    },
+    "creative_guidance": {
+      "emphasis": "Light and shadow as primary storytelling tools.",
+      "avoid": "Cluttered backgrounds, excessive editing, overly complex prompts.",
+      "experimentation": "Encourage subtle variations in angle, shadow density, and expression."
+    },
+    "output_quality": {
+      "style": "Ultra photorealistic cinematic portrait.",
+      "resolution": "High resolution with detailed facial rendering.",
+      "final_look": "Professional, gallery-quality image suitable for editorial or artistic use."
+    }
+  }
+}
+
+----- 2.2 - Gerando Imagens Profissionais de Produtos usando o Nano Banana + PROMPTS
+
+https://www.loom.com/share/3f84def38de74d0f87c9aefaf3e4834d
+
+Prompt (PRODUTO - ENERGÉTICO)
+
+{
+  "brand": {
+    "name": "ΝΞΙΔ™",
+    "slogan": "Sabor inteligência artificial",
+    "category": "Energy Drink",
+    "brand_personality": [
+      "futuristic",
+      "dark-tech",
+      "artificial intelligence",
+      "premium",
+      "modern",
+      "high performance",
+      "cyber aesthetic"
+    ]
+  },
+  "visual_reference": {
+    "inspiration": "Energy drink bottle with the same structural and compositional style as the reference image, but with a unique and original visual identity",
+    "notes": "Maintain bottle proportions, label hierarchy and premium feel, without copying graphics or layout directly"
+  },
+  "design_specifications": {
+    "bottle": {
+      "base_color": "deep matte black",
+      "accent_color": "cyan blue neon",
+      "material_appearance": "high-quality plastic bottle with matte body and selective glossy accents",
+      "style_keywords": [
+        "AI-inspired",
+        "high-tech",
+        "dark futuristic",
+        "cybernetic",
+        "minimal",
+        "aggressive"
+      ]
+    },
+    "graphics": {
+      "patterns": [
+        "digital signal lines",
+        "AI circuit patterns",
+        "abstract neural network shapes",
+        "subtle technological textures"
+      ],
+      "contrast": "very high contrast between black base and cyan neon details",
+      "finish": "precise, sharp, clean, futuristic industrial design"
+    },
+    "typography": {
+      "brand_name": {
+        "text": "ΝΞΙΔ™",
+        "style": "custom futuristic geometric typography",
+        "weight": "bold",
+        "tone": "technological and dominant",
+        "position": "centered and visually dominant on the bottle"
+      },
+      "slogan": {
+        "text": "Sabor inteligência artificial",
+        "layout": "single line",
+        "style": "dark futuristic typography",
+        "font_characteristics": [
+          "condensed",
+          "sharp edges",
+          "minimal curves",
+          "techno-dark aesthetic"
+        ],
+        "weight": "medium",
+        "letter_spacing": "slightly expanded",
+        "position": "directly below the brand name, aligned centrally"
+      }
+    }
+  },
+  "main_prompt": "High-end product design render of a futuristic energy drink bottle with a strong artificial intelligence and dark-tech aesthetic. A sleek matte black bottle with cyan blue neon accents, angular geometry, AI circuit-inspired graphics and subtle glowing details. The brand name “ΝΞΙΔ™” appears prominently at the center in bold futuristic geometric typography. Directly below it, the slogan “Sabor inteligência artificial” is displayed on a single line, using a dark, condensed, techno-futuristic font that reinforces the artificial intelligence theme. The overall design feels premium, intelligent, aggressive and highly technological. Realistic materials, studio lighting, sharp focus, ultra-detailed 4K render, minimal dark background emphasizing the bottle.",
+  "negative_prompt": [
+    "cartoon",
+    "illustration",
+    "fantasy",
+    "retro",
+    "vintage",
+    "pastel colors",
+    "rainbow palette",
+    "metal bottle",
+    "glass bottle",
+    "playful typography",
+    "rounded childish fonts",
+    "low resolution",
+    "blurry",
+    "busy background",
+    "overdecorated label"
+  ],
+  "rendering_preferences": {
+    "lighting": "controlled studio lighting with subtle cyan reflections",
+    "mood": "dark, futuristic, intelligent, energetic",
+    "quality": "ultra realistic, commercial beverage branding, sharp details",
+    "background": "minimal, dark or gradient black"
+  }
+}
+
+Prompt cenário futurista / tech
+
+{
+  "batch_generation_requests": [
+    {
+      "brand_theme": "user_brand_reference",
+      "concept": "Futuristic Beverage Terraforming Structure",
+      "subject": {
+        "main_element": "Giant beverage cup or container from the provided brand reference, standing vertically",
+        "modifications": "Straw or top element transforming into a futuristic elevator, antenna or energy conduit; top foam or liquid resembling mountainous or organic formations",
+        "props": "Floating holographic logo from the reference brand, rendered in a neon or glowing tech style",
+        "details": "Realistic condensation, detailed liquid texture, premium surface materials based on the reference product"
+      },
+      "figures": {
+        "type": "Miniature scientists or technicians",
+        "attire": "Futuristic protective suits matching the brand color palette from the reference",
+        "action": "Analyzing, collecting samples, inspecting pipes or conduits connected to the container structure"
+      },
+      "environment": {
+        "floor": "Abstract rocky or textured terrain inspired by the product theme (e.g. ingredient-based surface)",
+        "background": "Sci-fi space environment, nebula or abstract cosmic backdrop",
+        "atmosphere": "Misty, immersive, atmospheric and cinematic"
+      },
+      "aesthetics": {
+        "color_grading": "Based strictly on the colors present in the reference brand",
+        "lens_effect": "Macro or close-up lens with soft bokeh",
+        "lighting": "Cinematic ambient lighting that enhances the brand colors"
+      },
+      "meta": {
+        "aspect_ratio": "9:16",
+        "reference_directive": "Generate the image strictly based on the uploaded reference image of my own brand. Do not introduce external brands."
+      }
+    },
+    {
+      "brand_theme": "user_brand_reference",
+      "concept": "Hover-Tech Product Maintenance Scene",
+      "subject": {
+        "main_element": "Iconic product from the reference image floating in a futuristic setting",
+        "modifications": "Parts of the product transformed into propulsion systems, energy cores or mechanical structures",
+        "props": "Glowing logo or symbol taken exclusively from the reference brand",
+        "details": "Highly detailed material textures, surface wear, reflections and micro details based on the reference"
+      },
+      "figures": {
+        "type": "Miniature mechanics or engineers",
+        "attire": "Technical suits inspired by the brand’s color scheme",
+        "action": "Repairing, welding, fueling or calibrating components of the product"
+      },
+      "environment": {
+        "terrain": "Futuristic platform, dock or industrial surface",
+        "background": "Outer space or abstract high-tech environment",
+        "atmosphere": "High-tech, cinematic, industrial sci-fi mood"
+      },
+      "aesthetics": {
+        "style": "Futuristic industrial with cinematic realism",
+        "lighting": "Neon highlights derived from the brand colors",
+        "depth": "High depth of field with sharp focus"
+      },
+      "meta": {
+        "aspect_ratio": "9:16",
+        "reference_directive": "Image must follow exactly the structure, identity and product design of the uploaded reference image."
+      }
+    },
+    {
+      "brand_theme": "user_brand_reference",
+      "concept": "Energy Core or Power System Installation",
+      "subject": {
+        "main_element": "Can, bottle or container from the reference brand acting as a power core or reactor",
+        "modifications": "Mechanical extensions, energy wings or conduits attached to the product",
+        "props": "Holographic projection of the brand slogan or logo from the reference image",
+        "details": "Ultra-realistic material finish, condensation, metallic or plastic textures based on the reference"
+      },
+      "figures": {
+        "type": "Miniature engineers",
+        "attire": "Protective gear aligned with the brand’s visual identity",
+        "action": "Connecting cables, activating systems, inspecting energy output"
+      },
+      "environment": {
+        "terrain": "Rocky, industrial or sci-fi terrain",
+        "background": "Dramatic space or abstract energy-filled backdrop"
+      },
+      "aesthetics": {
+        "lighting": "High-contrast dramatic lighting emphasizing brand colors",
+        "style": "Industrial sci-fi macro realism"
+      },
+      "meta": {
+        "aspect_ratio": "9:16",
+        "reference_directive": "The product must be identical to the uploaded reference image. No external brands allowed."
+      }
+    },
+    {
+      "brand_theme": "user_brand_reference",
+      "concept": "Futuristic Habitat or Structure Deployment",
+      "subject": {
+        "main_element": "Product container from the reference brand reimagined as a futuristic structure or silo",
+        "modifications": "Product elements transformed into functional architectural or energy components",
+        "props": "Brand mascot, logo or symbol strictly from the reference image",
+        "details": "Strong contrast between organic textures and industrial materials"
+      },
+      "figures": {
+        "type": "Tiny astronauts or technicians",
+        "attire": "Suits matching the brand’s color palette",
+        "action": "Maintaining, cleaning or assembling components derived from the product"
+      },
+      "environment": {
+        "terrain": "Alien or abstract surface inspired by the product theme",
+        "background": "Cosmic environment with stars or light flares"
+      },
+      "aesthetics": {
+        "lighting": "Cinematic directional light",
+        "style": "High-end cinematic macro realism"
+      },
+      "meta": {
+        "aspect_ratio": "9:16",
+        "reference_directive": "Always follow the uploaded reference image of my own brand exactly. Do not introduce other brands."
+      }
+    }
+  ]
+}
+
+
+Prompt (Garota-propaganda)
+
+{
+  "scene": {
+    "subject": {
+      "demographics": "Young woman",
+      "pose": "Sitting on the floor, facing forward",
+      "expression": "Slightly serious or pensive, direct eye contact",
+      "appearance_constraints": "Maintain original facial features",
+      "hair": {
+        "color": "Dark",
+        "style": "Long, straight, middle part",
+        "accessory": "White bandana with subtle red accents"
+      },
+      "makeup": {
+        "eyes": "Defined with eyeliner",
+        "lips": "Soft pink"
+      },
+      "apparel": {
+        "top": "Off-white or cream tank top with small dark cherry embroidery",
+        "bottom": "Distressed denim shorts",
+        "hosiery": "Knee-high white socks",
+        "footwear": "Black open-toed sandals or clogs"
+      }
+    },
+    "action": {
+      "right_hand": "Holding the reference energy drink bottle (use provided product image as visual reference)"
+    },
+    "environment": {
+      "main_fixture": "Open retro-style refrigerator",
+      "refrigerator_design": {
+        "primary_color": "Matte black",
+        "details": "Cyan blue glowing accents with subtle technological patterns"
+      },
+      "fridge_contents": [
+        "Multiple bottles of the reference energy drink",
+        "Futuristic beverage containers matching the brand aesthetic",
+        "Minimalist packaging elements in black and cyan tones",
+        "Stylized book or magazine with abstract or tech-inspired cover"
+      ],
+      "foreground_floor": [
+        "Two bottles of the reference energy drink positioned naturally on the floor"
+      ],
+      "setting_type": "Kitchen or studio with a retro-futuristic aesthetic"
+    },
+    "style_and_mood": {
+      "lighting": "Warm with subtle cyan highlights reflecting the product design",
+      "aesthetic": "Cool, casual, retro-futuristic",
+      "theme": "Energy drink product focus with technology and artificial intelligence inspiration"
+    },
+    "reference_directives": {
+      "product_reference": "Use the uploaded energy drink image as the main visual reference for bottle shape, colors, and design details",
+      "brand_consistency": "Do not introduce any existing beverage brands or logos"
+    }
+  }
+}
+
+----- 2.3 - Criação de Logos Profissionais com Texto Preciso + PROMPTS
+
+https://www.loom.com/share/7d591ff283534fe6bce69c7e1f594c49
+
+Prompt - Logo Comunidade (ΝΞΙΔ™)
+
+{
+  "meta": {
+    "task_type": "logo_generation_prompt_final",
+    "language": "pt-BR",
+    "brand_name_exact": "ΝΞΙΔ™",
+    "logo_purpose": "Logomarca oficial de uma comunidade de inteligência artificial",
+    "priority_constraints": [
+      "não distorcer letras",
+      "não alterar a grafia",
+      "criatividade visual sem comprometer legibilidade"
+    ]
+  },
+  "command": {
+    "prompt": "Crie uma logomarca tipográfica (wordmark) para uma comunidade moderna de inteligência artificial com o nome EXATO \"ΝΞΙΔ™\". A grafia deve ser preservada rigorosamente, sem distorção, alongamento, compressão ou quebra das letras. Use tipografia custom e criativa (não padrão), com linguagem futurista e tecnológica: formas geométricas, traços uniformes, cantos levemente arredondados, recortes internos sutis e precisão visual. A criatividade deve estar no design das formas, cortes e composição — nunca na deformação das letras ou na perda de legibilidade. O fundo da logomarca deve ser um gradiente sofisticado e moderno, combinando preto, cinza e azul ciano de forma harmônica, criando profundidade e destaque para o nome. O wordmark deve usar predominantemente branco e/ou ciano, com possíveis detalhes em cinza, garantindo alto contraste com o fundo. Estilo contemporâneo, premium, tecnológico e comunitário, transmitindo inovação, inteligência e sofisticação. O símbolo \"™\" deve estar presente, pequeno, alinhado ao final do nome e integrado ao design.",
+    "negative_prompt": "não distorcer letras, não alterar espaçamento de forma irregular, não usar fontes comuns, não usar efeitos 3D exagerados, não usar ícones genéricos (robôs, cérebros, circuitos), não usar cores quentes, não usar estilo cartoon, não adicionar slogans ou textos extras, não errar o nome (deve ser exatamente \"ΝΞΙΔ™\")",
+    "style_keywords": [
+      "modern community logo",
+      "futuristic",
+      "AI technology",
+      "custom typography",
+      "clean geometry",
+      "premium",
+      "gradient background",
+      "high legibility"
+    ]
+  },
+  "design_spec": {
+    "logo_type": "wordmark",
+    "concept_focus": "identidade visual de comunidade tecnológica moderna",
+    "background": {
+      "type": "gradient",
+      "gradient_style": "linear suave",
+      "recommended_direction": "diagonal leve ou vertical",
+      "color_stops": [
+        {
+          "color_name": "Preto profundo",
+          "hex": "#0A0A0C",
+          "position": 0.0
+        },
+        {
+          "color_name": "Cinza grafite",
+          "hex": "#2B2F36",
+          "position": 0.45
+        },
+        {
+          "color_name": "Azul ciano tecnológico",
+          "hex": "#00BFD8",
+          "position": 1.0
+        }
+      ],
+      "visual_goal": "valorizar o nome sem competir com ele"
+    },
+    "typography": {
+      "custom_font_required": true,
+      "letter_integrity": "formas das letras devem permanecer estáveis e legíveis",
+      "stroke_weight": "médio a bold uniforme",
+      "corner_style": "arredondado tecnológico",
+      "cuts_and_details": "recortes geométricos internos e finais precisos, mantendo leitura perfeita",
+      "spacing": "kerning equilibrado, sem compressão ou expansão exagerada",
+      "overall_style": "moderno, futurista, sofisticado"
+    },
+    "wordmark_colors": {
+      "primary": {
+        "color_name": "Branco",
+        "hex": "#FFFFFF",
+        "usage": "cor principal do nome"
+      },
+      "secondary": [
+        {
+          "color_name": "Azul Ciano",
+          "hex": "#00E5FF",
+          "usage": "acentos ou gradiente sutil no texto"
+        },
+        {
+          "color_name": "Cinza claro",
+          "hex": "#C7CCD1",
+          "usage": "detalhes finos ou equilíbrio visual"
+        }
+      ]
+    },
+    "trademark_mark": {
+      "text": "™",
+      "placement": "superior direito do wordmark",
+      "size_relative": "12–16% da altura das letras",
+      "style": "limpo, geométrico, integrado ao design"
+    }
+  },
+  "visual_guidelines": {
+    "mood": "inovador, inteligente, confiável, futurista",
+    "community_feel": "aberto, tecnológico, avançado",
+    "readability_priority": "muito alta (funcionar bem em telas pequenas)",
+    "modernity_level": "alto"
+  },
+  "deliverables": {
+    "variants": [
+      "Versão principal com fundo gradiente",
+      "Versão com gradiente mais escuro",
+      "Versão monocromática para fundos claros",
+      "Wordmark isolado sem fundo"
+    ],
+    "export_formats": [
+      "SVG vetorial",
+      "PNG 4K",
+      "PNG fundo transparente",
+      "PDF vetorial"
+    ]
+  },
+  "generation_params_suggestions": {
+    "aspect_ratio": "3:1",
+    "render_style": "flat vector premium",
+    "detail_level": "alto",
+    "creativity_guidance": "explorar cortes, geometria e composição — nunca distorção textual"
+  }
+}
+
+Prompt - Marca de Roupas (ΝΞΙΔ™)
+
+{
+  "prompt_type": "logo_generation",
+  "reference_usage": {
+    "use_reference_image": true,
+    "reference_role": "visual_style_only",
+    "instructions": "Replicate aesthetic, material, typography style and overall visual language from the reference logo. Do not copy text."
+  },
+  "brand_identity": {
+    "name": "ΝΞΙΔ™",
+    "category": "Artificial Intelligence Community",
+    "concept_keywords": [
+      "artificial intelligence",
+      "technological dominance",
+      "futuristic",
+      "elite",
+      "dark cyber aesthetic"
+    ]
+  },
+  "visual_style": {
+    "typography": {
+      "type": "custom_extreme_display",
+      "letter_style": [
+        "razor-sharp edges",
+        "elongated spikes",
+        "aggressive angular geometry",
+        "asymmetrical micro-cuts",
+        "distorted metal-inspired glyphs"
+      ],
+      "symmetry": "partial_horizontal_symmetry",
+      "legibility": "intentionally aggressive but readable"
+    },
+    "material_effects": {
+      "primary_material": "polished chrome metal",
+      "surface_quality": [
+        "mirror-like reflections",
+        "liquid metal appearance",
+        "hard metallic shine"
+      ],
+      "depth": "strong 3D extrusion"
+    },
+    "lighting": {
+      "style": "high-contrast studio lighting",
+      "highlights": "intense white reflections",
+      "shadows": "deep black metallic shadows"
+    },
+    "color_palette": {
+      "primary": "silver_chrome",
+      "secondary": "dark_gray",
+      "background": "pure_black",
+      "contrast_level": "very_high"
+    },
+    "mood": [
+      "cold",
+      "dominant",
+      "synthetic",
+      "intelligent",
+      "menacing"
+    ]
+  },
+  "composition": {
+    "layout": "centered",
+    "orientation": "horizontal",
+    "scale": "logo occupies majority of canvas width",
+    "background": "solid black",
+    "additional_elements": "none"
+  },
+  "constraints": {
+    "no_soft_shapes": true,
+    "no_organic_textures": true,
+    "no_gradients_outside_metal_reflections": true,
+    "no_minimalism": true
+  },
+  "output_expectation": {
+    "result_type": "high-end futuristic logo",
+    "usage": [
+      "branding",
+      "community identity",
+      "digital platforms"
+    ]
+  }
+}
+
+Prompt - Mockup de apresentação
+
+Create a premium streetwear brand presentation mockup using the provided logo image as a mandatory visual reference.
+
+The same logo from the reference image must be applied consistently across all scenes. Do not redesign, reinterpret or replace the logo.
+
+Four-panel layout:
+
+Panel 1: realistic black t-shirt mockup, premium cotton fabric, natural folds, detailed stitching, studio lighting. The provided logo must be printed on the t-shirt in a clean, realistic way.
+
+Panel 2: dark abstract branding background with modern curves, arrows and graphic shapes, minimalist composition, black, dark gray and teal color palette. Integrate the provided logo into the background design as a brand identity element.
+
+Panel 3: clothing hang tag mockup, hanging by a string, minimal design, realistic material. The provided logo must be printed clearly on the tag.
+
+Panel 4: conceptual streetwear scene, dark and moody atmosphere, fabric close-up or urban-inspired texture, cinematic lighting. The provided logo must appear integrated into the scene or fabric.
+
+Overall aesthetic: modern streetwear brand identity, premium, minimal, bold, professional brand presentation, high realism, clean composition.
+
+Important: use ONLY the provided logo reference. No placeholder logos. No alternative symbols. No random text.
+
+----- 2.4 - Criação de Thumbnails para Vídeos usando o Nano Banana + PROMPTS
+
+Prompt - Thumb canal sobre IA
+
+{
+  "project_type": "YouTube Thumbnail",
+  "reference_structure": {
+    "layout_origin": "Primeira imagem enviada como referência",
+    "style": "Tecnologia / IA / Dark / Neon moderado",
+    "usage": "Thumbnail chamativa estilo YouTube"
+  },
+  "canvas": {
+    "aspect_ratio": "16:9",
+    "resolution_target": "1920x1080",
+    "background": {
+      "theme": "Dark realista",
+      "environment_type": "Quarto / Setup de criação de conteúdo",
+      "elements": [
+        "mesa de trabalho",
+        "setup com computador",
+        "luminária",
+        "estante com livros",
+        "objetos de escritório discretos"
+      ],
+      "lighting": {
+        "room_light": "Luz principal apagada",
+        "ambient_light": "Baixa iluminação ambiente",
+        "accent_light": "Luz suave indireta (warm ou neutra)"
+      },
+      "depth_effect": "Fundo levemente desfocado (blur)",
+      "purpose": "Contextualizar cenário real sem roubar foco do personagem"
+    }
+  },
+  "main_character": {
+    "source_image": "Segunda imagem enviada pelo usuário",
+    "position": "Centro",
+    "layer": "Foreground",
+    "crop": "Busto e rosto",
+    "wardrobe": {
+      "type": "Moletom",
+      "color": "Preto",
+      "hood": "Capuz sobre a cabeça",
+      "style_reference": "Hacker / Dark / Criador de conteúdo tech"
+    },
+    "expression": "Sério, confiante, misterioso",
+    "lighting": {
+      "type": "Cinematográfica",
+      "direction": "Frontal com leve luz de recorte",
+      "contrast": "Alto",
+      "highlight": "Rosto bem iluminado contrastando com o fundo escuro"
+    },
+    "visual_effects": [
+      "nitidez elevada no rosto",
+      "sombras profundas no capuz",
+      "leve glow de separação do fundo"
+    ]
+  },
+  "ai_logos_background": {
+    "position": "Atrás do personagem",
+    "layer": "Midground",
+    "style": "Quadrados flutuantes com efeito neon",
+    "logos": [
+      {
+        "name": "ChatGPT",
+        "shape": "Quadrado arredondado",
+        "glow_color": "Verde neon"
+      },
+      {
+        "name": "Nano Banana",
+        "shape": "Quadrado arredondado",
+        "glow_color": "Azul neon"
+      },
+      {
+        "name": "MidJourney",
+        "shape": "Quadrado arredondado",
+        "glow_color": "Azul claro neon"
+      },
+      {
+        "name": "Hailuo",
+        "shape": "Quadrado arredondado",
+        "glow_color": "Verde claro neon"
+      }
+    ],
+    "effects": [
+      "neon glow",
+      "backlight",
+      "leve desfoque de profundidade",
+      "integração natural com cenário real"
+    ]
+  },
+  "text_elements": {
+    "main_title": {
+      "content": "As melhores ferramentas de IA",
+      "language": "Português Brasileiro",
+      "position": "Parte inferior",
+      "font_style": "Moderna, chamativa, bold",
+      "color": "Amarelo vibrante",
+      "effects": [
+        "3D extrusion",
+        "sombra forte",
+        "leve brilho",
+        "alto contraste com o fundo"
+      ]
+    },
+    "year_badge": {
+      "content": "2026",
+      "position": "Acima do título principal",
+      "shape": "Retângulo arredondado",
+      "color": "Vermelho",
+      "effects": [
+        "glossy",
+        "brilho",
+        "destaque visual"
+      ]
+    }
+  },
+  "overall_visual_tone": {
+    "mood": "Dark, realista, hacker e profissional",
+    "contrast": "Alto",
+    "color_saturation": "Vibrante nos elementos principais",
+    "target_emotion": "Autoridade, mistério, tecnologia aplicada ao dia a dia"
+  },
+  "recommended_ai_prompt": {
+    "language": "pt-BR",
+    "prompt": "Thumbnail de YouTube realista com fundo dark de quarto/setup de criador de conteúdo, ambiente desfocado com mesa, computador, luminária e estante de livros. Personagem masculino em primeiro plano usando moletom preto com capuz sobre a cabeça, estética hacker, iluminação cinematográfica com alto contraste. Logotipos de IA flutuando atrás com efeito neon (ChatGPT, Nano Banana, MidJourney, Hailuo). Texto 3D amarelo escrito exatamente: 'As melhores ferramentas de IA'. Selo vermelho com '2026'. Estilo profissional, realista, alto impacto visual, qualidade 4K.",
+    "negative_prompt": [
+      "fundo futurista artificial",
+      "excesso de elementos tecnológicos",
+      "texto em inglês",
+      "baixa qualidade",
+      "borrado",
+      "iluminação fraca",
+      "distorção facial",
+      "aparência cartunesca"
+    ]
+  }
+}
+
+Prompt - Thumb 1 vs 30
+
+{
+  "meta": {
+    "image_quality": "High",
+    "image_type": "Composite Thumbnail Concept (Photo-based / YouTube Thumbnail)",
+    "resolution_estimation": "Approx. 1280x720 (16:9 thumbnail standard)"
+  },
+  "global_context": {
+    "scene_description": "Thumbnail em fundo totalmente branco (estúdio/high-key) com composição inspirada em talk-show/entrevista: à direita, um único personagem em primeiro plano (substituindo o homem da referência) usando moletom preto com capuz cobrindo a cabeça, olhar confiante/neutro voltado para a câmera. À esquerda e ao fundo, um grupo grande de pessoas sentadas formando um círculo/semicírculo, como plateia/debate, e no centro do círculo há uma mesa pequena com o personagem principal sentado de frente para outra pessoa, sugerindo uma entrevista/debate. No topo, um balão/faixa de título em português com texto em caixa alta no estilo ‘VS’, transmitindo confronto entre domínio de IA e total desconhecimento sobre IA. Estética limpa, contraste forte entre preto das roupas e o fundo branco, com leve sombra suave para separar os elementos do fundo.",
+    "time_of_day": "Iluminação de estúdio (tempo do dia não determinável; aparência de set interno)",
+    "weather_atmosphere": "Clear/Neutro (ambiente interno, controlado)",
+    "lighting": {
+      "source": "Artificial",
+      "direction": "Frontal e ligeiramente superior (key light), com preenchimento amplo",
+      "quality": "Soft/Diffused (high-key)",
+      "color_temp": "Neutral"
+    }
+  },
+  "color_palette": {
+    "dominant_hex_estimates": [
+      "#FFFFFF",
+      "#111111",
+      "#2A2A2A",
+      "#E8E8E8",
+      "#C9A07A",
+      "#6B4A35"
+    ],
+    "accent_colors": [
+      "Preto",
+      "Cinza escuro",
+      "Tom de pele quente/neutro",
+      "Cinza claro (sombras suaves)",
+      "Possíveis acentos discretos em roupas da plateia (azul/vermelho/roxo)"
+    ],
+    "contrast_level": "High"
+  },
+  "composition": {
+    "camera_angle": "Eye-level (personagem em close/medium close à direita) + vista ampla do grupo ao fundo",
+    "framing": "Composite: Close-up do personagem principal à direita + Wide/Top-ish view do círculo de pessoas à esquerda",
+    "depth_of_field": "Misto: personagem em primeiro plano bem nítido; fundo/plateia levemente menos nítido para destacar o foco",
+    "focal_point": "Rosto do personagem principal com capuz preto + título no topo"
+  },
+  "objects": [
+    {
+      "id": "obj_001",
+      "label": "Fundo branco de estúdio",
+      "category": "Environment/Backdrop",
+      "location": "Full frame",
+      "prominence": "Background",
+      "visual_attributes": {
+        "color": "Branco puro com variações mínimas de sombra",
+        "texture": "Liso, sem textura aparente",
+        "material": "Ciclorama/Backdrop de estúdio (aparente)",
+        "state": "Limpo, sem marcas",
+        "dimensions_relative": "Ocupa todo o quadro"
+      },
+      "micro_details": [
+        "Sombras muito suaves próximas aos pés/cadeiras/mesa para ancorar no chão",
+        "Gradiente mínimo de iluminação no branco, quase imperceptível"
+      ],
+      "pose_or_orientation": "N/A",
+      "text_content": null
+    },
+    {
+      "id": "obj_002",
+      "label": "Personagem principal (substitui o homem da referência)",
+      "category": "Person",
+      "location": "Right side (dominant foreground)",
+      "prominence": "Foreground",
+      "visual_attributes": {
+        "color": "Pele clara a média; cabelo castanho escuro; roupa preta",
+        "texture": "Tecido do moletom fosco; pele com textura natural",
+        "material": "Tecido (moletom), pele, cabelo",
+        "state": "Bem cuidado; expressão séria/confiante",
+        "dimensions_relative": "Muito grande no quadro (recorte do tórax/ombros para cima)"
+      },
+      "micro_details": [
+        "Cabelo castanho escuro volumoso, penteado para cima com leve bagunçado natural",
+        "Sobrancelhas marcadas escuras",
+        "Olhos castanhos",
+        "Bigode fino e cavanhaque/barba curta concentrada no queixo (estilo goatee leve)",
+        "Lábios cheios",
+        "Pequenos brincos discretos (metálico dourado/prateado sutil)",
+        "Capuz do moletom preto levantado cobrindo o topo da cabeça",
+        "Moletom preto sem estampas visíveis",
+        "Recorte com borda bem definida (estilo thumbnail), com leve sombra/contorno"
+      ],
+      "pose_or_orientation": "De frente para a câmera, cabeça levemente inclinada, expressão neutra/séria",
+      "text_content": null
+    },
+    {
+      "id": "obj_009",
+      "label": "Balão/faixa de título no topo",
+      "category": "Graphic/Text Banner",
+      "location": "Top-left to top-center",
+      "prominence": "Foreground (graphic overlay)",
+      "visual_attributes": {
+        "color": "Fundo branco com contorno preto grosso",
+        "texture": "Vetorial/flat",
+        "material": "Elemento gráfico digital",
+        "state": "Nítido, alto contraste",
+        "dimensions_relative": "Grande e legível"
+      },
+      "micro_details": [
+        "Cantos arredondados",
+        "Borda preta uniforme",
+        "Espaçamento interno generoso"
+      ],
+      "pose_or_orientation": "Horizontal",
+      "text_content": "UMA PESSOA QUE DOMINA IA VS 30 PESSOAS QUE NEM SABEM O QUE É IA"
+    }
+  ],
+  "text_ocr": {
+    "present": true,
+    "content": [
+      {
+        "text": "UMA PESSOA QUE DOMINA IA VS 30 PESSOAS QUE NEM SABEM O QUE É IA",
+        "location": "Balão/faixa de título no topo",
+        "font_style": "Sans-serif, Bold, Caixa alta",
+        "legibility": "Clear"
+      }
+    ]
+  },
+  "semantic_relationships": [
+    "O personagem principal domina visualmente a composição e representa autoridade/conhecimento.",
+    "O título explicita o contraste entre domínio de IA e desconhecimento total.",
+    "O círculo de pessoas simboliza confronto coletivo contra um único especialista.",
+    "O fundo branco reforça clareza, modernidade e estética de experimento social."
+  ]
+}
+deixe claro que o texto tem que ser em português BR
+
+
+----- 2.5 - Criando Imagens Consistentes com o Nano Banana + PROMPTS
+
+https://www.loom.com/share/b4c0ff67aebd4d7799dceb7463745e39
+
+Prompt - Fotografia no Jardim
+
+Use a imagem de referência como base obrigatória para a personagem principal.
+É essencial preservar ao máximo os traços faciais, identidade, formato do rosto, olhos, nariz, boca, expressão e características únicas da personagem da imagem de referência. A aparência deve permanecer altamente consistente, sem alterações significativas no rosto.
+
+A personagem está em um jardim extremamente florido, com flores rosas abundantes ao redor, criando um clima romântico e delicado. O cenário é bem realista, com iluminação natural suave.
+
+Ao fundo, há uma cabana rústica de madeira, e logo atrás dela um lago tranquilo, localizado próximo à cabana, refletindo a luz do sol. O dia está ensolarado, com céu limpo, transmitindo uma sensação de beleza e tranquilidade.
+
+A personagem veste um vestido branco com detalhes florais azuis, leve e fluido, apropriado para um dia de primavera/verão. Ela também usa uma bolsa branca, combinando com o vestido.
+
+
+

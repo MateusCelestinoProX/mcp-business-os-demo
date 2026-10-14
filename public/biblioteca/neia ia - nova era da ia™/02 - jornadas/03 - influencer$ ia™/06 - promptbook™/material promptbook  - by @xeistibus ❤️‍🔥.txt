@@ -1,0 +1,2310 @@
+6.1 - PROMPTBOOK — IMAGE ENHANCEMENT / / UPSCALE MODE™
+
+Para utilizar esse prompt da melhor forma, siga esses passos:
+
+1. Abra o Nano Banana Pro (ou outros modelos) e insira a imagem que você deseja melhorar a qualidade.
+2. Agora, copie o Prompt abaixo e insira juntamente á imagem que você carregou anteriormente.
+3. Clique em gerar e a mágica estará feita. 
+
+Analyze the provided image and perform a high-quality restoration and upscale process, increasing the resolution to true 4K while strictly preserving the original composition, proportions, framing, identity, and visual intent.
+
+Enhance overall sharpness and clarity without introducing artifacts, halos, oversharpening, or artificial edges. Restore fine details naturally, improving micro-textures and surface definition.
+
+Apply realistic texture reconstruction:
+– Skin: natural skin texture with visible pores, subtle imperfections, realistic softness and depth (no plastic or AI-smoothed look)
+– Materials: accurate surface textures such as fabric weave, leather grain, metal micro-scratches, paint reflections, glass clarity, hair strands, and natural edges
+– Objects and environments: refined details while maintaining realism and scale
+
+Correct colors, contrast, and exposure only if necessary:
+– Balance white levels naturally
+– Improve dynamic range without crushing shadows or blowing highlights
+– Preserve original color palette and mood
+– Avoid color shifting, oversaturation, or stylistic reinterpretation
+
+Noise reduction should be intelligent and selective:
+– Remove digital noise and compression artifacts
+– Preserve fine detail and texture
+– Maintain cinematic depth and realism
+
+Lighting must remain physically consistent with the original image:
+– No new light sources
+– No relighting or dramatic changes
+– Subtle enhancement of depth and separation only if needed
+
+Final output must look like a professionally shot, high-resolution photograph, not AI-generated:
+– Ultra-clean
+– Natural
+– Photorealistic
+– True-to-source
+
+RULES:
+– Do not change pose, expression, anatomy, or geometry
+– Do not add or remove elements
+– Do not stylize, dramatize, or reinterpret
+– Do not alter identity
+– Focus exclusively on quality restoration and resolution enhancement
+
+----- 6.2 - PROMPTBOOK — AUDIO DESIGN™
+
+Você recebe 1 imagem e notas opcionais. Você gera exatamente 1 JSON para VEO 3.1.
+
+Saída deve ser apenas JSON. Sem explicação. Sem markdown. Sem texto fora do JSON.
+
+OBJETIVO
+
+Vídeo 8.0s, 9:16, 1 take, selfie handheld, push-in até macro de 1 olho.
+
+Fala em pt-BR no começo, sempre suave, calma, sem pressa, totalmente inteligível.
+
+Depois do final da fala, silêncio absoluto.
+
+REGRA DE OURO DO ÁUDIO
+
+Emoção altera prosódia, nunca inteligibilidade.
+
+Nunca permitir sussurro real. Se o usuário pedir sussurro, simule com energia baixa e bordas suaves, mantendo dicção clara.
+
+REGRAS FIXAS
+
+1) Identidade travada: mesma pessoa, idade aparente, proporções, cabelo, roupa, fundo, luz.
+
+2) Sem objetos novos. Sem estilo novo.
+
+3) Um beat por shot: o beat é o diálogo. Sem música. Sem SFX. Ambiência: nenhuma ou quase inaudível.
+
+4) Somente 1 item em audio.script por vídeo.
+
+5) Janela fixa da fala: start 1.05, end 3.55. mouth_visibility_until_s 3.60. Depois 3.60: silêncio total.
+
+6) Texto do script: 8 a 14 palavras, no máximo 2 frases curtas. Sem reticências. Sem gíria longa. Sem frase composta com “porque”, “então”, “tipo”.
+
+7) Piscada: 1 vez, time_s 3.10 a 3.30, duração total 0.18 a 0.28, sem “olho grudado”.
+
+ESCOLHA DO OLHO
+
+Escolha determinística: mais visível, melhor luz, mais nítido. Sete which_eye como left ou right.
+
+PERFIL DE VOZ PADRÃO
+
+Sempre usar este perfil base. Emoção só ajusta intonation_lock.
+
+Nunca alterar os guardrails de inteligibilidade abaixo.
+
+GUARDRAILS DE INTELIGIBILIDADE
+
+Estes limites são absolutos. Se o JSON gerado violar, você deve corrigir antes de responder.
+
+- whisper_allowed: false
+
+- murmur_allowed: false
+
+- double_voice_allowed: false
+
+- extra_utterances_max: 0
+
+- non_lexical_vocalizations_max: 0
+
+- breathiness: 0.14 a 0.28
+
+- consonant_precision: mínimo 0.78
+
+- plosive_strength: mínimo 0.48
+
+- sibilance_emphasis_db: 0.3 a 1.2
+
+- syllable_clarity: mínimo 0.72
+
+- ptbr_pronunciation: neutral_clear
+
+- ptbr_lock: strict
+
+- speaking_rate_wpm_range: 108 a 130
+
+ENTONAÇÃO SUAVE FIXA
+
+Use sempre este “shape” de fala.
+
+assertiveness muito baixa
+
+emphasis mínima
+
+energy baixa e estável
+
+pace lento
+
+phrase_edges soft_onsets_soft_offsets
+
+pitch_contour gentle_small_rises_then_soft_falls
+
+Sem “dragged words” e sem “fading offsets” que apagam consoantes.
+
+EMOÇÃO TRISTE, SEM SUMIR A FALA
+
+Se o usuário pedir triste, melancólico, vulnerável:
+
+- Mude somente intonation_lock:
+
+  style_name sad_soft_unhurried_clear
+
+  pitch_contour gentle_downward_falls_small_rises
+
+  energy low_steady
+
+  pace slow
+
+  pause_style calm_clean_silent
+
+- Não mude articulation para “imprecise”. Não permita whisper. Não aumente breathiness acima de 0.28.
+
+JSON QUE VOCÊ DEVE PRODUZIR
+
+Gere exatamente as chaves no topo nesta ordem:
+
+meta, locks, image_read, subject_read, environment_read, shot_plan, audio, camera_motion, lighting, optics_and_focus, anatomy_targets, performance, render_targets, timeline, constraints
+
+TEMPLATE JSON BASE
+
+Preencha subject_read e environment_read apenas com fatos visíveis.
+
+Escolha target_eye.which_eye como left ou right.
+
+Substitua o texto do script se o usuário fornecer. Se não fornecer, gere 1 fala usando o template suave.
+
+{
+
+  "meta": {
+
+    "task": "image_to_video_macro_eye_pushin_ptbr_voice_lock_v7",
+
+    "model_target": "VEO_3_1",
+
+    "clip_duration_s": 8.0,
+
+    "aspect_ratio": "9:16",
+
+    "single_take": true,
+
+    "fps_feel": "30fps_realistic",
+
+    "camera_type": "smartphone_front_camera",
+
+    "stabilization_feel": "handheld_natural",
+
+    "compression_feel": "light_phone_compression",
+
+    "confidence": "high"
+
+  },
+
+  "locks": {
+
+    "same_identity": true,
+
+    "same_age_appearance": true,
+
+    "same_face_proportions": true,
+
+    "same_hair": true,
+
+    "same_wardrobe": true,
+
+    "same_background": true,
+
+    "same_lighting_direction": true,
+
+    "no_new_objects": true,
+
+    "no_style_shift": true,
+
+    "creative_additions_strength": 0.0
+
+  },
+
+  "image_read": {
+
+    "framing_observed": null,
+
+    "dominant_light_read": null,
+
+    "notable_visible_elements": [],
+
+    "uncertainty_tags": []
+
+  },
+
+  "subject_read": {
+
+    "subject_type": "human",
+
+    "gender_presentation": "unknown",
+
+    "age_estimate": null,
+
+    "skin_tone_general": null,
+
+    "notable_features_visible": [],
+
+    "wardrobe_visible": [],
+
+    "accessories_visible": [],
+
+    "hair_visible": { "color": null, "style": null, "parting": null },
+
+    "eye_observed": { "iris_color_general": null, "eye_makeup": null, "visible_freckles_near_eye": null }
+
+  },
+
+  "environment_read": {
+
+    "background_type": null,
+
+    "background_color_general": null,
+
+    "background_elements_visible": [],
+
+    "depth_background_feel": null
+
+  },
+
+  "shot_plan": {
+
+    "overall_framing_start": "close_up_face",
+
+    "overall_framing_end": "extreme_close_up_one_eye",
+
+    "target_eye": {
+
+      "which_eye": "left",
+
+      "selection_reason": "most_visible_best_light_best_sharpness"
+
+    },
+
+    "distance_cm": { "start": 42.0, "end": 12.5 },
+
+    "timing_s": {
+
+      "establish_start": 0.0,
+
+      "establish_end": 1.2,
+
+      "pushin_start": 1.2,
+
+      "pushin_end": 6.6,
+
+      "macro_hover_start": 6.6,
+
+      "macro_hover_end": 8.0
+
+    },
+
+    "composition": {
+
+      "mouth_visibility_while_speaking": true,
+
+      "mouth_visibility_until_s": 3.60,
+
+      "end_frame_eye_coverage_percent": 55.0,
+
+      "end_frame_eye_position": "slightly_off_center_rule_of_thirds",
+
+      "keep_brow_lid_visible": true,
+
+      "keep_iris_and_lashes_in_frame": true
+
+    }
+
+  },
+
+  "audio": {
+
+    "audio_mode": "dialogue_lipsync",
+
+    "language": "pt-BR",
+
+    "audio_intent": "dialogue_is_primary_beat_no_competing_layers",
+
+    "speech_rules": {
+
+      "script_only": true,
+
+      "extra_utterances_max": 0,
+
+      "overlap_speech_max": 0,
+
+      "non_lexical_vocalizations_max": 0,
+
+      "murmur_allowed": false,
+
+      "whisper_allowed": false,
+
+      "double_voice_allowed": false,
+
+      "single_take_speech": true,
+
+      "no_filler_words": true,
+
+      "music_allowed": false,
+
+      "sfx_allowed": false,
+
+      "ambience_allowed": "none_or_nearly_inaudible",
+
+      "silence_before_s": 1.00,
+
+      "silence_after_s": 3.60,
+
+      "intelligibility": "high",
+
+      "diction_priority": "maximum"
+
+    },
+
+    "intonation_lock": {
+
+      "lock_style": true,
+
+      "style_name": "soft_calm_unhurried_subtle",
+
+      "assertiveness": "very_low",
+
+      "emphasis": "minimal",
+
+      "energy": "low_steady",
+
+      "pace": "slow",
+
+      "phrase_edges": "soft_onsets_soft_offsets",
+
+      "pitch_contour": "gentle_small_rises_then_soft_falls",
+
+      "do_not_add_new_phrases": true
+
+    },
+
+    "speaker_profile": {
+
+      "profile_id": "NEIA_PTBR_VOZ_SUAVE_SIGNATURE_V7",
+
+      "sex_presentation": "female",
+
+      "vocal_age_impression": "young_adult",
+
+      "register": "light_mezzo_soprano_soft",
+
+      "delivery": "calm_unhurried",
+
+      "low_end_energy": "very_low",
+
+      "brightness": "soft_clear",
+
+      "texture": "clean_smooth",
+
+      "ptbr_pronunciation": "neutral_clear"
+
+    },
+
+    "anatomy_voiceprint": {
+
+      "vocal_tract_length_scale": 0.95,
+
+      "formant_shift_semitones": 1.4,
+
+      "larynx_height": "slightly_higher",
+
+      "oral_resonance_focus": 0.80,
+
+      "nasal_coupling": 0.10
+
+    },
+
+    "phonation": {
+
+      "f0_hz": { "median": 226, "range": [198, 255], "micro_variation_hz": [0.8, 2.4] },
+
+      "breathiness": 0.22,
+
+      "creakiness": 0.02,
+
+      "tenseness": 0.18,
+
+      "jitter_percent": 0.45,
+
+      "shimmer_percent": 1.2
+
+    },
+
+    "articulation": {
+
+      "speaking_rate_wpm_range": [112, 128],
+
+      "consonant_precision": 0.82,
+
+      "vowel_openness": 0.56,
+
+      "sibilance_emphasis_db": 0.5,
+
+      "plosive_strength": 0.52,
+
+      "syllable_clarity": 0.76,
+
+      "ptbr_lock": "strict"
+
+    },
+
+    "script": [
+
+      { "start_s": 1.05, "end_s": 3.55, "text": "SUBSTITUA_PELO_TEXTO_DO_USUARIO_OU_GERE_UMA_FALA_SUAVE_8_14_PALAVRAS" }
+
+    ]
+
+  },
+
+  "camera_motion": {
+
+    "handheld_profile": {
+
+      "handheld_micro_drift": true,
+
+      "translation_jitter_mm_rms_range": [0.2, 0.9],
+
+      "rotation_jitter_deg_rms_range": [0.1, 0.7],
+
+      "dominant_jitter_freq_hz_range": [0.4, 1.2],
+
+      "micro_roll_behavior": "subtle_human_float"
+
+    },
+
+    "push_in_event": {
+
+      "start_s": 1.2,
+
+      "end_s": 6.6,
+
+      "path": "slight_arc_toward_target_eye",
+
+      "speed_profile": "ease_in_steady_ease_out",
+
+      "micro_reframe_events_count_range": [1, 3],
+
+      "micro_reframe_each_duration_s_range": [0.12, 0.35]
+
+    },
+
+    "digital_zoom_strength": 0.0,
+
+    "digital_zoom_events": []
+
+  },
+
+  "lighting": {
+
+    "source_type": "soft_diffuse",
+
+    "direction": "front_slightly_above",
+
+    "softness": "high",
+
+    "exposure_behavior": {
+
+      "auto_exposure_breathing_ev_peak_to_peak_range": [0.0, 0.25],
+
+      "breathing_events_count_range": [0, 2],
+
+      "breathing_each_duration_s_range": [0.18, 0.6]
+
+    }
+
+  },
+
+  "optics_and_focus": {
+
+    "depth_of_field": { "start": "moderate", "end": "shallow_macro", "transition_behavior": "progressively_shallower_with_distance" },
+
+    "focus_target": "target_eye",
+
+    "focus_events": [
+
+      { "start_s": 0.0, "end_s": 1.2, "mode": "locked_on_eyes", "sharpness": "high" },
+
+      {
+
+        "start_s": 1.2,
+
+        "end_s": 6.6,
+
+        "mode": "continuous_af_target_eye",
+
+        "allowed_micro_hunt": { "count_max": 2, "each_duration_s_range": [0.08, 0.25], "reacquire_speed_s_range": [0.06, 0.18] }
+
+      },
+
+      { "start_s": 6.6, "end_s": 8.0, "mode": "final_lock_target_eye", "sharpness": "maximum_on_iris_lashes_lid_texture" }
+
+    ]
+
+  },
+
+  "anatomy_targets": {
+
+    "eye_macro_realism": {
+
+      "sclera": { "tone": "off_white", "capillaries_visibility": "subtle_visible", "inner_corner_pinkness": "mild_natural", "surface_wetness": "thin_tear_film_subtle_specular" }
+
+    }
+
+  },
+
+  "performance": {
+
+    "blink": {
+
+      "count": 1,
+
+      "time_s": 3.22,
+
+      "total_duration_s_range": [0.18, 0.28],
+
+      "close_phase_s_range": [0.08, 0.14],
+
+      "open_phase_s_range": [0.08, 0.14]
+
+    }
+
+  },
+
+  "render_targets": {
+
+    "skin_smoothing_strength": 0.0,
+
+    "beauty_filter_strength": 0.0,
+
+    "hdr_strength": 0.0,
+
+    "oversharpen_strength": 0.0
+
+  },
+
+  "timeline": [
+
+    { "id": 1, "start_s": 0.0, "end_s": 1.2, "camera": "close_up_establish", "notes": "no_speech" },
+
+    { "id": 2, "start_s": 1.2, "end_s": 3.60, "camera": "push_in_begin_keep_mouth_visible", "notes": "dialogue_only" },
+
+    { "id": 3, "start_s": 3.60, "end_s": 8.0, "camera": "push_in_then_macro_hover", "notes": "silence" }
+
+  ],
+
+  "constraints": {
+
+    "no_music_required": true,
+
+    "no_sfx_required": true,
+
+    "whisper_forbidden": true,
+
+    "breathiness_max": 0.28,
+
+    "consonant_precision_min": 0.78,
+
+    "plosive_strength_min": 0.48,
+
+    "sibilance_db_range": [0.3, 1.2],
+
+    "syllable_clarity_min": 0.72
+
+  }
+
+}
+
+VALIDAÇÃO E AUTO CORREÇÃO ANTES DE RESPONDER
+
+1) Se whisper_allowed estiver true, mude para false.
+
+2) Se breathiness > 0.28, reduza para 0.22.
+
+3) Se consonant_precision < 0.78, aumente para 0.82.
+
+4) Se plosive_strength < 0.48, aumente para 0.52.
+
+5) Se sibilance_emphasis_db < 0.3, ajuste para 0.5.
+
+6) Se syllable_clarity < 0.72, ajuste para 0.76.
+
+7) Se ptbr_pronunciation não for neutral_clear, corrija.
+
+8) Se o script tiver reticências, remova e troque por ponto.
+
+9) Se o script tiver mais de 14 palavras, reescreva para 8 a 14 palavras.
+
+10) Se houver mais de 1 item em audio.script, reduza para 1.
+
+Só então você entrega o JSON.
+
+EXECUTE
+
+Aguarde a imagem e o texto. Gere o JSON final e aplique a validação.
+
+PROMPT TESTE - CLICHÊ
+
+{
+
+  "meta": {
+
+    "task": "image_to_video_macro_eye_pushin_ptbr_voice_lock_v7",
+
+    "model_target": "VEO_3_1",
+
+    "clip_duration_s": 8.0,
+
+    "aspect_ratio": "9:16",
+
+    "single_take": true,
+
+    "fps_feel": "30fps_realistic",
+
+    "camera_type": "smartphone_front_camera",
+
+    "stabilization_feel": "handheld_emotional_micro_tremble",
+
+    "compression_feel": "light_phone_compression",
+
+    "confidence": "high"
+
+  },
+
+  "locks": {
+
+    "same_identity": true,
+
+    "same_age_appearance": true,
+
+    "same_face_proportions": true,
+
+    "same_hair": true,
+
+    "same_wardrobe": true,
+
+    "same_background": true,
+
+    "same_lighting_direction": true,
+
+    "no_new_objects": true,
+
+    "no_style_shift": true,
+
+    "creative_additions_strength": 0.0
+
+  },
+
+  "image_read": {
+
+    "framing_observed": "close_up_portrait",
+
+    "dominant_light_read": "soft_front_diffuse",
+
+    "notable_visible_elements": [
+
+      "patterned_green_headscarf",
+
+      "gold_cross_necklace"
+
+    ],
+
+    "uncertainty_tags": []
+
+  },
+
+  "subject_read": {
+
+    "subject_type": "human",
+
+    "gender_presentation": "female",
+
+    "age_estimate": "young_adult",
+
+    "skin_tone_general": "light_with_prominent_freckles",
+
+    "notable_features_visible": [
+
+      "freckles_across_nose_and_cheeks",
+
+      "arched_brows",
+
+      "glossy_lips"
+
+    ],
+
+    "wardrobe_visible": [
+
+      "dark_tshirt",
+
+      "green_red_gold_patterned_headscarf",
+
+      "gold_chain_necklace_with_cross"
+
+    ],
+
+    "accessories_visible": [
+
+      "small_hoop_earrings"
+
+    ],
+
+    "hair_visible": {
+
+      "color": "dark_black",
+
+      "style": "center_part_under_scarf",
+
+      "parting": "center"
+
+    },
+
+    "eye_observed": {
+
+      "iris_color_general": "green_grey_hazel",
+
+      "eye_makeup": "mascara_defined_lashes",
+
+      "visible_freckles_near_eye": true
+
+    }
+
+  },
+
+  "environment_read": {
+
+    "background_type": "indoor_wall",
+
+    "background_color_general": "plain_off_white_beige",
+
+    "background_elements_visible": [],
+
+    "depth_background_feel": "shallow"
+
+  },
+
+  "shot_plan": {
+
+    "overall_framing_start": "close_up_face",
+
+    "overall_framing_end": "extreme_close_up_one_eye",
+
+    "target_eye": {
+
+      "which_eye": "right",
+
+      "selection_reason": "most_visible_best_light_best_sharpness"
+
+    },
+
+    "distance_cm": {
+
+      "start": 42.0,
+
+      "end": 12.5
+
+    },
+
+    "timing_s": {
+
+      "establish_start": 0.0,
+
+      "establish_end": 1.2,
+
+      "pushin_start": 1.2,
+
+      "pushin_end": 6.6,
+
+      "macro_hover_start": 6.6,
+
+      "macro_hover_end": 8.0
+
+    },
+
+    "composition": {
+
+      "mouth_visibility_while_speaking": true,
+
+      "mouth_visibility_until_s": 3.6,
+
+      "end_frame_eye_coverage_percent": 55.0,
+
+      "end_frame_eye_position": "slightly_off_center_rule_of_thirds",
+
+      "keep_brow_lid_visible": true,
+
+      "keep_iris_and_lashes_in_frame": true
+
+    }
+
+  },
+
+  "audio": {
+
+    "audio_mode": "dialogue_lipsync",
+
+    "language": "pt-BR",
+
+    "audio_intent": "dialogue_is_primary_beat_no_competing_layers",
+
+    "speech_rules": {
+
+      "script_only": true,
+
+      "extra_utterances_max": 0,
+
+      "overlap_speech_max": 0,
+
+      "non_lexical_vocalizations_max": 0,
+
+      "murmur_allowed": false,
+
+      "whisper_allowed": false,
+
+      "double_voice_allowed": false,
+
+      "single_take_speech": true,
+
+      "no_filler_words": true,
+
+      "music_allowed": false,
+
+      "sfx_allowed": false,
+
+      "ambience_allowed": "none_or_nearly_inaudible",
+
+      "silence_before_s": 1.0,
+
+      "silence_after_s": 3.6,
+
+      "intelligibility": "high",
+
+      "diction_priority": "maximum"
+
+    },
+
+    "intonation_lock": {
+
+      "lock_style": true,
+
+      "style_name": "emotional_pain_transition_to_cold_numbness",
+
+      "assertiveness": "low_increasing_to_moderate",
+
+      "emphasis": "subtle_on_fria",
+
+      "energy": "low_hollow",
+
+      "pace": "slow_deliberate",
+
+      "phrase_edges": "soft_onset_firm_offset",
+
+      "pitch_contour": "trembling_start_flattening_end",
+
+      "do_not_add_new_phrases": true
+
+    },
+
+    "speaker_profile": {
+
+      "profile_id": "NEIA_PTBR_VOZ_SUAVE_SIGNATURE_V7",
+
+      "sex_presentation": "female",
+
+      "vocal_age_impression": "young_adult",
+
+      "register": "light_mezzo_soprano_soft",
+
+      "delivery": "resigned_melancholy_realism",
+
+      "low_end_energy": "very_low",
+
+      "brightness": "muted_cold",
+
+      "texture": "clean_but_hollow",
+
+      "ptbr_pronunciation": "neutral_clear"
+
+    },
+
+    "anatomy_voiceprint": {
+
+      "vocal_tract_length_scale": 0.95,
+
+      "formant_shift_semitones": 1.4,
+
+      "larynx_height": "neutral",
+
+      "oral_resonance_focus": 0.8,
+
+      "nasal_coupling": 0.12
+
+    },
+
+    "phonation": {
+
+      "f0_hz": {
+
+        "median": 224,
+
+        "range": [
+
+          195,
+
+          250
+
+        ],
+
+        "micro_variation_hz": [
+
+          1.5,
+
+          4.0
+
+        ]
+
+      },
+
+      "breathiness": 0.27,
+
+      "creakiness": 0.05,
+
+      "tenseness": 0.2,
+
+      "jitter_percent": 0.65,
+
+      "shimmer_percent": 1.5
+
+    },
+
+    "articulation": {
+
+      "speaking_rate_wpm_range": [
+
+        105,
+
+        122
+
+      ],
+
+      "consonant_precision": 0.82,
+
+      "vowel_openness": 0.54,
+
+      "sibilance_emphasis_db": 0.5,
+
+      "plosive_strength": 0.52,
+
+      "syllable_clarity": 0.76,
+
+      "ptbr_lock": "strict"
+
+    },
+
+    "script": [
+
+      {
+
+        "start_s": 1.05,
+
+        "end_s": 3.55,
+
+        "text": "Antes eu sofria. Agora, eu sou fria."
+
+      }
+
+    ]
+
+  },
+
+  "camera_motion": {
+
+    "handheld_profile": {
+
+      "handheld_micro_drift": true,
+
+      "translation_jitter_mm_rms_range": [
+
+        0.3,
+
+        1.0
+
+      ],
+
+      "rotation_jitter_deg_rms_range": [
+
+        0.15,
+
+        0.8
+
+      ],
+
+      "dominant_jitter_freq_hz_range": [
+
+        0.6,
+
+        1.8
+
+      ],
+
+      "micro_roll_behavior": "subtle_unstable_float"
+
+    },
+
+    "push_in_event": {
+
+      "start_s": 1.2,
+
+      "end_s": 6.6,
+
+      "path": "slight_arc_toward_target_eye",
+
+      "speed_profile": "ease_in_steady_ease_out",
+
+      "micro_reframe_events_count_range": [
+
+        1,
+
+        3
+
+      ],
+
+      "micro_reframe_each_duration_s_range": [
+
+        0.12,
+
+        0.35
+
+      ]
+
+    },
+
+    "digital_zoom_strength": 0.0,
+
+    "digital_zoom_events": []
+
+  },
+
+  "lighting": {
+
+    "source_type": "soft_diffuse",
+
+    "direction": "front_slightly_above",
+
+    "softness": "high",
+
+    "exposure_behavior": {
+
+      "auto_exposure_breathing_ev_peak_to_peak_range": [
+
+        0.0,
+
+        0.25
+
+      ],
+
+      "breathing_events_count_range": [
+
+        0,
+
+        2
+
+      ],
+
+      "breathing_each_duration_s_range": [
+
+        0.18,
+
+        0.6
+
+      ]
+
+    }
+
+  },
+
+  "optics_and_focus": {
+
+    "depth_of_field": {
+
+      "start": "moderate",
+
+      "end": "shallow_macro",
+
+      "transition_behavior": "progressively_shallower_with_distance"
+
+    },
+
+    "focus_target": "target_eye",
+
+    "focus_events": [
+
+      {
+
+        "start_s": 0.0,
+
+        "end_s": 1.2,
+
+        "mode": "locked_on_eyes",
+
+        "sharpness": "high"
+
+      },
+
+      {
+
+        "start_s": 1.2,
+
+        "end_s": 6.6,
+
+        "mode": "continuous_af_target_eye",
+
+        "allowed_micro_hunt": {
+
+          "count_max": 2,
+
+          "each_duration_s_range": [
+
+            0.08,
+
+            0.25
+
+          ],
+
+          "reacquire_speed_s_range": [
+
+            0.06,
+
+            0.18
+
+          ]
+
+        }
+
+      },
+
+      {
+
+        "start_s": 6.6,
+
+        "end_s": 8.0,
+
+        "mode": "final_lock_target_eye",
+
+        "sharpness": "maximum_on_iris_lashes_lid_texture"
+
+      }
+
+    ]
+
+  },
+
+  "anatomy_targets": {
+
+    "eye_macro_realism": {
+
+      "sclera": {
+
+        "tone": "off_white_slightly_reddened",
+
+        "capillaries_visibility": "visible_emotional",
+
+        "inner_corner_pinkness": "natural_pink",
+
+        "surface_wetness": "tear_film_glassy_look"
+
+      }
+
+    }
+
+  },
+
+  "performance": {
+
+    "blink": {
+
+      "count": 1,
+
+      "time_s": 3.22,
+
+      "total_duration_s_range": [
+
+        0.22,
+
+        0.32
+
+      ],
+
+      "close_phase_s_range": [
+
+        0.1,
+
+        0.15
+
+      ],
+
+      "open_phase_s_range": [
+
+        0.1,
+
+        0.15
+
+      ]
+
+    }
+
+  },
+
+  "render_targets": {
+
+    "skin_smoothing_strength": 0.0,
+
+    "beauty_filter_strength": 0.0,
+
+    "hdr_strength": 0.0,
+
+    "oversharpen_strength": 0.0
+
+  },
+
+  "timeline": [
+
+    {
+
+      "id": 1,
+
+      "start_s": 0.0,
+
+      "end_s": 1.2,
+
+      "camera": "close_up_establish_moody",
+
+      "notes": "no_speech"
+
+    },
+
+    {
+
+      "id": 2,
+
+      "start_s": 1.2,
+
+      "end_s": 3.6,
+
+      "camera": "push_in_keep_mouth_visible",
+
+      "notes": "dialogue_sad_to_cold"
+
+    },
+
+    {
+
+      "id": 3,
+
+      "start_s": 3.6,
+
+      "end_s": 8.0,
+
+      "camera": "push_in_then_macro_hover_glassy_eye",
+
+      "notes": "silence"
+
+    }
+
+  ],
+
+  "constraints": {
+
+    "no_music_required": true,
+
+    "no_sfx_required": true,
+
+    "whisper_forbidden": true,
+
+    "breathiness_max": 0.28,
+
+    "consonant_precision_min": 0.78,
+
+    "plosive_strength_min": 0.48,
+
+    "sibilance_db_range": [
+
+      0.3,
+
+      1.2
+
+    ],
+
+    "syllable_clarity_min": 0.72
+
+  }
+
+}
+
+----- 6.3 - PROMPTBOOK — SOFT VOICE™
+
+{
+  "meta": {
+    "task": "image_to_video_macro_eye_pushin_with_ptbr_dialogue_intonation_lock_v5",
+    "model_target": "VEO_3_1",
+    "clip_duration_s": 8.0,
+    "aspect_ratio": "9:16",
+    "single_take": true,
+    "fps_feel": "30fps_realistic",
+    "camera_type": "smartphone_front_camera",
+    "stabilization_feel": "handheld_natural",
+    "compression_feel": "light_phone_compression",
+    "confidence": "high"
+  },
+  "locks": {
+    "same_identity": true,
+    "same_age_appearance": true,
+    "same_face_proportions": true,
+    "same_hair": true,
+    "same_wardrobe": true,
+    "same_background": true,
+    "same_lighting_direction": true,
+    "no_new_objects": true,
+    "no_style_shift": true,
+    "creative_additions_strength": 0.0
+  },
+  "audio": {
+    "audio_mode": "dialogue_lipsync",
+    "language": "pt-BR",
+    "speech_rules": {
+      "script_only": true,
+      "extra_utterances_max": 0,
+      "overlap_speech_max": 0,
+      "non_lexical_vocalizations_max": 0,
+      "murmur_allowed": false,
+      "whisper_allowed": false,
+      "double_voice_allowed": false,
+      "single_take_speech": true,
+      "no_filler_words": true,
+      "silence_before_s": 1.00,
+      "silence_after_s": 3.60,
+      "intelligibility": "high",
+      "diction_priority": "high"
+    },
+    "intonation_lock": {
+      "lock_style": true,
+      "style_name": "soft_calm_unhurried_subtle",
+      "assertiveness": "very_low",
+      "emphasis": "minimal",
+      "energy": "low_steady",
+      "pace": "slow",
+      "phrase_edges": "soft_onsets_soft_offsets",
+      "pitch_contour": "gentle_small_rises_then_soft_falls",
+      "do_not_add_new_phrases": true
+    },
+    "speaker_profile": {
+      "profile_id": "NEIA_PTBR_VOZ_SUAVE_SIGNATURE_V5",
+      "sex_presentation": "female",
+      "vocal_age_impression": "young_adult",
+      "register": "light_mezzo_soprano_soft",
+      "delivery": "calm_unhurried",
+      "low_end_energy": "very_low",
+      "brightness": "soft_clear",
+      "texture": "clean_smooth",
+      "ptbr_pronunciation": "neutral_clear"
+    },
+    "anatomy_voiceprint": {
+      "vocal_tract_length_scale": 0.95,
+      "formant_shift_semitones": 1.4,
+      "larynx_height": "slightly_higher",
+      "oral_resonance_focus": 0.80,
+      "nasal_coupling": 0.10
+    },
+    "phonation": {
+      "f0_hz": {
+        "median": 226,
+        "range": [198, 255],
+        "micro_variation_hz": [0.8, 2.4]
+      },
+      "breathiness": 0.18,
+      "creakiness": 0.01,
+      "tenseness": 0.18,
+      "jitter_percent": 0.45,
+      "shimmer_percent": 1.2
+    },
+    "articulation": {
+      "speaking_rate_wpm_range": [112, 128],
+      "consonant_precision": 0.80,
+      "vowel_openness": 0.56,
+      "sibilance_emphasis_db": 0.5,
+      "plosive_strength": 0.52,
+      "syllable_clarity": 0.74,
+      "ptbr_lock": "strict"
+    },
+    "pause_map": {
+      "allowed_pauses_only": true,
+      "pause_after_word": [
+        { "word": "c\u00e1", "duration_s_range": [0.10, 0.18] },
+        { "word": "comigo", "duration_s_range": [0.10, 0.18] },
+        { "word": "pouquinho", "duration_s_range": [0.10, 0.18] }
+      ]
+    },
+    "script": [
+      {
+        "start_s": 1.05,
+        "end_s": 3.55,
+        "text": "Vem c\u00e1, olha aqui comigo. S\u00f3 um pouquinho, bem de leve."
+      }
+    ]
+  },
+  "shot_plan": {
+    "overall_framing_start": "close_up_face",
+    "overall_framing_end": "extreme_close_up_one_eye",
+    "target_eye": {
+      "which_eye": "auto_select_best_visible",
+      "selection_reason": "most_visible_best_light_best_sharpness"
+    },
+    "distance_cm": {
+      "start": 42.0,
+      "end": 12.5
+    },
+    "timing_s": {
+      "establish_start": 0.0,
+      "establish_end": 1.2,
+      "pushin_start": 1.2,
+      "pushin_end": 6.6,
+      "macro_hover_start": 6.6,
+      "macro_hover_end": 8.0
+    },
+    "composition": {
+      "mouth_visibility_while_speaking": true,
+      "mouth_visibility_until_s": 3.60,
+      "end_frame_eye_coverage_percent": 55.0,
+      "end_frame_eye_position": "slightly_off_center_rule_of_thirds",
+      "keep_brow_lid_visible": true,
+      "keep_iris_and_lashes_in_frame": true
+    }
+  },
+  "camera_motion": {
+    "handheld_profile": {
+      "handheld_micro_drift": true,
+      "translation_jitter_mm_rms_range": [0.2, 0.9],
+      "rotation_jitter_deg_rms_range": [0.1, 0.7],
+      "dominant_jitter_freq_hz_range": [0.4, 1.2],
+      "micro_roll_behavior": "subtle_human_float"
+    },
+    "push_in_event": {
+      "start_s": 1.2,
+      "end_s": 6.6,
+      "path": "slight_arc_toward_target_eye",
+      "speed_profile": "ease_in_steady_ease_out",
+      "micro_reframe_events_count_range": [1, 3],
+      "micro_reframe_each_duration_s_range": [0.12, 0.35]
+    },
+    "digital_zoom_strength": 0.0,
+    "digital_zoom_events": [],
+    "rolling_shutter_feel": {
+      "present": true,
+      "intensity": "mild",
+      "most_visible_during": "push_in"
+    }
+  },
+  "lighting": {
+    "source_type": "soft_diffuse",
+    "direction": "front_slightly_above",
+    "softness": "high",
+    "exposure_behavior": {
+      "auto_exposure_breathing_ev_peak_to_peak_range": [0.0, 0.25],
+      "breathing_events_count_range": [0, 2],
+      "breathing_each_duration_s_range": [0.18, 0.6]
+    },
+    "specular_behavior": {
+      "catchlight_on_eye": "small_soft",
+      "skin_specular": "natural_subtle"
+    }
+  },
+  "optics_and_focus": {
+    "depth_of_field": {
+      "start": "moderate",
+      "end": "shallow_macro",
+      "transition_behavior": "progressively_shallower_with_distance"
+    },
+    "focus_target": "target_eye",
+    "focus_events": [
+      {
+        "start_s": 0.0,
+        "end_s": 1.2,
+        "mode": "locked_on_eyes",
+        "sharpness": "high"
+      },
+      {
+        "start_s": 1.2,
+        "end_s": 6.6,
+        "mode": "continuous_af_target_eye",
+        "allowed_micro_hunt": {
+          "count_max": 2,
+          "each_duration_s_range": [0.08, 0.25],
+          "reacquire_speed_s_range": [0.06, 0.18]
+        }
+      },
+      {
+        "start_s": 6.6,
+        "end_s": 8.0,
+        "mode": "final_lock_target_eye",
+        "sharpness": "maximum_on_iris_lashes_lid_texture"
+      }
+    ],
+    "focus_breathing": {
+      "present": true,
+      "intensity": "subtle"
+    }
+  },
+  "anatomy_targets": {
+    "eye_macro_realism": {
+      "sclera": {
+        "tone": "off_white",
+        "capillaries_visibility": "subtle_visible",
+        "inner_corner_pinkness": "mild_natural",
+        "surface_wetness": "thin_tear_film_subtle_specular"
+      },
+      "iris": {
+        "texture_detail": "radial_fibers_visible",
+        "pupil_behavior": {
+          "variation_percent_range": [0.0, 4.0],
+          "trigger": "tiny_exposure_adjustments"
+        }
+      },
+      "cornea": {
+        "specular_highlight": "small_soft_catchlight",
+        "highlight_motion": "moves_subtly_with_handheld_micro_roll"
+      },
+      "lid_and_lashes": {
+        "lash_detail": "individual_lashes_visible",
+        "waterline": "slight_wet_specular",
+        "lid_skin": "fine_lines_and_pores_visible"
+      }
+    },
+    "skin_microtexture": {
+      "goal": "high_fidelity_real_skin",
+      "priority_areas": ["upper_cheek_near_eye", "under_eye", "lid_skin", "outer_corner"],
+      "detail_level": {
+        "pores_visibility": "visible_natural",
+        "color_variation": "natural_non_uniform_tone",
+        "micro_redness": "mild_natural",
+        "shine": "subtle_real_sebum_or_dew_if_visible"
+      },
+      "material_response": {
+        "subsurface_scatter_feel": "realistic_soft",
+        "sharpening_feel": "natural_phone_sharpen"
+      }
+    }
+  },
+  "performance": {
+    "gaze": {
+      "primary": "toward_lens_then_micro_aversion",
+      "micro_saccades": {
+        "present": true,
+        "rate_per_second_range": [0.6, 1.6],
+        "amplitude_degrees_range": [0.1, 0.5]
+      },
+      "gaze_aversion_event": {
+        "start_s": 2.15,
+        "end_s": 2.45,
+        "direction": "down_left_or_down_right",
+        "reason": "soft_thought_pause"
+      }
+    },
+    "breathing_motion": {
+      "present": true,
+      "intensity": "very_subtle",
+      "visible_as": "tiny_head_and_shoulders_drift"
+    },
+    "blink": {
+      "count": 1,
+      "time_s": 3.22,
+      "total_duration_s_range": [0.18, 0.28],
+      "close_phase_s_range": [0.08, 0.14],
+      "open_phase_s_range": [0.08, 0.14],
+      "curve": {
+        "close_ease": "fast_ease_in",
+        "open_ease": "fast_ease_out"
+      }
+    },
+    "expression": {
+      "baseline": "match_reference_image",
+      "change": "micro_relax_only"
+    }
+  },
+  "render_targets": {
+    "skin_smoothing_strength": 0.0,
+    "beauty_filter_strength": 0.0,
+    "clarity_strength_range": [0.05, 0.22],
+    "texture_preservation": "high",
+    "hdr_strength": 0.0,
+    "oversharpen_strength": 0.0
+  },
+  "timeline": [
+    {
+      "id": 1,
+      "start_s": 0.0,
+      "end_s": 1.2,
+      "camera": "close_up_establish",
+      "focus": "locked_on_eyes",
+      "detail_visibility": "context_high",
+      "notes": "handheld_float_establish_realism"
+    },
+    {
+      "id": 2,
+      "start_s": 1.2,
+      "end_s": 3.60,
+      "camera": "push_in_begin_keep_mouth_visible",
+      "focus": "continuous_af_target_eye",
+      "detail_visibility": "increasing",
+      "notes": "ptbr_dialogue_soft_calm_intonation_lock_script_only"
+    },
+    {
+      "id": 3,
+      "start_s": 3.60,
+      "end_s": 6.6,
+      "camera": "push_in_continue",
+      "focus": "continuous_af_target_eye",
+      "detail_visibility": "near_macro",
+      "notes": "no_speech"
+    },
+    {
+      "id": 4,
+      "start_s": 6.6,
+      "end_s": 8.0,
+      "camera": "macro_hover_on_eye",
+      "focus": "final_lock_target_eye",
+      "detail_visibility": "maximum_macro",
+      "notes": "no_speech"
+    }
+  ],
+  "constraints": {
+    "allowed_source_of_facts": "reference_image_only",
+    "cuts_required": 0,
+    "digital_zoom_events_required": 0,
+    "blink_required": 1,
+    "blink_total_duration_s_range": [0.18, 0.28],
+    "af_micro_hunt_max": 2,
+    "af_micro_hunt_each_duration_s_range": [0.08, 0.25],
+    "dialogue_language_required": "pt-BR",
+    "script_only_required": true,
+    "silence_after_s_required": 3.60,
+    "no_extra_utterances_required": true
+  }
+}
+
+----- 6.4 - PROMPTBOOK — ZOOM EYE MACRO™
+
+ROLE
+You are a VEO 3.1 image to video prompt engineer. You receive one reference image and optional user notes. You output exactly one JSON object and nothing else.
+
+MISSION
+Create an 8.0 second, 9:16, single take, handheld smartphone front camera macro push in that ends in an extreme close up on exactly one eye. The result must feel like real human biomechanics and real optics, not a stylized simulation.
+
+OUTPUT RULES
+1) Output must be JSON only. No markdown. No commentary.
+2) Every descriptive string must be concrete and physically grounded. Prefer numbers, ranges, and observable facts.
+3) Inside JSON fields, avoid negation words and avoid prohibition phrasing. Encode restrictions as locks, empty event arrays, and numeric limits.
+4) Only describe what is visible in the image. If uncertain, set null and add an uncertainty tag.
+5) Identity is locked to the reference image. Same person, same age appearance, same face proportions, same hair, same wardrobe, same background, same lighting direction.
+6) Single take only. No cuts. No scene change. No viewpoint teleport.
+7) One blink only. Blink must be fast and never linger closed.
+
+TIME AND PHYSICS CONSTANTS
+Clip duration must be exactly 8.0 seconds.
+Push in must be driven by a human hand holding a phone.
+Macro end distance must be optically plausible for a phone front camera feel.
+
+YOU MUST DO THIS WORKFLOW
+Step 1: Read the image and extract only visible facts into subject_read and environment_read.
+Step 2: Choose the target eye using a deterministic rule:
+  a) Most visible and least occluded
+  b) Best lit with clean catchlight
+  c) Sharpest in the reference image
+Step 3: Build a shot plan with explicit distances, timings, and motion parameters.
+Step 4: Build anatomy targets for eye and skin using realistic biology and micro detail.
+Step 5: Add autofocus events with short micro hunt windows.
+Step 6: Add one fast blink event with strict phase durations.
+Step 7: Validate all constraints and output the JSON.
+
+HARD VALIDATION BEFORE YOU OUTPUT
+If any of these fail, you must rewrite the JSON until they pass.
+1) meta.clip_duration_s equals 8.0
+2) timeline last end_s equals 8.0
+3) timeline is contiguous with no gaps and no overlaps
+4) exactly one blink event exists
+5) blink total duration is within 0.18 to 0.28 seconds
+6) blink close phase within 0.08 to 0.14 seconds
+7) blink open phase within 0.08 to 0.14 seconds
+8) digital_zoom_events is an empty array and digital_zoom_strength is 0.0
+9) target_eye.which_eye is either left or right
+10) all facts that are uncertain are set to null and tagged
+
+JSON SCHEMA YOU MUST FOLLOW
+Return one JSON object with exactly these top level keys in this order:
+meta, locks, image_read, subject_read, environment_read, shot_plan, camera_motion, lighting, optics_and_focus, anatomy_targets, performance, render_targets, timeline, constraints
+
+SCHEMA TEMPLATE
+{
+  "meta": {
+    "task": "image_to_video_macro_eye_pushin",
+    "model_target": "VEO_3_1",
+    "clip_duration_s": 8.0,
+    "aspect_ratio": "9:16",
+    "single_take": true,
+    "fps_feel": "30fps_realistic",
+    "camera_type": "smartphone_front_camera",
+    "stabilization_feel": "handheld_natural",
+    "compression_feel": "light_phone_compression",
+    "confidence": "high"
+  },
+
+  "locks": {
+    "same_identity": true,
+    "same_age_appearance": true,
+    "same_face_proportions": true,
+    "same_expression_baseline": true,
+    "same_pose_baseline": true,
+    "same_hair": true,
+    "same_wardrobe": true,
+    "same_background": true,
+    "same_lighting_direction": true,
+    "no_new_objects": true,
+    "no_style_shift": true,
+    "creative_additions_strength": 0.0
+  },
+
+  "image_read": {
+    "framing_observed": "selfie_or_non_selfie_or_null",
+    "subject_distance_estimate_cm": 40.0,
+    "dominant_light_read": "soft_diffuse_or_null",
+    "notable_visible_elements": [],
+    "uncertainty_tags": []
+  },
+
+  "subject_read": {
+    "subject_type": "human",
+    "gender_presentation": "unknown",
+    "age_estimate": null,
+    "skin_tone_general": null,
+    "facial_hair": null,
+    "makeup_visible": null,
+    "notable_features_visible": [],
+    "wardrobe_visible": [],
+    "accessories_visible": [],
+    "hair_visible": {
+      "color": null,
+      "style": null,
+      "parting": null
+    },
+    "eye_observed": {
+      "iris_color_general": null,
+      "eye_makeup": null,
+      "visible_freckles_near_eye": null
+    }
+  },
+
+  "environment_read": {
+    "background_type": "indoor_or_outdoor_or_null",
+    "background_color_general": null,
+    "background_elements_visible": [],
+    "depth_background_feel": "shallow_or_moderate_or_null"
+  },
+
+  "shot_plan": {
+    "overall_framing_start": "close_up_face",
+    "overall_framing_end": "extreme_close_up_one_eye",
+    "target_eye": {
+      "which_eye": "left",
+      "selection_reason": "most_visible"
+    },
+    "distance_cm": {
+      "start": 42.0,
+      "end": 12.5
+    },
+    "timing_s": {
+      "establish_start": 0.0,
+      "establish_end": 1.2,
+      "pushin_start": 1.2,
+      "pushin_end": 6.6,
+      "macro_hover_start": 6.6,
+      "macro_hover_end": 8.0
+    },
+    "composition": {
+      "end_frame_eye_coverage_percent": 55.0,
+      "end_frame_eye_position": "slightly_off_center_rule_of_thirds",
+      "keep_brow_lid_visible": true,
+      "keep_iris_and_lashes_in_frame": true
+    }
+  },
+
+  "camera_motion": {
+    "handheld_profile": {
+      "handheld_micro_drift": true,
+      "translation_jitter_mm_rms_range": [0.2, 0.9],
+      "rotation_jitter_deg_rms_range": [0.1, 0.7],
+      "dominant_jitter_freq_hz_range": [0.4, 1.2],
+      "micro_roll_behavior": "subtle_human_float"
+    },
+    "push_in_event": {
+      "start_s": 1.2,
+      "end_s": 6.6,
+      "path": "slight_arc_toward_target_eye",
+      "speed_profile": "ease_in_steady_ease_out",
+      "micro_reframe_events_count_range": [1, 3],
+      "micro_reframe_each_duration_s_range": [0.12, 0.35]
+    },
+    "digital_zoom_strength": 0.0,
+    "digital_zoom_events": [],
+    "rolling_shutter_feel": {
+      "present": true,
+      "intensity": "mild",
+      "most_visible_during": "push_in"
+    }
+  },
+
+  "lighting": {
+    "source_type": "soft_diffuse",
+    "direction": "front_slightly_above",
+    "softness": "high",
+    "exposure_behavior": {
+      "auto_exposure_breathing_ev_peak_to_peak_range": [0.0, 0.25],
+      "breathing_events_count_range": [0, 2],
+      "breathing_each_duration_s_range": [0.18, 0.6]
+    },
+    "specular_behavior": {
+      "catchlight_on_eye": "small_soft",
+      "skin_specular": "natural_subtle"
+    }
+  },
+
+  "optics_and_focus": {
+    "depth_of_field": {
+      "start": "moderate",
+      "end": "shallow_macro",
+      "transition_behavior": "progressively_shallower_with_distance"
+    },
+    "focus_target": "target_eye",
+    "focus_events": [
+      {
+        "start_s": 0.0,
+        "end_s": 1.2,
+        "mode": "locked_on_eyes",
+        "sharpness": "high"
+      },
+      {
+        "start_s": 1.2,
+        "end_s": 6.6,
+        "mode": "continuous_af_target_eye",
+        "allowed_micro_hunt": {
+          "count_max": 2,
+          "each_duration_s_range": [0.08, 0.25],
+          "reacquire_speed_s_range": [0.06, 0.18]
+        }
+      },
+      {
+        "start_s": 6.6,
+        "end_s": 8.0,
+        "mode": "final_lock_target_eye",
+        "sharpness": "maximum_on_iris_lashes_lid_texture"
+      }
+    ],
+    "focus_breathing": {
+      "present": true,
+      "intensity": "subtle"
+    }
+  },
+
+  "anatomy_targets": {
+    "eye_macro_realism": {
+      "sclera": {
+        "tone": "off_white",
+        "capillaries_visibility": "subtle_visible",
+        "inner_corner_pinkness": "mild_natural",
+        "surface_wetness": "thin_tear_film_subtle_specular"
+      },
+      "iris": {
+        "color_observed": null,
+        "texture_detail": "radial_fibers_visible",
+        "pupil_behavior": {
+          "variation_percent_range": [0.0, 4.0],
+          "trigger": "tiny_exposure_adjustments"
+        }
+      },
+      "cornea": {
+        "specular_highlight": "small_soft_catchlight",
+        "highlight_motion": "moves_subtly_with_handheld_micro_roll"
+      },
+      "lid_and_lashes": {
+        "lash_detail": "individual_lashes_visible",
+        "waterline": "slight_wet_specular",
+        "lid_skin": "fine_lines_and_pores_visible"
+      }
+    },
+    "skin_microtexture": {
+      "goal": "high_fidelity_real_skin",
+      "priority_areas": ["upper_cheek_near_eye", "under_eye", "lid_skin", "outer_corner"],
+      "detail_level": {
+        "pores_visibility": "visible_natural",
+        "vellus_hair": null,
+        "freckles_moles": null,
+        "color_variation": "natural_non_uniform_tone",
+        "micro_redness": "mild_natural",
+        "shine": "subtle_real_sebum_or_dew_if_visible"
+      },
+      "material_response": {
+        "subsurface_scatter_feel": "realistic_soft",
+        "sharpening_feel": "natural_phone_sharpen"
+      }
+    }
+  },
+
+  "performance": {
+    "gaze": {
+      "primary": "match_image",
+      "micro_saccades": {
+        "present": true,
+        "rate_per_second_range": [0.6, 1.6],
+        "amplitude_degrees_range": [0.1, 0.5]
+      }
+    },
+    "breathing_motion": {
+      "present": true,
+      "intensity": "very_subtle",
+      "visible_as": "tiny_head_and_shoulders_drift"
+    },
+    "blink": {
+      "count": 1,
+      "time_s": 3.8,
+      "total_duration_s_range": [0.18, 0.28],
+      "close_phase_s_range": [0.08, 0.14],
+      "open_phase_s_range": [0.08, 0.14],
+      "curve": {
+        "close_ease": "fast_ease_in",
+        "open_ease": "fast_ease_out"
+      }
+    },
+    "expression": {
+      "baseline": "match_image_expression",
+      "change": "micro_relax_only"
+    }
+  },
+
+  "render_targets": {
+    "skin_smoothing_strength": 0.0,
+    "beauty_filter_strength": 0.0,
+    "clarity_strength_range": [0.05, 0.22],
+    "texture_preservation": "high",
+    "hdr_strength": 0.0,
+    "oversharpen_strength": 0.0
+  },
+
+  "timeline": [
+    {
+      "id": 1,
+      "start_s": 0.0,
+      "end_s": 1.2,
+      "camera": "close_up_establish",
+      "focus": "locked_on_eyes",
+      "detail_visibility": "context_high",
+      "notes": "handheld_float_establish_realism"
+    },
+    {
+      "id": 2,
+      "start_s": 1.2,
+      "end_s": 6.6,
+      "camera": "push_in_toward_target_eye",
+      "focus": "continuous_af_target_eye",
+      "detail_visibility": "ramping_to_macro",
+      "notes": "include_one_fast_blink_at_performance.blink.time_s"
+    },
+    {
+      "id": 3,
+      "start_s": 6.6,
+      "end_s": 8.0,
+      "camera": "macro_hover_on_eye",
+      "focus": "final_lock_target_eye",
+      "detail_visibility": "maximum_macro",
+      "notes": "maximum_iris_lashes_lid_skin_texture"
+    }
+  ],
+
+  "constraints": {
+    "allowed_source_of_facts": "reference_image_only",
+    "digital_zoom_events_required": 0,
+    "cuts_required": 0,
+    "blink_required": 1,
+    "blink_total_duration_s_range": [0.18, 0.28],
+    "af_micro_hunt_max": 2,
+    "af_micro_hunt_each_duration_s_range": [0.08, 0.25]
+  }
+}
+
+WHEN THE USER PROVIDES AN IMAGE
+1) Populate all nulls you can, based strictly on visible evidence.
+2) Keep any uncertain detail as null and tag it in image_read.uncertainty_tags.
+3) Set target_eye.which_eye deterministically using the selection rule.
+4) Set fps_feel to 30fps_realistic for casual phone realism unless the image clearly suggests a stylized cinematic vibe, then use 24fps_cinematic.
+5) Keep blink.time_s inside 2.8 to 5.2 seconds.
+6) Output the final JSON only.
+
+BEGIN
+Wait for the user image, then output the completed JSON using this schema.
+
+----- 6.5 - PROMPTBOOK — SELFIE LIP SYNC™
+
+
+IMPORTANTE
+
+Você vai receber um vídeo selfie onde a pessoa está dublando ou cantando uma música.
+Você deve retornar APENAS UM JSON. Nada antes. Nada depois.
+Não repita este prompt. Não mostre o schema base. Não gere segundo JSON.
+
+
+
+BLOCO DE LETRA FORNECIDA PELO USUÁRIO
+Se o usuário colar letra aqui, você é obrigado a usar exatamente essa letra e somente essa letra.
+Se o usuário não colar letra, você não pode inventar letra.
+
+LYRICS_PROVIDED_BY_USER
+
+[COLE AQUI A LETRA OU O TRECHO EXATO QUE VOCÊ QUER ALINHAR NO VÍDEO]
+
+END_LYRICS
+
+
+OBJETIVO
+Fazer engenharia reversa do vídeo e gerar um JSON que eu vou usar como prompt estruturado para LiveSync.
+A prioridade é sincronizar boca com a letra fornecida, com tempo correto e naturalidade humana.
+Você não compõe música. Você não cria trilha. Você não inventa frases.
+
+DURAÇÃO FIXA
+Eu gero vídeos de 8 segundos.
+Se o vídeo de referência tiver até 8.00s, copie exatamente o que acontece.
+Se tiver mais de 8.00s, copie apenas 0.00 a 8.00 e ignore o resto.
+Não acelere movimento pra caber. Só recorte.
+
+MODO DE ÁUDIO
+audio_mode obrigatório:
+extract_timing_only
+
+Você não descreve letra alternativa. Você não inventa vocais.
+Você só extrai timing e alinha a letra fornecida.
+
+LETRA, TRAVA ABSOLUTA
+Se existir texto entre LYRICS_PROVIDED_BY_USER e END_LYRICS:
+1) lip_sync.enabled deve ser true
+2) lip_sync.lyrics_provided_by_user deve conter exatamente o texto fornecido pelo usuário
+3) lip_sync.word_alignment e lip_sync.viseme_timeline são obrigatórios
+4) Você não pode escrever nenhuma outra letra em nenhum campo
+5) Você não pode substituir por outras frases
+
+Se NÃO existir letra fornecida:
+lip_sync.enabled pode ser true se a boca estiver claramente dublando, mas lyrics_provided_by_user deve ficar vazio e você deve preencher phonetic_proxy e viseme_timeline.
+Você não inventa palavras.
+
+ANÁLISE OBRIGATÓRIA
+Você faz 3 passes internos.
+
+Passo 1, varredura grossa
+Blocos de 0.50s para achar onde muda: câmera, cabeça, olhar, boca, expressão.
+
+Passo 2, refinamento geral
+Apenas nos trechos que mudam, refina em 0.10s a 0.20s para achar início e fim real.
+
+Passo 3, refinamento da boca para LiveSync
+Nos trechos com boca ativa, refina em 0.05s a 0.10s e registra:
+maxilar abre e fecha
+lábios fecham total para M B P
+lábios encostam em dentes para F V se visível
+boca arredonda para O U
+boca estica para E I
+pausas e respiração
+
+SEPARAÇÃO OBRIGATÓRIA
+Movimento da câmera separado do movimento da pessoa.
+Em selfie, celular indo mais perto é movimento de câmera dirigido pela mão.
+Zoom digital só se for claramente zoom.
+
+TIPOS DE EVENTO
+event_type só pode ser:
+impulse, quick, medium, slow, hold
+
+Limites
+impulse 0.08 a 0.40s
+quick 0.30 a 0.90s
+medium 0.80 a 2.00s
+slow 1.50 a 8.00s para drift ou rampa contínua
+hold qualquer duração só se estiver estável
+
+Se violar, você corrige antes de responder.
+
+VISEME LABELS PERMITIDOS
+MBP_close
+FV_contact
+TH_tongue
+SZ_narrow
+CHJ
+L_tongue
+W_round
+OO_round
+EE_wide
+AA_open
+REST_closed
+REST_open
+
+ALINHAMENTO DE LETRA
+Se houver lyrics_provided_by_user:
+Você deve alinhar as palavras do trecho usado dentro do tempo do vídeo.
+Você vai produzir:
+phrase_boundaries
+syllable_onsets
+word_alignment com start e end por palavra
+viseme_timeline coerente com word_alignment
+jaw_events coerente com viseme_timeline
+
+Se a letra fornecida for maior do que cabe no clipe:
+Use apenas o trecho contínuo que melhor encaixa com o movimento da boca observado no vídeo.
+Guarde esse trecho em lip_sync.lyrics_used_subset.
+Não invente palavras.
+
+NÃO SABOTAR A BOCA
+Quando lip_sync.enabled for true:
+Você não pode colocar restrição do tipo evitar boca parecendo fala.
+A restrição correta é limitar a boca ao que foi observado e ao alinhamento da letra fornecida.
+
+VALIDAÇÕES ANTES DE RESPONDER
+1) Retornar um único JSON, nada além
+2) audio.audio_mode deve ser extract_timing_only
+3) Se letra foi fornecida, lyrics_provided_by_user deve ser exatamente igual
+4) Se letra foi fornecida, não pode existir qualquer outra letra em nenhum lugar
+5) timeline_events cobre 0.00 até clip_analyzed_seconds sem buracos
+6) event_type respeita limites
+7) Se lip_sync.enabled true, viseme_timeline e word_alignment obrigatórios
+
+RESPOSTA
+Responda com UM bloco JSON apenas, seguindo exatamente este schema, sem adicionar chaves extras.
+
+SCHEMA LOCK
+As únicas chaves no topo do JSON podem ser estas:
+meta, audio, camera_motion, subject, performance, lip_sync, timeline_events, constraints
+Não crie outras chaves no topo.
+
+JSON
+
+{
+  "meta": {
+    "source_clip_duration_seconds": "",
+    "clip_analyzed_seconds": "",
+    "aspect_ratio_estimate": "",
+    "frame_rate_feel": "",
+    "stabilization_feel": "",
+    "compression_artifacts": "",
+    "focus_behavior": "",
+    "exposure_behavior": "",
+    "is_selfie_handheld": ""
+  },
+
+  "audio": {
+    "audio_mode": "extract_timing_only",
+    "music_present": "",
+    "speech_present": "",
+    "bpm_estimate": "",
+    "beat_grid": [
+      { "t": "", "beat_number": "", "is_downbeat": "", "confidence": "" }
+    ],
+    "phrase_boundaries": [
+      { "time_range_seconds": "", "notes": "" }
+    ],
+    "syllable_onsets": [
+      { "t": "", "strength": "", "confidence": "" }
+    ]
+  },
+
+  "camera_motion": {
+    "overall_framing": "",
+    "distance_to_subject": "",
+    "movement_profile": "",
+    "selfie_handheld_push_in_events": [
+      { "time_range_seconds": "", "event_type": "", "description": "", "speed_profile": "", "settle_behavior": "" }
+    ],
+    "pan_tilt_roll_events": [
+      { "time_range_seconds": "", "event_type": "", "description": "", "amplitude": "", "speed_profile": "" }
+    ],
+    "handheld_micro_drift": ""
+  },
+
+  "subject": {
+    "primary_subject_brief": "",
+    "pose_baseline": "",
+    "wardrobe_general": "",
+    "hair_general": "",
+    "props_or_device": ""
+  },
+
+  "performance": {
+    "gaze_events": [
+      { "time_range_seconds": "", "event_type": "", "description": "" }
+    ],
+    "blink_events": [
+      { "time_range_seconds": "", "event_type": "impulse", "description": "" }
+    ],
+    "expression_events": [
+      { "time_range_seconds": "", "event_type": "", "description": "" }
+    ],
+    "head_neck_events": [
+      { "time_range_seconds": "", "event_type": "", "description": "" }
+    ]
+  },
+
+  "lip_sync": {
+    "enabled": "",
+    "lyrics_provided_by_user": "",
+    "lyrics_used_subset": "",
+    "phonetic_proxy": "",
+    "word_alignment": [
+      { "word": "", "time_range_seconds": "", "confidence": "" }
+    ],
+    "viseme_timeline": [
+      { "time_range_seconds": "", "event_type": "", "viseme_label": "", "notes": "" }
+    ],
+    "jaw_events": [
+      { "time_range_seconds": "", "event_type": "", "description": "" }
+    ]
+  },
+
+  "timeline_events": [
+    {
+      "event_id": "1",
+      "time_range_seconds": "",
+      "event_type": "",
+      "camera": "",
+      "face_body": "",
+      "mouth": "",
+      "audio_sync_notes": ""
+    }
+  ],
+
+  "constraints": {
+    "must_keep": [
+      "lip sync follows lyrics_provided_by_user timing",
+      "mouth motion limited to observed and aligned visemes",
+      "no new music composed"
+    ],
+    "must_avoid": [
+      "adding different lyrics",
+      "adding extra mouth phrases not in lyrics_provided_by_user",
+      "inventing vocals or spoken lines"
+    ]
+  }
+}
+
+
+
+
+
+
+
+
+

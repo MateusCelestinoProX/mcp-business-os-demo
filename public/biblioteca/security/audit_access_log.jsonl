@@ -1,0 +1,133 @@
+{"timestamp": "2026-10-10T17:38:29.302033Z", "agent_id": "omnisocial_master", "action": "list_categories", "details": {}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T17:38:29.304240Z", "agent_id": "omnisocial_master", "action": "search_library", "details": {"query": "nano banana", "matches": 30}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T17:38:29.304363Z", "agent_id": "omnisocial_master", "action": "get_model_blueprint", "details": {"model": "google_veo_3"}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T17:48:57.199430Z", "agent_id": "antigravity_mac", "action": "list_categories", "details": {}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T17:48:57.201673Z", "agent_id": "antigravity_mac", "action": "search_library", "details": {"query": "veo", "matches": 33}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T17:59:45.230689Z", "agent_id": "omnisocial_master", "action": "list_categories", "details": {}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T17:59:45.235160Z", "agent_id": "omnisocial_master", "action": "search_library", "details": {"query": "nano banana", "matches": 30}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T17:59:45.235493Z", "agent_id": "omnisocial_master", "action": "get_model_blueprint", "details": {"model": "google_veo_3"}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:10:12.218521Z", "agent_id": "omnisocial_master", "action": "list_categories", "details": {}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:10:12.225233Z", "agent_id": "omnisocial_master", "action": "search_library", "details": {"query": "nano banana", "matches": 30}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:10:12.225723Z", "agent_id": "omnisocial_master", "action": "get_model_blueprint", "details": {"model": "google_veo_3"}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:10:12.226019Z", "agent_id": "omnisocial_master", "action": "get_model_blueprint", "details": {"model": "ricardo_almeida_viral_cover"}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:10:14.317198Z", "agent_id": "omnisocial_master", "action": "web_search", "details": {"query": "ai automation 2026"}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:11:20.239825Z", "agent_id": "omnisocial_master", "action": "list_categories", "details": {}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:11:20.245755Z", "agent_id": "omnisocial_master", "action": "search_library", "details": {"query": "prompts", "matches": 97}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:11:20.246121Z", "agent_id": "omnisocial_master", "action": "get_model_blueprint", "details": {"model": "google_veo_3"}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:11:20.246385Z", "agent_id": "omnisocial_master", "action": "get_model_blueprint", "details": {"model": "nano_banana_pro"}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:11:20.246579Z", "agent_id": "omnisocial_master", "action": "get_model_blueprint", "details": {"model": "ricardo_almeida_viral_cover"}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:11:20.282218Z", "agent_id": "omnisocial_master", "action": "read_item", "details": {"path": "the skeleton method/8-gumroad.pdf", "bytes_read": 1000}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:11:20.283206Z", "agent_id": "vps_external_agent", "action": "write_item", "details": {"path": "test_dummy.txt"}, "status": "PERMISSION_DENIED"}
+{"timestamp": "2026-10-10T18:11:20.283549Z", "agent_id": "omnisocial_master", "action": "read_item", "details": {"path": "../../etc/passwd"}, "status": "BLOCKED_PATH_TRAVERSAL"}
+{"timestamp": "2026-10-10T18:11:20.284174Z", "agent_id": "omnisocial_master", "action": "read_item", "details": {"path": "%2e%2e%2f%2e%2e%2fetc/passwd"}, "status": "BLOCKED_PATH_TRAVERSAL"}
+{"timestamp": "2026-10-10T18:11:20.285137Z", "agent_id": "omnisocial_master", "action": "read_item", "details": {"path": "%252e%252e%252fetc%2fpasswd"}, "status": "BLOCKED_PATH_TRAVERSAL"}
+{"timestamp": "2026-10-10T18:11:20.285707Z", "agent_id": "omnisocial_master", "action": "read_item", "details": {"path": "safe.txt\u0000/../../etc/passwd"}, "status": "BLOCKED_PATH_TRAVERSAL"}
+{"timestamp": "2026-10-10T18:11:49.867240+00:00", "agent_id": "omnisocial_master", "action": "list_categories", "details": {}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:11:49.873750+00:00", "agent_id": "omnisocial_master", "action": "search_library", "details": {"query": "prompts", "matches": 97}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:11:49.874207+00:00", "agent_id": "omnisocial_master", "action": "get_model_blueprint", "details": {"model": "google_veo_3"}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:11:49.874417+00:00", "agent_id": "omnisocial_master", "action": "get_model_blueprint", "details": {"model": "nano_banana_pro"}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:11:49.874592+00:00", "agent_id": "omnisocial_master", "action": "get_model_blueprint", "details": {"model": "ricardo_almeida_viral_cover"}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:11:49.913709+00:00", "agent_id": "omnisocial_master", "action": "read_item", "details": {"path": "the skeleton method/8-gumroad.pdf", "bytes_read": 1000}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:11:49.914909+00:00", "agent_id": "vps_external_agent", "action": "write_item", "details": {"path": "test_dummy.txt"}, "status": "PERMISSION_DENIED"}
+{"timestamp": "2026-10-10T18:11:49.915335+00:00", "agent_id": "omnisocial_master", "action": "read_item", "details": {"path": "../../etc/passwd"}, "status": "BLOCKED_PATH_TRAVERSAL"}
+{"timestamp": "2026-10-10T18:11:49.916199+00:00", "agent_id": "omnisocial_master", "action": "read_item", "details": {"path": "%2e%2e%2f%2e%2e%2fetc/passwd"}, "status": "BLOCKED_PATH_TRAVERSAL"}
+{"timestamp": "2026-10-10T18:11:49.916902+00:00", "agent_id": "omnisocial_master", "action": "read_item", "details": {"path": "%252e%252e%252fetc%2fpasswd"}, "status": "BLOCKED_PATH_TRAVERSAL"}
+{"timestamp": "2026-10-10T18:11:49.917602+00:00", "agent_id": "omnisocial_master", "action": "read_item", "details": {"path": "safe.txt\u0000/../../etc/passwd"}, "status": "BLOCKED_PATH_TRAVERSAL"}
+{"timestamp": "2026-10-10T18:23:10.208536+00:00", "agent_id": "omnisocial_master", "action": "list_categories", "details": {}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:23:10.214590+00:00", "agent_id": "omnisocial_master", "action": "search_library", "details": {"query": "prompts", "matches": 97}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:23:10.215146+00:00", "agent_id": "omnisocial_master", "action": "get_model_blueprint", "details": {"model": "google_veo_3"}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:23:10.215346+00:00", "agent_id": "omnisocial_master", "action": "get_model_blueprint", "details": {"model": "nano_banana_pro"}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:23:10.215524+00:00", "agent_id": "omnisocial_master", "action": "get_model_blueprint", "details": {"model": "ricardo_almeida_viral_cover"}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:23:10.254743+00:00", "agent_id": "omnisocial_master", "action": "read_item", "details": {"path": "the skeleton method/8-gumroad.pdf", "bytes_read": 1000}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:23:10.255666+00:00", "agent_id": "vps_external_agent", "action": "write_item", "details": {"path": "test_dummy.txt"}, "status": "PERMISSION_DENIED"}
+{"timestamp": "2026-10-10T18:23:10.256006+00:00", "agent_id": "omnisocial_master", "action": "read_item", "details": {"path": "../../etc/passwd"}, "status": "BLOCKED_PATH_TRAVERSAL"}
+{"timestamp": "2026-10-10T18:23:10.256601+00:00", "agent_id": "omnisocial_master", "action": "read_item", "details": {"path": "%2e%2e%2f%2e%2e%2fetc/passwd"}, "status": "BLOCKED_PATH_TRAVERSAL"}
+{"timestamp": "2026-10-10T18:23:10.256925+00:00", "agent_id": "omnisocial_master", "action": "read_item", "details": {"path": "%252e%252e%252fetc%2fpasswd"}, "status": "BLOCKED_PATH_TRAVERSAL"}
+{"timestamp": "2026-10-10T18:23:10.257208+00:00", "agent_id": "omnisocial_master", "action": "read_item", "details": {"path": "safe.txt\u0000/../../etc/passwd"}, "status": "BLOCKED_PATH_TRAVERSAL"}
+{"timestamp": "2026-10-10T18:26:52.745286+00:00", "agent_id": "omnisocial_master", "action": "list_categories", "details": {}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:26:52.751593+00:00", "agent_id": "omnisocial_master", "action": "search_library", "details": {"query": "prompts", "matches": 97}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:26:52.752010+00:00", "agent_id": "omnisocial_master", "action": "get_model_blueprint", "details": {"model": "google_veo_3"}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:26:52.752232+00:00", "agent_id": "omnisocial_master", "action": "get_model_blueprint", "details": {"model": "nano_banana_pro"}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:26:52.752403+00:00", "agent_id": "omnisocial_master", "action": "get_model_blueprint", "details": {"model": "ricardo_almeida_viral_cover"}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:26:52.784603+00:00", "agent_id": "omnisocial_master", "action": "read_item", "details": {"path": "the skeleton method/8-gumroad.pdf", "bytes_read": 1000}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:26:52.785534+00:00", "agent_id": "vps_external_agent", "action": "write_item", "details": {"path": "test_dummy.txt"}, "status": "PERMISSION_DENIED"}
+{"timestamp": "2026-10-10T18:26:52.785881+00:00", "agent_id": "omnisocial_master", "action": "read_item", "details": {"path": "../../etc/passwd"}, "status": "BLOCKED_PATH_TRAVERSAL"}
+{"timestamp": "2026-10-10T18:26:52.786495+00:00", "agent_id": "omnisocial_master", "action": "read_item", "details": {"path": "%2e%2e%2f%2e%2e%2fetc/passwd"}, "status": "BLOCKED_PATH_TRAVERSAL"}
+{"timestamp": "2026-10-10T18:26:52.787412+00:00", "agent_id": "omnisocial_master", "action": "read_item", "details": {"path": "%252e%252e%252fetc%2fpasswd"}, "status": "BLOCKED_PATH_TRAVERSAL"}
+{"timestamp": "2026-10-10T18:26:52.787890+00:00", "agent_id": "omnisocial_master", "action": "read_item", "details": {"path": "safe.txt\u0000/../../etc/passwd"}, "status": "BLOCKED_PATH_TRAVERSAL"}
+{"timestamp": "2026-10-10T18:27:43.437551+00:00", "agent_id": "omnisocial_master", "action": "list_categories", "details": {}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:27:43.446077+00:00", "agent_id": "omnisocial_master", "action": "search_library", "details": {"query": "prompts", "matches": 97}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:27:43.447151+00:00", "agent_id": "omnisocial_master", "action": "get_model_blueprint", "details": {"model": "google_veo_3"}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:27:43.447567+00:00", "agent_id": "omnisocial_master", "action": "get_model_blueprint", "details": {"model": "nano_banana_pro"}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:27:43.447856+00:00", "agent_id": "omnisocial_master", "action": "get_model_blueprint", "details": {"model": "ricardo_almeida_viral_cover"}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:27:43.486069+00:00", "agent_id": "omnisocial_master", "action": "read_item", "details": {"path": "the skeleton method/8-gumroad.pdf", "bytes_read": 1000}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:27:43.489306+00:00", "agent_id": "vps_external_agent", "action": "write_item", "details": {"path": "test_dummy.txt"}, "status": "PERMISSION_DENIED"}
+{"timestamp": "2026-10-10T18:27:43.490189+00:00", "agent_id": "omnisocial_master", "action": "read_item", "details": {"path": "../../etc/passwd"}, "status": "BLOCKED_PATH_TRAVERSAL"}
+{"timestamp": "2026-10-10T18:27:43.491511+00:00", "agent_id": "omnisocial_master", "action": "read_item", "details": {"path": "%2e%2e%2f%2e%2e%2fetc/passwd"}, "status": "BLOCKED_PATH_TRAVERSAL"}
+{"timestamp": "2026-10-10T18:27:43.493046+00:00", "agent_id": "omnisocial_master", "action": "read_item", "details": {"path": "%252e%252e%252fetc%2fpasswd"}, "status": "BLOCKED_PATH_TRAVERSAL"}
+{"timestamp": "2026-10-10T18:27:43.494122+00:00", "agent_id": "omnisocial_master", "action": "read_item", "details": {"path": "safe.txt\u0000/../../etc/passwd"}, "status": "BLOCKED_PATH_TRAVERSAL"}
+{"timestamp": "2026-10-10T18:29:02.871629+00:00", "agent_id": "omnisocial_master", "action": "list_categories", "details": {}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:29:02.879493+00:00", "agent_id": "omnisocial_master", "action": "search_library", "details": {"query": "nano banana", "matches": 30}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:29:02.880067+00:00", "agent_id": "omnisocial_master", "action": "get_model_blueprint", "details": {"model": "google_veo_3"}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:29:02.880643+00:00", "agent_id": "omnisocial_master", "action": "get_model_blueprint", "details": {"model": "ricardo_almeida_viral_cover"}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:29:04.808388+00:00", "agent_id": "omnisocial_master", "action": "web_search", "details": {"query": "ai automation 2026"}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:39:24.930048+00:00", "agent_id": "omnisocial_master", "action": "list_categories", "details": {}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:39:24.935998+00:00", "agent_id": "omnisocial_master", "action": "search_library", "details": {"query": "prompts", "matches": 97}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:39:24.936514+00:00", "agent_id": "omnisocial_master", "action": "get_model_blueprint", "details": {"model": "google_veo_3"}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:39:24.936706+00:00", "agent_id": "omnisocial_master", "action": "get_model_blueprint", "details": {"model": "nano_banana_pro"}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:39:24.936861+00:00", "agent_id": "omnisocial_master", "action": "get_model_blueprint", "details": {"model": "ricardo_almeida_viral_cover"}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:39:24.970079+00:00", "agent_id": "omnisocial_master", "action": "read_item", "details": {"path": "the skeleton method/8-gumroad.pdf", "bytes_read": 1000}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:39:24.971198+00:00", "agent_id": "vps_external_agent", "action": "write_item", "details": {"path": "test_dummy.txt"}, "status": "PERMISSION_DENIED"}
+{"timestamp": "2026-10-10T18:39:24.971582+00:00", "agent_id": "omnisocial_master", "action": "read_item", "details": {"path": "../../etc/passwd"}, "status": "BLOCKED_PATH_TRAVERSAL"}
+{"timestamp": "2026-10-10T18:39:24.972213+00:00", "agent_id": "omnisocial_master", "action": "read_item", "details": {"path": "%2e%2e%2f%2e%2e%2fetc/passwd"}, "status": "BLOCKED_PATH_TRAVERSAL"}
+{"timestamp": "2026-10-10T18:39:24.972872+00:00", "agent_id": "omnisocial_master", "action": "read_item", "details": {"path": "%252e%252e%252fetc%2fpasswd"}, "status": "BLOCKED_PATH_TRAVERSAL"}
+{"timestamp": "2026-10-10T18:39:24.973316+00:00", "agent_id": "omnisocial_master", "action": "read_item", "details": {"path": "safe.txt\u0000/../../etc/passwd"}, "status": "BLOCKED_PATH_TRAVERSAL"}
+{"timestamp": "2026-10-10T18:43:28.933109+00:00", "agent_id": "omnisocial_master", "action": "list_categories", "details": {}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:43:28.938964+00:00", "agent_id": "omnisocial_master", "action": "search_library", "details": {"query": "prompts", "matches": 97}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:43:28.939257+00:00", "agent_id": "omnisocial_master", "action": "get_model_blueprint", "details": {"model": "google_veo_3"}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:43:28.939426+00:00", "agent_id": "omnisocial_master", "action": "get_model_blueprint", "details": {"model": "nano_banana_pro"}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:43:28.939571+00:00", "agent_id": "omnisocial_master", "action": "get_model_blueprint", "details": {"model": "ricardo_almeida_viral_cover"}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:43:28.974051+00:00", "agent_id": "omnisocial_master", "action": "read_item", "details": {"path": "the skeleton method/8-gumroad.pdf", "bytes_read": 1000}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:43:28.975096+00:00", "agent_id": "vps_external_agent", "action": "write_item", "details": {"path": "test_dummy.txt"}, "status": "PERMISSION_DENIED"}
+{"timestamp": "2026-10-10T18:43:28.975430+00:00", "agent_id": "omnisocial_master", "action": "read_item", "details": {"path": "../../etc/passwd"}, "status": "BLOCKED_PATH_TRAVERSAL"}
+{"timestamp": "2026-10-10T18:43:28.976136+00:00", "agent_id": "omnisocial_master", "action": "read_item", "details": {"path": "%2e%2e%2f%2e%2e%2fetc/passwd"}, "status": "BLOCKED_PATH_TRAVERSAL"}
+{"timestamp": "2026-10-10T18:43:28.976475+00:00", "agent_id": "omnisocial_master", "action": "read_item", "details": {"path": "%252e%252e%252fetc%2fpasswd"}, "status": "BLOCKED_PATH_TRAVERSAL"}
+{"timestamp": "2026-10-10T18:43:28.976763+00:00", "agent_id": "omnisocial_master", "action": "read_item", "details": {"path": "safe.txt\u0000/../../etc/passwd"}, "status": "BLOCKED_PATH_TRAVERSAL"}
+{"timestamp": "2026-10-10T18:44:05.306710+00:00", "agent_id": "omnisocial_master", "action": "list_categories", "details": {}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:44:05.311874+00:00", "agent_id": "omnisocial_master", "action": "search_library", "details": {"query": "prompts", "matches": 97}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:44:05.312216+00:00", "agent_id": "omnisocial_master", "action": "get_model_blueprint", "details": {"model": "google_veo_3"}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:44:05.312375+00:00", "agent_id": "omnisocial_master", "action": "get_model_blueprint", "details": {"model": "nano_banana_pro"}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:44:05.312504+00:00", "agent_id": "omnisocial_master", "action": "get_model_blueprint", "details": {"model": "ricardo_almeida_viral_cover"}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:44:05.347058+00:00", "agent_id": "omnisocial_master", "action": "read_item", "details": {"path": "the skeleton method/8-gumroad.pdf", "bytes_read": 1000}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:44:05.348161+00:00", "agent_id": "vps_external_agent", "action": "write_item", "details": {"path": "test_dummy.txt"}, "status": "PERMISSION_DENIED"}
+{"timestamp": "2026-10-10T18:44:05.348540+00:00", "agent_id": "omnisocial_master", "action": "read_item", "details": {"path": "../../etc/passwd"}, "status": "BLOCKED_PATH_TRAVERSAL"}
+{"timestamp": "2026-10-10T18:44:05.349169+00:00", "agent_id": "omnisocial_master", "action": "read_item", "details": {"path": "%2e%2e%2f%2e%2e%2fetc/passwd"}, "status": "BLOCKED_PATH_TRAVERSAL"}
+{"timestamp": "2026-10-10T18:44:05.349518+00:00", "agent_id": "omnisocial_master", "action": "read_item", "details": {"path": "%252e%252e%252fetc%2fpasswd"}, "status": "BLOCKED_PATH_TRAVERSAL"}
+{"timestamp": "2026-10-10T18:44:05.349802+00:00", "agent_id": "omnisocial_master", "action": "read_item", "details": {"path": "safe.txt\u0000/../../etc/passwd"}, "status": "BLOCKED_PATH_TRAVERSAL"}
+{"timestamp": "2026-10-10T18:52:27.007856+00:00", "agent_id": "omnisocial_master", "action": "list_categories", "details": {}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:52:27.013689+00:00", "agent_id": "omnisocial_master", "action": "search_library", "details": {"query": "prompts", "matches": 97}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:52:27.014119+00:00", "agent_id": "omnisocial_master", "action": "get_model_blueprint", "details": {"model": "google_veo_3"}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:52:27.014275+00:00", "agent_id": "omnisocial_master", "action": "get_model_blueprint", "details": {"model": "nano_banana_pro"}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:52:27.014403+00:00", "agent_id": "omnisocial_master", "action": "get_model_blueprint", "details": {"model": "ricardo_almeida_viral_cover"}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:52:27.058199+00:00", "agent_id": "omnisocial_master", "action": "read_item", "details": {"path": "the skeleton method/8-gumroad.pdf", "bytes_read": 1000}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:52:27.059823+00:00", "agent_id": "vps_external_agent", "action": "write_item", "details": {"path": "test_dummy.txt"}, "status": "PERMISSION_DENIED"}
+{"timestamp": "2026-10-10T18:52:27.060342+00:00", "agent_id": "omnisocial_master", "action": "read_item", "details": {"path": "../../etc/passwd"}, "status": "BLOCKED_PATH_TRAVERSAL"}
+{"timestamp": "2026-10-10T18:52:27.061337+00:00", "agent_id": "omnisocial_master", "action": "read_item", "details": {"path": "%2e%2e%2f%2e%2e%2fetc/passwd"}, "status": "BLOCKED_PATH_TRAVERSAL"}
+{"timestamp": "2026-10-10T18:52:27.062146+00:00", "agent_id": "omnisocial_master", "action": "read_item", "details": {"path": "%252e%252e%252fetc%2fpasswd"}, "status": "BLOCKED_PATH_TRAVERSAL"}
+{"timestamp": "2026-10-10T18:52:27.062582+00:00", "agent_id": "omnisocial_master", "action": "read_item", "details": {"path": "safe.txt\u0000/../../etc/passwd"}, "status": "BLOCKED_PATH_TRAVERSAL"}
+{"timestamp": "2026-10-10T18:53:19.136464+00:00", "agent_id": "omnisocial_master", "action": "list_categories", "details": {}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:53:19.143243+00:00", "agent_id": "omnisocial_master", "action": "search_library", "details": {"query": "nano banana", "matches": 30}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:53:19.143834+00:00", "agent_id": "omnisocial_master", "action": "get_model_blueprint", "details": {"model": "google_veo_3"}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:53:19.144332+00:00", "agent_id": "omnisocial_master", "action": "get_model_blueprint", "details": {"model": "ricardo_almeida_viral_cover"}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:53:20.884317+00:00", "agent_id": "omnisocial_master", "action": "web_search", "details": {"query": "ai automation 2026"}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:54:17.917400+00:00", "agent_id": "omnisocial_master", "action": "list_categories", "details": {}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:54:17.922663+00:00", "agent_id": "omnisocial_master", "action": "search_library", "details": {"query": "prompts", "matches": 97}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:54:17.923080+00:00", "agent_id": "omnisocial_master", "action": "get_model_blueprint", "details": {"model": "google_veo_3"}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:54:17.923278+00:00", "agent_id": "omnisocial_master", "action": "get_model_blueprint", "details": {"model": "nano_banana_pro"}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:54:17.923442+00:00", "agent_id": "omnisocial_master", "action": "get_model_blueprint", "details": {"model": "ricardo_almeida_viral_cover"}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:54:17.956912+00:00", "agent_id": "omnisocial_master", "action": "read_item", "details": {"path": "the skeleton method/8-gumroad.pdf", "bytes_read": 1000}, "status": "SUCCESS"}
+{"timestamp": "2026-10-10T18:54:17.957932+00:00", "agent_id": "vps_external_agent", "action": "write_item", "details": {"path": "test_dummy.txt"}, "status": "PERMISSION_DENIED"}
+{"timestamp": "2026-10-10T18:54:17.958283+00:00", "agent_id": "omnisocial_master", "action": "read_item", "details": {"path": "../../etc/passwd"}, "status": "BLOCKED_PATH_TRAVERSAL"}
+{"timestamp": "2026-10-10T18:54:17.958908+00:00", "agent_id": "omnisocial_master", "action": "read_item", "details": {"path": "%2e%2e%2f%2e%2e%2fetc/passwd"}, "status": "BLOCKED_PATH_TRAVERSAL"}
+{"timestamp": "2026-10-10T18:54:17.959620+00:00", "agent_id": "omnisocial_master", "action": "read_item", "details": {"path": "%252e%252e%252fetc%2fpasswd"}, "status": "BLOCKED_PATH_TRAVERSAL"}
+{"timestamp": "2026-10-10T18:54:17.960331+00:00", "agent_id": "omnisocial_master", "action": "read_item", "details": {"path": "safe.txt\u0000/../../etc/passwd"}, "status": "BLOCKED_PATH_TRAVERSAL"}

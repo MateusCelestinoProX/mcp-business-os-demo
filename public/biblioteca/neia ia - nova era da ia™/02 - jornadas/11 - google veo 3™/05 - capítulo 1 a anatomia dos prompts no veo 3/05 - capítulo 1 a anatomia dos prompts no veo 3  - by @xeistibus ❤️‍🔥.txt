@@ -1,0 +1,375 @@
+05 - 1.1 Introdução: A cadeira do diretor
+
+Um ótimo prompt funciona tanto como seu roteiro quanto como seu storyboard . Como roteiro, ele contém exatamente o diálogo, a narração e os principais efeitos sonoros que você deseja ouvir no vídeo final. Como storyboard, ele usa palavras descritivas para pintar um quadro visual para a IA, definindo os personagens, sua aparência, o cenário e o posicionamento de objetos importantes dentro do quadro. Além disso, o prompt funciona como o comando do diretor, que é onde você transforma uma ideia simples em uma cena cinematográfica. É aqui que você faz escolhas artísticas sobre como a história é filmada. Você comanda a posição, o ângulo e o movimento da câmera virtual e dita a iluminação, o clima e o estilo visual geral. É a diferença entre simplesmente dizer o que acontece e criar uma visão completa e atraente para a IA executar.
+
+
+
+A solicitação do Veo 3 é fundamentalmente diferente da solicitação de um modelo padrão de linguagem grande porque você não está manipulando texto; você está dirigindo uma equipe de filmagem virtual.
+
+
+
+1.2 Componentes principais: Assunto, Ação, Cenário)
+
+
+
+
+
+Subject (Assunto) - (Who/What)
+
+O tema é o ponto focal do seu prompt, informando à IA o personagem principal ou o objeto a ser criado e dando à cena o seu propósito fundamental.
+
+Exemplo:
+
+A cinematic shot of Grant, a 50-year-old man with a quiet, powerful presence. His most striking features are his long, flowing white hair and a matching full white beard. He wears a tailored, dark suit, a look of sharp professionalism contrasted by the heavy, golden chain around his neck from which hangs a large, ornate 'G' pendant. His eyes are hidden behind a pair of dark, reflective aviator sunglasses...
+
+
+
+
+
+Action (Ação) — (Doing What)
+
+A ação é o motor do seu prompt; é o verbo que dá vida ao tema estático e dá ao seu vídeo um propósito ou uma narrativa. Sem uma ação clara, você tem apenas um retrato, mas com uma ação forte, você começa a contar uma história.
+
+Exemplo:
+
+...he deftly counts a thick stack of cash with one hand while taking a slow draw from a thick cigar with the other. He exhales a plume of smoke, then lets out a deep, confident laugh.
+
+
+
+
+
+O cenário (onde)
+
+O cenário é uma parte crucial do seu prompt porque fornece o contexto e a atmosfera para sua ação. Ele informa à IA onde a história está acontecendo, o que influencia tudo, desde os visuais de fundo até a iluminação e o clima geral da cena. Um cenário bem descrito, como um "beco com chuva à noite", torna o seu vídeo muito mais imersivo e crível do que uma ação que acontece no vazio.
+
+Exemplo:
+
+...in a spacious, top-floor penthouse office. Through the floor-to-ceiling glass walls behind him, the sprawling city lights glitter against the warm, humid tropical night. The room itself is furnished with minimalist, expensive taste, the only light coming from a single desk lamp that casts a warm glow on the stacks of cash and the thick cloud of cigar smoke hanging in the air.
+
+
+
+
+
+Juntando tudo
+
+Agora, vamos combinar todos os elementos e ver o que o Veo 3 oferece.
+
+Exemplo:
+
+A cinematic shot of Grant, a 50-year-old man with a quiet, powerful presence. His most striking features are his long, flowing white hair and a matching full white beard. He wears a tailored, dark suit, a look of sharp professionalism contrasted by the heavy, golden chain around his neck from which hangs a large, ornate 'G' pendant. His eyes are hidden behind a pair of dark, reflective aviator sunglasses.
+
+He deftly counts a thick stack of cash with one hand while taking a slow draw from a thick cigar with the other. He exhales a plume of smoke, then lets out a deep, confident laugh.
+
+All of this takes place in a spacious, top-floor penthouse office. Through the floor-to-ceiling glass walls behind him, the sprawling city lights glitter against the warm, humid tropical night. The room itself is furnished with minimalist, expensive taste, the only light coming from a single desk lamp that casts a warm glow on the stacks of cash and the thick cloud of cigar smoke hanging in the air.
+
+
+
+
+1.3 A arte da descrição: Acrescentando detalhes e humor
+
+A adição de detalhes e clima transforma seu prompt de um simples comando na visão completa de um diretor. Ao especificar a atmosfera por meio de iluminação, clima e estilo, você controla a sensação da cena e transforma um clipe básico em uma experiência cinematográfica atraente.
+
+
+
+
+
+Os adjetivos são poderosos
+
+Os adjetivos são a principal ferramenta para adicionar detalhes e especificidade ao seu prompt, fornecendo à IA informações visuais concretas sobre as quais se basear. Eles transformam um tema genérico, como "um robô", em um tema exclusivo, como "um robô vintage cromado", o que resulta em um vídeo final muito mais texturizado e interessante.
+
+
+
+
+
+Controle da atmosfera
+
+O controle da atmosfera permite que você dite todo o clima e o tom emocional do seu vídeo, dando à IA comandos ambientais específicos. O uso de palavras-chave como "contraste dramático" para a iluminação ou "chuva suave" para o clima proporciona um contexto poderoso que influencia todos os elementos visuais.
+
+
+
+
+
+Definição de estilo
+
+A definição do estilo oferece à IA um atalho artístico poderoso, instruindo-a a renderizar toda a cena em uma estética específica e reconhecível. Esse comando vai além da simples descrição, influenciando tudo, desde a paleta de cores e o trabalho de linha até o design do personagem e a textura geral. Ao solicitar um estilo como "anime Ghibli" ou "filme noir dos anos 1940", é possível criar vídeos altamente intencionais que evocam instantaneamente um gênero e um clima específicos.
+
+Aqui está um vídeo gerado com uma solicitação muito básica:
+
+A man swinging a baseball bat.
+
+Vídeo 01
+
+Quando recebe uma solicitação muito básica, o Veo 3 produz um vídeo literal e, muitas vezes, genérico que se assemelha a imagens de arquivo geradas por IA. Como o prompt não tem nenhuma direção criativa, o modelo segue a interpretação mais padrão: o tema será genérico, o ângulo da câmera será no nível dos olhos e estático, e o estilo geral será fotorrealista, mas sem nenhum humor ou toque artístico específico. Ela mostrará exatamente o que você pediu, mas nada mais.
+
+
+
+Se estiver buscando uma aparência ou um estilo específico, você precisará ser mais descritivo e usar palavras-chave específicas para comandar a iluminação, a atmosfera e a estética artística geral.
+
+Vamos pegar o prompt básico e elevá-lo, acrescentando detalhes específicos que se inclinam para um determinado estilo.
+
+
+
+Novo prompt:
+
+A man wearing a trench coat swings a heavy, metal baseball bat in a foggy, gaslit cobblestone alley in 19th-century London. The entire scene is rendered in the high-contrast and dynamic art style of JoJo's Bizarre Adventure.
+
+Vídeo 02
+
+Embora o vídeo ainda mostre um homem balançando um taco, agora ele tem uma aparência mais estilizada, alinhada com uma direção de arte definida.
+
+
+
+1.4 Direcionamento da câmera virtual
+
+Agora que você já conhece os componentes principais e as técnicas para adicionar mais detalhes, é hora de aprender sobre outro aspecto importante do Veo 3: os ângulos da câmera. Ao dominar esses comandos, você obtém controle preciso sobre a perspectiva do espectador, dizendo à IA exatamente como enquadrar a ação. Essa é a chave para criar tomadas com impacto profissional e cinematográfico, em vez de apenas gerar um vídeo básico e estático.
+
+
+
+
+
+
+
+Shot types (Tipos de tomada)
+
+Os tipos de tomada são comandos que informam à IA o quão perto ou longe a câmera deve estar do objeto, determinando o quanto dele é visível no quadro. Seu objetivo é direcionar a atenção do espectador e controlar o contexto emocional da cena; uma tomada ampla pode estabelecer um local e fazer com que o objeto pareça pequeno, enquanto um close-up pode criar intimidade e enfatizar as emoções de um personagem ou um detalhe importante.
+
+Abaixo estão exemplos dos 5 tipos de tomada mais comuns usados na mídia.
+
+
+
+Wide shot (Foto ampla): Mostra o sujeito inteiro, da cabeça aos pés, e sua relação com o ambiente.
+
+Vídeo 03
+
+Medium Shot (MS): Enquadra um personagem da cintura para cima, equilibrando os detalhes com a linguagem corporal.
+
+Vídeo 04
+
+Close-Up (CU): Preenche a tela com o rosto do personagem para enfatizar a emoção.
+
+Vídeo 05
+
+Extreme close-up (ECU) (Close-up extremo): Concentra-se em um único detalhe para criar intensidade ou destacar a importância.
+
+Vídeo 06
+
+Over-the-Shoulder Shot (OTS) (Foto por cima do ombro): Olha de trás de uma pessoa para outra, fazendo com que o público se sinta parte de uma conversa.
+
+Vídeo 07
+
+Para incorporar tipos de tomadas em seus próprios prompts, basta colocar o comando logo no início da descrição, como "A wide shot of..." ou "A close-up of...". Isso diz à IA para estabelecer o enquadramento da câmera primeiro, antes de considerar o assunto ou a ação, levando a resultados mais confiáveis e previsíveis.
+
+
+
+
+
+Dica profissional: Às vezes, o Veo 3 pode interpretar mal até mesmo um comando claro. Para obter o enquadramento exato que deseja, seja o mais específico possível. Não se limite a nomear o tipo de foto; descreva a composição final (por exemplo, "enquadrada da cintura para cima, mostrando o tronco e os braços") e adicione restrições negativas (por exemplo, -sem close-up) para evitar que a IA use uma foto incorreta como padrão.
+
+
+
+
+
+Para obter uma explicação mais detalhada de cada tipo de tomada existente, assista ao vídeo abaixo:
+
+https://youtu.be/AyML8xuKfoc?si=dUXoln3gQVb-scNP
+
+Camera angles (Ângulos de câmera)
+
+Os ângulos da câmera são comandos que determinam a posição e a orientação da câmera virtual em relação ao objeto. Sua função em um prompt do Veo 3 é ir além do simples enquadramento de uma cena e começar a manipular a percepção psicológica do público sobre a cena. Ao escolher um ângulo específico - seja ele alto, baixo, lateral ou até mesmo inclinado -, você pode instantaneamente fazer com que um personagem se sinta poderoso, fraco, misterioso ou desequilibrado, o que lhe dá uma ferramenta poderosa para moldar a narrativa emocional do seu vídeo. Aqui estão alguns exemplos de ângulos de câmera em ação:
+
+
+
+Filmagem em ângulo baixo: A câmera é posicionada abaixo da linha dos olhos do sujeito, olhando para cima. Esse ângulo faz com que o sujeito pareça poderoso, dominante e heroico.
+
+Vídeo 08
+
+Foto com ângulo alto: A câmera é posicionada acima da linha dos olhos da pessoa, olhando para baixo. Esse ângulo pode fazer com que o sujeito pareça vulnerável, pequeno ou insignificante.
+
+Vídeo 09
+
+Ângulo holandês (ou inclinação holandesa): A câmera está inclinada para o lado, de modo que o horizonte não está nivelado. Isso cria uma sensação de desconforto, tensão ou desorientação no espectador.
+
+Vídeo 10
+
+O comando do ângulo da câmera deve ser colocado no início do prompt, logo após o tipo de tomada, para estabelecer o ponto de vista da câmera antes que qualquer outro elemento seja considerado.
+
+Dica profissional: Para maximizar o impacto de um ângulo de câmera, combine-o com uma ação ou expressão correspondente do personagem. Por exemplo, uma tomada de ângulo baixo é mais poderosa se o personagem também estiver olhando para baixo com confiança, e uma tomada de ângulo alto é mais eficaz se o personagem olhar para cima com vulnerabilidade. Não tenha receio de usar modificadores como "sutil" ou "extremo" para controlar a intensidade do ângulo e obter o tom emocional preciso que está procurando.
+
+
+
+
+
+Para obter uma explicação mais detalhada de cada ângulo de câmera existente, assista ao vídeo abaixo:
+
+https://www.youtube.com/watch?v=wLfZL9PZI9k&t=5s
+
+1.5 Resumo do capítulo e folha de dicas de prompts
+
+Neste capítulo, você aprendeu que um prompt bem-sucedido do Veo 3 é construído a partir de três componentes principais: um assunto claro, uma ação forte e um cenário sugestivo.
+
+Você aprendeu que um prompt básico produz um resultado básico e que a chave para criar um vídeo atraente é acrescentar detalhes usando a Arte da Descrição - adicionandoadjetivos descritivos, controlando a atmosfera com iluminação e clima e definindo um estilo artístico específico.
+
+Por fim, assumimos o controle da câmera virtual, aprendendo a usar os tipos de tomadas e os ângulos de câmera para direcionar a perspectiva do espectador e acrescentar impacto cinematográfico e emocional às nossas cenas.
+
+
+
+Aqui estão algumas dicas que você pode usar ao elaborar prompts para a geração de vídeos e quiser fazer referência rápida a estilos de iluminação, ângulos de câmera ou estética visual.
+
+
+
+
+
+Lighting (Iluminação)
+
+Imagem 01 - Materiais
+
+Camera angles (Ângulos da câmera)
+
+Imagem 02 - Materiais
+
+Styles (Estilos)
+
+Imagem 03 - Materiais
+
+1.6 Exercício prático: Sua primeira cena dirigida
+
+Você já aprendeu os componentes essenciais de um prompt poderoso do Veo 3, desde a definição do tema e da ação até a direção da câmera e a definição do clima. Os exercícios a seguir foram criados para colocar essa teoria em prática. Ao concluir esses desafios, você terá experiência prática na aplicação de cada elemento da anatomia de um prompt para transformar uma ideia simples em uma tomada cinematográfica totalmente realizada.
+
+
+
+Exercício 1: A composição básica
+
+
+
+
+
+Objetivo: Identificar a composição básica de um prompt do Veo 3.
+
+
+
+Tarefa: Crie um prompt básico que tenha um tema, uma ação e um cenário.
+
+
+
+
+
+Exemplo de resposta:
+
+A dog playfully leaps over a water puddle in a sunny backyard.
+
+Cenário: Um quintal ensolarado.
+
+Ação: Pular de brincadeira sobre uma poça d'água.
+
+Assunto: Um cachorro.
+
+
+
+Exercício 2: Obtendo mais detalhes
+
+
+
+
+
+Objetivo: Praticar a escrita de descrições vívidas do tema e do cenário para dar vida às suas cenas.
+
+
+
+Tarefa: Pegue sua resposta do exercício 1 e crie uma versão mais detalhada dessa solicitação.
+
+
+
+
+
+Exemplo de resposta:
+
+A golden retriever playfully leaps over a sparkling water puddle in a sunlit backyard, sending droplets flying into the air. The grass is lush and slightly muddy, with colorful garden toys scattered around. Birds chirp in the distance as the dog's ears flap mid-jump, capturing a moment full of energy and joy.
+
+
+
+Exercício 3: Controle da câmera
+
+
+
+
+
+Objetivo: Aprimorar os prompts com tipos de tomadas e ângulos de câmera para criar um vídeo mais dinâmico e visualmente atraente.
+
+
+
+Tarefa: Pegue a sua resposta ao Exercício 2 e adicione ângulos de câmera e tipos de tomadas dentro do prompt.
+
+
+
+Exemplo de resposta:
+
+A golden retriever playfully leaps over a sparkling water puddle in a sunlit backyard, captured in a low-angle tracking shot that follows its joyful sprint. As the dog takes off, a slow-motion side view highlights its ears flapping and droplets flying through the air. The lush, slightly muddy grass and scattered garden toys surround the scene, while a brief close-up catches the glistening splash in midair. The moment finishes with a wide, overhead shot revealing the full backyard bathed in warm sunlight as birds chirp in the distance.
+
+
+
+Exercício 4: Estilizar o vídeo
+
+
+
+
+
+Objetivo: Utilizar um estilo diferente do hiper-realista.
+
+
+
+Tarefa: Pegue o prompt simples do Exercício 1 e adicione um modificador de estilo no final do prompt.
+
+
+
+
+
+Exemplo de resposta:
+
+A dog playfully leaps over a water puddle in a sunny backyard, animated in the style of a grainy 1980s cartoon.
+
+
+
+Exercício 5: Deixe sua imaginação correr solta
+
+
+
+
+
+Objetivo: Colocar em prática todas as habilidades de criação de perguntas que você aprendeu neste capítulo.
+
+
+
+Tarefa: Usando todos os componentes a seguir, escreva uma cena detalhada e complexa que os combine de forma eficaz.
+
+
+
+
+
+Assunto: Um animal de sua escolha, vestindo roupas humanas de sua escolha.
+
+Ação: Realização de uma tarefa relacionada ao trabalho de sua escolha.
+
+Cenário: Qualquer área interna de sua escolha. O estilo, a atmosfera, os ângulos de câmera e as tomadas ficam a seu critério.
+
+
+
+
+
+
+
+Exemplo de resposta:
+
+A raccoon dressed in a neatly pressed button-up shirt and khaki slacks sits at a cluttered wooden desk in a cozy home office, typing frantically on a small vintage typewriter. Papers are scattered around, and a steaming cup of coffee rests beside the typewriter. Begin with a medium shot from a slightly high angle, slowly dollying in as the raccoon types with surprising focus. At the 5-second mark, cut to an over-the-shoulder close-up showing the words forming on the paper, then shift to a quick side profile capturing the raccoon adjusting its glasses with a tiny paw. Animate the scene in a hand-drawn, sketchbook-style aesthetic with soft pencil textures and muted colors to evoke a warm, whimsical tone.
+
+
+
+Agora que você já domina os conceitos básicos de um prompt do Veo 3, é hora de explorar componentes mais avançados. No próximo capítulo, vamos nos concentrar nos controles cinematográficos e nos recursos específicos do Flow que tornam a criação da cena ideal mais fácil e precisa.
+
+
+
+Continue aprendendo.
+
+Att,
+
+Luighi Feodrippe
+

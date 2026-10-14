@@ -1,0 +1,81 @@
+Aulas
+
+2.1 - A Alma do Assistente: Estrutura de Prompt, Regras e Segurança + Criação no Gemini
+
+https://www.loom.com/share/969d1725035b44c199f17d8561480c02
+
+2.2 - Criando seu Primeiro Assistente com o ChatGPT
+
+https://www.loom.com/share/2d92d8be1718428ea4ae658b2f192193
+
+1. Entendendo o Território
+
+	•	Objetivo real da aula.
+
+	•	Diferenças práticas entre ChatGPT e Gemini.
+
+	•	Quando usar um ou outro.
+
+2. Navegando na Interface
+
+	•	Tour pela interface do ChatGPT.
+
+	•	O que importa e o que você ignora sem culpa.
+
+	•	Barra lateral, seções e onde achar as ferramentas certas.
+
+3. Explorando a Área de GPTs
+
+	•	Onde ficam os modelos personalizados.
+
+	•	O que existe disponível.
+
+	•	Como identificar modelos úteis vs. modelos inúteis.
+
+4. Iniciando a Criação do Seu Modelo
+
+	•	Entrando no fluxo de construção.
+
+	•	Escolhendo o foco: ensinar, explicar, criar, resolver, automatizar.
+
+5. Estruturando o Comportamento do GPT
+
+	•	Como definir identidade, função e limites.
+
+	•	A importância das regras de segurança e dos objetivos bem definidos.
+
+6. Tipos de Assistentes que Você Pode Criar
+
+	•	Assistente linear (tarefa direta).
+
+	•	Assistente consultivo (interação guiada).
+
+	•	Assistente neural (conversação livre e contextual).
+
+	•	Quando cada um faz sentido.
+
+7. Personalidade, Estilo e Estratégia
+
+	•	Criando um “jeito” único para o seu GPT.
+
+	•	Como isso melhora retenção, utilidade e monetização.
+
+8. Colocando o Modelo à Prova
+
+	•	Testando respostas, comportamento e consistência.
+
+	•	Identificando falhas rapidamente.
+
+9. Refinamento e Ajustes Finais
+
+	•	Polimento de instruções.
+
+	•	Ajustes de tom, precisão e estrutura de resposta.
+
+	•	Como melhorar clareza e reduzir ruído.
+
+10. Próximos Passos
+
+	•	Expansão para novos modelos.
+
+	•	Como desenvolver visão, prática e domínio.
