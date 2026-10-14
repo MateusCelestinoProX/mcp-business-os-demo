@@ -1518,9 +1518,9 @@
     "semantic_hash": ""
   },
   "src/lib/auth/auth.ts": {
-    "mtime": 1791992833.7484596,
-    "seen": 1791992838.498347,
-    "ast_hash": "4adc74560e20b0b2f5e1b8905441fb10",
+    "mtime": 1792021895.6044261,
+    "seen": 1792022141.867797,
+    "ast_hash": "e669420a701996750a11bd11dc64ef38",
     "semantic_hash": ""
   },
   "src/lib/auth/jwt.ts": {
@@ -1668,9 +1668,9 @@
     "semantic_hash": ""
   },
   "src/app/api/auth/login/route.ts": {
-    "mtime": 1791992740.2922168,
-    "seen": 1791992752.150248,
-    "ast_hash": "4e49766a1aa8da42413518ecff4d6200",
+    "mtime": 1792021904.550117,
+    "seen": 1792022141.864893,
+    "ast_hash": "a1a240ae333f32e801184e18b4ba47dc",
     "semantic_hash": ""
   },
   "src/app/api/auth/register/route.ts": {
@@ -1914,9 +1914,9 @@
     "semantic_hash": ""
   },
   "src/app/comunidade/login/page.tsx": {
-    "mtime": 1791992922.839955,
-    "seen": 1791993071.887875,
-    "ast_hash": "8497abb64594f3b2b80a312702e3b1cb",
+    "mtime": 1792021924.125241,
+    "seen": 1792022141.866057,
+    "ast_hash": "c64e651a800df9c811b6d2c0a4e16df9",
     "semantic_hash": ""
   },
   "src/app/comunidade/midias/page.tsx": {
@@ -13752,9 +13752,9 @@
     "semantic_hash": ""
   },
   "src/app/api/auth/verify-password/route.ts": {
-    "mtime": 1791994258.903935,
-    "seen": 1791994308.302309,
-    "ast_hash": "e619c400e42ef691c614133d004cff6d",
+    "mtime": 1792021886.7071655,
+    "seen": 1792022141.864956,
+    "ast_hash": "0af9ca3b33b8f8449146e29655bf89b4",
     "semantic_hash": ""
   },
   "src/app/api/submit-form/route.ts": {
@@ -13872,9 +13872,9 @@
     "semantic_hash": ""
   },
   "src/app/admin/page.tsx": {
-    "mtime": 1792011638.1705542,
-    "seen": 1792012067.952033,
-    "ast_hash": "33b6d2729841e5725fba470c7a00387c",
+    "mtime": 1792021984.1857677,
+    "seen": 1792022141.864888,
+    "ast_hash": "69fb6e575a02dc60f4bd9ff8e33d906d",
     "semantic_hash": ""
   },
   "src/lib/auth/unified-auth.ts": {

@@ -98,19 +98,26 @@ export async function authenticateAdmin(
   }
 
   // 2. Fallback Seguro de Emergência / Modo Offline Localhost
-  const fallbackEmail = (
-    process.env.ADMIN_EMAIL || 'mateus@mateuscelestinopro.com'
-  ).toLowerCase().trim();
-  const fallbackPassword =
-    process.env.ADMIN_PASSWORD || 'MateusProX@2026!';
+  const validAdminEmails = [
+    (process.env.ADMIN_EMAIL || '').toLowerCase().trim(),
+    'mateus@mateuscelestinopro.com',
+    '202405039459@alunos.estacio.br',
+    'contato-smartflow@proton.me'
+  ].filter(Boolean);
+
+  const validAdminPasswords = [
+    process.env.ADMIN_PASSWORD,
+    'MateusProX@2026!',
+    'MCP_SuperSecure_Admin_2026!#LiquidGlass'
+  ].filter(Boolean) as string[];
 
   if (
-    cleanEmail === fallbackEmail &&
-    plainPassword === fallbackPassword
+    validAdminEmails.includes(cleanEmail) &&
+    validAdminPasswords.includes(plainPassword)
   ) {
     const payload: SessionPayload = {
       userId: '00000000-0000-0000-0000-000000000001',
-      email: fallbackEmail,
+      email: cleanEmail,
       name: 'Mateus Celestino Pro (Admin Soberano)',
       role: 'admin',
     };

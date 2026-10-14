@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { authenticateMember } from '@/lib/auth/auth';
+import { authenticateMember, authenticateAdmin } from '@/lib/auth/auth';
 
 export async function POST(req: Request) {
   try {
@@ -8,7 +8,7 @@ export async function POST(req: Request) {
 
     if (!email || typeof email !== 'string' || !email.includes('@')) {
       return NextResponse.json(
-        { success: false, error: 'Forneça um e-mail de membro válido.' },
+        { success: false, error: 'Forneça um e-mail válido.' },
         { status: 400 }
       );
     }
@@ -20,26 +20,53 @@ export async function POST(req: Request) {
       );
     }
 
-    const authResult = await authenticateMember(email, password);
+    const cleanEmail = email.trim().toLowerCase();
 
-    if (!authResult.success || !authResult.member) {
+    // 1. Tenta autenticar como Administrador primeiro
+    const adminResult = await authenticateAdmin(cleanEmail, password);
+    if (adminResult.success && adminResult.user) {
       return NextResponse.json(
         {
-          success: false,
-          error: authResult.error || 'Credenciais inválidas. Verifique seu e-mail e senha.',
+          success: true,
+          message: 'Autenticação de administrador bem-sucedida!',
+          user: {
+            ...adminResult.user,
+            role: 'admin',
+            tier: 'max',
+          },
+          role: 'admin',
+          token: adminResult.token,
+          redirectUrl: '/admin',
         },
-        { status: 401 }
+        { status: 200 }
+      );
+    }
+
+    // 2. Tenta autenticar como Membro da Comunidade
+    const authResult = await authenticateMember(cleanEmail, password);
+    if (authResult.success && authResult.member) {
+      return NextResponse.json(
+        {
+          success: true,
+          message: 'Autenticação de membro bem-sucedida!',
+          user: {
+            ...authResult.member,
+            role: 'user',
+          },
+          role: 'user',
+          token: authResult.token,
+          redirectUrl: '/comunidade',
+        },
+        { status: 200 }
       );
     }
 
     return NextResponse.json(
       {
-        success: true,
-        message: 'Autenticação bem-sucedida!',
-        member: authResult.member,
-        token: authResult.token,
+        success: false,
+        error: 'Credenciais inválidas. Verifique seu e-mail e senha de acesso.',
       },
-      { status: 200 }
+      { status: 401 }
     );
   } catch (error: any) {
     console.error('❌ [Login] Erro interno:', error);
