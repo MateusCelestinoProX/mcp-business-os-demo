@@ -23,7 +23,6 @@ import {
   getStoredUser,
   setStoredUser,
   hasAdminOrModerAccess,
-  DEMO_USERS,
 } from '@/lib/auth/unified-auth';
 
 
@@ -140,8 +139,16 @@ function BuilderContent() {
       });
       const data = await res.json();
       if (res.ok && data.success) {
-        setStoredUser(DEMO_USERS.admin);
-        setCurrentUser(DEMO_USERS.admin);
+        const authenticatedAdmin: UnifiedUser = {
+          isLoggedIn: true,
+          role: 'admin',
+          name: 'Mateus Celestino Pro',
+          email: 'mateus@mateuscelestinopro.com',
+          avatar: '',
+          tier: 'max',
+        };
+        setStoredUser(authenticatedAdmin);
+        setCurrentUser(authenticatedAdmin);
         setIsAdminAuthenticated(true);
         setUserRole('admin');
         setShowAuthModal(false);
@@ -442,33 +449,6 @@ function BuilderContent() {
               <span>Desbloquear com Senha Admin</span>
             </button>
 
-            <button
-              onClick={() => {
-                setStoredUser(DEMO_USERS.admin);
-                setCurrentUser(DEMO_USERS.admin);
-                setIsAdminAuthenticated(true);
-                setUserRole('admin');
-                showToast('👑 Acesso concedido como Administrador Soberano!');
-              }}
-              className="w-full py-2.5 px-4 rounded-xl text-xs font-bold flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white border border-white/15 transition-all cursor-pointer"
-            >
-              <Shield className="w-4 h-4 text-red-400" />
-              <span>Entrar como Administrador (Demo)</span>
-            </button>
-
-            <button
-              onClick={() => {
-                setStoredUser(DEMO_USERS.moder);
-                setCurrentUser(DEMO_USERS.moder);
-                setIsAdminAuthenticated(true);
-                setUserRole('admin');
-                showToast('🛡️ Acesso concedido como Moderador!');
-              }}
-              className="w-full py-2.5 px-4 rounded-xl text-xs font-bold flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 text-amber-300 border border-amber-500/20 transition-all cursor-pointer"
-            >
-              <Shield className="w-4 h-4 text-amber-400" />
-              <span>Entrar como Moderador (Demo)</span>
-            </button>
 
             <div className="pt-3 flex items-center justify-between text-xs text-neutral-400">
               <Link href="/admin" className="hover:text-amber-300 transition-colors">

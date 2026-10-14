@@ -1458,9 +1458,9 @@
     "semantic_hash": ""
   },
   "src/components/layout/Navbar.tsx": {
-    "mtime": 1792008230.5874872,
-    "seen": 1792008315.283776,
-    "ast_hash": "be3a056c644267445b72f9e9bd49adc8",
+    "mtime": 1792008738.9929678,
+    "seen": 1792008975.15857,
+    "ast_hash": "5cd73b334b025a3dc3efaa30df9ddc96",
     "semantic_hash": ""
   },
   "src/components/members/MemberCard.tsx": {
@@ -13763,12 +13763,6 @@
     "ast_hash": "a10d115de656715cf706052023400df7",
     "semantic_hash": ""
   },
-  "src/components/comunidade/ComunidadeDashboardMock.tsx": {
-    "mtime": 1791993008.3179684,
-    "seen": 1791994308.303057,
-    "ast_hash": "eddc1914ec4ff3a0e241936670306f0f",
-    "semantic_hash": ""
-  },
   "src/components/portal/LiquidGlassBackground.tsx": {
     "mtime": 1792004984.3404148,
     "seen": 1792005104.7437649,
@@ -13878,9 +13872,9 @@
     "semantic_hash": ""
   },
   "src/app/admin/page.tsx": {
-    "mtime": 1792007882.4085622,
-    "seen": 1792007952.593743,
-    "ast_hash": "473d7310bbac3a8e3286351455ca728a",
+    "mtime": 1792008848.7545855,
+    "seen": 1792008975.157356,
+    "ast_hash": "ae25732c628305d0b43c4e2ba77fa0b4",
     "semantic_hash": ""
   },
   "src/lib/auth/unified-auth.ts": {
@@ -13911,6 +13905,18 @@
     "mtime": 1792004686.0503616,
     "seen": 1792005104.743995,
     "ast_hash": "1f42e1820b1563d4136be7bd4edac900",
+    "semantic_hash": ""
+  },
+  "src/app/api/finance/route.ts": {
+    "mtime": 1792008698.57198,
+    "seen": 1792008975.157591,
+    "ast_hash": "d25268cf6bcb4f9eb8a5a51f2c8851fe",
+    "semantic_hash": ""
+  },
+  "src/app/api/members/route.ts": {
+    "mtime": 1792008690.279447,
+    "seen": 1792008975.157814,
+    "ast_hash": "cf9db6d47b5b22a502ff882ca89dcaba",
     "semantic_hash": ""
   }
 }

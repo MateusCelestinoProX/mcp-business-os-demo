@@ -45,7 +45,6 @@ import {
   setStoredUser,
   hasAdminOrModerAccess,
   hasAdminAccess,
-  DEMO_USERS,
   DEFAULT_GUEST_USER,
 } from "@/lib/auth/unified-auth";
 
@@ -204,8 +203,16 @@ export default function AdminPanelPage() {
         (loginPassword === "MateusProX@2026!" || data?.success);
 
       if (data?.success || isFallbackSuccess) {
-        setStoredUser(DEMO_USERS.admin);
-        setCurrentUser(DEMO_USERS.admin);
+        const authenticatedAdmin: UnifiedUser = {
+          isLoggedIn: true,
+          role: "admin",
+          name: "Mateus Celestino Pro",
+          email: "mateus@mateuscelestinopro.com",
+          avatar: "",
+          tier: "max",
+        };
+        setStoredUser(authenticatedAdmin);
+        setCurrentUser(authenticatedAdmin);
         showToast("Sessão autenticada como Administrador Soberano.");
       } else {
         setLoginError("Credenciais inválidas. Verifique o e-mail ou a chave mestre do painel.");
@@ -430,31 +437,18 @@ export default function AdminPanelPage() {
         </div>
       )}
 
-      {/* TOP HEADER EXECUTIVO DE COMANDO */}
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 p-5 rounded-2xl bg-[#09080c]/80 backdrop-blur-2xl border border-white/10 shadow-lg">
+      {/* Header Executivo Limpo */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 rounded-2xl bg-[#09080c]/80 backdrop-blur-2xl border border-white/10 shadow-lg">
         <div className="space-y-1">
-          <div className="flex items-center gap-2">
-            <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">
-              PLATAFORMA UNIFICADA SOBERANA
-            </span>
-            <span className="text-[9px] px-2 py-0.5 rounded-full font-bold uppercase bg-[#8a0012]/20 text-red-400 border border-[#8a0012]/40">
-              {isMaxAdmin ? "ADMINISTRADOR GERAL" : "OPERADOR MODERADOR"}
-            </span>
-          </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight flex items-center gap-2.5">
-            <span>Centro de Controle Operacional</span>
+          <h1 className="text-2xl font-bold text-white tracking-tight">
+            Painel de Gestão
           </h1>
           <p className="text-xs text-neutral-400">
-            Monitoramento em tempo real de Leads, Formulários Cinemáticos, Membros VIP e Infraestrutura Supabase.
+            Controle de Leads, Formulários, Membros e Infraestrutura.
           </p>
         </div>
 
-        {/* Status Indicators & Ações do Topo */}
-        <div className="flex flex-wrap items-center gap-3">
-          <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-black/50 border border-white/5 text-[11px] font-mono text-neutral-300">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span>Supabase: Online</span>
-          </div>
+        <div className="flex items-center gap-2.5">
 
           <Button
             variant="secondary"

@@ -9,41 +9,17 @@ export interface UnifiedUser {
   tier?: string;
 }
 
+/**
+ * Padrão Soberano Universal: Todo usuário é VISITANTE não-autenticado por padrão.
+ * Apenas quem realiza login explícito com credenciais válidas se torna membro ou admin.
+ */
 export const DEFAULT_GUEST_USER: UnifiedUser = {
   isLoggedIn: false,
   role: 'visitante',
-  name: 'Visitante',
+  name: '',
   email: '',
-  avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=GuestVisitor',
+  avatar: '',
   tier: 'free',
-};
-
-export const DEMO_USERS: Record<UserRole, UnifiedUser> = {
-  visitante: DEFAULT_GUEST_USER,
-  user: {
-    isLoggedIn: true,
-    role: 'user',
-    name: 'Membro Aluno Pro',
-    email: 'membro@mateuscelestinopro.com',
-    avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=MemberProX',
-    tier: 'vip',
-  },
-  moder: {
-    isLoggedIn: true,
-    role: 'moder',
-    name: 'Moderador Oficial',
-    email: 'moderador@mateuscelestinopro.com',
-    avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=ModeratorShield',
-    tier: 'vip',
-  },
-  admin: {
-    isLoggedIn: true,
-    role: 'admin',
-    name: 'Mateus Celestino Pro',
-    email: 'mateus@mateuscelestinopro.com',
-    avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=AdminBoss',
-    tier: 'max',
-  },
 };
 
 export const AUTH_STORAGE_KEY = 'mcp_session_user';
@@ -53,9 +29,20 @@ export function getStoredUser(): UnifiedUser {
   try {
     const raw = localStorage.getItem(AUTH_STORAGE_KEY);
     if (!raw) return DEFAULT_GUEST_USER;
+
     const parsed = JSON.parse(raw);
-    if (parsed && typeof parsed === 'object' && parsed.role) {
-      return parsed as UnifiedUser;
+    if (parsed && typeof parsed === 'object') {
+      // Limpa dados de simulação legada (como 'Moderador Oficial')
+      if (parsed.name === 'Moderador Oficial' || !parsed.isLoggedIn) {
+        localStorage.removeItem(AUTH_STORAGE_KEY);
+        localStorage.removeItem('mcp_user_role');
+        localStorage.removeItem('mcp_admin_auth');
+        return DEFAULT_GUEST_USER;
+      }
+
+      if (parsed.isLoggedIn && parsed.role) {
+        return parsed as UnifiedUser;
+      }
     }
   } catch (err) {
     console.warn('[UnifiedAuth] Erro ao recuperar sessão:', err);
@@ -66,11 +53,15 @@ export function getStoredUser(): UnifiedUser {
 export function setStoredUser(user: UnifiedUser): void {
   if (typeof window === 'undefined') return;
   try {
-    localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(user));
-    // Sincroniza também chaves legadas para compatibilidade
-    localStorage.setItem('mcp_user_role', user.role);
-    localStorage.setItem('mcp_admin_auth', (user.role === 'admin' || user.role === 'moder') ? 'true' : 'false');
-    // Emite evento customizado para reatividade entre abas/componentes
+    if (!user.isLoggedIn || user.role === 'visitante') {
+      localStorage.removeItem(AUTH_STORAGE_KEY);
+      localStorage.removeItem('mcp_user_role');
+      localStorage.removeItem('mcp_admin_auth');
+    } else {
+      localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(user));
+      localStorage.setItem('mcp_user_role', user.role);
+      localStorage.setItem('mcp_admin_auth', user.role === 'admin' ? 'true' : 'false');
+    }
     window.dispatchEvent(new CustomEvent('mcp_auth_changed', { detail: user }));
   } catch (err) {
     console.warn('[UnifiedAuth] Erro ao salvar sessão:', err);
@@ -78,9 +69,9 @@ export function setStoredUser(user: UnifiedUser): void {
 }
 
 export function hasAdminOrModerAccess(user: UnifiedUser): boolean {
-  return user.isLoggedIn && (user.role === 'admin' || user.role === 'moder');
+  return Boolean(user && user.isLoggedIn && (user.role === 'admin' || user.role === 'moder'));
 }
 
 export function hasAdminAccess(user: UnifiedUser): boolean {
-  return user.isLoggedIn && user.role === 'admin';
+  return Boolean(user && user.isLoggedIn && user.role === 'admin');
 }
