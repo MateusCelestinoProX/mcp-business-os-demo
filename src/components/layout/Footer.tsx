@@ -70,7 +70,7 @@ export function Footer() {
                   href="/biblioteca"
                   className="hover:text-red-400 transition-colors flex items-center justify-between"
                 >
-                  <span>Free Library (Cofre)</span>
+                  <span>Free Resources</span>
                   <span className="text-[10px] text-amber-500/80">VAULT</span>
                 </Link>
               </li>

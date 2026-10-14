@@ -1452,15 +1452,15 @@
     "semantic_hash": ""
   },
   "src/components/layout/Footer.tsx": {
-    "mtime": 1792011712.4809914,
-    "seen": 1792012067.953096,
-    "ast_hash": "2b066ab82bee391f29a37c71e3e5fd9d",
+    "mtime": 1792019183.5159118,
+    "seen": 1792019248.7071161,
+    "ast_hash": "57da66a92fd2bf373983fa7ace118897",
     "semantic_hash": ""
   },
   "src/components/layout/Navbar.tsx": {
-    "mtime": 1792018390.5106463,
-    "seen": 1792018510.488608,
-    "ast_hash": "5faf9563ed801e8b0add4a722d6fde16",
+    "mtime": 1792019071.4643874,
+    "seen": 1792019248.707118,
+    "ast_hash": "2378c513cb17db283a3138a7799f1b91",
     "semantic_hash": ""
   },
   "src/components/members/MemberCard.tsx": {
@@ -2928,9 +2928,9 @@
     "semantic_hash": ""
   },
   "public/comunidade/index.html": {
-    "mtime": 1792018444.8357944,
-    "seen": 1792018510.494923,
-    "ast_hash": "52785c438fb0cc874f8601293b7cefc2",
+    "mtime": 1792019116.0401876,
+    "seen": 1792019248.714068,
+    "ast_hash": "40b2e91e4d5d68fec108b6c9c9cd958d",
     "semantic_hash": ""
   },
   "public/comunidade/effects/CREATIVE EFFECT's/ANCESTRAL HAND STATUE RENDER/ChatGPT_Image_17_de_jul._de_2025_15_25_13.webp": {
