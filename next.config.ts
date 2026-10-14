@@ -11,6 +11,10 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  webpack: (config) => {
+    config.output.hashFunction = "xxhash64";
+    return config;
+  },
   async rewrites() {
     return [
       {
