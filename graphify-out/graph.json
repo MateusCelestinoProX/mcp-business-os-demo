@@ -4,19 +4,6 @@
   "graph": {},
   "nodes": [
     {
-      "id": "src_app_biblioteca_id_page_pageprops",
-      "label": "PageProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 44,
-      "community_name": "catalog.ts",
-      "file_type": "code",
-      "norm_label": "pageprops",
-      "source_file": "src/app/biblioteca/[id]/page.tsx",
-      "source_location": "L23"
-    },
-    {
       "id": "src_lib_db_schema_adminuser",
       "label": "AdminUser",
       "_callable": true,
@@ -732,30 +719,30 @@
       "source_location": "L3"
     },
     {
-      "id": "src_components_comunidade_communityfeed_communitypost",
-      "label": "CommunityPost",
+      "id": "src_components_comunidade_membercard_membercardprops",
+      "label": "MemberCardProps",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 55,
-      "community_name": "GlassCard.tsx",
+      "community_name": "Badge.tsx",
       "file_type": "code",
-      "norm_label": "communitypost",
-      "source_file": "src/components/comunidade/CommunityFeed.tsx",
+      "norm_label": "membercardprops",
+      "source_file": "src/components/comunidade/MemberCard.tsx",
       "source_location": "L30"
     },
     {
-      "id": "src_components_comunidade_communityfeed_postcomment",
-      "label": "PostComment",
+      "id": "src_components_comunidade_membercard_memberprofile",
+      "label": "MemberProfile",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 55,
-      "community_name": "GlassCard.tsx",
+      "community_name": "Badge.tsx",
       "file_type": "code",
-      "norm_label": "postcomment",
-      "source_file": "src/components/comunidade/CommunityFeed.tsx",
-      "source_location": "L22"
+      "norm_label": "memberprofile",
+      "source_file": "src/components/comunidade/MemberCard.tsx",
+      "source_location": "L20"
     },
     {
       "id": "src_components_library_resourcecard_resourcecardprops",
@@ -764,7 +751,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 55,
-      "community_name": "GlassCard.tsx",
+      "community_name": "Badge.tsx",
       "file_type": "code",
       "norm_label": "resourcecardprops",
       "source_file": "src/components/library/ResourceCard.tsx",
@@ -777,23 +764,23 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 55,
-      "community_name": "GlassCard.tsx",
+      "community_name": "Badge.tsx",
       "file_type": "code",
       "norm_label": "resourcedetailviewerprops",
       "source_file": "src/components/library/ResourceDetailViewer.tsx",
       "source_location": "L24"
     },
     {
-      "id": "src_components_ui_glasscard_glasscardprops",
-      "label": "GlassCardProps",
+      "id": "src_components_ui_badge_badgeprops",
+      "label": "BadgeProps",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 55,
-      "community_name": "GlassCard.tsx",
+      "community_name": "Badge.tsx",
       "file_type": "code",
-      "norm_label": "glasscardprops",
-      "source_file": "src/components/ui/GlassCard.tsx",
+      "norm_label": "badgeprops",
+      "source_file": "src/components/ui/Badge.tsx",
       "source_location": "L4"
     },
     {
@@ -803,7 +790,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 55,
-      "community_name": "GlassCard.tsx",
+      "community_name": "Badge.tsx",
       "file_type": "code",
       "norm_label": "librarycategorygroup",
       "source_file": "src/types/library.ts",
@@ -816,7 +803,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 55,
-      "community_name": "GlassCard.tsx",
+      "community_name": "Badge.tsx",
       "file_type": "code",
       "norm_label": "libraryitem",
       "source_file": "src/types/library.ts",
@@ -829,7 +816,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 55,
-      "community_name": "GlassCard.tsx",
+      "community_name": "Badge.tsx",
       "file_type": "code",
       "norm_label": "libraryresponse",
       "source_file": "src/types/library.ts",
@@ -914,19 +901,6 @@
       "source_location": "L8"
     },
     {
-      "id": "src_components_ui_badge_badgeprops",
-      "label": "BadgeProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 58,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "badgeprops",
-      "source_file": "src/components/ui/Badge.tsx",
-      "source_location": "L4"
-    },
-    {
       "id": "src_components_ui_button_buttonprops",
       "label": "ButtonProps",
       "_callable": true,
@@ -937,6 +911,19 @@
       "file_type": "code",
       "norm_label": "buttonprops",
       "source_file": "src/components/ui/Button.tsx",
+      "source_location": "L4"
+    },
+    {
+      "id": "src_components_ui_glasscard_glasscardprops",
+      "label": "GlassCardProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 58,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "glasscardprops",
+      "source_file": "src/components/ui/GlassCard.tsx",
       "source_location": "L4"
     },
     {
@@ -1161,6 +1148,58 @@
       "source_location": "L84"
     },
     {
+      "id": "src_app_builder_f_id_page_publicformprops",
+      "label": "PublicFormProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 67,
+      "community_name": "admin/page.tsx",
+      "file_type": "code",
+      "norm_label": "publicformprops",
+      "source_file": "src/app/builder/f/[id]/page.tsx",
+      "source_location": "L9"
+    },
+    {
+      "id": "src_components_builder_constants_formpage",
+      "label": "FormPage",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 67,
+      "community_name": "admin/page.tsx",
+      "file_type": "code",
+      "norm_label": "formpage",
+      "source_file": "src/components/builder/constants.ts",
+      "source_location": "L11"
+    },
+    {
+      "id": "src_components_builder_constants_question",
+      "label": "Question",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 67,
+      "community_name": "admin/page.tsx",
+      "file_type": "code",
+      "norm_label": "question",
+      "source_file": "src/components/builder/constants.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_builder_constants_savedform",
+      "label": "SavedForm",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 67,
+      "community_name": "admin/page.tsx",
+      "file_type": "code",
+      "norm_label": "savedform",
+      "source_file": "src/components/builder/constants.ts",
+      "source_location": "L19"
+    },
+    {
       "id": "src_components_layout_navbar_navlinkitem",
       "label": "NavLinkItem",
       "_callable": true,
@@ -1185,6 +1224,19 @@
       "norm_label": "unifieduser",
       "source_file": "src/lib/auth/unified-auth.ts",
       "source_location": "L3"
+    },
+    {
+      "id": "src_lib_auth_unified_auth_userrole",
+      "label": "UserRole",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 67,
+      "community_name": "admin/page.tsx",
+      "file_type": "code",
+      "norm_label": "userrole",
+      "source_file": "src/lib/auth/unified-auth.ts",
+      "source_location": "L1"
     },
     {
       "id": "src_app_page_testimonial",
@@ -1460,69 +1512,69 @@
       "source_location": "L19"
     },
     {
-      "id": "src_app_builder_f_id_page_publicformprops",
-      "label": "PublicFormProps",
+      "id": "src_app_biblioteca_id_page_pageprops",
+      "label": "PageProps",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 70,
-      "community_name": "builder/page.tsx",
+      "community_name": "utils.ts",
       "file_type": "code",
-      "norm_label": "publicformprops",
-      "source_file": "src/app/builder/f/[id]/page.tsx",
-      "source_location": "L9"
+      "norm_label": "pageprops",
+      "source_file": "src/app/biblioteca/[id]/page.tsx",
+      "source_location": "L23"
     },
     {
-      "id": "src_components_builder_constants_formpage",
-      "label": "FormPage",
+      "id": "src_components_library_cataloggrid_cataloggridprops",
+      "label": "CatalogGridProps",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 70,
-      "community_name": "builder/page.tsx",
+      "community_name": "utils.ts",
       "file_type": "code",
-      "norm_label": "formpage",
-      "source_file": "src/components/builder/constants.ts",
-      "source_location": "L11"
+      "norm_label": "cataloggridprops",
+      "source_file": "src/components/library/CatalogGrid.tsx",
+      "source_location": "L21"
     },
     {
-      "id": "src_components_builder_constants_question",
-      "label": "Question",
+      "id": "src_components_library_downloadbutton_downloadbuttonprops",
+      "label": "DownloadButtonProps",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 70,
-      "community_name": "builder/page.tsx",
+      "community_name": "utils.ts",
       "file_type": "code",
-      "norm_label": "question",
-      "source_file": "src/components/builder/constants.ts",
-      "source_location": "L1"
+      "norm_label": "downloadbuttonprops",
+      "source_file": "src/components/library/DownloadButton.tsx",
+      "source_location": "L7"
     },
     {
-      "id": "src_components_builder_constants_savedform",
-      "label": "SavedForm",
+      "id": "src_components_library_resourceviewer_resourceviewerprops",
+      "label": "ResourceViewerProps",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 70,
-      "community_name": "builder/page.tsx",
+      "community_name": "utils.ts",
       "file_type": "code",
-      "norm_label": "savedform",
-      "source_file": "src/components/builder/constants.ts",
-      "source_location": "L19"
+      "norm_label": "resourceviewerprops",
+      "source_file": "src/components/library/ResourceViewer.tsx",
+      "source_location": "L22"
     },
     {
-      "id": "src_lib_auth_unified_auth_userrole",
-      "label": "UserRole",
+      "id": "src_lib_library_catalog_libraryresource",
+      "label": "LibraryResource",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 70,
-      "community_name": "builder/page.tsx",
+      "community_name": "utils.ts",
       "file_type": "code",
-      "norm_label": "userrole",
-      "source_file": "src/lib/auth/unified-auth.ts",
-      "source_location": "L1"
+      "norm_label": "libraryresource",
+      "source_file": "src/lib/library/catalog.ts",
+      "source_location": "L27"
     },
     {
       "id": "src_app_builder_dashboard_page_formsummary",
@@ -1538,56 +1590,30 @@
       "source_location": "L11"
     },
     {
-      "id": "src_components_comunidade_membercard_membercardprops",
-      "label": "MemberCardProps",
+      "id": "src_app_comunidade_midias_page_mediaitem",
+      "label": "MediaItem",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 71,
       "community_name": "lucide-react",
       "file_type": "code",
-      "norm_label": "membercardprops",
-      "source_file": "src/components/comunidade/MemberCard.tsx",
-      "source_location": "L30"
+      "norm_label": "mediaitem",
+      "source_file": "src/app/comunidade/midias/page.tsx",
+      "source_location": "L25"
     },
     {
-      "id": "src_components_comunidade_membercard_memberprofile",
-      "label": "MemberProfile",
+      "id": "src_components_comunidade_videoplayer_videoplayerprops",
+      "label": "VideoPlayerProps",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 71,
       "community_name": "lucide-react",
       "file_type": "code",
-      "norm_label": "memberprofile",
-      "source_file": "src/components/comunidade/MemberCard.tsx",
-      "source_location": "L20"
-    },
-    {
-      "id": "src_components_library_cataloggrid_cataloggridprops",
-      "label": "CatalogGridProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 71,
-      "community_name": "lucide-react",
-      "file_type": "code",
-      "norm_label": "cataloggridprops",
-      "source_file": "src/components/library/CatalogGrid.tsx",
-      "source_location": "L21"
-    },
-    {
-      "id": "src_components_library_downloadbutton_downloadbuttonprops",
-      "label": "DownloadButtonProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 71,
-      "community_name": "lucide-react",
-      "file_type": "code",
-      "norm_label": "downloadbuttonprops",
-      "source_file": "src/components/library/DownloadButton.tsx",
-      "source_location": "L7"
+      "norm_label": "videoplayerprops",
+      "source_file": "src/components/comunidade/VideoPlayer.tsx",
+      "source_location": "L19"
     },
     {
       "id": "src_components_library_resourcesearch_resourcesearchprops",
@@ -1601,19 +1627,6 @@
       "norm_label": "resourcesearchprops",
       "source_file": "src/components/library/ResourceSearch.tsx",
       "source_location": "L16"
-    },
-    {
-      "id": "src_components_library_resourceviewer_resourceviewerprops",
-      "label": "ResourceViewerProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 71,
-      "community_name": "lucide-react",
-      "file_type": "code",
-      "norm_label": "resourceviewerprops",
-      "source_file": "src/components/library/ResourceViewer.tsx",
-      "source_location": "L22"
     },
     {
       "id": "src_components_library_searchheader_searchheaderprops",
@@ -1681,19 +1694,6 @@
       "source_location": "L98"
     },
     {
-      "id": "src_lib_library_catalog_libraryresource",
-      "label": "LibraryResource",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 71,
-      "community_name": "lucide-react",
-      "file_type": "code",
-      "norm_label": "libraryresource",
-      "source_file": "src/lib/library/catalog.ts",
-      "source_location": "L27"
-    },
-    {
       "id": "src_lib_library_catalog_quickcategory",
       "label": "QuickCategory",
       "_callable": true,
@@ -1707,30 +1707,30 @@
       "source_location": "L18"
     },
     {
-      "id": "src_app_comunidade_midias_page_mediaitem",
-      "label": "MediaItem",
+      "id": "src_components_comunidade_communityfeed_communitypost",
+      "label": "CommunityPost",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 74,
-      "community_name": "midias/page.tsx",
+      "community_name": "CommunityFeed.tsx",
       "file_type": "code",
-      "norm_label": "mediaitem",
-      "source_file": "src/app/comunidade/midias/page.tsx",
-      "source_location": "L25"
+      "norm_label": "communitypost",
+      "source_file": "src/components/comunidade/CommunityFeed.tsx",
+      "source_location": "L30"
     },
     {
-      "id": "src_components_comunidade_videoplayer_videoplayerprops",
-      "label": "VideoPlayerProps",
+      "id": "src_components_comunidade_communityfeed_postcomment",
+      "label": "PostComment",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 74,
-      "community_name": "midias/page.tsx",
+      "community_name": "CommunityFeed.tsx",
       "file_type": "code",
-      "norm_label": "videoplayerprops",
-      "source_file": "src/components/comunidade/VideoPlayer.tsx",
-      "source_location": "L19"
+      "norm_label": "postcomment",
+      "source_file": "src/components/comunidade/CommunityFeed.tsx",
+      "source_location": "L22"
     },
     {
       "id": "src_lib_auth_jwt_sessionpayload",
@@ -2034,7 +2034,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "applybgsettingsui()",
       "source_file": "public/comunidade/app.js",
@@ -2046,7 +2046,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "converttoembedurl()",
       "source_file": "public/comunidade/app.js",
@@ -2058,7 +2058,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "formatdate()",
       "source_file": "public/comunidade/app.js",
@@ -2070,7 +2070,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "getactiveplaylist()",
       "source_file": "public/comunidade/app.js",
@@ -2082,7 +2082,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "getbadge()",
       "source_file": "public/comunidade/app.js",
@@ -2094,11 +2094,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "handleauthsession()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L565"
+      "source_location": "L764"
     },
     {
       "id": "public_comunidade_app_handledeletelessonmodal",
@@ -2106,11 +2106,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "handledeletelessonmodal()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L745"
+      "source_location": "L965"
     },
     {
       "id": "public_comunidade_app_handledeleteservermodal",
@@ -2118,11 +2118,23 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "handledeleteservermodal()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L778"
+      "source_location": "L998"
+    },
+    {
+      "id": "public_comunidade_app_handlehashroute",
+      "label": "handleHashRoute()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 47,
+      "community_name": "app.js",
+      "file_type": "code",
+      "norm_label": "handlehashroute()",
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L630"
     },
     {
       "id": "public_comunidade_app_handlesavelessonmodal",
@@ -2130,11 +2142,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "handlesavelessonmodal()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L723"
+      "source_location": "L943"
     },
     {
       "id": "public_comunidade_app_handlesaveservermodal",
@@ -2142,11 +2154,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "handlesaveservermodal()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L756"
+      "source_location": "L976"
     },
     {
       "id": "public_comunidade_app_hideauthmodal",
@@ -2154,11 +2166,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "hideauthmodal()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L2228"
+      "source_location": "L2733"
     },
     {
       "id": "public_comunidade_app_hidelessoneditormodal",
@@ -2166,11 +2178,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "hidelessoneditormodal()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L694"
+      "source_location": "L914"
     },
     {
       "id": "public_comunidade_app_hideservereditormodal",
@@ -2178,11 +2190,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "hideservereditormodal()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L697"
+      "source_location": "L917"
     },
     {
       "id": "public_comunidade_app_init",
@@ -2190,11 +2202,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "init()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L457"
+      "source_location": "L682"
     },
     {
       "id": "public_comunidade_app_initvideobackgroundengine",
@@ -2202,7 +2214,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "initvideobackgroundengine()",
       "source_file": "public/comunidade/app.js",
@@ -2214,11 +2226,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "loadandrenderadmintabcontent()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L2299"
+      "source_location": "L2806"
     },
     {
       "id": "public_comunidade_app_loadbanners",
@@ -2226,11 +2238,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "loadbanners()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1172"
+      "source_location": "L1557"
     },
     {
       "id": "public_comunidade_app_loadcommunityposts",
@@ -2238,11 +2250,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "loadcommunityposts()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L630"
+      "source_location": "L828"
     },
     {
       "id": "public_comunidade_app_loadproductsdata",
@@ -2250,11 +2262,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "loadproductsdata()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L610"
+      "source_location": "L808"
     },
     {
       "id": "public_comunidade_app_loadserversdata",
@@ -2262,11 +2274,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "loadserversdata()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L672"
+      "source_location": "L884"
     },
     {
       "id": "public_comunidade_app_navigatetoadmin",
@@ -2274,11 +2286,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "navigatetoadmin()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1102"
+      "source_location": "L1472"
     },
     {
       "id": "public_comunidade_app_navigatetocategory",
@@ -2286,11 +2298,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "navigatetocategory()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1045"
+      "source_location": "L1352"
     },
     {
       "id": "public_comunidade_app_navigatetocommunity",
@@ -2298,11 +2310,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "navigatetocommunity()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1047"
+      "source_location": "L1363"
     },
     {
       "id": "public_comunidade_app_navigatetohome",
@@ -2310,11 +2322,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "navigatetohome()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1043"
+      "source_location": "L1329"
     },
     {
       "id": "public_comunidade_app_navigatetoproduct",
@@ -2322,11 +2334,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "navigatetoproduct()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1044"
+      "source_location": "L1341"
     },
     {
       "id": "public_comunidade_app_navigatetoprofile",
@@ -2334,11 +2346,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "navigatetoprofile()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1090"
+      "source_location": "L1447"
     },
     {
       "id": "public_comunidade_app_navigatetoserverdetail",
@@ -2346,11 +2358,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "navigatetoserverdetail()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1075"
+      "source_location": "L1417"
     },
     {
       "id": "public_comunidade_app_navigatetoservers",
@@ -2358,11 +2370,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "navigatetoservers()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1060"
+      "source_location": "L1389"
     },
     {
       "id": "public_comunidade_app_playnextvideoinplaylist",
@@ -2370,7 +2382,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "playnextvideoinplaylist()",
       "source_file": "public/comunidade/app.js",
@@ -2382,11 +2394,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "renderadminview()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L2241"
+      "source_location": "L2746"
     },
     {
       "id": "public_comunidade_app_renderbreadcrumb",
@@ -2394,11 +2406,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "renderbreadcrumb()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1143"
+      "source_location": "L1528"
     },
     {
       "id": "public_comunidade_app_rendercategoryview",
@@ -2406,11 +2418,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "rendercategoryview()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1471"
+      "source_location": "L1856"
     },
     {
       "id": "public_comunidade_app_rendercommentcard",
@@ -2418,11 +2430,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "rendercommentcard()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1738"
+      "source_location": "L2123"
     },
     {
       "id": "public_comunidade_app_rendercommunityview",
@@ -2430,11 +2442,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "rendercommunityview()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1561"
+      "source_location": "L1946"
     },
     {
       "id": "public_comunidade_app_rendercurrentview",
@@ -2442,11 +2454,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "rendercurrentview()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1275"
+      "source_location": "L1660"
     },
     {
       "id": "public_comunidade_app_renderherobanner",
@@ -2454,11 +2466,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "renderherobanner()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1237"
+      "source_location": "L1622"
     },
     {
       "id": "public_comunidade_app_renderhomeview",
@@ -2466,11 +2478,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "renderhomeview()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1298"
+      "source_location": "L1683"
     },
     {
       "id": "public_comunidade_app_renderimagegrid",
@@ -2478,7 +2490,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "renderimagegrid()",
       "source_file": "public/comunidade/app.js",
@@ -2490,7 +2502,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "rendermarkdown()",
       "source_file": "public/comunidade/app.js",
@@ -2502,11 +2514,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "renderpostcard()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1673"
+      "source_location": "L2058"
     },
     {
       "id": "public_comunidade_app_renderproductview",
@@ -2514,11 +2526,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "renderproductview()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1393"
+      "source_location": "L1778"
     },
     {
       "id": "public_comunidade_app_renderprofileview",
@@ -2526,11 +2538,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "renderprofileview()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L2057"
+      "source_location": "L2519"
     },
     {
       "id": "public_comunidade_app_rendersearchview",
@@ -2538,11 +2550,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "rendersearchview()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1527"
+      "source_location": "L1912"
     },
     {
       "id": "public_comunidade_app_renderserverdetailview",
@@ -2550,11 +2562,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "renderserverdetailview()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1956"
+      "source_location": "L2418"
     },
     {
       "id": "public_comunidade_app_renderserversview",
@@ -2562,11 +2574,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "renderserversview()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1897"
+      "source_location": "L2359"
     },
     {
       "id": "public_comunidade_app_rendersidebanner",
@@ -2574,11 +2586,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "rendersidebanner()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1256"
+      "source_location": "L1641"
     },
     {
       "id": "public_comunidade_app_setupcommunityhandlers",
@@ -2586,11 +2598,23 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "setupcommunityhandlers()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1754"
+      "source_location": "L2139"
+    },
+    {
+      "id": "public_comunidade_app_setupcommunityhandlers_savelocalcommunityposts",
+      "label": "saveLocalCommunityPosts()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 47,
+      "community_name": "app.js",
+      "file_type": "code",
+      "norm_label": "savelocalcommunityposts()",
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L2174"
     },
     {
       "id": "public_comunidade_app_setupeventlisteners",
@@ -2598,11 +2622,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "setupeventlisteners()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L838"
+      "source_location": "L1058"
     },
     {
       "id": "public_comunidade_app_showauthmodal",
@@ -2610,11 +2634,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "showauthmodal()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L2218"
+      "source_location": "L2723"
     },
     {
       "id": "public_comunidade_app_showconfirmmodal",
@@ -2622,11 +2646,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "showconfirmmodal()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L2185"
+      "source_location": "L2690"
     },
     {
       "id": "public_comunidade_app_showtoast",
@@ -2634,11 +2658,23 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "showtoast()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L2178"
+      "source_location": "L2683"
+    },
+    {
+      "id": "public_comunidade_app_syncsovereignsession",
+      "label": "syncSovereignSession()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 47,
+      "community_name": "app.js",
+      "file_type": "code",
+      "norm_label": "syncsovereignsession()",
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L583"
     },
     {
       "id": "public_comunidade_app_triggeranimobservers",
@@ -2646,11 +2682,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "triggeranimobservers()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L2234"
+      "source_location": "L2739"
     },
     {
       "id": "public_comunidade_app_triggermandatorypopup",
@@ -2658,11 +2694,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "triggermandatorypopup()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1183"
+      "source_location": "L1568"
     },
     {
       "id": "public_comunidade_app_triggermercadopagocheckout",
@@ -2670,7 +2706,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "triggermercadopagocheckout()",
       "source_file": "public/comunidade/app.js",
@@ -2682,11 +2718,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "updateauthmodalui()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1025"
+      "source_location": "L1311"
     },
     {
       "id": "public_comunidade_app_updatenavstate",
@@ -2694,11 +2730,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "updatenavstate()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1289"
+      "source_location": "L1674"
     },
     {
       "id": "public_comunidade_app_updateserverheropreview",
@@ -2706,11 +2742,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "updateserverheropreview()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L716"
+      "source_location": "L936"
     },
     {
       "id": "public_comunidade_app_updateuserheader",
@@ -2718,11 +2754,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "updateuserheader()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1125"
+      "source_location": "L1510"
     },
     {
       "id": "public_comunidade_app_updatevideopreview",
@@ -2730,11 +2766,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "updatevideopreview()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L701"
+      "source_location": "L921"
     },
     {
       "id": "public_comunidade_app_uploadfiletosupabase",
@@ -2742,7 +2778,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "uploadfiletosupabase()",
       "source_file": "public/comunidade/app.js",
@@ -3253,16 +3289,16 @@
       "source_location": "L63"
     },
     {
-      "id": "src_components_comunidade_communityfeed_communityfeed",
-      "label": "CommunityFeed()",
+      "id": "src_components_comunidade_membercard_membercard",
+      "label": "MemberCard()",
       "_callable": true,
       "_origin": "ast",
       "community": 55,
-      "community_name": "GlassCard.tsx",
+      "community_name": "Badge.tsx",
       "file_type": "code",
-      "norm_label": "communityfeed()",
-      "source_file": "src/components/comunidade/CommunityFeed.tsx",
-      "source_location": "L120"
+      "norm_label": "membercard()",
+      "source_file": "src/components/comunidade/MemberCard.tsx",
+      "source_location": "L37"
     },
     {
       "id": "src_components_library_resourcecard_resourcecard",
@@ -3270,7 +3306,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 55,
-      "community_name": "GlassCard.tsx",
+      "community_name": "Badge.tsx",
       "file_type": "code",
       "norm_label": "resourcecard()",
       "source_file": "src/components/library/ResourceCard.tsx",
@@ -3282,7 +3318,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 55,
-      "community_name": "GlassCard.tsx",
+      "community_name": "Badge.tsx",
       "file_type": "code",
       "norm_label": "resourcedetailviewer()",
       "source_file": "src/components/library/ResourceDetailViewer.tsx",
@@ -3299,18 +3335,6 @@
       "norm_label": "registerpage()",
       "source_file": "src/app/comunidade/cadastro/page.tsx",
       "source_location": "L21"
-    },
-    {
-      "id": "src_app_comunidade_login_page_loginpage",
-      "label": "LoginPage()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 58,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "loginpage()",
-      "source_file": "src/app/comunidade/login/page.tsx",
-      "source_location": "L23"
     },
     {
       "id": "src_components_marketing_leadcaptureform_leadcaptureform",
@@ -3589,6 +3613,18 @@
       "source_location": "L94"
     },
     {
+      "id": "src_app_builder_f_id_page_publicformview",
+      "label": "PublicFormView()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 67,
+      "community_name": "admin/page.tsx",
+      "file_type": "code",
+      "norm_label": "publicformview()",
+      "source_file": "src/app/builder/f/[id]/page.tsx",
+      "source_location": "L13"
+    },
+    {
       "id": "src_app_builder_page_buildercontent",
       "label": "BuilderContent()",
       "_callable": true,
@@ -3599,6 +3635,30 @@
       "norm_label": "buildercontent()",
       "source_file": "src/app/builder/page.tsx",
       "source_location": "L29"
+    },
+    {
+      "id": "src_app_builder_page_glassliquidbuilderwrapper",
+      "label": "GlassLiquidBuilderWrapper()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 67,
+      "community_name": "admin/page.tsx",
+      "file_type": "code",
+      "norm_label": "glassliquidbuilderwrapper()",
+      "source_file": "src/app/builder/page.tsx",
+      "source_location": "L1218"
+    },
+    {
+      "id": "src_app_comunidade_login_page_loginpage",
+      "label": "LoginPage()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 67,
+      "community_name": "admin/page.tsx",
+      "file_type": "code",
+      "norm_label": "loginpage()",
+      "source_file": "src/app/comunidade/login/page.tsx",
+      "source_location": "L23"
     },
     {
       "id": "src_app_layout_rootlayout",
@@ -3865,28 +3925,76 @@
       "source_location": "L28"
     },
     {
-      "id": "src_app_builder_f_id_page_publicformview",
-      "label": "PublicFormView()",
+      "id": "src_components_comunidade_checkoutmodal_checkoutmodal",
+      "label": "CheckoutModal()",
       "_callable": true,
       "_origin": "ast",
       "community": 70,
-      "community_name": "builder/page.tsx",
+      "community_name": "utils.ts",
       "file_type": "code",
-      "norm_label": "publicformview()",
-      "source_file": "src/app/builder/f/[id]/page.tsx",
-      "source_location": "L13"
+      "norm_label": "checkoutmodal()",
+      "source_file": "src/components/comunidade/CheckoutModal.tsx",
+      "source_location": "L31"
     },
     {
-      "id": "src_app_builder_page_glassliquidbuilderwrapper",
-      "label": "GlassLiquidBuilderWrapper()",
+      "id": "src_components_library_cataloggrid_cataloggrid",
+      "label": "CatalogGrid()",
       "_callable": true,
       "_origin": "ast",
       "community": 70,
-      "community_name": "builder/page.tsx",
+      "community_name": "utils.ts",
       "file_type": "code",
-      "norm_label": "glassliquidbuilderwrapper()",
-      "source_file": "src/app/builder/page.tsx",
-      "source_location": "L1218"
+      "norm_label": "cataloggrid()",
+      "source_file": "src/components/library/CatalogGrid.tsx",
+      "source_location": "L87"
+    },
+    {
+      "id": "src_components_library_cataloggrid_getextensionbadge",
+      "label": "getExtensionBadge()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 70,
+      "community_name": "utils.ts",
+      "file_type": "code",
+      "norm_label": "getextensionbadge()",
+      "source_file": "src/components/library/CatalogGrid.tsx",
+      "source_location": "L27"
+    },
+    {
+      "id": "src_components_library_downloadbutton_downloadbutton",
+      "label": "DownloadButton()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 70,
+      "community_name": "utils.ts",
+      "file_type": "code",
+      "norm_label": "downloadbutton()",
+      "source_file": "src/components/library/DownloadButton.tsx",
+      "source_location": "L16"
+    },
+    {
+      "id": "src_components_library_resourceviewer_resourceviewer",
+      "label": "ResourceViewer()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 70,
+      "community_name": "utils.ts",
+      "file_type": "code",
+      "norm_label": "resourceviewer()",
+      "source_file": "src/components/library/ResourceViewer.tsx",
+      "source_location": "L27"
+    },
+    {
+      "id": "src_lib_utils_formatcurrencybrl",
+      "label": "formatCurrencyBRL()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 70,
+      "community_name": "utils.ts",
+      "file_type": "code",
+      "norm_label": "formatcurrencybrl()",
+      "source_file": "src/lib/utils.ts",
+      "source_location": "L8"
     },
     {
       "id": "src_app_builder_dashboard_page_builderdashboardpage",
@@ -3901,64 +4009,28 @@
       "source_location": "L22"
     },
     {
-      "id": "src_components_comunidade_checkoutmodal_checkoutmodal",
-      "label": "CheckoutModal()",
+      "id": "src_app_comunidade_midias_page_midiaspage",
+      "label": "MidiasPage()",
       "_callable": true,
       "_origin": "ast",
       "community": 71,
       "community_name": "lucide-react",
       "file_type": "code",
-      "norm_label": "checkoutmodal()",
-      "source_file": "src/components/comunidade/CheckoutModal.tsx",
-      "source_location": "L31"
+      "norm_label": "midiaspage()",
+      "source_file": "src/app/comunidade/midias/page.tsx",
+      "source_location": "L118"
     },
     {
-      "id": "src_components_comunidade_membercard_membercard",
-      "label": "MemberCard()",
+      "id": "src_components_comunidade_videoplayer_videoplayer",
+      "label": "VideoPlayer()",
       "_callable": true,
       "_origin": "ast",
       "community": 71,
       "community_name": "lucide-react",
       "file_type": "code",
-      "norm_label": "membercard()",
-      "source_file": "src/components/comunidade/MemberCard.tsx",
-      "source_location": "L37"
-    },
-    {
-      "id": "src_components_library_cataloggrid_cataloggrid",
-      "label": "CatalogGrid()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 71,
-      "community_name": "lucide-react",
-      "file_type": "code",
-      "norm_label": "cataloggrid()",
-      "source_file": "src/components/library/CatalogGrid.tsx",
-      "source_location": "L87"
-    },
-    {
-      "id": "src_components_library_cataloggrid_getextensionbadge",
-      "label": "getExtensionBadge()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 71,
-      "community_name": "lucide-react",
-      "file_type": "code",
-      "norm_label": "getextensionbadge()",
-      "source_file": "src/components/library/CatalogGrid.tsx",
-      "source_location": "L27"
-    },
-    {
-      "id": "src_components_library_downloadbutton_downloadbutton",
-      "label": "DownloadButton()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 71,
-      "community_name": "lucide-react",
-      "file_type": "code",
-      "norm_label": "downloadbutton()",
-      "source_file": "src/components/library/DownloadButton.tsx",
-      "source_location": "L16"
+      "norm_label": "videoplayer()",
+      "source_file": "src/components/comunidade/VideoPlayer.tsx",
+      "source_location": "L30"
     },
     {
       "id": "src_components_library_resourcesearch_resourcesearch",
@@ -3971,18 +4043,6 @@
       "norm_label": "resourcesearch()",
       "source_file": "src/components/library/ResourceSearch.tsx",
       "source_location": "L29"
-    },
-    {
-      "id": "src_components_library_resourceviewer_resourceviewer",
-      "label": "ResourceViewer()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 71,
-      "community_name": "lucide-react",
-      "file_type": "code",
-      "norm_label": "resourceviewer()",
-      "source_file": "src/components/library/ResourceViewer.tsx",
-      "source_location": "L27"
     },
     {
       "id": "src_components_library_searchheader_searchheader",
@@ -4033,18 +4093,6 @@
       "source_location": "L4"
     },
     {
-      "id": "src_lib_utils_formatcurrencybrl",
-      "label": "formatCurrencyBRL()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 71,
-      "community_name": "lucide-react",
-      "file_type": "code",
-      "norm_label": "formatcurrencybrl()",
-      "source_file": "src/lib/utils.ts",
-      "source_location": "L8"
-    },
-    {
       "id": "src_app_api_auth_verify_password_route_post",
       "label": "POST()",
       "_callable": true,
@@ -4057,28 +4105,16 @@
       "source_location": "L4"
     },
     {
-      "id": "src_app_comunidade_midias_page_midiaspage",
-      "label": "MidiasPage()",
+      "id": "src_components_comunidade_communityfeed_communityfeed",
+      "label": "CommunityFeed()",
       "_callable": true,
       "_origin": "ast",
       "community": 74,
-      "community_name": "midias/page.tsx",
+      "community_name": "CommunityFeed.tsx",
       "file_type": "code",
-      "norm_label": "midiaspage()",
-      "source_file": "src/app/comunidade/midias/page.tsx",
-      "source_location": "L118"
-    },
-    {
-      "id": "src_components_comunidade_videoplayer_videoplayer",
-      "label": "VideoPlayer()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 74,
-      "community_name": "midias/page.tsx",
-      "file_type": "code",
-      "norm_label": "videoplayer()",
-      "source_file": "src/components/comunidade/VideoPlayer.tsx",
-      "source_location": "L30"
+      "norm_label": "communityfeed()",
+      "source_file": "src/components/comunidade/CommunityFeed.tsx",
+      "source_location": "L120"
     },
     {
       "id": "src_app_api_auth_login_route_post",
@@ -8537,28 +8573,6 @@
       "source_location": "L4"
     },
     {
-      "id": "src_app_biblioteca_id_page",
-      "label": "biblioteca/[id]/page.tsx",
-      "_origin": "ast",
-      "community": 44,
-      "community_name": "catalog.ts",
-      "file_type": "code",
-      "norm_label": "biblioteca/[id]/page.tsx",
-      "source_file": "src/app/biblioteca/[id]/page.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_app_biblioteca_id_page_dynamicparams",
-      "label": "dynamicParams",
-      "_origin": "ast",
-      "community": 44,
-      "community_name": "catalog.ts",
-      "file_type": "code",
-      "norm_label": "dynamicparams",
-      "source_file": "src/app/biblioteca/[id]/page.tsx",
-      "source_location": "L21"
-    },
-    {
       "id": "src_lib_library_catalog",
       "label": "catalog.ts",
       "_origin": "ast",
@@ -8739,7 +8753,7 @@
       "label": "app.js",
       "_origin": "ast",
       "community": 47,
-      "community_name": "comunidade/app.js",
+      "community_name": "app.js",
       "file_type": "code",
       "norm_label": "app.js",
       "source_file": "public/comunidade/app.js",
@@ -9873,33 +9887,22 @@
       "source_location": "L7"
     },
     {
-      "id": "src_components_comunidade_communityfeed",
-      "label": "CommunityFeed.tsx",
+      "id": "src_components_comunidade_membercard",
+      "label": "comunidade/MemberCard.tsx",
       "_origin": "ast",
       "community": 55,
-      "community_name": "GlassCard.tsx",
+      "community_name": "Badge.tsx",
       "file_type": "code",
-      "norm_label": "communityfeed.tsx",
-      "source_file": "src/components/comunidade/CommunityFeed.tsx",
+      "norm_label": "comunidade/membercard.tsx",
+      "source_file": "src/components/comunidade/MemberCard.tsx",
       "source_location": "L1"
-    },
-    {
-      "id": "src_components_comunidade_communityfeed_initial_posts",
-      "label": "INITIAL_POSTS",
-      "_origin": "ast",
-      "community": 55,
-      "community_name": "GlassCard.tsx",
-      "file_type": "code",
-      "norm_label": "initial_posts",
-      "source_file": "src/components/comunidade/CommunityFeed.tsx",
-      "source_location": "L47"
     },
     {
       "id": "src_components_library_resourcecard",
       "label": "ResourceCard.tsx",
       "_origin": "ast",
       "community": 55,
-      "community_name": "GlassCard.tsx",
+      "community_name": "Badge.tsx",
       "file_type": "code",
       "norm_label": "resourcecard.tsx",
       "source_file": "src/components/library/ResourceCard.tsx",
@@ -9910,40 +9913,40 @@
       "label": "ResourceDetailViewer.tsx",
       "_origin": "ast",
       "community": 55,
-      "community_name": "GlassCard.tsx",
+      "community_name": "Badge.tsx",
       "file_type": "code",
       "norm_label": "resourcedetailviewer.tsx",
       "source_file": "src/components/library/ResourceDetailViewer.tsx",
       "source_location": "L1"
     },
     {
-      "id": "src_components_ui_glasscard",
-      "label": "GlassCard.tsx",
+      "id": "src_components_ui_badge",
+      "label": "Badge.tsx",
       "_origin": "ast",
       "community": 55,
-      "community_name": "GlassCard.tsx",
+      "community_name": "Badge.tsx",
       "file_type": "code",
-      "norm_label": "glasscard.tsx",
-      "source_file": "src/components/ui/GlassCard.tsx",
+      "norm_label": "badge.tsx",
+      "source_file": "src/components/ui/Badge.tsx",
       "source_location": "L1"
     },
     {
-      "id": "src_components_ui_glasscard_glasscard",
-      "label": "GlassCard",
+      "id": "src_components_ui_badge_badge",
+      "label": "Badge",
       "_origin": "ast",
       "community": 55,
-      "community_name": "GlassCard.tsx",
+      "community_name": "Badge.tsx",
       "file_type": "code",
-      "norm_label": "glasscard",
-      "source_file": "src/components/ui/GlassCard.tsx",
-      "source_location": "L10"
+      "norm_label": "badge",
+      "source_file": "src/components/ui/Badge.tsx",
+      "source_location": "L9"
     },
     {
       "id": "src_types_library",
       "label": "library.ts",
       "_origin": "ast",
       "community": 55,
-      "community_name": "GlassCard.tsx",
+      "community_name": "Badge.tsx",
       "file_type": "code",
       "norm_label": "library.ts",
       "source_file": "src/types/library.ts",
@@ -10143,28 +10146,6 @@
       "source_location": "L17"
     },
     {
-      "id": "src_components_ui_badge",
-      "label": "Badge.tsx",
-      "_origin": "ast",
-      "community": 58,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "badge.tsx",
-      "source_file": "src/components/ui/Badge.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_components_ui_badge_badge",
-      "label": "Badge",
-      "_origin": "ast",
-      "community": 58,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "badge",
-      "source_file": "src/components/ui/Badge.tsx",
-      "source_location": "L9"
-    },
-    {
       "id": "src_components_ui_button",
       "label": "Button.tsx",
       "_origin": "ast",
@@ -10185,6 +10166,28 @@
       "norm_label": "button",
       "source_file": "src/components/ui/Button.tsx",
       "source_location": "L12"
+    },
+    {
+      "id": "src_components_ui_glasscard",
+      "label": "GlassCard.tsx",
+      "_origin": "ast",
+      "community": 58,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "glasscard.tsx",
+      "source_file": "src/components/ui/GlassCard.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_ui_glasscard_glasscard",
+      "label": "GlassCard",
+      "_origin": "ast",
+      "community": 58,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "glasscard",
+      "source_file": "src/components/ui/GlassCard.tsx",
+      "source_location": "L10"
     },
     {
       "id": "src_components_ui_input",
@@ -11044,6 +11047,39 @@
       "source_location": "L1"
     },
     {
+      "id": "src_app_builder_f_id_page",
+      "label": "builder/f/[id]/page.tsx",
+      "_origin": "ast",
+      "community": 67,
+      "community_name": "admin/page.tsx",
+      "file_type": "code",
+      "norm_label": "builder/f/[id]/page.tsx",
+      "source_file": "src/app/builder/f/[id]/page.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_app_builder_page",
+      "label": "builder/page.tsx",
+      "_origin": "ast",
+      "community": 67,
+      "community_name": "admin/page.tsx",
+      "file_type": "code",
+      "norm_label": "builder/page.tsx",
+      "source_file": "src/app/builder/page.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_app_f_id_page",
+      "label": "app/f/[id]/page.tsx",
+      "_origin": "ast",
+      "community": 67,
+      "community_name": "admin/page.tsx",
+      "file_type": "code",
+      "norm_label": "app/f/[id]/page.tsx",
+      "source_file": "src/app/f/[id]/page.tsx",
+      "source_location": "L1"
+    },
+    {
       "id": "src_app_layout",
       "label": "layout.tsx",
       "_origin": "ast",
@@ -11064,6 +11100,50 @@
       "norm_label": "metadata",
       "source_file": "src/app/layout.tsx",
       "source_location": "L6"
+    },
+    {
+      "id": "src_components_builder_constants",
+      "label": "constants.ts",
+      "_origin": "ast",
+      "community": 67,
+      "community_name": "admin/page.tsx",
+      "file_type": "code",
+      "norm_label": "constants.ts",
+      "source_file": "src/components/builder/constants.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_builder_constants_brand_colors",
+      "label": "BRAND_COLORS",
+      "_origin": "ast",
+      "community": 67,
+      "community_name": "admin/page.tsx",
+      "file_type": "code",
+      "norm_label": "brand_colors",
+      "source_file": "src/components/builder/constants.ts",
+      "source_location": "L34"
+    },
+    {
+      "id": "src_components_builder_constants_master_pages",
+      "label": "MASTER_PAGES",
+      "_origin": "ast",
+      "community": 67,
+      "community_name": "admin/page.tsx",
+      "file_type": "code",
+      "norm_label": "master_pages",
+      "source_file": "src/components/builder/constants.ts",
+      "source_location": "L49"
+    },
+    {
+      "id": "src_components_builder_constants_master_questions",
+      "label": "MASTER_QUESTIONS",
+      "_origin": "ast",
+      "community": 67,
+      "community_name": "admin/page.tsx",
+      "file_type": "code",
+      "norm_label": "master_questions",
+      "source_file": "src/components/builder/constants.ts",
+      "source_location": "L56"
     },
     {
       "id": "src_components_layout_footer",
@@ -11491,81 +11571,81 @@
       "source_location": "L25"
     },
     {
-      "id": "src_app_builder_f_id_page",
-      "label": "builder/f/[id]/page.tsx",
+      "id": "src_app_biblioteca_id_page",
+      "label": "biblioteca/[id]/page.tsx",
       "_origin": "ast",
       "community": 70,
-      "community_name": "builder/page.tsx",
+      "community_name": "utils.ts",
       "file_type": "code",
-      "norm_label": "builder/f/[id]/page.tsx",
-      "source_file": "src/app/builder/f/[id]/page.tsx",
+      "norm_label": "biblioteca/[id]/page.tsx",
+      "source_file": "src/app/biblioteca/[id]/page.tsx",
       "source_location": "L1"
     },
     {
-      "id": "src_app_builder_page",
-      "label": "builder/page.tsx",
+      "id": "src_app_biblioteca_id_page_dynamicparams",
+      "label": "dynamicParams",
       "_origin": "ast",
       "community": 70,
-      "community_name": "builder/page.tsx",
+      "community_name": "utils.ts",
       "file_type": "code",
-      "norm_label": "builder/page.tsx",
-      "source_file": "src/app/builder/page.tsx",
+      "norm_label": "dynamicparams",
+      "source_file": "src/app/biblioteca/[id]/page.tsx",
+      "source_location": "L21"
+    },
+    {
+      "id": "src_components_comunidade_checkoutmodal",
+      "label": "CheckoutModal.tsx",
+      "_origin": "ast",
+      "community": 70,
+      "community_name": "utils.ts",
+      "file_type": "code",
+      "norm_label": "checkoutmodal.tsx",
+      "source_file": "src/components/comunidade/CheckoutModal.tsx",
       "source_location": "L1"
     },
     {
-      "id": "src_app_f_id_page",
-      "label": "app/f/[id]/page.tsx",
+      "id": "src_components_library_cataloggrid",
+      "label": "CatalogGrid.tsx",
       "_origin": "ast",
       "community": 70,
-      "community_name": "builder/page.tsx",
+      "community_name": "utils.ts",
       "file_type": "code",
-      "norm_label": "app/f/[id]/page.tsx",
-      "source_file": "src/app/f/[id]/page.tsx",
+      "norm_label": "cataloggrid.tsx",
+      "source_file": "src/components/library/CatalogGrid.tsx",
       "source_location": "L1"
     },
     {
-      "id": "src_components_builder_constants",
-      "label": "constants.ts",
+      "id": "src_components_library_downloadbutton",
+      "label": "DownloadButton.tsx",
       "_origin": "ast",
       "community": 70,
-      "community_name": "builder/page.tsx",
+      "community_name": "utils.ts",
       "file_type": "code",
-      "norm_label": "constants.ts",
-      "source_file": "src/components/builder/constants.ts",
+      "norm_label": "downloadbutton.tsx",
+      "source_file": "src/components/library/DownloadButton.tsx",
       "source_location": "L1"
     },
     {
-      "id": "src_components_builder_constants_brand_colors",
-      "label": "BRAND_COLORS",
+      "id": "src_components_library_resourceviewer",
+      "label": "ResourceViewer.tsx",
       "_origin": "ast",
       "community": 70,
-      "community_name": "builder/page.tsx",
+      "community_name": "utils.ts",
       "file_type": "code",
-      "norm_label": "brand_colors",
-      "source_file": "src/components/builder/constants.ts",
-      "source_location": "L34"
+      "norm_label": "resourceviewer.tsx",
+      "source_file": "src/components/library/ResourceViewer.tsx",
+      "source_location": "L1"
     },
     {
-      "id": "src_components_builder_constants_master_pages",
-      "label": "MASTER_PAGES",
+      "id": "src_lib_utils",
+      "label": "utils.ts",
       "_origin": "ast",
       "community": 70,
-      "community_name": "builder/page.tsx",
+      "community_name": "utils.ts",
       "file_type": "code",
-      "norm_label": "master_pages",
-      "source_file": "src/components/builder/constants.ts",
-      "source_location": "L49"
-    },
-    {
-      "id": "src_components_builder_constants_master_questions",
-      "label": "MASTER_QUESTIONS",
-      "_origin": "ast",
-      "community": 70,
-      "community_name": "builder/page.tsx",
-      "file_type": "code",
-      "norm_label": "master_questions",
-      "source_file": "src/components/builder/constants.ts",
-      "source_location": "L56"
+      "norm_label": "utils.ts",
+      "source_file": "src/lib/utils.ts",
+      "source_location": "L1"
     },
     {
       "id": "src_app_builder_dashboard_page",
@@ -11579,47 +11659,36 @@
       "source_location": "L1"
     },
     {
-      "id": "src_components_comunidade_checkoutmodal",
-      "label": "CheckoutModal.tsx",
+      "id": "src_app_comunidade_midias_page",
+      "label": "midias/page.tsx",
       "_origin": "ast",
       "community": 71,
       "community_name": "lucide-react",
       "file_type": "code",
-      "norm_label": "checkoutmodal.tsx",
-      "source_file": "src/components/comunidade/CheckoutModal.tsx",
+      "norm_label": "midias/page.tsx",
+      "source_file": "src/app/comunidade/midias/page.tsx",
       "source_location": "L1"
     },
     {
-      "id": "src_components_comunidade_membercard",
-      "label": "comunidade/MemberCard.tsx",
+      "id": "src_app_comunidade_midias_page_media_catalog",
+      "label": "MEDIA_CATALOG",
       "_origin": "ast",
       "community": 71,
       "community_name": "lucide-react",
       "file_type": "code",
-      "norm_label": "comunidade/membercard.tsx",
-      "source_file": "src/components/comunidade/MemberCard.tsx",
-      "source_location": "L1"
+      "norm_label": "media_catalog",
+      "source_file": "src/app/comunidade/midias/page.tsx",
+      "source_location": "L37"
     },
     {
-      "id": "src_components_library_cataloggrid",
-      "label": "CatalogGrid.tsx",
+      "id": "src_components_comunidade_videoplayer",
+      "label": "comunidade/VideoPlayer.tsx",
       "_origin": "ast",
       "community": 71,
       "community_name": "lucide-react",
       "file_type": "code",
-      "norm_label": "cataloggrid.tsx",
-      "source_file": "src/components/library/CatalogGrid.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_components_library_downloadbutton",
-      "label": "DownloadButton.tsx",
-      "_origin": "ast",
-      "community": 71,
-      "community_name": "lucide-react",
-      "file_type": "code",
-      "norm_label": "downloadbutton.tsx",
-      "source_file": "src/components/library/DownloadButton.tsx",
+      "norm_label": "comunidade/videoplayer.tsx",
+      "source_file": "src/components/comunidade/VideoPlayer.tsx",
       "source_location": "L1"
     },
     {
@@ -11631,17 +11700,6 @@
       "file_type": "code",
       "norm_label": "resourcesearch.tsx",
       "source_file": "src/components/library/ResourceSearch.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_components_library_resourceviewer",
-      "label": "ResourceViewer.tsx",
-      "_origin": "ast",
-      "community": 71,
-      "community_name": "lucide-react",
-      "file_type": "code",
-      "norm_label": "resourceviewer.tsx",
-      "source_file": "src/components/library/ResourceViewer.tsx",
       "source_location": "L1"
     },
     {
@@ -11709,17 +11767,6 @@
       "norm_label": "youtube_playlist",
       "source_file": "src/components/members/VideoPlayer.tsx",
       "source_location": "L91"
-    },
-    {
-      "id": "src_lib_utils",
-      "label": "utils.ts",
-      "_origin": "ast",
-      "community": 71,
-      "community_name": "lucide-react",
-      "file_type": "code",
-      "norm_label": "utils.ts",
-      "source_file": "src/lib/utils.ts",
-      "source_location": "L1"
     },
     {
       "id": "ref_lucide_react",
@@ -11828,37 +11875,26 @@
       "source_location": "L1"
     },
     {
-      "id": "src_app_comunidade_midias_page",
-      "label": "midias/page.tsx",
+      "id": "src_components_comunidade_communityfeed",
+      "label": "CommunityFeed.tsx",
       "_origin": "ast",
       "community": 74,
-      "community_name": "midias/page.tsx",
+      "community_name": "CommunityFeed.tsx",
       "file_type": "code",
-      "norm_label": "midias/page.tsx",
-      "source_file": "src/app/comunidade/midias/page.tsx",
+      "norm_label": "communityfeed.tsx",
+      "source_file": "src/components/comunidade/CommunityFeed.tsx",
       "source_location": "L1"
     },
     {
-      "id": "src_app_comunidade_midias_page_media_catalog",
-      "label": "MEDIA_CATALOG",
+      "id": "src_components_comunidade_communityfeed_initial_posts",
+      "label": "INITIAL_POSTS",
       "_origin": "ast",
       "community": 74,
-      "community_name": "midias/page.tsx",
+      "community_name": "CommunityFeed.tsx",
       "file_type": "code",
-      "norm_label": "media_catalog",
-      "source_file": "src/app/comunidade/midias/page.tsx",
-      "source_location": "L37"
-    },
-    {
-      "id": "src_components_comunidade_videoplayer",
-      "label": "comunidade/VideoPlayer.tsx",
-      "_origin": "ast",
-      "community": 74,
-      "community_name": "midias/page.tsx",
-      "file_type": "code",
-      "norm_label": "comunidade/videoplayer.tsx",
-      "source_file": "src/components/comunidade/VideoPlayer.tsx",
-      "source_location": "L1"
+      "norm_label": "initial_posts",
+      "source_file": "src/components/comunidade/CommunityFeed.tsx",
+      "source_location": "L47"
     },
     {
       "id": "src_app_api_auth_login_route",
@@ -12862,6 +12898,17 @@
       "source_location": "L5"
     },
     {
+      "id": "tests_comunidade_subpages_flow_test",
+      "label": "comunidade_subpages_flow.test.mjs",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "comunidade_subpages_flow.test.mjs",
+      "file_type": "code",
+      "norm_label": "comunidade_subpages_flow.test.mjs",
+      "source_file": "tests/comunidade_subpages_flow.test.mjs",
+      "source_location": "L1"
+    },
+    {
       "id": "public_comunidade_deploy",
       "label": "DEPLOY.MD",
       "_origin": "ast",
@@ -13205,18 +13252,6 @@
   "links": [
     {
       "source": "public_comunidade_app_handleauthsession",
-      "target": "public_comunidade_app_loadserversdata",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "public/comunidade/app.js",
-      "source_location": "L605",
-      "weight": 1.0
-    },
-    {
-      "source": "public_comunidade_app_handleauthsession",
       "target": "public_comunidade_app_updateuserheader",
       "relation": "calls",
       "_origin": "ast",
@@ -13224,7 +13259,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L606",
+      "source_location": "L804",
       "weight": 1.0
     },
     {
@@ -13236,7 +13271,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L746",
+      "source_location": "L966",
       "weight": 1.0
     },
     {
@@ -13248,7 +13283,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L747",
+      "source_location": "L967",
       "weight": 1.0
     },
     {
@@ -13260,7 +13295,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L749",
+      "source_location": "L969",
       "weight": 1.0
     },
     {
@@ -13272,7 +13307,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L752",
+      "source_location": "L972",
       "weight": 1.0
     },
     {
@@ -13284,19 +13319,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L753",
-      "weight": 1.0
-    },
-    {
-      "source": "public_comunidade_app_handledeleteservermodal",
-      "target": "public_comunidade_app_hideservereditormodal",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "public/comunidade/app.js",
-      "source_location": "L779",
+      "source_location": "L973",
       "weight": 1.0
     },
     {
@@ -13308,7 +13331,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L780",
+      "source_location": "L1000",
       "weight": 1.0
     },
     {
@@ -13320,7 +13343,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L783",
+      "source_location": "L1003",
       "weight": 1.0
     },
     {
@@ -13332,7 +13355,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L786",
+      "source_location": "L1006",
       "weight": 1.0
     },
     {
@@ -13344,7 +13367,127 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L787",
+      "source_location": "L1007",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app_handledeleteservermodal",
+      "target": "public_comunidade_app_hideservereditormodal",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L999",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app_handlehashroute",
+      "target": "public_comunidade_app_navigatetohome",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L633",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app_handlehashroute",
+      "target": "public_comunidade_app_navigatetocommunity",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L637",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app_handlehashroute",
+      "target": "public_comunidade_app_navigatetoservers",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L641",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app_handlehashroute",
+      "target": "public_comunidade_app_navigatetoserverdetail",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L648",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app_handlehashroute",
+      "target": "public_comunidade_app_navigatetoproduct",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L653",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app_handlehashroute",
+      "target": "public_comunidade_app_navigatetocategory",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L660",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app_handlehashroute",
+      "target": "public_comunidade_app_navigatetoprofile",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L664",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app_handlehashroute",
+      "target": "public_comunidade_app_navigatetoadmin",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L668",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app_handlehashroute",
+      "target": "public_comunidade_app_rendercurrentview",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L676",
       "weight": 1.0
     },
     {
@@ -13356,7 +13499,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L727",
+      "source_location": "L947",
       "weight": 1.0
     },
     {
@@ -13368,7 +13511,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L728",
+      "source_location": "L948",
       "weight": 1.0
     },
     {
@@ -13380,7 +13523,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L741",
+      "source_location": "L961",
       "weight": 1.0
     },
     {
@@ -13392,7 +13535,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L742",
+      "source_location": "L962",
       "weight": 1.0
     },
     {
@@ -13404,7 +13547,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L760",
+      "source_location": "L980",
       "weight": 1.0
     },
     {
@@ -13416,7 +13559,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L761",
+      "source_location": "L981",
       "weight": 1.0
     },
     {
@@ -13428,7 +13571,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L774",
+      "source_location": "L994",
       "weight": 1.0
     },
     {
@@ -13440,7 +13583,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L775",
+      "source_location": "L995",
       "weight": 1.0
     },
     {
@@ -13452,7 +13595,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L458",
+      "source_location": "L683",
       "weight": 1.0
     },
     {
@@ -13464,55 +13607,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L459",
+      "source_location": "L684",
       "weight": 1.0
     },
     {
       "source": "public_comunidade_app_init",
-      "target": "public_comunidade_app_loadproductsdata",
+      "target": "public_comunidade_app_syncsovereignsession",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L462",
-      "weight": 1.0
-    },
-    {
-      "source": "public_comunidade_app_init",
-      "target": "public_comunidade_app_loadbanners",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "public/comunidade/app.js",
-      "source_location": "L466",
-      "weight": 1.0
-    },
-    {
-      "source": "public_comunidade_app_init",
-      "target": "public_comunidade_app_showtoast",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "public/comunidade/app.js",
-      "source_location": "L472",
-      "weight": 1.0
-    },
-    {
-      "source": "public_comunidade_app_init",
-      "target": "public_comunidade_app_handleauthsession",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "public/comunidade/app.js",
-      "source_location": "L485",
+      "source_location": "L687",
       "weight": 1.0
     },
     {
@@ -13524,31 +13631,31 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L488",
+      "source_location": "L692",
       "weight": 1.0
     },
     {
       "source": "public_comunidade_app_init",
-      "target": "public_comunidade_app_updateuserheader",
+      "target": "public_comunidade_app_loadproductsdata",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L490",
+      "source_location": "L706",
       "weight": 1.0
     },
     {
       "source": "public_comunidade_app_init",
-      "target": "public_comunidade_app_navigatetohome",
+      "target": "public_comunidade_app_loadbanners",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L505",
+      "source_location": "L707",
       "weight": 1.0
     },
     {
@@ -13560,7 +13667,67 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L535",
+      "source_location": "L708",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app_init",
+      "target": "public_comunidade_app_loadcommunityposts",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L709",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app_init",
+      "target": "public_comunidade_app_showtoast",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L715",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app_init",
+      "target": "public_comunidade_app_handleauthsession",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L731",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app_init",
+      "target": "public_comunidade_app_navigatetohome",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L745",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app_init",
+      "target": "public_comunidade_app_updateuserheader",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L745",
       "weight": 1.0
     },
     {
@@ -13596,7 +13763,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L2419",
+      "source_location": "L2958",
       "weight": 1.0
     },
     {
@@ -13608,7 +13775,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L2420",
+      "source_location": "L2959",
       "weight": 1.0
     },
     {
@@ -13620,7 +13787,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L2444",
+      "source_location": "L2983",
       "weight": 1.0
     },
     {
@@ -13632,7 +13799,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L2449",
+      "source_location": "L2988",
       "weight": 1.0
     },
     {
@@ -13644,7 +13811,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L2643",
+      "source_location": "L3182",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app_navigatetoadmin",
+      "target": "public_comunidade_app_syncsovereignsession",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L1473",
       "weight": 1.0
     },
     {
@@ -13656,7 +13835,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1106",
+      "source_location": "L1478",
       "weight": 1.0
     },
     {
@@ -13668,7 +13847,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1107",
+      "source_location": "L1479",
       "weight": 1.0
     },
     {
@@ -13680,7 +13859,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1111",
+      "source_location": "L1492",
       "weight": 1.0
     },
     {
@@ -13692,7 +13871,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1112",
+      "source_location": "L1493",
       "weight": 1.0
     },
     {
@@ -13704,7 +13883,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1116",
+      "source_location": "L1501",
       "weight": 1.0
     },
     {
@@ -13716,7 +13895,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1045",
+      "source_location": "L1360",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app_navigatetocommunity",
+      "target": "public_comunidade_app_syncsovereignsession",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L1364",
       "weight": 1.0
     },
     {
@@ -13728,7 +13919,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1051",
+      "source_location": "L1369",
       "weight": 1.0
     },
     {
@@ -13740,7 +13931,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1052",
+      "source_location": "L1370",
       "weight": 1.0
     },
     {
@@ -13752,7 +13943,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1056",
+      "source_location": "L1385",
       "weight": 1.0
     },
     {
@@ -13764,7 +13955,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1057",
+      "source_location": "L1386",
       "weight": 1.0
     },
     {
@@ -13776,7 +13967,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1043",
+      "source_location": "L1338",
       "weight": 1.0
     },
     {
@@ -13788,7 +13979,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1044",
+      "source_location": "L1349",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app_navigatetoprofile",
+      "target": "public_comunidade_app_syncsovereignsession",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L1448",
       "weight": 1.0
     },
     {
@@ -13800,7 +14003,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1094",
+      "source_location": "L1453",
       "weight": 1.0
     },
     {
@@ -13812,7 +14015,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1095",
+      "source_location": "L1454",
       "weight": 1.0
     },
     {
@@ -13824,7 +14027,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1099",
+      "source_location": "L1469",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app_navigatetoserverdetail",
+      "target": "public_comunidade_app_syncsovereignsession",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L1418",
       "weight": 1.0
     },
     {
@@ -13836,7 +14051,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1079",
+      "source_location": "L1423",
       "weight": 1.0
     },
     {
@@ -13848,7 +14063,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1080",
+      "source_location": "L1424",
       "weight": 1.0
     },
     {
@@ -13860,7 +14075,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1087",
+      "source_location": "L1444",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app_navigatetoservers",
+      "target": "public_comunidade_app_syncsovereignsession",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L1390",
       "weight": 1.0
     },
     {
@@ -13872,7 +14099,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1064",
+      "source_location": "L1395",
       "weight": 1.0
     },
     {
@@ -13884,7 +14111,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1065",
+      "source_location": "L1396",
       "weight": 1.0
     },
     {
@@ -13896,7 +14123,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1071",
+      "source_location": "L1413",
       "weight": 1.0
     },
     {
@@ -13908,7 +14135,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1072",
+      "source_location": "L1414",
       "weight": 1.0
     },
     {
@@ -13925,6 +14152,18 @@
     },
     {
       "source": "public_comunidade_app_renderadminview",
+      "target": "public_comunidade_app_syncsovereignsession",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L2747",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app_renderadminview",
       "target": "public_comunidade_app_showtoast",
       "relation": "calls",
       "_origin": "ast",
@@ -13932,7 +14171,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L2243",
+      "source_location": "L2750",
       "weight": 1.0
     },
     {
@@ -13944,7 +14183,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L2244",
+      "source_location": "L2751",
       "weight": 1.0
     },
     {
@@ -13956,7 +14195,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L2292",
+      "source_location": "L2799",
       "weight": 1.0
     },
     {
@@ -13968,7 +14207,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1161",
+      "source_location": "L1546",
       "weight": 1.0
     },
     {
@@ -13980,7 +14219,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1514",
+      "source_location": "L1899",
       "weight": 1.0
     },
     {
@@ -13992,7 +14231,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1515",
+      "source_location": "L1900",
       "weight": 1.0
     },
     {
@@ -14004,7 +14243,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1746",
+      "source_location": "L2131",
       "weight": 1.0
     },
     {
@@ -14016,7 +14255,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1562",
+      "source_location": "L1947",
       "weight": 1.0
     },
     {
@@ -14028,7 +14267,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1640",
+      "source_location": "L2025",
       "weight": 1.0
     },
     {
@@ -14040,7 +14279,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1664",
+      "source_location": "L2049",
       "weight": 1.0
     },
     {
@@ -14052,7 +14291,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1669",
+      "source_location": "L2054",
       "weight": 1.0
     },
     {
@@ -14064,7 +14303,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1280",
+      "source_location": "L1665",
       "weight": 1.0
     },
     {
@@ -14076,7 +14315,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1280",
+      "source_location": "L1665",
       "weight": 1.0
     },
     {
@@ -14088,7 +14327,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1321",
+      "source_location": "L1706",
       "weight": 1.0
     },
     {
@@ -14100,7 +14339,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1687",
+      "source_location": "L2072",
       "weight": 1.0
     },
     {
@@ -14112,7 +14351,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1689",
+      "source_location": "L2074",
       "weight": 1.0
     },
     {
@@ -14124,7 +14363,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1709",
+      "source_location": "L2094",
       "weight": 1.0
     },
     {
@@ -14136,7 +14375,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1726",
+      "source_location": "L2111",
       "weight": 1.0
     },
     {
@@ -14148,7 +14387,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1461",
+      "source_location": "L1846",
       "weight": 1.0
     },
     {
@@ -14160,7 +14399,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L2058",
+      "source_location": "L2520",
       "weight": 1.0
     },
     {
@@ -14172,7 +14411,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L2089",
+      "source_location": "L2551",
       "weight": 1.0
     },
     {
@@ -14184,7 +14423,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L2131",
+      "source_location": "L2593",
       "weight": 1.0
     },
     {
@@ -14196,7 +14435,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L2135",
+      "source_location": "L2597",
       "weight": 1.0
     },
     {
@@ -14208,7 +14447,31 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L2140",
+      "source_location": "L2602",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app_renderprofileview",
+      "target": "public_comunidade_app_syncsovereignsession",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L2668",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app_renderprofileview",
+      "target": "public_comunidade_app_navigatetohome",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L2670",
       "weight": 1.0
     },
     {
@@ -14220,7 +14483,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1549",
+      "source_location": "L1934",
       "weight": 1.0
     },
     {
@@ -14232,7 +14495,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1550",
+      "source_location": "L1935",
       "weight": 1.0
     },
     {
@@ -14244,7 +14507,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1957",
+      "source_location": "L2419",
       "weight": 1.0
     },
     {
@@ -14256,7 +14519,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1959",
+      "source_location": "L2421",
       "weight": 1.0
     },
     {
@@ -14268,7 +14531,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1962",
+      "source_location": "L2424",
       "weight": 1.0
     },
     {
@@ -14280,7 +14543,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L2041",
+      "source_location": "L2503",
       "weight": 1.0
     },
     {
@@ -14292,7 +14555,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1898",
+      "source_location": "L2360",
       "weight": 1.0
     },
     {
@@ -14304,7 +14567,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1945",
+      "source_location": "L2407",
       "weight": 1.0
     },
     {
@@ -14316,7 +14579,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1948",
+      "source_location": "L2410",
       "weight": 1.0
     },
     {
@@ -14328,7 +14591,31 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1763",
+      "source_location": "L2148",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app_setupcommunityhandlers",
+      "target": "public_comunidade_app_syncsovereignsession",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L2182",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app_setupcommunityhandlers",
+      "target": "public_comunidade_app_showauthmodal",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L2184",
       "weight": 1.0
     },
     {
@@ -14340,31 +14627,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1806",
-      "weight": 1.0
-    },
-    {
-      "source": "public_comunidade_app_setupcommunityhandlers",
-      "target": "public_comunidade_app_loadcommunityposts",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "public/comunidade/app.js",
-      "source_location": "L1822",
-      "weight": 1.0
-    },
-    {
-      "source": "public_comunidade_app_setupcommunityhandlers",
-      "target": "public_comunidade_app_showauthmodal",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "public/comunidade/app.js",
-      "source_location": "L1840",
+      "source_location": "L2204",
       "weight": 1.0
     },
     {
@@ -14376,43 +14639,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1879",
-      "weight": 1.0
-    },
-    {
-      "source": "public_comunidade_app_setupeventlisteners",
-      "target": "public_comunidade_app_updateuserheader",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "public/comunidade/app.js",
-      "source_location": "L1004",
-      "weight": 1.0
-    },
-    {
-      "source": "public_comunidade_app_setupeventlisteners",
-      "target": "public_comunidade_app_updatevideopreview",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "public/comunidade/app.js",
-      "source_location": "L1015",
-      "weight": 1.0
-    },
-    {
-      "source": "public_comunidade_app_setupeventlisteners",
-      "target": "public_comunidade_app_updateserverheropreview",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "public/comunidade/app.js",
-      "source_location": "L1022",
+      "source_location": "L2332",
       "weight": 1.0
     },
     {
@@ -14424,7 +14651,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L839",
+      "source_location": "L1059",
       "weight": 1.0
     },
     {
@@ -14436,7 +14663,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L846",
+      "source_location": "L1066",
       "weight": 1.0
     },
     {
@@ -14448,7 +14675,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L847",
+      "source_location": "L1067",
       "weight": 1.0
     },
     {
@@ -14460,7 +14687,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L848",
+      "source_location": "L1068",
       "weight": 1.0
     },
     {
@@ -14472,7 +14699,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L849",
+      "source_location": "L1069",
       "weight": 1.0
     },
     {
@@ -14484,7 +14711,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L856",
+      "source_location": "L1076",
       "weight": 1.0
     },
     {
@@ -14496,7 +14723,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L857",
+      "source_location": "L1077",
       "weight": 1.0
     },
     {
@@ -14508,7 +14735,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L877",
+      "source_location": "L1097",
       "weight": 1.0
     },
     {
@@ -14520,7 +14747,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L885",
+      "source_location": "L1105",
       "weight": 1.0
     },
     {
@@ -14532,7 +14759,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L927",
+      "source_location": "L1147",
       "weight": 1.0
     },
     {
@@ -14544,7 +14771,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L944",
+      "source_location": "L1164",
       "weight": 1.0
     },
     {
@@ -14556,7 +14783,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L945",
+      "source_location": "L1165",
       "weight": 1.0
     },
     {
@@ -14568,7 +14795,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L965",
+      "source_location": "L1185",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app_setupeventlisteners",
+      "target": "public_comunidade_app_syncsovereignsession",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L1220",
       "weight": 1.0
     },
     {
@@ -14580,7 +14819,31 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L981",
+      "source_location": "L1232",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app_setupeventlisteners",
+      "target": "public_comunidade_app_updatevideopreview",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L1301",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app_setupeventlisteners",
+      "target": "public_comunidade_app_updateserverheropreview",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L1308",
       "weight": 1.0
     },
     {
@@ -14592,7 +14855,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L2220",
+      "source_location": "L2725",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app_syncsovereignsession",
+      "target": "public_comunidade_app_updateuserheader",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L623",
       "weight": 1.0
     },
     {
@@ -14616,7 +14891,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L704",
+      "source_location": "L924",
       "weight": 1.0
     },
     {
@@ -15961,6 +16236,18 @@
       "context": "call",
       "source_file": "tests/portal_marketing.test.ts",
       "source_location": "L68",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app_setupcommunityhandlers",
+      "target": "public_comunidade_app_setupcommunityhandlers_savelocalcommunityposts",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L2174",
       "weight": 1.0
     },
     {
@@ -30264,13 +30551,24 @@
     },
     {
       "source": "public_comunidade_app",
+      "target": "public_comunidade_app_setupeventlisteners",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L1058",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app",
       "target": "public_comunidade_app_updateauthmodalui",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1025",
+      "source_location": "L1311",
       "weight": 1.0
     },
     {
@@ -30281,7 +30579,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1043",
+      "source_location": "L1329",
       "weight": 1.0
     },
     {
@@ -30292,7 +30590,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1044",
+      "source_location": "L1341",
       "weight": 1.0
     },
     {
@@ -30303,7 +30601,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1045",
+      "source_location": "L1352",
       "weight": 1.0
     },
     {
@@ -30314,7 +30612,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1047",
+      "source_location": "L1363",
       "weight": 1.0
     },
     {
@@ -30325,7 +30623,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1060",
+      "source_location": "L1389",
       "weight": 1.0
     },
     {
@@ -30336,7 +30634,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1075",
+      "source_location": "L1417",
       "weight": 1.0
     },
     {
@@ -30347,7 +30645,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1090",
+      "source_location": "L1447",
       "weight": 1.0
     },
     {
@@ -30358,7 +30656,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1102",
+      "source_location": "L1472",
       "weight": 1.0
     },
     {
@@ -30369,7 +30667,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1125",
+      "source_location": "L1510",
       "weight": 1.0
     },
     {
@@ -30380,7 +30678,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1143",
+      "source_location": "L1528",
       "weight": 1.0
     },
     {
@@ -30391,106 +30689,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1172",
-      "weight": 1.0
-    },
-    {
-      "source": "public_comunidade_app",
-      "target": "public_comunidade_app_triggermandatorypopup",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "public/comunidade/app.js",
-      "source_location": "L1183",
-      "weight": 1.0
-    },
-    {
-      "source": "public_comunidade_app",
-      "target": "public_comunidade_app_renderherobanner",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "public/comunidade/app.js",
-      "source_location": "L1237",
-      "weight": 1.0
-    },
-    {
-      "source": "public_comunidade_app",
-      "target": "public_comunidade_app_rendersidebanner",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "public/comunidade/app.js",
-      "source_location": "L1256",
-      "weight": 1.0
-    },
-    {
-      "source": "public_comunidade_app",
-      "target": "public_comunidade_app_rendercurrentview",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "public/comunidade/app.js",
-      "source_location": "L1275",
-      "weight": 1.0
-    },
-    {
-      "source": "public_comunidade_app",
-      "target": "public_comunidade_app_updatenavstate",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "public/comunidade/app.js",
-      "source_location": "L1289",
-      "weight": 1.0
-    },
-    {
-      "source": "public_comunidade_app",
-      "target": "public_comunidade_app_renderhomeview",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "public/comunidade/app.js",
-      "source_location": "L1298",
-      "weight": 1.0
-    },
-    {
-      "source": "public_comunidade_app",
-      "target": "public_comunidade_app_renderproductview",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "public/comunidade/app.js",
-      "source_location": "L1393",
-      "weight": 1.0
-    },
-    {
-      "source": "public_comunidade_app",
-      "target": "public_comunidade_app_rendercategoryview",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "public/comunidade/app.js",
-      "source_location": "L1471",
-      "weight": 1.0
-    },
-    {
-      "source": "public_comunidade_app",
-      "target": "public_comunidade_app_rendersearchview",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "public/comunidade/app.js",
-      "source_location": "L1527",
+      "source_location": "L1557",
       "weight": 1.0
     },
     {
@@ -30506,13 +30705,112 @@
     },
     {
       "source": "public_comunidade_app",
+      "target": "public_comunidade_app_triggermandatorypopup",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L1568",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app",
+      "target": "public_comunidade_app_renderherobanner",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L1622",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app",
+      "target": "public_comunidade_app_rendersidebanner",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L1641",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app",
+      "target": "public_comunidade_app_rendercurrentview",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L1660",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app",
+      "target": "public_comunidade_app_updatenavstate",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L1674",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app",
+      "target": "public_comunidade_app_renderhomeview",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L1683",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app",
+      "target": "public_comunidade_app_renderproductview",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L1778",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app",
+      "target": "public_comunidade_app_rendercategoryview",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L1856",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app",
+      "target": "public_comunidade_app_rendersearchview",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L1912",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app",
       "target": "public_comunidade_app_rendercommunityview",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1561",
+      "source_location": "L1946",
       "weight": 1.0
     },
     {
@@ -30523,7 +30821,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1673",
+      "source_location": "L2058",
       "weight": 1.0
     },
     {
@@ -30534,7 +30832,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1738",
+      "source_location": "L2123",
       "weight": 1.0
     },
     {
@@ -30545,7 +30843,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1754",
+      "source_location": "L2139",
       "weight": 1.0
     },
     {
@@ -30556,7 +30854,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1897",
+      "source_location": "L2359",
       "weight": 1.0
     },
     {
@@ -30567,7 +30865,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1956",
+      "source_location": "L2418",
       "weight": 1.0
     },
     {
@@ -30578,84 +30876,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "public/comunidade/app.js",
-      "source_location": "L2057",
-      "weight": 1.0
-    },
-    {
-      "source": "public_comunidade_app",
-      "target": "public_comunidade_app_showtoast",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "public/comunidade/app.js",
-      "source_location": "L2178",
-      "weight": 1.0
-    },
-    {
-      "source": "public_comunidade_app",
-      "target": "public_comunidade_app_showconfirmmodal",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "public/comunidade/app.js",
-      "source_location": "L2185",
-      "weight": 1.0
-    },
-    {
-      "source": "public_comunidade_app",
-      "target": "public_comunidade_app_showauthmodal",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "public/comunidade/app.js",
-      "source_location": "L2218",
-      "weight": 1.0
-    },
-    {
-      "source": "public_comunidade_app",
-      "target": "public_comunidade_app_hideauthmodal",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "public/comunidade/app.js",
-      "source_location": "L2228",
-      "weight": 1.0
-    },
-    {
-      "source": "public_comunidade_app",
-      "target": "public_comunidade_app_triggeranimobservers",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "public/comunidade/app.js",
-      "source_location": "L2234",
-      "weight": 1.0
-    },
-    {
-      "source": "public_comunidade_app",
-      "target": "public_comunidade_app_renderadminview",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "public/comunidade/app.js",
-      "source_location": "L2241",
-      "weight": 1.0
-    },
-    {
-      "source": "public_comunidade_app",
-      "target": "public_comunidade_app_loadandrenderadmintabcontent",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "public/comunidade/app.js",
-      "source_location": "L2299",
+      "source_location": "L2519",
       "weight": 1.0
     },
     {
@@ -30671,6 +30892,72 @@
     },
     {
       "source": "public_comunidade_app",
+      "target": "public_comunidade_app_showtoast",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L2683",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app",
+      "target": "public_comunidade_app_showconfirmmodal",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L2690",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app",
+      "target": "public_comunidade_app_showauthmodal",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L2723",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app",
+      "target": "public_comunidade_app_hideauthmodal",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L2733",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app",
+      "target": "public_comunidade_app_triggeranimobservers",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L2739",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app",
+      "target": "public_comunidade_app_renderadminview",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L2746",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app",
       "target": "public_comunidade_app_formatdate",
       "relation": "contains",
       "_origin": "ast",
@@ -30678,6 +30965,17 @@
       "confidence_score": 1.0,
       "source_file": "public/comunidade/app.js",
       "source_location": "L277",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app",
+      "target": "public_comunidade_app_loadandrenderadmintabcontent",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L2806",
       "weight": 1.0
     },
     {
@@ -30737,35 +31035,13 @@
     },
     {
       "source": "public_comunidade_app",
-      "target": "public_comunidade_app_init",
+      "target": "public_comunidade_app_syncsovereignsession",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "public/comunidade/app.js",
-      "source_location": "L457",
-      "weight": 1.0
-    },
-    {
-      "source": "public_comunidade_app",
-      "target": "public_comunidade_app_handleauthsession",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "public/comunidade/app.js",
-      "source_location": "L565",
-      "weight": 1.0
-    },
-    {
-      "source": "public_comunidade_app",
-      "target": "public_comunidade_app_loadproductsdata",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "public/comunidade/app.js",
-      "source_location": "L610",
+      "source_location": "L583",
       "weight": 1.0
     },
     {
@@ -30781,7 +31057,7 @@
     },
     {
       "source": "public_comunidade_app",
-      "target": "public_comunidade_app_loadcommunityposts",
+      "target": "public_comunidade_app_handlehashroute",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -30792,101 +31068,24 @@
     },
     {
       "source": "public_comunidade_app",
-      "target": "public_comunidade_app_loadserversdata",
+      "target": "public_comunidade_app_init",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "public/comunidade/app.js",
-      "source_location": "L672",
+      "source_location": "L682",
       "weight": 1.0
     },
     {
       "source": "public_comunidade_app",
-      "target": "public_comunidade_app_hidelessoneditormodal",
+      "target": "public_comunidade_app_handleauthsession",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "public/comunidade/app.js",
-      "source_location": "L694",
-      "weight": 1.0
-    },
-    {
-      "source": "public_comunidade_app",
-      "target": "public_comunidade_app_hideservereditormodal",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "public/comunidade/app.js",
-      "source_location": "L697",
-      "weight": 1.0
-    },
-    {
-      "source": "public_comunidade_app",
-      "target": "public_comunidade_app_updatevideopreview",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "public/comunidade/app.js",
-      "source_location": "L701",
-      "weight": 1.0
-    },
-    {
-      "source": "public_comunidade_app",
-      "target": "public_comunidade_app_updateserverheropreview",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "public/comunidade/app.js",
-      "source_location": "L716",
-      "weight": 1.0
-    },
-    {
-      "source": "public_comunidade_app",
-      "target": "public_comunidade_app_handlesavelessonmodal",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "public/comunidade/app.js",
-      "source_location": "L723",
-      "weight": 1.0
-    },
-    {
-      "source": "public_comunidade_app",
-      "target": "public_comunidade_app_handledeletelessonmodal",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "public/comunidade/app.js",
-      "source_location": "L745",
-      "weight": 1.0
-    },
-    {
-      "source": "public_comunidade_app",
-      "target": "public_comunidade_app_handlesaveservermodal",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "public/comunidade/app.js",
-      "source_location": "L756",
-      "weight": 1.0
-    },
-    {
-      "source": "public_comunidade_app",
-      "target": "public_comunidade_app_handledeleteservermodal",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "public/comunidade/app.js",
-      "source_location": "L778",
+      "source_location": "L764",
       "weight": 1.0
     },
     {
@@ -30902,6 +31101,17 @@
     },
     {
       "source": "public_comunidade_app",
+      "target": "public_comunidade_app_loadproductsdata",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L808",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app",
       "target": "public_comunidade_app_playnextvideoinplaylist",
       "relation": "contains",
       "_origin": "ast",
@@ -30913,13 +31123,112 @@
     },
     {
       "source": "public_comunidade_app",
-      "target": "public_comunidade_app_setupeventlisteners",
+      "target": "public_comunidade_app_loadcommunityposts",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "public/comunidade/app.js",
-      "source_location": "L838",
+      "source_location": "L828",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app",
+      "target": "public_comunidade_app_loadserversdata",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L884",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app",
+      "target": "public_comunidade_app_hidelessoneditormodal",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L914",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app",
+      "target": "public_comunidade_app_hideservereditormodal",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L917",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app",
+      "target": "public_comunidade_app_updatevideopreview",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L921",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app",
+      "target": "public_comunidade_app_updateserverheropreview",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L936",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app",
+      "target": "public_comunidade_app_handlesavelessonmodal",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L943",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app",
+      "target": "public_comunidade_app_handledeletelessonmodal",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L965",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app",
+      "target": "public_comunidade_app_handlesaveservermodal",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L976",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app",
+      "target": "public_comunidade_app_handledeleteservermodal",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L998",
       "weight": 1.0
     },
     {
@@ -35808,6 +36117,18 @@
       "source_file": "tests/portal_restoration.test.ts"
     },
     {
+      "source": "public_comunidade_app_init",
+      "target": "public_comunidade_app_handlehashroute",
+      "relation": "indirect_call",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "argument",
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L703",
+      "weight": 1.0
+    },
+    {
       "source": "public_comunidade_app_loadbanners",
       "target": "public_comunidade_app_triggermandatorypopup",
       "relation": "indirect_call",
@@ -35816,7 +36137,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1177",
+      "source_location": "L1562",
       "weight": 1.0
     },
     {
@@ -35828,7 +36149,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L2296",
+      "source_location": "L2803",
       "weight": 1.0
     },
     {
@@ -35840,7 +36161,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1154",
+      "source_location": "L1539",
       "weight": 1.0
     },
     {
@@ -35852,7 +36173,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1521",
+      "source_location": "L1906",
       "weight": 1.0
     },
     {
@@ -35864,7 +36185,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1628",
+      "source_location": "L2013",
       "weight": 1.0
     },
     {
@@ -35876,7 +36197,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1670",
+      "source_location": "L2055",
       "weight": 1.0
     },
     {
@@ -35888,7 +36209,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1387",
+      "source_location": "L1772",
       "weight": 1.0
     },
     {
@@ -35900,7 +36221,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1465",
+      "source_location": "L1850",
       "weight": 1.0
     },
     {
@@ -35912,7 +36233,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L2172",
+      "source_location": "L2677",
       "weight": 1.0
     },
     {
@@ -35924,7 +36245,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1555",
+      "source_location": "L1940",
       "weight": 1.0
     },
     {
@@ -35936,7 +36257,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L2051",
+      "source_location": "L2513",
       "weight": 1.0
     },
     {
@@ -35948,79 +36269,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1950",
-      "weight": 1.0
-    },
-    {
-      "source": "public_comunidade_app_setupeventlisteners",
-      "target": "public_comunidade_app_hidelessoneditormodal",
-      "relation": "indirect_call",
-      "_origin": "ast",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "context": "argument",
-      "source_file": "public/comunidade/app.js",
-      "source_location": "L1011",
-      "weight": 1.0
-    },
-    {
-      "source": "public_comunidade_app_setupeventlisteners",
-      "target": "public_comunidade_app_handlesavelessonmodal",
-      "relation": "indirect_call",
-      "_origin": "ast",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "context": "argument",
-      "source_file": "public/comunidade/app.js",
-      "source_location": "L1013",
-      "weight": 1.0
-    },
-    {
-      "source": "public_comunidade_app_setupeventlisteners",
-      "target": "public_comunidade_app_handledeletelessonmodal",
-      "relation": "indirect_call",
-      "_origin": "ast",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "context": "argument",
-      "source_file": "public/comunidade/app.js",
-      "source_location": "L1014",
-      "weight": 1.0
-    },
-    {
-      "source": "public_comunidade_app_setupeventlisteners",
-      "target": "public_comunidade_app_hideservereditormodal",
-      "relation": "indirect_call",
-      "_origin": "ast",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "context": "argument",
-      "source_file": "public/comunidade/app.js",
-      "source_location": "L1018",
-      "weight": 1.0
-    },
-    {
-      "source": "public_comunidade_app_setupeventlisteners",
-      "target": "public_comunidade_app_handlesaveservermodal",
-      "relation": "indirect_call",
-      "_origin": "ast",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "context": "argument",
-      "source_file": "public/comunidade/app.js",
-      "source_location": "L1020",
-      "weight": 1.0
-    },
-    {
-      "source": "public_comunidade_app_setupeventlisteners",
-      "target": "public_comunidade_app_handledeleteservermodal",
-      "relation": "indirect_call",
-      "_origin": "ast",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "context": "argument",
-      "source_file": "public/comunidade/app.js",
-      "source_location": "L1021",
+      "source_location": "L2412",
       "weight": 1.0
     },
     {
@@ -36032,7 +36281,79 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L964",
+      "source_location": "L1184",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app_setupeventlisteners",
+      "target": "public_comunidade_app_hidelessoneditormodal",
+      "relation": "indirect_call",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "argument",
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L1297",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app_setupeventlisteners",
+      "target": "public_comunidade_app_handlesavelessonmodal",
+      "relation": "indirect_call",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "argument",
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L1299",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app_setupeventlisteners",
+      "target": "public_comunidade_app_handledeletelessonmodal",
+      "relation": "indirect_call",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "argument",
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L1300",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app_setupeventlisteners",
+      "target": "public_comunidade_app_hideservereditormodal",
+      "relation": "indirect_call",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "argument",
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L1304",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app_setupeventlisteners",
+      "target": "public_comunidade_app_handlesaveservermodal",
+      "relation": "indirect_call",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "argument",
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L1306",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app_setupeventlisteners",
+      "target": "public_comunidade_app_handledeleteservermodal",
+      "relation": "indirect_call",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "argument",
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L1307",
       "weight": 1.0
     },
     {
@@ -36092,7 +36413,7 @@
       "confidence_score": 0.85,
       "context": "collection",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1282",
+      "source_location": "L1667",
       "weight": 1.0
     },
     {
@@ -36104,7 +36425,7 @@
       "confidence_score": 0.85,
       "context": "collection",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1282",
+      "source_location": "L1667",
       "weight": 1.0
     },
     {
@@ -36116,7 +36437,7 @@
       "confidence_score": 0.85,
       "context": "collection",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1282",
+      "source_location": "L1667",
       "weight": 1.0
     },
     {
@@ -36128,7 +36449,7 @@
       "confidence_score": 0.85,
       "context": "collection",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1283",
+      "source_location": "L1668",
       "weight": 1.0
     },
     {
@@ -36140,7 +36461,7 @@
       "confidence_score": 0.85,
       "context": "collection",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1283",
+      "source_location": "L1668",
       "weight": 1.0
     },
     {
@@ -36152,7 +36473,7 @@
       "confidence_score": 0.85,
       "context": "collection",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1283",
+      "source_location": "L1668",
       "weight": 1.0
     },
     {
@@ -36164,7 +36485,7 @@
       "confidence_score": 0.85,
       "context": "collection",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1284",
+      "source_location": "L1669",
       "weight": 1.0
     },
     {
@@ -36176,7 +36497,7 @@
       "confidence_score": 0.85,
       "context": "collection",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1284",
+      "source_location": "L1669",
       "weight": 1.0
     },
     {
@@ -36188,7 +36509,7 @@
       "confidence_score": 0.85,
       "context": "collection",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L1284",
+      "source_location": "L1669",
       "weight": 1.0
     },
     {
@@ -36217,5 +36538,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "7af81eaf825d2f81e586a120b11ae0d8966b8dba"
+  "built_at_commit": "f3d73ab7847ae17c8a436031ff137a195b6889a6"
 }

@@ -1,16 +1,16 @@
 # Graph Report - plataforma-unificada-soberana  (2026-10-14)
 
 ## Corpus Check
-- 193 files · ~21,879,829 words
+- 194 files · ~21,882,113 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1116 nodes · 1990 edges · 97 communities (63 shown, 27 thin omitted)
-- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 34 edges (avg confidence: 0.85)
+- 1120 nodes · 2013 edges · 98 communities (63 shown, 27 thin omitted)
+- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 35 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `7af81eaf`
+- Built from commit: `f3d73ab7`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -61,7 +61,7 @@
 - compilerOptions
 - catalog.ts
 - lib/db/schema.ts
-- comunidade/app.js
+- app.js
 - src/db/schema.ts
 - ShaderBackground.tsx
 - BRIEFING — 2026-10-14T15:40:00Z
@@ -69,7 +69,7 @@
 - BRIEFING — 2026-10-14T15:55:00Z
 - route.ts
 - Progress — Form Builder SaaS Specialist
-- GlassCard.tsx
+- Badge.tsx
 - Progress — Growth Engineer & Portal Institucional Specialist
 - Progress — Members Area & Community Engineer (agent-members)
 - react
@@ -84,10 +84,10 @@
 - admin/page.tsx
 - app/page.tsx
 - Relatório de Handoff — Database Architect & Drizzle Master (agent-database)
-- builder/page.tsx
+- utils.ts
 - lucide-react
 - Relatório de Handoff — Growth Engineer & Portal Institucional Specialist (agent-marketing)
-- midias/page.tsx
+- CommunityFeed.tsx
 - auth.ts
 - lib/db/index.ts
 - leads/route.ts
@@ -111,7 +111,7 @@
 2. `lucide-react` - 47 edges
 3. `cn()` - 36 edges
 4. `setupEventListeners()` - 26 edges
-5. `renderCurrentView()` - 25 edges
+5. `renderCurrentView()` - 26 edges
 6. `Badge` - 22 edges
 7. `GlassCard` - 20 edges
 8. `hexToRgb()` - 19 edges
@@ -123,17 +123,17 @@
   tests/portal_marketing.test.ts → src/app/api/leads/route.ts
 - `runTests()` --calls--> `GET()`  [EXTRACTED]
   tests/portal_marketing.test.ts → src/app/api/leads/route.ts
-- `LoginPage()` --calls--> `setStoredUser()`  [EXTRACTED]
-  src/app/comunidade/login/page.tsx → src/lib/auth/unified-auth.ts
-- `MidiasPage()` --calls--> `cn()`  [EXTRACTED]
-  src/app/comunidade/midias/page.tsx → src/lib/utils.ts
 - `CommunityFeed()` --calls--> `cn()`  [EXTRACTED]
   src/components/comunidade/CommunityFeed.tsx → src/lib/utils.ts
+- `MemberCard()` --calls--> `cn()`  [EXTRACTED]
+  src/components/comunidade/MemberCard.tsx → src/lib/utils.ts
+- `runSeed()` --calls--> `hashPassword()`  [EXTRACTED]
+  src/lib/db/seed.ts → src/lib/auth/auth.ts
 
 ## Import Cycles
 - None detected.
 
-## Communities (97 total, 27 thin omitted)
+## Communities (98 total, 27 thin omitted)
 
 ### Community 0 - "Relatório de Survey Técnico — Explorer 2"
 Cohesion: 0.08
@@ -248,16 +248,16 @@ Cohesion: 0.11
 Nodes (18): compilerOptions, allowJs, esModuleInterop, incremental, isolatedModules, jsx, lib, module (+10 more)
 
 ### Community 44 - "catalog.ts"
-Cohesion: 0.16
-Nodes (21): dynamic, GET(), getMimeType(), POST(), dynamic, GET(), BibliotecaItemPage(), dynamicParams (+13 more)
+Cohesion: 0.18
+Nodes (19): dynamic, GET(), getMimeType(), POST(), dynamic, GET(), BibliotecaItemPage(), generateMetadata() (+11 more)
 
 ### Community 45 - "lib/db/schema.ts"
 Cohesion: 0.11
 Nodes (24): AdminUser, adminUsers, Article, articles, AuthSession, authSessions, Form, formsRelations (+16 more)
 
-### Community 47 - "comunidade/app.js"
+### Community 47 - "app.js"
 Cohesion: 0.11
-Nodes (60): applyBgSettingsUI(), convertToEmbedUrl(), formatDate(), getActivePlaylist(), getBadge(), handleAuthSession(), handleDeleteLessonModal(), handleDeleteServerModal() (+52 more)
+Nodes (62): applyBgSettingsUI(), convertToEmbedUrl(), formatDate(), getActivePlaylist(), getBadge(), handleAuthSession(), handleDeleteLessonModal(), handleDeleteServerModal() (+54 more)
 
 ### Community 48 - "src/db/schema.ts"
 Cohesion: 0.07
@@ -287,13 +287,13 @@ Nodes (4): handleMercadoPagoWebhook(), PlanDefinition, PLANS, POST()
 Cohesion: 0.50
 Nodes (3): Progress — Form Builder SaaS Specialist, Status Atual: Build & Verificação Final, Tarefas
 
-### Community 55 - "GlassCard.tsx"
-Cohesion: 0.16
-Nodes (11): CommunityFeed(), CommunityPost, INITIAL_POSTS, PostComment, ResourceCardProps, ResourceDetailViewerProps, GlassCard, GlassCardProps (+3 more)
+### Community 55 - "Badge.tsx"
+Cohesion: 0.18
+Nodes (10): MemberCard(), MemberCardProps, MemberProfile, ResourceCardProps, ResourceDetailViewerProps, Badge, BadgeProps, LibraryCategoryGroup (+2 more)
 
 ### Community 58 - "react"
-Cohesion: 0.12
-Nodes (17): react, LoginPage(), FormData, SERVICES_LIST, ArticleItem, EcosystemModule, ecosystems, HeroSectionProps (+9 more)
+Cohesion: 0.13
+Nodes (16): react, FormData, SERVICES_LIST, ArticleItem, EcosystemModule, ecosystems, HeroSectionProps, CapturedUTMs (+8 more)
 
 ### Community 59 - "types.ts"
 Cohesion: 0.13
@@ -328,8 +328,8 @@ Cohesion: 0.33
 Nodes (3): PROJECT_ROOT, PUBLIC_CATALOG_PATH, SRC_CATALOG_PATH
 
 ### Community 67 - "admin/page.tsx"
-Cohesion: 0.15
-Nodes (19): AdminPanelPage(), FormItem, LeadItem, MemberItem, TransactionItem, BuilderContent(), metadata, Footer() (+11 more)
+Cohesion: 0.10
+Nodes (28): AdminPanelPage(), FormItem, LeadItem, MemberItem, TransactionItem, PublicFormProps, BuilderContent(), LoginPage() (+20 more)
 
 ### Community 68 - "app/page.tsx"
 Cohesion: 0.06
@@ -339,21 +339,21 @@ Nodes (36): Testimonial, testimonials, ArticleData, ArticleModal(), ArticleModal
 Cohesion: 0.29
 Nodes (6): 1. Observation (Observações Diretas), 2. Logic Chain (Cadeia de Raciocínio), 3. Caveats (Ressalvas), 4. Conclusion (Conclusão), 5. Verification Method (Método de Verificação), Relatório de Handoff — Database Architect & Drizzle Master (agent-database)
 
-### Community 70 - "builder/page.tsx"
-Cohesion: 0.26
-Nodes (8): PublicFormProps, BRAND_COLORS, FormPage, MASTER_PAGES, MASTER_QUESTIONS, Question, SavedForm, UserRole
+### Community 70 - "utils.ts"
+Cohesion: 0.19
+Nodes (12): dynamicParams, PageProps, CheckoutModal(), CatalogGrid(), CatalogGridProps, getExtensionBadge(), DownloadButton(), DownloadButtonProps (+4 more)
 
 ### Community 71 - "lucide-react"
-Cohesion: 0.09
-Nodes (30): lucide-react, FormSummary, CheckoutModal(), MemberCard(), MemberCardProps, MemberProfile, CatalogGrid(), CatalogGridProps (+22 more)
+Cohesion: 0.10
+Nodes (22): lucide-react, FormSummary, MEDIA_CATALOG, MediaItem, MidiasPage(), VideoPlayer(), VideoPlayerProps, ResourceSearch() (+14 more)
 
 ### Community 73 - "Relatório de Handoff — Growth Engineer & Portal Institucional Specialist (agent-marketing)"
 Cohesion: 0.29
 Nodes (6): 1. Observation (Observações Diretas), 2. Logic Chain (Cadeia Lógica), 3. Caveats (Ressalvas), 4. Conclusion (Conclusão), 5. Verification Method (Método de Verificação), Relatório de Handoff — Growth Engineer & Portal Institucional Specialist (agent-marketing)
 
-### Community 74 - "midias/page.tsx"
-Cohesion: 0.33
-Nodes (5): MEDIA_CATALOG, MediaItem, MidiasPage(), VideoPlayer(), VideoPlayerProps
+### Community 74 - "CommunityFeed.tsx"
+Cohesion: 0.40
+Nodes (4): CommunityFeed(), CommunityPost, INITIAL_POSTS, PostComment
 
 ### Community 75 - "auth.ts"
 Cohesion: 0.27
@@ -389,18 +389,18 @@ Nodes (9): 📧 Autenticação e Domínio Próprio no Resend, 🌐 Configuraçã
 
 ## Knowledge Gaps
 - **524 isolated node(s):** `nextConfig`, `name`, `version`, `private`, `description` (+519 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 629 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 631 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **27 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `react` connect `react` to `admin/page.tsx`, `app/page.tsx`, `builder/page.tsx`, `lucide-react`, `package.json`, `midias/page.tsx`, `catalog.ts`, `ShaderBackground.tsx`, `GlassCard.tsx`, `types.ts`, `[slug]/page.tsx`?**
-  _High betweenness centrality (0.114) - this node is a cross-community bridge._
+- **Why does `react` connect `react` to `admin/page.tsx`, `app/page.tsx`, `utils.ts`, `lucide-react`, `package.json`, `CommunityFeed.tsx`, `ShaderBackground.tsx`, `Badge.tsx`, `types.ts`, `[slug]/page.tsx`?**
+  _High betweenness centrality (0.113) - this node is a cross-community bridge._
 - **Why does `drizzle-orm` connect `lib/db/index.ts` to `package.json`, `auth.ts`, `leads/route.ts`, `lib/db/schema.ts`, `webhook/route.ts`, `src/db/schema.ts`?**
-  _High betweenness centrality (0.083) - this node is a cross-community bridge._
-- **Why does `lucide-react` connect `lucide-react` to `admin/page.tsx`, `app/page.tsx`, `builder/page.tsx`, `package.json`, `midias/page.tsx`, `catalog.ts`, `ShaderBackground.tsx`, `GlassCard.tsx`, `react`, `types.ts`, `[slug]/page.tsx`?**
-  _High betweenness centrality (0.057) - this node is a cross-community bridge._
+  _High betweenness centrality (0.084) - this node is a cross-community bridge._
+- **Why does `lucide-react` connect `lucide-react` to `admin/page.tsx`, `app/page.tsx`, `utils.ts`, `package.json`, `CommunityFeed.tsx`, `ShaderBackground.tsx`, `Badge.tsx`, `react`, `types.ts`, `[slug]/page.tsx`?**
+  _High betweenness centrality (0.052) - this node is a cross-community bridge._
 - **Are the 7 inferred relationships involving `setupEventListeners()` (e.g. with `handleDeleteLessonModal()` and `handleDeleteServerModal()`) actually correct?**
   _`setupEventListeners()` has 7 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 9 inferred relationships involving `renderCurrentView()` (e.g. with `renderAdminView()` and `renderCategoryView()`) actually correct?**
