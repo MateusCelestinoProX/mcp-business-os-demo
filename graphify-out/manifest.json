@@ -2052,9 +2052,9 @@
     "semantic_hash": ""
   },
   "tests/builder_forms.test.mjs": {
-    "mtime": 1791993353.0442543,
-    "seen": 1791993491.893783,
-    "ast_hash": "50262c708f5a6a24719c3e91ba6f2093",
+    "mtime": 1792024447.4603763,
+    "seen": 1792024469.013483,
+    "ast_hash": "891a106e5128d58f27aa5e64ca927d0d",
     "semantic_hash": ""
   },
   "tests/form-builder.test.ts": {
@@ -2076,9 +2076,9 @@
     "semantic_hash": ""
   },
   "public/comunidade/app.js": {
-    "mtime": 1792023382.5164196,
-    "seen": 1792023483.698154,
-    "ast_hash": "0f52e92f141fadc062c901e1bcee622e",
+    "mtime": 1792024357.8698807,
+    "seen": 1792024469.010696,
+    "ast_hash": "34a5b72fe61cdba2bd2276be33a8ef51",
     "semantic_hash": ""
   },
   "public/comunidade/netlify/functions/create-payment.js": {
@@ -2928,9 +2928,9 @@
     "semantic_hash": ""
   },
   "public/comunidade/index.html": {
-    "mtime": 1792019116.0401876,
-    "seen": 1792019248.714068,
-    "ast_hash": "40b2e91e4d5d68fec108b6c9c9cd958d",
+    "mtime": 1792024221.8192742,
+    "seen": 1792024469.01844,
+    "ast_hash": "b1684dbed6230f031510bbe05e00b8ec",
     "semantic_hash": ""
   },
   "public/comunidade/effects/CREATIVE EFFECT's/ANCESTRAL HAND STATUE RENDER/ChatGPT_Image_17_de_jul._de_2025_15_25_13.webp": {
@@ -15477,6 +15477,12 @@
     "mtime": 1792023432.1921823,
     "seen": 1792023483.701233,
     "ast_hash": "808e012a8a716912b4883360a2548eb0",
+    "semantic_hash": ""
+  },
+  "tests/auth_feedback_comunidade.test.mjs": {
+    "mtime": 1792024405.2050939,
+    "seen": 1792024469.013482,
+    "ast_hash": "351914c0e4b5bf0d0c7c668cdfb08319",
     "semantic_hash": ""
   }
 }

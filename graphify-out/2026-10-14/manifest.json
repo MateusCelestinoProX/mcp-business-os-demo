@@ -2076,9 +2076,9 @@
     "semantic_hash": ""
   },
   "public/comunidade/app.js": {
-    "mtime": 1791999976.2365212,
-    "seen": 1792000233.101255,
-    "ast_hash": "e0e3534780b12a86ed51969024f22ef6",
+    "mtime": 1792023382.5164196,
+    "seen": 1792023483.698154,
+    "ast_hash": "0f52e92f141fadc062c901e1bcee622e",
     "semantic_hash": ""
   },
   "public/comunidade/netlify/functions/create-payment.js": {
@@ -15471,6 +15471,12 @@
     "mtime": 1792020809.8856435,
     "seen": 1792021184.2432241,
     "ast_hash": "e6fc2ae33045d8383edefc206db72659",
+    "semantic_hash": ""
+  },
+  "tests/comunidade_subpages_flow.test.mjs": {
+    "mtime": 1792023432.1921823,
+    "seen": 1792023483.701233,
+    "ast_hash": "808e012a8a716912b4883360a2548eb0",
     "semantic_hash": ""
   }
 }

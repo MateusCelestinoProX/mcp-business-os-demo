@@ -1,9 +1,8 @@
 import { test, describe } from 'node:test';
 import assert from 'node:assert';
 import { FIELD_DEFINITIONS, BRAND_COLORS } from '../src/components/builder/types.ts';
-import { POST as submitHandler } from '../src/app/api/forms/submit/route.ts';
-import { GET as getFormsHandler, POST as createFormHandler } from '../src/app/api/forms/route.ts';
-import { GET as getSingleFormHandler } from '../src/app/api/forms/[id]/route.ts';
+
+const BASE_URL = 'http://localhost:3000';
 
 describe('Form Builder SaaS — Testes Funcionais & API de Submissão', () => {
   test('1. Definições de Campos e Cores Oficiais são válidas e completas', () => {
@@ -21,7 +20,7 @@ describe('Form Builder SaaS — Testes Funcionais & API de Submissão', () => {
   });
 
   test('2. /api/forms/submit processa submissão com sucesso em modo resiliente', async () => {
-    const mockRequest = new Request('http://localhost:3000/api/forms/submit', {
+    const response = await fetch(`${BASE_URL}/api/forms/submit`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -35,8 +34,6 @@ describe('Form Builder SaaS — Testes Funcionais & API de Submissão', () => {
         notifyEmail: 'mateus@mateuscelestinopro.com',
       }),
     });
-
-    const response = await submitHandler(mockRequest);
     assert.strictEqual(response.status, 200);
 
     const data = await response.json();
@@ -46,7 +43,7 @@ describe('Form Builder SaaS — Testes Funcionais & API de Submissão', () => {
   });
 
   test('3. /api/forms GET retorna lista com formulário template padrão', async () => {
-    const response = await getFormsHandler();
+    const response = await fetch(`${BASE_URL}/api/forms`);
     assert.strictEqual(response.status, 200);
 
     const data = await response.json();
@@ -57,7 +54,7 @@ describe('Form Builder SaaS — Testes Funcionais & API de Submissão', () => {
   });
 
   test('4. /api/forms POST cria novo formulário com sucesso', async () => {
-    const mockRequest = new Request('http://localhost:3000/api/forms', {
+    const response = await fetch(`${BASE_URL}/api/forms`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -70,8 +67,6 @@ describe('Form Builder SaaS — Testes Funcionais & API de Submissão', () => {
         },
       }),
     });
-
-    const response = await createFormHandler(mockRequest);
     assert.strictEqual(response.status, 200);
 
     const data = await response.json();
@@ -80,10 +75,7 @@ describe('Form Builder SaaS — Testes Funcionais & API de Submissão', () => {
   });
 
   test('5. /api/forms/[id] GET retorna formulário por slug ou id com fallback gracioso', async () => {
-    const mockRequest = new Request('http://localhost:3000/api/forms/master_form');
-    const params = Promise.resolve({ id: 'master_form' });
-
-    const response = await getSingleFormHandler(mockRequest, { params });
+    const response = await fetch(`${BASE_URL}/api/forms/master_form`);
     assert.strictEqual(response.status, 200);
 
     const data = await response.json();

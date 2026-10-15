@@ -1070,11 +1070,74 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
+    // User Dropdown e Alternância de Papéis com Feedback Instantâneo
     userMenuTrigger?.addEventListener('click', e => {
       e.stopPropagation();
       e.preventDefault();
-      if (isLoggedIn) navigateToProfile();
-      else showAuthModal();
+      const roleDropdown = document.getElementById('roleDropdown');
+      if (roleDropdown) {
+        const isClosed = roleDropdown.classList.contains('invisible') || roleDropdown.classList.contains('opacity-0');
+        if (isClosed) {
+          roleDropdown.classList.remove('invisible', 'opacity-0');
+          roleDropdown.classList.add('opacity-100');
+        } else {
+          roleDropdown.classList.add('invisible', 'opacity-0');
+          roleDropdown.classList.remove('opacity-100');
+        }
+      } else {
+        if (isLoggedIn) navigateToProfile();
+        else showAuthModal();
+      }
+    });
+
+    document.addEventListener('click', e => {
+      const roleDropdown = document.getElementById('roleDropdown');
+      if (roleDropdown && !roleDropdown.contains(e.target) && !userMenuTrigger?.contains(e.target)) {
+        roleDropdown.classList.add('invisible', 'opacity-0');
+        roleDropdown.classList.remove('opacity-100');
+      }
+    });
+
+    document.querySelectorAll('.role-option').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.preventDefault();
+        e.stopPropagation();
+        const role = btn.getAttribute('data-role');
+        const roleData = {
+          free:      { role: 'visitante', name: 'Visitante Free', avatar: USER_ROLES.free.avatar, tier: 'free', isLoggedIn: false },
+          level_0:   { role: 'user', name: 'Membro Level 0', avatar: USER_ROLES.level_0.avatar, tier: 'pro', isLoggedIn: true },
+          level_1:   { role: 'user', name: 'Membro Level 1', avatar: USER_ROLES.level_1.avatar, tier: 'pro', isLoggedIn: true },
+          level_2:   { role: 'user', name: 'Membro Level 2', avatar: USER_ROLES.level_2.avatar, tier: 'vip', isLoggedIn: true },
+          full:      { role: 'user', name: 'Membro VIP Full Access', avatar: USER_ROLES.full.avatar, tier: 'vip', isLoggedIn: true },
+          admin:     { role: 'admin', name: 'Mateus Celestino Pro', avatar: USER_ROLES.admin.avatar, tier: 'max', isLoggedIn: true }
+        };
+
+        const target = roleData[role] || roleData.admin;
+        const sessionUser = {
+          isLoggedIn: target.isLoggedIn,
+          role: target.role,
+          name: target.name,
+          email: `${role}@mateuscelestinopro.com`,
+          avatar: target.avatar,
+          tier: target.tier
+        };
+
+        localStorage.setItem('mcp_session_user', JSON.stringify(sessionUser));
+        localStorage.setItem('mcp_user_role', sessionUser.role);
+        localStorage.setItem('mcp_admin_auth', (target.role === 'admin' ? 'true' : 'false'));
+        window.dispatchEvent(new CustomEvent('mcp_auth_changed', { detail: sessionUser }));
+        syncSovereignSession();
+        renderCurrentView();
+
+        const roleDropdown = document.getElementById('roleDropdown');
+        if (roleDropdown) {
+          roleDropdown.classList.add('invisible', 'opacity-0');
+          roleDropdown.classList.remove('opacity-100');
+        }
+
+        const roleName = target.role === 'admin' ? 'Administrador Soberano' : (target.role === 'user' ? 'Membro VIP' : 'Visitante');
+        showToast(`🎭 Sessão alterada: ${roleName}!`, target.role === 'admin' ? 'admin' : (target.role === 'user' ? 'auth' : 'info'));
+      });
     });
 
     // Global Click Delegation on Main Container for 100% Bulletproof Gallery Navigation
@@ -1182,14 +1245,62 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Auth Modal
     closeAuthModal?.addEventListener('click', hideAuthModal);
-    toggleAuthMode?.addEventListener('click', () => { isLoginMode = !isLoginMode; updateAuthModalUI(); });
+    toggleAuthMode?.addEventListener('click', () => {
+      isLoginMode = !isLoginMode;
+      clearAuthAlert();
+      updateAuthModalUI();
+    });
+
+    // Atalhos 1-Clique para Teste / Demonstração Imediata
+    const quickAdminBtn = document.getElementById('authQuickAdminBtn');
+    const quickMemberBtn = document.getElementById('authQuickMemberBtn');
+
+    quickAdminBtn?.addEventListener('click', () => {
+      isLoginMode = true;
+      updateAuthModalUI();
+      const emailInput = document.getElementById('authEmail');
+      const passInput = document.getElementById('authPassword');
+      if (emailInput && passInput) {
+        emailInput.value = 'mateus@mateuscelestinopro.com';
+        passInput.value = 'MateusProX@2026!';
+        showAuthAlert('Autenticando como Administrador Demo...', 'loading');
+        if (typeof authForm?.requestSubmit === 'function') {
+          authForm.requestSubmit();
+        } else {
+          authForm?.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
+        }
+      }
+    });
+
+    quickMemberBtn?.addEventListener('click', () => {
+      isLoginMode = true;
+      updateAuthModalUI();
+      const emailInput = document.getElementById('authEmail');
+      const passInput = document.getElementById('authPassword');
+      if (emailInput && passInput) {
+        emailInput.value = 'membro@mateuscelestinopro.com';
+        passInput.value = 'MembroProX@2026!';
+        showAuthAlert('Autenticando como Membro VIP Demo...', 'loading');
+        if (typeof authForm?.requestSubmit === 'function') {
+          authForm.requestSubmit();
+        } else {
+          authForm?.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
+        }
+      }
+    });
 
     authForm?.addEventListener('submit', async e => {
       e.preventDefault();
       const email    = document.getElementById('authEmail').value.trim();
       const password = document.getElementById('authPassword').value;
       const btn      = document.getElementById('authSubmitBtn');
-      btn.textContent = 'Autenticando...'; btn.disabled = true;
+      const btnLabel = document.getElementById('authSubmitBtnLabel') || btn;
+      const spinner  = document.getElementById('authBtnSpinner');
+
+      btn.disabled = true;
+      if (spinner) spinner.classList.remove('hidden');
+      if (btnLabel) btnLabel.textContent = isLoginMode ? 'Autenticando...' : 'Cadastrando...';
+      showAuthAlert(isLoginMode ? 'Validando credenciais com a plataforma...' : 'Criando conta...', 'loading');
 
       try {
         if (isLoginMode) {
@@ -1214,14 +1325,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
             localStorage.setItem('mcp_session_user', JSON.stringify(sessionUser));
             localStorage.setItem('mcp_user_role', sessionUser.role);
+            localStorage.setItem('mcp_admin_auth', (sessionUser.role === 'admin' || sessionUser.role === 'moder') ? 'true' : 'false');
             if (data.token) localStorage.setItem('mcp_auth_token', data.token);
 
             window.dispatchEvent(new CustomEvent('mcp_auth_changed', { detail: sessionUser }));
             syncSovereignSession();
-            hideAuthModal();
-            showToast('🔑 Login soberano realizado com sucesso!');
-            renderCurrentView();
-            btn.textContent = 'Entrar'; btn.disabled = false;
+            
+            showAuthAlert('✅ ' + (data.message || 'Login autorizado com sucesso! Entrando...'), 'success');
+            showToast('🔑 Login soberano realizado com sucesso! Bem-vindo(a) ' + sessionUser.name, 'success');
+
+            setTimeout(() => {
+              hideAuthModal();
+              renderCurrentView();
+              btn.disabled = false;
+              if (spinner) spinner.classList.add('hidden');
+              if (btnLabel) btnLabel.textContent = 'Entrar';
+            }, 600);
             return;
           }
 
@@ -1230,16 +1349,25 @@ document.addEventListener('DOMContentLoaded', () => {
             const { data: sbData, error: sbError } = await sb.auth.signInWithPassword({ email, password });
             if (!sbError && sbData?.session) {
               await handleAuthSession(sbData.session);
-              hideAuthModal();
-              showToast('🔑 Login realizado com sucesso!');
-              renderCurrentView();
-              btn.textContent = 'Entrar'; btn.disabled = false;
+              showAuthAlert('✅ Login remoto aprovado!', 'success');
+              showToast('🔑 Login realizado com sucesso!', 'success');
+              setTimeout(() => {
+                hideAuthModal();
+                renderCurrentView();
+                btn.disabled = false;
+                if (spinner) spinner.classList.add('hidden');
+                if (btnLabel) btnLabel.textContent = 'Entrar';
+              }, 600);
               return;
             }
           }
 
-          showToast('❌ ' + (data?.error || 'Email ou senha inválidos.'));
-          btn.textContent = 'Entrar'; btn.disabled = false;
+          const errorMsg = data?.error || 'Email ou senha inválidos. Verifique as credenciais.';
+          showAuthAlert(errorMsg, 'error');
+          showToast('❌ ' + errorMsg, 'error');
+          btn.disabled = false;
+          if (spinner) spinner.classList.add('hidden');
+          if (btnLabel) btnLabel.textContent = 'Entrar';
         } else {
           // Registro de nova conta
           const name = document.getElementById('authName')?.value?.trim() || email.split('@')[0];
@@ -1265,31 +1393,49 @@ document.addEventListener('DOMContentLoaded', () => {
 
             window.dispatchEvent(new CustomEvent('mcp_auth_changed', { detail: sessionUser }));
             syncSovereignSession();
-            hideAuthModal();
-            showToast('✅ Conta criada com sucesso! Acesso VIP liberado.');
-            renderCurrentView();
-            btn.textContent = 'Criar Conta'; btn.disabled = false;
+            showAuthAlert('✅ Conta criada com sucesso! Liberando acesso...', 'success');
+            showToast('✅ Conta criada com sucesso! Acesso VIP liberado.', 'success');
+            
+            setTimeout(() => {
+              hideAuthModal();
+              renderCurrentView();
+              btn.disabled = false;
+              if (spinner) spinner.classList.add('hidden');
+              if (btnLabel) btnLabel.textContent = 'Criar Conta';
+            }, 600);
             return;
           }
 
           if (sb) {
             const { error: sbRegErr } = await sb.auth.signUp({ email, password, options:{ data:{ name } } });
             if (!sbRegErr) {
-              hideAuthModal();
-              showToast('✅ Conta criada! Verifique seu e-mail se necessário.');
-              btn.textContent = 'Criar Conta'; btn.disabled = false;
+              showAuthAlert('✅ Conta criada! Verifique seu e-mail se necessário.', 'success');
+              showToast('✅ Conta criada! Verifique seu e-mail se necessário.', 'success');
+              setTimeout(() => {
+                hideAuthModal();
+                btn.disabled = false;
+                if (spinner) spinner.classList.add('hidden');
+                if (btnLabel) btnLabel.textContent = 'Criar Conta';
+              }, 800);
               return;
             }
           }
 
-          showToast('❌ ' + (data?.error || 'Não foi possível criar a conta.'));
-          btn.textContent = 'Criar Conta'; btn.disabled = false;
+          const regErrorMsg = data?.error || 'Não foi possível criar a conta. Tente novamente.';
+          showAuthAlert(regErrorMsg, 'error');
+          showToast('❌ ' + regErrorMsg, 'error');
+          btn.disabled = false;
+          if (spinner) spinner.classList.add('hidden');
+          if (btnLabel) btnLabel.textContent = 'Criar Conta';
         }
       } catch (err) {
         console.error('Auth submit error:', err);
-        showToast('❌ Erro de conexão ao autenticar.');
-        btn.textContent = isLoginMode ? 'Entrar' : 'Criar Conta';
+        const netErrorMsg = 'Erro de conexão ao autenticar. Tente novamente.';
+        showAuthAlert(netErrorMsg, 'error');
+        showToast('❌ ' + netErrorMsg, 'error');
         btn.disabled = false;
+        if (spinner) spinner.classList.add('hidden');
+        if (btnLabel) btnLabel.textContent = isLoginMode ? 'Entrar' : 'Criar Conta';
       }
     });
 
@@ -1313,12 +1459,14 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('authModalTitle').textContent = isLoginMode ? 'Login' : 'Criar Conta Grátis';
     }
     if (document.getElementById('authModalSubtitle')) {
-      document.getElementById('authModalSubtitle').textContent = isLoginMode ? 'Para copiar o prompt dessa imagem ou acessar subpáginas, faça login com sua conta.' : 'Crie sua conta para explorar todos os acervos e comunidades';
+      document.getElementById('authModalSubtitle').textContent = isLoginMode ? 'Acesse sua conta para desbloquear prompts, comunidade e masterclasses.' : 'Crie sua conta para explorar todos os acervos e comunidades';
     }
     const nm = document.getElementById('authNameField');
     if (nm) nm.style.display = isLoginMode ? 'none' : 'block';
-    const btn = document.getElementById('authSubmitBtn');
-    if (btn) btn.textContent = isLoginMode ? 'Login' : 'Criar Conta Grátis';
+    const quickBox = document.getElementById('authQuickAccessBox');
+    if (quickBox) quickBox.style.display = isLoginMode ? 'block' : 'none';
+    const btnLabel = document.getElementById('authSubmitBtnLabel');
+    if (btnLabel) btnLabel.textContent = isLoginMode ? 'Entrar' : 'Criar Conta Grátis';
     const tog = document.getElementById('toggleAuthMode');
     if (tog) tog.textContent = isLoginMode ? 'Não tem conta? Registre-se Gratuitamente' : 'Já tenho conta. Fazer Login';
   }
@@ -2678,13 +2826,73 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ──────────────────────────────────────────────────────────────────────────
-  // TOAST & MODALS
+  // TOAST & MODALS (Feedback Instantâneo e Z-Index Universal)
   // ──────────────────────────────────────────────────────────────────────────
-  function showToast(msg) {
-    if (!toast||!toastMessage) return;
-    toastMessage.textContent = msg;
-    toast.classList.remove('translate-y-[150%]');
-    setTimeout(()=>toast.classList.add('translate-y-[150%]'), 3500);
+  let toastTimer = null;
+  function showToast(msg, type = 'success') {
+    if (!toast || !toastMessage) return;
+    const toastIcon = document.getElementById('toastIcon');
+    let icon = '✅';
+    let borderColor = 'rgba(255, 255, 255, 0.25)';
+
+    if (type === 'error' || msg.includes('❌') || msg.toLowerCase().includes('erro') || msg.toLowerCase().includes('inválid')) {
+      icon = '❌';
+      borderColor = 'rgba(239, 68, 68, 0.6)';
+    } else if (type === 'info' || msg.includes('ℹ️') || msg.toLowerCase().includes('aguardando')) {
+      icon = 'ℹ️';
+      borderColor = 'rgba(6, 182, 212, 0.6)';
+    } else if (type === 'admin' || msg.includes('👑')) {
+      icon = '👑';
+      borderColor = 'rgba(234, 179, 8, 0.6)';
+    } else if (type === 'auth' || msg.includes('🔑')) {
+      icon = '🔑';
+      borderColor = 'rgba(59, 130, 246, 0.6)';
+    }
+
+    if (toastIcon) toastIcon.textContent = icon;
+    toastMessage.textContent = msg.replace(/^[✅❌ℹ️👑🔑🛡️]\s*/, '');
+    toast.style.borderColor = borderColor;
+    toast.style.zIndex = '100001';
+
+    toast.classList.remove('translate-y-[200%]');
+    if (toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
+      toast.classList.add('translate-y-[200%]');
+    }, 4000);
+  }
+  window.appShowToast = showToast;
+
+  function showAuthAlert(msg, type = 'error') {
+    const alertBox = document.getElementById('authAlertArea');
+    const alertIcon = document.getElementById('authAlertIcon');
+    const alertText = document.getElementById('authAlertText');
+    if (!alertBox || !alertText) return;
+
+    alertBox.className = 'mb-4 p-3 rounded-2xl border text-xs font-semibold flex items-center space-x-2.5 transition-all';
+
+    if (type === 'error') {
+      alertBox.classList.add('bg-red-500/20', 'border-red-500/40', 'text-red-300');
+      if (alertIcon) alertIcon.textContent = '❌';
+    } else if (type === 'success') {
+      alertBox.classList.add('bg-emerald-500/20', 'border-emerald-500/40', 'text-emerald-300');
+      if (alertIcon) alertIcon.textContent = '✅';
+    } else if (type === 'loading') {
+      alertBox.classList.add('bg-cyan-500/20', 'border-cyan-500/40', 'text-cyan-300');
+      if (alertIcon) alertIcon.textContent = '⏳';
+    } else {
+      alertBox.classList.add('bg-white/10', 'border-white/20', 'text-white');
+      if (alertIcon) alertIcon.textContent = 'ℹ️';
+    }
+
+    alertText.textContent = msg;
+    alertBox.classList.remove('hidden');
+  }
+
+  function clearAuthAlert() {
+    const alertBox = document.getElementById('authAlertArea');
+    if (alertBox) {
+      alertBox.classList.add('hidden');
+    }
   }
 
   function showConfirmModal(message, title = 'Confirmação Necessária') {
@@ -2722,18 +2930,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function showAuthModal(customSubtitle) {
     if (!authModal) return;
-    isLoginMode=true; updateAuthModalUI();
+    clearAuthAlert();
+    isLoginMode = true;
+    updateAuthModalUI();
     if (customSubtitle && document.getElementById('authModalSubtitle')) {
       document.getElementById('authModalSubtitle').textContent = customSubtitle;
     }
     authModal.classList.remove('hidden');
-    setTimeout(()=>{ authModal.classList.remove('opacity-0'); authModal.firstElementChild?.classList.remove('scale-95'); },10);
+    setTimeout(() => {
+      authModal.classList.remove('opacity-0');
+      authModal.firstElementChild?.classList.remove('scale-95');
+    }, 10);
   }
+  window.appShowAuth = showAuthModal;
 
   function hideAuthModal() {
+    clearAuthAlert();
     authModal?.classList.add('opacity-0');
     authModal?.firstElementChild?.classList.add('scale-95');
-    setTimeout(()=>authModal?.classList.add('hidden'), 300);
+    setTimeout(() => authModal?.classList.add('hidden'), 300);
   }
 
   function triggerAnimObservers() {
