@@ -411,7 +411,7 @@ export function LeadCaptureForm() {
                     <option value="Formulários Cinemáticos & SaaS" className="bg-[#0a0a0c] text-white">
                       Construtor de Formulários Cinemáticos (Form Builder)
                     </option>
-                    <option value="Área de Membros & Comunidade VIP" className="bg-[#0a0a0c] text-white">
+                    <option value="Área de Membros & Comunidade" className="bg-[#0a0a0c] text-white">
                       Área de Membros & Streaming de Vídeos Exclusivo
                     </option>
                     <option value="Infraestrutura de Servidores Linux & Docker" className="bg-[#0a0a0c] text-white">

@@ -8,16 +8,13 @@ const nextConfig: NextConfig = {
   transpilePackages: ["three", "@react-three/fiber", "@react-three/drei", "ogl"],
   images: {
     remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "**",
-      },
+      { protocol: "https", hostname: "images.unsplash.com" },
+      { protocol: "https", hostname: "api.dicebear.com" },
+      { protocol: "https", hostname: "wccrxgczldiviilkfsuj.supabase.co" },
+      { protocol: "https", hostname: "d8j0ntlcm91z4.cloudfront.net" },
     ],
   },
-  webpack: (config) => {
-    config.output.hashFunction = "xxhash64";
-    return config;
-  },
+
   async rewrites() {
     return [
       {

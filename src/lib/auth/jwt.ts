@@ -6,11 +6,16 @@ import { SignJWT, jwtVerify, type JWTPayload } from 'jose';
  * ============================================================
  */
 
-const JWT_SECRET_STRING =
-  process.env.JWT_SECRET ||
-  'mcp-plataforma-unificada-soberana-secret-key-2026-super-secure';
-
-const JWT_SECRET = new TextEncoder().encode(JWT_SECRET_STRING);
+function getJwtSecret(): Uint8Array {
+  const secret = process.env.JWT_SECRET;
+  if (!secret) {
+    if (process.env.NODE_ENV === 'production') {
+      throw new Error('FATAL: JWT_SECRET não configurado nas variáveis de ambiente!');
+    }
+    return new TextEncoder().encode('mcp-soberana-dev-secret-minimum-64-characters-random-key-2026-prod-guard');
+  }
+  return new TextEncoder().encode(secret);
+}
 
 export interface SessionPayload extends JWTPayload {
   userId: string;
@@ -31,7 +36,7 @@ export async function signToken(
     .setProtectedHeader({ alg: 'HS256' })
     .setIssuedAt()
     .setExpirationTime(expiresIn)
-    .sign(JWT_SECRET);
+    .sign(getJwtSecret());
 }
 
 /**
@@ -42,7 +47,7 @@ export async function verifyToken<T extends SessionPayload = SessionPayload>(
   token: string
 ): Promise<T | null> {
   try {
-    const { payload } = await jwtVerify(token, JWT_SECRET);
+    const { payload } = await jwtVerify(token, getJwtSecret());
     return payload as unknown as T;
   } catch (error) {
     return null;

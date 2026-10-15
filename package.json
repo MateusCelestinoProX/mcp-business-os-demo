@@ -10,7 +10,8 @@
     "lint": "next lint",
     "db:push": "drizzle-kit push",
     "db:generate": "drizzle-kit generate",
-    "db:seed": "npx tsx src/db/seed.ts"
+    "db:seed": "npx tsx src/lib/db/seed.ts",
+    "test": "npx tsx --env-file-if-exists=.env.local --test tests/*.test.* tests/**/*.test.*"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.2.0",

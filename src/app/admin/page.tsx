@@ -129,11 +129,36 @@ export default function AdminPanelPage() {
     showToast("Texto copiado para a área de transferência.");
   };
 
-  // Carrega autenticação inicial
+  // Carrega e valida autenticação inicial diretamente no servidor via /api/auth/me
   useEffect(() => {
-    const user = getStoredUser();
-    setCurrentUser(user);
-    setIsClientReady(true);
+    async function verifyServerSession() {
+      try {
+        const res = await fetch("/api/auth/me");
+        if (res.ok) {
+          const data = await res.json();
+          if (data.authenticated && data.member && (data.member.role === 'admin' || data.member.role === 'moder')) {
+            const user: UnifiedUser = {
+              isLoggedIn: true,
+              role: data.member.role,
+              name: data.member.name || "Mateus Celestino Pro",
+              email: data.member.email,
+              avatar: "",
+              tier: "max",
+            };
+            setCurrentUser(user);
+            setStoredUser(user);
+            setIsClientReady(true);
+            return;
+          }
+        }
+      } catch (e) {
+        console.warn("Falha ao validar sessão inicial do admin:", e);
+      }
+      setCurrentUser(DEFAULT_GUEST_USER);
+      setStoredUser(DEFAULT_GUEST_USER);
+      setIsClientReady(true);
+    }
+    verifyServerSession();
   }, []);
 
   // Busca dados reais das rotas de API da plataforma (SEM MOCK)
@@ -183,40 +208,27 @@ export default function AdminPanelPage() {
     }
   }, [currentUser]);
 
-  // Autenticação Real do Administrador
+  // Autenticação Real do Administrador via /api/auth/login
   const handleAdminLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoginError(null);
     setIsAuthenticating(true);
 
     try {
-      const res = await fetch("/api/auth/verify-password", {
+      const res = await fetch("/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ password: loginPassword }),
-      }).catch(() => null);
+        body: JSON.stringify({ email: loginEmail, password: loginPassword }),
+      });
 
-      const data = res ? await res.json() : null;
+      const data = await res.json();
 
-      const validAdminEmails = [
-        "mateus@mateuscelestinopro.com",
-        "202405039459@alunos.estacio.br",
-        "contato-smartflow@proton.me"
-      ];
-
-      const cleanEmail = loginEmail.trim().toLowerCase();
-      const isEmailValid = validAdminEmails.includes(cleanEmail);
-      const isPasswordValid =
-        loginPassword === "MateusProX@2026!" ||
-        loginPassword === "MCP_SuperSecure_Admin_2026!#LiquidGlass" ||
-        data?.success;
-
-      if (data?.success || (isEmailValid && isPasswordValid)) {
+      if (res.ok && data.success && (data.role === "admin" || data.user?.role === "admin" || data.role === "moder" || data.user?.role === "moder")) {
         const authenticatedAdmin: UnifiedUser = {
           isLoggedIn: true,
-          role: "admin",
-          name: "Mateus Celestino Pro",
-          email: cleanEmail || "mateus@mateuscelestinopro.com",
+          role: data.role || data.user?.role || "admin",
+          name: data.user?.name || "Mateus Celestino Pro",
+          email: data.user?.email || loginEmail.trim().toLowerCase(),
           avatar: "",
           tier: "max",
         };
@@ -224,7 +236,7 @@ export default function AdminPanelPage() {
         setCurrentUser(authenticatedAdmin);
         showToast("Sessão autenticada como Administrador Soberano.");
       } else {
-        setLoginError("Credenciais inválidas. Verifique o e-mail ou a chave mestre do painel.");
+        setLoginError(data.error || "Credenciais inválidas. Verifique seu e-mail e senha de acesso.");
       }
     } catch (err: any) {
       setLoginError("Falha na comunicação: " + (err.message || "Erro de rede"));
@@ -233,27 +245,10 @@ export default function AdminPanelPage() {
     }
   };
 
-  const handleDirectAdminAccess = () => {
-    const authenticatedAdmin: UnifiedUser = {
-      isLoggedIn: true,
-      role: "admin",
-      name: "Mateus Celestino Pro",
-      email: "mateus@mateuscelestinopro.com",
-      avatar: "",
-      tier: "max",
-    };
-    setStoredUser(authenticatedAdmin);
-    setCurrentUser(authenticatedAdmin);
-    showToast("Acesso direto de Administrador ativado com sucesso.");
-  };
-
-  const handleFillAdminCredentials = () => {
-    setLoginEmail("mateus@mateuscelestinopro.com");
-    setLoginPassword("MateusProX@2026!");
-    setLoginError(null);
-  };
-
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    try {
+      await fetch("/api/auth/me", { method: "DELETE" });
+    } catch (e) {}
     setStoredUser(DEFAULT_GUEST_USER);
     setCurrentUser(DEFAULT_GUEST_USER);
     showToast("Sessão encerrada com sucesso.");
@@ -375,22 +370,6 @@ export default function AdminPanelPage() {
             </p>
           </div>
 
-          {/* Preenchimento Rápido & Acesso Direto */}
-          <div className="mb-5 space-y-2">
-            <button
-              type="button"
-              onClick={handleFillAdminCredentials}
-              className="w-full cursor-pointer rounded-xl border border-red-500/30 bg-red-950/20 p-2.5 text-left text-xs transition-all hover:bg-red-500/10 hover:border-red-500/50 flex items-center justify-between group"
-            >
-              <div className="flex items-center gap-1.5 font-bold text-red-400">
-                <KeyRound className="h-3.5 w-3.5" />
-                <span>Credencial Mestre Padrão:</span>
-              </div>
-              <span className="text-[10px] font-mono text-neutral-400 group-hover:text-white">
-                Preencher 1-Clique
-              </span>
-            </button>
-          </div>
 
           <form onSubmit={handleAdminLogin} className="space-y-4">
             {loginError && (
@@ -455,15 +434,7 @@ export default function AdminPanelPage() {
             </Button>
           </form>
 
-          <div className="mt-4 pt-4 border-t border-white/10">
-            <button
-              type="button"
-              onClick={handleDirectAdminAccess}
-              className="w-full py-2.5 px-3 rounded-xl bg-red-500/10 hover:bg-red-500/20 border border-red-500/30 text-xs font-mono font-bold text-red-300 flex items-center justify-center gap-2 transition-colors cursor-pointer"
-            >
-              <span>⚡ Acesso Direto Imediato (Modo Dev / Bypass)</span>
-            </button>
-          </div>
+
 
           <div className="mt-6 text-center">
             <Link
@@ -735,7 +706,7 @@ export default function AdminPanelPage() {
 
                 <div className="p-4 rounded-xl bg-black/40 border border-white/5 space-y-2 hover:border-white/15 transition-all">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-white">Comunidade VIP</span>
+                    <span className="text-xs font-bold text-white">Comunidade</span>
                     <Badge variant="success" dot className="text-[9px]">ONLINE</Badge>
                   </div>
                   <p className="text-[11px] text-neutral-400">Área restrita de membros com player e feeds de IA</p>
@@ -1025,7 +996,7 @@ export default function AdminPanelPage() {
             <div>
               <h2 className="text-lg font-bold text-white flex items-center gap-2">
                 <Shield className="w-5 h-5 text-red-500" />
-                <span>Membros da Comunidade VIP & Operadores</span>
+                <span>Membros da Comunidade & Operadores</span>
               </h2>
               <p className="text-xs text-neutral-400">
                 Lista oficial sincronizada diretamente com a tabela <code className="text-red-400">members</code> do Supabase.

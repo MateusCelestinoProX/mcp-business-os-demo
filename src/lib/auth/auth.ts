@@ -1,7 +1,7 @@
 import bcrypt from 'bcryptjs';
 import { eq } from 'drizzle-orm';
-import { db, isDbConfigured } from '../db/index';
-import { adminUsers, members } from '../db/schema';
+import { db, isDbConfigured } from '@/lib/db';
+import { adminUsers, members } from '@/lib/db/schema';
 import { signToken, type SessionPayload } from './jwt';
 import { createSession } from './session';
 
@@ -97,23 +97,19 @@ export async function authenticateAdmin(
     }
   }
 
-  // 2. Fallback Seguro de Emergência / Modo Offline Localhost
+  // 2. Fallback Seguro de Emergência / Modo Offline (Somente com variáveis de ambiente configuradas)
+  const configuredAdminEmail = (process.env.ADMIN_EMAIL || '202405039459@alunos.estacio.br').toLowerCase().trim();
   const validAdminEmails = [
-    (process.env.ADMIN_EMAIL || '').toLowerCase().trim(),
+    configuredAdminEmail,
     'mateus@mateuscelestinopro.com',
-    '202405039459@alunos.estacio.br',
-    'contato-smartflow@proton.me'
   ].filter(Boolean);
 
-  const validAdminPasswords = [
-    process.env.ADMIN_PASSWORD,
-    'MateusProX@2026!',
-    'MCP_SuperSecure_Admin_2026!#LiquidGlass'
-  ].filter(Boolean) as string[];
+  const envAdminPassword = process.env.ADMIN_PASSWORD;
 
   if (
+    envAdminPassword &&
     validAdminEmails.includes(cleanEmail) &&
-    validAdminPasswords.includes(plainPassword)
+    plainPassword === envAdminPassword
   ) {
     const payload: SessionPayload = {
       userId: '00000000-0000-0000-0000-000000000001',
@@ -205,15 +201,17 @@ export async function authenticateMember(
     }
   }
 
-  // Fallback para membro demo em ambiente local
+  // Fallback para membro demo em ambiente local / testes
+  const envMemberPassword = process.env.MEMBER_PASSWORD;
   if (
+    envMemberPassword &&
     cleanEmail === 'membro@mateuscelestinopro.com' &&
-    plainPassword === 'MembroProX@2026!'
+    plainPassword === envMemberPassword
   ) {
     const payload: SessionPayload = {
       userId: '00000000-0000-0000-0000-000000000002',
       email: 'membro@mateuscelestinopro.com',
-      name: 'Membro VIP Mateus Pro',
+      name: 'Membro Fundador Mateus Pro',
       role: 'member',
       tier: 'vip',
     };

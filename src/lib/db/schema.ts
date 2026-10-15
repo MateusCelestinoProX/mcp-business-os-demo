@@ -1,4 +1,4 @@
-import { pgTable, uuid, varchar, text, timestamp, boolean, integer, jsonb } from 'drizzle-orm/pg-core';
+import { pgTable, uuid, varchar, text, timestamp, boolean, integer, jsonb, index } from 'drizzle-orm/pg-core';
 import { relations } from 'drizzle-orm';
 
 /**
@@ -42,7 +42,11 @@ export const leads = pgTable('leads', {
   metadata: jsonb('metadata'),
   status: varchar('status', { length: 50 }).default('novo').notNull(), // 'novo' | 'em_contato' | 'convertido' | 'arquivado'
   createdAt: timestamp('created_at', { withTimezone: true }).defaultNow().notNull(),
-});
+}, (table) => [
+  index('leads_email_idx').on(table.email),
+  index('leads_source_idx').on(table.source),
+  index('leads_created_at_idx').on(table.createdAt),
+]);
 
 // ------------------------------------------------------------
 // 3. MEMBERS (Comunidade Fechada, Alunos & Assinantes)
@@ -72,7 +76,9 @@ export const forms = pgTable('forms', {
   userId: uuid('user_id'),
   createdAt: timestamp('created_at', { withTimezone: true }).defaultNow().notNull(),
   updatedAt: timestamp('updated_at', { withTimezone: true }).defaultNow().notNull(),
-});
+}, (table) => [
+  index('forms_slug_idx').on(table.slug),
+]);
 
 // ------------------------------------------------------------
 // 5. FORM SUBMISSIONS (Respostas & Leads de Formulários)
@@ -101,7 +107,10 @@ export const libraryItems = pgTable('library_items', {
   downloadCount: integer('download_count').default(0).notNull(),
   isPremium: boolean('is_premium').default(false).notNull(),
   createdAt: timestamp('created_at', { withTimezone: true }).defaultNow().notNull(),
-});
+}, (table) => [
+  index('library_items_category_idx').on(table.category),
+  index('library_items_is_premium_idx').on(table.isPremium),
+]);
 
 // ------------------------------------------------------------
 // 7. ARTICLES (Acervo Editorial & Base de Conhecimento)
@@ -117,7 +126,11 @@ export const articles = pgTable('articles', {
   readingTime: varchar('reading_time', { length: 50 }).default('5 min').notNull(),
   isPublished: boolean('is_published').default(true).notNull(),
   createdAt: timestamp('created_at', { withTimezone: true }).defaultNow().notNull(),
-});
+}, (table) => [
+  index('articles_slug_idx').on(table.slug),
+  index('articles_category_idx').on(table.category),
+  index('articles_is_published_idx').on(table.isPublished),
+]);
 
 // ------------------------------------------------------------
 // 8. AUTH SESSIONS (Sessões Seguras & Tokens de Acesso)

@@ -4,10 +4,33 @@ import { db, isDbConfigured } from '@/lib/db';
 import { members } from '@/lib/db/schema';
 import { hashPassword } from '@/lib/auth/auth';
 import { createSession } from '@/lib/auth/session';
+import { checkRateLimit } from '@/lib/auth/rate-limit';
 import type { SessionPayload } from '@/lib/auth/jwt';
 
 export async function POST(req: Request) {
   try {
+    // 0. Proteção CSRF via verificação de cabeçalho Origin
+    const origin = req.headers.get('origin');
+    if (origin) {
+      const allowed = ['http://localhost:3000', 'http://127.0.0.1:3000', process.env.NEXT_PUBLIC_APP_URL].filter(Boolean);
+      const isAllowed = allowed.some((a) => a && origin.startsWith(a)) || origin.endsWith('.vercel.app');
+      if (!isAllowed) {
+        return NextResponse.json({ success: false, error: 'Violação de política CSRF: Origem não autorizada.' }, { status: 403 });
+      }
+    }
+
+    // Rate Limiting de Cadastros
+    const forwarded = req.headers.get('x-forwarded-for');
+    const ip = forwarded ? forwarded.split(',')[0].trim() : '127.0.0.1';
+    const limit = process.env.NODE_ENV === 'production' ? 5 : 50;
+    const rateCheck = checkRateLimit(`register_${ip}`, limit, 60 * 60 * 1000);
+    if (!rateCheck.allowed) {
+      return NextResponse.json(
+        { success: false, error: 'Muitos cadastros a partir deste endereço IP. Aguarde antes de tentar novamente.' },
+        { status: 429 }
+      );
+    }
+
     const body = await req.json().catch(() => ({}));
     const { name, email, password } = body;
 

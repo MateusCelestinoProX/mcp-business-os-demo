@@ -71,6 +71,7 @@ export async function GET(req: Request) {
       {
         authenticated: true,
         member: memberDetails,
+        user: memberDetails,
       },
       { status: 200 }
     );

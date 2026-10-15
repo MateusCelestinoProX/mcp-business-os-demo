@@ -22,8 +22,11 @@ export async function runSeed() {
 
   try {
     // 1. Admin Inicial Soberano
-    const adminEmail = 'mateus@mateuscelestinopro.com';
-    const adminPass = process.env.ADMIN_PASSWORD || 'MateusProX@2026!';
+    const adminEmail = (process.env.ADMIN_EMAIL || '202405039459@alunos.estacio.br').toLowerCase().trim();
+    const adminPass = process.env.ADMIN_PASSWORD;
+    if (!adminPass) {
+      throw new Error('ADMIN_PASSWORD não configurada no ambiente (.env.local) para execução do seed.');
+    }
     const adminPasswordHash = await hashPassword(adminPass);
 
     const existingAdmin = await db
@@ -44,9 +47,9 @@ export async function runSeed() {
       console.log(`ℹ️ [Seed] Admin já existente: ${adminEmail}`);
     }
 
-    // 2. Membro VIP de Exemplo
+    // 2. Membro Pro de Exemplo
     const memberEmail = 'membro@mateuscelestinopro.com';
-    const memberPass = 'MembroProX@2026!';
+    const memberPass = process.env.MEMBER_PASSWORD || 'MembroProX@2026!';
     const memberPasswordHash = await hashPassword(memberPass);
 
     const existingMember = await db
@@ -57,7 +60,7 @@ export async function runSeed() {
 
     if (existingMember.length === 0) {
       await db.insert(members).values({
-        name: 'Membro Fundador VIP',
+        name: 'Membro Fundador Pro',
         email: memberEmail,
         passwordHash: memberPasswordHash,
         status: 'active',

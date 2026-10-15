@@ -33,7 +33,7 @@ export interface NavLinkItem {
 
 export const navLinks: NavLinkItem[] = [
   { name: "Portal Institucional", href: "/", icon: Shield },
-  { name: "Comunidade VIP", href: "/comunidade", icon: Users },
+  { name: "Comunidade", href: "/comunidade", icon: Users },
   { name: "Free Resources", href: "/biblioteca", icon: FolderGit2 },
 ];
 

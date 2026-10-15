@@ -537,8 +537,8 @@ document.addEventListener('DOMContentLoaded', () => {
       user_name: 'Mateus Celestino',
       user_avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=AdminBoss',
       user_role: 'admin',
-      title: '✨ Bem-vindos à Comunidade VIP A.I Visuals!',
-      content: 'Espaço exclusivo para membros VIP e criadores de elite compartilharem seus prompts, novos estilos e masterclasses generativas. Sintam-se à vontade para postar suas dúvidas, prompts favoritos e feedbacks!',
+      title: '✨ Bem-vindos à Comunidade A.I Visuals!',
+      content: 'Espaço exclusivo para membros e criadores de elite compartilharem seus prompts, novos estilos e masterclasses generativas. Sintam-se à vontade para postar suas dúvidas, prompts favoritos e feedbacks!',
       link_url: '',
       link_title: '',
       images: ['./public/assets/images/opt_0008_img_exact_87ca3.webp'],
@@ -1515,13 +1515,13 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
           const { data: { session } } = await sb.auth.getSession();
           if (session) await handleAuthSession(session);
-          else { showAuthModal('Acesse a Comunidade VIP fazendo login ou criando sua conta online.'); return; }
+          else { showAuthModal('Acesse a Comunidade fazendo login ou criando sua conta online.'); return; }
         } catch(e) {
-          showAuthModal('Acesse a Comunidade VIP fazendo login ou criando sua conta online.');
+          showAuthModal('Acesse a Comunidade fazendo login ou criando sua conta online.');
           return;
         }
       } else {
-        showAuthModal('Acesse a Comunidade VIP fazendo login ou criando sua conta online.');
+        showAuthModal('Acesse a Comunidade fazendo login ou criando sua conta online.');
         return;
       }
     }
@@ -2329,7 +2329,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.appCreatePost = async () => {
       syncSovereignSession();
       if (!isLoggedIn) {
-        showAuthModal('Para publicar na Comunidade VIP, faça login ou cadastre-se.');
+        showAuthModal('Para publicar na Comunidade, faça login ou cadastre-se.');
         return;
       }
 

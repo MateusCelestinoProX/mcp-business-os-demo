@@ -30,13 +30,16 @@ export async function POST(req: Request) {
     let isPaymentApproved = false;
     let externalRef = body?.external_reference || '';
 
-    // 2. Se houver token do Mercado Pago e ID de pagamento real, consulta a API do MP
+    // 2. Se houver token real do Mercado Pago e ID de pagamento real, consulta a API do MP
     const mpAccessToken =
       process.env.MP_ACCESS_TOKEN ||
       process.env.MERCADOPAGO_ACCESS_TOKEN ||
       process.env.MERCADO_LIVRE_TOKEN;
 
-    if (mpAccessToken && paymentId && !paymentId.toString().startsWith('SANDBOX')) {
+    const isMockToken = !mpAccessToken || mpAccessToken.includes('1234567890123456') || mpAccessToken.includes('placeholder');
+    const isTestPayment = !paymentId || paymentId.toString().startsWith('SANDBOX') || paymentId.toString().startsWith('TEST_');
+
+    if (mpAccessToken && !isMockToken && !isTestPayment) {
       try {
         const mpRes = await fetch(`https://api.mercadopago.com/v1/payments/${paymentId}`, {
           headers: {
@@ -55,8 +58,8 @@ export async function POST(req: Request) {
         console.warn('⚠️ [Webhook] Falha ao consultar detalhes do pagamento no MP:', err);
       }
     } else {
-      // Modo Sandbox / Testes: se status for explicitamente 'approved' ou em ambiente de desenvolvimento
-      isPaymentApproved = true;
+      // Modo Sandbox / Testes: respeita body.status ou aprova por padrão em testes
+      isPaymentApproved = body?.status ? body.status === 'approved' : true;
     }
 
     // 3. Atualizar status e tier do membro no banco de dados se o pagamento foi aprovado

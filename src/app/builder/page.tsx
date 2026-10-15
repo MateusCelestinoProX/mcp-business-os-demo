@@ -126,24 +126,27 @@ function BuilderContent() {
     };
   }, [formIdParam]);
 
-  // Server-Side Password Verification with Crypto Timing-Safe Check
+  // Autenticação Real do Administrador via /api/auth/login
   const handlePasswordLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsAuthenticating(true);
     setPasswordError('');
     try {
-      const res = await fetch('/api/auth/verify-password', {
+      const res = await fetch('/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ password: adminPassword })
+        body: JSON.stringify({
+          email: '202405039459@alunos.estacio.br',
+          password: adminPassword,
+        }),
       });
       const data = await res.json();
-      if (res.ok && data.success) {
+      if (res.ok && data.success && (data.role === 'admin' || data.user?.role === 'admin')) {
         const authenticatedAdmin: UnifiedUser = {
           isLoggedIn: true,
           role: 'admin',
-          name: 'Mateus Celestino Pro',
-          email: 'mateus@mateuscelestinopro.com',
+          name: data.user?.name || 'Mateus Celestino Pro',
+          email: data.user?.email || '202405039459@alunos.estacio.br',
           avatar: '',
           tier: 'max',
         };
@@ -160,7 +163,7 @@ function BuilderContent() {
         setPasswordError(data.error || 'Senha de administrador incorreta.');
       }
     } catch (err) {
-      setPasswordError('Erro ao verificar senha no servidor.');
+      setPasswordError('Erro ao verificar credenciais no servidor.');
     } finally {
       setIsAuthenticating(false);
     }

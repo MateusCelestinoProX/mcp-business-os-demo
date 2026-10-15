@@ -88,29 +88,7 @@ export default function LoginPage() {
     setErrorMessage('');
   };
 
-  const handleDirectAdminAccess = () => {
-    const adminUser: UnifiedUser = {
-      isLoggedIn: true,
-      role: 'admin',
-      name: 'Mateus Celestino Pro',
-      email: 'mateus@mateuscelestinopro.com',
-      avatar: '',
-      tier: 'max',
-    };
-    executeLoginSuccess(adminUser, '/admin');
-  };
 
-  const handleDirectMemberAccess = () => {
-    const memberUser: UnifiedUser = {
-      isLoggedIn: true,
-      role: 'user',
-      name: 'Membro VIP Mateus Pro',
-      email: 'membro@mateuscelestinopro.com',
-      avatar: '',
-      tier: 'vip',
-    };
-    executeLoginSuccess(memberUser, '/comunidade');
-  };
 
   return (
     <div className="relative min-h-[calc(100vh-80px)] flex items-center justify-center px-4 py-12">
@@ -217,30 +195,7 @@ export default function LoginPage() {
             </Button>
           </form>
 
-          {/* Botões de Acesso Direto de Desenvolvimento */}
-          <div className="mt-5 pt-4 border-t border-white/10 space-y-2">
-            <span className="text-[10px] font-mono text-neutral-500 block uppercase tracking-wider text-center">
-              Acesso Direto Instantâneo
-            </span>
-            <div className="flex gap-2">
-              <button
-                type="button"
-                onClick={handleDirectAdminAccess}
-                className="flex-1 py-2 px-3 rounded-xl bg-red-500/10 hover:bg-red-500/20 border border-red-500/30 text-[11px] font-mono font-bold text-red-300 flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
-              >
-                <Zap className="h-3.5 w-3.5 text-red-400" />
-                <span>Direto p/ Admin</span>
-              </button>
-              <button
-                type="button"
-                onClick={handleDirectMemberAccess}
-                className="flex-1 py-2 px-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-[11px] font-mono font-bold text-zinc-300 flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
-              >
-                <Zap className="h-3.5 w-3.5 text-amber-400" />
-                <span>Direto p/ Membro</span>
-              </button>
-            </div>
-          </div>
+
 
           {/* Footer Callout */}
           <div className="mt-6 border-t border-white/5 pt-4 text-center">
