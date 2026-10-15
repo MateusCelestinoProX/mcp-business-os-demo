@@ -96,11 +96,10 @@ function createDrizzleClient() {
     ) as ReturnType<typeof drizzleNeon<typeof schema>>;
   }
 
-  // Detecta se é Neon Postgres
+  // Detecta se é Neon Postgres (específico da nuvem Neon)
   const isNeon =
-    connectionString.includes('neon.tech') ||
-    connectionString.includes('sslmode=require') ||
-    process.env.DB_PROVIDER === 'neon';
+    (connectionString.includes('neon.tech') || process.env.DB_PROVIDER === 'neon') &&
+    !connectionString.includes('supabase.co');
 
   if (isNeon) {
     const sql: NeonQueryFunction<boolean, boolean> = neon(connectionString);
@@ -109,8 +108,17 @@ function createDrizzleClient() {
 
   // PostgreSQL nativo / Supabase / Localhost
   if (!globalThis.__mcp_pg_pool) {
+    const isSupabaseOrSsl =
+      connectionString.includes('supabase.co') ||
+      connectionString.includes('sslmode=require');
+
+    const cleanConnStr = connectionString
+      .replace(/[?&]sslmode=[^&]+/g, '')
+      .replace(/\?$/, '');
+
     globalThis.__mcp_pg_pool = new Pool({
-      connectionString,
+      connectionString: cleanConnStr,
+      ssl: isSupabaseOrSsl ? { rejectUnauthorized: false } : undefined,
       max: process.env.NODE_ENV === 'production' ? 10 : 3,
       idleTimeoutMillis: 30000,
       connectionTimeoutMillis: 5000,
@@ -158,7 +166,16 @@ export async function checkDatabaseHealth() {
         timestamp: new Date().toISOString(),
       };
     } else {
-      const pool = globalThis.__mcp_pg_pool || new Pool({ connectionString });
+      const isSupabase = connectionString.includes('supabase.co');
+      const cleanConnStr = connectionString
+        .replace(/[?&]sslmode=[^&]+/g, '')
+        .replace(/\?$/, '');
+      const pool =
+        globalThis.__mcp_pg_pool ||
+        new Pool({
+          connectionString: cleanConnStr,
+          ssl: isSupabase || connectionString.includes('sslmode=require') ? { rejectUnauthorized: false } : undefined,
+        });
       const client = await pool.connect();
       try {
         const res = await client.query('SELECT 1 as alive, current_database() as db_name, version() as version;');
@@ -166,10 +183,12 @@ export async function checkDatabaseHealth() {
         return {
           connected: true,
           mode: 'postgres-native' as const,
-          provider: 'PostgreSQL Pool',
+          provider: isSupabase ? 'Supabase PostgreSQL (sa-east-1)' : 'PostgreSQL Pool',
           database: res.rows[0]?.db_name || 'postgres',
           latencyMs: latency,
-          message: 'Conexão ativa e saudável com PostgreSQL nativo.',
+          message: isSupabase
+            ? 'Conexão ativa e saudável com Supabase PostgreSQL.'
+            : 'Conexão ativa e saudável com PostgreSQL nativo.',
           timestamp: new Date().toISOString(),
         };
       } finally {

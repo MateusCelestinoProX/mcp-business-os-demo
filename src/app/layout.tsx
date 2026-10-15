@@ -25,6 +25,23 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className="dark">
+      <head>
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
+              html, body {
+                background-color: #030305 !important;
+                color: #f3f4f6 !important;
+                margin: 0;
+                padding: 0;
+                font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+              }
+              a { color: inherit; text-decoration: none; }
+              *, *::before, *::after { box-sizing: border-box; }
+            `,
+          }}
+        />
+      </head>
       <body className="bg-[#030305] text-[#f3f4f6] antialiased selection:bg-red-500/30 selection:text-white min-h-screen flex flex-col relative overflow-x-hidden">
         {/* Glows de Fundo Ambientais Soberanos */}
         <div

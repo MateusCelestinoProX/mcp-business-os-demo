@@ -82,6 +82,15 @@ export async function POST(req: Request) {
         schemaJson: schemaJson || {},
         isActive: true,
       })
+      .onConflictDoUpdate({
+        target: forms.slug,
+        set: {
+          title,
+          description: description || null,
+          schemaJson: schemaJson || {},
+          updatedAt: new Date(),
+        },
+      })
       .returning();
 
     return NextResponse.json({

@@ -8,7 +8,12 @@ import { verifyToken } from '@/lib/auth/jwt';
  * Validação de sessão server-side, rate limiting e cabeçalhos de segurança HTTP
  */
 
-const ADMIN_API_ROUTES = ['/api/members'];
+// Rotas de API restritas a administradores
+function isRestrictedAdminRoute(pathname: string): boolean {
+  if (pathname.startsWith('/api/members')) return true;
+  if (pathname.startsWith('/api/finance')) return true;
+  return false;
+}
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -28,8 +33,7 @@ export async function middleware(request: NextRequest) {
   }
 
   // 1. Proteção de endpoints de API administrativos restritos
-  const isAdminApi = ADMIN_API_ROUTES.some((route) => pathname.startsWith(route));
-  if (isAdminApi) {
+  if (isRestrictedAdminRoute(pathname)) {
     // Permite se houver Authorization Bearer header
     const authHeader = request.headers.get('authorization');
     const hasBearer = authHeader && authHeader.startsWith('Bearer ');
@@ -66,9 +70,7 @@ export async function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    /*
-     * Intercepta todas as rotas exceto arquivos estáticos e _next
-     */
-    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|mp4)$).*)',
+    '/api/:path*',
+    '/admin/:path*',
   ],
 };

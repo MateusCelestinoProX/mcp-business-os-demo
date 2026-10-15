@@ -17,7 +17,7 @@ import {
   ExternalLink,
   MessageSquare,
 } from "lucide-react";
-import rawArticles from "@/data/articles.json";
+import rawArticles from "@/data/articles-summary.json";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";

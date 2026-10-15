@@ -32,7 +32,7 @@ import { GlassCard } from '@/components/ui/GlassCard';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 
-import rawArticles from '@/data/articles.json';
+import rawArticles from '@/data/articles-summary.json';
 import siteData from '@/data/siteData.json';
 
 interface Testimonial {

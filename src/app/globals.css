@@ -1,5 +1,28 @@
 @import "tailwindcss";
 
+@theme {
+  --color-vanta-black: #000000;
+  --color-vanta-deep: #050508;
+  --color-vanta-dark: #0a0a0c;
+  --color-vanta-surface: #121217;
+
+  --color-neon-red: #ff073a;
+  --color-neon-red-bright: #ff0033;
+  --color-neon-blood: #800010;
+  --color-neon-indigo: #6366f1;
+  --color-neon-purple: #a855f7;
+  --color-neon-cyan: #00f0ff;
+
+  --color-glass-surface: rgba(12, 12, 16, 0.65);
+  --color-glass-frame: rgba(14, 14, 22, 0.75);
+  --color-glass-border: rgba(255, 255, 255, 0.12);
+  --color-glass-specular: rgba(255, 255, 255, 0.28);
+
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif;
+  --blur-xs: 2px;
+  --blur-ultra: 36px;
+}
+
 :root {
   --vanta-black: #000000;
   --neon-red: #a80018;

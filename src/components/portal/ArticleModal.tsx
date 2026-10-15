@@ -32,6 +32,26 @@ export function ArticleModal({
   allArticles,
 }: ArticleModalProps) {
   const [copied, setCopied] = useState(false);
+  const [fullContent, setFullContent] = useState<string | null>(article?.contentHtml || null);
+  const [loadingContent, setLoadingContent] = useState(false);
+
+  useEffect(() => {
+    if (!article) return;
+    if (article.contentHtml) {
+      setFullContent(article.contentHtml);
+      return;
+    }
+    setLoadingContent(true);
+    fetch(`/api/articles/${article.slug || article.id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success && data.article?.contentHtml) {
+          setFullContent(data.article.contentHtml);
+        }
+      })
+      .catch(() => {})
+      .finally(() => setLoadingContent(false));
+  }, [article]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -144,8 +164,15 @@ export function ArticleModal({
 
           {/* Conteúdo Editorial Formatado */}
           <div className="mt-8 article-prose text-zinc-300">
-            {article.contentHtml ? (
-              <div dangerouslySetInnerHTML={{ __html: article.contentHtml }} />
+            {loadingContent ? (
+              <div className="space-y-4 py-8 animate-pulse">
+                <div className="h-4 bg-white/10 rounded-full w-3/4" />
+                <div className="h-4 bg-white/10 rounded-full w-5/6" />
+                <div className="h-4 bg-white/10 rounded-full w-2/3" />
+                <div className="h-32 bg-white/5 rounded-2xl w-full" />
+              </div>
+            ) : fullContent ? (
+              <div dangerouslySetInnerHTML={{ __html: fullContent }} />
             ) : (
               <div className="space-y-4">
                 <p>{article.excerpt}</p>

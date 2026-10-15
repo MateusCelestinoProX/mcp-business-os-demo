@@ -1,20 +1,19 @@
 import type { NextConfig } from "next";
-
 import path from "path";
 
 const nextConfig: NextConfig = {
-  outputFileTracingRoot: path.join(__dirname),
   reactStrictMode: true,
   transpilePackages: ["three", "@react-three/fiber", "@react-three/drei", "ogl"],
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "images.unsplash.com" },
       { protocol: "https", hostname: "api.dicebear.com" },
+      { protocol: "https", hostname: "lijrxbzotmoikyvjiipv.supabase.co" },
       { protocol: "https", hostname: "wccrxgczldiviilkfsuj.supabase.co" },
+      { protocol: "https", hostname: "**.supabase.co" },
       { protocol: "https", hostname: "d8j0ntlcm91z4.cloudfront.net" },
     ],
   },
-
   async rewrites() {
     return [
       {
