@@ -2436,39 +2436,10 @@ function initDarkVeil(ctn, opts = {}) {
 
 
 // ==========================================
-// MAIN WEBGL BACKGROUND CONTROLLER
+// SHADER INSTANTIATION HELPER
 // ==========================================
-window.renderWebGLBackground = function(type) {
-  const container = document.getElementById('bg-webgl-container');
-  if (!container) return;
-
-  // Incrementa a sessão para que qualquer frame do shader anterior aborte instantaneamente
-  currentBgSession++;
-
-  // Executa o descarte do shader anterior
-  if (currentCleanup) {
-    try {
-      currentCleanup();
-    } catch (e) {
-      console.warn('[WebGL] Aviso no cleanup anterior:', e);
-    }
-    currentCleanup = null;
-  }
-
-  // Desaloca forçadamente quaisquer canvases e contextos remanescentes
-  const oldCanvases = container.querySelectorAll('canvas');
-  oldCanvases.forEach(cv => {
-    try {
-      const gl = cv.getContext('webgl2') || cv.getContext('webgl');
-      if (gl) gl.getExtension('WEBGL_lose_context')?.loseContext();
-      cv.width = 1;
-      cv.height = 1;
-    } catch(e) {}
-  });
-  container.innerHTML = '';
-
-  currentActiveType = type;
-
+function instantiateShader(container, type) {
+  currentCleanup = null;
   switch (type) {
     case 'strands':
       currentCleanup = initStrands(container, {
@@ -3027,9 +2998,112 @@ window.renderWebGLBackground = function(type) {
         lightMode: false
       });
       break;
-default:
+    default:
       break;
   }
+  return currentCleanup;
+}
+
+// ==========================================
+// DUAL-BUFFER CINEMATIC WEBGL CONTROLLER (5s ROTATION)
+// ==========================================
+let currentSlotIndex = 0;
+let slotCleanups = [null, null];
+let slotTimers = [null, null];
+let isFirstShaderLoad = true;
+
+window.renderWebGLBackground = function(type) {
+  const container = document.getElementById('bg-webgl-container');
+  if (!container) return;
+
+  // Garante os dois slots de buffer com hardware isolation
+  let slot0 = document.getElementById('bg-webgl-slot-0');
+  let slot1 = document.getElementById('bg-webgl-slot-1');
+  if (!slot0 || !slot1) {
+    container.innerHTML = `
+      <div id="bg-webgl-slot-0" class="webgl-slot-layer"></div>
+      <div id="bg-webgl-slot-1" class="webgl-slot-layer"></div>
+    `;
+    slot0 = document.getElementById('bg-webgl-slot-0');
+    slot1 = document.getElementById('bg-webgl-slot-1');
+    isFirstShaderLoad = true;
+  }
+
+  container.style.opacity = '1';
+
+  if (isFirstShaderLoad) {
+    if (slotCleanups[0]) {
+      try { slotCleanups[0](); } catch(e){}
+    }
+    slot0.innerHTML = '';
+    slotCleanups[0] = instantiateShader(slot0, type);
+    currentCleanup = slotCleanups[0];
+    slot0.className = 'webgl-slot-layer active';
+    slot1.className = 'webgl-slot-layer';
+    currentSlotIndex = 0;
+    currentActiveType = type;
+    isFirstShaderLoad = false;
+    return;
+  }
+
+  // Crossfade Cinemático Dual Buffer (transição super suave):
+  const nextSlotIndex = 1 - currentSlotIndex;
+  const currSlotEl = document.getElementById('bg-webgl-slot-' + currentSlotIndex);
+  const nextSlotEl = document.getElementById('bg-webgl-slot-' + nextSlotIndex);
+
+  if (slotTimers[nextSlotIndex]) {
+    clearTimeout(slotTimers[nextSlotIndex]);
+    slotTimers[nextSlotIndex] = null;
+  }
+  if (slotCleanups[nextSlotIndex]) {
+    try { slotCleanups[nextSlotIndex](); } catch(e){}
+    slotCleanups[nextSlotIndex] = null;
+  }
+  if (nextSlotEl) {
+    nextSlotEl.innerHTML = '';
+    nextSlotEl.className = 'webgl-slot-layer';
+  }
+
+  // Inicia o novo shader no buffer inativo
+  const newCleanup = instantiateShader(nextSlotEl, type);
+  slotCleanups[nextSlotIndex] = newCleanup;
+  currentCleanup = newCleanup;
+  currentActiveType = type;
+
+  // Suavização cinematográfica no próximo frame (crossfade de 2.2s a 2.5s)
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      if (nextSlotEl) nextSlotEl.className = 'webgl-slot-layer active';
+      if (currSlotEl) {
+        currSlotEl.className = 'webgl-slot-layer fading';
+      }
+    });
+  });
+
+  // Limpa o shader anterior da GPU após a transição visual terminar (2400ms)
+  const prevSlotIdx = currentSlotIndex;
+  slotTimers[prevSlotIdx] = setTimeout(() => {
+    if (slotCleanups[prevSlotIdx]) {
+      try { slotCleanups[prevSlotIdx](); } catch(e){}
+      slotCleanups[prevSlotIdx] = null;
+    }
+    const prevEl = document.getElementById('bg-webgl-slot-' + prevSlotIdx);
+    if (prevEl) {
+      const oldCanvases = prevEl.querySelectorAll('canvas');
+      oldCanvases.forEach(cv => {
+        try {
+          const gl = cv.getContext('webgl2') || cv.getContext('webgl');
+          if (gl) gl.getExtension('WEBGL_lose_context')?.loseContext();
+          cv.width = 1;
+          cv.height = 1;
+        } catch(e) {}
+      });
+      prevEl.innerHTML = '';
+      prevEl.className = 'webgl-slot-layer';
+    }
+  }, 2400);
+
+  currentSlotIndex = nextSlotIndex;
 };
 
 // ==========================================
@@ -10105,12 +10179,18 @@ window.setWebGLBackground = window.renderWebGLBackground;
 window.stopWebGLBackground = function() {
   currentBgSession++;
   const container = document.getElementById('bg-webgl-container');
-  if (currentCleanup) {
-    try {
-      currentCleanup();
-    } catch(e) {}
-    currentCleanup = null;
-  }
+  slotCleanups.forEach(fn => {
+    if (fn) {
+      try { fn(); } catch(e){}
+    }
+  });
+  slotCleanups = [null, null];
+  slotTimers.forEach(t => {
+    if (t) clearTimeout(t);
+  });
+  slotTimers = [null, null];
+  currentCleanup = null;
+
   if (container) {
     const oldCanvases = container.querySelectorAll('canvas');
     oldCanvases.forEach(cv => {
@@ -10123,6 +10203,7 @@ window.stopWebGLBackground = function() {
     });
     container.innerHTML = '';
   }
+  isFirstShaderLoad = true;
   currentActiveType = null;
 };
 
@@ -10165,7 +10246,7 @@ window.setCommunityShader = function(shaderId) {
 window.toggleCommunityRotative = function(forceState) {
   const isRotative = forceState !== undefined 
     ? forceState 
-    : (localStorage.getItem('mcp_community_rotative') !== 'true');
+    : (localStorage.getItem('mcp_community_rotative') !== 'false');
 
   localStorage.setItem('mcp_community_rotative', isRotative ? 'true' : 'false');
 
@@ -10180,7 +10261,7 @@ window.toggleCommunityRotative = function(forceState) {
       _communityCurrentIndex = (_communityCurrentIndex + 1) % window.COMMUNITY_SHADERS.length;
       const nextShader = window.COMMUNITY_SHADERS[_communityCurrentIndex].id;
       window.setCommunityShader(nextShader);
-    }, 20000);
+    }, 5000); // Exatos 5 segundos cinematográficos solicitados
   }
 
   try {
@@ -10190,12 +10271,14 @@ window.toggleCommunityRotative = function(forceState) {
   return isRotative;
 };
 
-// Auto-boot red shader on init
+// Auto-boot red shader on init with 5s rotative cinematic
 if (typeof window !== 'undefined') {
   const bootActiveShader = () => {
     const saved = localStorage.getItem('mcp_community_active_shader') || 'strands';
     window.setCommunityShader(saved);
-    if (localStorage.getItem('mcp_community_rotative') === 'true') {
+    // Inicia rotação suave cinematográfica a cada 5 segundos por padrão
+    const rotPref = localStorage.getItem('mcp_community_rotative');
+    if (rotPref !== 'false') {
       window.toggleCommunityRotative(true);
     }
   };

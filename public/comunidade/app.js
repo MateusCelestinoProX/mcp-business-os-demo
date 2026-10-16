@@ -3169,157 +3169,48 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
     const currentShaderObj = shadersList.find(s => s.id === currentShaderId) || shadersList[0];
 
     mainAppContainer.innerHTML = `
-      <section class="py-8 px-4 sm:px-6 lg:px-8 max-w-[1400px] mx-auto relative z-10">
+      <section class="py-8 px-4 sm:px-6 lg:px-8 max-w-[1080px] mx-auto relative z-10">
 
-        <!-- 1. SOVEREIGN COMMUNITY HERO & ATMOSPHERE SHADER BAR -->
-        <div class="mb-8 rounded-3xl p-6 sm:p-8 glass-card-community border border-red-500/25 relative overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.85)]">
-          <div class="absolute -top-24 -right-24 w-96 h-96 bg-red-600/15 rounded-full blur-3xl pointer-events-none"></div>
-          <div class="absolute -bottom-24 -left-24 w-80 h-80 bg-red-900/20 rounded-full blur-3xl pointer-events-none"></div>
-
-          <div class="relative z-10">
-            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/10 pb-6 mb-6">
-              <div>
-                <div class="flex items-center space-x-2.5 mb-2">
-                  <span class="px-3 py-1 rounded-full text-[10px] font-mono font-bold tracking-widest uppercase bg-red-500/20 text-red-300 border border-red-500/30 flex items-center space-x-1.5">
-                    <span class="w-2 h-2 rounded-full bg-red-400 animate-pulse"></span>
-                    <span>REDE SOCIAL VIP • PLATAFORMA SOBERANA</span>
-                  </span>
-                  <span class="text-[10px] text-white/50 font-mono">v2.5 RED ENGINE</span>
-                </div>
-                <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight flex items-center space-x-3">
-                  <span>Comunidade A.I Visuals</span>
-                  ${currentUserRole === 'admin' ? '<span class="text-xs px-3 py-1 rounded-full bg-red-500/20 border border-red-500/40 text-red-200 font-mono font-bold">👑 ADMIN ACCESS</span>' : ''}
-                </h1>
-                <p class="text-sm text-gray-300 mt-1.5 max-w-2xl leading-relaxed">
-                  Ambiente exclusivo para criadores de ponta trocarem prompts, refinamentos em Flux.1/Midjourney, novidades e feedback em tempo real.
-                </p>
-              </div>
-
-              <div class="flex items-center space-x-3 flex-shrink-0">
-                <button onclick="window.appSwitchCommunityTab('feed'); setTimeout(()=>{document.getElementById('newPostContent')?.focus(); window.scrollTo({top: 400, behavior: 'smooth'});}, 100);"
-                  class="px-5 py-2.5 rounded-full bg-gradient-to-r from-red-600 to-rose-700 hover:from-red-500 hover:to-rose-600 text-white font-bold text-xs shadow-[0_0_20px_rgba(220,38,38,0.4)] hover:scale-105 active:scale-95 transition-all flex items-center space-x-2">
-                  <span>✍️</span><span>Criar Publicação</span>
-                </button>
-              </div>
+        <!-- HEADER MINIMALISTA & ELEGANTE -->
+        <div class="mb-6 flex flex-col sm:flex-row sm:items-center justify-between border-b border-white/10 pb-5 gap-4">
+          <div>
+            <div class="flex items-center space-x-2">
+              <span class="text-xs font-bold text-white/50 tracking-widest uppercase">REDE SOCIAL VIP</span>
+              <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" title="Personal OS Shader Ativo"></span>
+              <span class="text-[10px] text-red-300 font-mono">5s cinematic</span>
             </div>
+            <h1 class="text-3xl font-extrabold text-white mt-1 flex items-center space-x-3">
+              <span>Comunidade A.I Visuals</span>
+              ${currentUserRole === 'admin' ? '<span class="text-xs px-2.5 py-0.5 rounded-full bg-red-500/20 border border-red-500/40 text-red-200 font-mono font-bold">👑 ADMIN</span>' : ''}
+            </h1>
+          </div>
 
-            <!-- ATMOSPHERIC SHADER CONTROLLER (PERSONAL OS RED SUITE) -->
-            <div class="rounded-2xl p-4 bg-black/60 border border-red-500/20 backdrop-blur-xl">
-              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3">
-                <div class="flex items-center space-x-2.5">
-                  <span class="text-base">🔴</span>
-                  <div>
-                    <div class="flex items-center space-x-2">
-                      <h4 class="text-xs font-bold text-white uppercase tracking-wider font-mono">Atmosfera Visual WebGL (Personal OS)</h4>
-                      <span class="px-2 py-0.5 rounded text-[9px] font-mono bg-red-950/80 text-red-300 border border-red-500/30">Shader: <strong class="text-white">${currentShaderObj.name}</strong></span>
-                    </div>
-                    <span class="text-[10px] text-gray-400">Tons rubros cinemáticos e brilho reduzido para conforto visual contínuo</span>
-                  </div>
-                </div>
-
-                <div class="flex items-center space-x-2">
-                  <button onclick="window.appToggleCommunityRotative()" id="btnCommunityRotativeToggle"
-                    class="px-3 py-1.5 rounded-xl text-xs font-mono font-bold transition-all flex items-center space-x-1.5 border ${isRotative ? 'bg-red-500/20 text-red-200 border-red-500/50 shadow-[0_0_12px_rgba(239,68,68,0.3)]' : 'bg-white/5 text-gray-400 border-white/10 hover:bg-white/10'}">
-                    <span>${isRotative ? '🔄 Rotativo Ativo 🟢' : '⏸️ Modo Fixo'}</span>
-                  </button>
-                  <button onclick="window.appRandomCommunityShader()"
-                    class="px-3 py-1.5 rounded-xl text-xs font-mono font-bold bg-white/5 hover:bg-white/10 border border-white/10 text-white transition-all flex items-center space-x-1" title="Sortear outro shader">
-                    <span>🎲</span><span class="hidden sm:inline">Aleatório</span>
-                  </button>
-                </div>
-              </div>
-
-              <!-- Horizontal Scrollable Shader Pills -->
-              <div class="flex items-center space-x-2 overflow-x-auto pb-1 shader-scroll-strip text-xs">
-                ${shadersList.map(sh => `
-                  <button onclick="window.appSelectCommunityShader('${sh.id}')"
-                    class="shader-pill-btn whitespace-nowrap px-3 py-1.5 rounded-xl border text-[11px] font-semibold flex items-center space-x-1.5 transition-all ${sh.id === currentShaderId ? 'active' : 'bg-white/5 text-gray-300 border-white/10 hover:bg-white/10 hover:text-white'}">
-                    <span>${sh.icon || '✨'}</span>
-                    <span>${sh.name}</span>
-                  </button>
-                `).join('')}
-              </div>
-            </div>
+          <!-- SUB-NAV TABS MINIMALISTAS (APPLE PILLS) -->
+          <div class="flex items-center space-x-1 bg-black/40 border border-white/10 p-1 rounded-2xl backdrop-blur-xl overflow-x-auto shader-scroll-strip">
+            <button onclick="window.appSwitchCommunityTab('feed')"
+              class="px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all whitespace-nowrap ${communityActiveTab === 'feed' ? 'bg-white text-black font-bold shadow-md' : 'text-gray-300 hover:text-white hover:bg-white/5'}">
+              <span>💬 Feed & Discussões</span>
+            </button>
+            <button onclick="window.appSwitchCommunityTab('prompts')"
+              class="px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all whitespace-nowrap ${communityActiveTab === 'prompts' ? 'bg-white text-black font-bold shadow-md' : 'text-gray-300 hover:text-white hover:bg-white/5'}">
+              <span>🔮 Acervo de Prompts VIP</span>
+            </button>
+            <button onclick="window.appSwitchCommunityTab('ranking')"
+              class="px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all whitespace-nowrap ${communityActiveTab === 'ranking' ? 'bg-white text-black font-bold shadow-md' : 'text-gray-300 hover:text-white hover:bg-white/5'}">
+              <span>🏆 Ranking & Gamificação</span>
+            </button>
+            <button onclick="window.appSwitchCommunityTab('challenges')"
+              class="px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all whitespace-nowrap ${communityActiveTab === 'challenges' ? 'bg-white text-black font-bold shadow-md' : 'text-gray-300 hover:text-white hover:bg-white/5'}">
+              <span>🎯 Desafios Semanais</span>
+            </button>
+            <button onclick="window.appSwitchCommunityTab('saved')"
+              class="px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all whitespace-nowrap ${communityActiveTab === 'saved' ? 'bg-white text-black font-bold shadow-md' : 'text-gray-300 hover:text-white hover:bg-white/5'}">
+              <span>🔖 Meus Salvos & Atividade</span>
+            </button>
           </div>
         </div>
 
-        <!-- 2. COMMUNITY LIVE METRICS BENTO STRIP -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-          <div class="glass-card-community rounded-2xl p-4 border border-white/10 flex items-center space-x-3.5">
-            <div class="w-12 h-12 rounded-xl bg-red-500/15 border border-red-500/30 flex items-center justify-center text-xl flex-shrink-0 text-red-400">👥</div>
-            <div class="min-w-0">
-              <p class="text-xl font-extrabold text-white leading-tight">1.842</p>
-              <p class="text-[11px] text-gray-400 font-medium">Membros VIP Ativos</p>
-              <span class="text-[9px] text-emerald-400 font-mono font-bold">+34 esta semana</span>
-            </div>
-          </div>
-
-          <div class="glass-card-community rounded-2xl p-4 border border-white/10 flex items-center space-x-3.5">
-            <div class="w-12 h-12 rounded-xl bg-red-500/15 border border-red-500/30 flex items-center justify-center text-xl flex-shrink-0 text-red-400">⚡</div>
-            <div class="min-w-0">
-              <p class="text-xl font-extrabold text-white leading-tight">14.280</p>
-              <p class="text-[11px] text-gray-400 font-medium">Prompts & Workflows</p>
-              <span class="text-[9px] text-red-300 font-mono font-bold">Flux • Midjourney • SD</span>
-            </div>
-          </div>
-
-          <div class="glass-card-community rounded-2xl p-4 border border-white/10 flex items-center space-x-3.5">
-            <div class="w-12 h-12 rounded-xl bg-red-500/15 border border-red-500/30 flex items-center justify-center text-xl flex-shrink-0 text-red-400">🔥</div>
-            <div class="min-w-0">
-              <p class="text-xl font-extrabold text-white leading-tight">99.6%</p>
-              <p class="text-[11px] text-gray-400 font-medium">Taxa de Resposta</p>
-              <span class="text-[9px] text-emerald-400 font-mono font-bold">Feedback em minutos</span>
-            </div>
-          </div>
-
-          <div class="glass-card-community rounded-2xl p-4 border border-white/10 flex items-center space-x-3.5">
-            <div class="w-12 h-12 rounded-xl bg-red-500/15 border border-red-500/30 flex items-center justify-center text-xl flex-shrink-0 text-red-400">🏆</div>
-            <div class="min-w-0">
-              <p class="text-xl font-extrabold text-white leading-tight">3.450 XP</p>
-              <p class="text-[11px] text-gray-400 font-medium">Top Criador Semanal</p>
-              <span class="text-[9px] text-amber-300 font-mono font-bold truncate block">Mateus Celestino Pro X</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- 3. SUB-NAV TABS INTERNAS DA COMUNIDADE (APPLE LIQUID GLASS) -->
-        <div class="mb-8 p-1.5 rounded-2xl bg-black/60 border border-white/10 backdrop-blur-2xl flex items-center space-x-1 sm:space-x-2 overflow-x-auto shader-scroll-strip shadow-xl">
-          <button onclick="window.appSwitchCommunityTab('feed')"
-            class="flex items-center space-x-2 px-4 sm:px-5 py-2.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${communityActiveTab === 'feed' ? 'bg-gradient-to-r from-red-600 to-rose-700 text-white shadow-[0_0_15px_rgba(220,38,38,0.4)]' : 'text-gray-300 hover:text-white hover:bg-white/5'}">
-            <span>💬</span>
-            <span>Feed & Discussões</span>
-            <span class="px-2 py-0.5 rounded-full text-[10px] ${communityActiveTab === 'feed' ? 'bg-black/40 text-white' : 'bg-white/10 text-gray-400'} font-mono">${communityPosts.length}</span>
-          </button>
-
-          <button onclick="window.appSwitchCommunityTab('prompts')"
-            class="flex items-center space-x-2 px-4 sm:px-5 py-2.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${communityActiveTab === 'prompts' ? 'bg-gradient-to-r from-red-600 to-rose-700 text-white shadow-[0_0_15px_rgba(220,38,38,0.4)]' : 'text-gray-300 hover:text-white hover:bg-white/5'}">
-            <span>🔮</span>
-            <span>Acervo de Prompts VIP</span>
-            <span class="px-2 py-0.5 rounded-full text-[10px] ${communityActiveTab === 'prompts' ? 'bg-black/40 text-white' : 'bg-red-500/20 text-red-300'} font-mono">Vault</span>
-          </button>
-
-          <button onclick="window.appSwitchCommunityTab('ranking')"
-            class="flex items-center space-x-2 px-4 sm:px-5 py-2.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${communityActiveTab === 'ranking' ? 'bg-gradient-to-r from-red-600 to-rose-700 text-white shadow-[0_0_15px_rgba(220,38,38,0.4)]' : 'text-gray-300 hover:text-white hover:bg-white/5'}">
-            <span>🏆</span>
-            <span>Ranking & Gamificação</span>
-            <span class="px-2 py-0.5 rounded-full text-[10px] ${communityActiveTab === 'ranking' ? 'bg-black/40 text-white' : 'bg-amber-500/20 text-amber-300'} font-mono">Top XP</span>
-          </button>
-
-          <button onclick="window.appSwitchCommunityTab('challenges')"
-            class="flex items-center space-x-2 px-4 sm:px-5 py-2.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${communityActiveTab === 'challenges' ? 'bg-gradient-to-r from-red-600 to-rose-700 text-white shadow-[0_0_15px_rgba(220,38,38,0.4)]' : 'text-gray-300 hover:text-white hover:bg-white/5'}">
-            <span>🎯</span>
-            <span>Desafios Semanais</span>
-            <span class="px-2 py-0.5 rounded-full text-[10px] bg-red-500/30 text-red-200 animate-pulse font-mono">Ativo</span>
-          </button>
-
-          <button onclick="window.appSwitchCommunityTab('saved')"
-            class="flex items-center space-x-2 px-4 sm:px-5 py-2.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${communityActiveTab === 'saved' ? 'bg-gradient-to-r from-red-600 to-rose-700 text-white shadow-[0_0_15px_rgba(220,38,38,0.4)]' : 'text-gray-300 hover:text-white hover:bg-white/5'}">
-            <span>🔖</span>
-            <span>Meus Salvos & Atividade</span>
-          </button>
-        </div>
-
-        <!-- 4. CONTEÚDO DINÂMICO DA SUB-ABA ATIVA -->
+        <!-- CONTEÚDO DINÂMICO DA SUB-ABA ATIVA -->
         ${renderCommunityTabContent(filteredPosts)}
       </section>`;
 
@@ -3349,349 +3240,251 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
     const isRotative = localStorage.getItem('mcp_community_rotative') === 'true';
 
     return `
-      <!-- FEED CONTROLS & FILTER ROW -->
-      <div class="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <!-- FILTROS & BUSCA INTEGRADA COMPACTA -->
+      <div class="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-3">
         <div class="flex items-center space-x-2 overflow-x-auto pb-1 text-xs">
           <button onclick="window.appFilterCommunity('all')"
-            class="px-4 py-2 rounded-full font-bold transition-all whitespace-nowrap ${communityActiveFilter === 'all' ? 'bg-red-600 text-white shadow-[0_0_15px_rgba(220,38,38,0.4)]' : 'bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/10'}">
+            class="px-3.5 py-1.5 rounded-full font-bold transition-all whitespace-nowrap ${communityActiveFilter === 'all' ? 'bg-white text-black shadow-md' : 'bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/10'}">
             🌟 Todos (${communityPosts.length})
           </button>
           <button onclick="window.appFilterCommunity('prompts')"
-            class="px-4 py-2 rounded-full font-bold transition-all whitespace-nowrap ${communityActiveFilter === 'prompts' ? 'bg-red-600 text-white shadow-[0_0_15px_rgba(220,38,38,0.4)]' : 'bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/10'}">
+            class="px-3.5 py-1.5 rounded-full font-bold transition-all whitespace-nowrap ${communityActiveFilter === 'prompts' ? 'bg-white text-black shadow-md' : 'bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/10'}">
             ⚡ Prompts & Workflows
           </button>
           <button onclick="window.appFilterCommunity('showcase')"
-            class="px-4 py-2 rounded-full font-bold transition-all whitespace-nowrap ${communityActiveFilter === 'showcase' ? 'bg-red-600 text-white shadow-[0_0_15px_rgba(220,38,38,0.4)]' : 'bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/10'}">
+            class="px-3.5 py-1.5 rounded-full font-bold transition-all whitespace-nowrap ${communityActiveFilter === 'showcase' ? 'bg-white text-black shadow-md' : 'bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/10'}">
             🎨 Showcases & Renders
           </button>
           <button onclick="window.appFilterCommunity('tips')"
-            class="px-4 py-2 rounded-full font-bold transition-all whitespace-nowrap ${communityActiveFilter === 'tips' ? 'bg-red-600 text-white shadow-[0_0_15px_rgba(220,38,38,0.4)]' : 'bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/10'}">
+            class="px-3.5 py-1.5 rounded-full font-bold transition-all whitespace-nowrap ${communityActiveFilter === 'tips' ? 'bg-white text-black shadow-md' : 'bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/10'}">
             💡 Dicas Técnicas
           </button>
           <button onclick="window.appFilterCommunity('official')"
-            class="px-4 py-2 rounded-full font-bold transition-all whitespace-nowrap ${communityActiveFilter === 'official' ? 'bg-red-600 text-white shadow-[0_0_15px_rgba(220,38,38,0.4)]' : 'bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/10'}">
+            class="px-3.5 py-1.5 rounded-full font-bold transition-all whitespace-nowrap ${communityActiveFilter === 'official' ? 'bg-white text-black shadow-md' : 'bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/10'}">
             📌 Anúncios Oficiais
           </button>
         </div>
 
-        <div class="relative w-full md:w-80">
-          <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-xs">🔍</span>
-          <input type="text" id="communitySearchInput" placeholder="Buscar por prompt, autor, estilo..."
+        <div class="relative w-full md:w-64">
+          <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs">🔍</span>
+          <input type="text" id="communitySearchInput" placeholder="Buscar no feed..."
             value="${escapeHtml(communitySearchQuery)}"
             oninput="window.appSearchCommunity(this.value)"
-            class="w-full bg-white/5 border border-white/15 focus:border-red-500/50 rounded-full pl-9 pr-4 py-2 text-xs text-white placeholder-white/30 focus:outline-none focus:bg-black/80 transition-all font-medium">
+            class="w-full bg-white/5 border border-white/15 focus:border-white/30 rounded-full pl-8 pr-3 py-1.5 text-xs text-white placeholder-white/30 focus:outline-none focus:bg-black/60 transition-all font-medium">
         </div>
       </div>
 
-      <!-- TWO-COLUMN LAYOUT: MAIN FEED (2/3) + ELITE SIDEBAR (1/3) -->
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div class="lg:col-span-2 space-y-6">
+      <!-- LAYOUT ORIGINAL 2 COLUNAS: FEED (2/3) + SIDEBAR (1/3) -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-7">
+        <div class="lg:col-span-2 space-y-5">
 
-          <!-- TURBOCHARGED POST COMPOSER -->
-          <div class="glass-card-community rounded-3xl overflow-hidden p-6 border border-white/15 shadow-2xl relative">
+          <!-- POST COMPOSER ORIGINAL APRIMORADO -->
+          <div class="glass-card rounded-3xl overflow-hidden p-5 border border-white/10">
             <div class="flex items-start space-x-3.5">
-              <div class="relative flex-shrink-0">
-                <img src="${currentUserAvatarUrl}" class="w-11 h-11 rounded-full border-2 border-red-500/40 cursor-pointer object-cover shadow-[0_0_12px_rgba(220,38,38,0.3)]" onclick="window.appGoProfile()" title="Ver seu perfil">
-                <span class="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-emerald-400 border-2 border-black"></span>
-              </div>
-
+              <img src="${currentUserAvatarUrl}" class="w-10 h-10 rounded-full border border-white/20 flex-shrink-0 cursor-pointer object-cover" onclick="window.appGoProfile()" title="Ver perfil">
               <div class="flex-1 space-y-3 min-w-0">
-                <div class="flex items-center space-x-1.5 overflow-x-auto pb-1 text-[11px] font-mono">
-                  <span class="text-white/40 mr-1">Categoria:</span>
-                  <button type="button" onclick="window.selectPostCategory('prompts', this)"
-                    class="post-cat-btn px-2.5 py-1 rounded-lg border font-bold transition-all bg-red-500/20 text-red-200 border-red-500/40">
-                    ⚡ Prompt VIP
-                  </button>
-                  <button type="button" onclick="window.selectPostCategory('showcase', this)"
-                    class="post-cat-btn px-2.5 py-1 rounded-lg border font-bold transition-all bg-white/5 text-gray-400 border-white/10 hover:text-white">
-                    🎨 Showcase
-                  </button>
-                  <button type="button" onclick="window.selectPostCategory('tips', this)"
-                    class="post-cat-btn px-2.5 py-1 rounded-lg border font-bold transition-all bg-white/5 text-gray-400 border-white/10 hover:text-white">
-                    💡 Dica Técnica
-                  </button>
-                  <button type="button" onclick="window.selectPostCategory('help', this)"
-                    class="post-cat-btn px-2.5 py-1 rounded-lg border font-bold transition-all bg-white/5 text-gray-400 border-white/10 hover:text-white">
-                    ❓ Dúvida
-                  </button>
-                </div>
+                <input type="text" id="newPostTitle" placeholder="Título do post (opcional)..."
+                  class="w-full bg-transparent border-b border-white/10 pb-2 text-sm font-bold text-white placeholder-white/30 focus:outline-none focus:border-white/30 transition-colors">
+                <textarea id="newPostContent" rows="3" placeholder="Compartilhe uma ideia, prompt ou dúvida com a comunidade..."
+                  class="w-full bg-white/5 border border-white/10 rounded-2xl p-3.5 text-sm text-white focus:outline-none focus:border-white/25 focus:bg-white/10 transition-all resize-none placeholder-white/30 leading-relaxed"></textarea>
 
-                <input type="text" id="newPostTitle" placeholder="Título da sua publicação ou pergunta (opcional)..."
-                  class="w-full bg-transparent border-b border-white/10 pb-2 text-sm font-bold text-white placeholder-white/30 focus:outline-none focus:border-red-500/60 transition-colors">
-
-                <textarea id="newPostContent" rows="3" placeholder="Compartilhe uma ideia, prompt inovador, dúvida técnica ou resultado com a comunidade..."
-                  class="w-full bg-white/5 border border-white/10 rounded-2xl p-4 text-sm text-white focus:outline-none focus:border-red-500/40 focus:bg-white/10 transition-all resize-none placeholder-white/30 leading-relaxed"></textarea>
-
-                <div id="composerPromptBox" class="${communityPromptBoxOpen ? '' : 'hidden'} p-4 rounded-2xl bg-black/80 border border-red-500/30 space-y-3">
+                <!-- AI Prompt Studio Module (Expansível) -->
+                <div id="composerPromptBox" class="${communityPromptBoxOpen ? '' : 'hidden'} p-3.5 rounded-2xl bg-black/70 border border-white/10 space-y-2.5">
                   <div class="flex items-center justify-between border-b border-white/10 pb-2">
-                    <span class="text-xs font-bold text-red-400 flex items-center space-x-1.5 font-mono">
-                      <span>🔮</span><span>AI Prompt Studio (Formatador de Prompts)</span>
+                    <span class="text-xs font-bold text-white/80 flex items-center space-x-1.5 font-mono">
+                      <span>🔮</span><span>AI Prompt Studio</span>
                     </span>
-                    <select id="newPostPromptModel" class="bg-black/80 border border-white/20 rounded-lg px-2.5 py-1 text-[11px] text-white focus:outline-none focus:border-red-500">
+                    <select id="newPostPromptModel" class="bg-black/80 border border-white/20 rounded-lg px-2 py-0.5 text-[11px] text-white focus:outline-none">
                       <option value="Flux.1 Dev">Flux.1 Dev</option>
                       <option value="Flux.1 Schnell">Flux.1 Schnell</option>
                       <option value="Midjourney v6.1">Midjourney v6.1</option>
                       <option value="Midjourney v7">Midjourney v7</option>
                       <option value="Ideogram 2.0">Ideogram 2.0</option>
                       <option value="ComfyUI Pipeline">ComfyUI Pipeline</option>
-                      <option value="Kling AI">Kling AI Video</option>
                       <option value="Stable Diffusion 3.5">Stable Diffusion 3.5</option>
                     </select>
                   </div>
-                  <textarea id="newPostPromptCode" rows="2" placeholder="Cole aqui o prompt textual exato (ex: ultra-cinematic portrait...)"
-                    class="w-full bg-white/5 border border-white/10 rounded-xl p-3 text-xs font-mono text-gray-200 placeholder-white/30 focus:outline-none focus:border-red-500/40"></textarea>
-                  <input type="text" id="newPostPromptParams" placeholder="Parâmetros ou flags (ex: --ar 16:9 --v 6.1 --stylize 350 --seed 4209)"
-                    class="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-xs font-mono text-gray-300 placeholder-white/30 focus:outline-none focus:border-red-500/40">
+                  <textarea id="newPostPromptCode" rows="2" placeholder="Cole aqui o prompt textual exato..."
+                    class="w-full bg-white/5 border border-white/10 rounded-xl p-2.5 text-xs font-mono text-gray-200 placeholder-white/30 focus:outline-none"></textarea>
+                  <input type="text" id="newPostPromptParams" placeholder="Parâmetros ou flags (ex: --ar 16:9 --v 6.1 --stylize 350)"
+                    class="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-1.5 text-xs font-mono text-gray-300 placeholder-white/30 focus:outline-none">
                 </div>
 
-                <div id="postImageUploadPreview" class="hidden grid grid-cols-4 sm:grid-cols-5 gap-2 pt-2"></div>
+                <!-- Preview de Upload de Imagens -->
+                <div id="postImageUploadPreview" class="hidden grid grid-cols-5 gap-2 pt-1"></div>
 
+                <!-- Campo de Link -->
                 <div id="postLinkField" class="hidden p-3 bg-white/5 rounded-2xl border border-white/10 space-y-2">
-                  <input type="url" id="newPostLinkUrl" placeholder="URL de referência (https://...)" class="w-full bg-transparent text-xs text-white placeholder-white/30 focus:outline-none border-b border-white/10 pb-1">
-                  <input type="text" id="newPostLinkTitle" placeholder="Título amigável do link (opcional)" class="w-full bg-transparent text-xs text-white placeholder-white/30 focus:outline-none">
+                  <input type="url" id="newPostLinkUrl" placeholder="URL do link (https://...)" class="w-full bg-transparent text-xs text-white placeholder-white/30 focus:outline-none border-b border-white/10 pb-1">
+                  <input type="text" id="newPostLinkTitle" placeholder="Título do link (opcional)" class="w-full bg-transparent text-xs text-white placeholder-white/30 focus:outline-none">
                 </div>
               </div>
             </div>
 
             <input type="file" id="communityFileInput" multiple accept="image/*" class="hidden">
 
-            <div class="flex flex-wrap items-center justify-between pt-4 mt-4 border-t border-white/10 gap-3">
-              <div class="flex items-center flex-wrap gap-2">
-                <button type="button" onclick="document.getElementById('communityFileInput').click()" class="flex items-center space-x-1.5 text-xs text-white/80 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 px-3.5 py-1.5 rounded-full transition-all">
-                  <span>📷</span><span>Imagens (Até 5MB)</span>
+            <!-- Composer Toolbar -->
+            <div class="flex items-center justify-between pt-3 mt-3 border-t border-white/10">
+              <div class="flex items-center space-x-2">
+                <button type="button" onclick="document.getElementById('communityFileInput').click()" class="flex items-center space-x-1.5 text-xs text-white/70 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 px-3 py-1.5 rounded-full transition-all">
+                  <span>📷</span><span>Upload de Imagem (Até 5MB)</span>
                 </button>
-                <button type="button" onclick="window.toggleComposerPromptBox()" class="flex items-center space-x-1.5 text-xs text-red-300 hover:text-white bg-red-950/40 hover:bg-red-900/60 border border-red-500/30 px-3.5 py-1.5 rounded-full transition-all">
-                  <span>🔮</span><span>Adicionar Prompt AI</span>
+                <button type="button" onclick="window.toggleComposerPromptBox()" class="flex items-center space-x-1.5 text-xs text-white/70 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 px-3 py-1.5 rounded-full transition-all">
+                  <span>🔮</span><span>AI Prompt Studio</span>
                 </button>
-                <button type="button" onclick="window.togglePostLink()" class="flex items-center space-x-1.5 text-xs text-white/80 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 px-3.5 py-1.5 rounded-full transition-all">
+                <button type="button" onclick="window.togglePostLink()" class="flex items-center space-x-1.5 text-xs text-white/70 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 px-3 py-1.5 rounded-full transition-all">
                   <span>🔗</span><span>Link</span>
                 </button>
               </div>
-              <button id="submitPostBtn" onclick="window.appCreatePost()"
-                class="px-7 py-2.5 rounded-full font-extrabold bg-gradient-to-r from-red-600 to-rose-700 hover:from-red-500 hover:to-rose-600 text-white text-xs shadow-[0_0_20px_rgba(220,38,38,0.4)] hover:scale-105 active:scale-95 transition-all">
-                Publicar no Feed 🚀
+              <button id="submitPostBtn" onclick="window.appCreatePost()" class="px-6 py-2 rounded-full font-bold bg-white text-black text-xs shadow-xl hover:scale-105 active:scale-95 transition-all">
+                Publicar
               </button>
             </div>
           </div>
 
-          <!-- POSTS FEED LIST -->
-          <div class="space-y-5" id="communityFeed">
+          <!-- POSTS FEED -->
+          <div class="space-y-4" id="communityFeed">
             ${filteredPosts.length === 0
-              ? `<div class="text-center py-20 glass-card-community rounded-3xl border border-white/10">
-                  <div class="text-5xl mb-3">💬</div>
-                  <h3 class="text-base font-bold text-white mb-1">Nenhum post encontrado</h3>
-                  <p class="text-graphite text-xs max-w-sm mx-auto">Tente ajustar seus termos de busca ou seja o primeiro a publicar nessa categoria!</p>
-                  <button onclick="window.appFilterCommunity('all')" class="mt-4 px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-xs font-bold text-white border border-white/15">Ver todos os posts</button>
-                </div>`
+              ? `<div class="text-center py-16 glass-card rounded-3xl"><div class="text-4xl mb-3">💬</div><p class="text-graphite text-sm">Nenhum post encontrado. Seja o primeiro a publicar!</p></div>`
               : filteredPosts.map(renderPostCard).join('')}
           </div>
         </div>
 
-        <!-- RIGHT COLUMN: ENRICHED SIDEBAR (1/3) -->
-        <div class="space-y-6">
-
-          <!-- 1. VIP CREATOR PASSPORT -->
-          <div class="glass-card-community rounded-3xl p-6 border border-red-500/20 shadow-xl relative overflow-hidden">
-            <div class="absolute -top-12 -right-12 w-32 h-32 bg-red-600/10 rounded-full blur-2xl pointer-events-none"></div>
-
-            <div class="flex items-center space-x-3.5 mb-4 relative z-10">
-              <div class="relative">
-                <img src="${currentUserAvatarUrl}" class="w-14 h-14 rounded-full border-2 border-red-500/50 object-cover shadow-[0_0_15px_rgba(220,38,38,0.35)]">
-                <span class="absolute bottom-0 right-0 w-3.5 h-3.5 rounded-full bg-red-500 border-2 border-black animate-pulse"></span>
-              </div>
+        <!-- SIDEBAR (1/3) -->
+        <div class="space-y-5">
+          <!-- 1. Perfil Rápido -->
+          <div class="glass-card rounded-3xl p-5 border border-white/10">
+            <div class="flex items-center space-x-3 mb-4">
+              <img src="${currentUserAvatarUrl}" class="w-12 h-12 rounded-full border border-white/20 object-cover">
               <div class="min-w-0">
-                <p class="text-sm font-extrabold text-white truncate">${currentUserNameStr}</p>
+                <p class="text-sm font-bold text-white truncate">${currentUserNameStr}</p>
                 <div class="mt-0.5">${getBadge(currentUserRole)}</div>
-                <span class="text-[10px] text-red-300 font-mono block mt-1">Nível 10 • Visionário Supremo</span>
               </div>
             </div>
-
-            <div class="space-y-1.5 mb-5 relative z-10">
-              <div class="flex justify-between items-center text-[10px] font-mono">
-                <span class="text-gray-400">Progresso de Maestria</span>
-                <span class="text-red-300 font-bold">9.450 / 10.000 XP</span>
-              </div>
-              <div class="w-full h-2 rounded-full bg-white/10 overflow-hidden border border-white/10">
-                <div class="h-full rounded-full bg-gradient-to-r from-red-600 to-rose-400 shadow-[0_0_10px_rgba(239,68,68,0.6)]" style="width: 94.5%;"></div>
-              </div>
-            </div>
-
-            <div class="flex items-center space-x-1.5 mb-5 flex-wrap gap-y-1.5">
-              <span class="px-2 py-0.5 rounded-full text-[9px] font-mono bg-red-500/15 text-red-300 border border-red-500/30 font-bold">🚀 Fundador</span>
-              <span class="px-2 py-0.5 rounded-full text-[9px] font-mono bg-amber-500/15 text-amber-300 border border-amber-500/30 font-bold">💎 VIP Master</span>
-              <span class="px-2 py-0.5 rounded-full text-[9px] font-mono bg-purple-500/15 text-purple-300 border border-purple-500/30 font-bold">⚡ Prompt Pro</span>
-            </div>
-
-            <div class="grid grid-cols-2 gap-2 text-center text-xs font-mono mb-4 pt-3 border-t border-white/10">
-              <div class="bg-white/5 rounded-xl p-2.5 border border-white/10">
-                <p class="text-lg font-black text-white">${communityPosts.filter(p => p.user_id === currentUserId || p.user_name === currentUserNameStr).length}</p>
-                <p class="text-[10px] text-gray-400">Meus Posts</p>
-              </div>
-              <div class="bg-white/5 rounded-xl p-2.5 border border-white/10">
-                <p class="text-lg font-black text-white">${communityPosts.reduce((acc, p) => acc + (p.comments || []).filter(c => c.user_id === currentUserId).length, 0)}</p>
-                <p class="text-[10px] text-gray-400">Respostas</p>
-              </div>
-            </div>
-
-            <button onclick="window.appGoProfile()" class="w-full py-2.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-xs text-white transition-all font-bold flex items-center justify-center space-x-1.5">
-              <span>⚙️ Gerenciar Perfil VIP</span>
-              <span>→</span>
+            <button onclick="window.appGoProfile()" class="w-full py-2.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-xs text-white transition-all font-semibold">
+              Editar Perfil →
             </button>
           </div>
 
-          <!-- 2. SHADER ATMOSPHERE SUITE CONTROL -->
-          <div class="glass-card-community rounded-3xl p-6 border border-white/15 shadow-xl space-y-4">
-            <div class="flex items-center justify-between border-b border-white/10 pb-3">
+          <!-- 2. Estatísticas & Métricas da Comunidade -->
+          <div class="glass-card rounded-3xl p-5 border border-white/10">
+            <h3 class="text-sm font-bold text-white mb-3 flex items-center justify-between">
+              <span>📊 Estatísticas</span>
+              <span class="text-[10px] text-emerald-400 font-mono font-bold">Ao Vivo</span>
+            </h3>
+            <div class="grid grid-cols-2 gap-2.5">
+              <div class="bg-white/5 rounded-xl p-2.5 text-center border border-white/10">
+                <p class="text-lg font-extrabold text-white">1.842</p>
+                <p class="text-[10px] text-gray-400">Membros VIP Ativos</p>
+              </div>
+              <div class="bg-white/5 rounded-xl p-2.5 text-center border border-white/10">
+                <p class="text-lg font-extrabold text-white">14.280</p>
+                <p class="text-[10px] text-gray-400">Prompts & Workflows</p>
+              </div>
+              <div class="bg-white/5 rounded-xl p-2.5 text-center border border-white/10">
+                <p class="text-lg font-extrabold text-white">${communityPosts.length}</p>
+                <p class="text-[10px] text-gray-400">Posts no Feed</p>
+              </div>
+              <div class="bg-white/5 rounded-xl p-2.5 text-center border border-white/10">
+                <p class="text-lg font-extrabold text-white">${communityPosts.reduce((a,p)=>a+(p.comments?.length||0),0)}</p>
+                <p class="text-[10px] text-gray-400">Respostas</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Atmosfera Visual WebGL (Personal OS) - Discreta e Elegante na Sidebar -->
+          <div class="glass-card rounded-3xl p-5 border border-white/10 space-y-3">
+            <div class="flex items-center justify-between border-b border-white/10 pb-2.5">
               <div class="flex items-center space-x-2">
-                <span class="text-lg">🌌</span>
-                <div>
-                  <h3 class="text-sm font-bold text-white">Atmosfera de Fundo</h3>
-                  <span class="text-[10px] text-gray-400 font-mono">Personal OS Shaders</span>
-                </div>
+                <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                <h4 class="text-xs font-bold text-white font-mono">Atmosfera Visual WebGL (Personal OS)</h4>
               </div>
-              <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]"></span>
+              <span class="text-[10px] text-red-300 font-mono">5s</span>
             </div>
+            <div>
+              <label class="block text-[10px] text-gray-400 font-mono mb-1">Shader de Fundo Rubro:</label>
+              <select onchange="window.appSelectCommunityShader(this.value)" class="w-full bg-black/70 border border-white/20 rounded-xl px-3 py-2 text-xs text-white focus:outline-none font-mono">
+                ${shadersList.map(sh => `
+                  <option value="${sh.id}" ${sh.id === currentShaderId ? 'selected' : ''}>${sh.icon || '✨'} ${sh.name}</option>
+                `).join('')}
+              </select>
+            </div>
+            <div class="flex items-center justify-between pt-1 text-xs">
+              <button onclick="window.appToggleCommunityRotative()" id="btnCommunityRotativeToggle" class="shader-pill-btn text-xs text-red-300 hover:text-white font-mono flex items-center space-x-1">
+                <span>${isRotative ? '🔄 Rotativo (5s)' : '⏸️ Modo Fixo'}</span>
+              </button>
+              <button onclick="window.appRandomCommunityShader()" class="text-gray-400 hover:text-white font-mono text-[11px]">
+                🎲 Sortear
+              </button>
+            </div>
+          </div>
 
-            <div class="space-y-3">
-              <div>
-                <label class="block text-[11px] text-gray-400 font-mono mb-1.5">Shader Rubro Ativo:</label>
-                <select onchange="window.appSelectCommunityShader(this.value)" class="w-full bg-black/80 border border-white/20 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-red-500 font-semibold font-mono">
-                  ${shadersList.map(sh => `
-                    <option value="${sh.id}" ${sh.id === currentShaderId ? 'selected' : ''}>${sh.icon || '✨'} ${sh.name}</option>
-                  `).join('')}
-                </select>
+          <!-- 4. Trending Prompts -->
+          <div class="glass-card rounded-3xl p-5 border border-white/10">
+            <h3 class="text-sm font-bold text-white mb-3 flex items-center space-x-2">
+              <span>🔥</span><span>Trending Prompts</span>
+            </h3>
+            <div class="space-y-2 text-xs">
+              <div onclick="window.appSearchCommunity('#FluxReduxStyle')" class="flex items-center justify-between p-2 rounded-xl bg-white/5 hover:bg-white/10 transition-all cursor-pointer">
+                <span class="font-mono text-red-300 font-bold">#FluxReduxStyle</span>
+                <span class="text-[10px] text-gray-400">342 posts</span>
               </div>
-
-              <div class="pt-2 flex items-center justify-between text-xs">
-                <button onclick="window.appRandomCommunityShader()" class="text-red-300 hover:text-white font-mono text-[11px] flex items-center space-x-1 underline">
-                  <span>🎲 Alternar Aleatório</span>
-                </button>
-                <button onclick="window.appToggleCommunityRotative()" class="text-gray-300 hover:text-white font-mono text-[11px]">
-                  ${isRotative ? '🔄 Rotativo (20s)' : '⏸️ Modo Fixo'}
-                </button>
+              <div onclick="window.appSearchCommunity('#CyberpunkRuby')" class="flex items-center justify-between p-2 rounded-xl bg-white/5 hover:bg-white/10 transition-all cursor-pointer">
+                <span class="font-mono text-red-300 font-bold">#CyberpunkRuby</span>
+                <span class="text-[10px] text-gray-400">280 posts</span>
+              </div>
+              <div onclick="window.appSearchCommunity('#MidjourneyV7')" class="flex items-center justify-between p-2 rounded-xl bg-white/5 hover:bg-white/10 transition-all cursor-pointer">
+                <span class="font-mono text-red-300 font-bold">#MidjourneyV7</span>
+                <span class="text-[10px] text-gray-400">215 posts</span>
               </div>
             </div>
           </div>
 
-          <!-- 3. TRENDING PROMPTS & HASHTAGS -->
-          <div class="glass-card-community rounded-3xl p-6 border border-white/15 shadow-xl">
-            <div class="flex items-center space-x-2 border-b border-white/10 pb-3 mb-4">
-              <span class="text-lg">🔥</span>
-              <h3 class="text-sm font-bold text-white">Trending Prompts</h3>
+          <!-- 5. Top Criadores da Semana -->
+          <div class="glass-card rounded-3xl p-5 border border-white/10">
+            <div class="flex items-center justify-between mb-3">
+              <h3 class="text-sm font-bold text-white flex items-center space-x-2">
+                <span>🏆</span><span>Top Criadores da Semana</span>
+              </h3>
+              <button onclick="window.appSwitchCommunityTab('ranking')" class="text-[10px] font-mono text-red-300 hover:underline">Ver Todos →</button>
             </div>
-            <div class="space-y-2.5">
-              <div class="flex items-center justify-between p-2.5 rounded-xl bg-white/5 hover:bg-red-500/10 border border-white/5 hover:border-red-500/30 transition-all cursor-pointer" onclick="window.appSearchCommunity('#FluxReduxStyle')">
-                <div>
-                  <p class="text-xs font-bold text-white font-mono">#FluxReduxStyle</p>
-                  <p class="text-[10px] text-gray-400">Hiperrealismo cinemático</p>
+            <div class="space-y-2 text-xs">
+              <div class="flex items-center justify-between p-2 rounded-xl bg-white/5">
+                <div class="flex items-center space-x-2 min-w-0">
+                  <span class="font-bold text-amber-400">1º</span>
+                  <p class="font-bold text-white truncate">Mateus Celestino Pro X</p>
                 </div>
-                <span class="text-[10px] font-mono text-red-400 font-bold">342 posts</span>
+                <span class="font-mono font-bold text-amber-400">3.450 XP</span>
               </div>
-
-              <div class="flex items-center justify-between p-2.5 rounded-xl bg-white/5 hover:bg-red-500/10 border border-white/5 hover:border-red-500/30 transition-all cursor-pointer" onclick="window.appSearchCommunity('#CyberpunkRuby')">
-                <div>
-                  <p class="text-xs font-bold text-white font-mono">#CyberpunkRuby</p>
-                  <p class="text-[10px] text-gray-400">Estética neon carmesim</p>
+              <div class="flex items-center justify-between p-2 rounded-xl bg-white/5">
+                <div class="flex items-center space-x-2 min-w-0">
+                  <span class="font-bold text-gray-400">2º</span>
+                  <p class="font-bold text-white truncate">Lucas Rocha</p>
                 </div>
-                <span class="text-[10px] font-mono text-red-400 font-bold">280 posts</span>
-              </div>
-
-              <div class="flex items-center justify-between p-2.5 rounded-xl bg-white/5 hover:bg-red-500/10 border border-white/5 hover:border-red-500/30 transition-all cursor-pointer" onclick="window.appSearchCommunity('#MidjourneyV7')">
-                <div>
-                  <p class="text-xs font-bold text-white font-mono">#MidjourneyV7</p>
-                  <p class="text-[10px] text-gray-400">Texturas de pele 8k</p>
-                </div>
-                <span class="text-[10px] font-mono text-red-400 font-bold">215 posts</span>
+                <span class="font-mono font-bold text-gray-300">2.190 XP</span>
               </div>
             </div>
           </div>
 
-          <!-- 4. LEADERBOARD SEMANAL -->
-          <div class="glass-card-community rounded-3xl p-6 border border-white/15 shadow-xl">
-            <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-4">
-              <div class="flex items-center space-x-2">
-                <span class="text-lg">🏆</span>
-                <h3 class="text-sm font-bold text-white">Top Criadores da Semana</h3>
-              </div>
-              <button onclick="window.appSwitchCommunityTab('ranking')" class="text-[10px] font-mono text-amber-400 hover:underline">Ver Todos →</button>
-            </div>
-
-            <div class="space-y-3">
-              <div class="flex items-center justify-between p-2 rounded-xl bg-gradient-to-r from-amber-500/15 to-transparent border border-amber-500/30">
-                <div class="flex items-center space-x-2.5 min-w-0">
-                  <span class="text-base font-bold text-amber-400 ml-1">1º</span>
-                  <img src="https://api.dicebear.com/7.x/bottts/svg?seed=AdminBoss" class="w-8 h-8 rounded-full border border-amber-400/50">
-                  <div class="min-w-0">
-                    <p class="text-xs font-bold text-white truncate">Mateus Celestino Pro X</p>
-                    <p class="text-[9px] text-amber-300 font-mono">👑 Master Founder</p>
-                  </div>
-                </div>
-                <span class="text-xs font-mono font-extrabold text-amber-400">3.450 pts</span>
-              </div>
-
-              <div class="flex items-center justify-between p-2 rounded-xl bg-white/5 border border-white/5">
-                <div class="flex items-center space-x-2.5 min-w-0">
-                  <span class="text-base font-bold text-gray-300 ml-1">2º</span>
-                  <img src="https://api.dicebear.com/7.x/bottts/svg?seed=MemberProX" class="w-8 h-8 rounded-full border border-white/20">
-                  <div class="min-w-0">
-                    <p class="text-xs font-bold text-white truncate">Lucas Rocha</p>
-                    <p class="text-[9px] text-gray-400 font-mono">⚡ Aluno VIP Pro</p>
-                  </div>
-                </div>
-                <span class="text-xs font-mono font-extrabold text-white">2.190 pts</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- 5. CANAIS & SALAS RÁPIDAS -->
-          <div class="glass-card-community rounded-3xl p-6 border border-white/15 shadow-xl">
-            <div class="flex items-center space-x-2 border-b border-white/10 pb-3 mb-4">
-              <span class="text-lg">💬</span>
-              <h3 class="text-sm font-bold text-white">Salas Rápidas & Sub-Abas</h3>
-            </div>
-            <div class="space-y-1.5 text-xs font-mono">
-              <button onclick="window.appSwitchCommunityTab('feed'); window.appFilterCommunity('all');" class="w-full flex items-center justify-between p-2 rounded-xl hover:bg-white/5 text-gray-300 hover:text-white transition-all text-left">
-                <span># 💬 geral-chat</span>
+          <!-- 6. Salas Rápidas -->
+          <div class="glass-card rounded-3xl p-5 border border-white/10">
+            <h3 class="text-sm font-bold text-white mb-2.5 flex items-center space-x-2">
+              <span>💬</span><span>Salas Rápidas</span>
+            </h3>
+            <div class="space-y-1 text-xs font-mono">
+              <button onclick="window.appSwitchCommunityTab('feed'); window.appFilterCommunity('all');" class="w-full flex items-center justify-between p-1.5 rounded-lg hover:bg-white/5 text-gray-300 hover:text-white transition-all text-left">
+                <span># geral-feed</span>
                 <span class="text-[10px] text-emerald-400">Feed</span>
               </button>
-              <button onclick="window.appSwitchCommunityTab('prompts')" class="w-full flex items-center justify-between p-2 rounded-xl hover:bg-white/5 text-gray-300 hover:text-white transition-all text-left">
-                <span># 🔮 acervo-prompts</span>
-                <span class="text-[10px] text-red-400">Vault VIP</span>
+              <button onclick="window.appSwitchCommunityTab('prompts')" class="w-full flex items-center justify-between p-1.5 rounded-lg hover:bg-white/5 text-gray-300 hover:text-white transition-all text-left">
+                <span># acervo-prompts</span>
+                <span class="text-[10px] text-red-400">Vault</span>
               </button>
-              <button onclick="window.appSwitchCommunityTab('challenges')" class="w-full flex items-center justify-between p-2 rounded-xl hover:bg-white/5 text-gray-300 hover:text-white transition-all text-left">
-                <span># 🎯 desafio-semanal</span>
-                <span class="text-[10px] text-amber-400">Ativo</span>
-              </button>
-              <button onclick="window.appSwitchCommunityTab('ranking')" class="w-full flex items-center justify-between p-2 rounded-xl hover:bg-white/5 text-gray-300 hover:text-white transition-all text-left">
-                <span># 🏆 hall-da-fama</span>
-                <span class="text-[10px] text-purple-400">XP</span>
-              </button>
-              <button onclick="window.appGoServersNav()" class="w-full flex items-center justify-between p-2 rounded-xl hover:bg-white/5 text-gray-300 hover:text-white transition-all text-left">
-                <span># ⚙️ masterclasses-servers</span>
-                <span class="text-[10px] text-cyan-400">Acessar →</span>
+              <button onclick="window.appSwitchCommunityTab('ranking')" class="w-full flex items-center justify-between p-1.5 rounded-lg hover:bg-white/5 text-gray-300 hover:text-white transition-all text-left">
+                <span># hall-da-fama</span>
+                <span class="text-[10px] text-amber-400">XP</span>
               </button>
             </div>
-          </div>
-
-          <!-- 6. DIRETRIZES DA COMUNIDADE -->
-          <div class="glass-card-community rounded-3xl p-6 border border-white/15 shadow-xl text-xs space-y-3">
-            <h4 class="font-bold text-white flex items-center space-x-2">
-              <span>🛡️</span><span>Diretrizes da Comunidade Soberana</span>
-            </h4>
-            <ul class="space-y-2 text-gray-300 leading-relaxed text-[11px]">
-              <li class="flex items-start space-x-2">
-                <span class="text-red-400 font-bold">•</span>
-                <span>Compartilhe prompts completos com parâmetros para enriquecer os colegas.</span>
-              </li>
-              <li class="flex items-start space-x-2">
-                <span class="text-red-400 font-bold">•</span>
-                <span>Respeito absoluto e colaboração construtiva entre todos os criadores.</span>
-              </li>
-              <li class="flex items-start space-x-2">
-                <span class="text-red-400 font-bold">•</span>
-                <span>Spam ou autopromoção não autorizada resultam em suspensão imediata.</span>
-              </li>
-            </ul>
           </div>
 
           <!-- Side Banner Ads -->
