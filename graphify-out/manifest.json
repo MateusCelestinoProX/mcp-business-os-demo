@@ -2046,9 +2046,9 @@
     "semantic_hash": ""
   },
   "public/comunidade/app.js": {
-    "mtime": 1792174691.324469,
-    "seen": 1792174725.273362,
-    "ast_hash": "ad2d97c5719a4c36176cdd6d40e36d4f",
+    "mtime": 1792174930.9779634,
+    "seen": 1792174967.2117372,
+    "ast_hash": "5e229ca9c0e438daa79c57bc5e19160b",
     "semantic_hash": ""
   },
   "public/comunidade/netlify/functions/create-payment.js": {

@@ -3171,8 +3171,8 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
     mainAppContainer.innerHTML = `
       <section class="py-8 px-4 sm:px-6 lg:px-8 max-w-[1080px] mx-auto relative z-10">
 
-        <!-- HEADER MINIMALISTA & ELEGANTE -->
-        <div class="mb-6 flex flex-col sm:flex-row sm:items-center justify-between border-b border-white/10 pb-5 gap-4">
+        <!-- HEADER MINIMALISTA: APENAS FEED & DISCUSSÕES -->
+        <div class="mb-6 flex items-center justify-between border-b border-white/10 pb-5">
           <div>
             <div class="flex items-center space-x-2">
               <span class="text-xs font-bold text-white/50 tracking-widest uppercase">REDE SOCIAL VIP</span>
@@ -3180,37 +3180,13 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
               <span class="text-[10px] text-red-300 font-mono">5s cinematic</span>
             </div>
             <h1 class="text-3xl font-extrabold text-white mt-1 flex items-center space-x-3">
-              <span>Comunidade A.I Visuals</span>
+              <span>Feed & Discussões</span>
               ${currentUserRole === 'admin' ? '<span class="text-xs px-2.5 py-0.5 rounded-full bg-red-500/20 border border-red-500/40 text-red-200 font-mono font-bold">👑 ADMIN</span>' : ''}
             </h1>
           </div>
-
-          <!-- SUB-NAV TABS MINIMALISTAS (APPLE PILLS) -->
-          <div class="flex items-center space-x-1 bg-black/40 border border-white/10 p-1 rounded-2xl backdrop-blur-xl overflow-x-auto shader-scroll-strip">
-            <button onclick="window.appSwitchCommunityTab('feed')"
-              class="px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all whitespace-nowrap ${communityActiveTab === 'feed' ? 'bg-white text-black font-bold shadow-md' : 'text-gray-300 hover:text-white hover:bg-white/5'}">
-              <span>💬 Feed & Discussões</span>
-            </button>
-            <button onclick="window.appSwitchCommunityTab('prompts')"
-              class="px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all whitespace-nowrap ${communityActiveTab === 'prompts' ? 'bg-white text-black font-bold shadow-md' : 'text-gray-300 hover:text-white hover:bg-white/5'}">
-              <span>🔮 Acervo de Prompts VIP</span>
-            </button>
-            <button onclick="window.appSwitchCommunityTab('ranking')"
-              class="px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all whitespace-nowrap ${communityActiveTab === 'ranking' ? 'bg-white text-black font-bold shadow-md' : 'text-gray-300 hover:text-white hover:bg-white/5'}">
-              <span>🏆 Ranking & Gamificação</span>
-            </button>
-            <button onclick="window.appSwitchCommunityTab('challenges')"
-              class="px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all whitespace-nowrap ${communityActiveTab === 'challenges' ? 'bg-white text-black font-bold shadow-md' : 'text-gray-300 hover:text-white hover:bg-white/5'}">
-              <span>🎯 Desafios Semanais</span>
-            </button>
-            <button onclick="window.appSwitchCommunityTab('saved')"
-              class="px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all whitespace-nowrap ${communityActiveTab === 'saved' ? 'bg-white text-black font-bold shadow-md' : 'text-gray-300 hover:text-white hover:bg-white/5'}">
-              <span>🔖 Meus Salvos & Atividade</span>
-            </button>
-          </div>
         </div>
 
-        <!-- CONTEÚDO DINÂMICO DA SUB-ABA ATIVA -->
+        <!-- CONTEÚDO PURO: FEED E DISCUSSÃO -->
         ${renderCommunityTabContent(filteredPosts)}
       </section>`;
 

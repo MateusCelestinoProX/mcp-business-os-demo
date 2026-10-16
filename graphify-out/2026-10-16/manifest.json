@@ -2046,9 +2046,9 @@
     "semantic_hash": ""
   },
   "public/comunidade/app.js": {
-    "mtime": 1792172379.8876312,
-    "seen": 1792172406.56461,
-    "ast_hash": "ef67c004604780c7f69700e1cc727949",
+    "mtime": 1792174691.324469,
+    "seen": 1792174725.273362,
+    "ast_hash": "ad2d97c5719a4c36176cdd6d40e36d4f",
     "semantic_hash": ""
   },
   "public/comunidade/netlify/functions/create-payment.js": {
@@ -2898,9 +2898,9 @@
     "semantic_hash": ""
   },
   "public/comunidade/index.html": {
-    "mtime": 1792170518.0728893,
-    "seen": 1792170930.179162,
-    "ast_hash": "659ac480931d9519001ab5e8c0336a01",
+    "mtime": 1792173918.2864735,
+    "seen": 1792174725.281625,
+    "ast_hash": "6257817b071454535811fdf1ded930f3",
     "semantic_hash": ""
   },
   "public/comunidade/effects/CREATIVE EFFECT's/ANCESTRAL HAND STATUE RENDER/ChatGPT_Image_17_de_jul._de_2025_15_25_13.webp": {
@@ -15558,9 +15558,9 @@
     "semantic_hash": ""
   },
   "public/comunidade/js/community-shaders.js": {
-    "mtime": 1792170357.1455321,
-    "seen": 1792170930.170395,
-    "ast_hash": "a40f02ec784a3d048f4d7d8f15d8d0ed",
+    "mtime": 1792174412.8190835,
+    "seen": 1792174725.2733629,
+    "ast_hash": "f4a2c84df6637106b0645d5d3c77f801",
     "semantic_hash": ""
   },
   "public/comunidade/js/ogl.js": {

@@ -5684,7 +5684,7 @@
       "file_type": "code",
       "norm_label": "clearauthalert()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4968"
+      "source_location": "L4944"
     },
     {
       "id": "public_comunidade_app_converttoembedurl",
@@ -5708,7 +5708,7 @@
       "file_type": "code",
       "norm_label": "_deprecatedadminviewlegacy()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L5043"
+      "source_location": "L5019"
     },
     {
       "id": "public_comunidade_app_embedlessonmetadata",
@@ -5900,7 +5900,7 @@
       "file_type": "code",
       "norm_label": "hideauthmodal()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L5024"
+      "source_location": "L5000"
     },
     {
       "id": "public_comunidade_app_hidelessoneditormodal",
@@ -5960,7 +5960,7 @@
       "file_type": "code",
       "norm_label": "loadandrenderadmintabcontent()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L5103"
+      "source_location": "L5079"
     },
     {
       "id": "public_comunidade_app_loadbanners",
@@ -6140,7 +6140,7 @@
       "file_type": "code",
       "norm_label": "renderadminview()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L5037"
+      "source_location": "L5013"
     },
     {
       "id": "public_comunidade_app_renderbreadcrumb",
@@ -6176,7 +6176,7 @@
       "file_type": "code",
       "norm_label": "rendercommentcard()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4037"
+      "source_location": "L4013"
     },
     {
       "id": "public_comunidade_app_rendercommunitychallengestab",
@@ -6188,7 +6188,7 @@
       "file_type": "code",
       "norm_label": "rendercommunitychallengestab()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L3746"
+      "source_location": "L3722"
     },
     {
       "id": "public_comunidade_app_rendercommunityfeedtab",
@@ -6200,7 +6200,7 @@
       "file_type": "code",
       "norm_label": "rendercommunityfeedtab()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L3237"
+      "source_location": "L3213"
     },
     {
       "id": "public_comunidade_app_rendercommunitypromptstab",
@@ -6212,7 +6212,7 @@
       "file_type": "code",
       "norm_label": "rendercommunitypromptstab()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L3496"
+      "source_location": "L3472"
     },
     {
       "id": "public_comunidade_app_rendercommunityrankingtab",
@@ -6224,7 +6224,7 @@
       "file_type": "code",
       "norm_label": "rendercommunityrankingtab()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L3625"
+      "source_location": "L3601"
     },
     {
       "id": "public_comunidade_app_rendercommunitysavedtab",
@@ -6236,7 +6236,7 @@
       "file_type": "code",
       "norm_label": "rendercommunitysavedtab()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L3839"
+      "source_location": "L3815"
     },
     {
       "id": "public_comunidade_app_rendercommunitytabcontent",
@@ -6248,7 +6248,7 @@
       "file_type": "code",
       "norm_label": "rendercommunitytabcontent()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L3221"
+      "source_location": "L3197"
     },
     {
       "id": "public_comunidade_app_rendercommunityview",
@@ -6284,7 +6284,7 @@
       "file_type": "code",
       "norm_label": "renderenhancedimagegrid()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4008"
+      "source_location": "L3984"
     },
     {
       "id": "public_comunidade_app_renderherobanner",
@@ -6356,7 +6356,7 @@
       "file_type": "code",
       "norm_label": "renderpostcard()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L3867"
+      "source_location": "L3843"
     },
     {
       "id": "public_comunidade_app_renderproductview",
@@ -6380,7 +6380,7 @@
       "file_type": "code",
       "norm_label": "renderprofileview()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4744"
+      "source_location": "L4720"
     },
     {
       "id": "public_comunidade_app_rendersearchview",
@@ -6404,7 +6404,7 @@
       "file_type": "code",
       "norm_label": "renderserverdetailview()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4538"
+      "source_location": "L4514"
     },
     {
       "id": "public_comunidade_app_renderserversview",
@@ -6416,7 +6416,7 @@
       "file_type": "code",
       "norm_label": "renderserversview()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4479"
+      "source_location": "L4455"
     },
     {
       "id": "public_comunidade_app_rendersidebanner",
@@ -6464,7 +6464,7 @@
       "file_type": "code",
       "norm_label": "setupcommunityhandlers()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4059"
+      "source_location": "L4035"
     },
     {
       "id": "public_comunidade_app_setupcommunityhandlers_savelocalcommunityposts",
@@ -6476,7 +6476,7 @@
       "file_type": "code",
       "norm_label": "savelocalcommunityposts()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4288"
+      "source_location": "L4264"
     },
     {
       "id": "public_comunidade_app_setupeventlisteners",
@@ -6500,7 +6500,7 @@
       "file_type": "code",
       "norm_label": "showauthalert()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4942"
+      "source_location": "L4918"
     },
     {
       "id": "public_comunidade_app_showauthmodal",
@@ -6512,7 +6512,7 @@
       "file_type": "code",
       "norm_label": "showauthmodal()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L5008"
+      "source_location": "L4984"
     },
     {
       "id": "public_comunidade_app_showconfirmmodal",
@@ -6524,7 +6524,7 @@
       "file_type": "code",
       "norm_label": "showconfirmmodal()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4975"
+      "source_location": "L4951"
     },
     {
       "id": "public_comunidade_app_showtoast",
@@ -6536,7 +6536,7 @@
       "file_type": "code",
       "norm_label": "showtoast()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4909"
+      "source_location": "L4885"
     },
     {
       "id": "public_comunidade_app_switcheditorviewmode",
@@ -6584,7 +6584,7 @@
       "file_type": "code",
       "norm_label": "triggeranimobservers()",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L5031"
+      "source_location": "L5007"
     },
     {
       "id": "public_comunidade_app_triggermandatorypopup",
@@ -21330,7 +21330,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L5044",
+      "source_location": "L5020",
       "weight": 1.0
     },
     {
@@ -21342,7 +21342,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L5047",
+      "source_location": "L5023",
       "weight": 1.0
     },
     {
@@ -21354,7 +21354,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L5048",
+      "source_location": "L5024",
       "weight": 1.0
     },
     {
@@ -21366,7 +21366,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L5096",
+      "source_location": "L5072",
       "weight": 1.0
     },
     {
@@ -21690,7 +21690,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L5025",
+      "source_location": "L5001",
       "weight": 1.0
     },
     {
@@ -21882,7 +21882,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L5248",
+      "source_location": "L5224",
       "weight": 1.0
     },
     {
@@ -21894,7 +21894,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L5259",
+      "source_location": "L5235",
       "weight": 1.0
     },
     {
@@ -21906,7 +21906,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L5260",
+      "source_location": "L5236",
       "weight": 1.0
     },
     {
@@ -21918,7 +21918,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L5284",
+      "source_location": "L5260",
       "weight": 1.0
     },
     {
@@ -21930,7 +21930,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L5289",
+      "source_location": "L5265",
       "weight": 1.0
     },
     {
@@ -21942,7 +21942,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L5483",
+      "source_location": "L5459",
       "weight": 1.0
     },
     {
@@ -22290,7 +22290,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4039",
+      "source_location": "L4015",
       "weight": 1.0
     },
     {
@@ -22302,7 +22302,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4049",
+      "source_location": "L4025",
       "weight": 1.0
     },
     {
@@ -22314,7 +22314,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4051",
+      "source_location": "L4027",
       "weight": 1.0
     },
     {
@@ -22326,7 +22326,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L3238",
+      "source_location": "L3214",
       "weight": 1.0
     },
     {
@@ -22338,7 +22338,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L3271",
+      "source_location": "L3247",
       "weight": 1.0
     },
     {
@@ -22350,7 +22350,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L3361",
+      "source_location": "L3337",
       "weight": 1.0
     },
     {
@@ -22362,7 +22362,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L3491",
+      "source_location": "L3467",
       "weight": 1.0
     },
     {
@@ -22374,7 +22374,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L3558",
+      "source_location": "L3534",
       "weight": 1.0
     },
     {
@@ -22386,7 +22386,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L3559",
+      "source_location": "L3535",
       "weight": 1.0
     },
     {
@@ -22398,7 +22398,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L3570",
+      "source_location": "L3546",
       "weight": 1.0
     },
     {
@@ -22410,7 +22410,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L3223",
+      "source_location": "L3199",
       "weight": 1.0
     },
     {
@@ -22422,7 +22422,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L3226",
+      "source_location": "L3202",
       "weight": 1.0
     },
     {
@@ -22434,7 +22434,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L3229",
+      "source_location": "L3205",
       "weight": 1.0
     },
     {
@@ -22446,7 +22446,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L3232",
+      "source_location": "L3208",
       "weight": 1.0
     },
     {
@@ -22458,7 +22458,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L3234",
+      "source_location": "L3210",
       "weight": 1.0
     },
     {
@@ -22494,7 +22494,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L3214",
+      "source_location": "L3190",
       "weight": 1.0
     },
     {
@@ -22506,7 +22506,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L3217",
+      "source_location": "L3193",
       "weight": 1.0
     },
     {
@@ -22542,7 +22542,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4010",
+      "source_location": "L3986",
       "weight": 1.0
     },
     {
@@ -22554,7 +22554,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4015",
+      "source_location": "L3991",
       "weight": 1.0
     },
     {
@@ -22602,7 +22602,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L3871",
+      "source_location": "L3847",
       "weight": 1.0
     },
     {
@@ -22614,7 +22614,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L3906",
+      "source_location": "L3882",
       "weight": 1.0
     },
     {
@@ -22626,7 +22626,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L3911",
+      "source_location": "L3887",
       "weight": 1.0
     },
     {
@@ -22638,7 +22638,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L3959",
+      "source_location": "L3935",
       "weight": 1.0
     },
     {
@@ -22650,7 +22650,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L3990",
+      "source_location": "L3966",
       "weight": 1.0
     },
     {
@@ -22674,7 +22674,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4745",
+      "source_location": "L4721",
       "weight": 1.0
     },
     {
@@ -22686,7 +22686,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4776",
+      "source_location": "L4752",
       "weight": 1.0
     },
     {
@@ -22698,7 +22698,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4818",
+      "source_location": "L4794",
       "weight": 1.0
     },
     {
@@ -22710,7 +22710,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4822",
+      "source_location": "L4798",
       "weight": 1.0
     },
     {
@@ -22722,7 +22722,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4827",
+      "source_location": "L4803",
       "weight": 1.0
     },
     {
@@ -22734,7 +22734,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4893",
+      "source_location": "L4869",
       "weight": 1.0
     },
     {
@@ -22746,7 +22746,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4895",
+      "source_location": "L4871",
       "weight": 1.0
     },
     {
@@ -22782,7 +22782,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4539",
+      "source_location": "L4515",
       "weight": 1.0
     },
     {
@@ -22794,7 +22794,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4541",
+      "source_location": "L4517",
       "weight": 1.0
     },
     {
@@ -22806,7 +22806,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4545",
+      "source_location": "L4521",
       "weight": 1.0
     },
     {
@@ -22818,7 +22818,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4557",
+      "source_location": "L4533",
       "weight": 1.0
     },
     {
@@ -22830,7 +22830,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4585",
+      "source_location": "L4561",
       "weight": 1.0
     },
     {
@@ -22842,7 +22842,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4728",
+      "source_location": "L4704",
       "weight": 1.0
     },
     {
@@ -22854,7 +22854,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4480",
+      "source_location": "L4456",
       "weight": 1.0
     },
     {
@@ -22866,7 +22866,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4527",
+      "source_location": "L4503",
       "weight": 1.0
     },
     {
@@ -22878,7 +22878,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4530",
+      "source_location": "L4506",
       "weight": 1.0
     },
     {
@@ -22890,7 +22890,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4069",
+      "source_location": "L4045",
       "weight": 1.0
     },
     {
@@ -22902,7 +22902,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4093",
+      "source_location": "L4069",
       "weight": 1.0
     },
     {
@@ -22914,7 +22914,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4098",
+      "source_location": "L4074",
       "weight": 1.0
     },
     {
@@ -22926,7 +22926,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4296",
+      "source_location": "L4272",
       "weight": 1.0
     },
     {
@@ -22938,7 +22938,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4298",
+      "source_location": "L4274",
       "weight": 1.0
     },
     {
@@ -22950,7 +22950,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4321",
+      "source_location": "L4297",
       "weight": 1.0
     },
     {
@@ -22962,7 +22962,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4453",
+      "source_location": "L4429",
       "weight": 1.0
     },
     {
@@ -23262,7 +23262,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L5010",
+      "source_location": "L4986",
       "weight": 1.0
     },
     {
@@ -23274,7 +23274,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L5012",
+      "source_location": "L4988",
       "weight": 1.0
     },
     {
@@ -32466,7 +32466,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4288",
+      "source_location": "L4264",
       "weight": 1.0
     },
     {
@@ -49102,7 +49102,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "public/comunidade/app.js",
-      "source_location": "L3221",
+      "source_location": "L3197",
       "weight": 1.0
     },
     {
@@ -49113,7 +49113,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "public/comunidade/app.js",
-      "source_location": "L3237",
+      "source_location": "L3213",
       "weight": 1.0
     },
     {
@@ -49135,7 +49135,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "public/comunidade/app.js",
-      "source_location": "L3496",
+      "source_location": "L3472",
       "weight": 1.0
     },
     {
@@ -49146,7 +49146,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "public/comunidade/app.js",
-      "source_location": "L3625",
+      "source_location": "L3601",
       "weight": 1.0
     },
     {
@@ -49168,7 +49168,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "public/comunidade/app.js",
-      "source_location": "L3746",
+      "source_location": "L3722",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app",
+      "target": "public_comunidade_app_rendercommunitysavedtab",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L3815",
       "weight": 1.0
     },
     {
@@ -49184,24 +49195,13 @@
     },
     {
       "source": "public_comunidade_app",
-      "target": "public_comunidade_app_rendercommunitysavedtab",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "public/comunidade/app.js",
-      "source_location": "L3839",
-      "weight": 1.0
-    },
-    {
-      "source": "public_comunidade_app",
       "target": "public_comunidade_app_renderpostcard",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "public/comunidade/app.js",
-      "source_location": "L3867",
+      "source_location": "L3843",
       "weight": 1.0
     },
     {
@@ -49223,7 +49223,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4008",
+      "source_location": "L3984",
       "weight": 1.0
     },
     {
@@ -49234,7 +49234,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4037",
+      "source_location": "L4013",
       "weight": 1.0
     },
     {
@@ -49245,7 +49245,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4059",
+      "source_location": "L4035",
       "weight": 1.0
     },
     {
@@ -49267,7 +49267,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4479",
+      "source_location": "L4455",
       "weight": 1.0
     },
     {
@@ -49278,7 +49278,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4538",
+      "source_location": "L4514",
       "weight": 1.0
     },
     {
@@ -49300,7 +49300,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4744",
+      "source_location": "L4720",
       "weight": 1.0
     },
     {
@@ -49311,7 +49311,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4909",
+      "source_location": "L4885",
+      "weight": 1.0
+    },
+    {
+      "source": "public_comunidade_app",
+      "target": "public_comunidade_app_showauthalert",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/comunidade/app.js",
+      "source_location": "L4918",
       "weight": 1.0
     },
     {
@@ -49327,24 +49338,13 @@
     },
     {
       "source": "public_comunidade_app",
-      "target": "public_comunidade_app_showauthalert",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "public/comunidade/app.js",
-      "source_location": "L4942",
-      "weight": 1.0
-    },
-    {
-      "source": "public_comunidade_app",
       "target": "public_comunidade_app_clearauthalert",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4968",
+      "source_location": "L4944",
       "weight": 1.0
     },
     {
@@ -49355,7 +49355,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4975",
+      "source_location": "L4951",
       "weight": 1.0
     },
     {
@@ -49366,7 +49366,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "public/comunidade/app.js",
-      "source_location": "L5008",
+      "source_location": "L4984",
       "weight": 1.0
     },
     {
@@ -49377,7 +49377,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "public/comunidade/app.js",
-      "source_location": "L5024",
+      "source_location": "L5000",
       "weight": 1.0
     },
     {
@@ -49388,7 +49388,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "public/comunidade/app.js",
-      "source_location": "L5031",
+      "source_location": "L5007",
       "weight": 1.0
     },
     {
@@ -49399,7 +49399,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "public/comunidade/app.js",
-      "source_location": "L5037",
+      "source_location": "L5013",
       "weight": 1.0
     },
     {
@@ -49410,7 +49410,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "public/comunidade/app.js",
-      "source_location": "L5043",
+      "source_location": "L5019",
       "weight": 1.0
     },
     {
@@ -49421,7 +49421,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "public/comunidade/app.js",
-      "source_location": "L5103",
+      "source_location": "L5079",
       "weight": 1.0
     },
     {
@@ -60927,7 +60927,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L5100",
+      "source_location": "L5076",
       "weight": 1.0
     },
     {
@@ -60999,7 +60999,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L3349",
+      "source_location": "L3325",
       "weight": 1.0
     },
     {
@@ -61011,7 +61011,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L3861",
+      "source_location": "L3837",
       "weight": 1.0
     },
     {
@@ -61023,7 +61023,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L3218",
+      "source_location": "L3194",
       "weight": 1.0
     },
     {
@@ -61059,7 +61059,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4902",
+      "source_location": "L4878",
       "weight": 1.0
     },
     {
@@ -61083,7 +61083,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4738",
+      "source_location": "L4714",
       "weight": 1.0
     },
     {
@@ -61095,7 +61095,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4532",
+      "source_location": "L4508",
       "weight": 1.0
     },
     {
@@ -61107,7 +61107,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "public/comunidade/app.js",
-      "source_location": "L4139",
+      "source_location": "L4115",
       "weight": 1.0
     },
     {
@@ -61784,5 +61784,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "bbbec86b90c0bd49e40b756508658d6947f0d1d3"
+  "built_at_commit": "79d4175b094f75744e13d51dd8679a1ea34fde60"
 }
