@@ -1,12 +1,12 @@
 /**
  * A.I VISUALS — Members Area v8.0 (Production Ready)
- * Backend: Supabase — wccrxgczldiviilkfsuj
- * Payments: Mercado Pago Checkout Pro (via Netlify Functions)
+ * Backend: Supabase — MATEUS CELESTINO PRO X (lijrxbzotmoikyvjiipv)
+ * Payments: Mercado Pago Checkout Pro
  * Design: Apple Liquid Glass (Zero Neon, VisionOS)
  */
 
-const SUPABASE_URL = 'https://wccrxgczldiviilkfsuj.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndjY3J4Z2N6bGRpdmlpbGtmc3VqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODUwMjk5NjgsImV4cCI6MjEwMDYwNTk2OH0.bdxRqjhZsQU7jefL31VP-7pSh93CEQtYwtbO9DUlxng';
+const SUPABASE_URL = 'https://lijrxbzotmoikyvjiipv.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxpanJ4YnpvdG1vaWt5dmppaXB2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTIwOTI2NjksImV4cCI6MjEwNzY2ODY2OX0.X9ag97jWO7qSEeuPJ2wMZFr6ouHVZVI_HdN2atEzNRw';
 // Public Key (segura para o frontend — não é o Access Token)
 const MP_PUBLIC_KEY = 'APP_USR-77fe0fd7-600a-4b1e-8bd2-25007f12a351';
 const _supabase = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
@@ -261,52 +261,181 @@ document.addEventListener('DOMContentLoaded', () => {
   // ──────────────────────────────────────────────────────────────────────────
   // UTILITIES
   // ──────────────────────────────────────────────────────────────────────────
-  function convertToEmbedUrl(url) {
-    if (!url || !url.trim()) return '';
-    url = url.trim();
-    if (url.includes('/embed/') || url.includes('player.vimeo.com')) return url;
-    const ytWatch = url.match(/(?:youtube\.com\/watch\?v=)([^&\?\/ \n]+)/);
-    if (ytWatch) return `https://www.youtube.com/embed/${ytWatch[1]}?rel=0`;
-    const ytShort = url.match(/(?:youtu\.be\/)([^&\?\/ \n]+)/);
-    if (ytShort) return `https://www.youtube.com/embed/${ytShort[1]}?rel=0`;
-    const vimeo = url.match(/vimeo\.com\/(\d+)/);
-    if (vimeo) return `https://player.vimeo.com/video/${vimeo[1]}`;
-    return url;
+  function escapeHtml(str) {
+    if (str === null || str === undefined) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
   }
 
-  function formatDate(isoStr) {
-    if (!isoStr) return 'Agora mesmo';
-    const d   = new Date(isoStr);
-    const now = new Date();
-    const s   = Math.floor((now - d) / 1000);
-    if (s < 60)     return 'Agora mesmo';
-    if (s < 3600)   return `${Math.floor(s/60)}min atrás`;
-    if (s < 86400)  return `${Math.floor(s/3600)}h atrás`;
-    if (s < 604800) return `${Math.floor(s/86400)}d atrás`;
-    return d.toLocaleDateString('pt-BR', { day:'2-digit', month:'short' });
+  function escapeJs(str) {
+    if (str === null || str === undefined) return '';
+    return String(str)
+      .replace(/\\/g, '\\\\')
+      .replace(/'/g, "\\'")
+      .replace(/"/g, '\\"')
+      .replace(/\n/g, '\\n')
+      .replace(/\r/g, '');
   }
 
   function getBadge(role) {
-    const info = USER_ROLES[role];
-    if (!info) return '';
-    const cls = BADGE_CLASSES[role] || BADGE_CLASSES.free;
-    return `<span class="text-[0.6rem] font-bold px-2.5 py-0.5 rounded-full border uppercase tracking-wider backdrop-blur-md ${cls}">${info.roleText}</span>`;
+    const r = role === 'moder' ? 'moderator' : (role || 'free');
+    const ri = USER_ROLES[r] || USER_ROLES.free;
+    const cls = BADGE_CLASSES[r] || BADGE_CLASSES.free;
+    const icon = r === 'admin' ? '👑 ' : (r === 'moderator' ? '🛡️ ' : (r === 'full' ? '⭐ ' : ''));
+    return `<span class="inline-flex items-center text-[0.65rem] px-2 py-0.5 rounded-full border font-mono font-bold uppercase tracking-wider ${cls}">${icon}${escapeHtml(ri.roleText || r.toUpperCase())}</span>`;
+  }
+
+  function formatDate(dateStr) {
+    if (!dateStr) return '';
+    try {
+      const d = new Date(dateStr);
+      if (isNaN(d.getTime())) return String(dateStr);
+      return d.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' });
+    } catch(e) {
+      return String(dateStr);
+    }
+  }
+
+  function convertToEmbedUrl(url) {
+    if (!url || !url.trim()) return '';
+    url = url.trim();
+
+    // Se o usuário colou uma tag iframe completa, extrai o atributo src
+    if (url.includes('<iframe')) {
+      const srcMatch = url.match(/src=["']([^"']+)["']/i);
+      if (srcMatch && srcMatch[1]) url = srcMatch[1].trim();
+    }
+
+    if (url.includes('/embed/') || url.includes('player.vimeo.com') || url.includes('loom.com/embed') || url.includes('fast.wistia.net/embed')) {
+      return url;
+    }
+
+    // YouTube: watch?v=ID ou /live/ID
+    const ytWatch = url.match(/(?:youtube\.com\/(?:watch\?v=|live\/))([^&\?\/ \n]+)/i);
+    if (ytWatch) return `https://www.youtube.com/embed/${ytWatch[1]}?rel=0`;
+
+    // YouTube: youtu.be/ID
+    const ytShort = url.match(/(?:youtu\.be\/)([^&\?\/ \n]+)/i);
+    if (ytShort) return `https://www.youtube.com/embed/${ytShort[1]}?rel=0`;
+
+    // YouTube Shorts: youtube.com/shorts/ID
+    const ytShorts = url.match(/(?:youtube\.com\/shorts\/)([^&\?\/ \n]+)/i);
+    if (ytShorts) return `https://www.youtube.com/embed/${ytShorts[1]}?rel=0`;
+
+    // Vimeo: vimeo.com/ID
+    const vimeo = url.match(/vimeo\.com\/(?:video\/)?(\d+)/i);
+    if (vimeo) return `https://player.vimeo.com/video/${vimeo[1]}`;
+
+    // Loom: loom.com/share/ID -> loom.com/embed/ID
+    const loom = url.match(/loom\.com\/share\/([a-zA-Z0-9_-]+)/i);
+    if (loom) return `https://www.loom.com/embed/${loom[1]}`;
+
+    // Wistia: wistia.com/medias/ID
+    const wistia = url.match(/wistia\.com\/medias\/([a-zA-Z0-9_-]+)/i);
+    if (wistia) return `https://fast.wistia.net/embed/iframe/${wistia[1]}`;
+
+    return url;
+  }
+
+  function getVideoProviderInfo(url) {
+    if (!url || !url.trim()) {
+      return { provider: 'none', label: 'Sem vídeo configurado', color: 'text-white/40 bg-white/5 border-white/10' };
+    }
+    const clean = url.toLowerCase();
+    if (clean.includes('youtube.com') || clean.includes('youtu.be')) {
+      return { provider: 'youtube', label: '▶ YouTube Detectado', color: 'text-red-400 bg-red-500/10 border-red-500/30' };
+    }
+    if (clean.includes('vimeo.com')) {
+      return { provider: 'vimeo', label: '🎬 Vimeo Detectado', color: 'text-blue-400 bg-blue-500/10 border-blue-500/30' };
+    }
+    if (clean.includes('loom.com')) {
+      return { provider: 'loom', label: '📹 Loom Detectado', color: 'text-indigo-400 bg-indigo-500/10 border-indigo-500/30' };
+    }
+    if (clean.includes('wistia.com') || clean.includes('wistia.net')) {
+      return { provider: 'wistia', label: '🎥 Wistia Detectado', color: 'text-amber-400 bg-amber-500/10 border-amber-500/30' };
+    }
+    if (clean.endsWith('.mp4') || clean.includes('blob:') || clean.includes('/embed/')) {
+      return { provider: 'custom', label: '📺 Embed Player', color: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/30' };
+    }
+    return { provider: 'custom', label: '🔗 Link Externo', color: 'text-gray-300 bg-white/10 border-white/20' };
+  }
+
+  function extractLessonMetadata(rawContent) {
+    if (!rawContent) return { cleanContent: '', metadata: {} };
+    const match = rawContent.match(/<!--\s*SOVEREIGN_METADATA:\s*(\{[\s\S]*?\})\s*-->/);
+    if (match) {
+      try {
+        const metadata = JSON.parse(match[1]);
+        const cleanContent = rawContent.replace(match[0], '').trim();
+        return { cleanContent, metadata };
+      } catch(e) {
+        console.warn('[Metadata Parser] Erro ao decodificar JSON:', e);
+      }
+    }
+    return { cleanContent: rawContent, metadata: {} };
+  }
+
+  function embedLessonMetadata(content, metadata) {
+    const clean = content ? content.replace(/<!--\s*SOVEREIGN_METADATA:\s*(\{[\s\S]*?\})\s*-->/, '').trim() : '';
+    const metaString = `<!-- SOVEREIGN_METADATA:${JSON.stringify(metadata)} -->\n\n`;
+    return metaString + clean;
   }
 
   function renderMarkdown(text) {
     if (!text) return '';
-    return text
-      .replace(/^# (.+)$/gm,   '<h1 class="text-2xl font-extrabold text-white mt-6 mb-3">$1</h1>')
-      .replace(/^## (.+)$/gm,  '<h2 class="text-xl font-bold text-white mt-5 mb-2">$1</h2>')
-      .replace(/^### (.+)$/gm, '<h3 class="text-lg font-semibold text-white/90 mt-4 mb-1">$1</h3>')
+    let clean = text.replace(/<!--\s*SOVEREIGN_METADATA:\s*(\{[\s\S]*?\})\s*-->/g, '').trim();
+
+    // Blocos de código multilinhas com cabeçalho e botão de cópia
+    clean = clean.replace(/```([a-zA-Z0-9_-]*)\n([\s\S]*?)```/g, (match, lang, code) => {
+      const displayLang = (lang || 'CÓDIGO').toUpperCase();
+      return `<div class="skool-code-block">
+        <div class="skool-code-header">
+          <span>${displayLang}</span>
+          <button type="button" onclick="window.appCopyCodeBlock(this)" class="hover:text-white transition-colors flex items-center space-x-1 cursor-pointer">
+            <span>📋</span><span>Copiar</span>
+          </button>
+        </div>
+        <pre class="skool-code-content"><code>${escapeHtml(code.trim())}</code></pre>
+      </div>`;
+    });
+
+    // Callouts Skool & Notion (💡, 📌, ⚠️, 🚀)
+    clean = clean
+      .replace(/^💡 \*\*([^\*]+)\*\*:? (.*)$/gm, '<div class="skool-callout skool-callout-tip"><span class="skool-callout-icon">💡</span><div><strong class="font-bold text-emerald-300 block mb-0.5">$1</strong><span>$2</span></div></div>')
+      .replace(/^📌 \*\*([^\*]+)\*\*:? (.*)$/gm, '<div class="skool-callout skool-callout-note"><span class="skool-callout-icon">📌</span><div><strong class="font-bold text-blue-300 block mb-0.5">$1</strong><span>$2</span></div></div>')
+      .replace(/^⚠️ \*\*([^\*]+)\*\*:? (.*)$/gm, '<div class="skool-callout skool-callout-warning"><span class="skool-callout-icon">⚠️</span><div><strong class="font-bold text-amber-300 block mb-0.5">$1</strong><span>$2</span></div></div>')
+      .replace(/^🚀 \*\*([^\*]+)\*\*:? (.*)$/gm, '<div class="skool-callout skool-callout-prompt"><span class="skool-callout-icon">🚀</span><div><strong class="font-bold text-purple-300 block mb-0.5">$1</strong><span>$2</span></div></div>');
+
+    // Checklists interativas do Skool
+    clean = clean
+      .replace(/^- \[ \] (.+)$/gm, '<div class="skool-check-item" onclick="window.toggleChecklistItem(this)"><span class="skool-check-box"></span><span class="text-gray-200 text-sm">$1</span></div>')
+      .replace(/^- \[x\] (.+)$/gm, '<div class="skool-check-item" onclick="window.toggleChecklistItem(this)"><span class="skool-check-box checked">✓</span><span class="line-through text-gray-400 text-sm">$1</span></div>');
+
+    // Botão CTA personalizado
+    clean = clean.replace(/\[button:(.+?)\]\((.+?)\)/g, '<div class="my-4"><a href="$2" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-2 px-5 py-2.5 bg-white text-black font-bold text-xs rounded-xl hover:bg-white/90 hover:scale-105 active:scale-95 shadow-lg transition-all">$1 →</a></div>');
+    clean = clean.replace(/\[cta:(.+?)\]\((.+?)\)/g, '<div class="my-4"><a href="$2" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-2 px-5 py-2.5 bg-white text-black font-bold text-xs rounded-xl hover:bg-white/90 hover:scale-105 active:scale-95 shadow-lg transition-all">$1 →</a></div>');
+
+    // Citações (Blockquote)
+    clean = clean.replace(/^> (.+)$/gm, '<blockquote class="border-l-4 border-white/30 pl-4 py-1.5 my-3 text-gray-300 italic bg-white/[0.03] rounded-r-xl leading-relaxed">$1</blockquote>');
+
+    // Formatação Markdown clássica
+    return clean
+      .replace(/^# (.+)$/gm,   '<h1 class="text-xl sm:text-2xl font-extrabold text-white mt-6 mb-3 tracking-tight">$1</h1>')
+      .replace(/^## (.+)$/gm,  '<h2 class="text-lg sm:text-xl font-bold text-white mt-5 mb-2 tracking-tight">$1</h2>')
+      .replace(/^### (.+)$/gm, '<h3 class="text-base sm:text-lg font-semibold text-white/90 mt-4 mb-1">$1</h3>')
       .replace(/\*\*(.+?)\*\*/g, '<strong class="text-white font-bold">$1</strong>')
       .replace(/\*(.+?)\*/g,     '<em class="text-white/80 italic">$1</em>')
+      .replace(/~~(.+?)~~/g,     '<del class="line-through text-white/50">$1</del>')
       .replace(/`(.+?)`/g,       '<code class="bg-white/10 text-white px-1.5 py-0.5 rounded-lg text-xs font-mono">$1</code>')
       .replace(/^- (.+)$/gm,     '<li class="ml-5 mb-1 text-gray-300 list-disc">$1</li>')
       .replace(/^(\d+)\. (.+)$/gm,'<li class="ml-5 mb-1 text-gray-300 list-decimal">$2</li>')
-      .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" class="rounded-xl my-4 max-w-full border border-white/10 shadow-lg">')
-      .replace(/\[([^\]]+)\]\(([^)]+)\)/g,  '<a href="$2" target="_blank" class="text-white underline hover:text-white/70">$1</a>')
-      .replace(/^---$/gm, '<hr class="border-white/10 my-5">')
+      .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" class="rounded-2xl my-4 max-w-full border border-white/10 shadow-lg">')
+      .replace(/\[([^\]]+)\]\(([^)]+)\)/g,  '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-white underline decoration-white/30 underline-offset-4 hover:decoration-white transition-all">$1</a>')
+      .replace(/^---$/gm, '<hr class="border-white/10 my-6">')
       .replace(/\n\n/g, '</p><p class="mb-3 text-gray-300 leading-relaxed">')
       .replace(/\n/g, '<br>');
   }
@@ -537,13 +666,14 @@ document.addEventListener('DOMContentLoaded', () => {
       user_name: 'Mateus Celestino',
       user_avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=AdminBoss',
       user_role: 'admin',
+      category: 'official',
       title: '✨ Bem-vindos à Comunidade A.I Visuals!',
-      content: 'Espaço exclusivo para membros e criadores de elite compartilharem seus prompts, novos estilos e masterclasses generativas. Sintam-se à vontade para postar suas dúvidas, prompts favoritos e feedbacks!',
+      content: 'Espaço exclusivo para membros e criadores de elite compartilharem seus prompts, novos estilos e masterclasses generativas. Sintam-se à vontade para postar suas dúvidas, prompts favoritos e feedbacks! Todos os shaders WebGL de fundo foram calibrados em vermelho cinemático com brilho suave para foco máximo.',
       link_url: '',
       link_title: '',
       images: ['./public/assets/images/opt_0008_img_exact_87ca3.webp'],
       is_pinned: true,
-      likes: 42,
+      likes: 48,
       likedBy: [],
       created_at: new Date(Date.now() - 3600000 * 4).toISOString(),
       comments: [
@@ -552,9 +682,40 @@ document.addEventListener('DOMContentLoaded', () => {
           user_id: 'member_demo',
           user_name: 'Lucas Rocha (Aluno VIP)',
           user_avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=MemberProX',
-          user_role: 'user',
-          content: 'Sensacional a plataforma! Os prompts de retratos fotorrealistas e estilos de efeitos são de altíssimo nível.',
+          user_role: 'full',
+          content: 'Sensacional a plataforma! Os shaders vermelhos e a nova organização da comunidade ficaram com uma atmosfera inacreditável.',
           created_at: new Date(Date.now() - 3600000 * 2).toISOString()
+        }
+      ]
+    },
+    {
+      id: 'post_flux_crimson',
+      user_id: 'admin_official',
+      user_name: 'Mateus Celestino Pro X',
+      user_avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=AdminBoss',
+      user_role: 'admin',
+      category: 'prompts',
+      title: '⚡ [PROMPT EXCLUSIVO] Retrato Cyberpunk Carmesim Volumétrico',
+      content: 'Compartilhando com vocês a fórmula exata para iluminação volumétrica com dispersão sub-superficial em tons rubros e carmesim escuros. Podem copiar o bloco de prompt abaixo e executar diretamente no Midjourney v6.1 ou Flux.1 Dev.',
+      ai_model: 'Flux.1 Dev / Midjourney v6.1',
+      ai_prompt: 'ultra-cinematic hyperrealistic portrait of an android empress, intricate crimson biomechanical circuitry, subsurface scattering, ruby neon backlight, moody dark atmosphere, 8k resolution, photorealistic, cinematic shot by Denis Villeneuve',
+      ai_params: '--ar 16:9 --v 6.1 --stylize 350 --seed 892014',
+      link_url: '',
+      link_title: '',
+      images: ['./public/assets/images/opt_0375_img_exact_604f4.webp'],
+      is_pinned: false,
+      likes: 74,
+      likedBy: [],
+      created_at: new Date(Date.now() - 3600000 * 1).toISOString(),
+      comments: [
+        {
+          id: 'com_flux_1',
+          user_id: 'member_art',
+          user_name: 'Elena Digital Art',
+          user_avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=ElenaArt',
+          user_role: 'full',
+          content: 'Esse prompt com iluminação de luz de contorno vermelha funcionou perfeitamente aqui! Render ultra-nítido.',
+          created_at: new Date(Date.now() - 3600000 * 0.5).toISOString()
         }
       ]
     },
@@ -564,16 +725,45 @@ document.addEventListener('DOMContentLoaded', () => {
       user_name: 'Moderador Oficial',
       user_avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=ModeratorShield',
       user_role: 'moderator',
+      category: 'tips',
       title: '🚀 Dica da Semana: Como obter reflexos líquidos ultra-nítidos',
       content: 'Ao utilizar o acervo A.I Effects, combinem termos como "hyper-glossy liquid glass reflections with sub-surface scattering, octane render 8k" para obter o autêntico acabamento Apple Liquid Glass.',
       link_url: '',
       link_title: '',
       images: ['./public/assets/images/opt_0740_img_exact_666ee.webp'],
       is_pinned: false,
-      likes: 19,
+      likes: 29,
       likedBy: [],
       created_at: new Date(Date.now() - 3600000 * 12).toISOString(),
       comments: []
+    },
+    {
+      id: 'post_desafio_semanal',
+      user_id: 'moderator_official',
+      user_name: 'Comunidade VIP Curadoria',
+      user_avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=ModeratorShield',
+      user_role: 'moderator',
+      category: 'showcase',
+      title: '🏆 Desafio Semanal #04: Crie a Melhor Render em Vermelho & Obsidiana',
+      content: 'Valendo badge exclusiva de Top Creator no perfil + destaque na aba VIP! Regras: utilize qualquer motor de IA generativa (Flux, Midjourney, SD3) focando na estética Red Dark Luxury. Publiquem suas criações aqui com a tag #DesafioVermelho!',
+      link_url: '',
+      link_title: '',
+      images: ['./public/assets/images/opt_0149_img_exact_5486a.webp'],
+      is_pinned: true,
+      likes: 62,
+      likedBy: [],
+      created_at: new Date(Date.now() - 3600000 * 8).toISOString(),
+      comments: [
+        {
+          id: 'com_desafio_1',
+          user_id: 'member_vfx',
+          user_name: 'Victor VFX',
+          user_avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=VictorVFX',
+          user_role: 'full',
+          content: 'Já estou renderizando o meu aqui! Amanhã posto o workflow completo com LoRA de vidro carmesim.',
+          created_at: new Date(Date.now() - 3600000 * 5).toISOString()
+        }
+      ]
     }
   ];
 
@@ -587,10 +777,35 @@ document.addEventListener('DOMContentLoaded', () => {
       if (raw) user = JSON.parse(raw);
     } catch(e) {}
 
-    if (user && user.isLoggedIn) {
+    var token = null;
+    try { token = localStorage.getItem('mcp_auth_token'); } catch(e) {}
+
+    var roleStored = null;
+    try { roleStored = localStorage.getItem('mcp_user_role'); } catch(e) {}
+
+    var isUserLogged = false;
+    if (user) {
+      if (user.isLoggedIn === true || user.isLoggedIn === 'true') {
+        isUserLogged = true;
+      } else if (user.role && user.role !== 'guest') {
+        isUserLogged = true;
+      } else if (user.email && user.email.trim().length > 0) {
+        isUserLogged = true;
+      }
+    } else if (token && roleStored && roleStored !== 'guest') {
+      isUserLogged = true;
+      user = {
+        id: 'user_sovereign',
+        name: roleStored === 'admin' ? 'Mateus Celestino Pro X' : 'Membro Pro',
+        role: roleStored,
+        isLoggedIn: true
+      };
+    }
+
+    if (isUserLogged && user) {
       isLoggedIn = true;
-      currentUserId = user.id || 'sovereign_user_' + (user.role || 'user');
-      currentUserNameStr = user.name || (user.role === 'admin' ? 'Mateus Celestino Pro' : 'Membro Aluno Pro');
+      currentUserId = user.id || null;
+      currentUserNameStr = user.name || (user.role === 'admin' ? 'Mateus Celestino Pro X' : 'Membro Pro');
       currentUserAvatarUrl = user.avatar || (user.role === 'admin' ? USER_ROLES.admin.avatar : (user.role === 'moder' || user.role === 'moderator' ? USER_ROLES.moderator.avatar : USER_ROLES.free.avatar));
 
       if (user.role === 'admin') {
@@ -598,7 +813,7 @@ document.addEventListener('DOMContentLoaded', () => {
       } else if (user.role === 'moder' || user.role === 'moderator') {
         currentUserRole = 'moderator';
       } else {
-        currentUserRole = 'full'; // Membro VIP tem acesso irrestrito às subpáginas e prompts
+        currentUserRole = 'full';
       }
 
       currentUserProfile = {
@@ -610,18 +825,75 @@ document.addEventListener('DOMContentLoaded', () => {
         accessible_products: ['ai-art', 'ai-portraits-pro', 'ai-effects-pro']
       };
     } else {
-      if (!isLoggedIn) {
-        currentUserId = null;
-        currentUserProfile = null;
-        currentUserRole = 'guest';
-        currentUserNameStr = 'Visitante';
-        currentUserAvatarUrl = USER_ROLES.guest.avatar;
-        moderatorPermissions = null;
-      }
+      isLoggedIn = false;
+      currentUserId = null;
+      currentUserProfile = null;
+      currentUserRole = 'guest';
+      currentUserNameStr = 'Visitante';
+      currentUserAvatarUrl = USER_ROLES.guest.avatar;
+      moderatorPermissions = null;
     }
 
     updateUserHeader();
     return isLoggedIn;
+  }
+
+  async function verifyServerSession() {
+    try {
+      const token = localStorage.getItem('mcp_auth_token');
+      const headers = {};
+      if (token) headers['Authorization'] = `Bearer ${token}`;
+
+      const res = await fetch('/api/auth/me', { headers });
+      const data = await res.json().catch(() => null);
+
+      if (res.ok && data?.authenticated && data?.user) {
+        const u = data.user;
+        const role = u.role === 'admin' ? 'admin' : (u.role === 'moder' || u.role === 'moderator' ? 'moder' : 'user');
+        let existingAvatar = null;
+        try {
+          const prev = JSON.parse(localStorage.getItem('mcp_session_user') || '{}');
+          if (prev && prev.email === u.email && prev.avatar) existingAvatar = prev.avatar;
+        } catch(e) {}
+
+        const sessionUser = {
+          id: u.id,
+          isLoggedIn: true,
+          role: role,
+          name: u.name || (role === 'admin' ? 'Mateus Celestino Pro X' : 'Membro Pro'),
+          email: u.email,
+          avatar: existingAvatar || (role === 'admin' ? USER_ROLES.admin.avatar : USER_ROLES.free.avatar),
+          tier: u.tier || (role === 'admin' ? 'max' : 'vip')
+        };
+        localStorage.setItem('mcp_session_user', JSON.stringify(sessionUser));
+        localStorage.setItem('mcp_user_role', sessionUser.role);
+        localStorage.setItem('mcp_admin_auth', (role === 'admin' || role === 'moder') ? 'true' : 'false');
+        syncSovereignSession();
+        return true;
+      } else {
+        // Se não há sessão válida no servidor nem no Supabase Auth, limpa localStorage adulterado
+        let hasSbSession = false;
+        if (sb) {
+          try {
+            const { data: sbData } = await sb.auth.getSession();
+            if (sbData?.session) {
+              hasSbSession = true;
+              await handleAuthSession(sbData.session);
+            }
+          } catch(e) {}
+        }
+        if (!hasSbSession && isLoggedIn) {
+          localStorage.removeItem('mcp_session_user');
+          localStorage.removeItem('mcp_auth_token');
+          localStorage.setItem('mcp_user_role', 'visitante');
+          localStorage.setItem('mcp_admin_auth', 'false');
+          syncSovereignSession();
+        }
+        return hasSbSession;
+      }
+    } catch(e) {
+      return isLoggedIn;
+    }
   }
 
   // ──────────────────────────────────────────────────────────────────────────
@@ -633,7 +905,14 @@ document.addEventListener('DOMContentLoaded', () => {
       navigateToHome();
       return;
     }
-    if (rawHash === 'community') {
+    if (rawHash === 'community' || rawHash.startsWith('community/')) {
+      const parts = rawHash.split('/');
+      const subTab = parts[1];
+      if (['feed', 'prompts', 'ranking', 'challenges', 'saved'].includes(subTab)) {
+        communityActiveTab = subTab;
+      } else {
+        communityActiveTab = 'feed';
+      }
       navigateToCommunity();
       return;
     }
@@ -665,7 +944,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
     if (rawHash === 'admin') {
-      navigateToAdmin();
+      window.location.href = '/admin';
       return;
     }
     if (rawHash === 'ai-art' || rawHash === 'ai-portraits-pro' || rawHash === 'ai-effects-pro') {
@@ -683,8 +962,9 @@ document.addEventListener('DOMContentLoaded', () => {
     initVideoBackgroundEngine();
     setupEventListeners();
 
-    // 1. Sincroniza sessão soberana local prioritária
+    // 1. Sincroniza sessão local e valida contra o backend (/api/auth/me)
     syncSovereignSession();
+    await verifyServerSession();
 
     // 2. Ouvintes universais de mudança de autenticação e armazenamento
     window.addEventListener('mcp_auth_changed', function(ev) {
@@ -904,25 +1184,145 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // 2. Fallback de Contingência Local Soberana (Garante que a aba nunca fique em branco)
+    // 2. Fallback de Contingência Local Soberana com persistência do usuário
+    try {
+      const saved = localStorage.getItem('mcp_local_servers_data');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          serversData = parsed;
+          return;
+        }
+      }
+    } catch(e) {}
+
     serversData = DEFAULT_SOVEREIGN_SERVERS;
   }
 
   // ──────────────────────────────────────────────────────────────────────────
-  // MODAL FUNCTIONS — Servers & Lessons (Full Supabase CRUD)
+  // SKOOL-LIKE LESSON EDITOR STUDIO — State & Functions
   // ──────────────────────────────────────────────────────────────────────────
+  let currentEditingLessonType   = 'video'; // 'video' | 'article'
+  let currentEditingLessonStatus = 'published'; // 'published' | 'draft' | 'upcoming'
+  let currentEditingResources    = []; // [{ id, title, url, type }]
+  let currentEditorViewMode      = 'editor'; // 'editor' | 'split' | 'preview'
+
   function hideLessonEditorModal() {
-    if (lessonEditorModal) { lessonEditorModal.classList.add('hidden'); lessonEditorModal.classList.add('opacity-0'); }
+    if (lessonEditorModal) {
+      lessonEditorModal.classList.add('hidden');
+      lessonEditorModal.classList.add('opacity-0');
+    }
+    const iframe = document.getElementById('videoPreviewIframe');
+    if (iframe) iframe.src = '';
   }
+
   function hideServerEditorModal() {
-    if (serverEditorModal) { serverEditorModal.classList.add('hidden'); serverEditorModal.classList.add('opacity-0'); }
+    if (serverEditorModal) {
+      serverEditorModal.classList.add('hidden');
+      serverEditorModal.classList.add('opacity-0');
+    }
+  }
+
+  function switchLessonEditorTab(tabName) {
+    const tabs = ['Content', 'Resources', 'Settings', 'Preview'];
+    tabs.forEach(t => {
+      const btn = document.getElementById(`tabLesson${t}Btn`);
+      const pane = document.getElementById(`tabLesson${t}Pane`);
+      const isTarget = t.toLowerCase() === tabName.toLowerCase();
+      if (btn) btn.classList.toggle('active', isTarget);
+      if (pane) pane.classList.toggle('hidden', !isTarget);
+    });
+
+    if (tabName.toLowerCase() === 'preview') {
+      updateStudentLivePreview();
+    }
+  }
+
+  function switchEditorViewMode(mode) {
+    currentEditorViewMode = mode;
+    const btnEditor = document.getElementById('btnModeEditorOnly');
+    const btnSplit  = document.getElementById('btnModeSplitView');
+    const btnPrev   = document.getElementById('btnModePreviewOnly');
+
+    const wrapper = document.getElementById('lessonEditorSplitWrapper');
+    const textContainer = document.getElementById('editorPaneTextareaContainer');
+    const splitPreview  = document.getElementById('editLessonSplitPreview');
+
+    if (btnEditor) btnEditor.className = mode === 'editor' ? 'px-2.5 py-1 rounded-lg text-xs font-bold transition-all bg-white/20 text-white' : 'px-2.5 py-1 rounded-lg text-xs font-semibold text-white/60 hover:text-white transition-all';
+    if (btnSplit)  btnSplit.className  = mode === 'split'  ? 'px-2.5 py-1 rounded-lg text-xs font-bold transition-all bg-white/20 text-white' : 'px-2.5 py-1 rounded-lg text-xs font-semibold text-white/60 hover:text-white transition-all';
+    if (btnPrev)   btnPrev.className   = mode === 'preview'? 'px-2.5 py-1 rounded-lg text-xs font-bold transition-all bg-white/20 text-white' : 'px-2.5 py-1 rounded-lg text-xs font-semibold text-white/60 hover:text-white transition-all';
+
+    if (mode === 'editor') {
+      if (wrapper) wrapper.className = 'grid grid-cols-1 gap-4 transition-all';
+      if (textContainer) textContainer.classList.remove('hidden');
+      if (splitPreview) splitPreview.classList.add('hidden');
+    } else if (mode === 'split') {
+      if (wrapper) wrapper.className = 'grid grid-cols-1 md:grid-cols-2 gap-4 transition-all';
+      if (textContainer) textContainer.classList.remove('hidden');
+      if (splitPreview) {
+        splitPreview.classList.remove('hidden');
+        updateLessonTextMetrics();
+      }
+    } else if (mode === 'preview') {
+      if (wrapper) wrapper.className = 'grid grid-cols-1 gap-4 transition-all';
+      if (textContainer) textContainer.classList.add('hidden');
+      if (splitPreview) {
+        splitPreview.classList.remove('hidden');
+        updateLessonTextMetrics();
+      }
+    }
+  }
+
+  function setLessonType(type) {
+    currentEditingLessonType = type;
+    const btnVid = document.getElementById('lessonTypeVideoBtn');
+    const btnArt = document.getElementById('lessonTypeArticleBtn');
+    const videoSection = document.getElementById('lessonVideoSectionWrapper');
+    const icon = document.getElementById('lessonEditorHeaderIcon');
+
+    if (type === 'video') {
+      if (btnVid) btnVid.className = 'px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-white text-black shadow-sm flex items-center space-x-1.5';
+      if (btnArt) btnArt.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold text-white/70 hover:text-white transition-all flex items-center space-x-1.5';
+      if (videoSection) videoSection.classList.remove('hidden');
+      if (icon) icon.textContent = '🎬';
+    } else {
+      if (btnVid) btnVid.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold text-white/70 hover:text-white transition-all flex items-center space-x-1.5';
+      if (btnArt) btnArt.className = 'px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-white text-black shadow-sm flex items-center space-x-1.5';
+      if (videoSection) videoSection.classList.add('hidden');
+      if (icon) icon.textContent = '📄';
+    }
+  }
+
+  function setLessonStatus(status) {
+    currentEditingLessonStatus = status;
+    const sel = document.getElementById('editLessonStatus');
+    if (sel) sel.value = status;
+
+    const btnPub = document.getElementById('headerStatusPublishedBtn');
+    const btnDft = document.getElementById('headerStatusDraftBtn');
+
+    if (status === 'published') {
+      if (btnPub) btnPub.className = 'px-2.5 py-1 rounded-lg text-xs font-bold transition-all bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 flex items-center space-x-1';
+      if (btnDft) btnDft.className = 'px-2.5 py-1 rounded-lg text-xs font-semibold text-white/60 hover:text-white transition-all flex items-center space-x-1';
+    } else {
+      if (btnPub) btnPub.className = 'px-2.5 py-1 rounded-lg text-xs font-semibold text-white/60 hover:text-white transition-all flex items-center space-x-1';
+      if (btnDft) btnDft.className = 'px-2.5 py-1 rounded-lg text-xs font-bold transition-all bg-amber-500/20 text-amber-300 border border-amber-500/30 flex items-center space-x-1';
+    }
   }
 
   function updateVideoPreview(val) {
     const iframe = document.getElementById('videoPreviewIframe');
     const noText = document.getElementById('noVideoText');
-    const embed  = convertToEmbedUrl(val);
-    if (embed && iframe) {
+    const badge  = document.getElementById('videoProviderBadge');
+
+    const providerInfo = getVideoProviderInfo(val);
+    if (badge) {
+      badge.innerHTML = `<span>${providerInfo.label}</span>`;
+      badge.className = `text-[0.65rem] font-bold px-2 py-0.5 rounded-md border flex items-center space-x-1 ${providerInfo.color}`;
+    }
+
+    const embed = convertToEmbedUrl(val);
+    if (embed && iframe && currentEditingLessonType === 'video') {
       iframe.src = embed;
       iframe.classList.remove('hidden');
       if (noText) noText.classList.add('hidden');
@@ -940,116 +1340,646 @@ document.addEventListener('DOMContentLoaded', () => {
     if (noText) noText.classList.toggle('hidden', !!val);
   }
 
-  async function handleSaveLessonModal() {
-    const title    = document.getElementById('editLessonTitle')?.value?.trim();
-    const videoUrl = document.getElementById('editLessonVideoUrl')?.value?.trim();
-    const content  = document.getElementById('editLessonContent')?.value?.trim();
-    if (!title) { showToast('⚠️ Título da aula é obrigatório.'); return; }
-    if (!sb || !editingLessonServerId) { hideLessonEditorModal(); return; }
+  function openServerEditorModal(serverId = null) {
+    editingServerId = serverId;
+    const titleEl = document.getElementById('serverEditorModalTitle');
+    const titleInput = document.getElementById('editServerTitle');
+    const descInput = document.getElementById('editServerDescription');
+    const heroInput = document.getElementById('editServerHeroImage');
+    const delBtn = document.getElementById('deleteServerModalBtn');
 
-    const payload = { server_id: editingLessonServerId, title, video_url: videoUrl || '', content_markdown: content || '', display_order: 0 };
-
-    if (editingLessonId) {
-      await sb.from('server_lessons').update({ title, video_url: videoUrl||'', content_markdown: content||'' }).eq('id', editingLessonId);
-      showToast('✅ Aula atualizada!');
+    if (serverId) {
+      const srv = serversData.find(s => s.id === serverId) || DEFAULT_SOVEREIGN_SERVERS.find(s => s.id === serverId);
+      if (titleEl) titleEl.textContent = 'Editar Servidor';
+      if (titleInput) titleInput.value = srv?.title || '';
+      if (descInput) descInput.value = srv?.description || '';
+      if (heroInput) heroInput.value = srv?.hero_image || '';
+      updateServerHeroPreview(srv?.hero_image || '');
+      if (delBtn) delBtn.style.display = 'block';
     } else {
-      await sb.from('server_lessons').insert(payload);
-      showToast('✅ Aula criada!');
+      if (titleEl) titleEl.textContent = 'Criar Novo Servidor';
+      if (titleInput) titleInput.value = '';
+      if (descInput) descInput.value = '';
+      if (heroInput) heroInput.value = './public/assets/images/opt_0008_img_exact_87ca3.webp';
+      updateServerHeroPreview('./public/assets/images/opt_0008_img_exact_87ca3.webp');
+      if (delBtn) delBtn.style.display = 'none';
     }
+
+    if (serverEditorModal) {
+      serverEditorModal.classList.remove('hidden');
+      serverEditorModal.classList.remove('opacity-0');
+    }
+  }
+  window.appOpenServerEditorModal = openServerEditorModal;
+
+  async function handleSaveServerModal() {
+    const titleInput = document.getElementById('editServerTitle');
+    const descInput  = document.getElementById('editServerDescription');
+    const heroInput  = document.getElementById('editServerHeroImage');
+
+    const title = titleInput?.value?.trim();
+    const desc  = descInput?.value?.trim() || '';
+    const hero  = heroInput?.value?.trim() || './public/assets/images/opt_0008_img_exact_87ca3.webp';
+
+    if (!title) {
+      showToast('⚠️ O título do servidor é obrigatório.');
+      titleInput?.focus();
+      return;
+    }
+
+    if (editingServerId) {
+      let srv = serversData.find(s => s.id === editingServerId);
+      if (srv) {
+        srv.title = title;
+        srv.description = desc;
+        srv.hero_image = hero;
+      }
+      let dSrv = DEFAULT_SOVEREIGN_SERVERS.find(s => s.id === editingServerId);
+      if (dSrv) {
+        dSrv.title = title;
+        dSrv.description = desc;
+        dSrv.hero_image = hero;
+      }
+      showToast('✅ Servidor atualizado com sucesso!');
+    } else {
+      const newId = 'srv_' + Date.now().toString(36);
+      const newServer = {
+        id: newId,
+        title: title,
+        description: desc,
+        hero_image: hero,
+        lessons: []
+      };
+      serversData.push(newServer);
+      showToast('🎉 Novo servidor criado com sucesso!');
+    }
+
+    try {
+      localStorage.setItem('sovereign_servers_custom', JSON.stringify(serversData));
+    } catch(e) {}
+
+    hideServerEditorModal();
+    if (currentView === 'servers') {
+      renderServersView();
+    } else if (currentView === 'server_detail') {
+      renderServerDetailView();
+    }
+  }
+
+  async function handleDeleteServerModal() {
+    if (!editingServerId) return;
+    if (!confirm('Deseja realmente excluir este servidor e todas as suas masterclasses?')) return;
+
+    serversData = serversData.filter(s => s.id !== editingServerId);
+    try {
+      localStorage.setItem('sovereign_servers_custom', JSON.stringify(serversData));
+    } catch(e) {}
+
+    hideServerEditorModal();
+    showToast('🗑️ Servidor excluído com sucesso!');
+    navigateToServers();
+  }
+
+  function updateLessonTextMetrics() {
+    const ta = document.getElementById('editLessonContent');
+    const val = ta?.value || '';
+    const words = val.trim() ? val.trim().split(/\s+/).length : 0;
+    const chars = val.length;
+    const readMin = Math.max(1, Math.ceil(words / 180));
+
+    const wEl = document.getElementById('lessonWordCount');
+    const cEl = document.getElementById('lessonCharCount');
+    const rEl = document.getElementById('lessonReadingTime');
+
+    if (wEl) wEl.textContent = `${words} palavras`;
+    if (cEl) cEl.textContent = `${chars} caracteres`;
+    if (rEl) rEl.textContent = `⏱️ ~${readMin} min de leitura`;
+
+    const splitContent = document.getElementById('editLessonSplitPreviewContent');
+    if (splitContent && currentEditorViewMode !== 'editor') {
+      splitContent.innerHTML = renderMarkdown(val) || '<p class="text-white/40 text-sm italic">O preview renderizado aparecerá aqui...</p>';
+    }
+  }
+
+  function renderLessonResourcesList() {
+    const listEl = document.getElementById('lessonResourcesList');
+    const countBadge = document.getElementById('lessonResourcesCountBadge');
+    const countText  = document.getElementById('resourcesCountText');
+
+    if (countBadge) countBadge.textContent = currentEditingResources.length;
+    if (countText)  countText.textContent = `${currentEditingResources.length} materiais`;
+
+    if (!listEl) return;
+
+    if (currentEditingResources.length === 0) {
+      listEl.innerHTML = `
+        <div id="emptyResourcesPlaceholder" class="p-8 text-center rounded-2xl bg-white/[0.01] border border-white/5 border-dashed space-y-2">
+            <span class="text-3xl">📦</span>
+            <p class="text-xs font-semibold text-white/70">Nenhum recurso anexado ainda</p>
+            <p class="text-[0.7rem] text-white/40 max-w-sm mx-auto">Adicione materiais de apoio para enriquecer a aula e gerar alto valor aos membros da comunidade.</p>
+        </div>`;
+      return;
+    }
+
+    const typeIcons = {
+      pdf: '📄',
+      prompt: '💡',
+      code: '💻',
+      figma: '🎨',
+      drive: '📁',
+      link: '🔗'
+    };
+
+    listEl.innerHTML = currentEditingResources.map((res, idx) => {
+      const icon = typeIcons[res.type] || '📎';
+      const cleanUrl = escapeHtml(res.url);
+      const cleanTitle = escapeHtml(res.title);
+      return `
+        <div class="skool-resource-item">
+          <div class="flex items-center space-x-3 min-w-0 flex-1">
+            <span class="text-xl flex-shrink-0">${icon}</span>
+            <div class="min-w-0 flex-1">
+              <p class="text-xs font-bold text-white truncate">${cleanTitle}</p>
+              <a href="${cleanUrl}" target="_blank" rel="noopener noreferrer" class="text-[0.65rem] text-white/50 hover:text-white truncate block font-mono">${cleanUrl}</a>
+            </div>
+          </div>
+          <div class="flex items-center space-x-2 flex-shrink-0">
+            <a href="${cleanUrl}" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 bg-white/10 hover:bg-white/20 text-white rounded-lg text-xs font-bold transition-all">
+              Testar ↗
+            </a>
+            <button type="button" onclick="window.appRemoveResource(${idx})" class="w-7 h-7 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/20 flex items-center justify-center text-xs font-bold transition-all" title="Remover">
+              ✕
+            </button>
+          </div>
+        </div>`;
+    }).join('');
+  }
+
+  window.appAddResource = function() {
+    const titleInput = document.getElementById('newResourceTitle');
+    const urlInput   = document.getElementById('newResourceUrl');
+    const typeSelect = document.getElementById('newResourceType');
+
+    const title = titleInput?.value?.trim();
+    const url   = urlInput?.value?.trim();
+    const type  = typeSelect?.value || 'link';
+
+    if (!title) {
+      showToast('⚠️ Digite o nome do recurso ou arquivo.');
+      titleInput?.focus();
+      return;
+    }
+    if (!url) {
+      showToast('⚠️ Insira o link ou URL de acesso do recurso.');
+      urlInput?.focus();
+      return;
+    }
+
+    currentEditingResources.push({ id: `res_${Date.now()}_${Math.random().toString(36).substring(2,6)}`, title, url, type });
+    if (titleInput) titleInput.value = '';
+    if (urlInput) urlInput.value = '';
+
+    renderLessonResourcesList();
+    showToast('📎 Material anexado à aula!');
+  };
+
+  window.appRemoveResource = function(idx) {
+    if (idx >= 0 && idx < currentEditingResources.length) {
+      currentEditingResources.splice(idx, 1);
+      renderLessonResourcesList();
+      showToast('🗑️ Recurso removido.');
+    }
+  };
+
+  function updateStudentLivePreview() {
+    const container = document.getElementById('studentLivePreviewContainer');
+    if (!container) return;
+
+    const title    = document.getElementById('editLessonTitle')?.value?.trim() || 'Título da Aula';
+    const videoUrl = document.getElementById('editLessonVideoUrl')?.value?.trim() || '';
+    const content  = document.getElementById('editLessonContent')?.value?.trim() || '';
+    const module   = document.getElementById('editLessonModule')?.value?.trim() || 'Módulo Principal';
+    const duration = document.getElementById('editLessonDuration')?.value?.trim() || '15 min';
+
+    const embed = (currentEditingLessonType === 'video' && videoUrl) ? convertToEmbedUrl(videoUrl) : '';
+
+    const typeIcons = { pdf: '📄', prompt: '💡', code: '💻', figma: '🎨', drive: '📁', link: '🔗' };
+
+    const resourcesHtml = currentEditingResources.length > 0 ? `
+      <div class="mt-6 p-4 rounded-2xl bg-white/[0.04] border border-white/10 space-y-3">
+        <h4 class="text-xs font-bold uppercase text-white/70 tracking-wider flex items-center space-x-1.5">
+          <span>📎 Materiais de Apoio & Downloads (${currentEditingResources.length})</span>
+        </h4>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+          ${currentEditingResources.map(res => `
+            <a href="${escapeHtml(res.url)}" target="_blank" rel="noopener noreferrer" class="p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all flex items-center justify-between group">
+              <div class="flex items-center space-x-2.5 min-w-0">
+                <span class="text-lg">${typeIcons[res.type] || '📎'}</span>
+                <span class="text-xs font-bold text-white truncate">${escapeHtml(res.title)}</span>
+              </div>
+              <span class="text-xs text-white/50 group-hover:text-white transition-colors">Baixar ↗</span>
+            </a>
+          `).join('')}
+        </div>
+      </div>` : '';
+
+    container.innerHTML = `
+      <div class="space-y-4">
+        <!-- Banner Topo do Aluno -->
+        <div class="flex items-center justify-between flex-wrap gap-2 pb-3 border-b border-white/10">
+          <div>
+            <span class="text-[0.65rem] font-bold uppercase tracking-wider text-white/50">${escapeHtml(module)}</span>
+            <h3 class="text-lg font-extrabold text-white mt-0.5">${escapeHtml(title)}</h3>
+          </div>
+          <div class="flex items-center space-x-2">
+            <span class="px-2.5 py-1 rounded-full bg-white/10 border border-white/15 text-xs font-bold text-white flex items-center space-x-1">
+              <span>⏱️</span><span>${escapeHtml(duration)}</span>
+            </span>
+            <button type="button" class="px-3 py-1 bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 rounded-xl text-xs font-bold flex items-center space-x-1">
+              <span>✓</span><span>Concluir Aula</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Video Player ou Banner Artigo -->
+        ${embed ? `
+          <div class="rounded-2xl overflow-hidden border border-white/15 shadow-2xl bg-black">
+            <div class="relative w-full" style="padding-top: 56.25%;">
+              <iframe src="${embed}" class="absolute top-0 left-0 w-full h-full" frameborder="0" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+            </div>
+          </div>` : `
+          <div class="p-8 rounded-2xl bg-gradient-to-br from-white/[0.04] to-transparent border border-white/10 text-center space-y-2">
+            <span class="text-4xl block">📄</span>
+            <h4 class="text-sm font-bold text-white">Artigo Técnico de Estudo</h4>
+            <p class="text-xs text-white/50 max-w-md mx-auto">Esta aula foi configurada como artigo em texto para leitura aprofundada com prompts e códigos.</p>
+          </div>`}
+
+        <!-- Recursos Skool da Aula -->
+        ${resourcesHtml}
+
+        <!-- Conteúdo Formatado da Aula -->
+        <div class="glass-card rounded-2xl p-6 sm:p-7 prose prose-invert max-w-none text-gray-200 leading-relaxed shadow-lg">
+          ${renderMarkdown(content) || '<p class="text-white/40 italic text-sm">Nenhum conteúdo em texto inserido para esta aula.</p>'}
+        </div>
+      </div>`;
+  }
+
+  // ──────────────────────────────────────────────────────────────────────────
+  // LESSON MODAL SAVE & DELETE (Com Supabase + Contingência Local)
+  // ──────────────────────────────────────────────────────────────────────────
+  async function handleSaveLessonModal() {
+    const titleInput   = document.getElementById('editLessonTitle');
+    const videoInput   = document.getElementById('editLessonVideoUrl');
+    const contentInput = document.getElementById('editLessonContent');
+    const moduleInput  = document.getElementById('editLessonModule');
+    const durationInput= document.getElementById('editLessonDuration');
+    const statusSelect = document.getElementById('editLessonStatus');
+    const accessSelect = document.getElementById('editLessonAccessLevel');
+    const orderInput   = document.getElementById('editLessonDisplayOrder');
+
+    const title       = titleInput?.value?.trim();
+    let videoUrl      = videoInput?.value?.trim() || '';
+    const content     = contentInput?.value?.trim() || '';
+    const moduleName  = moduleInput?.value?.trim() || 'Módulo 1';
+    const duration    = durationInput?.value?.trim() || '15 min';
+    const status      = statusSelect?.value || currentEditingLessonStatus || 'published';
+    const accessLevel = accessSelect?.value || 'all';
+    const displayOrder= parseInt(orderInput?.value) || 1;
+
+    if (!title) {
+      showToast('⚠️ Título da aula é obrigatório.');
+      switchLessonEditorTab('content');
+      titleInput?.focus();
+      return;
+    }
+
+    if (!editingLessonServerId) {
+      hideLessonEditorModal();
+      return;
+    }
+
+    if (currentEditingLessonType === 'article') {
+      videoUrl = '';
+    }
+
+    const saveBtn = document.getElementById('saveLessonModalBtn');
+    const saveIcon = document.getElementById('saveLessonBtnIcon');
+    const saveLabel = document.getElementById('saveLessonBtnLabel');
+    if (saveBtn) saveBtn.disabled = true;
+    if (saveIcon) saveIcon.textContent = '⏳';
+    if (saveLabel) saveLabel.textContent = 'Salvando...';
+
+    // Empacota os metadados ricos do Skool dentro do markdown
+    const metadataObj = {
+      module: moduleName,
+      duration: duration,
+      status: status,
+      access_level: accessLevel,
+      lesson_type: currentEditingLessonType,
+      resources: currentEditingResources
+    };
+    const finalContentMarkdown = embedLessonMetadata(content, metadataObj);
+
+    // 1. Persistência em Memória e LocalStorage Imediata (Zero delay)
+    let srv = serversData.find(s => s.id === editingLessonServerId);
+    if (srv) {
+      if (!Array.isArray(srv.lessons)) srv.lessons = [];
+
+      if (editingLessonId) {
+        const lIdx = srv.lessons.findIndex(l => l.id === editingLessonId);
+        if (lIdx >= 0) {
+          srv.lessons[lIdx] = {
+            ...srv.lessons[lIdx],
+            title,
+            video_url: videoUrl,
+            content_markdown: finalContentMarkdown,
+            display_order: displayOrder,
+            module: moduleName,
+            duration: duration,
+            status: status,
+            access_level: accessLevel,
+            resources: currentEditingResources
+          };
+        }
+      } else {
+        const newLesson = {
+          id: `les_${Date.now()}_${Math.random().toString(36).substring(2,6)}`,
+          title,
+          video_url: videoUrl,
+          content_markdown: finalContentMarkdown,
+          display_order: displayOrder,
+          module: moduleName,
+          duration: duration,
+          status: status,
+          access_level: accessLevel,
+          resources: currentEditingResources
+        };
+        srv.lessons.push(newLesson);
+      }
+      try {
+        localStorage.setItem('mcp_local_servers_data', JSON.stringify(serversData));
+      } catch(e) {}
+    }
+
+    // 2. Persistência no Supabase (se online)
+    if (sb) {
+      try {
+        const payload = {
+          server_id: editingLessonServerId,
+          title,
+          video_url: videoUrl,
+          content_markdown: finalContentMarkdown,
+          display_order: displayOrder
+        };
+
+        if (editingLessonId) {
+          await sb.from('server_lessons').update({
+            title,
+            video_url: videoUrl,
+            content_markdown: finalContentMarkdown
+          }).eq('id', editingLessonId);
+        } else {
+          await sb.from('server_lessons').insert(payload);
+        }
+      } catch(e) {
+        console.warn('[Supabase Lesson Save] Falha na sincronização remota, mantido localmente:', e.message);
+      }
+    }
+
+    if (saveBtn) saveBtn.disabled = false;
+    if (saveIcon) saveIcon.textContent = '💾';
+    if (saveLabel) saveLabel.textContent = 'Salvar Aula';
+
+    showToast(editingLessonId ? '✅ Aula atualizada com sucesso!' : '✅ Aula criada com sucesso!');
     hideLessonEditorModal();
-    editingLessonId = null; editingLessonServerId = null;
-    await loadServersData();
+    editingLessonId = null;
+    editingLessonServerId = null;
+
     renderCurrentView();
   }
 
   async function handleDeleteLessonModal() {
-    if (!editingLessonId || !sb) { hideLessonEditorModal(); return; }
-    if (!(await showConfirmModal('Excluir esta aula?'))) return;
-    await sb.from('server_lessons').delete().eq('id', editingLessonId);
-    showToast('🗑️ Aula excluída!');
-    hideLessonEditorModal();
-    editingLessonId = null; editingLessonServerId = null;
-    await loadServersData();
-    renderCurrentView();
-  }
+    if (!editingLessonId) { hideLessonEditorModal(); return; }
+    if (!(await showConfirmModal('Deseja realmente excluir esta aula? Esta ação não pode ser desfeita.'))) return;
 
-  async function handleSaveServerModal() {
-    const title       = document.getElementById('editServerTitle')?.value?.trim();
-    const description = document.getElementById('editServerDescription')?.value?.trim();
-    const heroImage   = document.getElementById('editServerHeroImage')?.value?.trim();
-    if (!title) { showToast('⚠️ Título do servidor é obrigatório.'); return; }
-    if (!sb) { hideServerEditorModal(); return; }
-
-    const payload = { title, description: description||'', hero_image: heroImage||'', display_order: serversData.length };
-
-    if (editingServerId) {
-      await sb.from('servers').update({ title, description: description||'', hero_image: heroImage||'' }).eq('id', editingServerId);
-      showToast('✅ Servidor atualizado!');
-    } else {
-      await sb.from('servers').insert(payload);
-      showToast('✅ Servidor criado!');
+    // 1. Remove da memória local
+    if (editingLessonServerId) {
+      let srv = serversData.find(s => s.id === editingLessonServerId);
+      if (srv && Array.isArray(srv.lessons)) {
+        srv.lessons = srv.lessons.filter(l => l.id !== editingLessonId);
+        try {
+          localStorage.setItem('mcp_local_servers_data', JSON.stringify(serversData));
+        } catch(e) {}
+      }
     }
-    hideServerEditorModal();
-    editingServerId = null;
-    await loadServersData();
+
+    // 2. Remove do Supabase se online
+    if (sb) {
+      try {
+        await sb.from('server_lessons').delete().eq('id', editingLessonId);
+      } catch(e) {
+        console.warn('[Supabase Delete Lesson] Erro remoto:', e.message);
+      }
+    }
+
+    showToast('🗑️ Aula excluída com sucesso!');
+    hideLessonEditorModal();
+    editingLessonId = null;
+    editingLessonServerId = null;
+
     renderCurrentView();
   }
 
-  async function handleDeleteServerModal() {
-    if (!editingServerId || !sb) { hideServerEditorModal(); return; }
-    if (!(await showConfirmModal('Excluir este servidor e todas as suas aulas?'))) return;
-    await sb.from('server_lessons').delete().eq('server_id', editingServerId);
-    await sb.from('servers').delete().eq('id', editingServerId);
-    showToast('🗑️ Servidor excluído!');
-    hideServerEditorModal();
-    editingServerId = null;
-    await loadServersData();
-    navigateToServers();
-  }
-
-  // Expõe as funções abertas dos modais para o HTML inline
-  window.appOpenServerEditorModal = (sId = null) => {
-    editingServerId = sId;
-    const srv = sId ? serversData.find(s => s.id === sId) : null;
-    const titleEl = document.getElementById('serverEditorModalTitle');
-    if (titleEl) titleEl.textContent = sId ? 'Editar Servidor' : 'Criar Servidor';
-    const titleInput = document.getElementById('editServerTitle');
-    const descInput  = document.getElementById('editServerDescription');
-    const heroInput  = document.getElementById('editServerHeroImage');
-    if (titleInput) titleInput.value = srv?.title || '';
-    if (descInput)  descInput.value  = srv?.description || '';
-    if (heroInput)  heroInput.value  = srv?.hero_image || '';
-    updateServerHeroPreview(srv?.hero_image || '');
-    if (serverEditorModal) { serverEditorModal.classList.remove('hidden'); serverEditorModal.classList.remove('opacity-0'); }
-  };
-
+  // ──────────────────────────────────────────────────────────────────────────
+  // ABERTURA DO MODAL DA AULA
+  // ──────────────────────────────────────────────────────────────────────────
   window.appOpenLessonEditorModal = (sId, lId = null) => {
     editingLessonServerId = sId;
     editingLessonId = lId;
-    const srv = serversData.find(s => s.id === sId);
+
+    const srv = serversData.find(s => s.id === sId) || DEFAULT_SOVEREIGN_SERVERS.find(s => s.id === sId);
     const lesson = lId ? srv?.lessons?.find(l => l.id === lId) : null;
+
+    // Metadados extraídos
+    const { cleanContent, metadata } = extractLessonMetadata(lesson?.content_markdown || '');
+
+    // Título do modal e badges
     const titleEl = document.getElementById('lessonEditorModalTitle');
-    if (titleEl) titleEl.textContent = lId ? `Editar Aula — ${srv?.title || ''}` : `Nova Aula — ${srv?.title || ''}`;
-    const titleInput   = document.getElementById('editLessonTitle');
-    const videoInput   = document.getElementById('editLessonVideoUrl');
-    const contentInput = document.getElementById('editLessonContent');
-    if (titleInput)   titleInput.value   = lesson?.title || '';
-    if (videoInput)   videoInput.value   = lesson?.video_url || '';
-    if (contentInput) contentInput.value = lesson?.content_markdown || '';
+    if (titleEl) titleEl.textContent = lId ? `Editar Aula — ${lesson?.title || ''}` : `Nova Aula — ${srv?.title || ''}`;
+
+    const serverBadge = document.getElementById('lessonEditorServerBadge');
+    if (serverBadge) serverBadge.textContent = srv?.title || 'Servidor';
+
+    const moduleBadge = document.getElementById('lessonEditorModuleBadge');
+    const lessonModule = metadata.module || lesson?.module || 'Módulo 1';
+    if (moduleBadge) moduleBadge.textContent = lessonModule;
+
+    // Campos do formulário
+    const titleInput    = document.getElementById('editLessonTitle');
+    const videoInput    = document.getElementById('editLessonVideoUrl');
+    const contentInput  = document.getElementById('editLessonContent');
+    const moduleInput   = document.getElementById('editLessonModule');
+    const durationInput = document.getElementById('editLessonDuration');
+    const orderInput    = document.getElementById('editLessonDisplayOrder');
+    const accessSelect  = document.getElementById('editLessonAccessLevel');
+
+    if (titleInput)    titleInput.value    = lesson?.title || '';
+    if (videoInput)    videoInput.value    = lesson?.video_url || '';
+    if (contentInput)  contentInput.value  = cleanContent || '';
+    if (moduleInput)   moduleInput.value   = lessonModule;
+    if (durationInput) durationInput.value = metadata.duration || lesson?.duration || '15 min';
+    if (orderInput)    orderInput.value    = lesson?.display_order || (srv?.lessons?.length || 0) + 1;
+    if (accessSelect)  accessSelect.value  = metadata.access_level || lesson?.access_level || 'all';
+
+    // Recursos
+    currentEditingResources = Array.isArray(metadata.resources) ? [...metadata.resources] : (Array.isArray(lesson?.resources) ? [...lesson.resources] : []);
+    renderLessonResourcesList();
+
+    // Tipo de Aula e Status
+    const lessonType = metadata.lesson_type || (lesson && !lesson.video_url && cleanContent ? 'article' : 'video');
+    setLessonType(lessonType);
+
+    const lessonStatus = metadata.status || lesson?.status || 'published';
+    setLessonStatus(lessonStatus);
+
+    // Preview de Vídeo e Métricas de Texto
     updateVideoPreview(lesson?.video_url || '');
+    updateLessonTextMetrics();
+
+    // Exclusão
     const delBtn = document.getElementById('deleteLessonModalBtn');
-    if (delBtn) delBtn.style.display = lId ? 'block' : 'none';
-    if (lessonEditorModal) { lessonEditorModal.classList.remove('hidden'); lessonEditorModal.classList.remove('opacity-0'); }
+    if (delBtn) delBtn.style.display = lId ? 'flex' : 'none';
+
+    // Reinicia abas na primeira
+    switchLessonEditorTab('content');
+    switchEditorViewMode('editor');
+
+    // Abre o modal
+    if (lessonEditorModal) {
+      lessonEditorModal.classList.remove('hidden');
+      lessonEditorModal.classList.remove('opacity-0');
+    }
   };
 
+  // HELPERS DE FORMATAÇÃO E INSERÇÃO
   window.appInsertMarkdown = (prefix) => {
     const ta = document.getElementById('editLessonContent');
     if (!ta) return;
-    const start = ta.selectionStart; const end = ta.selectionEnd;
+    const start = ta.selectionStart;
+    const end = ta.selectionEnd;
     const selected = ta.value.substring(start, end);
     ta.value = ta.value.substring(0, start) + prefix + selected + ta.value.substring(end);
     ta.selectionStart = ta.selectionEnd = start + prefix.length + selected.length;
     ta.focus();
+    updateLessonTextMetrics();
+  };
+
+  window.appInsertMarkdownWrap = (prefix, suffix) => {
+    const ta = document.getElementById('editLessonContent');
+    if (!ta) return;
+    const start = ta.selectionStart;
+    const end = ta.selectionEnd;
+    const selected = ta.value.substring(start, end) || 'texto';
+    ta.value = ta.value.substring(0, start) + prefix + selected + suffix + ta.value.substring(end);
+    ta.selectionStart = start + prefix.length;
+    ta.selectionEnd = start + prefix.length + selected.length;
+    ta.focus();
+    updateLessonTextMetrics();
+  };
+
+  window.appInsertSkoolCallout = (type) => {
+    let calloutText = '';
+    if (type === 'tip') {
+      calloutText = '\n💡 **Dica de Ouro:** Insira aqui uma recomendação prática e acionável para os alunos.\n\n';
+    } else if (type === 'note') {
+      calloutText = '\n📌 **Nota Importante:** Lembre-se de verificar esta etapa essencial antes de prosseguir.\n\n';
+    } else if (type === 'warning') {
+      calloutText = '\n⚠️ **Atenção:** Evite cometer este erro clássico comum entre iniciantes.\n\n';
+    } else if (type === 'prompt') {
+      calloutText = '\n🚀 **Prompt Master:**\n```text\n[Cole aqui o prompt pronto para o aluno copiar]\n```\n\n';
+    }
+    window.appInsertMarkdown(calloutText);
+  };
+
+  window.appInsertSkoolTemplate = () => {
+    const template = `# Visão Geral da Masterclass
+
+Nesta aula prática, você vai dominar a metodologia completa para obter resultados profissionais de alto nível com inteligência artificial generativa.
+
+💡 **Dica de Ouro:** Pratique cada etapa simultaneamente com o vídeo para fixar o aprendizado em profundidade.
+
+---
+
+## 🎯 Objetivos de Aprendizagem
+- Compreender os fundamentos essenciais e parametrização avançada.
+- Aplicar a técnica passo a passo no seu fluxo de trabalho diário.
+- Evitar os erros mais comuns e acelerar sua entrega em até 10x.
+
+---
+
+## 🚀 Prompt / Código de Referência
+\`\`\`text
+hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detailed facial microtextures, 8k octanerender --ar 16:9 --v 6.1
+\`\`\`
+
+---
+
+## ☑️ Checklist de Conclusão para o Aluno
+- [ ] Assistir à masterclass completa com atenção aos detalhes
+- [ ] Testar o prompt de exemplo na ferramenta
+- [ ] Baixar os materiais de apoio na aba de Recursos
+- [ ] Compartilhar seu resultado prático na aba Comunidade!
+`;
+    const ta = document.getElementById('editLessonContent');
+    if (ta) {
+      ta.value = template;
+      updateLessonTextMetrics();
+      showToast('📋 Template Skool inserido com sucesso!');
+    }
+  };
+
+  window.toggleChecklistItem = function(el) {
+    const box = el.querySelector('.skool-check-box');
+    const span = el.querySelectorAll('span')[1];
+    if (box) {
+      const isChecked = box.classList.toggle('checked');
+      box.textContent = isChecked ? '✓' : '';
+      if (span) {
+        span.classList.toggle('line-through', isChecked);
+        span.classList.toggle('text-gray-400', isChecked);
+        span.classList.toggle('text-gray-200', !isChecked);
+      }
+    }
+  };
+
+  window.appCopyCodeBlock = function(btn) {
+    const block = btn.closest('.skool-code-block');
+    const code = block?.querySelector('code')?.textContent || '';
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(code).then(() => {
+        const oldHtml = btn.innerHTML;
+        btn.innerHTML = '<span>✅ Copiado!</span>';
+        setTimeout(() => { btn.innerHTML = oldHtml; }, 2000);
+      });
+    }
+  };
+
+  window.toggleCompleteLesson = function(lesId) {
+    try {
+      const raw = localStorage.getItem('mcp_completed_lessons');
+      let completed = raw ? JSON.parse(raw) : [];
+      if (!Array.isArray(completed)) completed = [];
+      const idx = completed.indexOf(lesId);
+      if (idx >= 0) {
+        completed.splice(idx, 1);
+        showToast('Aula desmarcada como concluída.');
+      } else {
+        completed.push(lesId);
+        showToast('🎉 Parabéns! Aula concluída!');
+      }
+      localStorage.setItem('mcp_completed_lessons', JSON.stringify(completed));
+      renderCurrentView();
+    } catch(e) {}
   };
 
   // ──────────────────────────────────────────────────────────────────────────
@@ -1098,46 +2028,51 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    document.querySelectorAll('.role-option').forEach(btn => {
-      btn.addEventListener('click', e => {
-        e.preventDefault();
-        e.stopPropagation();
-        const role = btn.getAttribute('data-role');
-        const roleData = {
-          free:      { role: 'visitante', name: 'Visitante Free', avatar: USER_ROLES.free.avatar, tier: 'free', isLoggedIn: false },
-          level_0:   { role: 'user', name: 'Membro Level 0', avatar: USER_ROLES.level_0.avatar, tier: 'pro', isLoggedIn: true },
-          level_1:   { role: 'user', name: 'Membro Level 1', avatar: USER_ROLES.level_1.avatar, tier: 'pro', isLoggedIn: true },
-          level_2:   { role: 'user', name: 'Membro Level 2', avatar: USER_ROLES.level_2.avatar, tier: 'vip', isLoggedIn: true },
-          full:      { role: 'user', name: 'Membro VIP Full Access', avatar: USER_ROLES.full.avatar, tier: 'vip', isLoggedIn: true },
-          admin:     { role: 'admin', name: 'Mateus Celestino Pro', avatar: USER_ROLES.admin.avatar, tier: 'max', isLoggedIn: true }
-        };
+    const closeRoleDropdown = () => {
+      const roleDropdown = document.getElementById('roleDropdown');
+      if (roleDropdown) {
+        roleDropdown.classList.add('invisible', 'opacity-0');
+        roleDropdown.classList.remove('opacity-100');
+      }
+    };
 
-        const target = roleData[role] || roleData.admin;
-        const sessionUser = {
-          isLoggedIn: target.isLoggedIn,
-          role: target.role,
-          name: target.name,
-          email: `${role}@mateuscelestinopro.com`,
-          avatar: target.avatar,
-          tier: target.tier
-        };
+    document.getElementById('profileDropdownBtn')?.addEventListener('click', e => {
+      e.preventDefault();
+      e.stopPropagation();
+      closeRoleDropdown();
+      navigateToProfile();
+    });
 
-        localStorage.setItem('mcp_session_user', JSON.stringify(sessionUser));
-        localStorage.setItem('mcp_user_role', sessionUser.role);
-        localStorage.setItem('mcp_admin_auth', (target.role === 'admin' ? 'true' : 'false'));
-        window.dispatchEvent(new CustomEvent('mcp_auth_changed', { detail: sessionUser }));
-        syncSovereignSession();
-        renderCurrentView();
+    document.getElementById('loginDropdownBtn')?.addEventListener('click', e => {
+      e.preventDefault();
+      e.stopPropagation();
+      closeRoleDropdown();
+      showAuthModal();
+    });
 
-        const roleDropdown = document.getElementById('roleDropdown');
-        if (roleDropdown) {
-          roleDropdown.classList.add('invisible', 'opacity-0');
-          roleDropdown.classList.remove('opacity-100');
-        }
-
-        const roleName = target.role === 'admin' ? 'Administrador Soberano' : (target.role === 'user' ? 'Membro VIP' : 'Visitante');
-        showToast(`🎭 Sessão alterada: ${roleName}!`, target.role === 'admin' ? 'admin' : (target.role === 'user' ? 'auth' : 'info'));
-      });
+    document.getElementById('logoutDropdownBtn')?.addEventListener('click', async e => {
+      e.preventDefault();
+      e.stopPropagation();
+      closeRoleDropdown();
+      localStorage.removeItem('mcp_session_user');
+      localStorage.removeItem('mcp_auth_token');
+      localStorage.setItem('mcp_user_role', 'visitante');
+      localStorage.setItem('mcp_admin_auth', 'false');
+      fetch('/api/auth/me', { method: 'DELETE' }).catch(() => {});
+      if (sb) {
+        try { await sb.auth.signOut(); } catch(err) {}
+      }
+      const guestUser = {
+        isLoggedIn: false,
+        role: 'visitante',
+        name: 'Visitante',
+        email: '',
+        avatar: USER_ROLES.guest.avatar
+      };
+      window.dispatchEvent(new CustomEvent('mcp_auth_changed', { detail: guestUser }));
+      syncSovereignSession();
+      showToast('👋 Sessão encerrada com sucesso!');
+      navigateToHome();
     });
 
     // Global Click Delegation on Main Container for 100% Bulletproof Gallery Navigation
@@ -1251,44 +2186,6 @@ document.addEventListener('DOMContentLoaded', () => {
       updateAuthModalUI();
     });
 
-    // Atalhos 1-Clique para Teste / Demonstração Imediata
-    const quickAdminBtn = document.getElementById('authQuickAdminBtn');
-    const quickMemberBtn = document.getElementById('authQuickMemberBtn');
-
-    quickAdminBtn?.addEventListener('click', () => {
-      isLoginMode = true;
-      updateAuthModalUI();
-      const emailInput = document.getElementById('authEmail');
-      const passInput = document.getElementById('authPassword');
-      if (emailInput && passInput) {
-        emailInput.value = 'mateus@mateuscelestinopro.com';
-        passInput.value = 'MateusProX@2026!';
-        showAuthAlert('Autenticando como Administrador Demo...', 'loading');
-        if (typeof authForm?.requestSubmit === 'function') {
-          authForm.requestSubmit();
-        } else {
-          authForm?.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
-        }
-      }
-    });
-
-    quickMemberBtn?.addEventListener('click', () => {
-      isLoginMode = true;
-      updateAuthModalUI();
-      const emailInput = document.getElementById('authEmail');
-      const passInput = document.getElementById('authPassword');
-      if (emailInput && passInput) {
-        emailInput.value = 'membro@mateuscelestinopro.com';
-        passInput.value = 'MembroProX@2026!';
-        showAuthAlert('Autenticando como Membro VIP Demo...', 'loading');
-        if (typeof authForm?.requestSubmit === 'function') {
-          authForm.requestSubmit();
-        } else {
-          authForm?.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
-        }
-      }
-    });
-
     authForm?.addEventListener('submit', async e => {
       e.preventDefault();
       const email    = document.getElementById('authEmail').value.trim();
@@ -1304,7 +2201,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       try {
         if (isLoginMode) {
-          // 1. Autenticação prioritária na API Soberana Local
+          // 1. Autenticação prioritária na API Soberana (Supabase PostgreSQL)
           const res = await fetch('/api/auth/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -1315,9 +2212,10 @@ document.addEventListener('DOMContentLoaded', () => {
           if (res.ok && data?.success && data?.user) {
             const role = data.role || (data.user.role === 'admin' ? 'admin' : 'user');
             const sessionUser = {
+              id: data.user.id,
               isLoggedIn: true,
               role: role,
-              name: data.user.name || (role === 'admin' ? 'Mateus Celestino Pro' : 'Membro Aluno Pro'),
+              name: data.user.name || (role === 'admin' ? 'Mateus Celestino Pro X' : 'Membro Pro'),
               email: data.user.email || email,
               avatar: data.user.avatar || (role === 'admin' ? USER_ROLES.admin.avatar : (role === 'moder' ? USER_ROLES.moderator.avatar : USER_ROLES.free.avatar)),
               tier: role === 'admin' ? 'max' : (data.user.tier || 'vip')
@@ -1328,11 +2226,15 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('mcp_admin_auth', (sessionUser.role === 'admin' || sessionUser.role === 'moder') ? 'true' : 'false');
             if (data.token) localStorage.setItem('mcp_auth_token', data.token);
 
+            if (sb) {
+              sb.auth.signInWithPassword({ email, password }).catch(() => {});
+            }
+
             window.dispatchEvent(new CustomEvent('mcp_auth_changed', { detail: sessionUser }));
             syncSovereignSession();
             
             showAuthAlert('✅ ' + (data.message || 'Login autorizado com sucesso! Entrando...'), 'success');
-            showToast('🔑 Login soberano realizado com sucesso! Bem-vindo(a) ' + sessionUser.name, 'success');
+            showToast('🔑 Login realizado com sucesso! Bem-vindo(a) ' + sessionUser.name, 'success');
 
             setTimeout(() => {
               hideAuthModal();
@@ -1344,12 +2246,12 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
           }
 
-          // 2. Fallback para Supabase se a conta for remota
+          // 2. Fallback para Supabase Auth se a conta for autenticada via GoTrue
           if (sb) {
             const { data: sbData, error: sbError } = await sb.auth.signInWithPassword({ email, password });
             if (!sbError && sbData?.session) {
               await handleAuthSession(sbData.session);
-              showAuthAlert('✅ Login remoto aprovado!', 'success');
+              showAuthAlert('✅ Login aprovado!', 'success');
               showToast('🔑 Login realizado com sucesso!', 'success');
               setTimeout(() => {
                 hideAuthModal();
@@ -1380,6 +2282,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
           if (res.ok && data?.success) {
             const sessionUser = {
+              id: data.user?.id || null,
               isLoggedIn: true,
               role: 'user',
               name: name,
@@ -1439,12 +2342,75 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Lesson Editor
+    // Lesson Editor (Skool Studio)
     closeLessonEditorModal?.addEventListener('click', hideLessonEditorModal);
     cancelLessonModalBtn?.addEventListener('click', hideLessonEditorModal);
     saveLessonModalBtn?.addEventListener('click', handleSaveLessonModal);
     deleteLessonModalBtn?.addEventListener('click', handleDeleteLessonModal);
-    document.getElementById('editLessonVideoUrl')?.addEventListener('input', e => updateVideoPreview(e.target.value));
+
+    // Skool Studio — Tabs
+    document.getElementById('tabLessonContentBtn')?.addEventListener('click', () => switchLessonEditorTab('content'));
+    document.getElementById('tabLessonResourcesBtn')?.addEventListener('click', () => switchLessonEditorTab('resources'));
+    document.getElementById('tabLessonSettingsBtn')?.addEventListener('click', () => switchLessonEditorTab('settings'));
+    document.getElementById('tabLessonPreviewBtn')?.addEventListener('click', () => switchLessonEditorTab('preview'));
+    document.getElementById('previewLessonModalBtn')?.addEventListener('click', () => switchLessonEditorTab('preview'));
+
+    // Skool Studio — Status & Types
+    document.getElementById('headerStatusPublishedBtn')?.addEventListener('click', () => setLessonStatus('published'));
+    document.getElementById('headerStatusDraftBtn')?.addEventListener('click', () => setLessonStatus('draft'));
+    document.getElementById('editLessonStatus')?.addEventListener('change', (e) => setLessonStatus(e.target.value));
+
+    document.getElementById('lessonTypeVideoBtn')?.addEventListener('click', () => setLessonType('video'));
+    document.getElementById('lessonTypeArticleBtn')?.addEventListener('click', () => setLessonType('article'));
+
+    // Skool Studio — Video Actions
+    const videoInputEl = document.getElementById('editLessonVideoUrl');
+    videoInputEl?.addEventListener('input', e => updateVideoPreview(e.target.value));
+
+    document.getElementById('btnPasteVideoUrl')?.addEventListener('click', async () => {
+      try {
+        if (navigator.clipboard) {
+          const clip = await navigator.clipboard.readText();
+          if (clip && videoInputEl) {
+            videoInputEl.value = clip;
+            updateVideoPreview(clip);
+            showToast('📋 Link colado da área de transferência!');
+          }
+        }
+      } catch(e) {}
+    });
+
+    document.getElementById('btnDemoVideoUrl')?.addEventListener('click', () => {
+      const demoUrl = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+      if (videoInputEl) {
+        videoInputEl.value = demoUrl;
+        updateVideoPreview(demoUrl);
+        showToast('🎬 Vídeo de demonstração carregado!');
+      }
+    });
+
+    // Skool Studio — Editor Modes & Input Metrics
+    document.getElementById('btnModeEditorOnly')?.addEventListener('click', () => switchEditorViewMode('editor'));
+    document.getElementById('btnModeSplitView')?.addEventListener('click', () => switchEditorViewMode('split'));
+    document.getElementById('btnModePreviewOnly')?.addEventListener('click', () => switchEditorViewMode('preview'));
+
+    const lessonContentEl = document.getElementById('editLessonContent');
+    lessonContentEl?.addEventListener('input', () => updateLessonTextMetrics());
+
+    // Skool Studio — Resources
+    document.getElementById('btnAddResourceBtn')?.addEventListener('click', () => window.appAddResource());
+
+    // Skool Studio — Keyboard Shortcuts (Ctrl+S / Cmd+S & Esc)
+    window.addEventListener('keydown', (e) => {
+      if (lessonEditorModal && !lessonEditorModal.classList.contains('hidden')) {
+        if ((e.metaKey || e.ctrlKey) && (e.key === 's' || e.key === 'S')) {
+          e.preventDefault();
+          handleSaveLessonModal();
+        } else if (e.key === 'Escape') {
+          hideLessonEditorModal();
+        }
+      }
+    });
 
     // Server Editor
     closeServerEditorModal?.addEventListener('click', hideServerEditorModal);
@@ -1463,8 +2429,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     const nm = document.getElementById('authNameField');
     if (nm) nm.style.display = isLoginMode ? 'none' : 'block';
-    const quickBox = document.getElementById('authQuickAccessBox');
-    if (quickBox) quickBox.style.display = isLoginMode ? 'block' : 'none';
     const btnLabel = document.getElementById('authSubmitBtnLabel');
     if (btnLabel) btnLabel.textContent = isLoginMode ? 'Entrar' : 'Criar Conta Grátis';
     const tog = document.getElementById('toggleAuthMode');
@@ -1527,8 +2491,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     currentView = 'community';
-    if (window.location.hash !== '#community') {
-      try { history.pushState(null, '', '#community'); } catch(e) {}
+    const targetHash = (communityActiveTab && communityActiveTab !== 'feed') ? `#community/${communityActiveTab}` : '#community';
+    if (window.location.hash !== targetHash) {
+      try { history.pushState(null, '', targetHash); } catch(e) {}
     }
     await loadCommunityPosts();
     renderCurrentView();
@@ -1616,42 +2581,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     renderCurrentView();
   }
+  window.appGoProfile = navigateToProfile;
+  window.appGoHome = navigateToHome;
+  window.appGoServers = navigateToServers;
+  window.appGoServerDetail = navigateToServerDetail;
 
   async function navigateToAdmin() {
     syncSovereignSession();
-    if (!isLoggedIn) {
-      if (sb) {
-        try {
-          const { data: { session } } = await sb.auth.getSession();
-          if (session) await handleAuthSession(session);
-          else { showAuthModal('Painel Administrativo restrito. Autentique-se com credenciais de Admin.'); return; }
-        } catch(e) {
-          showAuthModal('Painel Administrativo restrito. Autentique-se com credenciais de Admin.');
-          return;
-        }
-      } else {
-        showAuthModal('Painel Administrativo restrito. Autentique-se com credenciais de Admin.');
-        return;
-      }
-    }
-
-    const hasAdminAccess = (currentUserRole === 'admin' || currentUserRole === 'moderator' || currentUserRole === 'moder');
-    if (!hasAdminAccess) {
-      showToast('⚠️ Acesso restrito a Administradores e Moderadores.');
-      navigateToHome();
-      return;
-    }
-
-    currentView = 'admin';
-    if (window.location.hash !== '#admin') {
-      try { history.pushState(null, '', '#admin'); } catch(e) {}
-    }
-    renderCurrentView();
+    window.location.href = '/admin';
   }
 
-  // ──────────────────────────────────────────────────────────────────────────
-  // HEADER & BREADCRUMB
-  // ──────────────────────────────────────────────────────────────────────────
   // ──────────────────────────────────────────────────────────────────────────
   // HEADER & BREADCRUMB
   // ──────────────────────────────────────────────────────────────────────────
@@ -1662,14 +2601,30 @@ document.addEventListener('DOMContentLoaded', () => {
     if (currentUserAvatar)  currentUserAvatar.src = currentUserAvatarUrl || ri.avatar;
     const adminBtn = document.getElementById('adminNavBtn');
     const adminDropBtn = document.getElementById('adminDropdownBtn');
-    const hasAdminAccess = (currentUserRole === 'admin' || currentUserRole === 'moderator' || currentUserRole === 'moder');
+    const profileDropBtn = document.getElementById('profileDropdownBtn');
+    const loginDropBtn = document.getElementById('loginDropdownBtn');
+    const logoutDropBtn = document.getElementById('logoutDropdownBtn');
+
+    const hasAdminAccess = isLoggedIn && (currentUserRole === 'admin' || currentUserRole === 'moderator' || currentUserRole === 'moder');
     if (adminBtn) {
-      if (hasAdminAccess) adminBtn.classList.remove('hidden');
-      else adminBtn.classList.add('hidden');
+      adminBtn.classList.add('hidden');
+      adminBtn.style.display = 'none';
     }
     if (adminDropBtn) {
       if (hasAdminAccess) adminDropBtn.classList.remove('hidden');
       else adminDropBtn.classList.add('hidden');
+    }
+    if (profileDropBtn) {
+      if (isLoggedIn) profileDropBtn.classList.remove('hidden');
+      else profileDropBtn.classList.add('hidden');
+    }
+    if (loginDropBtn) {
+      if (!isLoggedIn) loginDropBtn.classList.remove('hidden');
+      else loginDropBtn.classList.add('hidden');
+    }
+    if (logoutDropBtn) {
+      if (isLoggedIn) logoutDropBtn.classList.remove('hidden');
+      else logoutDropBtn.classList.add('hidden');
     }
   }
 
@@ -1693,10 +2648,36 @@ document.addEventListener('DOMContentLoaded', () => {
       const c=p?.categories?.find(c=>c.id===selectedCategoryId);
       sep(); add(p?.title||selectedProductSlug,false,()=>navigateToProduct(selectedProductSlug));
       sep(); add(c?.title||selectedCategoryId, true);
-    } else if (currentView==='community')    { sep(); add('Comunidade',true); }
-      else if (currentView==='servers'||currentView==='server_detail') { sep(); add('Servers',true); }
-      else if (currentView==='profile')      { sep(); add('Meu Perfil',true); }
-      else if (currentView==='admin')        { sep(); add('Painel Administrativo',true); }
+    } else if (currentView==='community') {
+      sep();
+      const tabNames = {
+        feed: 'Feed & Discussões',
+        prompts: 'Acervo de Prompts VIP',
+        ranking: 'Ranking & Gamificação',
+        challenges: 'Desafios Semanais',
+        saved: 'Meus Salvos'
+      };
+      if (communityActiveTab && communityActiveTab !== 'feed') {
+        add('Comunidade', false, () => {
+          if (window.appSwitchCommunityTab) window.appSwitchCommunityTab('feed');
+          else navigateToCommunity();
+        });
+        sep();
+        add(tabNames[communityActiveTab] || communityActiveTab, true);
+      } else {
+        add('Comunidade', true);
+      }
+    } else if (currentView==='servers') {
+      sep(); add('Servers',true);
+    } else if (currentView==='server_detail') {
+      sep(); add('Servers', false, navigateToServers);
+      const srv = serversData.find(s => s.id === selectedServerId) || DEFAULT_SOVEREIGN_SERVERS.find(s => s.id === selectedServerId);
+      sep(); add(srv?.title || 'Aula', true);
+    } else if (currentView==='profile') {
+      sep(); add('Meu Perfil',true);
+    } else if (currentView==='admin') {
+      sep(); add('Painel Administrativo',true);
+    }
   }
 
   // ──────────────────────────────────────────────────────────────────────────
@@ -1811,6 +2792,42 @@ document.addEventListener('DOMContentLoaded', () => {
     homeImageIntervals = [];
 
     renderBreadcrumb(); updateNavState();
+
+    // Gestão Dinâmica dos Shaders WebGL Vermelhos de Personal OS na Comunidade
+    const webglContainer = document.getElementById('bg-webgl-container');
+    const webglVignette = document.getElementById('bg-webgl-vignette');
+    const videoBg = document.getElementById('bg-video-playlist');
+
+    if (currentView === 'community') {
+      if (webglContainer) {
+        webglContainer.style.opacity = '1';
+        webglContainer.style.display = 'block';
+      }
+      if (webglVignette) {
+        webglVignette.style.opacity = '0.75';
+      }
+      if (videoBg) {
+        videoBg.style.opacity = '0.08';
+      }
+      const savedShader = localStorage.getItem('mcp_community_active_shader') || 'strands';
+      if (window.renderWebGLBackground) {
+        window.renderWebGLBackground(savedShader);
+      }
+    } else {
+      if (webglContainer) {
+        webglContainer.style.opacity = '0';
+      }
+      if (webglVignette) {
+        webglVignette.style.opacity = '0';
+      }
+      if (videoBg) {
+        videoBg.style.opacity = `${(100 - activeBgDarkness) / 100}`;
+      }
+      if (window.stopWebGLBackground) {
+        window.stopWebGLBackground();
+      }
+    }
+
     const map = {
       home:renderHomeView, product:renderProductView, category:renderCategoryView,
       search:renderSearchView, community:renderCommunityView, servers:renderServersView,
@@ -2089,204 +3106,1343 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ──────────────────────────────────────────────────────────────────────────
-  // VIEW 5: COMMUNITY — Apple Liquid Glass & Real Image Upload
+  // VIEW 5: COMMUNITY — RED SHADER ATELIER & VIP CREATOR ECOSYSTEM
   // ──────────────────────────────────────────────────────────────────────────
+  let communityActiveTab = 'feed'; // 'feed' | 'prompts' | 'ranking' | 'challenges' | 'saved'
+  let communityActiveFilter = 'all'; // 'all' | 'prompts' | 'showcase' | 'tips' | 'official'
+  let communityPromptModelFilter = 'all'; // 'all' | 'Flux.1' | 'Midjourney' | 'ComfyUI' | 'SD 3.5'
+  let communitySearchQuery = '';
+  let communitySelectedCategory = 'prompts';
+  let communityPromptBoxOpen = false;
+
+  const COMMUNITY_SHADERS_DEFAULT = [
+    { id: 'strands', name: 'Strands Rubro', icon: '✨' },
+    { id: 'ferrofluid', name: 'Ferrofluid Crimson', icon: '🩸' },
+    { id: 'darkveil', name: 'Dark Veil Rubro', icon: '🌌' },
+    { id: 'balatro', name: 'Balatro Blood', icon: '⚡' },
+    { id: 'liquidether', name: 'Liquid Ether Ruby', icon: '💫' },
+    { id: 'antigravity', name: 'Antigravidade', icon: '🪐' },
+    { id: 'topography', name: 'Topografia Laser', icon: '🏔️' },
+    { id: 'ghostfibers', name: 'Ghost Fibers Blood', icon: '👻' },
+    { id: 'aurora', name: 'Aurora Escarlate', icon: '🌈' },
+    { id: 'plasma', name: 'Plasma Vermelho', icon: '🔮' },
+    { id: 'webthreads', name: 'Web Threads Rubro', icon: '🕸️' },
+    { id: 'floatinglines', name: 'Floating Lines Crimson', icon: '〰️' },
+    { id: 'silk', name: 'Seda Carmesim', icon: '🧣' },
+    { id: 'ripplegrid', name: 'Ripple Grid Red', icon: '🌐' },
+    { id: 'particles', name: 'Partículas Rubras', icon: '✨' }
+  ];
+
+  function getCommunityShadersList() {
+    return window.COMMUNITY_SHADERS || COMMUNITY_SHADERS_DEFAULT;
+  }
+
   function renderCommunityView() {
     if (!isLoggedIn) { showAuthModal(); return; }
     selectedFilesToUpload = [];
 
+    // Filtro e Busca de Posts para o Feed
+    let filteredPosts = [...communityPosts];
+    if (communityActiveFilter === 'prompts') {
+      filteredPosts = filteredPosts.filter(p => p.category === 'prompts' || p.ai_prompt || (p.title && p.title.toLowerCase().includes('prompt')));
+    } else if (communityActiveFilter === 'showcase') {
+      filteredPosts = filteredPosts.filter(p => p.category === 'showcase' || (p.images && p.images.length > 0));
+    } else if (communityActiveFilter === 'tips') {
+      filteredPosts = filteredPosts.filter(p => p.category === 'tips' || (p.title && p.title.toLowerCase().includes('dica')));
+    } else if (communityActiveFilter === 'official') {
+      filteredPosts = filteredPosts.filter(p => p.is_pinned || p.category === 'official');
+    }
+
+    if (communitySearchQuery.trim()) {
+      const q = communitySearchQuery.toLowerCase().trim();
+      filteredPosts = filteredPosts.filter(p =>
+        (p.title && p.title.toLowerCase().includes(q)) ||
+        (p.content && p.content.toLowerCase().includes(q)) ||
+        (p.user_name && p.user_name.toLowerCase().includes(q)) ||
+        (p.ai_prompt && p.ai_prompt.toLowerCase().includes(q))
+      );
+    }
+
+    const currentShaderId = localStorage.getItem('mcp_community_active_shader') || 'strands';
+    const isRotative = localStorage.getItem('mcp_community_rotative') === 'true';
+    const shadersList = getCommunityShadersList();
+    const currentShaderObj = shadersList.find(s => s.id === currentShaderId) || shadersList[0];
+
     mainAppContainer.innerHTML = `
-      <section class="py-10 px-4 sm:px-6 lg:px-8 max-w-[1080px] mx-auto relative z-10">
-        <!-- Header -->
-        <div class="mb-7 flex items-center justify-between border-b border-white/10 pb-5">
-          <div>
-            <span class="text-xs font-bold text-white/60 tracking-widest uppercase">REDE SOCIAL VIP</span>
-            <h1 class="text-3xl font-extrabold text-white mt-1 flex items-center space-x-3">
-              <span>Comunidade A.I Visuals</span>
-              ${currentUserRole==='admin' ? '<span class="text-xs px-3 py-1 rounded-full bg-white/15 border border-white/25 text-white font-mono">👑 ADMIN</span>' : ''}
-            </h1>
-          </div>
-        </div>
+      <section class="py-8 px-4 sm:px-6 lg:px-8 max-w-[1400px] mx-auto relative z-10">
 
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-7">
-          <!-- FEED (2/3) -->
-          <div class="lg:col-span-2 space-y-5">
+        <!-- 1. SOVEREIGN COMMUNITY HERO & ATMOSPHERE SHADER BAR -->
+        <div class="mb-8 rounded-3xl p-6 sm:p-8 glass-card-community border border-red-500/25 relative overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.85)]">
+          <div class="absolute -top-24 -right-24 w-96 h-96 bg-red-600/15 rounded-full blur-3xl pointer-events-none"></div>
+          <div class="absolute -bottom-24 -left-24 w-80 h-80 bg-red-900/20 rounded-full blur-3xl pointer-events-none"></div>
 
-            <!-- POST COMPOSER -->
-            <div class="glass-card rounded-3xl overflow-hidden p-5">
-              <div class="flex items-start space-x-3">
-                <img src="${currentUserAvatarUrl}" class="w-10 h-10 rounded-full border border-white/20 flex-shrink-0 cursor-pointer" onclick="window.appGoProfile()" title="Ver perfil">
-                <div class="flex-1 space-y-3 min-w-0">
-                  <!-- Title -->
-                  <input type="text" id="newPostTitle" placeholder="Título do post (opcional)..."
-                    class="w-full bg-transparent border-b border-white/10 pb-2 text-sm font-bold text-white placeholder-white/30 focus:outline-none focus:border-white/40 transition-colors">
-                  <!-- Content -->
-                  <textarea id="newPostContent" rows="3" placeholder="Compartilhe uma ideia, prompt ou dúvida com a comunidade..."
-                    class="w-full bg-white/5 border border-white/10 rounded-2xl p-3.5 text-sm text-white focus:outline-none focus:border-white/30 focus:bg-white/10 transition-all resize-none placeholder-white/30"></textarea>
-
-                  <!-- Real Image Upload Preview Area -->
-                  <div id="postImageUploadPreview" class="hidden grid grid-cols-5 gap-2 pt-2"></div>
-
-                  <!-- Link Field -->
-                  <div id="postLinkField" class="hidden p-3 bg-white/5 rounded-2xl border border-white/10 space-y-2">
-                    <input type="url" id="newPostLinkUrl" placeholder="URL do link (https://...)" class="w-full bg-transparent text-xs text-white placeholder-white/30 focus:outline-none border-b border-white/10 pb-1">
-                    <input type="text" id="newPostLinkTitle" placeholder="Título do link (opcional)" class="w-full bg-transparent text-xs text-white placeholder-white/30 focus:outline-none">
-                  </div>
+          <div class="relative z-10">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/10 pb-6 mb-6">
+              <div>
+                <div class="flex items-center space-x-2.5 mb-2">
+                  <span class="px-3 py-1 rounded-full text-[10px] font-mono font-bold tracking-widest uppercase bg-red-500/20 text-red-300 border border-red-500/30 flex items-center space-x-1.5">
+                    <span class="w-2 h-2 rounded-full bg-red-400 animate-pulse"></span>
+                    <span>REDE SOCIAL VIP • PLATAFORMA SOBERANA</span>
+                  </span>
+                  <span class="text-[10px] text-white/50 font-mono">v2.5 RED ENGINE</span>
                 </div>
+                <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight flex items-center space-x-3">
+                  <span>Comunidade A.I Visuals</span>
+                  ${currentUserRole === 'admin' ? '<span class="text-xs px-3 py-1 rounded-full bg-red-500/20 border border-red-500/40 text-red-200 font-mono font-bold">👑 ADMIN ACCESS</span>' : ''}
+                </h1>
+                <p class="text-sm text-gray-300 mt-1.5 max-w-2xl leading-relaxed">
+                  Ambiente exclusivo para criadores de ponta trocarem prompts, refinamentos em Flux.1/Midjourney, novidades e feedback em tempo real.
+                </p>
               </div>
 
-              <!-- Hidden Real File Input -->
-              <input type="file" id="communityFileInput" multiple accept="image/*" class="hidden">
-
-              <!-- Composer Toolbar -->
-              <div class="flex items-center justify-between pt-4 mt-3 border-t border-white/10">
-                <div class="flex items-center space-x-2">
-                  <button onclick="document.getElementById('communityFileInput').click()" class="flex items-center space-x-1.5 text-xs text-white/70 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 px-3.5 py-1.5 rounded-full transition-all">
-                    <span>📷</span><span>Upload de Imagem (Até 5MB)</span>
-                  </button>
-                  <button onclick="window.togglePostLink()" class="flex items-center space-x-1.5 text-xs text-white/70 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 px-3.5 py-1.5 rounded-full transition-all">
-                    <span>🔗</span><span>Link</span>
-                  </button>
-                </div>
-                <button id="submitPostBtn" onclick="window.appCreatePost()" class="px-6 py-2 rounded-full font-bold bg-white text-black text-xs shadow-xl hover:scale-105 transition-all">
-                  Publicar
+              <div class="flex items-center space-x-3 flex-shrink-0">
+                <button onclick="window.appSwitchCommunityTab('feed'); setTimeout(()=>{document.getElementById('newPostContent')?.focus(); window.scrollTo({top: 400, behavior: 'smooth'});}, 100);"
+                  class="px-5 py-2.5 rounded-full bg-gradient-to-r from-red-600 to-rose-700 hover:from-red-500 hover:to-rose-600 text-white font-bold text-xs shadow-[0_0_20px_rgba(220,38,38,0.4)] hover:scale-105 active:scale-95 transition-all flex items-center space-x-2">
+                  <span>✍️</span><span>Criar Publicação</span>
                 </button>
               </div>
             </div>
 
-            <!-- POSTS FEED -->
-            <div class="space-y-4" id="communityFeed">
-              ${communityPosts.length===0
-                ? `<div class="text-center py-16 glass-card rounded-3xl"><div class="text-4xl mb-3">💬</div><p class="text-graphite text-sm">Seja o primeiro a publicar!</p></div>`
-                : communityPosts.map(renderPostCard).join('')}
-            </div>
-          </div>
+            <!-- ATMOSPHERIC SHADER CONTROLLER (PERSONAL OS RED SUITE) -->
+            <div class="rounded-2xl p-4 bg-black/60 border border-red-500/20 backdrop-blur-xl">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3">
+                <div class="flex items-center space-x-2.5">
+                  <span class="text-base">🔴</span>
+                  <div>
+                    <div class="flex items-center space-x-2">
+                      <h4 class="text-xs font-bold text-white uppercase tracking-wider font-mono">Atmosfera Visual WebGL (Personal OS)</h4>
+                      <span class="px-2 py-0.5 rounded text-[9px] font-mono bg-red-950/80 text-red-300 border border-red-500/30">Shader: <strong class="text-white">${currentShaderObj.name}</strong></span>
+                    </div>
+                    <span class="text-[10px] text-gray-400">Tons rubros cinemáticos e brilho reduzido para conforto visual contínuo</span>
+                  </div>
+                </div>
 
-          <!-- SIDEBAR (1/3) -->
-          <div class="space-y-5">
-            <!-- Quick Profile -->
-            <div class="glass-card rounded-3xl p-5">
-              <div class="flex items-center space-x-3 mb-4">
-                <img src="${currentUserAvatarUrl}" class="w-12 h-12 rounded-full border border-white/20">
-                <div class="min-w-0">
-                  <p class="text-sm font-bold text-white truncate">${currentUserNameStr}</p>
-                  ${getBadge(currentUserRole)}
+                <div class="flex items-center space-x-2">
+                  <button onclick="window.appToggleCommunityRotative()" id="btnCommunityRotativeToggle"
+                    class="px-3 py-1.5 rounded-xl text-xs font-mono font-bold transition-all flex items-center space-x-1.5 border ${isRotative ? 'bg-red-500/20 text-red-200 border-red-500/50 shadow-[0_0_12px_rgba(239,68,68,0.3)]' : 'bg-white/5 text-gray-400 border-white/10 hover:bg-white/10'}">
+                    <span>${isRotative ? '🔄 Rotativo Ativo 🟢' : '⏸️ Modo Fixo'}</span>
+                  </button>
+                  <button onclick="window.appRandomCommunityShader()"
+                    class="px-3 py-1.5 rounded-xl text-xs font-mono font-bold bg-white/5 hover:bg-white/10 border border-white/10 text-white transition-all flex items-center space-x-1" title="Sortear outro shader">
+                    <span>🎲</span><span class="hidden sm:inline">Aleatório</span>
+                  </button>
                 </div>
               </div>
-              <button onclick="window.appGoProfile()" class="w-full py-2.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-xs text-white transition-all font-semibold">
-                Editar Perfil →
-              </button>
-            </div>
 
-            <!-- Community Stats -->
-            <div class="glass-card rounded-3xl p-5">
-              <h3 class="text-sm font-bold text-white mb-4">📊 Estatísticas</h3>
-              <div class="grid grid-cols-2 gap-3">
-                <div class="bg-white/5 rounded-xl p-3 text-center border border-white/10">
-                  <p class="text-xl font-extrabold text-white">${communityPosts.length}</p>
-                  <p class="text-xs text-graphite">Posts</p>
-                </div>
-                <div class="bg-white/5 rounded-xl p-3 text-center border border-white/10">
-                  <p class="text-xl font-extrabold text-white">${communityPosts.reduce((a,p)=>a+(p.comments?.length||0),0)}</p>
-                  <p class="text-xs text-graphite">Respostas</p>
-                </div>
+              <!-- Horizontal Scrollable Shader Pills -->
+              <div class="flex items-center space-x-2 overflow-x-auto pb-1 shader-scroll-strip text-xs">
+                ${shadersList.map(sh => `
+                  <button onclick="window.appSelectCommunityShader('${sh.id}')"
+                    class="shader-pill-btn whitespace-nowrap px-3 py-1.5 rounded-xl border text-[11px] font-semibold flex items-center space-x-1.5 transition-all ${sh.id === currentShaderId ? 'active' : 'bg-white/5 text-gray-300 border-white/10 hover:bg-white/10 hover:text-white'}">
+                    <span>${sh.icon || '✨'}</span>
+                    <span>${sh.name}</span>
+                  </button>
+                `).join('')}
               </div>
             </div>
-
-            <!-- Side Banner Ads -->
-            ${renderSideBanner()}
           </div>
         </div>
+
+        <!-- 2. COMMUNITY LIVE METRICS BENTO STRIP -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+          <div class="glass-card-community rounded-2xl p-4 border border-white/10 flex items-center space-x-3.5">
+            <div class="w-12 h-12 rounded-xl bg-red-500/15 border border-red-500/30 flex items-center justify-center text-xl flex-shrink-0 text-red-400">👥</div>
+            <div class="min-w-0">
+              <p class="text-xl font-extrabold text-white leading-tight">1.842</p>
+              <p class="text-[11px] text-gray-400 font-medium">Membros VIP Ativos</p>
+              <span class="text-[9px] text-emerald-400 font-mono font-bold">+34 esta semana</span>
+            </div>
+          </div>
+
+          <div class="glass-card-community rounded-2xl p-4 border border-white/10 flex items-center space-x-3.5">
+            <div class="w-12 h-12 rounded-xl bg-red-500/15 border border-red-500/30 flex items-center justify-center text-xl flex-shrink-0 text-red-400">⚡</div>
+            <div class="min-w-0">
+              <p class="text-xl font-extrabold text-white leading-tight">14.280</p>
+              <p class="text-[11px] text-gray-400 font-medium">Prompts & Workflows</p>
+              <span class="text-[9px] text-red-300 font-mono font-bold">Flux • Midjourney • SD</span>
+            </div>
+          </div>
+
+          <div class="glass-card-community rounded-2xl p-4 border border-white/10 flex items-center space-x-3.5">
+            <div class="w-12 h-12 rounded-xl bg-red-500/15 border border-red-500/30 flex items-center justify-center text-xl flex-shrink-0 text-red-400">🔥</div>
+            <div class="min-w-0">
+              <p class="text-xl font-extrabold text-white leading-tight">99.6%</p>
+              <p class="text-[11px] text-gray-400 font-medium">Taxa de Resposta</p>
+              <span class="text-[9px] text-emerald-400 font-mono font-bold">Feedback em minutos</span>
+            </div>
+          </div>
+
+          <div class="glass-card-community rounded-2xl p-4 border border-white/10 flex items-center space-x-3.5">
+            <div class="w-12 h-12 rounded-xl bg-red-500/15 border border-red-500/30 flex items-center justify-center text-xl flex-shrink-0 text-red-400">🏆</div>
+            <div class="min-w-0">
+              <p class="text-xl font-extrabold text-white leading-tight">3.450 XP</p>
+              <p class="text-[11px] text-gray-400 font-medium">Top Criador Semanal</p>
+              <span class="text-[9px] text-amber-300 font-mono font-bold truncate block">Mateus Celestino Pro X</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. SUB-NAV TABS INTERNAS DA COMUNIDADE (APPLE LIQUID GLASS) -->
+        <div class="mb-8 p-1.5 rounded-2xl bg-black/60 border border-white/10 backdrop-blur-2xl flex items-center space-x-1 sm:space-x-2 overflow-x-auto shader-scroll-strip shadow-xl">
+          <button onclick="window.appSwitchCommunityTab('feed')"
+            class="flex items-center space-x-2 px-4 sm:px-5 py-2.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${communityActiveTab === 'feed' ? 'bg-gradient-to-r from-red-600 to-rose-700 text-white shadow-[0_0_15px_rgba(220,38,38,0.4)]' : 'text-gray-300 hover:text-white hover:bg-white/5'}">
+            <span>💬</span>
+            <span>Feed & Discussões</span>
+            <span class="px-2 py-0.5 rounded-full text-[10px] ${communityActiveTab === 'feed' ? 'bg-black/40 text-white' : 'bg-white/10 text-gray-400'} font-mono">${communityPosts.length}</span>
+          </button>
+
+          <button onclick="window.appSwitchCommunityTab('prompts')"
+            class="flex items-center space-x-2 px-4 sm:px-5 py-2.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${communityActiveTab === 'prompts' ? 'bg-gradient-to-r from-red-600 to-rose-700 text-white shadow-[0_0_15px_rgba(220,38,38,0.4)]' : 'text-gray-300 hover:text-white hover:bg-white/5'}">
+            <span>🔮</span>
+            <span>Acervo de Prompts VIP</span>
+            <span class="px-2 py-0.5 rounded-full text-[10px] ${communityActiveTab === 'prompts' ? 'bg-black/40 text-white' : 'bg-red-500/20 text-red-300'} font-mono">Vault</span>
+          </button>
+
+          <button onclick="window.appSwitchCommunityTab('ranking')"
+            class="flex items-center space-x-2 px-4 sm:px-5 py-2.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${communityActiveTab === 'ranking' ? 'bg-gradient-to-r from-red-600 to-rose-700 text-white shadow-[0_0_15px_rgba(220,38,38,0.4)]' : 'text-gray-300 hover:text-white hover:bg-white/5'}">
+            <span>🏆</span>
+            <span>Ranking & Gamificação</span>
+            <span class="px-2 py-0.5 rounded-full text-[10px] ${communityActiveTab === 'ranking' ? 'bg-black/40 text-white' : 'bg-amber-500/20 text-amber-300'} font-mono">Top XP</span>
+          </button>
+
+          <button onclick="window.appSwitchCommunityTab('challenges')"
+            class="flex items-center space-x-2 px-4 sm:px-5 py-2.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${communityActiveTab === 'challenges' ? 'bg-gradient-to-r from-red-600 to-rose-700 text-white shadow-[0_0_15px_rgba(220,38,38,0.4)]' : 'text-gray-300 hover:text-white hover:bg-white/5'}">
+            <span>🎯</span>
+            <span>Desafios Semanais</span>
+            <span class="px-2 py-0.5 rounded-full text-[10px] bg-red-500/30 text-red-200 animate-pulse font-mono">Ativo</span>
+          </button>
+
+          <button onclick="window.appSwitchCommunityTab('saved')"
+            class="flex items-center space-x-2 px-4 sm:px-5 py-2.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${communityActiveTab === 'saved' ? 'bg-gradient-to-r from-red-600 to-rose-700 text-white shadow-[0_0_15px_rgba(220,38,38,0.4)]' : 'text-gray-300 hover:text-white hover:bg-white/5'}">
+            <span>🔖</span>
+            <span>Meus Salvos & Atividade</span>
+          </button>
+        </div>
+
+        <!-- 4. CONTEÚDO DINÂMICO DA SUB-ABA ATIVA -->
+        ${renderCommunityTabContent(filteredPosts)}
       </section>`;
 
     setupCommunityHandlers();
     setTimeout(triggerAnimObservers, 100);
   }
 
-  function renderPostCard(post) {
-    const isLiked  = post.likedBy?.includes(currentUserId);
-    const canDel   = currentUserRole==='admin' || currentUserRole==='moderator' || post.user_id===currentUserId;
-    const cCount   = post.comments?.length || 0;
+  function renderCommunityTabContent(filteredPosts) {
+    if (communityActiveTab === 'prompts') {
+      return renderCommunityPromptsTab();
+    }
+    if (communityActiveTab === 'ranking') {
+      return renderCommunityRankingTab();
+    }
+    if (communityActiveTab === 'challenges') {
+      return renderCommunityChallengesTab();
+    }
+    if (communityActiveTab === 'saved') {
+      return renderCommunitySavedTab();
+    }
+    return renderCommunityFeedTab(filteredPosts);
+  }
+
+  function renderCommunityFeedTab(filteredPosts) {
+    const shadersList = getCommunityShadersList();
+    const currentShaderId = localStorage.getItem('mcp_community_active_shader') || 'strands';
+    const isRotative = localStorage.getItem('mcp_community_rotative') === 'true';
 
     return `
-      <article class="glass-card rounded-3xl overflow-hidden p-5" id="post-${post.id}">
+      <!-- FEED CONTROLS & FILTER ROW -->
+      <div class="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div class="flex items-center space-x-2 overflow-x-auto pb-1 text-xs">
+          <button onclick="window.appFilterCommunity('all')"
+            class="px-4 py-2 rounded-full font-bold transition-all whitespace-nowrap ${communityActiveFilter === 'all' ? 'bg-red-600 text-white shadow-[0_0_15px_rgba(220,38,38,0.4)]' : 'bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/10'}">
+            🌟 Todos (${communityPosts.length})
+          </button>
+          <button onclick="window.appFilterCommunity('prompts')"
+            class="px-4 py-2 rounded-full font-bold transition-all whitespace-nowrap ${communityActiveFilter === 'prompts' ? 'bg-red-600 text-white shadow-[0_0_15px_rgba(220,38,38,0.4)]' : 'bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/10'}">
+            ⚡ Prompts & Workflows
+          </button>
+          <button onclick="window.appFilterCommunity('showcase')"
+            class="px-4 py-2 rounded-full font-bold transition-all whitespace-nowrap ${communityActiveFilter === 'showcase' ? 'bg-red-600 text-white shadow-[0_0_15px_rgba(220,38,38,0.4)]' : 'bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/10'}">
+            🎨 Showcases & Renders
+          </button>
+          <button onclick="window.appFilterCommunity('tips')"
+            class="px-4 py-2 rounded-full font-bold transition-all whitespace-nowrap ${communityActiveFilter === 'tips' ? 'bg-red-600 text-white shadow-[0_0_15px_rgba(220,38,38,0.4)]' : 'bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/10'}">
+            💡 Dicas Técnicas
+          </button>
+          <button onclick="window.appFilterCommunity('official')"
+            class="px-4 py-2 rounded-full font-bold transition-all whitespace-nowrap ${communityActiveFilter === 'official' ? 'bg-red-600 text-white shadow-[0_0_15px_rgba(220,38,38,0.4)]' : 'bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/10'}">
+            📌 Anúncios Oficiais
+          </button>
+        </div>
+
+        <div class="relative w-full md:w-80">
+          <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-xs">🔍</span>
+          <input type="text" id="communitySearchInput" placeholder="Buscar por prompt, autor, estilo..."
+            value="${escapeHtml(communitySearchQuery)}"
+            oninput="window.appSearchCommunity(this.value)"
+            class="w-full bg-white/5 border border-white/15 focus:border-red-500/50 rounded-full pl-9 pr-4 py-2 text-xs text-white placeholder-white/30 focus:outline-none focus:bg-black/80 transition-all font-medium">
+        </div>
+      </div>
+
+      <!-- TWO-COLUMN LAYOUT: MAIN FEED (2/3) + ELITE SIDEBAR (1/3) -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-2 space-y-6">
+
+          <!-- TURBOCHARGED POST COMPOSER -->
+          <div class="glass-card-community rounded-3xl overflow-hidden p-6 border border-white/15 shadow-2xl relative">
+            <div class="flex items-start space-x-3.5">
+              <div class="relative flex-shrink-0">
+                <img src="${currentUserAvatarUrl}" class="w-11 h-11 rounded-full border-2 border-red-500/40 cursor-pointer object-cover shadow-[0_0_12px_rgba(220,38,38,0.3)]" onclick="window.appGoProfile()" title="Ver seu perfil">
+                <span class="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-emerald-400 border-2 border-black"></span>
+              </div>
+
+              <div class="flex-1 space-y-3 min-w-0">
+                <div class="flex items-center space-x-1.5 overflow-x-auto pb-1 text-[11px] font-mono">
+                  <span class="text-white/40 mr-1">Categoria:</span>
+                  <button type="button" onclick="window.selectPostCategory('prompts', this)"
+                    class="post-cat-btn px-2.5 py-1 rounded-lg border font-bold transition-all bg-red-500/20 text-red-200 border-red-500/40">
+                    ⚡ Prompt VIP
+                  </button>
+                  <button type="button" onclick="window.selectPostCategory('showcase', this)"
+                    class="post-cat-btn px-2.5 py-1 rounded-lg border font-bold transition-all bg-white/5 text-gray-400 border-white/10 hover:text-white">
+                    🎨 Showcase
+                  </button>
+                  <button type="button" onclick="window.selectPostCategory('tips', this)"
+                    class="post-cat-btn px-2.5 py-1 rounded-lg border font-bold transition-all bg-white/5 text-gray-400 border-white/10 hover:text-white">
+                    💡 Dica Técnica
+                  </button>
+                  <button type="button" onclick="window.selectPostCategory('help', this)"
+                    class="post-cat-btn px-2.5 py-1 rounded-lg border font-bold transition-all bg-white/5 text-gray-400 border-white/10 hover:text-white">
+                    ❓ Dúvida
+                  </button>
+                </div>
+
+                <input type="text" id="newPostTitle" placeholder="Título da sua publicação ou pergunta (opcional)..."
+                  class="w-full bg-transparent border-b border-white/10 pb-2 text-sm font-bold text-white placeholder-white/30 focus:outline-none focus:border-red-500/60 transition-colors">
+
+                <textarea id="newPostContent" rows="3" placeholder="Compartilhe uma ideia, prompt inovador, dúvida técnica ou resultado com a comunidade..."
+                  class="w-full bg-white/5 border border-white/10 rounded-2xl p-4 text-sm text-white focus:outline-none focus:border-red-500/40 focus:bg-white/10 transition-all resize-none placeholder-white/30 leading-relaxed"></textarea>
+
+                <div id="composerPromptBox" class="${communityPromptBoxOpen ? '' : 'hidden'} p-4 rounded-2xl bg-black/80 border border-red-500/30 space-y-3">
+                  <div class="flex items-center justify-between border-b border-white/10 pb-2">
+                    <span class="text-xs font-bold text-red-400 flex items-center space-x-1.5 font-mono">
+                      <span>🔮</span><span>AI Prompt Studio (Formatador de Prompts)</span>
+                    </span>
+                    <select id="newPostPromptModel" class="bg-black/80 border border-white/20 rounded-lg px-2.5 py-1 text-[11px] text-white focus:outline-none focus:border-red-500">
+                      <option value="Flux.1 Dev">Flux.1 Dev</option>
+                      <option value="Flux.1 Schnell">Flux.1 Schnell</option>
+                      <option value="Midjourney v6.1">Midjourney v6.1</option>
+                      <option value="Midjourney v7">Midjourney v7</option>
+                      <option value="Ideogram 2.0">Ideogram 2.0</option>
+                      <option value="ComfyUI Pipeline">ComfyUI Pipeline</option>
+                      <option value="Kling AI">Kling AI Video</option>
+                      <option value="Stable Diffusion 3.5">Stable Diffusion 3.5</option>
+                    </select>
+                  </div>
+                  <textarea id="newPostPromptCode" rows="2" placeholder="Cole aqui o prompt textual exato (ex: ultra-cinematic portrait...)"
+                    class="w-full bg-white/5 border border-white/10 rounded-xl p-3 text-xs font-mono text-gray-200 placeholder-white/30 focus:outline-none focus:border-red-500/40"></textarea>
+                  <input type="text" id="newPostPromptParams" placeholder="Parâmetros ou flags (ex: --ar 16:9 --v 6.1 --stylize 350 --seed 4209)"
+                    class="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-xs font-mono text-gray-300 placeholder-white/30 focus:outline-none focus:border-red-500/40">
+                </div>
+
+                <div id="postImageUploadPreview" class="hidden grid grid-cols-4 sm:grid-cols-5 gap-2 pt-2"></div>
+
+                <div id="postLinkField" class="hidden p-3 bg-white/5 rounded-2xl border border-white/10 space-y-2">
+                  <input type="url" id="newPostLinkUrl" placeholder="URL de referência (https://...)" class="w-full bg-transparent text-xs text-white placeholder-white/30 focus:outline-none border-b border-white/10 pb-1">
+                  <input type="text" id="newPostLinkTitle" placeholder="Título amigável do link (opcional)" class="w-full bg-transparent text-xs text-white placeholder-white/30 focus:outline-none">
+                </div>
+              </div>
+            </div>
+
+            <input type="file" id="communityFileInput" multiple accept="image/*" class="hidden">
+
+            <div class="flex flex-wrap items-center justify-between pt-4 mt-4 border-t border-white/10 gap-3">
+              <div class="flex items-center flex-wrap gap-2">
+                <button type="button" onclick="document.getElementById('communityFileInput').click()" class="flex items-center space-x-1.5 text-xs text-white/80 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 px-3.5 py-1.5 rounded-full transition-all">
+                  <span>📷</span><span>Imagens (Até 5MB)</span>
+                </button>
+                <button type="button" onclick="window.toggleComposerPromptBox()" class="flex items-center space-x-1.5 text-xs text-red-300 hover:text-white bg-red-950/40 hover:bg-red-900/60 border border-red-500/30 px-3.5 py-1.5 rounded-full transition-all">
+                  <span>🔮</span><span>Adicionar Prompt AI</span>
+                </button>
+                <button type="button" onclick="window.togglePostLink()" class="flex items-center space-x-1.5 text-xs text-white/80 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 px-3.5 py-1.5 rounded-full transition-all">
+                  <span>🔗</span><span>Link</span>
+                </button>
+              </div>
+              <button id="submitPostBtn" onclick="window.appCreatePost()"
+                class="px-7 py-2.5 rounded-full font-extrabold bg-gradient-to-r from-red-600 to-rose-700 hover:from-red-500 hover:to-rose-600 text-white text-xs shadow-[0_0_20px_rgba(220,38,38,0.4)] hover:scale-105 active:scale-95 transition-all">
+                Publicar no Feed 🚀
+              </button>
+            </div>
+          </div>
+
+          <!-- POSTS FEED LIST -->
+          <div class="space-y-5" id="communityFeed">
+            ${filteredPosts.length === 0
+              ? `<div class="text-center py-20 glass-card-community rounded-3xl border border-white/10">
+                  <div class="text-5xl mb-3">💬</div>
+                  <h3 class="text-base font-bold text-white mb-1">Nenhum post encontrado</h3>
+                  <p class="text-graphite text-xs max-w-sm mx-auto">Tente ajustar seus termos de busca ou seja o primeiro a publicar nessa categoria!</p>
+                  <button onclick="window.appFilterCommunity('all')" class="mt-4 px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-xs font-bold text-white border border-white/15">Ver todos os posts</button>
+                </div>`
+              : filteredPosts.map(renderPostCard).join('')}
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN: ENRICHED SIDEBAR (1/3) -->
+        <div class="space-y-6">
+
+          <!-- 1. VIP CREATOR PASSPORT -->
+          <div class="glass-card-community rounded-3xl p-6 border border-red-500/20 shadow-xl relative overflow-hidden">
+            <div class="absolute -top-12 -right-12 w-32 h-32 bg-red-600/10 rounded-full blur-2xl pointer-events-none"></div>
+
+            <div class="flex items-center space-x-3.5 mb-4 relative z-10">
+              <div class="relative">
+                <img src="${currentUserAvatarUrl}" class="w-14 h-14 rounded-full border-2 border-red-500/50 object-cover shadow-[0_0_15px_rgba(220,38,38,0.35)]">
+                <span class="absolute bottom-0 right-0 w-3.5 h-3.5 rounded-full bg-red-500 border-2 border-black animate-pulse"></span>
+              </div>
+              <div class="min-w-0">
+                <p class="text-sm font-extrabold text-white truncate">${currentUserNameStr}</p>
+                <div class="mt-0.5">${getBadge(currentUserRole)}</div>
+                <span class="text-[10px] text-red-300 font-mono block mt-1">Nível 10 • Visionário Supremo</span>
+              </div>
+            </div>
+
+            <div class="space-y-1.5 mb-5 relative z-10">
+              <div class="flex justify-between items-center text-[10px] font-mono">
+                <span class="text-gray-400">Progresso de Maestria</span>
+                <span class="text-red-300 font-bold">9.450 / 10.000 XP</span>
+              </div>
+              <div class="w-full h-2 rounded-full bg-white/10 overflow-hidden border border-white/10">
+                <div class="h-full rounded-full bg-gradient-to-r from-red-600 to-rose-400 shadow-[0_0_10px_rgba(239,68,68,0.6)]" style="width: 94.5%;"></div>
+              </div>
+            </div>
+
+            <div class="flex items-center space-x-1.5 mb-5 flex-wrap gap-y-1.5">
+              <span class="px-2 py-0.5 rounded-full text-[9px] font-mono bg-red-500/15 text-red-300 border border-red-500/30 font-bold">🚀 Fundador</span>
+              <span class="px-2 py-0.5 rounded-full text-[9px] font-mono bg-amber-500/15 text-amber-300 border border-amber-500/30 font-bold">💎 VIP Master</span>
+              <span class="px-2 py-0.5 rounded-full text-[9px] font-mono bg-purple-500/15 text-purple-300 border border-purple-500/30 font-bold">⚡ Prompt Pro</span>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2 text-center text-xs font-mono mb-4 pt-3 border-t border-white/10">
+              <div class="bg-white/5 rounded-xl p-2.5 border border-white/10">
+                <p class="text-lg font-black text-white">${communityPosts.filter(p => p.user_id === currentUserId || p.user_name === currentUserNameStr).length}</p>
+                <p class="text-[10px] text-gray-400">Meus Posts</p>
+              </div>
+              <div class="bg-white/5 rounded-xl p-2.5 border border-white/10">
+                <p class="text-lg font-black text-white">${communityPosts.reduce((acc, p) => acc + (p.comments || []).filter(c => c.user_id === currentUserId).length, 0)}</p>
+                <p class="text-[10px] text-gray-400">Respostas</p>
+              </div>
+            </div>
+
+            <button onclick="window.appGoProfile()" class="w-full py-2.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-xs text-white transition-all font-bold flex items-center justify-center space-x-1.5">
+              <span>⚙️ Gerenciar Perfil VIP</span>
+              <span>→</span>
+            </button>
+          </div>
+
+          <!-- 2. SHADER ATMOSPHERE SUITE CONTROL -->
+          <div class="glass-card-community rounded-3xl p-6 border border-white/15 shadow-xl space-y-4">
+            <div class="flex items-center justify-between border-b border-white/10 pb-3">
+              <div class="flex items-center space-x-2">
+                <span class="text-lg">🌌</span>
+                <div>
+                  <h3 class="text-sm font-bold text-white">Atmosfera de Fundo</h3>
+                  <span class="text-[10px] text-gray-400 font-mono">Personal OS Shaders</span>
+                </div>
+              </div>
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]"></span>
+            </div>
+
+            <div class="space-y-3">
+              <div>
+                <label class="block text-[11px] text-gray-400 font-mono mb-1.5">Shader Rubro Ativo:</label>
+                <select onchange="window.appSelectCommunityShader(this.value)" class="w-full bg-black/80 border border-white/20 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-red-500 font-semibold font-mono">
+                  ${shadersList.map(sh => `
+                    <option value="${sh.id}" ${sh.id === currentShaderId ? 'selected' : ''}>${sh.icon || '✨'} ${sh.name}</option>
+                  `).join('')}
+                </select>
+              </div>
+
+              <div class="pt-2 flex items-center justify-between text-xs">
+                <button onclick="window.appRandomCommunityShader()" class="text-red-300 hover:text-white font-mono text-[11px] flex items-center space-x-1 underline">
+                  <span>🎲 Alternar Aleatório</span>
+                </button>
+                <button onclick="window.appToggleCommunityRotative()" class="text-gray-300 hover:text-white font-mono text-[11px]">
+                  ${isRotative ? '🔄 Rotativo (20s)' : '⏸️ Modo Fixo'}
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. TRENDING PROMPTS & HASHTAGS -->
+          <div class="glass-card-community rounded-3xl p-6 border border-white/15 shadow-xl">
+            <div class="flex items-center space-x-2 border-b border-white/10 pb-3 mb-4">
+              <span class="text-lg">🔥</span>
+              <h3 class="text-sm font-bold text-white">Trending Prompts</h3>
+            </div>
+            <div class="space-y-2.5">
+              <div class="flex items-center justify-between p-2.5 rounded-xl bg-white/5 hover:bg-red-500/10 border border-white/5 hover:border-red-500/30 transition-all cursor-pointer" onclick="window.appSearchCommunity('#FluxReduxStyle')">
+                <div>
+                  <p class="text-xs font-bold text-white font-mono">#FluxReduxStyle</p>
+                  <p class="text-[10px] text-gray-400">Hiperrealismo cinemático</p>
+                </div>
+                <span class="text-[10px] font-mono text-red-400 font-bold">342 posts</span>
+              </div>
+
+              <div class="flex items-center justify-between p-2.5 rounded-xl bg-white/5 hover:bg-red-500/10 border border-white/5 hover:border-red-500/30 transition-all cursor-pointer" onclick="window.appSearchCommunity('#CyberpunkRuby')">
+                <div>
+                  <p class="text-xs font-bold text-white font-mono">#CyberpunkRuby</p>
+                  <p class="text-[10px] text-gray-400">Estética neon carmesim</p>
+                </div>
+                <span class="text-[10px] font-mono text-red-400 font-bold">280 posts</span>
+              </div>
+
+              <div class="flex items-center justify-between p-2.5 rounded-xl bg-white/5 hover:bg-red-500/10 border border-white/5 hover:border-red-500/30 transition-all cursor-pointer" onclick="window.appSearchCommunity('#MidjourneyV7')">
+                <div>
+                  <p class="text-xs font-bold text-white font-mono">#MidjourneyV7</p>
+                  <p class="text-[10px] text-gray-400">Texturas de pele 8k</p>
+                </div>
+                <span class="text-[10px] font-mono text-red-400 font-bold">215 posts</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. LEADERBOARD SEMANAL -->
+          <div class="glass-card-community rounded-3xl p-6 border border-white/15 shadow-xl">
+            <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-4">
+              <div class="flex items-center space-x-2">
+                <span class="text-lg">🏆</span>
+                <h3 class="text-sm font-bold text-white">Top Criadores da Semana</h3>
+              </div>
+              <button onclick="window.appSwitchCommunityTab('ranking')" class="text-[10px] font-mono text-amber-400 hover:underline">Ver Todos →</button>
+            </div>
+
+            <div class="space-y-3">
+              <div class="flex items-center justify-between p-2 rounded-xl bg-gradient-to-r from-amber-500/15 to-transparent border border-amber-500/30">
+                <div class="flex items-center space-x-2.5 min-w-0">
+                  <span class="text-base font-bold text-amber-400 ml-1">1º</span>
+                  <img src="https://api.dicebear.com/7.x/bottts/svg?seed=AdminBoss" class="w-8 h-8 rounded-full border border-amber-400/50">
+                  <div class="min-w-0">
+                    <p class="text-xs font-bold text-white truncate">Mateus Celestino Pro X</p>
+                    <p class="text-[9px] text-amber-300 font-mono">👑 Master Founder</p>
+                  </div>
+                </div>
+                <span class="text-xs font-mono font-extrabold text-amber-400">3.450 pts</span>
+              </div>
+
+              <div class="flex items-center justify-between p-2 rounded-xl bg-white/5 border border-white/5">
+                <div class="flex items-center space-x-2.5 min-w-0">
+                  <span class="text-base font-bold text-gray-300 ml-1">2º</span>
+                  <img src="https://api.dicebear.com/7.x/bottts/svg?seed=MemberProX" class="w-8 h-8 rounded-full border border-white/20">
+                  <div class="min-w-0">
+                    <p class="text-xs font-bold text-white truncate">Lucas Rocha</p>
+                    <p class="text-[9px] text-gray-400 font-mono">⚡ Aluno VIP Pro</p>
+                  </div>
+                </div>
+                <span class="text-xs font-mono font-extrabold text-white">2.190 pts</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. CANAIS & SALAS RÁPIDAS -->
+          <div class="glass-card-community rounded-3xl p-6 border border-white/15 shadow-xl">
+            <div class="flex items-center space-x-2 border-b border-white/10 pb-3 mb-4">
+              <span class="text-lg">💬</span>
+              <h3 class="text-sm font-bold text-white">Salas Rápidas & Sub-Abas</h3>
+            </div>
+            <div class="space-y-1.5 text-xs font-mono">
+              <button onclick="window.appSwitchCommunityTab('feed'); window.appFilterCommunity('all');" class="w-full flex items-center justify-between p-2 rounded-xl hover:bg-white/5 text-gray-300 hover:text-white transition-all text-left">
+                <span># 💬 geral-chat</span>
+                <span class="text-[10px] text-emerald-400">Feed</span>
+              </button>
+              <button onclick="window.appSwitchCommunityTab('prompts')" class="w-full flex items-center justify-between p-2 rounded-xl hover:bg-white/5 text-gray-300 hover:text-white transition-all text-left">
+                <span># 🔮 acervo-prompts</span>
+                <span class="text-[10px] text-red-400">Vault VIP</span>
+              </button>
+              <button onclick="window.appSwitchCommunityTab('challenges')" class="w-full flex items-center justify-between p-2 rounded-xl hover:bg-white/5 text-gray-300 hover:text-white transition-all text-left">
+                <span># 🎯 desafio-semanal</span>
+                <span class="text-[10px] text-amber-400">Ativo</span>
+              </button>
+              <button onclick="window.appSwitchCommunityTab('ranking')" class="w-full flex items-center justify-between p-2 rounded-xl hover:bg-white/5 text-gray-300 hover:text-white transition-all text-left">
+                <span># 🏆 hall-da-fama</span>
+                <span class="text-[10px] text-purple-400">XP</span>
+              </button>
+              <button onclick="window.appGoServersNav()" class="w-full flex items-center justify-between p-2 rounded-xl hover:bg-white/5 text-gray-300 hover:text-white transition-all text-left">
+                <span># ⚙️ masterclasses-servers</span>
+                <span class="text-[10px] text-cyan-400">Acessar →</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 6. DIRETRIZES DA COMUNIDADE -->
+          <div class="glass-card-community rounded-3xl p-6 border border-white/15 shadow-xl text-xs space-y-3">
+            <h4 class="font-bold text-white flex items-center space-x-2">
+              <span>🛡️</span><span>Diretrizes da Comunidade Soberana</span>
+            </h4>
+            <ul class="space-y-2 text-gray-300 leading-relaxed text-[11px]">
+              <li class="flex items-start space-x-2">
+                <span class="text-red-400 font-bold">•</span>
+                <span>Compartilhe prompts completos com parâmetros para enriquecer os colegas.</span>
+              </li>
+              <li class="flex items-start space-x-2">
+                <span class="text-red-400 font-bold">•</span>
+                <span>Respeito absoluto e colaboração construtiva entre todos os criadores.</span>
+              </li>
+              <li class="flex items-start space-x-2">
+                <span class="text-red-400 font-bold">•</span>
+                <span>Spam ou autopromoção não autorizada resultam em suspensão imediata.</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Side Banner Ads -->
+          ${renderSideBanner()}
+        </div>
+      </div>`;
+  }
+
+  function renderCommunityPromptsTab() {
+    let promptPosts = communityPosts.filter(p => p.ai_prompt || p.category === 'prompts');
+    if (communityPromptModelFilter !== 'all') {
+      promptPosts = promptPosts.filter(p => (p.ai_model || '').toLowerCase().includes(communityPromptModelFilter.toLowerCase()));
+    }
+
+    const modelsList = [
+      { id: 'all', name: 'Todos os Modelos' },
+      { id: 'Flux.1', name: 'Flux.1 Dev / Schnell' },
+      { id: 'Midjourney', name: 'Midjourney v6 & v7' },
+      { id: 'ComfyUI', name: 'ComfyUI Pipelines' },
+      { id: 'Stable Diffusion', name: 'SD 3.5 & SDXL' },
+      { id: 'Kling', name: 'Kling AI Video' }
+    ];
+
+    return `
+      <div class="space-y-8 anim-element anim-fade-up">
+        <!-- Prompts Header Strip -->
+        <div class="p-6 rounded-3xl glass-card-community border border-red-500/20 shadow-2xl flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <div class="flex items-center space-x-2 mb-1">
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-red-500/20 text-red-300 border border-red-500/30 uppercase">Vault de Engenharia Reversa</span>
+              <span class="text-[10px] text-gray-400 font-mono">${promptPosts.length} Prompts Validados</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Acervo de Prompts VIP Exclusivos</h2>
+            <p class="text-xs text-gray-300 mt-1 max-w-xl">Copie com 1 clique fórmulas testadas com sementes, parâmetros cinemáticos e configurações otimizadas de iluminação.</p>
+          </div>
+
+          <button onclick="window.appSwitchCommunityTab('feed'); setTimeout(()=>{document.getElementById('newPostContent')?.focus(); window.toggleComposerPromptBox(); window.scrollTo({top: 400, behavior: 'smooth'});}, 100);"
+            class="px-5 py-2.5 rounded-full bg-gradient-to-r from-red-600 to-rose-700 hover:from-red-500 hover:to-rose-600 text-white font-bold text-xs shadow-[0_0_20px_rgba(220,38,38,0.4)] hover:scale-105 active:scale-95 transition-all flex items-center space-x-2 self-start md:self-auto">
+            <span>✨</span><span>Enviar Novo Prompt</span>
+          </button>
+        </div>
+
+        <!-- Model Filter Pills -->
+        <div class="flex items-center space-x-2 overflow-x-auto pb-1 text-xs">
+          ${modelsList.map(m => `
+            <button onclick="window.appFilterPromptModel('${m.id}')"
+              class="px-4 py-2 rounded-full font-bold transition-all whitespace-nowrap ${communityPromptModelFilter === m.id ? 'bg-red-600 text-white shadow-[0_0_15px_rgba(220,38,38,0.4)]' : 'bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/10'}">
+              ${m.name}
+            </button>
+          `).join('')}
+        </div>
+
+        <!-- Prompts Bento Grid -->
+        ${promptPosts.length === 0 ? `
+          <div class="text-center py-20 glass-card-community rounded-3xl border border-white/10">
+            <div class="text-5xl mb-3">🔮</div>
+            <h3 class="text-base font-bold text-white mb-1">Nenhum prompt encontrado para este filtro</h3>
+            <p class="text-graphite text-xs max-w-sm mx-auto">Experimente selecionar outro modelo de IA ou seja o pioneiro a postar uma fórmula!</p>
+            <button onclick="window.appFilterPromptModel('all')" class="mt-4 px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-xs font-bold text-white border border-white/15">Ver todos os modelos</button>
+          </div>
+        ` : `
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            ${promptPosts.map(p => `
+              <div class="glass-card-community rounded-3xl p-6 border border-white/15 shadow-2xl flex flex-col justify-between group hover:border-red-500/40 transition-all">
+                <div class="space-y-4">
+                  <!-- Header: Author & Model -->
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-3">
+                      <img src="${p.user_avatar}" class="w-9 h-9 rounded-full object-cover border border-white/20">
+                      <div>
+                        <h4 class="text-xs font-bold text-white leading-tight">${escapeHtml(p.user_name || 'Membro VIP')}</h4>
+                        <span class="text-[10px] text-gray-400 font-mono">${formatDate(p.created_at)}</span>
+                      </div>
+                    </div>
+                    <span class="px-3 py-1 rounded-full text-[10px] font-mono font-bold bg-red-500/15 text-red-300 border border-red-500/30">
+                      ${escapeHtml(p.ai_model || 'FLUX.1 / MIDJOURNEY')}
+                    </span>
+                  </div>
+
+                  <!-- Optional Render Image -->
+                  ${p.images && p.images.length > 0 ? `
+                    <div class="rounded-2xl overflow-hidden border border-white/10 h-52 bg-black/60 relative cursor-pointer group/img"
+                      onclick="window.openCommunityLightbox('${p.images[0]}', '${escapeJs(p.title || 'Prompt Render')}')">
+                      <img src="${p.images[0]}" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-700">
+                      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity flex items-end p-3">
+                        <span class="text-xs text-white font-medium">🔍 Clique para expandir imagem</span>
+                      </div>
+                    </div>
+                  ` : ''}
+
+                  <!-- Title -->
+                  <h3 class="text-sm font-extrabold text-white group-hover:text-red-200 transition-colors">${escapeHtml(p.title || 'Fórmula de Prompt Generativo')}</h3>
+
+                  <!-- Prompt Code Box with One-Click Copy -->
+                  <div class="p-3.5 rounded-2xl bg-black/80 border border-white/10 relative space-y-2">
+                    <div class="flex items-center justify-between text-[10px] font-mono text-gray-400 border-b border-white/10 pb-1.5">
+                      <span>TEXTO DO PROMPT</span>
+                      <button onclick="window.appCopyPrompt(this, \`${escapeJs(p.ai_prompt || p.content)}\`)"
+                        class="px-3 py-1 rounded-lg bg-red-600/30 hover:bg-red-600 text-red-200 hover:text-white border border-red-500/40 font-bold transition-all flex items-center space-x-1">
+                        <span>📋</span><span>Copiar Prompt</span>
+                      </button>
+                    </div>
+                    <pre class="text-xs text-gray-200 font-mono whitespace-pre-wrap leading-relaxed select-all overflow-x-auto max-h-36">${escapeHtml(p.ai_prompt || p.content)}</pre>
+                  </div>
+
+                  <!-- Parameters Strip -->
+                  ${p.ai_params ? `
+                    <div class="p-2.5 rounded-xl bg-white/5 border border-white/5 text-[11px] font-mono flex items-center space-x-2">
+                      <span class="text-red-400 font-bold">⚙️ Flags:</span>
+                      <span class="text-gray-300 truncate">${escapeHtml(p.ai_params)}</span>
+                    </div>
+                  ` : ''}
+                </div>
+
+                <!-- Footer Action Buttons -->
+                <div class="flex items-center justify-between pt-4 mt-4 border-t border-white/10">
+                  <div class="flex items-center space-x-2">
+                    <button onclick="window.appLikePost('${p.id}')"
+                      class="flex items-center space-x-1.5 text-xs font-bold px-3 py-1.5 rounded-full border border-white/10 bg-white/5 hover:bg-red-500/20 hover:text-red-300 transition-all">
+                      <span>❤️</span><span>${p.likes || 0}</span>
+                    </button>
+                    <button onclick="window.appSharePost('${p.id}')"
+                      class="p-1.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white/70 hover:text-white text-xs transition-all" title="Compartilhar">
+                      <span>🔗</span>
+                    </button>
+                  </div>
+                  <button onclick="window.appSwitchCommunityTab('feed');" class="text-xs font-mono text-gray-400 hover:text-white transition-colors">
+                    Ver no Feed →
+                  </button>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        `}
+      </div>`;
+  }
+
+  function renderCommunityRankingTab() {
+    return `
+      <div class="space-y-8 anim-element anim-fade-up">
         <!-- Header -->
-        <div class="flex items-start justify-between mb-3">
-          <div class="flex items-center space-x-3">
-            <img src="${post.user_avatar}" class="w-10 h-10 rounded-full border border-white/15 flex-shrink-0">
+        <div class="p-6 rounded-3xl glass-card-community border border-red-500/20 shadow-2xl flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <div class="flex items-center space-x-2 mb-1">
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30 uppercase">Gamificação & Reputação</span>
+              <span class="text-[10px] text-gray-400 font-mono">Temporada 2026</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Hall da Fama & Ranking VIP</h2>
+            <p class="text-xs text-gray-300 mt-1 max-w-xl">Suba de nível compartilhando prompts de alta qualidade, auxiliando outros membros e vencendo os desafios semanais.</p>
+          </div>
+          <div class="p-3 bg-amber-500/10 border border-amber-500/30 rounded-2xl text-center self-start md:self-auto font-mono">
+            <span class="text-[10px] text-amber-300 uppercase block">Seu Nível Atual</span>
+            <span class="text-lg font-black text-white">Nível 10 • 9.450 XP</span>
+          </div>
+        </div>
+
+        <!-- 3D Podium for Top 3 Creators -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6">
+          <!-- 2nd Place -->
+          <div class="order-2 md:order-1 glass-card-community rounded-3xl p-6 border border-gray-400/30 shadow-xl text-center flex flex-col items-center justify-between relative overflow-hidden">
+            <div class="absolute top-3 right-3 text-2xl">🥈</div>
+            <div class="space-y-3">
+              <div class="relative inline-block">
+                <img src="https://api.dicebear.com/7.x/bottts/svg?seed=MemberProX" class="w-20 h-20 rounded-full border-4 border-gray-400/50 shadow-[0_0_20px_rgba(156,163,175,0.4)]">
+                <span class="absolute -bottom-2 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-black bg-gray-400 text-black">#2 LUGAR</span>
+              </div>
+              <h3 class="text-base font-extrabold text-white mt-2">Lucas Rocha</h3>
+              <p class="text-xs text-gray-400 font-mono">Mestre Generativo • 42 Prompts</p>
+            </div>
+            <div class="w-full pt-4 mt-4 border-t border-white/10">
+              <span class="text-xl font-black text-gray-200 font-mono">2.980 XP</span>
+            </div>
+          </div>
+
+          <!-- 1st Place (Champion) -->
+          <div class="order-1 md:order-2 glass-card-community rounded-3xl p-8 border-2 border-amber-500/60 shadow-[0_20px_60px_rgba(245,158,11,0.25)] text-center flex flex-col items-center justify-between relative overflow-hidden scale-105 bg-gradient-to-b from-amber-500/10 to-transparent">
+            <div class="absolute -top-12 left-1/2 -translate-x-1/2 w-48 h-48 bg-amber-500/15 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="text-3xl mb-1">👑</div>
+            <div class="space-y-3 relative z-10">
+              <div class="relative inline-block">
+                <img src="https://api.dicebear.com/7.x/bottts/svg?seed=AdminBoss" class="w-24 h-24 rounded-full border-4 border-amber-400 shadow-[0_0_30px_rgba(245,158,11,0.6)]">
+                <span class="absolute -bottom-2.5 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full text-[10px] font-mono font-black bg-amber-400 text-black uppercase tracking-wider">#1 SUPREMO</span>
+              </div>
+              <h3 class="text-lg font-black text-white mt-2">Mateus Celestino Pro X</h3>
+              <p class="text-xs text-amber-300 font-mono">Visionário Supremo • 86 Prompts</p>
+            </div>
+            <div class="w-full pt-4 mt-4 border-t border-amber-500/20 relative z-10">
+              <span class="text-2xl font-black text-amber-400 font-mono">3.450 XP</span>
+              <span class="block text-[10px] text-gray-400 font-mono mt-0.5">Top 1 da Plataforma Soberana</span>
+            </div>
+          </div>
+
+          <!-- 3rd Place -->
+          <div class="order-3 md:order-3 glass-card-community rounded-3xl p-6 border border-amber-700/40 shadow-xl text-center flex flex-col items-center justify-between relative overflow-hidden">
+            <div class="absolute top-3 right-3 text-2xl">🥉</div>
+            <div class="space-y-3">
+              <div class="relative inline-block">
+                <img src="https://api.dicebear.com/7.x/bottts/svg?seed=ElenaArt" class="w-20 h-20 rounded-full border-4 border-amber-700/60 shadow-[0_0_20px_rgba(180,83,9,0.4)]">
+                <span class="absolute -bottom-2 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-black bg-amber-700 text-white">#3 LUGAR</span>
+              </div>
+              <h3 class="text-base font-extrabold text-white mt-2">Elena Digital Art</h3>
+              <p class="text-xs text-gray-400 font-mono">AI Artist VIP • 38 Prompts</p>
+            </div>
+            <div class="w-full pt-4 mt-4 border-t border-white/10">
+              <span class="text-xl font-black text-amber-600 font-mono">2.420 XP</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- XP Mastery Rules & Quest Card -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="glass-card-community rounded-3xl p-6 border border-white/15 space-y-3">
+            <h3 class="text-sm font-bold text-white flex items-center space-x-2">
+              <span>⚡</span><span>Como Subir de Nível e Ganhar XP</span>
+            </h3>
+            <ul class="space-y-2.5 text-xs text-gray-300 font-mono">
+              <li class="flex items-center justify-between p-2 rounded-xl bg-white/5 border border-white/5">
+                <span>✍️ Publicar um Prompt VIP completo</span>
+                <span class="text-red-400 font-bold">+50 XP</span>
+              </li>
+              <li class="flex items-center justify-between p-2 rounded-xl bg-white/5 border border-white/5">
+                <span>💬 Responder a dúvida de um criador</span>
+                <span class="text-red-400 font-bold">+15 XP</span>
+              </li>
+              <li class="flex items-center justify-between p-2 rounded-xl bg-white/5 border border-white/5">
+                <span>❤️ Receber 10 curtidas na publicação</span>
+                <span class="text-red-400 font-bold">+30 XP</span>
+              </li>
+              <li class="flex items-center justify-between p-2 rounded-xl bg-white/5 border border-white/5">
+                <span>🏆 Vencer o Desafio Semanal</span>
+                <span class="text-amber-400 font-bold">+500 XP</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="glass-card-community rounded-3xl p-6 border border-white/15 space-y-3">
+            <h3 class="text-sm font-bold text-white flex items-center space-x-2">
+              <span>👑</span><span>Recompensas Exclusivas por Patamar</span>
+            </h3>
+            <div class="space-y-2 text-xs text-gray-300">
+              <div class="p-2.5 rounded-xl bg-white/5 border border-white/5">
+                <span class="font-bold text-white">Nível 1 a 3 (Aprendiz):</span>
+                <p class="text-[11px] text-gray-400">Acesso ao Feed completo, reações e comentários em tempo real.</p>
+              </div>
+              <div class="p-2.5 rounded-xl bg-white/5 border border-white/5">
+                <span class="font-bold text-white">Nível 4 a 7 (Especialista):</span>
+                <p class="text-[11px] text-gray-400">Acesso ao Prompt Vault secreto e direito de voto nos desafios.</p>
+              </div>
+              <div class="p-2.5 rounded-xl bg-white/5 border border-white/5">
+                <span class="font-bold text-red-300">Nível 8 a 10 (Visionário Supremo):</span>
+                <p class="text-[11px] text-gray-400">Badge exclusivo dourado, destaque no topo e acesso prioritário aos Servidores de Treinamento.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>`;
+  }
+
+  function renderCommunityChallengesTab() {
+    return `
+      <div class="space-y-8 anim-element anim-fade-up">
+        <!-- Main Challenge Spotlight -->
+        <div class="p-8 rounded-3xl glass-card-community border-2 border-red-500/40 shadow-[0_20px_60px_rgba(220,38,38,0.3)] relative overflow-hidden">
+          <div class="absolute -top-24 -right-24 w-96 h-96 bg-red-600/20 rounded-full blur-3xl pointer-events-none"></div>
+
+          <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div class="space-y-3 max-w-2xl">
+              <div class="flex items-center space-x-2.5">
+                <span class="px-3 py-1 rounded-full text-[10px] font-mono font-black bg-red-500/30 text-red-200 border border-red-500/50 uppercase tracking-widest flex items-center space-x-1.5 animate-pulse">
+                  <span>🔥</span><span>DESAFIO OFICIAL ATIVO</span>
+                </span>
+                <span class="text-xs text-amber-300 font-mono font-bold">⏱️ Encerramento em 3 dias</span>
+              </div>
+
+              <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+                Desafio #04: Atmosfera Carmesim & Iluminação Volumétrica no Flux.1 Dev
+              </h2>
+
+              <p class="text-xs sm:text-sm text-gray-300 leading-relaxed">
+                O objetivo desta semana é criar um retrato ou cenário cinematográfico dominado por iluminação rubra e carmesim com efeito de luz de contorno (rim lighting) e névoa volumétrica.
+              </p>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs font-mono">
+                <div class="p-3 bg-black/60 rounded-xl border border-white/10">
+                  <span class="text-red-400 font-bold block mb-0.5">🏆 Premiação:</span>
+                  <span class="text-white">+500 XP Soberano • Destaque na Home VIP • Badge Exclusivo</span>
+                </div>
+                <div class="p-3 bg-black/60 rounded-xl border border-white/10">
+                  <span class="text-red-400 font-bold block mb-0.5">📋 Requisitos:</span>
+                  <span class="text-white">Incluir prompt completo, modelo de IA e imagem em alta resolução</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-col items-center justify-center p-6 bg-black/80 rounded-2xl border border-red-500/30 text-center space-y-3 flex-shrink-0">
+              <span class="text-3xl">🎯</span>
+              <div>
+                <p class="text-sm font-bold text-white">Pronto para competir?</p>
+                <p class="text-[10px] text-gray-400">Submeta seu post no feed com a hashtag</p>
+              </div>
+              <button onclick="window.appJoinChallenge('#DesafioCarmesim')"
+                class="w-full px-6 py-3 rounded-full bg-gradient-to-r from-red-600 to-rose-700 hover:from-red-500 hover:to-rose-600 text-white font-extrabold text-xs shadow-[0_0_25px_rgba(220,38,38,0.5)] hover:scale-105 active:scale-95 transition-all">
+                Participar Agora 🚀
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Challenge Entries Section -->
+        <div>
+          <div class="flex items-center justify-between mb-5">
+            <h3 class="text-lg font-bold text-white flex items-center space-x-2">
+              <span>🖼️</span><span>Submissões Recentes da Comunidade (#DesafioCarmesim)</span>
+            </h3>
+            <button onclick="window.appSwitchCommunityTab('feed'); window.appSearchCommunity('#DesafioCarmesim');" class="text-xs text-red-300 hover:underline font-mono">
+              Ver todas no feed →
+            </button>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div class="glass-card-community rounded-3xl overflow-hidden border border-white/15">
+              <img src="./public/assets/images/opt_0375_img_exact_604f4.webp" class="w-full h-48 object-cover">
+              <div class="p-4 space-y-2">
+                <span class="px-2 py-0.5 rounded text-[9px] font-mono bg-red-500/20 text-red-300">Flux.1 Dev</span>
+                <h4 class="text-xs font-bold text-white">Retrato Biomecânico Carmesim</h4>
+                <p class="text-[10px] text-gray-400 font-mono">Por Mateus Celestino • 74 likes</p>
+              </div>
+            </div>
+
+            <div class="glass-card-community rounded-3xl overflow-hidden border border-white/15">
+              <img src="./public/assets/images/opt_0008_img_exact_87ca3.webp" class="w-full h-48 object-cover">
+              <div class="p-4 space-y-2">
+                <span class="px-2 py-0.5 rounded text-[9px] font-mono bg-red-500/20 text-red-300">Midjourney v6.1</span>
+                <h4 class="text-xs font-bold text-white">Reflexos Escarlates em Vidro Líquido</h4>
+                <p class="text-[10px] text-gray-400 font-mono">Por Elena Digital Art • 51 likes</p>
+              </div>
+            </div>
+
+            <div class="glass-card-community rounded-3xl overflow-hidden border border-white/15">
+              <img src="./public/assets/images/opt_0740_img_exact_666ee.webp" class="w-full h-48 object-cover">
+              <div class="p-4 space-y-2">
+                <span class="px-2 py-0.5 rounded text-[9px] font-mono bg-red-500/20 text-red-300">ComfyUI SDXL</span>
+                <h4 class="text-xs font-bold text-white">Cyberpunk City Carmesim 8k</h4>
+                <p class="text-[10px] text-gray-400 font-mono">Por Lucas Rocha • 39 likes</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>`;
+  }
+
+  function renderCommunitySavedTab() {
+    const savedPosts = communityPosts.filter(p => p.user_id === currentUserId || (p.likedBy || []).includes(currentUserId));
+
+    return `
+      <div class="space-y-6 anim-element anim-fade-up">
+        <div class="p-6 rounded-3xl glass-card-community border border-white/15 shadow-2xl flex items-center justify-between">
+          <div>
+            <h2 class="text-2xl font-extrabold text-white">Suas Publicações e Favoritos</h2>
+            <p class="text-xs text-gray-300 mt-1">Acesso rápido aos seus próprios posts, prompts que você salvou ou curtiu na plataforma.</p>
+          </div>
+          <span class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-white/10 text-white">${savedPosts.length} itens</span>
+        </div>
+
+        ${savedPosts.length === 0 ? `
+          <div class="text-center py-24 glass-card-community rounded-3xl border border-white/10">
+            <div class="text-5xl mb-3">🔖</div>
+            <h3 class="text-base font-bold text-white mb-1">Nenhum post salvo ou publicado ainda</h3>
+            <p class="text-graphite text-xs max-w-sm mx-auto">Interaja no feed ou envie seu primeiro prompt para montar sua coleção pessoal!</p>
+            <button onclick="window.appSwitchCommunityTab('feed')" class="mt-4 px-5 py-2.5 rounded-full bg-red-600 hover:bg-red-500 text-xs font-bold text-white shadow-lg transition-all">Ir para o Feed Social</button>
+          </div>
+        ` : `
+          <div class="space-y-5">
+            ${savedPosts.map(renderPostCard).join('')}
+          </div>
+        `}
+      </div>`;
+  }
+
+  function renderPostCard(post) {
+    const isLiked = (post.likedBy || []).includes(currentUserId);
+    const canDel = currentUserRole === 'admin' || currentUserRole === 'moderator' || post.user_id === currentUserId;
+    const cCount = post.comments?.length || 0;
+    const safeUserName = escapeHtml(post.user_name || 'Membro VIP');
+    const safeTitle = escapeHtml(post.title || '');
+    const safeContent = escapeHtml(post.content || '').replace(/\n/g, '<br>');
+    const safeLinkUrl = escapeHtml(post.link_url || '');
+    const safeLinkTitle = escapeHtml(post.link_title || post.link_url || '');
+
+    // Formatação de categoria
+    const categoryLabels = {
+      prompts: { label: '⚡ Prompt VIP', cls: 'bg-red-500/15 text-red-300 border-red-500/30' },
+      showcase: { label: '🎨 Showcase Visual', cls: 'bg-purple-500/15 text-purple-300 border-purple-500/30' },
+      tips: { label: '💡 Dica Técnica', cls: 'bg-amber-500/15 text-amber-300 border-amber-500/30' },
+      official: { label: '📌 Anúncio Oficial', cls: 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30' },
+      help: { label: '❓ Dúvida', cls: 'bg-cyan-500/15 text-cyan-300 border-cyan-500/30' }
+    };
+    const catInfo = categoryLabels[post.category] || categoryLabels.prompts;
+
+    return `
+      <article class="glass-card-community rounded-3xl overflow-hidden p-6 border border-white/15 relative transition-all duration-300 hover:border-red-500/30" id="post-${post.id}">
+        <!-- Pinned Banner -->
+        ${post.is_pinned ? `
+          <div class="mb-4 px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-red-950/60 to-red-900/30 border border-red-500/40 text-red-200 text-xs font-bold flex items-center space-x-2">
+            <span>📌</span>
+            <span>POST FIXADO PELA ADMINISTRAÇÃO SOBERANA</span>
+          </div>` : ''}
+
+        <!-- Post Header -->
+        <div class="flex items-start justify-between mb-4">
+          <div class="flex items-center space-x-3.5">
+            <div class="relative flex-shrink-0">
+              <img src="${post.user_avatar}" class="w-11 h-11 rounded-full border border-white/20 object-cover ${post.user_role === 'admin' ? 'border-red-500 shadow-[0_0_10px_rgba(239,68,68,0.4)]' : ''}">
+              ${post.user_role === 'admin' ? '<span class="absolute -top-1 -right-1 text-xs">👑</span>' : ''}
+            </div>
             <div>
               <div class="flex items-center flex-wrap gap-x-2 gap-y-1">
-                <span class="text-sm font-bold text-white">${post.user_name}</span>
+                <span class="text-sm font-extrabold text-white">${safeUserName}</span>
                 ${getBadge(post.user_role)}
+                <span class="px-2 py-0.5 rounded-full text-[10px] font-mono border font-bold ${catInfo.cls}">
+                  ${catInfo.label}
+                </span>
               </div>
-              <span class="text-[0.65rem] text-graphite">${formatDate(post.created_at)}</span>
+              <span class="text-[11px] text-gray-400 font-mono mt-0.5 block">${formatDate(post.created_at)}</span>
             </div>
           </div>
+
           <div class="flex items-center space-x-2">
-            ${canDel ? `<button onclick="window.appDeletePost('${post.id}')" class="text-xs text-red-400/60 hover:text-red-400 p-1.5 rounded-lg hover:bg-white/5 transition-all">✕</button>` : ''}
+            ${canDel ? `<button onclick="window.appDeletePost('${post.id}')" class="text-xs text-red-400/60 hover:text-red-400 p-2 rounded-xl hover:bg-white/5 transition-all" title="Excluir post">✕</button>` : ''}
           </div>
         </div>
 
-        ${post.title ? `<h3 class="text-base font-extrabold text-white mb-2 leading-snug">${post.title}</h3>` : ''}
-        ${post.content ? `<p class="text-sm text-gray-300 leading-relaxed mb-3">${post.content.replace(/\n/g,'<br>')}</p>` : ''}
+        <!-- Post Title -->
+        ${post.title ? `<h3 class="text-lg font-extrabold text-white mb-2 leading-snug">${safeTitle}</h3>` : ''}
 
-        ${post.link_url ? `
-          <a href="${post.link_url}" target="_blank" class="mb-3 flex items-center space-x-3 p-3 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
-            <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-sm flex-shrink-0">🔗</div>
-            <div class="min-w-0 flex-1">
-              <p class="text-xs font-bold text-white truncate">${post.link_title || post.link_url}</p>
-              <p class="text-[0.65rem] text-graphite truncate">${post.link_url}</p>
+        <!-- Post Content -->
+        ${post.content ? `<p class="text-sm text-gray-200 leading-relaxed mb-4 font-normal">${safeContent}</p>` : ''}
+
+        <!-- AI PROMPT STUDIO CARD (IF AVAILABLE) -->
+        ${post.ai_prompt ? `
+          <div class="my-4 p-4 rounded-2xl bg-black/85 border border-red-500/35 relative overflow-hidden group shadow-inner">
+            <div class="flex items-center justify-between pb-2.5 mb-2.5 border-b border-red-500/20 text-xs font-mono">
+              <span class="text-red-400 font-bold flex items-center space-x-1.5">
+                <span>🔮</span>
+                <span>MODELO: ${escapeHtml(post.ai_model || 'FLUX / MIDJOURNEY')}</span>
+              </span>
+              <button onclick="window.appCopyPrompt(this, ${JSON.stringify(post.ai_prompt)})"
+                class="px-3 py-1.5 rounded-xl bg-red-950/70 hover:bg-red-900 border border-red-500/50 text-red-200 text-[11px] font-bold transition-all flex items-center space-x-1.5 shadow-md active:scale-95">
+                <span>📋</span><span>Copiar Prompt</span>
+              </button>
             </div>
+            <pre class="text-xs text-gray-200 font-mono whitespace-pre-wrap leading-relaxed select-all bg-white/5 p-3 rounded-xl border border-white/5">${escapeHtml(post.ai_prompt)}</pre>
+            ${post.ai_params ? `
+              <div class="mt-2.5 pt-2 border-t border-white/10 text-[10px] font-mono text-red-300/80 flex items-center space-x-2">
+                <span class="font-bold">⚙️ Flags:</span>
+                <span class="text-white/70">${escapeHtml(post.ai_params)}</span>
+              </div>` : ''}
+          </div>` : ''}
+
+        <!-- Link Preview Card -->
+        ${post.link_url ? `
+          <a href="${safeLinkUrl}" target="_blank" rel="noopener noreferrer" class="mb-4 flex items-center space-x-3.5 p-3.5 rounded-2xl bg-white/5 border border-white/10 hover:border-red-500/40 hover:bg-white/10 transition-all group">
+            <div class="w-9 h-9 rounded-xl bg-red-500/20 border border-red-500/30 flex items-center justify-center text-sm flex-shrink-0 text-red-300">🔗</div>
+            <div class="min-w-0 flex-1">
+              <p class="text-xs font-bold text-white group-hover:text-red-300 transition-colors truncate">${safeLinkTitle}</p>
+              <p class="text-[11px] text-graphite truncate">${safeLinkUrl}</p>
+            </div>
+            <span class="text-white/40 group-hover:text-white text-xs mr-1">↗</span>
           </a>` : ''}
 
-        ${post.images?.length ? renderImageGrid(post.images) : ''}
+        <!-- Image Gallery with Lightbox -->
+        ${post.images?.length ? renderEnhancedImageGrid(post.images, post.title || safeUserName) : ''}
 
         <!-- Actions Bar -->
-        <div class="mt-4 pt-3 flex items-center space-x-3 border-t border-white/10">
-          <button onclick="window.appLikePost('${post.id}')" id="like-btn-${post.id}"
-            class="flex items-center space-x-2 text-xs font-bold px-4 py-1.5 rounded-full border transition-all ${isLiked ? 'bg-white text-black border-white' : 'bg-white/5 text-white/70 border-white/10 hover:bg-white/10'}">
-            <span>💙</span><span id="like-count-${post.id}">${post.likes||0}</span>
-          </button>
-          <button onclick="window.appToggleComments('${post.id}')"
-            class="flex items-center space-x-2 text-xs font-bold px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-white/70 hover:bg-white/10 transition-all">
-            <span>💬</span><span id="comment-count-${post.id}">${cCount}</span>
-          </button>
+        <div class="mt-5 pt-4 flex items-center justify-between border-t border-white/10">
+          <div class="flex items-center space-x-3">
+            <button onclick="window.appLikePost('${post.id}')" id="like-btn-${post.id}"
+              class="flex items-center space-x-2 text-xs font-bold px-4 py-2 rounded-full border transition-all ${isLiked ? 'bg-red-600 text-white border-red-500 shadow-[0_0_15px_rgba(220,38,38,0.4)]' : 'bg-white/5 text-white/80 border-white/15 hover:bg-white/10'}">
+              <span>${isLiked ? '❤️' : '🤍'}</span>
+              <span id="like-count-${post.id}">${post.likes || 0}</span>
+            </button>
+
+            <button onclick="window.appToggleComments('${post.id}')"
+              class="flex items-center space-x-2 text-xs font-bold px-4 py-2 rounded-full border border-white/15 bg-white/5 text-white/80 hover:bg-white/10 transition-all">
+              <span>💬</span>
+              <span id="comment-count-${post.id}">${cCount}</span>
+            </button>
+          </div>
+
+          <div class="flex items-center space-x-2">
+            <button onclick="window.appSharePost('${post.id}')" class="p-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white/70 hover:text-white text-xs transition-all" title="Copiar link do post">
+              <span>🔗</span>
+            </button>
+            <button onclick="window.appBookmarkPost('${post.id}')" class="p-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white/70 hover:text-white text-xs transition-all" title="Salvar publicação">
+              <span>🔖</span>
+            </button>
+          </div>
         </div>
 
-        <!-- Comments Area -->
-        <div id="comments-${post.id}" class="hidden mt-3 border-t border-white/10 pt-3 space-y-3">
-          <div class="space-y-2" id="comments-list-${post.id}">
-            ${(post.comments||[]).map(c=>renderCommentCard(c,post.id)).join('')}
+        <!-- Threaded Comments Area -->
+        <div id="comments-${post.id}" class="hidden mt-4 border-t border-white/10 pt-4 space-y-3.5">
+          <div class="space-y-2.5" id="comments-list-${post.id}">
+            ${(post.comments || []).map(c => renderCommentCard(c, post.id)).join('')}
           </div>
-          <div class="flex items-center space-x-2 pt-2">
-            <input type="text" id="comment_input_${post.id}" placeholder="Escreva um comentário..."
-              class="flex-1 bg-white/5 border border-white/10 rounded-full px-4 py-2 text-xs text-white focus:outline-none focus:border-white/30"
-              onkeydown="if(event.key==='Enter')window.appAddComment('${post.id}')">
-            <button onclick="window.appAddComment('${post.id}')" class="px-4 py-2 bg-white text-black font-bold text-xs rounded-full hover:bg-white/90">Enviar</button>
+
+          <!-- Add Comment Input Row -->
+          <div class="flex items-center space-x-2.5 pt-2">
+            <img src="${currentUserAvatarUrl}" class="w-8 h-8 rounded-full border border-white/20 flex-shrink-0">
+            <input type="text" id="comment_input_${post.id}" placeholder="Escreva uma resposta para este criador..."
+              class="flex-1 bg-white/5 border border-white/15 rounded-full px-4 py-2.5 text-xs text-white placeholder-white/30 focus:outline-none focus:border-red-500/50"
+              onkeydown="if(event.key==='Enter') window.appAddComment('${post.id}')">
+            <button onclick="window.appAddComment('${post.id}')"
+              class="px-5 py-2.5 bg-white text-black font-extrabold text-xs rounded-full hover:bg-gray-200 transition-all shadow-md">
+              Enviar
+            </button>
           </div>
         </div>
       </article>`;
   }
 
-  function renderCommentCard(c, postId) {
-    const canDel = currentUserRole==='admin' || currentUserRole==='moderator' || c.user_id===currentUserId;
-    return `
-      <div class="flex items-start space-x-2.5" id="comment-${c.id}">
-        <img src="${c.user_avatar}" class="w-7 h-7 rounded-full flex-shrink-0 mt-0.5">
-        <div class="flex-1 bg-white/5 rounded-2xl px-3.5 py-2.5 min-w-0 border border-white/5">
-          <div class="flex items-center justify-between mb-1">
-            <span class="text-xs font-bold text-white">${c.user_name}</span>
-            <span class="text-[0.6rem] text-graphite">${formatDate(c.created_at)}</span>
+  function renderEnhancedImageGrid(images, caption) {
+    if (!images || !images.length) return '';
+    const safeCap = escapeHtml(caption || 'Imagem da Comunidade');
+
+    if (images.length === 1) {
+      return `
+        <div class="my-3 rounded-2xl overflow-hidden border border-white/15 max-h-[500px] bg-black/60 cursor-pointer group relative"
+          onclick="window.openCommunityLightbox('${images[0]}', '${escapeJs(caption)}')">
+          <img src="${images[0]}" class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500">
+          <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+            <span class="px-4 py-2 rounded-full bg-black/80 border border-white/20 text-white text-xs font-bold backdrop-blur-md">🔍 Ver em Tela Cheia</span>
           </div>
-          <p class="text-xs text-gray-300 leading-relaxed">${c.content}</p>
+        </div>`;
+    }
+
+    return `
+      <div class="my-3 grid grid-cols-2 gap-2.5">
+        ${images.map(img => `
+          <div class="rounded-xl overflow-hidden border border-white/15 h-44 sm:h-52 bg-black/60 cursor-pointer group relative"
+            onclick="window.openCommunityLightbox('${img}', '${escapeJs(caption)}')">
+            <img src="${img}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="text-xs text-white font-mono font-bold bg-black/70 px-2.5 py-1 rounded-full border border-white/20">🔍 Zoom</span>
+            </div>
+          </div>
+        `).join('')}
+      </div>`;
+  }
+
+  function renderCommentCard(c, postId) {
+    const canDel = currentUserRole === 'admin' || currentUserRole === 'moderator' || c.user_id === currentUserId;
+    const safeAuthor = escapeHtml(c.user_name || 'Membro VIP');
+    const safeComment = escapeHtml(c.content || '');
+
+    return `
+      <div class="flex items-start space-x-3 p-3 rounded-2xl bg-white/5 border border-white/5" id="comment-${c.id}">
+        <img src="${c.user_avatar}" class="w-8 h-8 rounded-full flex-shrink-0 object-cover mt-0.5 border border-white/10">
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center justify-between mb-1">
+            <div class="flex items-center space-x-2">
+              <span class="text-xs font-bold text-white">${safeAuthor}</span>
+              ${getBadge(c.user_role)}
+            </div>
+            <span class="text-[10px] text-gray-400 font-mono">${formatDate(c.created_at)}</span>
+          </div>
+          <p class="text-xs text-gray-200 leading-relaxed font-normal">${safeComment}</p>
         </div>
-        ${canDel ? `<button onclick="window.appDeleteComment('${postId}','${c.id}')" class="text-red-400 text-xs p-1">✕</button>` : ''}
+        ${canDel ? `<button onclick="window.appDeleteComment('${postId}', '${c.id}')" class="text-red-400/60 hover:text-red-400 text-xs p-1" title="Excluir resposta">✕</button>` : ''}
       </div>`;
   }
 
   function setupCommunityHandlers() {
     window.appGoProfile = navigateToProfile;
 
+    // Subtab Switcher
+    window.appSwitchCommunityTab = function(tab) {
+      communityActiveTab = tab;
+      const targetHash = (tab && tab !== 'feed') ? `#community/${tab}` : '#community';
+      if (window.location.hash !== targetHash) {
+        try { history.pushState(null, '', targetHash); } catch(e) {}
+      }
+      renderCurrentView();
+    };
+
+    // Model Filter for Prompts Vault
+    window.appFilterPromptModel = function(model) {
+      communityPromptModelFilter = model;
+      renderCommunityView();
+    };
+
+    // Challenge Join Handler
+    window.appJoinChallenge = function(hashtag) {
+      communityActiveTab = 'feed';
+      communityPromptBoxOpen = true;
+      renderCommunityView();
+      setTimeout(() => {
+        const titleEl = document.getElementById('newPostTitle');
+        const contentEl = document.getElementById('newPostContent');
+        if (titleEl) titleEl.value = `Submissão: ${hashtag} — [Título da Sua Arte]`;
+        if (contentEl) {
+          contentEl.value = `Minha participação no desafio da semana ${hashtag}!\nPrompt detalhado e configurações abaixo:`;
+          contentEl.focus();
+        }
+        window.scrollTo({ top: 400, behavior: 'smooth' });
+      }, 80);
+      showToast('✍️ Composer preparado para sua submissão!');
+    };
+
+    // Quick Servers Nav from Community Sidebar
+    window.appGoServersNav = function() {
+      navigateToServers();
+    };
+
+    // Filter and search handlers
+    window.appFilterCommunity = function(cat) {
+      communityActiveFilter = cat;
+      renderCommunityView();
+    };
+
+    window.appSearchCommunity = function(val) {
+      communitySearchQuery = val;
+      const feed = document.getElementById('communityFeed');
+      if (!feed) { renderCommunityView(); return; }
+
+      let filteredPosts = [...communityPosts];
+      if (communityActiveFilter === 'prompts') {
+        filteredPosts = filteredPosts.filter(p => p.category === 'prompts' || p.ai_prompt || (p.title && p.title.toLowerCase().includes('prompt')));
+      } else if (communityActiveFilter === 'showcase') {
+        filteredPosts = filteredPosts.filter(p => p.category === 'showcase' || (p.images && p.images.length > 0));
+      } else if (communityActiveFilter === 'tips') {
+        filteredPosts = filteredPosts.filter(p => p.category === 'tips' || (p.title && p.title.toLowerCase().includes('dica')));
+      } else if (communityActiveFilter === 'official') {
+        filteredPosts = filteredPosts.filter(p => p.is_pinned || p.category === 'official');
+      }
+
+      if (val.trim()) {
+        const q = val.toLowerCase().trim();
+        filteredPosts = filteredPosts.filter(p =>
+          (p.title && p.title.toLowerCase().includes(q)) ||
+          (p.content && p.content.toLowerCase().includes(q)) ||
+          (p.user_name && p.user_name.toLowerCase().includes(q)) ||
+          (p.ai_prompt && p.ai_prompt.toLowerCase().includes(q))
+        );
+      }
+
+      feed.innerHTML = filteredPosts.length === 0
+        ? `<div class="text-center py-20 glass-card-community rounded-3xl border border-white/10">
+            <div class="text-5xl mb-3">💬</div>
+            <h3 class="text-base font-bold text-white mb-1">Nenhum post encontrado</h3>
+            <p class="text-graphite text-xs max-w-sm mx-auto">Tente ajustar seus termos de busca!</p>
+          </div>`
+        : filteredPosts.map(renderPostCard).join('');
+    };
+
+    // Category Selector in Composer
+    window.selectPostCategory = function(cat, btn) {
+      communitySelectedCategory = cat;
+      document.querySelectorAll('.post-cat-btn').forEach(b => {
+        b.className = 'post-cat-btn px-2.5 py-1 rounded-lg border font-bold transition-all bg-white/5 text-gray-400 border-white/10 hover:text-white';
+      });
+      if (btn) {
+        btn.className = 'post-cat-btn px-2.5 py-1 rounded-lg border font-bold transition-all bg-red-500/20 text-red-200 border-red-500/40';
+      }
+    };
+
+    // Toggle Composer Prompt Box
+    window.toggleComposerPromptBox = function() {
+      communityPromptBoxOpen = !communityPromptBoxOpen;
+      const box = document.getElementById('composerPromptBox');
+      if (box) box.classList.toggle('hidden');
+    };
+
+    // Shaders selection
+    window.appSelectCommunityShader = function(id) {
+      if (window.setCommunityShader) {
+        window.setCommunityShader(id);
+      }
+      renderCommunityView();
+      showToast(`🔴 Shader alterado: ${id}`);
+    };
+
+    window.appToggleCommunityRotative = function() {
+      if (window.toggleCommunityRotative) {
+        const newState = window.toggleCommunityRotative();
+        renderCommunityView();
+        showToast(newState ? '🔄 Modo Rotativo Ativado (20s)' : '⏸️ Shader Fixo');
+      }
+    };
+
+    window.appRandomCommunityShader = function() {
+      const shaders = window.COMMUNITY_SHADERS || [];
+      if (!shaders.length) return;
+      const rand = shaders[Math.floor(Math.random() * shaders.length)];
+      window.appSelectCommunityShader(rand.id);
+    };
+
+    // Copy Prompt Helper
+    window.appCopyPrompt = function(btn, text) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text);
+      } else {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+      }
+      const orig = btn.innerHTML;
+      btn.innerHTML = '<span>✅</span><span>Copiado!</span>';
+      btn.classList.add('bg-emerald-700/80', 'text-white', 'border-emerald-400');
+      setTimeout(() => {
+        btn.innerHTML = orig;
+        btn.classList.remove('bg-emerald-700/80', 'text-white', 'border-emerald-400');
+      }, 2000);
+      showToast('📋 Prompt copiado com sucesso!');
+    };
+
+    // Lightbox modal helpers
+    window.openCommunityLightbox = function(src, caption) {
+      const modal = document.getElementById('communityImageLightbox');
+      const img = document.getElementById('lightboxImg');
+      const cap = document.getElementById('lightboxCaption');
+      if (modal && img) {
+        img.src = src;
+        if (cap) cap.textContent = caption || '';
+        modal.classList.remove('hidden', 'pointer-events-none');
+        setTimeout(() => modal.classList.remove('opacity-0'), 10);
+      }
+    };
+
+    window.closeCommunityLightbox = function() {
+      const modal = document.getElementById('communityImageLightbox');
+      if (modal) {
+        modal.classList.add('opacity-0');
+        setTimeout(() => modal.classList.add('hidden', 'pointer-events-none'), 300);
+      }
+    };
+
+    // Share & Bookmark helpers
+    window.appSharePost = function(id) {
+      const url = `${window.location.origin}/comunidade#community`;
+      if (navigator.clipboard) navigator.clipboard.writeText(url);
+      showToast('🔗 Link da publicação copiado!');
+    };
+
+    window.appBookmarkPost = function(id) {
+      showToast('🔖 Publicação salva nos seus favoritos VIP!');
+    };
+
+    // File Input change
     const fileInput = document.getElementById('communityFileInput');
     if (fileInput) {
       fileInput.onchange = (e) => {
@@ -2307,13 +4463,30 @@ document.addEventListener('DOMContentLoaded', () => {
         const previewContainer = document.getElementById('postImageUploadPreview');
         if (previewContainer) {
           previewContainer.classList.remove('hidden');
-          previewContainer.innerHTML = files.map(f => `
-            <div class="h-16 rounded-xl overflow-hidden border border-white/20 bg-black/60 relative">
+          previewContainer.innerHTML = files.map((f, idx) => `
+            <div class="h-16 rounded-xl overflow-hidden border border-white/20 bg-black/60 relative group">
               <img src="${URL.createObjectURL(f)}" class="w-full h-full object-cover">
+              <button onclick="window.removeUploadFile(${idx})" class="absolute top-1 right-1 w-4 h-4 rounded-full bg-red-600 text-white text-[9px] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">✕</button>
             </div>`).join('');
         }
       };
     }
+
+    window.removeUploadFile = function(idx) {
+      selectedFilesToUpload.splice(idx, 1);
+      const previewContainer = document.getElementById('postImageUploadPreview');
+      if (!previewContainer) return;
+      if (!selectedFilesToUpload.length) {
+        previewContainer.classList.add('hidden');
+        previewContainer.innerHTML = '';
+      } else {
+        previewContainer.innerHTML = selectedFilesToUpload.map((f, i) => `
+          <div class="h-16 rounded-xl overflow-hidden border border-white/20 bg-black/60 relative group">
+            <img src="${URL.createObjectURL(f)}" class="w-full h-full object-cover">
+            <button onclick="window.removeUploadFile(${i})" class="absolute top-1 right-1 w-4 h-4 rounded-full bg-red-600 text-white text-[9px] flex items-center justify-center">✕</button>
+          </div>`).join('');
+      }
+    };
 
     window.togglePostLink = () => {
       document.getElementById('postLinkField')?.classList.toggle('hidden');
@@ -2333,14 +4506,17 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      const title    = document.getElementById('newPostTitle')?.value?.trim();
-      const content  = document.getElementById('newPostContent')?.value?.trim();
+      const title = document.getElementById('newPostTitle')?.value?.trim();
+      const content = document.getElementById('newPostContent')?.value?.trim();
       const link_url = document.getElementById('newPostLinkUrl')?.value?.trim();
-      const link_title= document.getElementById('newPostLinkTitle')?.value?.trim();
+      const link_title = document.getElementById('newPostLinkTitle')?.value?.trim();
+      const promptCode = document.getElementById('newPostPromptCode')?.value?.trim();
+      const promptParams = document.getElementById('newPostPromptParams')?.value?.trim();
+      const promptModel = document.getElementById('newPostPromptModel')?.value || 'Flux.1 Dev';
       const btn = document.getElementById('submitPostBtn');
 
-      if (!content && !title && !selectedFilesToUpload.length) {
-        showToast('⚠️ Escreva um texto ou selecione imagens para publicar.');
+      if (!content && !title && !promptCode && !selectedFilesToUpload.length) {
+        showToast('⚠️ Escreva um texto, prompt ou selecione imagens para publicar.');
         return;
       }
 
@@ -2362,14 +4538,18 @@ document.addEventListener('DOMContentLoaded', () => {
         user_name: currentUserNameStr || 'Membro VIP',
         user_avatar: currentUserAvatarUrl || USER_ROLES.free.avatar,
         user_role: currentUserRole,
+        category: communitySelectedCategory || 'prompts',
         title: title || '',
         content: content || '',
+        ai_prompt: promptCode || '',
+        ai_params: promptParams || '',
+        ai_model: promptCode ? promptModel : '',
         link_url: link_url || '',
         link_title: link_title || '',
         images: uploadedImageUrls.length > 0 ? uploadedImageUrls : [],
         is_pinned: currentUserRole === 'admin',
-        likes: 0,
-        likedBy: [],
+        likes: 1,
+        likedBy: [currentUserId],
         created_at: new Date().toISOString(),
         comments: []
       };
@@ -2386,16 +4566,16 @@ document.addEventListener('DOMContentLoaded', () => {
             images: uploadedImageUrls.length > 0 ? uploadedImageUrls : null
           });
         } catch(sbPostErr) {
-          console.warn('[A.I VISUALS] Post salvo localmente (Supabase indisponível):', sbPostErr.message);
+          console.warn('[A.I VISUALS] Post salvo localmente:', sbPostErr.message);
         }
       }
 
-      // Adiciona na coleção local e persiste
       communityPosts.unshift(newPostObj);
       saveLocalCommunityPosts();
 
       selectedFilesToUpload = [];
-      showToast('✅ Post publicado na comunidade!');
+      communityPromptBoxOpen = false;
+      showToast('🚀 Publicação VIP compartilhada com sucesso!');
       renderCommunityView();
     };
 
@@ -2441,7 +4621,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       const input = document.getElementById(`comment_input_${postId}`);
-      const text  = input?.value?.trim();
+      const text = input?.value?.trim();
       if (!text) return;
 
       const post = communityPosts.find(p => p.id === postId);
@@ -2472,19 +4652,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
 
-      showToast('💬 Comentário enviado!');
+      showToast('💬 Resposta enviada ao criador!');
       renderCommunityView();
     };
 
     window.appDeletePost = async id => {
-      if (!(await showConfirmModal('Excluir este post?'))) return;
+      if (!(await showConfirmModal('Excluir este post definitivamente?'))) return;
       if (sb) {
         try { await sb.from('community_posts').delete().eq('id', id); } catch(e) {}
       }
       communityPosts = communityPosts.filter(p => p.id !== id);
       saveLocalCommunityPosts();
       renderCommunityView();
-      showToast('🗑️ Post excluído!');
+      showToast('🗑️ Post excluído com sucesso!');
     };
 
     window.appDeleteComment = async (postId, commentId) => {
@@ -2500,8 +4680,7 @@ document.addEventListener('DOMContentLoaded', () => {
       showToast('🗑️ Comentário excluído!');
     };
   }
-
-  // ──────────────────────────────────────────────────────────────────────────
+// ──────────────────────────────────────────────────────────────────────────
   // VIEW 6: SERVERS GRID
   // ──────────────────────────────────────────────────────────────────────────
   function renderServersView() {
@@ -2561,31 +4740,63 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ──────────────────────────────────────────────────────────────────────────
-  // VIEW 7: SERVER DETAIL — Player de Vídeo Embed
+  // VIEW 7: SERVER DETAIL — Player de Vídeo & Skool Classroom Experience
   // ──────────────────────────────────────────────────────────────────────────
   function renderServerDetailView() {
     if (!isLoggedIn) { showAuthModal(); return; }
-    const srv = serversData.find(s=>s.id===selectedServerId);
+    const srv = serversData.find(s=>s.id===selectedServerId) || DEFAULT_SOVEREIGN_SERVERS.find(s=>s.id===selectedServerId);
     if (!srv) { navigateToServers(); return; }
-    const lessons = srv.lessons || [];
+
+    const rawLessons = srv.lessons || [];
+    const lessons = rawLessons.map(l => {
+      const { cleanContent, metadata } = extractLessonMetadata(l.content_markdown || '');
+      return {
+        ...l,
+        cleanContent,
+        module: metadata.module || l.module || 'Módulo 1: Fundamentos',
+        duration: metadata.duration || l.duration || '15 min',
+        status: metadata.status || l.status || 'published',
+        resources: Array.isArray(metadata.resources) ? metadata.resources : (Array.isArray(l.resources) ? l.resources : [])
+      };
+    });
+
     const lesson  = lessons.find(l=>l.id===selectedLessonId) || lessons[0];
     const embed   = lesson?.video_url ? convertToEmbedUrl(lesson.video_url) : '';
     const lesIdx  = lessons.findIndex(l=>l.id===lesson?.id);
     const prev    = lessons[lesIdx-1];
     const next    = lessons[lesIdx+1];
 
+    // Status de Conclusão do Aluno (Skool Progress)
+    let completedLessons = [];
+    try {
+      const rawComp = localStorage.getItem('mcp_completed_lessons');
+      if (rawComp) completedLessons = JSON.parse(rawComp);
+    } catch(e) {}
+    const isCurrentLessonCompleted = lesson ? completedLessons.includes(lesson.id) : false;
+    const completedCount = lessons.filter(l => completedLessons.includes(l.id)).length;
+    const progressPercent = lessons.length > 0 ? Math.round((completedCount / lessons.length) * 100) : 0;
+
+    // Ícones para tipos de recurso
+    const typeIcons = { pdf: '📄', prompt: '💡', code: '💻', figma: '🎨', drive: '📁', link: '🔗' };
+
+    // Agrupamento de aulas por Módulo
+    let lastRenderedModule = '';
+
     mainAppContainer.innerHTML = `
       <section class="py-8 px-4 sm:px-6 lg:px-8 max-w-[1600px] mx-auto relative z-10">
         <!-- Header -->
         <div class="flex items-center justify-between mb-6 border-b border-white/10 pb-5">
           <div class="min-w-0 flex-1 mr-4">
-            <span class="text-xs font-bold text-white/60 tracking-widest uppercase">${srv.title}</span>
+            <div class="flex items-center space-x-2">
+              <span class="text-xs font-bold text-white/60 tracking-widest uppercase">${srv.title}</span>
+              ${lesson ? `<span class="text-xs text-white/40">›</span><span class="text-xs text-white/40">${escapeHtml(lesson.module)}</span>` : ''}
+            </div>
             <h1 class="text-xl sm:text-2xl font-extrabold text-white mt-0.5 truncate">${lesson?.title||'Selecione uma aula'}</h1>
           </div>
           <div class="flex items-center space-x-2 flex-shrink-0 flex-wrap gap-y-2">
             ${(currentUserRole==='admin'||currentUserRole==='moderator') ? `
               <button onclick="window.appOpenServerEditorModal('${srv.id}')" class="px-3 py-1.5 bg-white/10 text-white border border-white/15 rounded-xl text-xs font-bold transition-all">⚙️ Servidor</button>
-              <button onclick="window.appOpenLessonEditorModal('${srv.id}')" class="px-3 py-1.5 bg-white text-black rounded-xl text-xs font-bold hover:bg-white/90 transition-all">+ Nova Aula</button>` : ''}
+              <button onclick="window.appOpenLessonEditorModal('${srv.id}')" class="px-3.5 py-1.5 bg-white text-black rounded-xl text-xs font-bold hover:bg-white/90 shadow-md transition-all">+ Nova Aula</button>` : ''}
             <button onclick="window.appGoServers()" class="px-3 py-1.5 bg-white/10 hover:bg-white/20 text-white rounded-xl text-xs font-bold transition-all">← Voltar</button>
           </div>
         </div>
@@ -2593,28 +4804,64 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
           <!-- LESSON SIDEBAR -->
           <div class="lg:col-span-1">
-            <div class="glass-card rounded-3xl p-4 sticky top-24">
-              <h3 class="text-xs font-bold text-graphite uppercase tracking-wider mb-3 flex items-center justify-between">
-                <span>Aulas (${lessons.length})</span>
-                ${lesIdx>=0 ? `<span class="text-white">${lesIdx+1}/${lessons.length}</span>` : ''}
-              </h3>
-              <div class="space-y-1.5 max-h-[55vh] overflow-y-auto pr-1">
-                ${lessons.length===0 ? '<p class="text-xs text-graphite p-2">Nenhuma aula.</p>' :
-                  lessons.map((l,i) => {
-                    const active = l.id===lesson?.id;
-                    return `<div class="rounded-xl border transition-all ${active ? 'bg-white/15 border-white/30 shadow-lg' : 'bg-white/5 border-white/10 hover:bg-white/10'}">
-                      <div class="p-2.5 cursor-pointer flex items-center justify-between" onclick="window.appGoServerDetail('${srv.id}','${l.id}')">
-                        <div class="min-w-0 flex-1 mr-2">
-                          <p class="text-[0.6rem] font-bold ${active?'text-white':'text-graphite'} mb-0.5">AULA ${i+1}</p>
-                          <p class="text-xs font-semibold ${active?'text-white':'text-graphite'} leading-tight truncate">${l.title}</p>
-                        </div>
-                        ${(currentUserRole==='admin'||currentUserRole==='moderator') ? `
-                          <button onclick="event.stopPropagation(); window.appOpenLessonEditorModal('${srv.id}', '${l.id}')" class="px-2 py-1 bg-white/10 hover:bg-white/20 text-white border border-white/15 rounded-lg text-[0.65rem] font-bold transition-all flex-shrink-0" title="Editar Aula">
-                            ✏️ Editar
-                          </button>` : ''}
-                      </div>
-                    </div>`;
-                  }).join('')}
+            <div class="glass-card rounded-3xl p-4 sticky top-24 space-y-4">
+              <!-- Progresso do Aluno (Skool Course Completion) -->
+              <div class="p-3.5 rounded-2xl bg-white/[0.04] border border-white/10 space-y-2">
+                <div class="flex items-center justify-between text-xs">
+                  <span class="font-bold text-white/80">Progresso no Curso</span>
+                  <span class="font-bold text-emerald-400 font-mono">${progressPercent}%</span>
+                </div>
+                <div class="w-full h-1.5 rounded-full bg-white/10 overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-emerald-500 to-white transition-all duration-500 rounded-full" style="width: ${progressPercent}%"></div>
+                </div>
+                <div class="flex items-center justify-between text-[0.65rem] text-white/40">
+                  <span>${completedCount} de ${lessons.length} aulas concluídas</span>
+                  ${progressPercent === 100 ? '<span class="text-emerald-400 font-bold">🏆 Completo!</span>' : ''}
+                </div>
+              </div>
+
+              <!-- Lista de Aulas com Módulos e Duração -->
+              <div>
+                <h3 class="text-xs font-bold text-graphite uppercase tracking-wider mb-2.5 flex items-center justify-between px-1">
+                  <span>Aulas do Treinamento</span>
+                  ${lesIdx>=0 ? `<span class="text-white/60">${lesIdx+1}/${lessons.length}</span>` : ''}
+                </h3>
+                <div class="space-y-2 max-h-[55vh] overflow-y-auto pr-1">
+                  ${lessons.length===0 ? '<p class="text-xs text-graphite p-2">Nenhuma aula cadastrada.</p>' :
+                    lessons.map((l,i) => {
+                      const active = l.id===lesson?.id;
+                      const isCompleted = completedLessons.includes(l.id);
+                      const isNewModule = l.module && l.module !== lastRenderedModule;
+                      if (isNewModule) lastRenderedModule = l.module;
+
+                      return `
+                        ${isNewModule ? `
+                          <div class="pt-2 pb-1 px-1 flex items-center space-x-1.5 text-[0.65rem] font-bold uppercase tracking-wider text-white/40">
+                            <span>📁</span>
+                            <span class="truncate">${escapeHtml(l.module)}</span>
+                          </div>` : ''}
+                        <div class="rounded-xl border transition-all ${active ? 'bg-white/15 border-white/30 shadow-lg' : 'bg-white/5 border-white/10 hover:bg-white/10'}">
+                          <div class="p-2.5 cursor-pointer flex items-center justify-between gap-2" onclick="window.appGoServerDetail('${srv.id}','${l.id}')">
+                            <div class="flex items-center space-x-2 min-w-0 flex-1">
+                              <button type="button" onclick="event.stopPropagation(); window.toggleCompleteLesson('${l.id}')" title="${isCompleted ? 'Desmarcar conclusão' : 'Marcar como concluída'}" class="w-4 h-4 rounded border flex items-center justify-center flex-shrink-0 transition-all ${isCompleted ? 'bg-emerald-500 border-emerald-400 text-black text-[0.65rem] font-bold' : 'border-white/30 hover:border-white text-transparent'}">
+                                ✓
+                              </button>
+                              <div class="min-w-0 flex-1">
+                                <div class="flex items-center space-x-1.5">
+                                  <span class="text-[0.6rem] font-bold ${active?'text-white':'text-graphite'}">AULA ${i+1}</span>
+                                  ${l.duration ? `<span class="text-[0.6rem] text-white/40 font-mono">⏱️ ${escapeHtml(l.duration)}</span>` : ''}
+                                </div>
+                                <p class="text-xs font-semibold ${active?'text-white':'text-graphite'} leading-tight truncate ${isCompleted ? 'line-through text-white/50' : ''}">${escapeHtml(l.title)}</p>
+                              </div>
+                            </div>
+                            ${(currentUserRole==='admin'||currentUserRole==='moderator') ? `
+                              <button onclick="event.stopPropagation(); window.appOpenLessonEditorModal('${srv.id}', '${l.id}')" class="px-2 py-1 bg-white/10 hover:bg-white/20 text-white border border-white/15 rounded-lg text-[0.65rem] font-bold transition-all flex-shrink-0" title="Editar Aula">
+                                ✏️
+                              </button>` : ''}
+                          </div>
+                        </div>`;
+                    }).join('')}
+                </div>
               </div>
             </div>
           </div>
@@ -2622,6 +4869,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <!-- MAIN VIEWER -->
           <div class="lg:col-span-3 space-y-5">
             ${lesson ? `
+              <!-- Player de Vídeo ou Banner de Artigo -->
               ${embed ? `
                 <div class="bg-black rounded-3xl overflow-hidden border border-white/15 shadow-2xl">
                   <div class="relative w-full" style="padding-top:56.25%">
@@ -2634,21 +4882,57 @@ document.addEventListener('DOMContentLoaded', () => {
                     </iframe>
                   </div>
                 </div>` : `
-                <div class="glass-card rounded-3xl p-12 text-center">
-                  <div class="text-3xl mb-2">🎬</div>
-                  <p class="text-graphite text-sm">Nenhum vídeo para esta aula.</p>
+                <div class="glass-card rounded-3xl p-8 sm:p-12 text-center space-y-3">
+                  <div class="w-14 h-14 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mx-auto text-2xl">📄</div>
+                  <h3 class="text-base font-bold text-white">Artigo Técnico de Treinamento</h3>
+                  <p class="text-graphite text-xs max-w-md mx-auto">Esta aula contém diretrizes completas em texto, prompts detalhados e materiais para estudo prático.</p>
                 </div>`}
 
-              <div class="glass-card rounded-3xl p-6 sm:p-8">
-                <div class="flex items-center justify-between mb-4 border-b border-white/10 pb-3">
-                  <h2 class="text-lg font-bold text-white">${lesson.title}</h2>
-                  ${(currentUserRole==='admin'||currentUserRole==='moderator') ? `
-                    <button onclick="window.appOpenLessonEditorModal('${srv.id}', '${lesson.id}')" class="px-4 py-2 bg-white/15 hover:bg-white/25 border border-white/20 text-white rounded-xl text-xs font-bold transition-all shadow-md flex items-center space-x-1.5">
-                      <span>✏️ Editar Aula</span>
-                    </button>` : ''}
+              <!-- Materiais & Recursos para Download (Skool Resources Box) -->
+              ${lesson.resources && lesson.resources.length > 0 ? `
+                <div class="glass-card rounded-3xl p-5 sm:p-6 space-y-3 border-emerald-500/20 bg-emerald-950/10 shadow-lg">
+                  <div class="flex items-center justify-between pb-2 border-b border-white/10">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-emerald-300 flex items-center space-x-2">
+                      <span>📎 Materiais de Apoio & Downloads (${lesson.resources.length})</span>
+                    </h3>
+                    <span class="text-[0.65rem] text-white/40">Arquivos anexados a esta aula</span>
+                  </div>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                    ${lesson.resources.map(res => `
+                      <a href="${escapeHtml(res.url)}" target="_blank" rel="noopener noreferrer" class="p-3.5 rounded-2xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-emerald-500/40 transition-all flex items-center justify-between group shadow-sm">
+                        <div class="flex items-center space-x-3 min-w-0">
+                          <span class="text-xl flex-shrink-0">${typeIcons[res.type] || '📎'}</span>
+                          <div class="min-w-0">
+                            <p class="text-xs font-bold text-white group-hover:text-emerald-300 transition-colors truncate">${escapeHtml(res.title)}</p>
+                            <span class="text-[0.65rem] text-white/40 group-hover:text-white/60 transition-colors uppercase font-mono">${res.type || 'Link'}</span>
+                          </div>
+                        </div>
+                        <span class="text-xs text-white/40 group-hover:text-emerald-300 group-hover:translate-x-0.5 transition-all">↗</span>
+                      </a>
+                    `).join('')}
+                  </div>
+                </div>` : ''}
+
+              <!-- Conteúdo da Aula (Markdown com Callouts, Checklists e Code Blocks) -->
+              <div class="glass-card rounded-3xl p-6 sm:p-8 space-y-4">
+                <div class="flex items-center justify-between flex-wrap gap-2 pb-4 border-b border-white/10">
+                  <div class="space-y-0.5">
+                    <span class="text-[0.65rem] font-bold uppercase tracking-wider text-white/50">${escapeHtml(lesson.module)}</span>
+                    <h2 class="text-lg sm:text-xl font-bold text-white">${escapeHtml(lesson.title)}</h2>
+                  </div>
+                  <div class="flex items-center space-x-2">
+                    <button onclick="window.toggleCompleteLesson('${lesson.id}')" class="px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center space-x-1.5 ${isCurrentLessonCompleted ? 'bg-emerald-500 text-black shadow-[0_0_15px_rgba(16,185,129,0.4)]' : 'bg-white/10 hover:bg-white/20 text-white border border-white/15'}">
+                      <span>${isCurrentLessonCompleted ? '✓ Concluída' : 'Marcar como Concluída'}</span>
+                    </button>
+                    ${(currentUserRole==='admin'||currentUserRole==='moderator') ? `
+                      <button onclick="window.appOpenLessonEditorModal('${srv.id}', '${lesson.id}')" class="px-3.5 py-2 bg-white/15 hover:bg-white/25 border border-white/20 text-white rounded-xl text-xs font-bold transition-all shadow-md flex items-center space-x-1.5" title="Editar Aula no Skool Studio">
+                        <span>✏️ Editar</span>
+                      </button>` : ''}
+                  </div>
                 </div>
-                <div class="prose prose-invert max-w-none leading-relaxed text-gray-300">
-                  ${renderMarkdown(lesson.content_markdown||'')}
+
+                <div class="prose prose-invert max-w-none leading-relaxed text-gray-200">
+                  ${renderMarkdown(lesson.cleanContent || lesson.content_markdown || '')}
                 </div>
               </div>
             ` : ''}
@@ -2957,8 +5241,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ──────────────────────────────────────────────────────────────────────────
   // VIEW 9: ADMIN DASHBOARD — (6 Abas: Dashboard, Membros, Interações, Vendas, Banners, Moderadores)
-  // ──────────────────────────────────────────────────────────────────────────
   async function renderAdminView() {
+    // Redirecionamento Unificado para o Painel Geral Soberano (/admin)
+    window.location.href = '/admin';
+    return;
+  }
+
+  async function _deprecatedAdminViewLegacy() {
     syncSovereignSession();
     const hasAdminAccess = (currentUserRole === 'admin' || currentUserRole === 'moderator' || currentUserRole === 'moder');
     if (!isLoggedIn || !hasAdminAccess) {
@@ -3163,26 +5452,30 @@ document.addEventListener('DOMContentLoaded', () => {
               <tbody class="divide-y divide-white/5">
                 ${profiles.map(p => {
                   const isMaxAdmin = p.email === 'mcp6667@proton.me' || p.role === 'admin';
+                  const safeName  = escapeHtml(p.name || 'Sem Nome');
+                  const safeEmail = escapeHtml(p.email || 'N/A');
+                  const safeId    = escapeHtml(p.id || '');
+                  const safeRole  = escapeHtml(p.role || 'free');
                   return `
                     <tr class="hover:bg-white/5 transition-colors">
                       <td class="py-3 px-2 flex items-center space-x-2.5">
-                        <img src="${p.avatar_url || 'https://api.dicebear.com/7.x/bottts/svg?seed='+p.id}" class="w-8 h-8 rounded-full border border-white/20">
-                        <span class="font-bold text-white">${p.name || 'Sem Nome'}</span>
+                        <img src="${p.avatar_url || 'https://api.dicebear.com/7.x/bottts/svg?seed='+safeId}" class="w-8 h-8 rounded-full border border-white/20">
+                        <span class="font-bold text-white">${safeName}</span>
                       </td>
-                      <td class="py-3 px-2 text-gray-300 font-mono">${p.email || 'N/A'}</td>
+                      <td class="py-3 px-2 text-gray-300 font-mono">${safeEmail}</td>
                       <td class="py-3 px-2">${getBadge(p.role || 'free')}</td>
                       <td class="py-3 px-2 text-graphite">${formatDate(p.created_at)}</td>
                       <td class="py-3 px-2 text-right space-x-1.5">
                         ${isMaxAdmin ? `<span class="text-[0.65rem] text-white/40 font-mono">INTOCÁVEL</span>` : `
                           ${currentUserRole === 'admin' && p.role !== 'moderator' ? `
-                            <button onclick="window.appPromoteMod('${p.id}')" class="px-2.5 py-1 bg-white/10 hover:bg-white/20 text-white border border-white/15 rounded-lg text-[0.65rem] font-bold">
+                            <button onclick="window.appPromoteMod('${safeId}')" class="px-2.5 py-1 bg-white/10 hover:bg-white/20 text-white border border-white/15 rounded-lg text-[0.65rem] font-bold">
                               🛡️ Promover Mod
                             </button>` : ''}
                           ${currentUserRole === 'admin' && p.role === 'moderator' ? `
-                            <button onclick="window.appDemoteMod('${p.id}')" class="px-2.5 py-1 bg-yellow-500/20 text-yellow-300 border border-yellow-500/30 rounded-lg text-[0.65rem] font-bold">
+                            <button onclick="window.appDemoteMod('${safeId}')" class="px-2.5 py-1 bg-yellow-500/20 text-yellow-300 border border-yellow-500/30 rounded-lg text-[0.65rem] font-bold">
                               ⏬ Rebaixar
                             </button>` : ''}
-                          <button onclick="window.appRemoveMember('${p.id}', '${p.role}', '${p.email}')" class="px-2.5 py-1 bg-red-500/20 hover:bg-red-500/30 text-red-400 border border-red-500/30 rounded-lg text-[0.65rem] font-bold">
+                          <button onclick="window.appRemoveMember('${safeId}', '${safeRole}', '${safeEmail}')" class="px-2.5 py-1 bg-red-500/20 hover:bg-red-500/30 text-red-400 border border-red-500/30 rounded-lg text-[0.65rem] font-bold">
                             ✕ Banir
                           </button>
                         `}
@@ -3249,10 +5542,10 @@ document.addEventListener('DOMContentLoaded', () => {
                   <img src="${c.profiles?.avatar_url || 'https://api.dicebear.com/7.x/bottts/svg?seed='+c.user_id}" class="w-8 h-8 rounded-full border border-white/15 flex-shrink-0">
                   <div class="flex-1">
                     <div class="flex items-center justify-between mb-1">
-                      <strong class="text-white">${c.profiles?.name || 'Membro'}</strong>
+                      <strong class="text-white">${escapeHtml(c.profiles?.name || 'Membro')}</strong>
                       <span class="text-graphite text-[0.65rem]">${formatDate(c.created_at)}</span>
                     </div>
-                    <p class="text-gray-300 leading-relaxed">${c.content}</p>
+                    <p class="text-gray-300 leading-relaxed">${escapeHtml(c.content || '')}</p>
                   </div>
                 </div>`).join('')}
           </div>

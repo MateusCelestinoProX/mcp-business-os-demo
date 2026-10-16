@@ -167,6 +167,162 @@
         .breadcrumb-item { color: rgba(134,134,139,0.8); cursor: pointer; transition: color 0.2s; white-space: nowrap; }
         .breadcrumb-item:hover { color: #f5f5f7; }
         .breadcrumb-item.active { color: rgba(245,245,247,0.9); cursor: default; }
+
+        /* SKOOL LESSON EDITOR STYLES */
+        .skool-tab-btn {
+            position: relative;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            color: rgba(255, 255, 255, 0.6);
+        }
+        .skool-tab-btn:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.06);
+        }
+        .skool-tab-btn.active {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.12);
+            font-weight: 700;
+        }
+        .skool-tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 12px;
+            right: 12px;
+            height: 2px;
+            background: linear-gradient(90deg, #ffffff, rgba(255, 255, 255, 0.4));
+            border-radius: 2px;
+            box-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
+        }
+
+        /* SKOOL CALLOUTS */
+        .skool-callout {
+            border-radius: 1rem;
+            padding: 1rem 1.25rem;
+            margin: 1.25rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.875rem;
+            backdrop-filter: blur(12px);
+            border: 1px solid;
+            font-size: 0.925rem;
+            line-height: 1.6;
+        }
+        .skool-callout-icon {
+            font-size: 1.35rem;
+            line-height: 1;
+            flex-shrink: 0;
+            margin-top: 0.15rem;
+        }
+        .skool-callout-tip {
+            background: rgba(16, 185, 129, 0.08);
+            border-color: rgba(16, 185, 129, 0.25);
+            color: #d1fae5;
+        }
+        .skool-callout-note {
+            background: rgba(59, 130, 246, 0.08);
+            border-color: rgba(59, 130, 246, 0.25);
+            color: #dbeafe;
+        }
+        .skool-callout-warning {
+            background: rgba(245, 158, 11, 0.08);
+            border-color: rgba(245, 158, 11, 0.25);
+            color: #fef3c7;
+        }
+        .skool-callout-prompt {
+            background: rgba(168, 85, 247, 0.08);
+            border-color: rgba(168, 85, 247, 0.3);
+            color: #f3e8ff;
+        }
+
+        /* SKOOL CODE BLOCKS */
+        .skool-code-block {
+            background: #09090c;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 0.875rem;
+            overflow: hidden;
+            margin: 1.25rem 0;
+        }
+        .skool-code-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.4rem 0.85rem;
+            background: rgba(255, 255, 255, 0.04);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            font-size: 0.7rem;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        .skool-code-content {
+            padding: 0.85rem 1rem;
+            overflow-x: auto;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-size: 0.825rem;
+            line-height: 1.6;
+            color: #e2e8f0;
+        }
+
+        /* SKOOL CHECKLIST */
+        .skool-check-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            margin: 0.45rem 0;
+            padding: 0.35rem 0.65rem;
+            border-radius: 0.5rem;
+            transition: background 0.2s;
+            cursor: pointer;
+        }
+        .skool-check-item:hover {
+            background: rgba(255, 255, 255, 0.03);
+        }
+        .skool-check-box {
+            width: 1.15rem;
+            height: 1.15rem;
+            border-radius: 0.35rem;
+            border: 1.5px solid rgba(255, 255, 255, 0.3);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 0.15rem;
+            transition: all 0.2s;
+        }
+        .skool-check-box.checked {
+            background: #ffffff;
+            border-color: #ffffff;
+            color: #000000;
+        }
+
+        /* RESOURCE CARD */
+        .skool-resource-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            padding: 0.85rem 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .skool-resource-item:hover {
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(255, 255, 255, 0.25);
+            transform: translateY(-1px);
+        }
+
+        /* LIVE PREVIEW SCROLLBAR */
+        #editLessonSplitPreview::-webkit-scrollbar,
+        #studentLivePreviewContainer::-webkit-scrollbar {
+            width: 5px;
+        }
+        #editLessonSplitPreview::-webkit-scrollbar-thumb,
+        #studentLivePreviewContainer::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+        }
     </style>
 
     <!-- SHADERS FOR EFFECT 1 -->
@@ -209,11 +365,81 @@
         }
     </script>
 
+    <style id="community-red-shaders-style">
+        /* WEBGL BACKGROUND (HARDWARE ISOLATION & RED CALIBRATION) */
+        #bg-webgl-container {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            contain: strict;
+            transform: translate3d(0, 0, 0);
+            will-change: transform, opacity;
+            backface-visibility: hidden;
+        }
+        #bg-webgl-container canvas {
+            width: 100% !important;
+            height: 100% !important;
+            display: block;
+        }
+        #bg-webgl-vignette {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 2;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+            background: radial-gradient(circle at 50% 25%, rgba(220, 38, 38, 0.04) 0%, rgba(10, 2, 4, 0.48) 65%, rgba(0, 0, 0, 0.88) 100%);
+        }
+
+        /* RED THEMED GLOW & COMMUNITY ENHANCEMENTS */
+        .crimson-glow {
+            box-shadow: 0 0 25px rgba(220, 38, 38, 0.25);
+        }
+        .crimson-border-glow {
+            border-color: rgba(239, 68, 68, 0.35) !important;
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.2);
+        }
+        .glass-card-community {
+            background: rgba(14, 15, 20, 0.72);
+            backdrop-filter: blur(28px);
+            -webkit-backdrop-filter: blur(28px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .glass-card-community:hover {
+            border-color: rgba(239, 68, 68, 0.25);
+            box-shadow: 0 14px 40px rgba(0, 0, 0, 0.75), 0 0 30px rgba(220, 38, 38, 0.08);
+        }
+
+        /* SHADER PILL ACTIVE */
+        .shader-pill-btn {
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .shader-pill-btn.active {
+            background: rgba(220, 38, 38, 0.24) !important;
+            border-color: rgba(248, 113, 113, 0.6) !important;
+            color: #ffffff !important;
+            box-shadow: 0 0 16px rgba(239, 68, 68, 0.35);
+        }
+
+        /* CUSTOM SCROLLBAR FOR SHADER BAR */
+        .shader-scroll-strip::-webkit-scrollbar {
+            height: 4px;
+        }
+        .shader-scroll-strip::-webkit-scrollbar-thumb {
+            background: rgba(239, 68, 68, 0.35);
+            border-radius: 9999px;
+        }
+    </style>
+
 </head>
 <body class="text-platinum relative">
 
     <!-- VIDEO BACKGROUND PLAYLIST ENGINE (Cinematic Crossfade, NO SOUND) -->
-    <div id="bg-video-playlist" class="fixed inset-0 w-full h-full z-0 overflow-hidden bg-black pointer-events-none">
+    <div id="bg-video-playlist" class="fixed inset-0 w-full h-full z-0 overflow-hidden bg-black pointer-events-none transition-opacity duration-1000">
         <!-- Layer A -->
         <div id="bg-player-a" class="absolute inset-0 w-full h-full transition-opacity duration-[2500ms] ease-in-out opacity-100 scale-[1.03] overflow-hidden">
             <video id="video-a" class="w-full h-full object-cover hidden" muted playsinline></video>
@@ -227,6 +453,11 @@
         <!-- Apple Liquid Glass Overlay Layer -->
         <div class="absolute inset-0 bg-black/75 backdrop-blur-[6px] pointer-events-none"></div>
     </div>
+
+    <!-- WEBGL SHADER BACKGROUND ENGINE (PERSONAL OS RED ADAPTED) -->
+    <div id="bg-webgl-container" class="fixed inset-0 w-full h-full pointer-events-none transition-opacity duration-1000"></div>
+    <!-- Red Ambient Vignette & Depth Mask for Community -->
+    <div id="bg-webgl-vignette" class="fixed inset-0 w-full h-full pointer-events-none transition-opacity duration-700"></div>
 
     <!-- BACKGROUND AUDIO -->
     <audio id="bg-audio" loop>
@@ -655,10 +886,13 @@
             <!-- Dropdown Menu Seguro -->
             <div class="msb-user-dropdown" id="msb-user-dropdown">
               <span class="msb-dropdown-title">Sessão da Plataforma</span>
-              <a href="/comunidade/login" class="msb-dropdown-item" style="text-decoration: none;">
+              <a href="/comunidade/login" id="msb-login-link" class="msb-dropdown-item" style="text-decoration: none;">
                 <span>🔑</span><span>Fazer Login / Identificar</span>
               </a>
-              <button class="msb-dropdown-item" id="msb-logout-btn" type="button">
+              <button class="msb-dropdown-item" id="msb-profile-btn" type="button" style="display: none;">
+                <span>👤</span><span>Meu Perfil</span>
+              </button>
+              <button class="msb-dropdown-item" id="msb-logout-btn" type="button" style="display: none;">
                 <span>🚪</span><span>Encerrar Sessão</span>
               </button>
             </div>
@@ -689,17 +923,27 @@
         <a href="/admin" target="_top" id="msb-mobile-admin-btn" class="msb-btn-admin" style="margin-top: 6px; justify-content: center;">
           <span>👑 Acessar Painel Admin</span>
         </a>
+        <a href="/comunidade/login" target="_top" id="msb-mobile-login-link" class="msb-link" style="margin-top: 6px;">
+          <span>🔑 Fazer Login / Identificar</span>
+        </a>
+        <button id="msb-mobile-profile-btn" type="button" class="msb-link" style="margin-top: 6px; display: none; background: transparent; border: none; text-align: left; cursor: pointer;">
+          <span>👤 Meu Perfil</span>
+        </button>
+        <button id="msb-mobile-logout-btn" type="button" class="msb-link" style="margin-top: 6px; color: #f87171; display: none; background: transparent; border: none; text-align: left; cursor: pointer;">
+          <span>🚪 Encerrar Sessão</span>
+        </button>
       </div>
     </header>
 
     <script id="master-sovereign-bar-script">
       (function() {
         var STORAGE_KEY = 'mcp_session_user';
-        var DEMO_USERS = {
-          visitante: { isLoggedIn: false, role: 'visitante', name: 'Visitante', email: '', avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=GuestVisitor' },
-          user: { isLoggedIn: true, role: 'user', name: 'Membro Aluno Pro', email: 'membro@mateuscelestinopro.com', avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=MemberProX' },
-          moder: { isLoggedIn: true, role: 'moder', name: 'Moderador Oficial', email: 'moderador@mateuscelestinopro.com', avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=ModeratorShield' },
-          admin: { isLoggedIn: true, role: 'admin', name: 'Mateus Celestino Pro', email: 'mateus@mateuscelestinopro.com', avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=AdminBoss' }
+        var GUEST_USER = {
+          isLoggedIn: false,
+          role: 'visitante',
+          name: 'Visitante',
+          email: '',
+          avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=GuestVisitor'
         };
 
         function getSession() {
@@ -710,7 +954,7 @@
               if (parsed && parsed.role) return parsed;
             }
           } catch(e) {}
-          return DEMO_USERS.visitante;
+          return GUEST_USER;
         }
 
         function setSession(u) {
@@ -729,6 +973,12 @@
           var userName = document.getElementById('msb-user-name');
           var userAvatar = document.getElementById('msb-user-avatar');
           var userRoleBadge = document.getElementById('msb-user-role-badge');
+          var loginLink = document.getElementById('msb-login-link');
+          var profileBtn = document.getElementById('msb-profile-btn');
+          var logoutBtn = document.getElementById('msb-logout-btn');
+          var mobileLoginLink = document.getElementById('msb-mobile-login-link');
+          var mobileProfileBtn = document.getElementById('msb-mobile-profile-btn');
+          var mobileLogoutBtn = document.getElementById('msb-mobile-logout-btn');
 
           var isAdminOrModer = (u.role === 'admin' || u.role === 'moder');
           if (adminBtn) {
@@ -749,6 +999,22 @@
             else if (u.role === 'user') roleText = '🔵 MEMBRO';
             userRoleBadge.textContent = roleText;
           }
+
+          if (u.isLoggedIn) {
+            if (loginLink) loginLink.style.display = 'none';
+            if (profileBtn) profileBtn.style.display = 'flex';
+            if (logoutBtn) logoutBtn.style.display = 'flex';
+            if (mobileLoginLink) mobileLoginLink.style.display = 'none';
+            if (mobileProfileBtn) mobileProfileBtn.style.display = 'flex';
+            if (mobileLogoutBtn) mobileLogoutBtn.style.display = 'flex';
+          } else {
+            if (loginLink) loginLink.style.display = 'flex';
+            if (profileBtn) profileBtn.style.display = 'none';
+            if (logoutBtn) logoutBtn.style.display = 'none';
+            if (mobileLoginLink) mobileLoginLink.style.display = 'flex';
+            if (mobileProfileBtn) mobileProfileBtn.style.display = 'none';
+            if (mobileLogoutBtn) mobileLogoutBtn.style.display = 'none';
+          }
         }
 
         window.addEventListener('DOMContentLoaded', renderMSB);
@@ -768,13 +1034,57 @@
           });
         }
 
+        var profileBtn = document.getElementById('msb-profile-btn');
+        if (profileBtn) {
+          profileBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            if (userDropdown) userDropdown.classList.remove('open');
+            if (typeof window.appGoProfile === 'function') {
+              window.appGoProfile();
+            } else {
+              window.location.href = '/comunidade#profile';
+            }
+          });
+        }
+
         var logoutBtn = document.getElementById('msb-logout-btn');
         if (logoutBtn) {
           logoutBtn.addEventListener('click', function(e) {
             e.stopPropagation();
-            setSession(DEMO_USERS.visitante);
+            localStorage.removeItem('mcp_auth_token');
+            setSession(GUEST_USER);
             renderMSB();
             if (userDropdown) userDropdown.classList.remove('open');
+            fetch('/api/auth/me', { method: 'DELETE' }).catch(function() {});
+            if (typeof window.appShowToast === 'function') {
+              window.appShowToast('Sessão encerrada com sucesso.');
+            }
+          });
+        }
+
+        var mobileProfileBtn = document.getElementById('msb-mobile-profile-btn');
+        if (mobileProfileBtn) {
+          mobileProfileBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            var drawer = document.getElementById('msb-mobile-drawer');
+            if (drawer) drawer.classList.remove('open');
+            if (typeof window.appGoProfile === 'function') {
+              window.appGoProfile();
+            } else {
+              window.location.href = '/comunidade#profile';
+            }
+          });
+        }
+
+        var mobileLogoutBtn = document.getElementById('msb-mobile-logout-btn');
+        if (mobileLogoutBtn) {
+          mobileLogoutBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            var drawer = document.getElementById('msb-mobile-drawer');
+            localStorage.removeItem('mcp_auth_token');
+            setSession(GUEST_USER);
+            renderMSB();
+            if (drawer) drawer.classList.remove('open');
             fetch('/api/auth/me', { method: 'DELETE' }).catch(function() {});
             if (typeof window.appShowToast === 'function') {
               window.appShowToast('Sessão encerrada com sucesso.');
@@ -821,81 +1131,16 @@
                     <button class="nav-item text-sm font-semibold text-white hover:text-white/70 transition-colors" data-view="home">Início</button>
                     <button class="nav-item text-sm font-medium text-graphite hover:text-white transition-colors" data-view="community">Comunidade</button>
                     <button class="nav-item text-xs font-bold px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white hover:bg-white/20 hover:scale-105 transition-all backdrop-blur-md" data-view="servers">SERVERS</button>
-                    <button id="adminNavBtn" class="hidden nav-item text-xs font-bold px-4 py-2 rounded-full bg-white text-black hover:bg-white/90 hover:scale-105 transition-all shadow-lg" data-view="admin">👑 Painel Admin</button>
+                    <!-- Segundo botão de admin removido da barra secundária para evitar redundância com a Master Sovereign Bar -->
+                    <button id="adminNavBtn" class="hidden" style="display: none !important;" aria-hidden="true" data-view="admin"></button>
                 </div>
                 
-                <div class="flex items-center space-x-6">
+                <div class="flex items-center space-x-4">
                     <div class="relative hidden sm:block">
                         <i data-lucide="search" class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-graphite"></i>
                         <input type="text" id="searchInput" placeholder="Buscar estilo, prompt..." class="bg-white/5 border border-white/15 rounded-full pl-10 pr-5 py-2 text-sm text-white focus:outline-none focus:border-cyan-400/50 focus:bg-white/10 transition-all w-64">
                     </div>
-                    
-                    <!-- User Dropdown -->
-                    <div class="relative">
-                        <button id="userMenuTrigger" class="flex items-center space-x-3 hover:bg-white/10 rounded-full p-1.5 pr-4 transition-colors border border-white/10 hover:border-white/20">
-                            <img id="currentUserAvatar" src="https://api.dicebear.com/7.x/bottts/svg?seed=AdminBoss" alt="Avatar" class="w-10 h-10 rounded-full border border-white/20 shadow-md">
-                            <div class="text-left hidden sm:block">
-                                <div id="currentUserName" class="text-xs font-bold leading-tight text-white">Administrador</div>
-                                <div id="currentUserRole" class="text-[0.65rem] text-cyan-400 font-mono tracking-wider font-semibold">ADMIN ACCESS</div>
-                            </div>
-                            <i data-lucide="chevron-down" class="w-4 h-4 text-graphite ml-1"></i>
-                        </button>
-                        
-                        <!-- Dropdown menu -->
-                        <div id="roleDropdown" class="absolute right-0 mt-2 w-64 bg-black/90 backdrop-blur-xl border border-white/10 rounded-2xl p-2 shadow-2xl opacity-0 invisible transition-all duration-200 transform scale-95 origin-top-right z-50">
-                            <button id="adminDropdownBtn" class="hidden nav-item w-full text-left flex items-start space-x-3 p-3 hover:bg-white/5 rounded-xl transition-colors group border-b border-white/10 mb-2" data-view="admin">
-                                <span class="text-lg">👑</span>
-                                <div>
-                                    <div class="text-xs font-bold text-white group-hover:text-cyan-400">Acessar Painel Admin</div>
-                                    <div class="text-[0.65rem] text-graphite">Gestão da Plataforma</div>
-                                </div>
-                            </button>
-                            <div class="text-[0.65rem] uppercase text-graphite mb-2 px-3 pt-2 font-bold tracking-wider">Simular Acesso:</div>
-                            
-                            <button class="role-option w-full text-left flex items-start space-x-3 p-3 hover:bg-white/5 rounded-xl transition-colors group" data-role="free">
-                                <span class="text-lg">⚪</span>
-                                <div>
-                                    <div class="text-xs font-bold text-platinum group-hover:text-white">Visitante Free</div>
-                                    <div class="text-[0.65rem] text-graphite">Preview grátis</div>
-                                </div>
-                            </button>
-                            <button class="role-option w-full text-left flex items-start space-x-3 p-3 hover:bg-white/5 rounded-xl transition-colors group" data-role="level_0">
-                                <span class="text-lg">🟢</span>
-                                <div>
-                                    <div class="text-xs font-bold text-platinum group-hover:text-white">Level 0</div>
-                                    <div class="text-[0.65rem] text-graphite">1 Produto</div>
-                                </div>
-                            </button>
-                            <button class="role-option w-full text-left flex items-start space-x-3 p-3 hover:bg-white/5 rounded-xl transition-colors group" data-role="level_1">
-                                <span class="text-lg">🔵</span>
-                                <div>
-                                    <div class="text-xs font-bold text-platinum group-hover:text-white">Level 1</div>
-                                    <div class="text-[0.65rem] text-graphite">2 Produtos</div>
-                                </div>
-                            </button>
-                            <button class="role-option w-full text-left flex items-start space-x-3 p-3 hover:bg-white/5 rounded-xl transition-colors group" data-role="level_2">
-                                <span class="text-lg">🟣</span>
-                                <div>
-                                    <div class="text-xs font-bold text-platinum group-hover:text-white">Level 2</div>
-                                    <div class="text-[0.65rem] text-graphite">3 Produtos</div>
-                                </div>
-                            </button>
-                            <button class="role-option w-full text-left flex items-start space-x-3 p-3 hover:bg-white/5 rounded-xl transition-colors group" data-role="full">
-                                <span class="text-lg">💎</span>
-                                <div>
-                                    <div class="text-xs font-bold text-platinum group-hover:text-white">Full Access</div>
-                                    <div class="text-[0.65rem] text-graphite">Acesso total</div>
-                                </div>
-                            </button>
-                            <button class="role-option w-full text-left flex items-start space-x-3 p-3 hover:bg-white/5 rounded-xl transition-colors group" data-role="admin">
-                                <span class="text-lg">👑</span>
-                                <div>
-                                    <div class="text-xs font-bold text-platinum group-hover:text-white">Admin</div>
-                                    <div class="text-[0.65rem] text-graphite">Acesso irrestrito</div>
-                                </div>
-                            </button>
-                        </div>
-                    </div>
+                    <!-- Login e Menu de Usuário removidos da barra da comunidade para evitar redundância com a Barra Principal Soberana -->
                 </div>
             </div>
         </div>
@@ -1000,30 +1245,6 @@
                 <span id="authAlertText" class="flex-1 leading-snug"></span>
             </div>
 
-            <!-- BOTÕES DE ACESSO RÁPIDO 1-CLIQUE PARA DEMONSTRAÇÃO -->
-            <div id="authQuickAccessBox" class="mb-5 p-3 rounded-2xl bg-white/5 border border-white/10">
-                <div class="flex items-center justify-between mb-2">
-                    <span class="text-[0.65rem] font-bold uppercase tracking-wider text-graphite">⚡ Acesso Rápido 1-Clique:</span>
-                    <span class="text-[0.6rem] text-cyan-400 font-mono font-semibold">Credenciais Prontas</span>
-                </div>
-                <div class="grid grid-cols-2 gap-2">
-                    <button type="button" id="authQuickAdminBtn" class="p-2.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-left text-xs font-bold transition-all flex items-center space-x-2 group">
-                        <span class="text-lg">👑</span>
-                        <div class="truncate">
-                            <div class="text-[0.72rem] text-white group-hover:text-cyan-400 font-bold">Admin Demo</div>
-                            <div class="text-[0.6rem] text-graphite font-mono">mateus@...</div>
-                        </div>
-                    </button>
-                    <button type="button" id="authQuickMemberBtn" class="p-2.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-left text-xs font-bold transition-all flex items-center space-x-2 group">
-                        <span class="text-lg">🔵</span>
-                        <div class="truncate">
-                            <div class="text-[0.72rem] text-white group-hover:text-cyan-400 font-bold">Membro Pro</div>
-                            <div class="text-[0.6rem] text-graphite font-mono">membro@...</div>
-                        </div>
-                    </button>
-                </div>
-            </div>
-
             <form id="authForm" class="space-y-4">
                 <div id="authNameField" style="display:none">
                     <label class="block text-xs font-semibold text-graphite mb-1 uppercase tracking-wider">Nome Completo</label>
@@ -1044,9 +1265,6 @@
             </form>
             <div class="text-center mt-4">
                 <button id="toggleAuthMode" class="text-xs text-white/60 hover:text-white transition-colors">Não tem conta? Registre-se Gratuitamente</button>
-            </div>
-            <div class="text-center mt-3 pt-3 border-t border-white/10">
-                <p class="text-[0.65rem] text-white/40">Admin: <span class="font-mono text-white/60">mateus@mateuscelestinopro.com</span> | Senha: <span class="font-mono text-white/60">MateusProX@2026!</span></p>
             </div>
         </div>
     </div>
@@ -1136,68 +1354,460 @@
         </div>
     </div>
 
-    <!-- NOTION-LIKE VISUAL LESSON EDITOR MODAL -->
-    <div id="lessonEditorModal" class="fixed inset-0 bg-black/90 backdrop-blur-2xl z-50 flex items-center justify-center hidden opacity-0 transition-opacity duration-300 p-4 sm:p-6 overflow-y-auto">
-        <div class="bg-black/95 border border-white/20 rounded-3xl p-6 sm:p-8 max-w-5xl w-full shadow-[0_40px_80px_rgba(0,0,0,0.8)] relative text-white transform scale-95 transition-transform duration-300 max-h-[92vh] flex flex-col">
-            <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-6">
-                <div class="flex items-center space-x-3">
-                    <span class="text-2xl">📝</span>
-                    <div>
-                        <h3 id="lessonEditorModalTitle" class="text-xl font-bold">Editor Visual de Aula</h3>
-                        <span class="text-xs text-white/50 font-mono">EDICAO EM TEMPO REAL</span>
+    <!-- SKOOL-LIKE VISUAL LESSON EDITOR STUDIO MODAL -->
+    <div id="lessonEditorModal" class="fixed inset-0 bg-black/92 backdrop-blur-2xl z-50 flex items-center justify-center hidden opacity-0 transition-opacity duration-300 p-2 sm:p-4 md:p-6 overflow-y-auto">
+        <div class="bg-[#0b0c10]/98 border border-white/20 rounded-3xl p-4 sm:p-6 md:p-7 max-w-6xl w-full shadow-[0_30px_90px_rgba(0,0,0,0.9)] relative text-white transform scale-95 transition-all duration-300 max-h-[95vh] flex flex-col">
+            
+            <!-- HEADER SKOOL-LIKE -->
+            <div class="pb-4 border-b border-white/10 mb-5 flex-shrink-0">
+                <div class="flex items-center justify-between gap-3 mb-2">
+                    <div class="flex items-center space-x-2 text-xs text-white/50 flex-wrap gap-y-1">
+                        <span id="lessonEditorServerBadge" class="font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-white/10 border border-white/15 text-white/90 text-[0.65rem]">SERVIDOR</span>
+                        <span>›</span>
+                        <span id="lessonEditorModuleBadge" class="font-medium text-white/70">Módulo 1</span>
+                        <span>›</span>
+                        <span class="text-white/40">Studio de Aula</span>
+                    </div>
+
+                    <div class="flex items-center space-x-2">
+                        <!-- Quick Status Switcher -->
+                        <div class="flex items-center space-x-1 bg-black/50 border border-white/10 rounded-xl p-1 text-xs">
+                            <button type="button" id="headerStatusPublishedBtn" class="px-2.5 py-1 rounded-lg text-xs font-bold transition-all bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 flex items-center space-x-1">
+                                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                                <span>Publicada</span>
+                            </button>
+                            <button type="button" id="headerStatusDraftBtn" class="px-2.5 py-1 rounded-lg text-xs font-semibold text-white/60 hover:text-white transition-all flex items-center space-x-1">
+                                <span class="w-2 h-2 rounded-full bg-amber-400/70"></span>
+                                <span>Rascunho</span>
+                            </button>
+                        </div>
+
+                        <span class="hidden sm:inline-flex text-[0.65rem] text-white/40 border border-white/10 px-2 py-1 rounded-lg font-mono items-center">
+                            ⌘+S
+                        </span>
+
+                        <button id="closeLessonEditorModal" title="Fechar (Esc)" class="w-8 h-8 rounded-full bg-white/5 hover:bg-white/15 border border-white/10 flex items-center justify-center text-white/70 hover:text-white transition-all text-sm font-bold">
+                            ✕
+                        </button>
                     </div>
                 </div>
-                <button id="closeLessonEditorModal" class="text-graphite hover:text-white transition-colors text-2xl font-bold">✕</button>
-            </div>
 
-            <div class="space-y-6 overflow-y-auto pr-2 flex-1">
-                <div>
-                    <label class="block text-xs font-bold uppercase text-graphite mb-1 tracking-wider">Título da Aula</label>
-                    <input type="text" id="editLessonTitle" placeholder="Ex: Módulo 1: Introdução ao Prompts Artísticos" class="w-full bg-white/5 border border-white/15 rounded-xl px-4 py-3 text-base font-bold text-white focus:outline-none focus:border-white/40 focus:bg-white/10 transition-all">
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block text-xs font-bold uppercase text-graphite mb-1 tracking-wider">URL do Vídeo (YouTube Embed)</label>
-                        <input type="text" id="editLessonVideoUrl" placeholder="https://www.youtube.com/embed/..." class="w-full bg-white/5 border border-white/15 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-white/40 focus:bg-white/10 transition-all">
-                    </div>
-                    <div>
-                        <span class="block text-xs font-bold uppercase text-graphite mb-1 tracking-wider">Preview do Vídeo</span>
-                        <div class="w-full aspect-video rounded-xl bg-black border border-white/10 overflow-hidden flex items-center justify-center relative">
-                            <iframe id="videoPreviewIframe" src="" class="w-full h-full hidden" frameborder="0" allowfullscreen></iframe>
-                            <span id="noVideoText" class="text-xs text-graphite">Sem vídeo de preview</span>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-2xl bg-white/10 border border-white/15 flex items-center justify-center text-xl shadow-inner">
+                            <span id="lessonEditorHeaderIcon">🎬</span>
+                        </div>
+                        <div>
+                            <h3 id="lessonEditorModalTitle" class="text-lg sm:text-xl font-extrabold text-white tracking-tight flex items-center space-x-2">
+                                <span>Editor Visual de Aula</span>
+                            </h3>
+                            <p class="text-xs text-white/50">Construa aulas de alto impacto com players de vídeo, materiais de apoio e checklists no padrão Skool.</p>
                         </div>
                     </div>
                 </div>
 
-                <div>
-                    <div class="flex items-center justify-between mb-2">
-                        <label class="text-xs font-bold uppercase text-graphite tracking-wider">Conteúdo Markdown / Rich Text (Notion-Style Editor)</label>
-                        <div class="flex items-center space-x-2">
-                            <button type="button" onclick="window.appInsertMarkdown('# ')" class="px-2.5 py-1 bg-white/5 hover:bg-white/15 border border-white/10 rounded-lg text-xs font-mono"># H1</button>
-                            <button type="button" onclick="window.appInsertMarkdown('## ')" class="px-2.5 py-1 bg-white/5 hover:bg-white/15 border border-white/10 rounded-lg text-xs font-mono">## H2</button>
-                            <button type="button" onclick="window.appInsertMarkdown('**texto em negrito**')" class="px-2.5 py-1 bg-white/5 hover:bg-white/15 border border-white/10 rounded-lg text-xs font-mono"><b>B</b></button>
-                            <button type="button" onclick="window.appInsertMarkdown('- ')" class="px-2.5 py-1 bg-white/5 hover:bg-white/15 border border-white/10 rounded-lg text-xs font-mono">• Lista</button>
-                            <button type="button" onclick="window.appInsertMarkdown('![alt](https://...)')" class="px-2.5 py-1 bg-white/5 hover:bg-white/15 border border-white/10 rounded-lg text-xs font-mono">🖼️ Imagem</button>
-                        </div>
-                    </div>
-                    <textarea id="editLessonContent" rows="8" placeholder="Digite o conteúdo da aula em formato Notion / Markdown..." class="w-full bg-white/5 border border-white/15 rounded-2xl p-4 text-sm text-white focus:outline-none focus:border-white/40 focus:bg-white/10 transition-all font-mono leading-relaxed resize-y"></textarea>
+                <!-- SKOOL TABS BAR -->
+                <div class="flex items-center space-x-1 sm:space-x-2 mt-4 pt-3 border-t border-white/5 overflow-x-auto hide-scrollbar">
+                    <button type="button" id="tabLessonContentBtn" class="skool-tab-btn active px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold flex items-center space-x-2 whitespace-nowrap">
+                        <span>🎬 Conteúdo & Vídeo</span>
+                    </button>
+                    <button type="button" id="tabLessonResourcesBtn" class="skool-tab-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold flex items-center space-x-2 whitespace-nowrap">
+                        <span>📎 Recursos & Anexos</span>
+                        <span id="lessonResourcesCountBadge" class="text-[0.65rem] font-bold px-1.5 py-0.2 bg-white/20 text-white rounded-full">0</span>
+                    </button>
+                    <button type="button" id="tabLessonSettingsBtn" class="skool-tab-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold flex items-center space-x-2 whitespace-nowrap">
+                        <span>⚙️ Módulo & Acesso</span>
+                    </button>
+                    <button type="button" id="tabLessonPreviewBtn" class="skool-tab-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold flex items-center space-x-2 whitespace-nowrap">
+                        <span>👁️ Preview do Aluno</span>
+                    </button>
                 </div>
             </div>
 
-            <div class="pt-6 border-t border-white/10 flex items-center justify-between mt-4">
-                <button id="deleteLessonModalBtn" type="button" class="px-5 py-2.5 bg-red-500/20 hover:bg-red-500/30 text-red-400 border border-red-500/30 rounded-xl text-xs font-bold transition-all">
-                    🗑️ Excluir Aula
+            <!-- MODAL BODY CONTENT WITH TABS -->
+            <div class="overflow-y-auto pr-1 flex-1 space-y-6">
+
+                <!-- ══════════════════════════════════════════════════════════ -->
+                <!-- ABA 1: CONTEÚDO & VÍDEO (PRINCIPAL)                     -->
+                <!-- ══════════════════════════════════════════════════════════ -->
+                <div id="tabLessonContentPane" class="space-y-6">
+                    <!-- Título da Aula -->
+                    <div class="space-y-1.5">
+                        <div class="flex items-center justify-between">
+                            <label class="block text-xs font-bold uppercase text-white/70 tracking-wider">Título da Aula</label>
+                            <span class="text-[0.65rem] text-white/40">Ex: "Aula 1: Fundamentos da Direção Visual com IA"</span>
+                        </div>
+                        <input type="text" id="editLessonTitle" placeholder="Digite o título da aula..." class="w-full bg-white/5 border border-white/15 rounded-2xl px-4 py-3 text-base sm:text-lg font-bold text-white focus:outline-none focus:border-white/50 focus:bg-white/10 transition-all placeholder-white/30 shadow-inner">
+                    </div>
+
+                    <!-- Seletor de Tipo de Aula (Skool Format) -->
+                    <div class="flex items-center justify-between p-3 rounded-2xl bg-white/[0.03] border border-white/10">
+                        <div class="flex items-center space-x-2.5">
+                            <span class="text-sm">📌</span>
+                            <div>
+                                <p class="text-xs font-bold text-white">Formato da Aula</p>
+                                <p class="text-[0.7rem] text-white/50">Escolha se esta aula possui vídeo integrado ou se é um artigo de estudo em texto.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-1.5 bg-black/60 p-1 rounded-xl border border-white/10">
+                            <button type="button" id="lessonTypeVideoBtn" class="px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-white text-black shadow-sm flex items-center space-x-1.5">
+                                <span>🎥 Vídeo + Resumo</span>
+                            </button>
+                            <button type="button" id="lessonTypeArticleBtn" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-white/70 hover:text-white transition-all flex items-center space-x-1.5">
+                                <span>📄 Somente Texto / Artigo</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Bloco de Vídeo Embed Inteligente -->
+                    <div id="lessonVideoSectionWrapper" class="grid grid-cols-1 lg:grid-cols-12 gap-5 p-4 rounded-2xl bg-white/[0.02] border border-white/10">
+                        <div class="lg:col-span-6 space-y-3.5">
+                            <div class="flex items-center justify-between">
+                                <label class="block text-xs font-bold uppercase text-white/70 tracking-wider">URL do Vídeo</label>
+                                <span id="videoProviderBadge" class="text-[0.65rem] font-bold px-2 py-0.5 rounded-md bg-white/10 text-white/70 border border-white/10 flex items-center space-x-1">
+                                    <span>▶ Detectando link...</span>
+                                </span>
+                            </div>
+
+                            <div class="relative">
+                                <input type="text" id="editLessonVideoUrl" placeholder="https://www.youtube.com/watch?v=... ou Vimeo / Loom" class="w-full bg-white/5 border border-white/15 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-white/50 focus:bg-white/10 transition-all pr-20 font-mono">
+                                <div class="absolute right-2 top-1/2 -translate-y-1/2 flex items-center space-x-1">
+                                    <button type="button" id="btnPasteVideoUrl" class="px-2 py-1 bg-white/10 hover:bg-white/20 text-white rounded text-[0.65rem] font-bold transition-all" title="Colar link da área de transferência">
+                                        Colar
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Botões de apoio rápido para o vídeo -->
+                            <div class="flex items-center justify-between text-[0.7rem] text-white/50 pt-1">
+                                <div class="flex items-center space-x-2 flex-wrap gap-y-1">
+                                    <span>Suporta:</span>
+                                    <span class="px-1.5 py-0.5 bg-red-500/10 text-red-300 rounded border border-red-500/20 text-[0.6rem] font-bold">YouTube</span>
+                                    <span class="px-1.5 py-0.5 bg-blue-500/10 text-blue-300 rounded border border-blue-500/20 text-[0.6rem] font-bold">Vimeo</span>
+                                    <span class="px-1.5 py-0.5 bg-indigo-500/10 text-indigo-300 rounded border border-indigo-500/20 text-[0.6rem] font-bold">Loom</span>
+                                    <span class="px-1.5 py-0.5 bg-gray-500/10 text-gray-300 rounded border border-gray-500/20 text-[0.6rem] font-bold">Embed</span>
+                                </div>
+                                <button type="button" id="btnDemoVideoUrl" class="text-[0.65rem] text-white/70 hover:text-white underline">
+                                    Carregar Demo
+                                </button>
+                            </div>
+
+                            <p class="text-[0.7rem] text-white/40 leading-relaxed">
+                                Cole qualquer link do YouTube (inclusive encurtados ou Shorts), link de gravação do Loom ou Vimeo. O sistema converte automaticamente para o player otimizado do Skool.
+                            </p>
+                        </div>
+
+                        <!-- Preview Visual do Vídeo -->
+                        <div class="lg:col-span-6">
+                            <span class="block text-xs font-bold uppercase text-white/70 mb-1.5 tracking-wider">Preview do Player</span>
+                            <div class="w-full aspect-video rounded-2xl bg-black border border-white/15 overflow-hidden flex items-center justify-center relative shadow-2xl group">
+                                <iframe id="videoPreviewIframe" src="" class="w-full h-full hidden" frameborder="0" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                                <div id="noVideoText" class="text-center p-6 space-y-2">
+                                    <div class="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mx-auto text-xl">
+                                        🎬
+                                    </div>
+                                    <p class="text-xs font-semibold text-white/70">Nenhum player carregado</p>
+                                    <p class="text-[0.7rem] text-white/40 max-w-xs">Insira a URL do vídeo para ver o preview do player em tempo real.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- NOTION-STYLE RICH MARKDOWN EDITOR -->
+                    <div class="space-y-2">
+                        <!-- Toolbar Header -->
+                        <div class="flex items-center justify-between flex-wrap gap-2 pb-1">
+                            <div class="flex items-center space-x-2">
+                                <label class="text-xs font-bold uppercase text-white/70 tracking-wider">Conteúdo & Anotações da Aula (Notion / Markdown)</label>
+                            </div>
+
+                            <!-- Editor Mode Switch (Normal vs Split View) -->
+                            <div class="flex items-center space-x-1 bg-black/60 p-1 rounded-xl border border-white/10 text-xs">
+                                <button type="button" id="btnModeEditorOnly" class="px-2.5 py-1 rounded-lg text-xs font-bold transition-all bg-white/20 text-white">
+                                    ✍️ Editor
+                                </button>
+                                <button type="button" id="btnModeSplitView" class="px-2.5 py-1 rounded-lg text-xs font-semibold text-white/60 hover:text-white transition-all flex items-center space-x-1">
+                                    <span>🌗 Lado a Lado</span>
+                                </button>
+                                <button type="button" id="btnModePreviewOnly" class="px-2.5 py-1 rounded-lg text-xs font-semibold text-white/60 hover:text-white transition-all">
+                                    👁️ Preview
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Barra de Ferramentas / Rich Format Toolbar -->
+                        <div class="p-2 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center gap-1.5 flex-wrap">
+                            <!-- Tipografia -->
+                            <div class="flex items-center space-x-1 pr-2 border-r border-white/10">
+                                <button type="button" onclick="window.appInsertMarkdown('# ')" title="Título H1" class="px-2.5 py-1 bg-white/5 hover:bg-white/15 border border-white/10 rounded-lg text-xs font-bold text-white transition-all">H1</button>
+                                <button type="button" onclick="window.appInsertMarkdown('## ')" title="Título H2" class="px-2.5 py-1 bg-white/5 hover:bg-white/15 border border-white/10 rounded-lg text-xs font-bold text-white transition-all">H2</button>
+                                <button type="button" onclick="window.appInsertMarkdown('### ')" title="Título H3" class="px-2.5 py-1 bg-white/5 hover:bg-white/15 border border-white/10 rounded-lg text-xs font-bold text-white transition-all">H3</button>
+                            </div>
+
+                            <!-- Estilo de Texto -->
+                            <div class="flex items-center space-x-1 pr-2 border-r border-white/10">
+                                <button type="button" onclick="window.appInsertMarkdownWrap('**', '**')" title="Negrito" class="w-7 h-7 bg-white/5 hover:bg-white/15 border border-white/10 rounded-lg text-xs font-bold text-white flex items-center justify-center transition-all"><b>B</b></button>
+                                <button type="button" onclick="window.appInsertMarkdownWrap('*', '*')" title="Itálico" class="w-7 h-7 bg-white/5 hover:bg-white/15 border border-white/10 rounded-lg text-xs italic text-white flex items-center justify-center transition-all"><i>I</i></button>
+                                <button type="button" onclick="window.appInsertMarkdownWrap('~~', '~~')" title="Riscado" class="w-7 h-7 bg-white/5 hover:bg-white/15 border border-white/10 rounded-lg text-xs text-white line-through flex items-center justify-center transition-all">S</button>
+                                <button type="button" onclick="window.appInsertMarkdownWrap('`', '`')" title="Código Inline" class="w-7 h-7 bg-white/5 hover:bg-white/15 border border-white/10 rounded-lg text-xs font-mono text-white flex items-center justify-center transition-all">&lt;&gt;</button>
+                            </div>
+
+                            <!-- Blocos Skool / Callouts -->
+                            <div class="flex items-center space-x-1 pr-2 border-r border-white/10">
+                                <button type="button" onclick="window.appInsertSkoolCallout('tip')" title="Inserir Dica de Ouro" class="px-2 py-1 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 border border-emerald-500/20 rounded-lg text-xs font-semibold transition-all flex items-center space-x-1">
+                                    <span>💡 Dica</span>
+                                </button>
+                                <button type="button" onclick="window.appInsertSkoolCallout('note')" title="Inserir Nota Importante" class="px-2 py-1 bg-blue-500/10 hover:bg-blue-500/20 text-blue-300 border border-blue-500/20 rounded-lg text-xs font-semibold transition-all flex items-center space-x-1">
+                                    <span>📌 Nota</span>
+                                </button>
+                                <button type="button" onclick="window.appInsertSkoolCallout('warning')" title="Inserir Alerta / Cuidado" class="px-2 py-1 bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/20 rounded-lg text-xs font-semibold transition-all flex items-center space-x-1">
+                                    <span>⚠️ Alerta</span>
+                                </button>
+                                <button type="button" onclick="window.appInsertSkoolCallout('prompt')" title="Inserir Caixa de Prompt de IA" class="px-2 py-1 bg-purple-500/10 hover:bg-purple-500/20 text-purple-300 border border-purple-500/20 rounded-lg text-xs font-semibold transition-all flex items-center space-x-1">
+                                    <span>🚀 Prompt</span>
+                                </button>
+                            </div>
+
+                            <!-- Listas e Ações -->
+                            <div class="flex items-center space-x-1 pr-2 border-r border-white/10">
+                                <button type="button" onclick="window.appInsertMarkdown('- ')" title="Lista com Marcadores" class="px-2 py-1 bg-white/5 hover:bg-white/15 border border-white/10 rounded-lg text-xs font-mono text-white transition-all">• Lista</button>
+                                <button type="button" onclick="window.appInsertMarkdown('1. ')" title="Lista Numerada" class="px-2 py-1 bg-white/5 hover:bg-white/15 border border-white/10 rounded-lg text-xs font-mono text-white transition-all">1. Num</button>
+                                <button type="button" onclick="window.appInsertMarkdown('- [ ] ')" title="Checklist de Tarefas do Aluno" class="px-2.5 py-1 bg-white/10 hover:bg-white/20 border border-white/15 rounded-lg text-xs font-bold text-white transition-all flex items-center space-x-1">
+                                    <span>☑️ Checklist</span>
+                                </button>
+                            </div>
+
+                            <!-- Mídia & Extras -->
+                            <div class="flex items-center space-x-1">
+                                <button type="button" onclick="window.appInsertMarkdown('```javascript\n// Insira seu código aqui\n```\n')" title="Bloco de Código" class="px-2 py-1 bg-white/5 hover:bg-white/15 border border-white/10 rounded-lg text-xs font-mono text-white transition-all">💻 Código</button>
+                                <button type="button" onclick="window.appInsertMarkdown('> ')" title="Citação" class="px-2 py-1 bg-white/5 hover:bg-white/15 border border-white/10 rounded-lg text-xs font-mono text-white transition-all">" Quote</button>
+                                <button type="button" onclick="window.appInsertMarkdown('[Nome do Link](https://...)')" title="Link" class="px-2 py-1 bg-white/5 hover:bg-white/15 border border-white/10 rounded-lg text-xs text-white transition-all">🔗 Link</button>
+                                <button type="button" onclick="window.appInsertMarkdown('![Descrição da imagem](https://...)')" title="Imagem" class="px-2 py-1 bg-white/5 hover:bg-white/15 border border-white/10 rounded-lg text-xs text-white transition-all">🖼️ Img</button>
+                                <button type="button" onclick="window.appInsertMarkdown('\n---\n')" title="Divisor Horizontal" class="px-2 py-1 bg-white/5 hover:bg-white/15 border border-white/10 rounded-lg text-xs text-white transition-all">➖ Divisor</button>
+                                
+                                <!-- Template Skool de 1 clique -->
+                                <button type="button" onclick="window.appInsertSkoolTemplate()" title="Carregar Estrutura Completa de Aula Skool" class="px-2.5 py-1 bg-white text-black hover:bg-white/90 rounded-lg text-xs font-bold transition-all ml-auto shadow flex items-center space-x-1">
+                                    <span>📋 Template Skool</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Editor Wrapper: Normal / Split View -->
+                        <div id="lessonEditorSplitWrapper" class="grid grid-cols-1 gap-4 transition-all">
+                            <!-- Textarea de Edição -->
+                            <div id="editorPaneTextareaContainer" class="w-full">
+                                <textarea id="editLessonContent" rows="12" placeholder="Digite as diretrizes, prompts e conteúdo completo da aula no formato Notion / Markdown..." class="w-full bg-[#07080a] border border-white/15 rounded-2xl p-4 text-sm text-gray-200 focus:outline-none focus:border-white/40 focus:bg-[#0c0d12] transition-all font-mono leading-relaxed resize-y shadow-inner"></textarea>
+                            </div>
+
+                            <!-- Live Preview Split Pane (Oculto no modo normal, visível no modo split ou preview) -->
+                            <div id="editLessonSplitPreview" class="w-full hidden bg-[#07080a] border border-white/15 rounded-2xl p-6 overflow-y-auto max-h-[450px] prose prose-invert max-w-none text-gray-200 shadow-inner">
+                                <div class="text-xs text-white/40 mb-3 uppercase tracking-wider font-bold border-b border-white/10 pb-2 flex items-center justify-between">
+                                    <span>Live Preview do Aluno</span>
+                                    <span class="text-[0.65rem] text-emerald-400">Tempo Real</span>
+                                </div>
+                                <div id="editLessonSplitPreviewContent">
+                                    <p class="text-white/40 text-sm italic">O preview renderizado aparecerá aqui...</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Rodapé com estatísticas de escrita -->
+                        <div class="flex items-center justify-between text-[0.7rem] text-white/40 pt-1 px-1">
+                            <div class="flex items-center space-x-4">
+                                <span id="lessonWordCount">0 palavras</span>
+                                <span>•</span>
+                                <span id="lessonCharCount">0 caracteres</span>
+                                <span>•</span>
+                                <span id="lessonReadingTime">⏱️ ~0 min de leitura</span>
+                            </div>
+                            <div class="text-right">
+                                <span>Dica: Use <b>- [ ]</b> para checklists práticas de tarefas para os alunos</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ══════════════════════════════════════════════════════════ -->
+                <!-- ABA 2: RECURSOS & ANEXOS PARA DOWNLOAD (SKOOL STYLE)    -->
+                <!-- ══════════════════════════════════════════════════════════ -->
+                <div id="tabLessonResourcesPane" class="space-y-6 hidden">
+                    <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/10">
+                        <div class="flex items-start justify-between mb-4">
+                            <div>
+                                <h4 class="text-sm font-bold text-white flex items-center space-x-2">
+                                    <span>📎 Materiais & Downloads da Aula</span>
+                                    <span class="text-[0.65rem] px-2 py-0.5 rounded-full bg-white/10 text-white/70">Skool Resources</span>
+                                </h4>
+                                <p class="text-xs text-white/50 mt-1">Disponibilize PDFs, planilhas, arquivos de prompts, links do Figma, GitHub e Notion para os alunos baixarem diretamente abaixo da aula.</p>
+                            </div>
+                        </div>
+
+                        <!-- Formulário para Adicionar Novo Recurso -->
+                        <div class="p-4 rounded-xl bg-black/50 border border-white/10 space-y-4">
+                            <h5 class="text-xs font-bold uppercase text-white/80 tracking-wider">Adicionar Novo Material</h5>
+                            
+                            <div class="grid grid-cols-1 sm:grid-cols-12 gap-3">
+                                <div class="sm:col-span-3">
+                                    <label class="block text-[0.7rem] font-semibold text-white/60 mb-1">Tipo de Recurso</label>
+                                    <select id="newResourceType" class="w-full bg-white/5 border border-white/15 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-white/40">
+                                        <option value="pdf" class="bg-black text-white">📄 PDF / Documento</option>
+                                        <option value="prompt" class="bg-black text-white">💡 Pack de Prompts</option>
+                                        <option value="code" class="bg-black text-white">💻 Código / GitHub</option>
+                                        <option value="figma" class="bg-black text-white">🎨 Figma / Design</option>
+                                        <option value="drive" class="bg-black text-white">📁 Google Drive / Nuvem</option>
+                                        <option value="link" class="bg-black text-white">🔗 Link Externo / Notion</option>
+                                    </select>
+                                </div>
+                                <div class="sm:col-span-4">
+                                    <label class="block text-[0.7rem] font-semibold text-white/60 mb-1">Nome do Arquivo / Recurso</label>
+                                    <input type="text" id="newResourceTitle" placeholder="Ex: Cheat Sheet Prompts v2.pdf" class="w-full bg-white/5 border border-white/15 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-white/40">
+                                </div>
+                                <div class="sm:col-span-5">
+                                    <label class="block text-[0.7rem] font-semibold text-white/60 mb-1">URL / Link de Acesso</label>
+                                    <div class="flex items-center space-x-2">
+                                        <input type="text" id="newResourceUrl" placeholder="https://drive.google.com/... ou link" class="w-full bg-white/5 border border-white/15 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-white/40 font-mono">
+                                        <button type="button" id="btnAddResourceBtn" class="px-4 py-2 bg-white text-black hover:bg-white/90 rounded-xl text-xs font-bold transition-all whitespace-nowrap shadow flex items-center space-x-1">
+                                            <span>+ Adicionar</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Lista de Recursos Cadastrados -->
+                        <div class="mt-5 space-y-2.5">
+                            <div class="flex items-center justify-between text-xs text-white/60 px-1">
+                                <span class="font-bold uppercase tracking-wider">Recursos Configurados</span>
+                                <span id="resourcesCountText" class="text-[0.7rem]">0 materiais</span>
+                            </div>
+
+                            <div id="lessonResourcesList" class="space-y-2">
+                                <div id="emptyResourcesPlaceholder" class="p-8 text-center rounded-2xl bg-white/[0.01] border border-white/5 border-dashed space-y-2">
+                                    <span class="text-3xl">📦</span>
+                                    <p class="text-xs font-semibold text-white/70">Nenhum recurso anexado ainda</p>
+                                    <p class="text-[0.7rem] text-white/40 max-w-sm mx-auto">Adicione materiais de apoio para enriquecer a aula e gerar alto valor aos membros da comunidade.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ══════════════════════════════════════════════════════════ -->
+                <!-- ABA 3: MÓDULO & CONFIGURAÇÕES DE ACESSO                -->
+                <!-- ══════════════════════════════════════════════════════════ -->
+                <div id="tabLessonSettingsPane" class="space-y-6 hidden">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Módulo / Seção -->
+                        <div class="p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-3">
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-white/80 tracking-wider mb-1">Módulo / Seção do Curso</label>
+                                <p class="text-[0.7rem] text-white/50 mb-2">Agrupe esta aula em um módulo temático (ex: "Módulo 1: Fundamentos", "Módulo 2: Técnicas Avançadas").</p>
+                            </div>
+                            <input type="text" id="editLessonModule" list="serverModulesList" placeholder="Ex: Módulo 1: Fundamentos Visuais" class="w-full bg-white/5 border border-white/15 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-white/40 focus:bg-white/10 transition-all font-semibold">
+                            <datalist id="serverModulesList">
+                                <option value="Módulo 1: Fundamentos & Setup">
+                                <option value="Módulo 2: Engenharia de Prompts Pro">
+                                <option value="Módulo 3: Fotorrealismo & Câmeras">
+                                <option value="Módulo 4: Pós-Produção & Upscaling">
+                                <option value="Bônus: Monetização & Vendas">
+                            </datalist>
+                        </div>
+
+                        <!-- Duração Estimada -->
+                        <div class="p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-3">
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-white/80 tracking-wider mb-1">Duração da Aula</label>
+                                <p class="text-[0.7rem] text-white/50 mb-2">Tempo estimado exibido aos alunos na lista lateral de aulas (ex: "15 min", "42 min").</p>
+                            </div>
+                            <div class="relative">
+                                <input type="text" id="editLessonDuration" placeholder="Ex: 18 min" class="w-full bg-white/5 border border-white/15 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-white/40 focus:bg-white/10 transition-all font-semibold">
+                                <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-white/40">⏱️</span>
+                            </div>
+                        </div>
+
+                        <!-- Nível de Acesso (Gamification Skool) -->
+                        <div class="p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-3">
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-white/80 tracking-wider mb-1">Nível de Acesso (Gamification Tier)</label>
+                                <p class="text-[0.7rem] text-white/50 mb-2">Controle quem pode acessar esta aula no servidor.</p>
+                            </div>
+                            <select id="editLessonAccessLevel" class="w-full bg-white/5 border border-white/15 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-white/40">
+                                <option value="all" class="bg-black text-white">🔓 Aberto a Todos os Membros (Free + Pro)</option>
+                                <option value="pro" class="bg-black text-white">⚡ Exclusivo Membros Pro / Assinantes</option>
+                                <option value="vip" class="bg-black text-white">👑 Restrito VIP / Nível 3+</option>
+                            </select>
+                        </div>
+
+                        <!-- Status e Ordem -->
+                        <div class="p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-3">
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-white/80 tracking-wider mb-1">Status de Publicação & Ordem</label>
+                                <p class="text-[0.7rem] text-white/50 mb-2">Defina o status da aula e sua posição de exibição.</p>
+                            </div>
+                            <div class="grid grid-cols-2 gap-3">
+                                <div>
+                                    <label class="block text-[0.65rem] text-white/50 uppercase font-bold mb-1">Status</label>
+                                    <select id="editLessonStatus" class="w-full bg-white/5 border border-white/15 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-white/40">
+                                        <option value="published" class="bg-black text-white">🟢 Publicada</option>
+                                        <option value="draft" class="bg-black text-white">🟡 Rascunho</option>
+                                        <option value="upcoming" class="bg-black text-white">🔒 Em Breve</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-[0.65rem] text-white/50 uppercase font-bold mb-1">Ordem (Posição)</label>
+                                    <input type="number" id="editLessonDisplayOrder" min="1" value="1" class="w-full bg-white/5 border border-white/15 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-white/40">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ══════════════════════════════════════════════════════════ -->
+                <!-- ABA 4: PREVIEW DO ALUNO (SKOOL STUDENT EXPERIENCE)      -->
+                <!-- ══════════════════════════════════════════════════════════ -->
+                <div id="tabLessonPreviewPane" class="space-y-6 hidden">
+                    <div class="p-4 rounded-2xl bg-white/[0.02] border border-white/10 space-y-4">
+                        <div class="flex items-center justify-between pb-3 border-b border-white/10">
+                            <div>
+                                <span class="text-[0.65rem] font-bold text-emerald-400 uppercase tracking-widest">Preview em Tempo Real</span>
+                                <h4 class="text-sm font-bold text-white">Experiência Completa do Aluno no Classroom</h4>
+                            </div>
+                            <span class="text-xs text-white/50 font-mono">MODO ALUNO ATIVO</span>
+                        </div>
+
+                        <!-- Renderizador ao vivo da aula no player do aluno -->
+                        <div id="studentLivePreviewContainer" class="space-y-6 max-h-[60vh] overflow-y-auto pr-2">
+                            <!-- Renderizado via JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- FOOTER COM AÇÕES SKOOL-LIKE -->
+            <div class="pt-4 border-t border-white/10 flex items-center justify-between mt-4 flex-shrink-0 flex-wrap gap-y-3">
+                <button id="deleteLessonModalBtn" type="button" class="px-4 py-2.5 bg-red-500/15 hover:bg-red-500/25 text-red-400 border border-red-500/30 rounded-xl text-xs font-bold transition-all flex items-center space-x-1.5">
+                    <span>🗑️ Excluir Aula</span>
                 </button>
-                <div class="flex items-center space-x-3">
-                    <button id="cancelLessonModalBtn" type="button" class="px-5 py-2.5 bg-white/10 hover:bg-white/20 text-graphite hover:text-white rounded-xl text-xs font-bold transition-all">
+
+                <div class="hidden md:flex items-center space-x-2 text-xs text-white/40">
+                    <span>💡 Pressione <kbd class="px-1.5 py-0.5 bg-white/10 rounded font-mono text-[0.65rem] text-white/70">Ctrl+S</kbd> para salvar a qualquer momento</span>
+                </div>
+
+                <div class="flex items-center space-x-2.5 ml-auto">
+                    <button id="cancelLessonModalBtn" type="button" class="px-4 py-2.5 bg-white/5 hover:bg-white/15 text-white/70 hover:text-white rounded-xl text-xs font-semibold transition-all">
                         Cancelar
                     </button>
-                    <button id="saveLessonModalBtn" type="button" class="px-6 py-2.5 bg-white text-black rounded-xl text-xs font-bold shadow-lg hover:bg-white/90 hover:scale-105 transition-all">
-                        💾 Salvar Aula
+                    <button id="previewLessonModalBtn" type="button" class="px-4 py-2.5 bg-white/10 hover:bg-white/20 text-white border border-white/15 rounded-xl text-xs font-semibold transition-all flex items-center space-x-1.5">
+                        <span>👁️ Pré-visualizar</span>
+                    </button>
+                    <button id="saveLessonModalBtn" type="button" class="px-6 py-2.5 bg-white text-black hover:bg-white/90 rounded-xl text-xs font-bold shadow-[0_4px_20px_rgba(255,255,255,0.3)] hover:scale-105 active:scale-95 transition-all flex items-center space-x-2">
+                        <span id="saveLessonBtnIcon">💾</span>
+                        <span id="saveLessonBtnLabel">Salvar Aula</span>
                     </button>
                 </div>
             </div>
+
         </div>
     </div>
 
@@ -1776,6 +2386,18 @@
         window.initProfileSlideshow = initProfileSlideshow;
         
     </script>
+
+    <!-- COMMUNITY IMAGE LIGHTBOX MODAL -->
+    <div id="communityImageLightbox" class="fixed inset-0 z-[100002] bg-black/92 backdrop-blur-3xl flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300 pointer-events-none" onclick="window.closeCommunityLightbox()">
+        <div class="relative max-w-5xl max-h-[90vh] flex flex-col items-center pointer-events-auto" onclick="event.stopPropagation()">
+            <button onclick="window.closeCommunityLightbox()" class="absolute -top-12 right-0 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-lg font-bold border border-white/20 transition-all">✕</button>
+            <img id="lightboxImg" src="" class="max-w-full max-h-[80vh] object-contain rounded-2xl shadow-[0_20px_70px_rgba(0,0,0,0.9)] border border-white/15">
+            <p id="lightboxCaption" class="mt-3 text-xs text-white/70 font-mono text-center max-w-xl"></p>
+        </div>
+    </div>
+
+    <!-- Community Red Shaders Engine (Personal OS) -->
+    <script type="module" src="/comunidade/js/community-shaders.js"></script>
     <!-- App Logic (Supabase-integrated) -->
     <script src="/comunidade/app.js?v=12"></script>
 </body>
