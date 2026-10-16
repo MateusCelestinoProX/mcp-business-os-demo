@@ -908,8 +908,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (rawHash === 'community' || rawHash.startsWith('community/')) {
       const parts = rawHash.split('/');
       const subTab = parts[1];
-      if (['feed', 'prompts', 'ranking', 'challenges', 'saved'].includes(subTab)) {
-        communityActiveTab = subTab;
+      if (['feed', 'prompts', 'ranking', 'challenges', 'saved', 'tag-editor', 'tags'].includes(subTab)) {
+        communityActiveTab = (subTab === 'tags') ? 'tag-editor' : subTab;
       } else {
         communityActiveTab = 'feed';
       }
@@ -3108,12 +3108,62 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
   // ──────────────────────────────────────────────────────────────────────────
   // VIEW 5: COMMUNITY — RED SHADER ATELIER & VIP CREATOR ECOSYSTEM
   // ──────────────────────────────────────────────────────────────────────────
-  let communityActiveTab = 'feed'; // 'feed' | 'prompts' | 'ranking' | 'challenges' | 'saved'
-  let communityActiveFilter = 'all'; // 'all' | 'prompts' | 'showcase' | 'tips' | 'official'
+  let communityActiveTab = 'feed'; // 'feed' | 'prompts' | 'ranking' | 'challenges' | 'saved' | 'tag-editor'
+  let communityActiveFilter = 'all'; // 'all' | tag.id
   let communityPromptModelFilter = 'all'; // 'all' | 'Flux.1' | 'Midjourney' | 'ComfyUI' | 'SD 3.5'
   let communitySearchQuery = '';
   let communitySelectedCategory = 'prompts';
   let communityPromptBoxOpen = false;
+
+  const DEFAULT_COMMUNITY_TAGS = [
+    { id: 'prompts', name: 'Prompts & Workflows', icon: '⚡', color: 'red', desc: 'Prompts, pipelines e fluxos no Flux.1, Midjourney e ComfyUI' },
+    { id: 'showcase', name: 'Showcases & Renders', icon: '🎨', color: 'purple', desc: 'Artes, gerações visuais e criações finalizadas da comunidade' },
+    { id: 'tips', name: 'Dicas Técnicas', icon: '💡', color: 'amber', desc: 'Tutoriais, hacks e engenharia de prompt' },
+    { id: 'official', name: 'Anúncios Oficiais', icon: '📌', color: 'emerald', desc: 'Comunicados e diretrizes oficiais da administração soberana' }
+  ];
+
+  function getCommunityTags() {
+    try {
+      const raw = localStorage.getItem('mcp_community_tags');
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      }
+    } catch(e) {}
+    return [...DEFAULT_COMMUNITY_TAGS];
+  }
+
+  function saveCommunityTags(tags) {
+    try {
+      localStorage.setItem('mcp_community_tags', JSON.stringify(tags));
+    } catch(e) {}
+  }
+
+  const TAG_COLOR_MAP = {
+    red: { badge: 'bg-red-500/15 text-red-300 border-red-500/30 hover:border-red-400', border: 'border-red-500/30', cardBorder: 'border-red-500/20 hover:border-red-500/40', glow: 'from-red-950/40 to-black/60', dot: 'bg-red-400' },
+    purple: { badge: 'bg-purple-500/15 text-purple-300 border-purple-500/30 hover:border-purple-400', border: 'border-purple-500/30', cardBorder: 'border-purple-500/20 hover:border-purple-500/40', glow: 'from-purple-950/40 to-black/60', dot: 'bg-purple-400' },
+    amber: { badge: 'bg-amber-500/15 text-amber-300 border-amber-500/30 hover:border-amber-400', border: 'border-amber-500/30', cardBorder: 'border-amber-500/20 hover:border-amber-500/40', glow: 'from-amber-950/40 to-black/60', dot: 'bg-amber-400' },
+    emerald: { badge: 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30 hover:border-emerald-400', border: 'border-emerald-500/30', cardBorder: 'border-emerald-500/20 hover:border-emerald-500/40', glow: 'from-emerald-950/40 to-black/60', dot: 'bg-emerald-400' },
+    cyan: { badge: 'bg-cyan-500/15 text-cyan-300 border-cyan-500/30 hover:border-cyan-400', border: 'border-cyan-500/30', cardBorder: 'border-cyan-500/20 hover:border-cyan-500/40', glow: 'from-cyan-950/40 to-black/60', dot: 'bg-cyan-400' },
+    blue: { badge: 'bg-blue-500/15 text-blue-300 border-blue-500/30 hover:border-blue-400', border: 'border-blue-500/30', cardBorder: 'border-blue-500/20 hover:border-blue-500/40', glow: 'from-blue-950/40 to-black/60', dot: 'bg-blue-400' },
+    pink: { badge: 'bg-pink-500/15 text-pink-300 border-pink-500/30 hover:border-pink-400', border: 'border-pink-500/30', cardBorder: 'border-pink-500/20 hover:border-pink-500/40', glow: 'from-pink-950/40 to-black/60', dot: 'bg-pink-400' }
+  };
+
+  function getTagColorClasses(colorKey) {
+    return TAG_COLOR_MAP[colorKey] || TAG_COLOR_MAP.red;
+  }
+
+  function getTagPostCount(tagId) {
+    return communityPosts.filter(p => {
+      if (p.category === tagId || p.tag === tagId) return true;
+      if (Array.isArray(p.tags) && p.tags.includes(tagId)) return true;
+      if (tagId === 'prompts' && (p.ai_prompt || (p.title && p.title.toLowerCase().includes('prompt')))) return true;
+      if (tagId === 'showcase' && (p.images && p.images.length > 0)) return true;
+      if (tagId === 'tips' && (p.title && p.title.toLowerCase().includes('dica'))) return true;
+      if (tagId === 'official' && (p.is_pinned || p.category === 'official')) return true;
+      return false;
+    }).length;
+  }
 
   const COMMUNITY_SHADERS_DEFAULT = [
     { id: 'strands', name: 'Strands Rubro', icon: '✨' },
@@ -3141,16 +3191,20 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
     if (!isLoggedIn) { showAuthModal(); return; }
     selectedFilesToUpload = [];
 
+    const tags = getCommunityTags();
+
     // Filtro e Busca de Posts para o Feed
     let filteredPosts = [...communityPosts];
-    if (communityActiveFilter === 'prompts') {
-      filteredPosts = filteredPosts.filter(p => p.category === 'prompts' || p.ai_prompt || (p.title && p.title.toLowerCase().includes('prompt')));
-    } else if (communityActiveFilter === 'showcase') {
-      filteredPosts = filteredPosts.filter(p => p.category === 'showcase' || (p.images && p.images.length > 0));
-    } else if (communityActiveFilter === 'tips') {
-      filteredPosts = filteredPosts.filter(p => p.category === 'tips' || (p.title && p.title.toLowerCase().includes('dica')));
-    } else if (communityActiveFilter === 'official') {
-      filteredPosts = filteredPosts.filter(p => p.is_pinned || p.category === 'official');
+    if (communityActiveFilter !== 'all') {
+      filteredPosts = filteredPosts.filter(p => {
+        if (p.category === communityActiveFilter || p.tag === communityActiveFilter) return true;
+        if (Array.isArray(p.tags) && p.tags.includes(communityActiveFilter)) return true;
+        if (communityActiveFilter === 'prompts' && (p.ai_prompt || (p.title && p.title.toLowerCase().includes('prompt')))) return true;
+        if (communityActiveFilter === 'showcase' && (p.images && p.images.length > 0)) return true;
+        if (communityActiveFilter === 'tips' && (p.title && p.title.toLowerCase().includes('dica'))) return true;
+        if (communityActiveFilter === 'official' && (p.is_pinned || p.category === 'official')) return true;
+        return false;
+      });
     }
 
     if (communitySearchQuery.trim()) {
@@ -3171,8 +3225,8 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
     mainAppContainer.innerHTML = `
       <section class="py-8 px-4 sm:px-6 lg:px-8 max-w-[1080px] mx-auto relative z-10">
 
-        <!-- HEADER MINIMALISTA: APENAS FEED & DISCUSSÕES -->
-        <div class="mb-6 flex items-center justify-between border-b border-white/10 pb-5">
+        <!-- HEADER MINIMALISTA: NAVEGAÇÃO DE FLUXO -->
+        <div class="mb-6 flex flex-col sm:flex-row sm:items-center justify-between border-b border-white/10 pb-5 gap-4">
           <div>
             <div class="flex items-center space-x-2">
               <span class="text-xs font-bold text-white/50 tracking-widest uppercase">REDE SOCIAL VIP</span>
@@ -3180,13 +3234,28 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
               <span class="text-[10px] text-red-300 font-mono">5s cinematic</span>
             </div>
             <h1 class="text-3xl font-extrabold text-white mt-1 flex items-center space-x-3">
-              <span>Feed & Discussões</span>
+              <span>${communityActiveTab === 'tag-editor' ? 'Tag Editor & Taxonomia' : 'Feed & Discussões'}</span>
               ${currentUserRole === 'admin' ? '<span class="text-xs px-2.5 py-0.5 rounded-full bg-red-500/20 border border-red-500/40 text-red-200 font-mono font-bold">👑 ADMIN</span>' : ''}
             </h1>
           </div>
+
+          <!-- NAVEGAÇÃO DE ABAS: FEED & TAG EDITOR -->
+          <div class="flex items-center space-x-2 bg-black/40 p-1.5 rounded-full border border-white/10 self-start sm:self-auto backdrop-blur-md">
+            <button onclick="window.appSwitchCommunityTab('feed')"
+              class="px-4 py-1.5 rounded-full text-xs font-bold transition-all flex items-center space-x-1.5 ${communityActiveTab !== 'tag-editor' ? 'bg-white text-black shadow-lg' : 'text-gray-400 hover:text-white hover:bg-white/5'}">
+              <span>💬</span>
+              <span>Feed & Discussões</span>
+            </button>
+            <button onclick="window.appSwitchCommunityTab('tag-editor')"
+              class="px-4 py-1.5 rounded-full text-xs font-bold transition-all flex items-center space-x-1.5 ${communityActiveTab === 'tag-editor' ? 'bg-white text-black shadow-lg' : 'text-gray-400 hover:text-white hover:bg-white/5'}">
+              <span>🏷️</span>
+              <span>Tag Editor</span>
+              <span class="text-[10px] px-1.5 py-0.2 rounded-full ${communityActiveTab === 'tag-editor' ? 'bg-black text-white' : 'bg-white/10 text-white/80'}">${tags.length}</span>
+            </button>
+          </div>
         </div>
 
-        <!-- CONTEÚDO PURO: FEED E DISCUSSÃO -->
+        <!-- CONTEÚDO PURO: FEED E DISCUSSÃO OU TAG EDITOR -->
         ${renderCommunityTabContent(filteredPosts)}
       </section>`;
 
@@ -3195,6 +3264,9 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
   }
 
   function renderCommunityTabContent(filteredPosts) {
+    if (communityActiveTab === 'tag-editor' || communityActiveTab === 'tags') {
+      return renderCommunityTagEditorTab();
+    }
     if (communityActiveTab === 'prompts') {
       return renderCommunityPromptsTab();
     }
@@ -3214,30 +3286,32 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
     const shadersList = getCommunityShadersList();
     const currentShaderId = localStorage.getItem('mcp_community_active_shader') || 'strands';
     const isRotative = localStorage.getItem('mcp_community_rotative') === 'true';
+    const tags = getCommunityTags();
 
     return `
-      <!-- FILTROS & BUSCA INTEGRADA COMPACTA -->
+      <!-- FILTROS DE TAGS DINÂMICAS & BUSCA INTEGRADA COMPACTA -->
       <div class="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-3">
         <div class="flex items-center space-x-2 overflow-x-auto pb-1 text-xs">
           <button onclick="window.appFilterCommunity('all')"
             class="px-3.5 py-1.5 rounded-full font-bold transition-all whitespace-nowrap ${communityActiveFilter === 'all' ? 'bg-white text-black shadow-md' : 'bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/10'}">
             🌟 Todos (${communityPosts.length})
           </button>
-          <button onclick="window.appFilterCommunity('prompts')"
-            class="px-3.5 py-1.5 rounded-full font-bold transition-all whitespace-nowrap ${communityActiveFilter === 'prompts' ? 'bg-white text-black shadow-md' : 'bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/10'}">
-            ⚡ Prompts & Workflows
-          </button>
-          <button onclick="window.appFilterCommunity('showcase')"
-            class="px-3.5 py-1.5 rounded-full font-bold transition-all whitespace-nowrap ${communityActiveFilter === 'showcase' ? 'bg-white text-black shadow-md' : 'bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/10'}">
-            🎨 Showcases & Renders
-          </button>
-          <button onclick="window.appFilterCommunity('tips')"
-            class="px-3.5 py-1.5 rounded-full font-bold transition-all whitespace-nowrap ${communityActiveFilter === 'tips' ? 'bg-white text-black shadow-md' : 'bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/10'}">
-            💡 Dicas Técnicas
-          </button>
-          <button onclick="window.appFilterCommunity('official')"
-            class="px-3.5 py-1.5 rounded-full font-bold transition-all whitespace-nowrap ${communityActiveFilter === 'official' ? 'bg-white text-black shadow-md' : 'bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/10'}">
-            📌 Anúncios Oficiais
+          ${tags.map(t => {
+            const count = getTagPostCount(t.id);
+            const isAct = communityActiveFilter === t.id;
+            return `
+              <button onclick="window.appFilterCommunity('${t.id}')"
+                class="px-3.5 py-1.5 rounded-full font-bold transition-all whitespace-nowrap flex items-center space-x-1.5 ${isAct ? 'bg-white text-black shadow-md' : 'bg-white/5 text-gray-300 hover:text-white hover:bg-white/10 border border-white/10'}">
+                <span>${t.icon || '🏷️'}</span>
+                <span>${escapeHtml(t.name)}</span>
+                <span class="text-[10px] opacity-70">(${count})</span>
+              </button>
+            `;
+          }).join('')}
+          <button onclick="window.appSwitchCommunityTab('tag-editor')" title="Gerenciar e editar tags"
+            class="px-3 py-1.5 rounded-full font-bold transition-all whitespace-nowrap text-xs text-white/50 hover:text-white bg-white/5 hover:bg-white/10 border border-dashed border-white/20 flex items-center space-x-1">
+            <span>⚙️</span>
+            <span>Tag Editor</span>
           </button>
         </div>
 
@@ -3293,6 +3367,23 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
                 <div id="postLinkField" class="hidden p-3 bg-white/5 rounded-2xl border border-white/10 space-y-2">
                   <input type="url" id="newPostLinkUrl" placeholder="URL do link (https://...)" class="w-full bg-transparent text-xs text-white placeholder-white/30 focus:outline-none border-b border-white/10 pb-1">
                   <input type="text" id="newPostLinkTitle" placeholder="Título do link (opcional)" class="w-full bg-transparent text-xs text-white placeholder-white/30 focus:outline-none">
+                </div>
+
+                <!-- Seleção de Tag no Composer -->
+                <div class="pt-2 border-t border-white/5 flex items-center space-x-2">
+                  <span class="text-[11px] font-mono font-bold text-gray-400 whitespace-nowrap">🏷️ Tag:</span>
+                  <div class="flex items-center space-x-1.5 overflow-x-auto pb-1 text-xs" id="composerTagPills">
+                    ${tags.map(t => {
+                      const isSel = (communitySelectedCategory || (tags[0] && tags[0].id)) === t.id;
+                      return `
+                        <button type="button" onclick="window.selectPostCategory('${t.id}', this)"
+                          class="post-cat-btn px-2.5 py-1 rounded-lg border font-bold transition-all text-xs flex items-center space-x-1 whitespace-nowrap ${isSel ? 'bg-red-500/20 text-red-200 border-red-500/40 shadow-sm' : 'bg-white/5 text-gray-400 border-white/10 hover:text-white'}">
+                          <span>${t.icon || '🏷️'}</span>
+                          <span>${escapeHtml(t.name)}</span>
+                        </button>
+                      `;
+                    }).join('')}
+                  </div>
                 </div>
               </div>
             </div>
@@ -3467,6 +3558,162 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
           ${renderSideBanner()}
         </div>
       </div>`;
+  }
+
+  function renderCommunityTagEditorTab() {
+    const tags = getCommunityTags();
+    const totalPosts = communityPosts.length;
+
+    // Estatísticas das tags
+    const tagStats = tags.map(t => ({
+      ...t,
+      count: getTagPostCount(t.id)
+    }));
+
+    const topTag = tagStats.reduce((max, t) => (t.count > (max?.count || 0) ? t : max), tagStats[0] || null);
+
+    return `
+      <div class="space-y-6 anim-element anim-fade-up">
+
+        <!-- HEADER DA ABA TAG EDITOR -->
+        <div class="p-6 sm:p-8 rounded-3xl glass-card border border-red-500/20 shadow-2xl relative overflow-hidden">
+          <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-red-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+          <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-5">
+            <div class="space-y-2 max-w-xl">
+              <div class="flex items-center space-x-2">
+                <span class="px-3 py-1 rounded-full text-[11px] font-mono font-bold bg-red-500/20 border border-red-500/40 text-red-200">
+                  🏷️ TAXONOMIA & NAVEGAÇÃO VIP
+                </span>
+                <span class="text-xs text-graphite font-mono">${tags.length} tags ativas</span>
+              </div>
+              <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+                Gerenciador & Editor de Tags
+              </h2>
+              <p class="text-xs sm:text-sm text-graphite leading-relaxed">
+                Crie, edite e organize os temas e tópicos da comunidade. Essas tags alimentam o sistema inteligente de filtragem e navegação de publicações do feed.
+              </p>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-2.5">
+              <button onclick="window.appRestoreDefaultTags()"
+                class="px-4 py-2.5 rounded-full text-xs font-bold text-gray-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/15 transition-all flex items-center space-x-1.5"
+                title="Restaura as tags recomendadas">
+                <span>🔄</span>
+                <span>Restaurar Padrões</span>
+              </button>
+              <button onclick="window.appOpenTagModal()"
+                class="px-5 py-2.5 rounded-full text-xs font-extrabold text-black bg-white hover:bg-gray-200 shadow-xl hover:scale-105 active:scale-95 transition-all flex items-center space-x-2">
+                <span class="text-base font-bold leading-none">+</span>
+                <span>Nova Tag</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- MÉTRICAS RÁPIDAS -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5 mt-6 pt-6 border-t border-white/10">
+            <div class="bg-black/40 border border-white/10 rounded-2xl p-3.5 flex items-center space-x-3">
+              <div class="w-10 h-10 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center justify-center text-lg">🏷️</div>
+              <div>
+                <p class="text-base font-extrabold text-white">${tags.length}</p>
+                <p class="text-[11px] text-gray-400">Tags Cadastradas</p>
+              </div>
+            </div>
+
+            <div class="bg-black/40 border border-white/10 rounded-2xl p-3.5 flex items-center space-x-3">
+              <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-lg">📊</div>
+              <div>
+                <p class="text-base font-extrabold text-white">${totalPosts}</p>
+                <p class="text-[11px] text-gray-400">Publicações Totais</p>
+              </div>
+            </div>
+
+            <div class="bg-black/40 border border-white/10 rounded-2xl p-3.5 flex items-center space-x-3">
+              <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-lg">🔥</div>
+              <div>
+                <p class="text-base font-extrabold text-white truncate max-w-[140px]">${topTag ? `${topTag.icon} ${escapeHtml(topTag.name)}` : 'Nenhuma'}</p>
+                <p class="text-[11px] text-gray-400">Tag Mais Utilizada</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GRID DE CARDS DE TAGS -->
+        ${tags.length === 0 ? `
+          <div class="text-center py-20 glass-card rounded-3xl border border-white/10">
+            <div class="text-5xl mb-3">🏷️</div>
+            <h3 class="text-lg font-bold text-white mb-2">Nenhuma tag cadastrada</h3>
+            <p class="text-xs text-graphite max-w-md mx-auto mb-5">Você pode restaurar as tags recomendadas da comunidade ou criar novas tags customizadas.</p>
+            <div class="flex items-center justify-center space-x-3">
+              <button onclick="window.appRestoreDefaultTags()" class="px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition-all">
+                Restaurar Padrões
+              </button>
+              <button onclick="window.appOpenTagModal()" class="px-5 py-2.5 rounded-full bg-red-600 hover:bg-red-500 text-white text-xs font-bold transition-all">
+                + Criar Nova Tag
+              </button>
+            </div>
+          </div>
+        ` : `
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            ${tags.map(t => {
+              const count = getTagPostCount(t.id);
+              const colorInfo = getTagColorClasses(t.color);
+              return `
+                <div class="glass-card rounded-3xl p-5 border ${colorInfo.cardBorder} transition-all duration-300 hover:scale-[1.01] hover:shadow-xl flex flex-col justify-between" id="tag-card-${t.id}">
+                  <div>
+                    <div class="flex items-start justify-between mb-3">
+                      <div class="flex items-center space-x-3">
+                        <div class="w-11 h-11 rounded-2xl bg-white/5 border border-white/15 flex items-center justify-center text-xl shadow-inner">
+                          ${t.icon || '🏷️'}
+                        </div>
+                        <div>
+                          <h4 class="text-sm font-extrabold text-white flex items-center space-x-2">
+                            <span>${escapeHtml(t.name)}</span>
+                          </h4>
+                          <span class="text-[11px] font-mono text-gray-400">#${escapeHtml(t.id)}</span>
+                        </div>
+                      </div>
+
+                      <span class="px-2.5 py-1 rounded-full text-[10px] font-mono font-bold border ${colorInfo.badge}">
+                        ${count} ${count === 1 ? 'post' : 'posts'}
+                      </span>
+                    </div>
+
+                    <p class="text-xs text-graphite leading-relaxed mb-4 min-h-[32px]">
+                      ${escapeHtml(t.desc || 'Sem descrição cadastrada.')}
+                    </p>
+                  </div>
+
+                  <!-- Ações da Tag -->
+                  <div class="pt-3 border-t border-white/10 flex items-center justify-between">
+                    <button onclick="window.appFilterCommunity('${t.id}'); window.appSwitchCommunityTab('feed');"
+                      class="text-xs font-bold text-white/80 hover:text-white flex items-center space-x-1.5 transition-colors group">
+                      <span>🔍</span>
+                      <span class="group-hover:underline">Ver no Feed</span>
+                      <span class="text-[10px] text-gray-400">→</span>
+                    </button>
+
+                    <div class="flex items-center space-x-1.5">
+                      <button onclick="window.appOpenTagModal('${t.id}')"
+                        class="px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/15 border border-white/10 text-white text-xs font-semibold transition-all flex items-center space-x-1">
+                        <span>✏️</span>
+                        <span>Editar</span>
+                      </button>
+                      <button onclick="window.appDeleteTag('${t.id}')"
+                        class="px-3 py-1.5 rounded-xl bg-red-500/10 hover:bg-red-500/25 border border-red-500/20 text-red-300 text-xs font-semibold transition-all flex items-center space-x-1"
+                        title="Apagar tag">
+                        <span>🗑️</span>
+                        <span>Apagar</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        `}
+      </div>
+    `;
   }
 
   function renderCommunityPromptsTab() {
@@ -3850,15 +4097,14 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
     const safeLinkUrl = escapeHtml(post.link_url || '');
     const safeLinkTitle = escapeHtml(post.link_title || post.link_url || '');
 
-    // Formatação de categoria
-    const categoryLabels = {
-      prompts: { label: '⚡ Prompt VIP', cls: 'bg-red-500/15 text-red-300 border-red-500/30' },
-      showcase: { label: '🎨 Showcase Visual', cls: 'bg-purple-500/15 text-purple-300 border-purple-500/30' },
-      tips: { label: '💡 Dica Técnica', cls: 'bg-amber-500/15 text-amber-300 border-amber-500/30' },
-      official: { label: '📌 Anúncio Oficial', cls: 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30' },
-      help: { label: '❓ Dúvida', cls: 'bg-cyan-500/15 text-cyan-300 border-cyan-500/30' }
-    };
-    const catInfo = categoryLabels[post.category] || categoryLabels.prompts;
+    // Formatação de categoria / tag dinâmica
+    const allCommunityTags = getCommunityTags();
+    const postTagId = post.tag || post.category || (post.tags && post.tags[0]) || 'prompts';
+    const matchedTag = allCommunityTags.find(t => t.id === postTagId);
+    const tagIcon = matchedTag ? (matchedTag.icon || '🏷️') : '🏷️';
+    const tagName = matchedTag ? matchedTag.name : (postTagId.charAt(0).toUpperCase() + postTagId.slice(1));
+    const tagColor = matchedTag ? matchedTag.color : 'red';
+    const tagColorClasses = getTagColorClasses(tagColor);
 
     return `
       <article class="glass-card-community rounded-3xl overflow-hidden p-6 border border-white/15 relative transition-all duration-300 hover:border-red-500/30" id="post-${post.id}">
@@ -3880,9 +4126,12 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
               <div class="flex items-center flex-wrap gap-x-2 gap-y-1">
                 <span class="text-sm font-extrabold text-white">${safeUserName}</span>
                 ${getBadge(post.user_role)}
-                <span class="px-2 py-0.5 rounded-full text-[10px] font-mono border font-bold ${catInfo.cls}">
-                  ${catInfo.label}
-                </span>
+                <button type="button" onclick="window.appFilterCommunity('${escapeJs(postTagId)}'); event.stopPropagation();"
+                  title="Filtrar feed por #${escapeHtml(postTagId)}"
+                  class="px-2.5 py-0.5 rounded-full text-[10px] font-mono border font-bold transition-transform hover:scale-105 active:scale-95 flex items-center space-x-1 cursor-pointer ${tagColorClasses.badge}">
+                  <span>${tagIcon}</span>
+                  <span>${escapeHtml(tagName)}</span>
+                </button>
               </div>
               <span class="text-[11px] text-gray-400 font-mono mt-0.5 block">${formatDate(post.created_at)}</span>
             </div>
@@ -4077,6 +4326,7 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
     // Filter and search handlers
     window.appFilterCommunity = function(cat) {
       communityActiveFilter = cat;
+      communityActiveTab = 'feed';
       renderCommunityView();
     };
 
@@ -4086,14 +4336,16 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
       if (!feed) { renderCommunityView(); return; }
 
       let filteredPosts = [...communityPosts];
-      if (communityActiveFilter === 'prompts') {
-        filteredPosts = filteredPosts.filter(p => p.category === 'prompts' || p.ai_prompt || (p.title && p.title.toLowerCase().includes('prompt')));
-      } else if (communityActiveFilter === 'showcase') {
-        filteredPosts = filteredPosts.filter(p => p.category === 'showcase' || (p.images && p.images.length > 0));
-      } else if (communityActiveFilter === 'tips') {
-        filteredPosts = filteredPosts.filter(p => p.category === 'tips' || (p.title && p.title.toLowerCase().includes('dica')));
-      } else if (communityActiveFilter === 'official') {
-        filteredPosts = filteredPosts.filter(p => p.is_pinned || p.category === 'official');
+      if (communityActiveFilter !== 'all') {
+        filteredPosts = filteredPosts.filter(p => {
+          if (p.category === communityActiveFilter || p.tag === communityActiveFilter) return true;
+          if (Array.isArray(p.tags) && p.tags.includes(communityActiveFilter)) return true;
+          if (communityActiveFilter === 'prompts' && (p.ai_prompt || (p.title && p.title.toLowerCase().includes('prompt')))) return true;
+          if (communityActiveFilter === 'showcase' && (p.images && p.images.length > 0)) return true;
+          if (communityActiveFilter === 'tips' && (p.title && p.title.toLowerCase().includes('dica'))) return true;
+          if (communityActiveFilter === 'official' && (p.is_pinned || p.category === 'official')) return true;
+          return false;
+        });
       }
 
       if (val.trim()) {
@@ -4119,11 +4371,193 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
     window.selectPostCategory = function(cat, btn) {
       communitySelectedCategory = cat;
       document.querySelectorAll('.post-cat-btn').forEach(b => {
-        b.className = 'post-cat-btn px-2.5 py-1 rounded-lg border font-bold transition-all bg-white/5 text-gray-400 border-white/10 hover:text-white';
+        b.className = 'post-cat-btn px-2.5 py-1 rounded-lg border font-bold transition-all text-xs flex items-center space-x-1 whitespace-nowrap bg-white/5 text-gray-400 border-white/10 hover:text-white';
       });
       if (btn) {
-        btn.className = 'post-cat-btn px-2.5 py-1 rounded-lg border font-bold transition-all bg-red-500/20 text-red-200 border-red-500/40';
+        btn.className = 'post-cat-btn px-2.5 py-1 rounded-lg border font-bold transition-all text-xs flex items-center space-x-1 whitespace-nowrap bg-red-500/20 text-red-200 border-red-500/40 shadow-sm';
       }
+    };
+
+    // ────────────────────────────────────────────────────────────────────────
+    // TAG EDITOR MODAL & CRUD
+    // ────────────────────────────────────────────────────────────────────────
+    window.appOpenTagModal = function(tagId = null) {
+      const modal = document.getElementById('tagEditorModal');
+      const titleEl = document.getElementById('tagModalTitle');
+      const editIdEl = document.getElementById('tagEditorEditingId');
+      const nameEl = document.getElementById('tagEditorName');
+      const slugEl = document.getElementById('tagEditorSlug');
+      const iconEl = document.getElementById('tagEditorIcon');
+      const descEl = document.getElementById('tagEditorDesc');
+      const previewIcon = document.getElementById('tagModalIconPreview');
+
+      if (!modal) return;
+
+      const tags = getCommunityTags();
+
+      if (tagId) {
+        const t = tags.find(x => x.id === tagId);
+        if (t) {
+          if (titleEl) titleEl.textContent = `Editar Tag #${t.id}`;
+          if (editIdEl) editIdEl.value = t.id;
+          if (nameEl) nameEl.value = t.name;
+          if (slugEl) { slugEl.value = t.id; slugEl.disabled = true; }
+          if (iconEl) iconEl.value = t.icon || '🏷️';
+          if (descEl) descEl.value = t.desc || '';
+          if (previewIcon) previewIcon.textContent = t.icon || '🏷️';
+          window.appSelectTagColor(t.color || 'red');
+        }
+      } else {
+        if (titleEl) titleEl.textContent = 'Criar Nova Tag';
+        if (editIdEl) editIdEl.value = '';
+        if (nameEl) nameEl.value = '';
+        if (slugEl) { slugEl.value = ''; slugEl.disabled = false; }
+        if (iconEl) iconEl.value = '⚡';
+        if (descEl) descEl.value = '';
+        if (previewIcon) previewIcon.textContent = '⚡';
+        window.appSelectTagColor('red');
+      }
+
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        modal.classList.remove('opacity-0');
+        modal.firstElementChild?.classList.remove('scale-95');
+        if (nameEl) nameEl.focus();
+      }, 10);
+    };
+
+    window.appCloseTagModal = function() {
+      const modal = document.getElementById('tagEditorModal');
+      if (!modal) return;
+      modal.classList.add('opacity-0');
+      modal.firstElementChild?.classList.add('scale-95');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+      }, 300);
+    };
+
+    window.appOnTagNameChange = function(name) {
+      const editIdEl = document.getElementById('tagEditorEditingId');
+      const slugEl = document.getElementById('tagEditorSlug');
+      if (!editIdEl?.value && slugEl && !slugEl.disabled) {
+        const slug = name
+          .toLowerCase()
+          .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+          .replace(/[^a-z0-9]+/g, '-')
+          .replace(/^-+|-+$/g, '');
+        slugEl.value = slug;
+      }
+    };
+
+    window.appSetTagIcon = function(icon) {
+      const iconEl = document.getElementById('tagEditorIcon');
+      const previewIcon = document.getElementById('tagModalIconPreview');
+      if (iconEl) iconEl.value = icon;
+      if (previewIcon) previewIcon.textContent = icon;
+    };
+
+    window.appSelectTagColor = function(color) {
+      const colorEl = document.getElementById('tagEditorColor');
+      if (colorEl) colorEl.value = color;
+      document.querySelectorAll('.tag-color-btn').forEach(btn => {
+        if (btn.getAttribute('data-color') === color) {
+          btn.classList.add('ring-2', 'ring-white', 'scale-110');
+          btn.classList.remove('opacity-60');
+        } else {
+          btn.classList.remove('ring-2', 'ring-white', 'scale-110');
+          btn.classList.add('opacity-60');
+        }
+      });
+    };
+
+    window.appSaveTag = function() {
+      const editId = document.getElementById('tagEditorEditingId')?.value?.trim();
+      const name = document.getElementById('tagEditorName')?.value?.trim();
+      let slug = document.getElementById('tagEditorSlug')?.value?.trim();
+      const icon = document.getElementById('tagEditorIcon')?.value?.trim() || '🏷️';
+      const color = document.getElementById('tagEditorColor')?.value?.trim() || 'red';
+      const desc = document.getElementById('tagEditorDesc')?.value?.trim() || '';
+
+      if (!name) {
+        showToast('⚠️ Por favor, digite o nome da tag.');
+        document.getElementById('tagEditorName')?.focus();
+        return;
+      }
+
+      if (!slug) {
+        slug = name
+          .toLowerCase()
+          .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+          .replace(/[^a-z0-9]+/g, '-')
+          .replace(/^-+|-+$/g, '');
+      }
+
+      if (!slug) {
+        showToast('⚠️ Por favor, forneça um identificador/slug válido.');
+        return;
+      }
+
+      let tags = getCommunityTags();
+
+      if (editId) {
+        // Atualizar tag existente
+        const index = tags.findIndex(t => t.id === editId);
+        if (index >= 0) {
+          tags[index] = { ...tags[index], name, icon, color, desc };
+          saveCommunityTags(tags);
+          showToast(`✅ Tag "${name}" atualizada com sucesso!`);
+        }
+      } else {
+        // Criar nova tag
+        if (tags.some(t => t.id === slug)) {
+          showToast(`⚠️ Já existe uma tag cadastrada com o identificador "#${slug}".`);
+          return;
+        }
+        tags.push({ id: slug, name, icon, color, desc });
+        saveCommunityTags(tags);
+        showToast(`🎉 Nova tag "${name}" criada com sucesso!`);
+      }
+
+      window.appCloseTagModal();
+      renderCommunityView();
+    };
+
+    window.appDeleteTag = async function(tagId) {
+      const tags = getCommunityTags();
+      const targetTag = tags.find(t => t.id === tagId);
+      const tagName = targetTag ? targetTag.name : tagId;
+
+      const confirmed = await showConfirmModal(
+        `Tem certeza que deseja apagar a tag "${tagName}" (#${tagId})? Os posts não serão excluídos, apenas a tag será removida dos filtros e menus.`,
+        'Excluir Tag da Comunidade'
+      );
+
+      if (!confirmed) return;
+
+      const updatedTags = tags.filter(t => t.id !== tagId);
+      saveCommunityTags(updatedTags);
+
+      if (communityActiveFilter === tagId) {
+        communityActiveFilter = 'all';
+      }
+      if (communitySelectedCategory === tagId) {
+        communitySelectedCategory = updatedTags[0]?.id || 'prompts';
+      }
+
+      showToast(`🗑️ Tag "${tagName}" excluída com sucesso.`);
+      renderCommunityView();
+    };
+
+    window.appRestoreDefaultTags = async function() {
+      const confirmed = await showConfirmModal(
+        'Deseja restaurar as 4 tags originais de fábrica da comunidade?',
+        'Restaurar Tags Padrão'
+      );
+      if (!confirmed) return;
+
+      saveCommunityTags(DEFAULT_COMMUNITY_TAGS);
+      showToast('✨ Tags padrão restauradas com sucesso!');
+      renderCommunityView();
     };
 
     // Toggle Composer Prompt Box
@@ -4308,6 +4742,8 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
         user_avatar: currentUserAvatarUrl || USER_ROLES.free.avatar,
         user_role: currentUserRole,
         category: communitySelectedCategory || 'prompts',
+        tag: communitySelectedCategory || 'prompts',
+        tags: [communitySelectedCategory || 'prompts'],
         title: title || '',
         content: content || '',
         ai_prompt: promptCode || '',

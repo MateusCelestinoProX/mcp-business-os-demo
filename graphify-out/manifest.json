@@ -2046,9 +2046,9 @@
     "semantic_hash": ""
   },
   "public/comunidade/app.js": {
-    "mtime": 1792174930.9779634,
-    "seen": 1792174967.2117372,
-    "ast_hash": "5e229ca9c0e438daa79c57bc5e19160b",
+    "mtime": 1792176460.5216038,
+    "seen": 1792177738.9675882,
+    "ast_hash": "7615cfa87f64e5ce35ad7038fc047bbb",
     "semantic_hash": ""
   },
   "public/comunidade/netlify/functions/create-payment.js": {
@@ -2898,9 +2898,9 @@
     "semantic_hash": ""
   },
   "public/comunidade/index.html": {
-    "mtime": 1792173918.2864735,
-    "seen": 1792174725.281625,
-    "ast_hash": "6257817b071454535811fdf1ded930f3",
+    "mtime": 1792176011.915717,
+    "seen": 1792176294.528239,
+    "ast_hash": "4c97c2631371c2c13f762b2cc111d72b",
     "semantic_hash": ""
   },
   "public/comunidade/effects/CREATIVE EFFECT's/ANCESTRAL HAND STATUE RENDER/ChatGPT_Image_17_de_jul._de_2025_15_25_13.webp": {
@@ -13836,9 +13836,9 @@
     "semantic_hash": ""
   },
   "src/app/admin/page.tsx": {
-    "mtime": 1792114805.4488335,
-    "seen": 1792114872.3083572,
-    "ast_hash": "72b44127a86531ffc55cf19920dee47d",
+    "mtime": 1792177365.4772587,
+    "seen": 1792177738.967823,
+    "ast_hash": "832763bce93ca7c4a621b14457e24e8d",
     "semantic_hash": ""
   },
   "src/lib/auth/unified-auth.ts": {
@@ -15573,6 +15573,54 @@
     "mtime": 1792171028.6928644,
     "seen": 1792171087.448353,
     "ast_hash": "cb084b0fcb3beb1938077997b20cf0bc",
+    "semantic_hash": ""
+  },
+  "src/app/admin/library-control/page.tsx": {
+    "mtime": 1792177145.700292,
+    "seen": 1792177738.9678211,
+    "ast_hash": "a9238f530f3b4da2652978d659d0a736",
+    "semantic_hash": ""
+  },
+  "src/app/api/admin/libraries/cloud/route.ts": {
+    "mtime": 1792177002.3872902,
+    "seen": 1792177738.967824,
+    "ast_hash": "86019aa96c9dfa25efe062aade3e86bc",
+    "semantic_hash": ""
+  },
+  "src/app/api/admin/libraries/items/[id]/route.ts": {
+    "mtime": 1792177016.682135,
+    "seen": 1792177738.967825,
+    "ast_hash": "fd749accc0fcf867acb5d33d6d2ec3df",
+    "semantic_hash": ""
+  },
+  "src/app/api/admin/libraries/route.ts": {
+    "mtime": 1792176971.1023827,
+    "seen": 1792177738.967826,
+    "ast_hash": "8abb69c1f0b0509583cf6ea238d093e5",
+    "semantic_hash": ""
+  },
+  "src/app/api/admin/libraries/upload/route.ts": {
+    "mtime": 1792176986.6259868,
+    "seen": 1792177738.9678268,
+    "ast_hash": "2cae53332c3cd3811dfe0a235a24bab2",
+    "semantic_hash": ""
+  },
+  "src/components/admin/LibraryControlSuite.tsx": {
+    "mtime": 1792177108.9557726,
+    "seen": 1792177738.9688268,
+    "ast_hash": "3a161c80aa9bcb7ea07a398925e94a88",
+    "semantic_hash": ""
+  },
+  "src/lib/library/library-manager.ts": {
+    "mtime": 1792176954.1687229,
+    "seen": 1792177738.97043,
+    "ast_hash": "bdf3d1b4493019eefd43bf149b840c8b",
+    "semantic_hash": ""
+  },
+  "tests/comunidade_tag_editor.test.mjs": {
+    "mtime": 1792177710.203989,
+    "seen": 1792177738.9707909,
+    "ast_hash": "bbe06698fc957ddf53e657cabfe64697",
     "semantic_hash": ""
   }
 }

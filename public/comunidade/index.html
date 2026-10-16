@@ -1308,6 +1308,98 @@
         </div>
     </div>
 
+    <!-- CUSTOM GLASSMORPHISM TAG EDITOR MODAL (CRIAR / EDITAR TAGS) -->
+    <div id="tagEditorModal" class="fixed inset-0 z-[125] bg-black/85 backdrop-blur-2xl flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
+        <div class="relative w-full max-w-lg glass-card rounded-3xl p-6 sm:p-8 border border-white/20 shadow-2xl overflow-hidden transform scale-95 transition-transform duration-300">
+            <!-- Botão fechar -->
+            <button onclick="window.appCloseTagModal()" class="absolute top-5 right-5 text-gray-400 hover:text-white p-2 rounded-full hover:bg-white/10 transition-all text-sm leading-none" title="Fechar">
+                ✕
+            </button>
+
+            <!-- Cabeçalho -->
+            <div class="flex items-center space-x-3.5 mb-6">
+                <div id="tagModalIconPreview" class="w-12 h-12 rounded-2xl bg-red-500/20 border border-red-500/40 flex items-center justify-center text-2xl shadow-inner">
+                    🏷️
+                </div>
+                <div>
+                    <h3 id="tagModalTitle" class="text-xl font-extrabold text-white">Criar Nova Tag</h3>
+                    <p class="text-graphite text-xs">Organize temas e filtros de navegação do feed da comunidade.</p>
+                </div>
+            </div>
+
+            <input type="hidden" id="tagEditorEditingId" value="">
+
+            <!-- Formulário -->
+            <div class="space-y-4">
+                <!-- Nome da Tag -->
+                <div>
+                    <label class="block text-xs font-mono font-bold text-gray-300 mb-1.5">Nome da Tag *</label>
+                    <input type="text" id="tagEditorName" placeholder="Ex: Modelos LoRA & Checkpoints"
+                        oninput="window.appOnTagNameChange(this.value)"
+                        class="w-full bg-white/5 border border-white/15 focus:border-red-500/50 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-white/30 focus:outline-none transition-all font-medium">
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <!-- Slug / Identificador -->
+                    <div>
+                        <label class="block text-xs font-mono font-bold text-gray-300 mb-1.5">Slug / ID da Tag *</label>
+                        <input type="text" id="tagEditorSlug" placeholder="Ex: loras"
+                            class="w-full bg-white/5 border border-white/15 focus:border-red-500/50 rounded-xl px-3.5 py-2.5 text-xs font-mono text-red-300 placeholder-white/30 focus:outline-none transition-all">
+                    </div>
+
+                    <!-- Emoji / Ícone -->
+                    <div>
+                        <label class="block text-xs font-mono font-bold text-gray-300 mb-1.5">Ícone / Emoji</label>
+                        <div class="flex items-center space-x-1.5">
+                            <input type="text" id="tagEditorIcon" placeholder="⚡" maxlength="4" value="⚡"
+                                oninput="if(document.getElementById('tagModalIconPreview')) document.getElementById('tagModalIconPreview').textContent = this.value || '🏷️'"
+                                class="w-12 text-center bg-white/5 border border-white/15 focus:border-red-500/50 rounded-xl px-1.5 py-2 text-sm text-white focus:outline-none transition-all">
+                            <div class="flex items-center space-x-1 text-xs">
+                                <button type="button" onclick="window.appSetTagIcon('⚡')" class="p-1 rounded-lg bg-white/5 hover:bg-white/15">⚡</button>
+                                <button type="button" onclick="window.appSetTagIcon('🎨')" class="p-1 rounded-lg bg-white/5 hover:bg-white/15">🎨</button>
+                                <button type="button" onclick="window.appSetTagIcon('💡')" class="p-1 rounded-lg bg-white/5 hover:bg-white/15">💡</button>
+                                <button type="button" onclick="window.appSetTagIcon('🔥')" class="p-1 rounded-lg bg-white/5 hover:bg-white/15">🔥</button>
+                                <button type="button" onclick="window.appSetTagIcon('📌')" class="p-1 rounded-lg bg-white/5 hover:bg-white/15">📌</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cor Temática -->
+                <div>
+                    <label class="block text-xs font-mono font-bold text-gray-300 mb-1.5">Cor de Destaque</label>
+                    <div class="flex items-center space-x-2" id="tagColorPicker">
+                        <button type="button" onclick="window.appSelectTagColor('red')" data-color="red" class="tag-color-btn w-8 h-8 rounded-xl bg-red-500/20 border-2 border-red-500 flex items-center justify-center text-xs">🔴</button>
+                        <button type="button" onclick="window.appSelectTagColor('purple')" data-color="purple" class="tag-color-btn w-8 h-8 rounded-xl bg-purple-500/20 border border-purple-500/40 flex items-center justify-center text-xs">🟣</button>
+                        <button type="button" onclick="window.appSelectTagColor('amber')" data-color="amber" class="tag-color-btn w-8 h-8 rounded-xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-xs">🟠</button>
+                        <button type="button" onclick="window.appSelectTagColor('emerald')" data-color="emerald" class="tag-color-btn w-8 h-8 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-xs">🟢</button>
+                        <button type="button" onclick="window.appSelectTagColor('cyan')" data-color="cyan" class="tag-color-btn w-8 h-8 rounded-xl bg-cyan-500/20 border border-cyan-500/40 flex items-center justify-center text-xs">🔵</button>
+                        <button type="button" onclick="window.appSelectTagColor('pink')" data-color="pink" class="tag-color-btn w-8 h-8 rounded-xl bg-pink-500/20 border border-pink-500/40 flex items-center justify-center text-xs">🌸</button>
+                    </div>
+                    <input type="hidden" id="tagEditorColor" value="red">
+                </div>
+
+                <!-- Descrição da Tag -->
+                <div>
+                    <label class="block text-xs font-mono font-bold text-gray-300 mb-1.5">Descrição Curta (Opcional)</label>
+                    <input type="text" id="tagEditorDesc" placeholder="Ex: Discussões, pipelines e tutoriais avançados"
+                        class="w-full bg-white/5 border border-white/15 focus:border-red-500/50 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-white/30 focus:outline-none transition-all">
+                </div>
+            </div>
+
+            <!-- Botões de Ação -->
+            <div class="flex items-center space-x-3 mt-6 pt-4 border-t border-white/10">
+                <button type="button" onclick="window.appCloseTagModal()" class="flex-1 py-3 rounded-xl font-bold bg-white/10 hover:bg-white/20 border border-white/15 text-white text-xs transition-all">
+                    Cancelar
+                </button>
+                <button type="button" onclick="window.appSaveTag()" id="tagModalSaveBtn" class="flex-1 py-3 rounded-xl font-bold bg-red-600 hover:bg-red-500 text-white text-xs transition-all shadow-lg flex items-center justify-center space-x-1.5">
+                    <span>💾</span>
+                    <span>Salvar Tag</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- MANDATORY FULLSCREEN POPUP BANNER (5 SECONDS) -->
     <div id="mandatoryPopupModal" class="fixed inset-0 z-[100] bg-black/90 backdrop-blur-3xl flex items-center justify-center p-4 sm:p-8 hidden opacity-0 transition-opacity duration-500">
         <div class="relative w-full max-w-4xl glass-card rounded-3xl p-8 border border-white/20 shadow-2xl overflow-hidden text-center flex flex-col items-center justify-center min-h-[480px]">
