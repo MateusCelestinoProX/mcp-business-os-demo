@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import {
   Flame,
   BookOpen,
@@ -8,8 +9,6 @@ import {
   Mail,
   Search,
   MessageSquare,
-  Sparkles,
-  ArrowUpRight,
 } from 'lucide-react';
 
 export interface PortalNavbarProps {
@@ -25,11 +24,17 @@ export function PortalNavbar({
   onOpenSearch,
   profileWhatsapp,
 }: PortalNavbarProps) {
+  const pathname = usePathname();
   const [currentSection, setCurrentSection] = useState(activeTab);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // Monitorar scroll e atualizar aba ativa
+  // Monitorar scroll e atualizar aba ativa se estiver na home
   useEffect(() => {
+    if (pathname !== '/') {
+      setCurrentSection('');
+      return;
+    }
+
     const handleScroll = () => {
       const scrollY = window.scrollY;
       setIsScrolled(scrollY > 80);
@@ -52,8 +57,9 @@ export function PortalNavbar({
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [pathname]);
 
   const navItems = [
     { id: 'home', label: 'Início', icon: Flame },
@@ -66,17 +72,46 @@ export function PortalNavbar({
     setCurrentSection(id);
     if (onNavigate) {
       onNavigate(id);
-    } else {
-      if (id === 'home') {
+      return;
+    }
+
+    if (id === 'home') {
+      if (pathname === '/') {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
+        window.location.href = '/';
+      }
+    } else {
+      if (pathname === '/') {
         const el = document.getElementById(id);
         if (el) {
           el.scrollIntoView({ behavior: 'smooth' });
         } else {
           window.location.href = `/#${id}`;
         }
+      } else {
+        window.location.href = `/#${id}`;
       }
+    }
+  };
+
+  const handleSearchClick = () => {
+    if (onOpenSearch) {
+      onOpenSearch();
+      return;
+    }
+
+    if (pathname === '/') {
+      const el = document.getElementById('publicacoes');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+        setTimeout(() => {
+          const input = document.querySelector('#publicacoes input[type="text"]') as HTMLInputElement;
+          if (input) input.focus();
+        }, 250);
+      }
+    } else {
+      window.location.href = '/artigos';
     }
   };
 
@@ -119,7 +154,7 @@ export function PortalNavbar({
         {/* Ações Rápidas à Direita: Buscar (⌘K) + CTA WhatsApp */}
         <div className="flex items-center gap-2">
           <button
-            onClick={onOpenSearch}
+            onClick={handleSearchClick}
             className="flex items-center gap-2 glass-crystal hover:border-[#ff073a]/50 text-zinc-300 hover:text-white px-3 py-1.5 rounded-xl text-xs font-mono transition-all duration-300 shadow-lg cursor-pointer"
             title="Pesquisar artigos do acervo (⌘K)"
           >

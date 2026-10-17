@@ -1,7 +1,7 @@
 # Graph Report - plataforma-unificada-soberana  (2026-10-16)
 
 ## Corpus Check
-- 234 files · ~23,785,130 words
+- 234 files · ~23,785,140 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `df28cbed`
+- Built from commit: `89fad62c`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 

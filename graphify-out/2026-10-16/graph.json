@@ -1665,7 +1665,7 @@
       "file_type": "code",
       "norm_label": "navlinkitem",
       "source_file": "src/components/layout/Navbar.tsx",
-      "source_location": "L28"
+      "source_location": "L29"
     },
     {
       "id": "src_lib_auth_unified_auth_unifieduser",
@@ -8832,7 +8832,7 @@
       "file_type": "code",
       "norm_label": "navbar()",
       "source_file": "src/components/layout/Navbar.tsx",
-      "source_location": "L42"
+      "source_location": "L44"
     },
     {
       "id": "src_lib_auth_unified_auth_getstoreduser",
@@ -20965,7 +20965,7 @@
       "file_type": "code",
       "norm_label": "mastersovereignbar",
       "source_file": "src/components/layout/Navbar.tsx",
-      "source_location": "L261"
+      "source_location": "L263"
     },
     {
       "id": "src_components_layout_navbar_navlinks",
@@ -20976,7 +20976,7 @@
       "file_type": "code",
       "norm_label": "navlinks",
       "source_file": "src/components/layout/Navbar.tsx",
-      "source_location": "L35"
+      "source_location": "L36"
     },
     {
       "id": "src_lib_auth_unified_auth",
@@ -34033,7 +34033,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/layout/Navbar.tsx",
-      "source_location": "L115",
+      "source_location": "L117",
       "weight": 1.0
     },
     {
@@ -34045,7 +34045,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/layout/Navbar.tsx",
-      "source_location": "L48",
+      "source_location": "L50",
       "weight": 1.0
     },
     {
@@ -34057,7 +34057,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/layout/Navbar.tsx",
-      "source_location": "L68",
+      "source_location": "L70",
       "weight": 1.0
     },
     {
@@ -34069,7 +34069,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/layout/Navbar.tsx",
-      "source_location": "L72",
+      "source_location": "L74",
       "weight": 1.0
     },
     {
@@ -39513,7 +39513,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/layout/Navbar.tsx",
-      "source_location": "L17",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -39525,7 +39525,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/layout/Navbar.tsx",
-      "source_location": "L18",
+      "source_location": "L19",
       "weight": 1.0
     },
     {
@@ -39537,7 +39537,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/layout/Navbar.tsx",
-      "source_location": "L19",
+      "source_location": "L20",
       "weight": 1.0
     },
     {
@@ -39549,7 +39549,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/layout/Navbar.tsx",
-      "source_location": "L20",
+      "source_location": "L21",
       "weight": 1.0
     },
     {
@@ -39561,7 +39561,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/layout/Navbar.tsx",
-      "source_location": "L20",
+      "source_location": "L21",
       "weight": 1.0
     },
     {
@@ -39573,7 +39573,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/layout/Navbar.tsx",
-      "source_location": "L20",
+      "source_location": "L21",
       "weight": 1.0
     },
     {
@@ -39585,7 +39585,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/layout/Navbar.tsx",
-      "source_location": "L20",
+      "source_location": "L21",
       "weight": 1.0
     },
     {
@@ -39597,7 +39597,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/layout/Navbar.tsx",
-      "source_location": "L20",
+      "source_location": "L21",
       "weight": 1.0
     },
     {
@@ -44929,7 +44929,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/layout/Navbar.tsx",
-      "source_location": "L17",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -44941,7 +44941,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/layout/Navbar.tsx",
-      "source_location": "L18",
+      "source_location": "L19",
       "weight": 1.0
     },
     {
@@ -44953,7 +44953,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/layout/Navbar.tsx",
-      "source_location": "L19",
+      "source_location": "L20",
       "weight": 1.0
     },
     {
@@ -44965,7 +44965,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/layout/Navbar.tsx",
-      "source_location": "L20",
+      "source_location": "L21",
       "weight": 1.0
     },
     {
@@ -58833,7 +58833,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/layout/Navbar.tsx",
-      "source_location": "L261",
+      "source_location": "L263",
       "weight": 1.0
     },
     {
@@ -58844,7 +58844,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/layout/Navbar.tsx",
-      "source_location": "L28",
+      "source_location": "L29",
       "weight": 1.0
     },
     {
@@ -58855,7 +58855,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/layout/Navbar.tsx",
-      "source_location": "L35",
+      "source_location": "L36",
       "weight": 1.0
     },
     {
@@ -58866,7 +58866,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/layout/Navbar.tsx",
-      "source_location": "L42",
+      "source_location": "L44",
       "weight": 1.0
     },
     {
@@ -67414,5 +67414,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "df28cbedbfd80d20cdd56a214bb7e6c74a16b758"
+  "built_at_commit": "89fad62c322598af5ccc9294f5ad6e18b8b4d0fa"
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
+import { PortalNavbar } from "@/components/portal/PortalNavbar";
 import { Footer } from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
@@ -51,11 +52,14 @@ export default function RootLayout({
           aria-hidden="true"
         />
 
-        {/* Barra de Navegação Soberana */}
+        {/* Barra de Navegação Soberana Superior */}
         <Navbar />
 
-        {/* Conteúdo Principal com espaço para Navbar fixa */}
-        <main className="flex-1 pt-24 relative z-10 flex flex-col">{children}</main>
+        {/* Sub-Header de Navegação do Sistema Universal */}
+        <PortalNavbar />
+
+        {/* Conteúdo Principal com espaço para as duas barras fixas */}
+        <main className="flex-1 pt-32 relative z-10 flex flex-col">{children}</main>
 
         {/* Rodapé Oficial da Plataforma */}
         <Footer />

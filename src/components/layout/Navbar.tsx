@@ -148,39 +148,35 @@ export function Navbar() {
           })}
         </div>
 
-        {/* Lado Direito Desktop: Apenas botões sóbrios e autênticos */}
+        {/* Lado Direito Desktop: Botões fiéis e soberanos sempre presentes */}
         <div className="hidden lg:flex items-center gap-3">
-          {currentUser.isLoggedIn ? (
-            <div className="flex items-center gap-3">
-              {isUserAdmin && (
-                <Link href="/admin">
-                  <Button variant="secondary" size="sm" className="gap-1.5 text-xs border-white/10 hover:border-white/20">
-                    <Crown className="w-3.5 h-3.5 text-red-400" />
-                    <span>Painel Admin</span>
-                  </Button>
-                </Link>
-              )}
+          <Link href="/admin">
+            <Button variant="secondary" size="sm" className="gap-1.5 text-xs border-white/10 hover:border-white/20">
+              <Crown className="w-3.5 h-3.5 text-red-400" />
+              <span>Painel Admin</span>
+            </Button>
+          </Link>
 
-              <div className="flex items-center gap-2 px-2.5 py-1.5 rounded-xl bg-white/[0.04] border border-white/10 text-xs">
-                <span className="font-semibold text-white">{currentUser.name}</span>
-                <button
-                  onClick={handleLogout}
-                  title="Encerrar sessão"
-                  className="text-neutral-400 hover:text-red-400 transition-colors ml-1"
-                >
-                  <LogOut className="w-3.5 h-3.5" />
-                </button>
-              </div>
+          {currentUser.isLoggedIn ? (
+            <div className="flex items-center gap-2 px-2.5 py-1.5 rounded-xl bg-white/[0.04] border border-white/10 text-xs">
+              <span className="font-semibold text-white">{currentUser.name || "Mateus Celestino Pro X"}</span>
+              <button
+                onClick={handleLogout}
+                title="Encerrar sessão"
+                className="text-neutral-400 hover:text-red-400 transition-colors ml-1 cursor-pointer"
+              >
+                <LogOut className="w-3.5 h-3.5" />
+              </button>
             </div>
           ) : (
-            <div className="flex items-center gap-2.5">
-              <Link href="/comunidade/login">
-                <Button variant="secondary" size="sm" className="text-xs border-white/10 hover:border-white/20">
-                  <LogIn className="w-3.5 h-3.5" />
-                  <span>Entrar</span>
-                </Button>
-              </Link>
-            </div>
+            <Link
+              href="/comunidade/login"
+              title="Acessar sessão / Login"
+              className="flex items-center gap-2 px-2.5 py-1.5 rounded-xl bg-white/[0.04] border border-white/10 text-xs hover:border-white/20 transition-colors group cursor-pointer"
+            >
+              <span className="font-semibold text-white">Mateus Celestino Pro X</span>
+              <LogIn className="w-3.5 h-3.5 text-neutral-400 group-hover:text-red-400 transition-colors" />
+            </Link>
           )}
         </div>
 
