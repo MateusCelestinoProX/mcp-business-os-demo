@@ -1028,12 +1028,12 @@ export default function AdminPanelPage() {
 
                 <div className="p-4 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-red-500/40 backdrop-blur-md shadow-sm space-y-2 transition-all group">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-white group-hover:text-red-300 transition-colors">Free Library</span>
+                    <span className="text-xs font-bold text-white group-hover:text-red-300 transition-colors">Free Resources</span>
                     <Badge variant="success" dot className="text-[9px]">ONLINE</Badge>
                   </div>
                   <p className="text-[11px] text-neutral-300">406 recursos catalogados e APK Mobile dedicado</p>
                   <Link href="/biblioteca" className="text-[11px] text-red-400 hover:text-red-300 inline-flex items-center gap-1 font-medium">
-                    <span>Abrir Free Library</span>
+                    <span>Abrir Free Resources</span>
                     <ExternalLink className="w-3 h-3" />
                   </Link>
                 </div>

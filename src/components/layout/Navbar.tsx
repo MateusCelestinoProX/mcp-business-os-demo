@@ -13,6 +13,7 @@ import {
   LogIn,
   ShoppingBag,
   Sparkles,
+  FolderGit2,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/Badge";
@@ -37,6 +38,7 @@ export const navLinks: NavLinkItem[] = [
   { name: "Showcase", href: "/showcase", icon: Sparkles },
   { name: "Shop", href: "/shop", icon: ShoppingBag },
   { name: "Comunidade", href: "/comunidade", icon: Users },
+  { name: "Free Resources", href: "/biblioteca", icon: FolderGit2 },
 ];
 
 export function Navbar() {

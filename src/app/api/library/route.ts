@@ -17,7 +17,7 @@ export async function GET(request: NextRequest) {
       const item = getResourceById(id);
       if (!item) {
         return NextResponse.json(
-          { success: false, error: 'Recurso não encontrado no acervo Free Library' },
+          { success: false, error: 'Recurso não encontrado no acervo Free Resources' },
           { status: 404 }
         );
       }

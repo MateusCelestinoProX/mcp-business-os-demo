@@ -137,7 +137,7 @@ export const ResourceDetailViewer: React.FC<ResourceDetailViewerProps> = ({
               </div>
               <div>
                 <h3 className="text-xl font-bold text-white">
-                  Pacote Mobile Free Library APK (Android Nativo)
+                  Pacote Mobile Free Resources APK (Android Nativo)
                 </h3>
                 <p className="text-sm text-neutral-400 mt-0.5">
                   Assinado em modo debug, validado em hardware real (Galaxy S22 Ultra — Android 14 / One UI 6.1).

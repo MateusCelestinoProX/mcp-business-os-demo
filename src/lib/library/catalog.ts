@@ -190,7 +190,7 @@ export function getCatalogList(): LibraryResource[] {
       desc = cleanPreview.slice(0, 160) + (cleanPreview.length > 160 ? '...' : '');
     }
     if (!desc) {
-      desc = `Ativo técnico oficial ${title} (${ext}) pertencente ao cofre intelectual da Free Library.`;
+      desc = `Ativo técnico oficial ${title} (${ext}) pertencente ao cofre intelectual do Free Resources.`;
     }
 
     return {

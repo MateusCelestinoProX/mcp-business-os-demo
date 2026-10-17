@@ -38,13 +38,13 @@ export async function generateMetadata({ params }: PageProps) {
 
   if (!resource) {
     return {
-      title: 'Recurso não encontrado | Free Library',
+      title: 'Recurso não encontrado | Free Resources',
       description: 'Ativo não localizado no acervo.',
     };
   }
 
   return {
-    title: `${resource.title} — Free Library | Mateus Celestino Pro`,
+    title: `${resource.title} — Free Resources | Mateus Celestino Pro`,
     description: resource.description,
   };
 }
@@ -79,7 +79,7 @@ export default async function BibliotecaItemPage({ params }: PageProps) {
             className="inline-flex items-center gap-1 hover:text-white transition-colors"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
-            <span>Free Library</span>
+            <span>Free Resources</span>
           </Link>
           <span className="text-neutral-600">/</span>
           <span className="text-neutral-400 truncate max-w-xs">{resource.category_group || resource.category}</span>
