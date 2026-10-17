@@ -4,23 +4,17 @@ import {
   adminUsers,
   leads,
   members,
-  forms,
-  formSubmissions,
   libraryItems,
   articles,
   authSessions,
-  formsRelations,
-  formSubmissionsRelations,
 } from '../src/lib/db/schema';
 import { db, isDbConfigured, checkDatabaseHealth } from '../src/lib/db/index';
 
 describe('Drizzle ORM — Unified Schema & Database Client Tests', () => {
-  test('Deve exportar todas as 8 tabelas centrais do schema unificado', () => {
+  test('Deve exportar todas as tabelas centrais do schema unificado', () => {
     assert.ok(adminUsers, 'Tabela adminUsers deve estar definida');
     assert.ok(leads, 'Tabela leads deve estar definida');
     assert.ok(members, 'Tabela members deve estar definida');
-    assert.ok(forms, 'Tabela forms deve estar definida');
-    assert.ok(formSubmissions, 'Tabela formSubmissions deve estar definida');
     assert.ok(libraryItems, 'Tabela libraryItems deve estar definida');
     assert.ok(articles, 'Tabela articles deve estar definida');
     assert.ok(authSessions, 'Tabela authSessions deve estar definida');
@@ -56,16 +50,6 @@ describe('Drizzle ORM — Unified Schema & Database Client Tests', () => {
     assert.ok(members.status, 'members.status deve existir');
     assert.ok(members.tier, 'members.tier deve existir');
     assert.ok(members.paymentId, 'members.paymentId deve existir');
-  });
-
-  test('Tabelas forms e form_submissions devem ter integridade relacional', () => {
-    assert.ok(forms.id, 'forms.id deve existir');
-    assert.ok(forms.slug, 'forms.slug deve existir');
-    assert.ok(forms.schemaJson, 'forms.schemaJson deve existir');
-    assert.ok(formSubmissions.formId, 'formSubmissions.formId deve existir');
-    assert.ok(formSubmissions.dataJson, 'formSubmissions.dataJson deve existir');
-    assert.ok(formsRelations, 'formsRelations deve estar definido');
-    assert.ok(formSubmissionsRelations, 'formSubmissionsRelations deve estar definido');
   });
 
   test('Tabela library_items deve conter metadados e controle premium', () => {

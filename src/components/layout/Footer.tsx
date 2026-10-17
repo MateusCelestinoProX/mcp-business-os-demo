@@ -1,154 +1,77 @@
+'use client';
+
 import React from "react";
 import Link from "next/link";
-import { Shield, Sparkles, Terminal, Cpu, Database, Heart } from "lucide-react";
+import { Shield, FileText, CheckCircle2 } from "lucide-react";
+import SilkShader from "@/components/shaders/SilkShader";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative z-20 mt-24 border-t border-white/10 bg-[#030305]/90 backdrop-blur-2xl">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
-          {/* Coluna 1: Branding MCP */}
-          <div className="md:col-span-1 space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-red-600 via-red-800 to-black p-[1px] flex items-center justify-center shadow-[0_0_15px_rgba(255,7,58,0.4)] overflow-hidden shrink-0">
-                <div className="w-full h-full bg-[#030305] rounded-[7px] overflow-hidden flex items-center justify-center">
-                  <img
-                    src="/assets/site_icon.webp"
-                    alt="Mateus Celestino Pro X Logo"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
-              <span className="font-bold text-sm tracking-wide text-white uppercase">
-                MATEUS CELESTINO <span className="text-red-500 font-extrabold">PRO X</span>
-              </span>
-            </div>
-            <p className="text-xs text-neutral-400 leading-relaxed">
-              Plataforma unificada soberana integrando alta engenharia de software,
-              shaders cinematográficos WebGL, área de membros restrita e cofre digital de ativos.
-            </p>
-            <div className="flex items-center gap-2 text-[11px] text-neutral-500 font-mono">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span>SISTEMA 100% OPERACIONAL</span>
-            </div>
-          </div>
+    <footer className="relative z-20 mt-20 border-t border-red-500/30 bg-[#0c0003]/80 backdrop-blur-3xl shadow-[0_-25px_60px_rgba(180,0,25,0.3)] overflow-hidden w-full">
+      {/* Shader WebGL do Rodapé: Silk Líquido Carmesim */}
+      <SilkShader
+        className="z-0 mix-blend-screen pointer-events-none"
+        color="#b80018"
+        opacity={0.22}
+        speed={0.18}
+      />
 
-          {/* Coluna 2: Módulos do Ecossistema */}
-          <div>
-            <h3 className="text-xs font-bold uppercase tracking-wider text-neutral-300 mb-4 flex items-center gap-2">
-              <Cpu className="w-3.5 h-3.5 text-red-400" />
-              Módulos Soberanos
-            </h3>
-            <ul className="space-y-2.5 text-xs text-neutral-400">
-              <li>
-                <Link
-                  href="/"
-                  className="hover:text-red-400 transition-colors flex items-center justify-between"
-                >
-                  <span>Portal Institucional</span>
-                  <span className="text-[10px] text-neutral-600">/</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/showcase"
-                  className="hover:text-red-400 transition-colors flex items-center justify-between"
-                >
-                  <span>Showcase &amp; C.V</span>
-                  <span className="text-[10px] text-red-500/80">PRO</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/comunidade"
-                  className="hover:text-red-400 transition-colors flex items-center justify-between"
-                >
-                  <span>Área de Membros (Visuals)</span>
-                  <span className="text-[10px] text-red-500/80">PRO</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/builder"
-                  className="hover:text-red-400 transition-colors flex items-center justify-between"
-                >
-                  <span>Form Builder Cinemático</span>
-                  <span className="text-[10px] text-neutral-600">SaaS</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/shop"
-                  className="hover:text-red-400 transition-colors flex items-center justify-between"
-                >
-                  <span>Loja &amp; Ativos</span>
-                  <span className="text-[10px] text-amber-500/80">VAULT</span>
-                </Link>
-              </li>
-            </ul>
-          </div>
+      {/* Linha superior de iluminação especular do vidro com halo carmesim */}
+      <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-red-500/70 to-transparent pointer-events-none" />
+      <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[700px] h-32 bg-red-600/30 blur-[90px] pointer-events-none" />
 
-          {/* Coluna 3: Infraestrutura & Camada de Dados */}
-          <div>
-            <h3 className="text-xs font-bold uppercase tracking-wider text-neutral-300 mb-4 flex items-center gap-2">
-              <Database className="w-3.5 h-3.5 text-red-400" />
-              Infraestrutura
-            </h3>
-            <ul className="space-y-2 text-xs text-neutral-400">
-              <li className="flex items-center gap-2">
-                <span className="text-neutral-500">•</span>
-                <span>Next.js 15 App Router & React 19</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="text-neutral-500">•</span>
-                <span>PostgreSQL Universal & Drizzle ORM</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="text-neutral-500">•</span>
-                <span>Three.js + OGL Shaders a 60 FPS</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="text-neutral-500">•</span>
-                <span>Tailwind CSS v4 & Glassmorphism</span>
-              </li>
-            </ul>
-          </div>
+      {/* Brilho fluido de energia vermelha na base do rodapé */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-red-950/40 via-red-900/10 to-transparent pointer-events-none" />
 
-          {/* Coluna 4: Governança & Contato */}
-          <div>
-            <h3 className="text-xs font-bold uppercase tracking-wider text-neutral-300 mb-4 flex items-center gap-2">
-              <Shield className="w-3.5 h-3.5 text-red-400" />
-              Governança
-            </h3>
-            <p className="text-xs text-neutral-400 leading-relaxed mb-3">
-              Desenvolvido sob o selo de soberania e integridade técnica absoluta por Mateus Celestino.
-            </p>
-            <div className="glass-pill rounded-xl p-3 text-[11px] text-neutral-300 space-y-1">
-              <div className="text-neutral-400">Arquiteto Oficial:</div>
-              <div className="font-semibold text-white">Mateus Celestino</div>
-              <div className="text-neutral-500 text-[10px] font-mono">
-                202405039459@alunos.estacio.br
-              </div>
-            </div>
-          </div>
+      <div className="w-full px-4 sm:px-6 lg:px-10 xl:px-16 py-10 relative z-10 flex flex-col items-center justify-center gap-6">
+
+        {/* Botões de Acesso Rápido a Privacidade e Termos */}
+        <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+          <Link
+            href="/privacidade"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl glass-crystal text-xs font-mono text-neutral-200 hover:text-white border border-white/10 hover:border-red-500/60 hover:shadow-[0_0_25px_rgba(255,7,58,0.35)] transition-all duration-300 group cursor-pointer"
+          >
+            <Shield className="w-4 h-4 text-red-500 group-hover:scale-110 transition-transform" />
+            <span className="font-medium tracking-wide">Privacidade Blindada</span>
+          </Link>
+
+          <span className="w-1.5 h-1.5 rounded-full bg-red-500/50 hidden sm:block" />
+
+          <Link
+            href="/termos"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl glass-crystal text-xs font-mono text-neutral-200 hover:text-white border border-white/10 hover:border-red-500/60 hover:shadow-[0_0_25px_rgba(255,7,58,0.35)] transition-all duration-300 group cursor-pointer"
+          >
+            <FileText className="w-4 h-4 text-red-500 group-hover:scale-110 transition-transform" />
+            <span className="font-medium tracking-wide">Termos de Uso Soberanos</span>
+          </Link>
         </div>
 
-        {/* Linha Inferior com Copyright */}
-        <div className="mt-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500">
-          <div>
-            &copy; {currentYear} Mateus Celestino Pro Software. Todos os direitos reservados.
+        {/* Separador de Energia Carmesim */}
+        <div className="w-full max-w-xl h-[1px] bg-gradient-to-r from-transparent via-red-500/30 to-transparent" />
+
+        {/* Identificação Oficial Solicitada: Mateus Celestino Pro X, Ano e Todos os Direitos Registrados */}
+        <div className="text-center space-y-2">
+          <div className="flex items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm font-mono text-neutral-300 flex-wrap">
+            <span className="font-black tracking-wider uppercase text-white drop-shadow-[0_0_12px_rgba(255,7,58,0.4)]">
+              MATEUS CELESTINO PRO X
+            </span>
+            <span className="text-red-500 font-bold">•</span>
+            <span className="text-neutral-200 font-semibold">{currentYear}</span>
+            <span className="text-red-500 font-bold">•</span>
+            <span className="inline-flex items-center gap-1.5 text-neutral-300">
+              <CheckCircle2 className="w-3.5 h-3.5 text-red-500 shrink-0" />
+              <span>Todos os direitos registrados.</span>
+            </span>
           </div>
-          <div className="flex items-center gap-4 text-[11px]">
-            <span className="text-neutral-400">Privacidade Blindada</span>
-            <span>•</span>
-            <span className="text-neutral-400">Termos de Uso Soberanos</span>
-            <span>•</span>
-            <span className="text-red-500 font-mono">v2.0.0-UNIFIED</span>
-          </div>
+
+          <p className="text-[11px] font-mono text-neutral-400/80 tracking-widest uppercase">
+            Plataforma Soberana de Hiperautomação, IA Generativa & Engenharia de Sistemas
+          </p>
         </div>
       </div>
     </footer>
   );
 }
+

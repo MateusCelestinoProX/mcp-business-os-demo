@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { User, Award, CheckCircle, ExternalLink, MessageSquare, Mail, Shield, Cpu } from 'lucide-react';
-import FaultyTerminalShader from '@/components/shaders/FaultyTerminalShader';
+import GridScanShader from '@/components/shaders/GridScanShader';
 
 const LinkedinIcon = ({ className }: { className?: string }) => (
   <svg className={className} fill="currentColor" viewBox="0 0 24 24">
@@ -34,22 +34,24 @@ export function SobreSection({ profile }: SobreSectionProps) {
   ];
 
   return (
-    <section id="sobre" className="py-24 relative overflow-hidden">
-      {/* FaultyTerminal Shader — Vermelho Obscurecido */}
-      <FaultyTerminalShader
-        className="z-0 mix-blend-screen"
-        tint="#8a0012"
-        scale={1.35}
-        scanlineIntensity={0.65}
-        glitchAmount={0.45}
-        opacity={0.22}
+    <section id="sobre" className="py-24 relative overflow-hidden w-full">
+      {/* 0. Shader WebGL Dedicado da Sessão Sobre: GridScan Holográfico */}
+      <GridScanShader
+        className="z-0 mix-blend-screen pointer-events-none"
+        linesColor="#ff073a"
+        scanColor="#ff1744"
+        lineThickness={1.2}
+        gridScale={0.12}
+        bloomIntensity={0.65}
+        opacity={0.32}
       />
 
       {/* Zonas de Transição Internas com Blur e Escurecimento Progressivo */}
-      <div className="absolute top-0 left-0 right-0 h-28 bg-gradient-to-b from-black via-black/85 to-transparent pointer-events-none z-1 backdrop-blur-[6px]" />
-      <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-black via-black/85 to-transparent pointer-events-none z-1 backdrop-blur-[6px]" />
+      <div className="absolute top-0 left-0 right-0 h-28 bg-gradient-to-b from-black/80 via-black/40 to-transparent pointer-events-none z-1 backdrop-blur-[4px]" />
+      <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none z-1 backdrop-blur-[4px]" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="w-full px-4 sm:px-6 lg:px-10 xl:px-16 relative z-10">
+
         
         {/* Header em Vidro */}
         <div className="glass-crystal p-8 sm:p-10 rounded-3xl mb-14">

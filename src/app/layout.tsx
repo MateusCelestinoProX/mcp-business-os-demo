@@ -3,6 +3,7 @@ import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { PortalNavbar } from "@/components/portal/PortalNavbar";
 import { Footer } from "@/components/layout/Footer";
+import LiquidGlassBackground from "@/components/portal/LiquidGlassBackground";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
@@ -25,7 +26,6 @@ export const metadata: Metadata = {
     "Agentes Autônomos IA",
     "Shaders WebGL",
     "Comunidade Exclusiva",
-    "Form Builder Cinemático",
     "Cofre de Ativos",
   ],
 };
@@ -37,20 +37,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className="dark">
-      <body className="bg-[#030305] text-[#f3f4f6] antialiased selection:bg-red-500/30 selection:text-white min-h-screen flex flex-col relative overflow-x-hidden">
-        {/* Glows de Fundo Ambientais Soberanos */}
-        <div
-          className="liquid-glow-orb -top-40 left-1/4 w-[600px] h-[600px] bg-red-600/15"
-          aria-hidden="true"
-        />
-        <div
-          className="liquid-glow-orb top-[40%] -right-40 w-[500px] h-[500px] bg-red-800/10"
-          aria-hidden="true"
-        />
-        <div
-          className="liquid-glow-orb bottom-20 left-10 w-[450px] h-[450px] bg-red-950/15"
-          aria-hidden="true"
-        />
+      <body className="bg-[#0c0003] text-[#f3f4f6] antialiased selection:bg-red-500/30 selection:text-white min-h-screen flex flex-col relative overflow-x-hidden">
+        {/* Fundo Global: Piscina de Energia Vermelha Massiva e Escurricredia */}
+        <LiquidGlassBackground />
+
 
         {/* Barra de Navegação Soberana Superior */}
         <Navbar />

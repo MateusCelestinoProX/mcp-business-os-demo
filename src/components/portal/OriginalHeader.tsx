@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import {
   Layers,
   User,
@@ -61,70 +62,70 @@ export function OriginalHeader({ profile, onNavigate }: OriginalHeaderProps) {
   return (
     <header
       id="home"
-      className="relative w-full overflow-hidden bg-black flex flex-col justify-center items-center"
+      className="relative w-full overflow-hidden bg-transparent flex flex-col justify-center items-center"
     >
       {/* =========================================================================
           CINEMATIC FULL-WIDTH COVER HERO — CENTRALIZAÇÃO HARMONIOSA E SOBERANA
           ========================================================================= */}
-      <div className="relative w-full min-h-[calc(100vh-4rem)] md:min-h-[820px] lg:min-h-[88vh] flex flex-col justify-center items-center text-center pt-28 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <div className="relative w-full min-h-[calc(100vh-8.5rem)] flex flex-col justify-center items-center text-center pt-4 sm:pt-6 md:pt-8 pb-8 sm:pb-12 px-4 sm:px-6 lg:px-8 overflow-hidden">
         
-        {/* Imagem de Fundo Full-Width + 3 SHADERS DINÂMICOS ALTERNANDO A CADA 3 SEGUNDOS */}
+        {/* Imagem de Fundo Full-Width + SHADER DINÂMICO ESTÁVEL DE ALTA PERFORMANCE */}
         <div className="absolute inset-0 z-0">
           <img
             src={profile?.heroGif || '/assets/hero_landscape.gif'}
             alt="Mateus Celestino Pro X Cover Cyberpunk"
-            className="w-full h-full object-cover object-[center_40%] scale-102 transform filter brightness-[0.62] contrast-[1.2]"
+            className="w-full h-full object-cover object-[center_40%] scale-[1.02] transform filter brightness-[0.62] contrast-[1.2]"
           />
-          {/* Suíte com 3 Shaders de Personal OS Adaptados ao Vermelho Carmesim */}
+          {/* Suíte com Shaders Adaptados ao Vermelho Carmesim com Estabilidade Total */}
           <AlternatingHeroShaders />
         </div>
 
-        {/* NÚCLEO CENTRAL DO HERO — PERFEITAMENTE CENTRALIZADO */}
+        {/* NÚCLEO CENTRAL DO HERO — PERFEITAMENTE CENTRALIZADO E ENQUADRADO NA TELA */}
         <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center justify-center">
           
           {/* TAGLINE SUPERIOR / EYEBROW */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-950/60 border border-red-500/40 text-xs sm:text-sm font-mono text-red-400 font-bold tracking-widest uppercase mb-6 shadow-[0_0_25px_rgba(255,7,58,0.25)]">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-950/60 border border-red-500/40 text-[11px] sm:text-xs font-mono text-red-400 font-bold tracking-widest uppercase mb-4 shadow-[0_0_25px_rgba(255,7,58,0.25)]">
             <span className="w-2 h-2 rounded-full bg-[#ff073a] animate-pulse" />
             <span>Digital Marketing, Generative A.I, Sales.</span>
           </div>
 
           {/* Ícone de Vidro Lapidado com Halo Sangue Obscurecido */}
-          <div className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-3xl p-2 glass-crystal shadow-[0_25px_60px_rgba(0,0,0,0.98),0_0_35px_rgba(138,0,18,0.45)] shrink-0 group mb-6 transition-transform duration-500 hover:scale-105">
-            <div className="w-full h-full rounded-2xl overflow-hidden bg-black border border-white/20">
+          <div className="relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-2xl sm:rounded-3xl p-2 glass-crystal shadow-[0_20px_50px_rgba(0,0,0,0.95),0_0_30px_rgba(138,0,18,0.4)] shrink-0 group mb-4 transition-transform duration-500 hover:scale-105">
+            <div className="w-full h-full rounded-xl sm:rounded-2xl overflow-hidden bg-black border border-white/20">
               <img
                 src={profile?.siteIcon || '/assets/site_icon.webp'}
                 alt="Mateus Celestino Pro X Ícone Oficial"
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
               />
             </div>
-            <span className="absolute -top-1.5 -right-1.5 w-4 h-4 rounded-full bg-[#9e0015] shadow-[0_0_12px_#9e0015] animate-pulse border-2 border-black" />
+            <span className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-[#9e0015] shadow-[0_0_12px_#9e0015] animate-pulse border-2 border-black" />
           </div>
 
           {/* Título Monumental Soberano */}
-          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight text-white leading-none drop-shadow-[0_20px_35px_rgba(0,0,0,0.9)] mb-4">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-white leading-tight drop-shadow-[0_20px_35px_rgba(0,0,0,0.9)] mb-3">
             MATEUS CELESTINO PRO X
           </h1>
 
-          {/* Subtítulo Especialista Atualizado */}
-          <p className="text-xs sm:text-sm md:text-base font-mono text-zinc-300 flex flex-wrap items-center justify-center gap-2 max-w-3xl mx-auto mb-5">
-            <span className="text-white font-semibold">A.I Infrascruture</span>
+          {/* Subtítulo Especialista Corrigido */}
+          <p className="text-xs sm:text-sm font-mono text-zinc-300 flex flex-wrap items-center justify-center gap-2 max-w-3xl mx-auto mb-4">
+            <span className="text-white font-semibold">A.I. Infrastructure</span>
             <span className="text-[#ff073a]">•</span>
             <span className="text-zinc-200 font-medium">Agentic Workers</span>
             <span className="text-[#ff073a]">•</span>
-            <span className="text-zinc-300 font-medium">A.i system</span>
+            <span className="text-zinc-300 font-medium">A.I. Systems</span>
             <span className="text-[#ff073a]">•</span>
-            <span className="text-red-400 font-semibold">Sod Demanda SmartSoftware Business</span>
+            <span className="text-red-400 font-semibold">Sob Demanda • Smart Software Business</span>
           </p>
 
           {/* Descrição com Botão Sutil para o SiteMap */}
-          <div className="text-sm sm:text-base text-zinc-300 font-light leading-relaxed max-w-2xl mx-auto mb-8 space-y-2">
+          <div className="text-xs sm:text-sm md:text-base text-zinc-300 font-light leading-relaxed max-w-2xl mx-auto mb-6 space-y-1.5">
             <p>
               Esse é Mateus Celestino PRO X, o portal de Inteligência Artificial aplicada a Business e Marketing digital de forma completa.
             </p>
             <p>
               Inteligência artificial aplicada, esteiras de automação e conteúdo de alto valor técnico você encontra exatamente aqui.
             </p>
-            <p className="flex items-center justify-center flex-wrap gap-1 text-zinc-200 pt-1">
+            <p className="flex items-center justify-center flex-wrap gap-1 text-zinc-200 pt-0.5">
               <span>Use o SiteMap (</span>
               <button
                 type="button"
@@ -139,21 +140,20 @@ export function OriginalHeader({ profile, onNavigate }: OriginalHeaderProps) {
             </p>
           </div>
 
-          {/* Ações Primárias do Hero Centralizadas */}
-          <div className="flex flex-wrap items-center justify-center gap-4 w-full max-w-lg mx-auto">
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="glass-button-fired px-7 py-4 rounded-2xl text-xs sm:text-sm font-mono font-bold text-white flex items-center justify-center gap-2.5 shadow-[0_0_35px_rgba(255,7,58,0.55)] hover:scale-105 active:scale-95 transition-all flex-1 sm:flex-initial"
+          {/* Ações Primárias do Hero Centralizadas & Responsivas */}
+          <div className="flex flex-wrap items-center justify-center gap-3.5 w-full max-w-2xl mx-auto">
+            <Link
+              href="/contato"
+              className="glass-button-fired px-6 py-3.5 sm:px-7 sm:py-3.5 rounded-2xl text-xs sm:text-sm font-mono font-bold text-white flex items-center justify-center gap-2.5 shadow-[0_0_35px_rgba(255,7,58,0.55)] hover:scale-105 active:scale-95 transition-all flex-1 sm:flex-initial cursor-pointer"
+              title="Abrir página de contato"
             >
               <MessageSquare className="w-4 h-4 fill-white/20" />
-              <span>QUERO AUTOMATIZAR TUDO</span>
-            </a>
+              <span>vamos  automatizar ?!</span>
+            </Link>
 
             <button
               onClick={handleExplore}
-              className="glass-interactive px-6 py-4 rounded-2xl text-xs sm:text-sm font-mono font-bold text-zinc-200 hover:text-white flex items-center justify-center gap-2 border border-white/15 hover:border-[#ff073a]/50 hover:scale-105 active:scale-95 transition-all flex-1 sm:flex-initial cursor-pointer"
+              className="glass-interactive px-5 py-3.5 sm:px-6 sm:py-3.5 rounded-2xl text-xs sm:text-sm font-mono font-bold text-zinc-200 hover:text-white flex items-center justify-center gap-2 border border-white/15 hover:border-[#ff073a]/50 hover:scale-105 active:scale-95 transition-all flex-1 sm:flex-initial cursor-pointer"
             >
               <BookOpen className="w-4 h-4 text-[#ff073a]" />
               <span>EXPLORAR GUIAS TÉCNICOS (176)</span>
@@ -163,13 +163,13 @@ export function OriginalHeader({ profile, onNavigate }: OriginalHeaderProps) {
           {/* Indicador de Navegação Inferior para o Acervo */}
           <button
             onClick={handleExplore}
-            className="mt-12 inline-flex flex-col items-center gap-1.5 text-zinc-400 hover:text-white transition-colors cursor-pointer group"
+            className="mt-6 sm:mt-8 inline-flex flex-col items-center gap-1 text-zinc-400 hover:text-white transition-colors cursor-pointer group"
             title="Rolar para os artigos"
           >
             <span className="text-[10px] font-mono tracking-widest uppercase text-zinc-300 group-hover:text-[#ff073a] transition-colors">
               ACERVO SOBERANO
             </span>
-            <ArrowDown className="w-4 h-4 text-[#ff073a] animate-bounce" />
+            <ArrowDown className="w-3.5 h-3.5 text-[#ff073a] animate-bounce" />
           </button>
 
         </div>
@@ -183,8 +183,8 @@ export function OriginalHeader({ profile, onNavigate }: OriginalHeaderProps) {
         onNavigateSection={onNavigate}
       />
 
-      {/* Zona Suave de Escurecimento e Blur Inferior do Cover */}
-      <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black via-black/80 to-transparent pointer-events-none z-10 backdrop-blur-[2px]" />
+      {/* Zona Suave de Fade Inferior do Cover — Sem sobrecarga de backdrop-blur */}
+      <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#0c0003]/80 to-transparent pointer-events-none z-10" />
     </header>
   );
 }

@@ -8,9 +8,7 @@ import PhotografyContactHub from '@/components/portal/PhotografyContactHub';
 
 export default function ContatoPage() {
   return (
-    <div className="relative min-h-[100dvh] w-full bg-black text-[#ececec] flex flex-col selection:bg-[#ff073a] selection:text-white overflow-hidden">
-      {/* 0. Carmesim Glass Refraction Layer */}
-      <LiquidGlassBackground />
+    <div className="relative min-h-[100dvh] w-full bg-transparent text-[#ececec] flex flex-col selection:bg-[#ff073a] selection:text-white overflow-hidden">
 
       {/* Barra superior de retorno / navegação rápida */}
       <header className="fixed top-4 left-4 right-4 z-50 flex items-center justify-between pointer-events-none">
@@ -31,8 +29,8 @@ export default function ContatoPage() {
         </div>
       </header>
 
-      {/* Main Content: Photografy Contact Hub Injetado */}
-      <main className="flex-1 w-full h-full relative z-10 flex flex-col items-center justify-center">
+      {/* Main Content: Photografy Contact Hub Injetado em Tamanho Normal Soberano */}
+      <main className="flex-1 w-full h-full relative z-10 flex flex-col items-center justify-center py-8 sm:py-12 px-4">
         <PhotografyContactHub isEmbedded={false} />
       </main>
     </div>

@@ -19,6 +19,7 @@ import { GlassCard } from "@/components/ui/GlassCard";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { getAllArticles, getCategoriesWithCounts, Article } from "@/lib/articles";
+import RippleGridShader from "@/components/shaders/RippleGridShader";
 
 const ITEMS_PER_PAGE = 12;
 
@@ -76,9 +77,20 @@ export default function ArtigosPortalPage() {
   };
 
   return (
-    <div className="min-h-screen py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-12">
+    <div className="min-h-screen py-8 px-4 sm:px-6 lg:px-10 xl:px-16 w-full space-y-12 relative overflow-hidden">
+      {/* Shader WebGL do Acervo de Artigos: RippleGrid */}
+      <RippleGridShader
+        className="z-0 mix-blend-screen pointer-events-none"
+        gridColor="#ff073a"
+        rippleIntensity={0.06}
+        gridSize={18.0}
+        glowIntensity={0.25}
+        opacity={0.3}
+      />
+
       {/* Header do Acervo */}
-      <section className="text-center space-y-4 pt-4 pb-2 relative">
+      <section className="text-center space-y-4 pt-4 pb-2 relative z-10">
+
         <div className="inline-flex items-center gap-2">
           <Badge variant="red" dot className="py-1 px-3">
             ACERVO EDITORIAL SOBERANO • 176 GUIAS PRÁTICOS

@@ -1,5 +1,5 @@
 import { db, isDbConfigured } from './index';
-import { adminUsers, members, forms, articles, libraryItems, leads } from './schema';
+import { adminUsers, members, articles, libraryItems, leads } from './schema';
 import { hashPassword } from '../auth/auth';
 import { eq } from 'drizzle-orm';
 
@@ -376,57 +376,7 @@ export async function runSeed() {
       }
     }
 
-    // 3. Formulário de Diagnóstico Padrão
-    const formSlug = 'diagnostico-ia-automacao';
-    const existingForm = await db
-      .select()
-      .from(forms)
-      .where(eq(forms.slug, formSlug))
-      .limit(1);
-
-    if (existingForm.length === 0) {
-      await db.insert(forms).values({
-        title: 'Diagnóstico de IA & Automação de Processos',
-        description: 'Mapeamento estratégico de gargalos e oportunidades para implementação de agentes autônomos.',
-        slug: formSlug,
-        isActive: true,
-        schemaJson: {
-          steps: [
-            {
-              id: 'step_1',
-              title: 'Identificação',
-              fields: [
-                { id: 'nome', label: 'Nome Completo', type: 'text', required: true },
-                { id: 'email', label: 'E-mail Corporativo', type: 'email', required: true },
-                { id: 'whatsapp', label: 'WhatsApp com DDD', type: 'phone', required: true },
-              ],
-            },
-            {
-              id: 'step_2',
-              title: 'Cenário Atual',
-              fields: [
-                {
-                  id: 'faturamento',
-                  label: 'Faixa de Faturamento Mensal',
-                  type: 'select',
-                  options: ['Até R$ 50k', 'R$ 50k a R$ 200k', 'R$ 200k a R$ 1M', 'Acima de R$ 1M'],
-                  required: true,
-                },
-                {
-                  id: 'desafio',
-                  label: 'Qual o principal gargalo operacional da sua operação hoje?',
-                  type: 'textarea',
-                  required: true,
-                },
-              ],
-            },
-          ],
-        },
-      });
-      console.log(`✅ [Seed] Formulário padrão criado: ${formSlug}`);
-    }
-
-    // 4. Lead Inicial de Demonstração
+    // 3. Lead Inicial de Demonstração
     await db.insert(leads).values({
       name: 'Arthur Pendelton',
       email: 'arthur@enterprise.io',
@@ -451,8 +401,8 @@ export async function runSeed() {
       await db.insert(articles).values({
         slug: articleSlug,
         title: 'Arquitetura da Plataforma Unificada Soberana em Next.js 15 & Drizzle',
-        summary: 'Como consolidamos 4 ecossistemas de software em uma infraestrutura resiliente e orientada a performance.',
-        content: '# Plataforma Unificada Soberana\n\nConsolidação total de Shaders WebGL, Drizzle ORM, Form Builder e Biblioteca Oculta.',
+        summary: 'Como consolidamos os ecossistemas de software em uma infraestrutura resiliente e orientada a performance.',
+        content: '# Plataforma Unificada Soberana\n\nConsolidação total de Shaders WebGL, Drizzle ORM e Biblioteca Oculta.',
         category: 'Engenharia de Software',
         readingTime: '6 min',
         isPublished: true,

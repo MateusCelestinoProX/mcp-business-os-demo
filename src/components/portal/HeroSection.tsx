@@ -122,19 +122,6 @@ export function HeroSection({ onExploreArticles, onOpenLeadForm }: HeroSectionPr
               </span>
               <Zap className="w-3.5 h-3.5 text-amber-400" />
             </Button>
-
-            <Link href="/builder">
-              <Button
-                variant="outline"
-                size="lg"
-                className="gap-2 border-white/20 hover:border-red-500/60 text-neutral-200 hover:text-white"
-              >
-                <Terminal className="w-4 h-4 text-red-500" />
-                <span className="font-mono text-xs sm:text-sm uppercase tracking-wider">
-                  CRIAR FORMULÁRIO
-                </span>
-              </Button>
-            </Link>
           </div>
         </div>
 

@@ -345,17 +345,38 @@ export default function GridScanShader({
     }
 
     const onMove = (e: MouseEvent | TouchEvent) => {
+      if (!container) return;
       const rect = container.getBoundingClientRect();
       const clientX = 'touches' in e && e.touches[0] ? e.touches[0].clientX : (e as MouseEvent).clientX;
       const clientY = 'touches' in e && e.touches[0] ? e.touches[0].clientY : (e as MouseEvent).clientY;
       if (clientX === undefined || clientY === undefined) return;
-      const nx = ((clientX - rect.left) / (rect.width || 1)) * 2 - 1;
-      const ny = -(((clientY - rect.top) / (rect.height || 1)) * 2 - 1);
+
+      const isInside =
+        clientX >= rect.left &&
+        clientX <= rect.right &&
+        clientY >= rect.top &&
+        clientY <= rect.bottom;
+
+      if (!isInside) {
+        lookTarget.set(0, 0);
+        return;
+      }
+
+      const nx = Math.max(-1, Math.min(1, ((clientX - rect.left) / (rect.width || 1)) * 2 - 1));
+      const ny = Math.max(-1, Math.min(1, -(((clientY - rect.top) / (rect.height || 1)) * 2 - 1)));
       lookTarget.set(nx, ny);
     };
 
     const onLeave = () => {
       lookTarget.set(0, 0);
+    };
+
+    const onScroll = () => {
+      if (!container) return;
+      const rect = container.getBoundingClientRect();
+      if (rect.bottom < 0 || rect.top > window.innerHeight) {
+        lookTarget.set(0, 0);
+      }
     };
 
     const onClick = () => {
@@ -364,6 +385,7 @@ export default function GridScanShader({
 
     window.addEventListener('mousemove', onMove, { passive: true });
     window.addEventListener('touchmove', onMove, { passive: true });
+    window.addEventListener('scroll', onScroll, { passive: true });
     container.addEventListener('mouseleave', onLeave);
     if (scanOnClick) {
       window.addEventListener('click', onClick);
@@ -413,6 +435,7 @@ export default function GridScanShader({
       else window.removeEventListener('resize', resize);
       window.removeEventListener('mousemove', onMove);
       window.removeEventListener('touchmove', onMove);
+      window.removeEventListener('scroll', onScroll);
       container.removeEventListener('mouseleave', onLeave);
       if (scanOnClick) window.removeEventListener('click', onClick);
       document.removeEventListener('visibilitychange', onVisibilityChange);

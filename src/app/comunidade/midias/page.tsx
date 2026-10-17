@@ -21,6 +21,7 @@ import { GlassCard } from '@/components/ui/GlassCard';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { cn } from '@/lib/utils';
+import LineWavesShader from '@/components/shaders/LineWavesShader';
 
 interface MediaItem {
   id: string;
@@ -148,9 +149,20 @@ export default function MidiasPage() {
   };
 
   return (
-    <div className="min-h-screen py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-10">
+    <div className="min-h-screen py-10 px-4 sm:px-6 lg:px-10 xl:px-16 w-full space-y-10 relative overflow-hidden">
+      {/* Shader WebGL do Catálogo de Mídias: LineWaves */}
+      <LineWavesShader
+        className="z-0 mix-blend-screen pointer-events-none"
+        color1="#ff073a"
+        color2="#8a0012"
+        color3="#3d0006"
+        opacity={0.3}
+        speed={0.2}
+      />
+
       {/* Top Header & Navigation */}
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 relative z-10">
+
         <div>
           <Link
             href="/comunidade"

@@ -7,35 +7,34 @@ import {
   BookOpen,
   User,
   Mail,
-  Search,
   MessageSquare,
 } from 'lucide-react';
 
 export interface PortalNavbarProps {
   activeTab?: string;
   onNavigate?: (tabId: string) => void;
-  onOpenSearch?: () => void;
   profileWhatsapp?: string;
 }
 
 export function PortalNavbar({
   activeTab = 'home',
   onNavigate,
-  onOpenSearch,
   profileWhatsapp,
 }: PortalNavbarProps) {
   const pathname = usePathname();
   const [currentSection, setCurrentSection] = useState(activeTab);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // Monitorar scroll e atualizar aba ativa se estiver na home
+  // Monitorar scroll suave sem layout thrashing
   useEffect(() => {
     if (pathname !== '/') {
       setCurrentSection('');
       return;
     }
 
-    const handleScroll = () => {
+    let ticking = false;
+
+    const updateActiveSection = () => {
       const scrollY = window.scrollY;
       setIsScrolled(scrollY > 80);
 
@@ -46,7 +45,7 @@ export function PortalNavbar({
         const el = document.getElementById(sectionId);
         if (el) {
           const rect = el.getBoundingClientRect();
-          if (rect.top <= 200) {
+          if (rect.top <= 220) {
             detected = sectionId;
             break;
           }
@@ -54,10 +53,18 @@ export function PortalNavbar({
       }
 
       setCurrentSection(detected);
+      ticking = false;
+    };
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateActiveSection);
+        ticking = true;
+      }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
+    updateActiveSection();
     return () => window.removeEventListener('scroll', handleScroll);
   }, [pathname]);
 
@@ -92,26 +99,6 @@ export function PortalNavbar({
       } else {
         window.location.href = `/#${id}`;
       }
-    }
-  };
-
-  const handleSearchClick = () => {
-    if (onOpenSearch) {
-      onOpenSearch();
-      return;
-    }
-
-    if (pathname === '/') {
-      const el = document.getElementById('publicacoes');
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth' });
-        setTimeout(() => {
-          const input = document.querySelector('#publicacoes input[type="text"]') as HTMLInputElement;
-          if (input) input.focus();
-        }, 250);
-      }
-    } else {
-      window.location.href = '/artigos';
     }
   };
 
@@ -151,20 +138,8 @@ export function PortalNavbar({
           })}
         </div>
 
-        {/* Ações Rápidas à Direita: Buscar (⌘K) + CTA WhatsApp */}
+        {/* Ação Rápida à Direita: CTA WhatsApp Soberano */}
         <div className="flex items-center gap-2">
-          <button
-            onClick={handleSearchClick}
-            className="flex items-center gap-2 glass-crystal hover:border-[#ff073a]/50 text-zinc-300 hover:text-white px-3 py-1.5 rounded-xl text-xs font-mono transition-all duration-300 shadow-lg cursor-pointer"
-            title="Pesquisar artigos do acervo (⌘K)"
-          >
-            <Search className="w-3.5 h-3.5 text-[#ff073a]" />
-            <span className="hidden sm:inline">Buscar</span>
-            <kbd className="hidden sm:inline-block px-1.5 py-0.5 text-[9px] bg-white/10 border border-white/15 rounded text-zinc-300 font-mono">
-              ⌘K
-            </kbd>
-          </button>
-
           <a
             href={whatsappUrl}
             target="_blank"

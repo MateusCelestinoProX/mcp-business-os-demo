@@ -492,27 +492,12 @@ export function UniversalSitemapModal({
                           SAAS & MASTER
                         </span>
                       </h4>
-                      <p className="text-[11px] text-zinc-400">Construtor cinemático de formulários e controle admin soberano</p>
+                      <p className="text-[11px] text-zinc-400">Controle administrativo e governança soberana</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                  <button
-                    onClick={() => handleAction('route', '/builder')}
-                    className="p-3.5 rounded-xl bg-white/[0.02] hover:bg-purple-950/30 border border-white/[0.06] hover:border-purple-500/30 text-left transition-all cursor-pointer group/btn"
-                  >
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs font-bold text-white group-hover/btn:text-purple-300">
-                        Form Builder Cinemático
-                      </span>
-                      <ExternalLink className="w-3.5 h-3.5 text-purple-400" />
-                    </div>
-                    <span className="text-[10px] text-zinc-500 font-mono block mt-1">
-                      /builder • Lógica condicional, webhooks e SaaS
-                    </span>
-                  </button>
-
+                <div className="grid grid-cols-1 gap-2.5">
                   <button
                     onClick={() => handleAction('route', '/admin')}
                     className="p-3.5 rounded-xl bg-white/[0.02] hover:bg-red-950/30 border border-white/[0.06] hover:border-red-500/30 text-left transition-all cursor-pointer group/btn"
@@ -525,7 +510,7 @@ export function UniversalSitemapModal({
                       <ExternalLink className="w-3.5 h-3.5 text-red-400" />
                     </div>
                     <span className="text-[10px] text-zinc-500 font-mono block mt-1">
-                      /admin • Controle de artigos Notion, leads e membros
+                      /admin • Gestão unificada, leads, mídias e telemetria
                     </span>
                   </button>
                 </div>

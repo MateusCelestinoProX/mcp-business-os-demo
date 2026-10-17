@@ -290,7 +290,7 @@ export function ShopSection({ shopData, onOpenContact }: ShopSectionProps) {
       <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black via-black/85 to-transparent pointer-events-none z-1 backdrop-blur-[6px]" />
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black via-black/85 to-transparent pointer-events-none z-1 backdrop-blur-[6px]" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="w-full px-4 sm:px-6 lg:px-10 xl:px-16 relative z-10">
         
         {/* HEADER & HERO DA LOJA ORIGINAL NOTION EM 2 COLUNAS */}
         <div className="glass-crystal p-8 sm:p-12 rounded-3xl mb-14 border border-white/10 shadow-2xl">

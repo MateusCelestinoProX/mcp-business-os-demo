@@ -160,14 +160,28 @@ export default function RippleGridShader({
     setSize();
 
     const handleMouseMove = (e: MouseEvent) => {
+      if (!container || !program?.uniforms) return;
       const rect = container.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width;
-      const y = 1.0 - (e.clientY - rect.top) / rect.height;
+      const isInside =
+        e.clientX >= rect.left &&
+        e.clientX <= rect.right &&
+        e.clientY >= rect.top &&
+        e.clientY <= rect.bottom;
+
+      if (!isInside) {
+        program.uniforms.mouseInfluence.value = 0.0;
+        return;
+      }
+
+      const x = Math.max(0, Math.min(1, (e.clientX - rect.left) / (rect.width || 1)));
+      const y = Math.max(0, Math.min(1, 1.0 - (e.clientY - rect.top) / (rect.height || 1)));
       program.uniforms.mousePosition.value = [x, y];
       program.uniforms.mouseInfluence.value = 1.0;
     };
     const handleMouseLeave = () => {
-      program.uniforms.mouseInfluence.value = 0.0;
+      if (program?.uniforms) {
+        program.uniforms.mouseInfluence.value = 0.0;
+      }
     };
 
     window.addEventListener('mousemove', handleMouseMove, { passive: true });

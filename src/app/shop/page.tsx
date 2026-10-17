@@ -13,11 +13,9 @@ export default function ShopPage() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-[#ececec] flex flex-col selection:bg-[#ff073a] selection:text-white relative">
-      {/* Dynamic Liquid Carmesim Refraction Layer */}
-      <LiquidGlassBackground />
+    <div className="min-h-screen bg-transparent text-[#ececec] flex flex-col selection:bg-[#ff073a] selection:text-white relative">
 
-      <div className="relative z-10 w-full pt-4 pb-2 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div className="relative z-10 w-full pt-4 pb-2 px-4 sm:px-6 lg:px-10 xl:px-16">
         {/* Breadcrumb e Status do Shop */}
         <div className="flex flex-wrap items-center justify-between gap-4 py-3 border-b border-white/10">
           <div className="flex items-center gap-3">

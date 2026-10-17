@@ -16,7 +16,6 @@ import ArticleModal, { ArticleData } from '@/components/portal/ArticleModal';
 import LegalModal from '@/components/portal/LegalModal';
 import ShaderTransitionZone from '@/components/shaders/ShaderTransitionZone';
 import ShaderBackground from '@/components/shaders/ShaderBackground';
-import { EcosystemShowcase } from '@/components/portal/EcosystemShowcase';
 import { Button } from '@/components/ui/Button';
 
 import rawArticles from '@/data/articles-summary.json';
@@ -59,19 +58,8 @@ export default function HomePage() {
     }
   };
 
-  const handleOpenSearch = () => {
-    const el = document.getElementById('publicacoes');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-    setTimeout(() => {
-      if (searchInputRef.current) searchInputRef.current.focus();
-    }, 250);
-  };
-
   return (
-    <div className="min-h-screen bg-black text-[#ececec] flex flex-col selection:bg-[#ff073a] selection:text-white relative">
-      {/* 0. Dynamic Liquid Carmesim Refraction Layer */}
-      <LiquidGlassBackground />
-
+    <div className="min-h-screen bg-transparent text-[#ececec] flex flex-col selection:bg-[#ff073a] selection:text-white relative">
       <main className="flex-1 relative z-10">
 
         {/* =========================================================================
@@ -82,15 +70,15 @@ export default function HomePage() {
           onNavigate={handleNavigate}
         />
 
-        {/* ZONA DE TRANSIÇÃO 01 -> 02: Grid Scan -> Ripple Grid */}
+        {/* ZONA DE TRANSIÇÃO 01 -> 02: Hero -> Acervo */}
         <ShaderTransitionZone
-          from="GRID SCAN"
-          to="RIPPLE GRID"
+          from="HERO PORTAL"
+          to="ACERVO TÉCNICO"
           index="01 // 02"
         />
 
         {/* =========================================================================
-            2. ACERVO HISTÓRICO & TÉCNICO (176 ARTIGOS) & SHADER 02: RIPPLE GRID
+            2. ACERVO HISTÓRICO & TÉCNICO (176 ARTIGOS)
             ========================================================================= */}
         <div id="publicacoes">
           <MainNotionLayout
@@ -102,15 +90,15 @@ export default function HomePage() {
           />
         </div>
 
-        {/* ZONA DE TRANSIÇÃO 02 -> 03: Ripple Grid -> Faulty Terminal */}
+        {/* ZONA DE TRANSIÇÃO 02 -> 03: Acervo -> Sobre */}
         <ShaderTransitionZone
-          from="RIPPLE GRID"
-          to="FAULTY TERMINAL"
+          from="ACERVO TÉCNICO"
+          to="SOBRE O AUTOR"
           index="02 // 03"
         />
 
         {/* =========================================================================
-            3. SOBRE MATEUS CELESTINO PRO X & SHADER 03: FAULTY TERMINAL
+            3. SOBRE MATEUS CELESTINO PRO X
             ========================================================================= */}
         <div id="sobre">
           <SobreSection
@@ -118,21 +106,16 @@ export default function HomePage() {
           />
         </div>
 
-        {/* ZONA DE TRANSIÇÃO 03 -> END: Faulty Terminal -> Terminal de Contato */}
+        {/* ZONA DE TRANSIÇÃO 03 -> END: Sobre -> Contato */}
         <ShaderTransitionZone
-          from="FAULTY TERMINAL"
-          to="TERMINAL DE CONTATO"
+          from="SOBRE O AUTOR"
+          to="CANAL DIRETO"
           index="03 // END"
         />
 
 
         {/* =========================================================================
-            8. VITRINE DOS 4 ECOSSISTEMAS UNIFICADOS DE MATEUS CELESTINO PRO X
-            ========================================================================= */}
-        <EcosystemShowcase />
-
-        {/* =========================================================================
-            9. CANAL DIRETO & FORMULÁRIO DE CAPTURA DE LEADS DE ALTA CONVERSÃO
+            8. CANAL DIRETO & FORMULÁRIO DE CAPTURA DE LEADS DE ALTA CONVERSÃO
             ========================================================================= */}
         <div id="contato">
           <ContatoSection
@@ -141,12 +124,12 @@ export default function HomePage() {
         </div>
 
         {/* =========================================================================
-            10. BANNER FINAL DE FECHAMENTO SOBERANO
+            9. BANNER FINAL DE FECHAMENTO SOBERANO
             ========================================================================= */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
-          <div className="glass-crystal p-8 sm:p-14 rounded-3xl text-center space-y-6 border border-red-500/30 shadow-[0_0_50px_rgba(138,0,18,0.3)] relative overflow-hidden">
-            {/* Fundo Cinemático Liquid Chrome em Vermelho Obscurecido */}
-            <ShaderBackground mode="liquidchrome" colorHex="#8a0012" opacity={0.25} fixed={false} />
+        <section className="py-16 px-4 sm:px-6 lg:px-10 xl:px-16 w-full">
+          <div className="glass-crystal p-8 sm:p-14 rounded-3xl text-center space-y-6 border border-red-500/40 shadow-[0_0_60px_rgba(255,7,58,0.25),0_25px_60px_rgba(0,0,0,0.85)] relative overflow-hidden">
+            {/* Fundo Cinemático Liquid Chrome em Vermelho Carmesim */}
+            <ShaderBackground mode="liquidchrome" colorHex="#b80018" opacity={0.35} fixed={false} />
 
             <div className="relative z-10 space-y-6">
               <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-950/40 border border-red-800/40 text-xs font-mono text-red-400 font-bold uppercase tracking-wider">
@@ -159,8 +142,8 @@ export default function HomePage() {
               </h2>
 
             <p className="text-sm sm:text-base text-neutral-300 font-light max-w-2xl mx-auto leading-relaxed">
-              Junte-se à comunidade restrita, acesse o cofre com mais de 400 recursos confidenciais
-              ou construa formulários cinemáticos com o Form Builder.
+              Junte-se à comunidade restrita, acesse o acervo com centenas de recursos confidenciais
+              e acelere sua operação com arquitetura de inteligência artificial de alta performance.
             </p>
 
             <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
@@ -170,9 +153,9 @@ export default function HomePage() {
                   <span>Entrar na Área de Membros</span>
                 </Button>
               </Link>
-              <Link href="/builder">
+              <Link href="/shop">
                 <Button variant="glass" size="lg" className="gap-2">
-                  <span>Criar Formulário Agora</span>
+                  <span>Conhecer a Loja de Ativos</span>
                   <ArrowRight className="w-4 h-4" />
                 </Button>
               </Link>

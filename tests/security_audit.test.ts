@@ -5,7 +5,6 @@ import { signToken } from '../src/lib/auth/jwt';
 import { GET as getFinance } from '../src/app/api/finance/route';
 import { POST as postShop } from '../src/app/api/admin/shop-resources/route';
 import { POST as postArticle } from '../src/app/api/articles/route';
-import { PUT as putForm, DELETE as deleteForm } from '../src/app/api/forms/[id]/route';
 import { POST as postSendEmail } from '../src/app/api/send-email/route';
 import { GET as getDownload } from '../src/app/api/library/download/route';
 import { NextRequest } from 'next/server';
@@ -68,29 +67,7 @@ describe('🛡️ Plataforma Unificada Soberana — Suíte de Auditoria e Testes
     }
   });
 
-  test('4. Proteção de Integridade de Formulários: PUT e DELETE /api/forms/[id] exigem admin', async () => {
-    const prevEnv = process.env.NODE_ENV;
-    (process.env as any).NODE_ENV = 'production';
-    try {
-      const reqPut = new Request('http://localhost:3000/api/forms/form-123', {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ title: 'Defaced Form' }),
-      });
-      const resPut = await putForm(reqPut, { params: Promise.resolve({ id: 'form-123' }) });
-      assert.strictEqual(resPut.status, 401, 'PUT de formulário sem sessão deve retornar 401');
-
-      const reqDelete = new Request('http://localhost:3000/api/forms/form-123', {
-        method: 'DELETE',
-      });
-      const resDelete = await deleteForm(reqDelete, { params: Promise.resolve({ id: 'form-123' }) });
-      assert.strictEqual(resDelete.status, 401, 'DELETE de formulário sem sessão deve retornar 401');
-    } finally {
-      (process.env as any).NODE_ENV = prevEnv;
-    }
-  });
-
-  test('5. Rejeição de E-mail Malicioso / Injeção: POST /api/send-email valida destinatário', async () => {
+  test('4. Rejeição de E-mail Malicioso / Injeção: POST /api/send-email valida destinatário', async () => {
     const reqInvalid = new Request('http://localhost:3000/api/send-email', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

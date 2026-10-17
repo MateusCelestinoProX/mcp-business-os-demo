@@ -2,8 +2,8 @@
 
 import React, { useState, useMemo } from 'react';
 import { Search, Clock, ArrowUpRight, Sparkles, BookOpen, ChevronLeft, ChevronRight } from 'lucide-react';
-import RippleGridShader from '@/components/shaders/RippleGridShader';
 import { ArticleData } from './ArticleModal';
+import RippleGridShader from '../shaders/RippleGridShader';
 
 export interface CategoryItem {
   name: string;
@@ -71,24 +71,30 @@ export function MainNotionLayout({
 
   return (
     <section id="publicacoes" className="py-12 w-full relative overflow-hidden">
-      {/* RippleGrid Shader — Vermelho Obscurecido */}
+      {/* 0. Shader WebGL Dedicado da Sessão Publicações: RippleGrid */}
       <RippleGridShader
-        className="z-0 mix-blend-screen"
-        gridColor="#8a0012"
-        rippleIntensity={0.06}
-        gridSize={14.0}
-        glowIntensity={0.2}
-        opacity={0.32}
+        className="z-0 mix-blend-screen pointer-events-none"
+        gridColor="#ff073a"
+        rippleIntensity={0.08}
+        gridSize={16.0}
+        glowIntensity={0.35}
+        opacity={0.35}
       />
 
-      {/* Zonas de Transição Internas com Blur e Escurecimento Progressivo */}
-      <div className="absolute top-0 left-0 right-0 h-28 bg-gradient-to-b from-black via-black/85 to-transparent pointer-events-none z-1 backdrop-blur-[6px]" />
-      <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-black via-black/85 to-transparent pointer-events-none z-1 backdrop-blur-[6px]" />
+      {/* Cyber Dot-Grid Sutil de Alta Fidelidade */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-20"
+        style={{
+          backgroundImage: 'radial-gradient(rgba(255, 7, 58, 0.4) 1px, transparent 1px)',
+          backgroundSize: '28px 28px',
+        }}
+      />
       
       {/* =========================================================================
-          FULL-SCREEN MINIMALIST BLOG & GALLERY CONTAINER
+          FULL-SCREEN MINIMALIST BLOG & GALLERY CONTAINER (LARGURA TOTAL E COMPLETA)
           ========================================================================= */}
-      <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
+      <div className="w-full px-4 sm:px-6 lg:px-10 xl:px-16 relative z-10">
+
         
         {/* Barra de Controle Horizontal Minimalista em Vidro Líquido */}
         <div className="glass-crystal p-6 sm:p-8 rounded-3xl mb-8 border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.85)]">
@@ -116,7 +122,7 @@ export function MainNotionLayout({
               <input
                 ref={searchInputRef as any}
                 type="text"
-                placeholder="Pesquisar artigos por título, tecnologia ou tema... (⌘K)"
+                placeholder="Pesquisar artigos por título, tecnologia ou tema..."
                 value={searchTerm}
                 onChange={(e) => { setSearchTerm(e.target.value); setCurrentPage(1); }}
                 className="w-full pl-11 pr-12 py-3 rounded-2xl glass-input text-white text-xs sm:text-sm placeholder-zinc-500 transition-all font-sans"
@@ -200,7 +206,7 @@ export function MainNotionLayout({
                     <img
                       src={art.coverImage || '/assets/hero_cover.webp'}
                       alt={art.title}
-                      className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
+                      className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500 ease-out"
                       loading="lazy"
                     />
                     

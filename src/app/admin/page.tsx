@@ -73,17 +73,6 @@ interface LeadItem {
   status?: string;
 }
 
-interface FormItem {
-  id: string;
-  title: string;
-  description?: string;
-  slug: string;
-  submissionCount?: number;
-  isActive?: boolean;
-  updatedAt?: string;
-  shaderBg?: string;
-}
-
 interface MemberItem {
   id: string;
   name: string;
@@ -153,7 +142,7 @@ export default function AdminPanelPage() {
   const [currentUser, setCurrentUser] = useState<UnifiedUser | null>(null);
   const [isClientReady, setIsClientReady] = useState(false);
   const [activeTab, setActiveTab] = useState<
-    "overview" | "posts" | "library_control" | "shop_resources" | "leads" | "builder" | "members" | "finance" | "infra"
+    "overview" | "posts" | "library_control" | "shop_resources" | "leads" | "members" | "finance" | "infra"
   >("overview");
 
   // Estados de Artigos / Posts (Editor Diary Notion-Like)
@@ -186,7 +175,6 @@ export default function AdminPanelPage() {
   // Estados de Dados Administrativos 100% Reais (Inicialmente Vazios)
   const [isLoadingData, setIsLoadingData] = useState(false);
   const [leadsList, setLeadsList] = useState<LeadItem[]>([]);
-  const [formsList, setFormsList] = useState<FormItem[]>([]);
   const [membersList, setMembersList] = useState<MemberItem[]>([]);
   const [transactions, setTransactions] = useState<TransactionItem[]>([]);
 
@@ -254,9 +242,8 @@ export default function AdminPanelPage() {
   const fetchDashboardData = async () => {
     setIsLoadingData(true);
     try {
-      const [leadsRes, formsRes, membersRes, financeRes] = await Promise.all([
+      const [leadsRes, membersRes, financeRes] = await Promise.all([
         fetch("/api/leads?limit=100").then((r) => r.json()).catch(() => ({ success: false, leads: [] })),
-        fetch("/api/forms").then((r) => r.json()).catch(() => ({ success: false, data: [] })),
         fetch("/api/members").then((r) => r.json()).catch(() => ({ success: false, members: [] })),
         fetch("/api/finance").then((r) => r.json()).catch(() => ({ success: false, transactions: [] })),
       ]);
@@ -265,12 +252,6 @@ export default function AdminPanelPage() {
         setLeadsList(leadsRes.leads);
       } else {
         setLeadsList([]);
-      }
-
-      if (formsRes.success && Array.isArray(formsRes.data)) {
-        setFormsList(formsRes.data);
-      } else {
-        setFormsList([]);
       }
 
       if (membersRes.success && Array.isArray(membersRes.members)) {
@@ -746,9 +727,6 @@ export default function AdminPanelPage() {
 
   const isMaxAdmin = hasAdminAccess(currentUser);
   const totalLeadsCount = leadsList.length;
-  const totalFormsCount = formsList.length;
-  const totalSubmissionsCount = formsList.reduce((acc, f) => acc + (f.submissionCount || 0), 0);
-
   return (
     <div className="relative min-h-screen pb-16">
       {/* Background WebGL Shader Vermelho do Personal OS com SoftAurora e OGL */}
@@ -822,7 +800,6 @@ export default function AdminPanelPage() {
             { id: "library_control", label: "Library Control (Cofre)", icon: BookOpen, count: null },
             { id: "shop_resources", label: "Loja Virtual (Shop)", icon: ShoppingBag, count: null },
             { id: "leads", label: "Leads & Tráfego UTM", icon: Users, count: totalLeadsCount },
-            { id: "builder", label: "Form Builder Cinemático", icon: FileCode2, count: totalFormsCount },
             { id: "members", label: "Membros da Comunidade", icon: Shield, count: membersList.length },
             { id: "finance", label: "Vendas & Transações", icon: CreditCard, count: transactions.length },
             { id: "infra", label: "Infraestrutura & Supabase", icon: Server, count: null },
@@ -876,13 +853,13 @@ export default function AdminPanelPage() {
 
             <GlassCard className="p-5 space-y-2 bg-white/[0.05] border border-white/15 backdrop-blur-2xl shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] hover:border-white/25 transition-all">
               <div className="flex items-center justify-between text-neutral-400">
-                <span className="text-[10px] font-mono uppercase tracking-wider">SUBMISSÕES DE FORMS</span>
-                <FileCode2 className="w-4 h-4 text-red-400" />
+                <span className="text-[10px] font-mono uppercase tracking-wider">ARTIGOS PUBLICADOS</span>
+                <FileText className="w-4 h-4 text-red-400" />
               </div>
-              <div className="text-3xl font-black text-white tracking-tight">{totalSubmissionsCount}</div>
+              <div className="text-3xl font-black text-white tracking-tight">{articlesList.length || 176}</div>
               <div className="flex items-center justify-between text-[11px] pt-1">
-                <span className="text-neutral-400 font-medium">{totalFormsCount} Formulários Ativos</span>
-                <span className="text-neutral-500">Shaders WebGL</span>
+                <span className="text-neutral-400 font-medium">Acervo Técnico</span>
+                <span className="text-neutral-500">Notion Diary Engine</span>
               </div>
             </GlassCard>
 
@@ -969,27 +946,27 @@ export default function AdminPanelPage() {
               )}
 
               <div className="pt-3 border-t border-white/5">
-                <Link
-                  href="/builder/dashboard"
-                  className="text-xs text-red-400 hover:text-red-300 flex items-center justify-between font-medium group"
+                <button
+                  onClick={() => setActiveTab("leads")}
+                  className="text-xs text-red-400 hover:text-red-300 flex items-center justify-between font-medium group w-full text-left cursor-pointer"
                 >
-                  <span>Abrir métricas de formulários</span>
+                  <span>Gerenciar leads e origens UTM</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                </Link>
+                </button>
               </div>
             </GlassCard>
 
-            {/* Status das 4 Módulos Centrais da Plataforma */}
+            {/* Status dos Módulos Centrais da Plataforma */}
             <GlassCard className="p-6 space-y-4 bg-white/[0.05] border border-white/15 backdrop-blur-2xl shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] hover:border-white/25 transition-all lg:col-span-2">
               <div className="flex items-center justify-between border-b border-white/10 pb-3">
                 <h3 className="text-sm font-bold text-white flex items-center gap-2">
                   <Layers className="w-4 h-4 text-red-500" />
                   <span>Engines da Plataforma Unificada</span>
                 </h3>
-                <span className="text-[10px] font-mono text-emerald-400">4 DE 4 OPERACIONAIS</span>
+                <span className="text-[10px] font-mono text-emerald-400">3 DE 3 OPERACIONAIS</span>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
                 <div className="p-4 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-red-500/40 backdrop-blur-md shadow-sm space-y-2 transition-all group">
                   <div className="flex items-center justify-between">
                     <span className="text-xs font-bold text-white group-hover:text-red-300 transition-colors">Portal Institucional</span>
@@ -1004,19 +981,7 @@ export default function AdminPanelPage() {
 
                 <div className="p-4 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-red-500/40 backdrop-blur-md shadow-sm space-y-2 transition-all group">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-white group-hover:text-red-300 transition-colors">Form Builder Cinemático</span>
-                    <Badge variant="success" dot className="text-[9px]">ONLINE</Badge>
-                  </div>
-                  <p className="text-[11px] text-neutral-300">Multi-etapas com Shaders procedural em tempo real</p>
-                  <Link href="/builder" className="text-[11px] text-red-400 hover:text-red-300 inline-flex items-center gap-1 font-medium">
-                    <span>Abrir Construtor</span>
-                    <ExternalLink className="w-3 h-3" />
-                  </Link>
-                </div>
-
-                <div className="p-4 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-red-500/40 backdrop-blur-md shadow-sm space-y-2 transition-all group">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-white group-hover:text-red-300 transition-colors">Comunidade</span>
+                    <span className="text-xs font-bold text-white group-hover:text-red-300 transition-colors">Comunidade VIP</span>
                     <Badge variant="success" dot className="text-[9px]">ONLINE</Badge>
                   </div>
                   <p className="text-[11px] text-neutral-300">Área restrita de membros com player e feeds de IA</p>
@@ -1962,102 +1927,7 @@ export default function AdminPanelPage() {
           </div>
         </GlassCard>
       )}
-
-      {/* ABA 3: FORM BUILDER CINEMÁTICO */}
-      {activeTab === "builder" && (
-        <GlassCard className="p-6 space-y-6 bg-white/[0.05] border border-white/15 backdrop-blur-2xl shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] hover:border-white/25 transition-all">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-4">
-            <div>
-              <h2 className="text-lg font-bold text-white flex items-center gap-2">
-                <FileCode2 className="w-5 h-5 text-red-500" />
-                <span>Form Builder Cinemático & Funis de Conversão</span>
-              </h2>
-              <p className="text-xs text-neutral-400">
-                Gerencie formulários com WebGL em tempo real, submissões e links de distribuição.
-              </p>
-            </div>
-
-            <div className="flex items-center gap-3">
-              <Link href="/builder/dashboard">
-                <Button variant="secondary" size="sm" className="gap-1.5 text-xs border-white/10">
-                  <BarChart3 className="w-3.5 h-3.5" />
-                  <span>Métricas de Forms</span>
-                </Button>
-              </Link>
-
-              <Link href="/builder">
-                <Button variant="fired" size="sm" className="gap-1.5 text-xs font-bold shadow-[0_0_20px_rgba(138,0,18,0.5)]">
-                  <Plus className="w-3.5 h-3.5" />
-                  <span>Criar Novo Formulário</span>
-                </Button>
-              </Link>
-            </div>
-          </div>
-
-          {formsList.length === 0 ? (
-            <div className="p-12 text-center rounded-2xl border border-white/5 bg-black/20 space-y-3">
-              <FileCode2 className="w-10 h-10 text-neutral-600 mx-auto" />
-              <div className="text-white font-medium text-sm">Nenhum formulário ativo no banco de dados</div>
-              <p className="text-xs text-neutral-400 max-w-md mx-auto">
-                Crie um novo formulário com transições WebGL e distribuição de links públicos.
-              </p>
-              <Link href="/builder" className="inline-block pt-2">
-                <Button variant="fired" size="sm" className="gap-2">
-                  <Plus className="w-4 h-4" />
-                  <span>Criar Primeiro Formulário</span>
-                </Button>
-              </Link>
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {formsList.map((form) => (
-                <div
-                  key={form.id}
-                  className="p-5 rounded-2xl bg-black/40 border border-white/10 space-y-3.5 hover:border-[#8a0012]/50 transition-all flex flex-col justify-between"
-                >
-                  <div className="space-y-2">
-                    <div className="flex items-center justify-between">
-                      <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-white/5 text-neutral-400 border border-white/5">
-                        SLUG: /{form.slug}
-                      </span>
-                      <Badge variant="success" dot className="text-[9px]">ATIVO</Badge>
-                    </div>
-                    <h3 className="text-sm font-bold text-white">{form.title}</h3>
-                    <p className="text-xs text-neutral-400 line-clamp-2">
-                      {form.description || "Formulário cinemático para coleta e qualificação de dados."}
-                    </p>
-                  </div>
-
-                  <div className="pt-3 border-t border-white/5 space-y-3">
-                    <div className="flex items-center justify-between text-xs text-neutral-400">
-                      <span>Respostas Coletadas:</span>
-                      <span className="font-mono font-bold text-white">{form.submissionCount || 0}</span>
-                    </div>
-
-                    <div className="flex items-center gap-2">
-                      <Link href={`/f/${form.id}`} className="flex-1">
-                        <Button variant="secondary" size="sm" className="w-full text-[11px] gap-1 justify-center border-white/10">
-                          <Eye className="w-3 h-3" />
-                          <span>Visualizar Link</span>
-                        </Button>
-                      </Link>
-
-                      <Link href="/builder" className="flex-1">
-                        <Button variant="fired" size="sm" className="w-full text-[11px] gap-1 justify-center">
-                          <FileCode2 className="w-3 h-3" />
-                          <span>Editar</span>
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-        </GlassCard>
-      )}
-
-      {/* ABA 4: MEMBROS DA COMUNIDADE */}
+      {/* ABA: MEMBROS DA COMUNIDADE */}
       {activeTab === "members" && (
         <GlassCard className="p-6 space-y-5 bg-white/[0.05] border border-white/15 backdrop-blur-2xl shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] hover:border-white/25 transition-all">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-4">

@@ -70,7 +70,7 @@ const DEFAULT_CONFIG = {
         cover: '/assets/notion/shop/products/n8n/Robo_Central_em_Sala_Futurista.png',
         headline: 'PULANDO DIRETO PARA A PARTE QUE IMPORTA: USAR, APLICAR E FATURAR',
         description: 'Acervo valioso de workflows do n8n prontos, testados e otimizados ao longo de meses de operação real.',
-        pageLink: '/builder',
+        pageLink: '/biblioteca',
         highlights: [
           'Acervo completo de workflows prontos e testados para produção',
           'Nutrição e qualificação de leads sem esforço manual',

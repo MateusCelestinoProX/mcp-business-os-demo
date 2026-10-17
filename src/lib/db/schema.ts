@@ -5,11 +5,10 @@ import { relations } from 'drizzle-orm';
  * ============================================================
  * PLATAFORMA UNIFICADA SOBERANA — SCHEMA DRIZZLE ORM (POSTGRESQL)
  * ============================================================
- * Consolidando os 4 ecossistemas:
+ * Consolidando os ecossistemas:
  * 1. Portal Institucional & Tráfego (mateus-celestino-pro-x)
  * 2. Área de Membros & Comunidade (visuals-app-saas)
- * 3. Form Builder Cinemático (form-builder-saas)
- * 4. Biblioteca Oculta de Recursos (s-a-a-s-full-hidden-library)
+ * 3. Biblioteca Oculta de Recursos (s-a-a-s-full-hidden-library)
  */
 
 // ------------------------------------------------------------
@@ -60,36 +59,6 @@ export const members = pgTable('members', {
   tier: varchar('tier', { length: 50 }).default('free').notNull(), // 'free' | 'pro' | 'vip'
   paymentId: varchar('payment_id', { length: 255 }),
   lastLogin: timestamp('last_login', { withTimezone: true }),
-  createdAt: timestamp('created_at', { withTimezone: true }).defaultNow().notNull(),
-});
-
-// ------------------------------------------------------------
-// 4. FORMS (Form Builder Cinemático)
-// ------------------------------------------------------------
-export const forms = pgTable('forms', {
-  id: uuid('id').defaultRandom().primaryKey(),
-  title: varchar('title', { length: 255 }).notNull(),
-  description: text('description'),
-  slug: varchar('slug', { length: 255 }).notNull().unique(),
-  schemaJson: jsonb('schema_json').notNull(),
-  isActive: boolean('is_active').default(true).notNull(),
-  userId: uuid('user_id'),
-  createdAt: timestamp('created_at', { withTimezone: true }).defaultNow().notNull(),
-  updatedAt: timestamp('updated_at', { withTimezone: true }).defaultNow().notNull(),
-}, (table) => [
-  index('forms_slug_idx').on(table.slug),
-]);
-
-// ------------------------------------------------------------
-// 5. FORM SUBMISSIONS (Respostas & Leads de Formulários)
-// ------------------------------------------------------------
-export const formSubmissions = pgTable('form_submissions', {
-  id: uuid('id').defaultRandom().primaryKey(),
-  formId: uuid('form_id')
-    .references(() => forms.id, { onDelete: 'cascade' })
-    .notNull(),
-  dataJson: jsonb('data_json').notNull(),
-  ipAddress: varchar('ip_address', { length: 64 }),
   createdAt: timestamp('created_at', { withTimezone: true }).defaultNow().notNull(),
 });
 
@@ -153,20 +122,6 @@ export const systemSettings = pgTable('system_settings', {
 });
 
 // ------------------------------------------------------------
-// RELAÇÕES DRIZZLE
-// ------------------------------------------------------------
-export const formsRelations = relations(forms, ({ many }) => ({
-  submissions: many(formSubmissions),
-}));
-
-export const formSubmissionsRelations = relations(formSubmissions, ({ one }) => ({
-  form: one(forms, {
-    fields: [formSubmissions.formId],
-    references: [forms.id],
-  }),
-}));
-
-// ------------------------------------------------------------
 // TIPOS INFERIDOS DRIZZLE (TypeScript Types)
 // ------------------------------------------------------------
 export type AdminUser = typeof adminUsers.$inferSelect;
@@ -177,12 +132,6 @@ export type NewLead = typeof leads.$inferInsert;
 
 export type Member = typeof members.$inferSelect;
 export type NewMember = typeof members.$inferInsert;
-
-export type Form = typeof forms.$inferSelect;
-export type NewForm = typeof forms.$inferInsert;
-
-export type FormSubmission = typeof formSubmissions.$inferSelect;
-export type NewFormSubmission = typeof formSubmissions.$inferInsert;
 
 export type LibraryItem = typeof libraryItems.$inferSelect;
 export type NewLibraryItem = typeof libraryItems.$inferInsert;

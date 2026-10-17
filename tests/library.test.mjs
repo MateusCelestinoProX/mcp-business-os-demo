@@ -6,7 +6,7 @@ import path from 'node:path';
 const PROJECT_ROOT = process.cwd();
 const PUBLIC_CATALOG_PATH = path.join(PROJECT_ROOT, 'public/data/library_catalog_index.json');
 const SRC_CATALOG_PATH = path.join(PROJECT_ROOT, 'src/data/library_catalog_index.json');
-const SOURCE_DIR = '/Users/mcp/.gemini/antigravity/scratch/s-a-a-s-full-hidden-library';
+const SOURCE_DIR = path.join(PROJECT_ROOT, 'public/biblioteca');
 
 describe('Cofre da Biblioteca Oculta de Recursos — Suíte Completa de Testes', () => {
   let publicCatalog = [];

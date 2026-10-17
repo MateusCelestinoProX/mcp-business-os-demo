@@ -2,11 +2,12 @@ import { describe, it } from 'node:test';
 import assert from 'node:assert';
 
 describe('Sovereign Master Stitch & Navigation Tests', () => {
-  it('1. As 4 plataformas soberanas devem responder com HTTP 200 no localhost:3000', async () => {
+  it('1. As plataformas soberanas devem responder com HTTP 200 no localhost:3000', async () => {
     const pages = [
       { name: 'Portal Institucional', url: 'http://localhost:3000/' },
       { name: 'Comunidade VIP', url: 'http://localhost:3000/comunidade' },
-      { name: 'Form Builder', url: 'http://localhost:3000/builder' },
+      { name: 'Showcase', url: 'http://localhost:3000/showcase' },
+      { name: 'Shop', url: 'http://localhost:3000/shop' },
       { name: 'Free Library', url: 'http://localhost:3000/biblioteca' },
     ];
 
@@ -20,12 +21,12 @@ describe('Sovereign Master Stitch & Navigation Tests', () => {
     const pages = [
       '/',
       '/comunidade',
-      '/builder',
+      '/showcase',
+      '/shop',
       '/biblioteca',
       '/artigos',
       '/admin',
       '/comunidade/login',
-      '/builder/dashboard',
     ];
 
     for (const path of pages) {
@@ -45,13 +46,6 @@ describe('Sovereign Master Stitch & Navigation Tests', () => {
         `Rota ${path} deve conter link para /biblioteca`
       );
     }
-  });
-
-  it('2.1 A página /admin deve conter o acesso exclusivo ao Form Builder Cinemático', async () => {
-    const res = await fetch('http://localhost:3000/admin');
-    assert.strictEqual(res.status, 200);
-    const html = await res.text();
-    assert.ok(html.includes('Form Builder Cinemático') || html.includes('/builder'), 'Painel admin deve conter o Form Builder Cinemático');
   });
 
   it('2.2 O Portal Institucional (/) deve conter o Mapa de Navegação Setorial e o Hero Centralizado', async () => {
@@ -98,22 +92,5 @@ describe('Sovereign Master Stitch & Navigation Tests', () => {
     const json = await res.json();
     assert.strictEqual(json.success, true);
     assert.ok(json.init_point, 'Deve gerar init_point');
-  });
-
-  it('5. POST /api/forms/submit deve aceitar payload e registrar resposta', async () => {
-    const res = await fetch('http://localhost:3000/api/forms/submit', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        formId: 'stitch_test',
-        formTitle: 'Teste de Costura Soberana',
-        responses: [{ label: 'Integrado', answer: 'Sim' }],
-      }),
-    });
-
-    assert.strictEqual(res.status, 200);
-    const json = await res.json();
-    assert.strictEqual(json.success, true);
-    assert.ok(json.submissionId);
   });
 });

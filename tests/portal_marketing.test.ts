@@ -154,11 +154,12 @@ async function runTests() {
   console.log('🧪 Teste 7: Verificando existência de todos os arquivos de componentes do Portal...');
   const components = [
     'src/app/page.tsx',
-    'src/components/portal/HeroSection.tsx',
-    'src/components/portal/EcosystemShowcase.tsx',
-    'src/components/portal/DynamicArticles.tsx',
-    'src/components/portal/LeadCaptureForm.tsx',
-    'src/components/portal/MetricsBanner.tsx',
+    'src/components/portal/OriginalHeader.tsx',
+    'src/components/portal/MainNotionLayout.tsx',
+    'src/components/portal/SobreSection.tsx',
+    'src/components/portal/ContatoSection.tsx',
+    'src/components/portal/LiquidGlassBackground.tsx',
+    'src/components/shaders/ShaderTransitionZone.tsx',
     'src/app/api/leads/route.ts',
   ];
 

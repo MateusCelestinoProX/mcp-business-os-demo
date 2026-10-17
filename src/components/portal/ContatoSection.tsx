@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { Mail, MessageSquare, ExternalLink, Send, CheckCircle2, Shield, Phone, Sparkles } from 'lucide-react';
 import { PhotografyContactHub } from './PhotografyContactHub';
+import LineWavesShader from '@/components/shaders/LineWavesShader';
 
 export interface ContatoSectionProps {
   profile?: {
@@ -77,8 +78,24 @@ export function ContatoSection({ profile }: ContatoSectionProps) {
   const tallyForm = profile?.tallyForm || 'https://tally.so/r/w2V6LL';
 
   return (
-    <section id="contato" className="py-24 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="contato" className="py-24 relative overflow-hidden w-full">
+      {/* 0. Shader WebGL Dedicado da Sessão Contato: LineWaves Fluido */}
+      <LineWavesShader
+        className="z-0 mix-blend-screen pointer-events-none"
+        color1="#ff073a"
+        color2="#8a0012"
+        color3="#400007"
+        opacity={0.38}
+        speed={0.24}
+        warpIntensity={0.6}
+      />
+
+      {/* Zonas de Transição Internas com Blur e Escurecimento Progressivo */}
+      <div className="absolute top-0 left-0 right-0 h-28 bg-gradient-to-b from-black/80 via-black/40 to-transparent pointer-events-none z-1 backdrop-blur-[4px]" />
+      <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none z-1 backdrop-blur-[4px]" />
+
+      <div className="w-full px-4 sm:px-6 lg:px-10 xl:px-16 relative z-10">
+
         
         {/* Header em Vidro Líquido com Seletor de Modo */}
         <div className="glass-crystal p-6 sm:p-8 rounded-3xl mb-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
@@ -88,11 +105,11 @@ export function ContatoSection({ profile }: ContatoSectionProps) {
               <span>CANAL DIRETO & CONTATO</span>
             </div>
             <h2 className="text-2xl sm:text-4xl font-black text-white tracking-tight leading-tight">
-              {viewMode === 'hub' ? 'Digital Hub & Fotografia Contato' : 'Vamos Automatizar Seu Negócio?'}
+              {viewMode === 'hub' ? 'Canais Oficiais & Contato' : 'Vamos Automatizar Seu Negócio?'}
             </h2>
             <p className="mt-2 text-sm text-zinc-300 font-light leading-relaxed max-w-2xl">
               {viewMode === 'hub'
-                ? 'Acesse os canais exclusivos, portfólios fotográficos, inteligência artificial e serviços de automação de Mateus Celestino.'
+                ? 'Entre em contato direto pelos canais oficiais de WhatsApp e E-mail de Mateus Celestino.'
                 : 'Seja para implementar fluxos inteligentes com n8n, criar atendentes autônomos com IA ou blindar seus servidores Linux, entre em contato direto.'}
             </p>
           </div>
@@ -129,7 +146,7 @@ export function ContatoSection({ profile }: ContatoSectionProps) {
         {/* Conteúdo da Aba de Contato */}
         {viewMode === 'hub' ? (
           <div className="w-full flex flex-col items-center justify-center">
-            <PhotografyContactHub isEmbedded={true} />
+            <PhotografyContactHub isEmbedded={true} whatsappUrl={whatsappLink} email={email} />
 
             {/* Atalho para alternar para o briefing */}
             <div className="mt-8 text-center">
