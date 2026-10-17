@@ -12,6 +12,8 @@ import {
   Crown,
   LogOut,
   LogIn,
+  ShoppingBag,
+  Sparkles,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/Badge";
@@ -33,6 +35,8 @@ export interface NavLinkItem {
 
 export const navLinks: NavLinkItem[] = [
   { name: "Portal Institucional", href: "/", icon: Shield },
+  { name: "Showcase", href: "/showcase", icon: Sparkles },
+  { name: "Shop", href: "/shop", icon: ShoppingBag },
   { name: "Comunidade", href: "/comunidade", icon: Users },
   { name: "Free Resources", href: "/biblioteca", icon: FolderGit2 },
 ];
@@ -81,21 +85,18 @@ export function Navbar() {
           title="Ir para o Portal Institucional"
           className="flex items-center gap-3 group transition-transform duration-200 active:scale-95"
         >
-          <div className="relative w-9 h-9 rounded-xl bg-gradient-to-br from-red-600 via-red-800 to-black p-[1px] flex items-center justify-center shadow-[0_0_15px_rgba(255,7,58,0.4)] group-hover:shadow-[0_0_25px_rgba(255,7,58,0.7)] transition-all">
-            <div className="w-full h-full bg-[#030305] rounded-[11px] flex items-center justify-center">
-              <span className="font-extrabold text-sm tracking-tighter text-white group-hover:text-red-400 transition-colors">
-                MCP
-              </span>
+          <div className="relative w-9 h-9 rounded-xl bg-gradient-to-br from-red-600 via-red-800 to-black p-[1px] flex items-center justify-center shadow-[0_0_15px_rgba(255,7,58,0.4)] group-hover:shadow-[0_0_25px_rgba(255,7,58,0.7)] transition-all overflow-hidden shrink-0">
+            <div className="w-full h-full bg-[#030305] rounded-[11px] overflow-hidden flex items-center justify-center">
+              <img
+                src="/assets/site_icon.webp"
+                alt="Mateus Celestino Pro X Logo"
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+              />
             </div>
           </div>
-          <div className="flex flex-col">
-            <div className="flex items-center gap-1.5">
-              <span className="font-bold text-sm tracking-wide text-white">
-                MATEUS CELESTINO
-              </span>
-            </div>
-            <span className="text-[10px] tracking-widest text-neutral-400 font-mono">
-              PLATAFORMA SOBERANA
+          <div className="flex flex-col justify-center">
+            <span className="font-extrabold text-sm tracking-wide text-white uppercase group-hover:text-red-300 transition-colors">
+              MATEUS CELESTINO <span className="text-red-500 font-black">PRO X</span>
             </span>
           </div>
         </Link>

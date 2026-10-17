@@ -142,7 +142,7 @@ export async function POST(req: NextRequest) {
       init_point: returnUrl,
       sandbox_init_point: returnUrl,
       external_reference: externalRef,
-      message: 'Checkout gerado com sucesso na Plataforma Soberana.',
+      message: 'Checkout gerado com sucesso em Mateus Celestino Pro X.',
     });
   } catch (error: any) {
     console.error('❌ [Checkout API] Erro ao processar:', error);

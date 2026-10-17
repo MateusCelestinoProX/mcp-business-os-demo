@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import {
   Layers,
@@ -14,8 +14,10 @@ import {
   ArrowDown,
   Terminal,
   Zap,
+  Compass,
 } from 'lucide-react';
-import GridScanShader from '@/components/shaders/GridScanShader';
+import AlternatingHeroShaders from './AlternatingHeroShaders';
+import UniversalSitemapModal from './UniversalSitemapModal';
 
 export interface ProfileData {
   title?: string;
@@ -41,6 +43,8 @@ export interface OriginalHeaderProps {
 }
 
 export function OriginalHeader({ profile, onNavigate }: OriginalHeaderProps) {
+  const [isSitemapOpen, setIsSitemapOpen] = useState(false);
+
   const handleExplore = () => {
     if (onNavigate) {
       onNavigate('publicacoes');
@@ -64,33 +68,26 @@ export function OriginalHeader({ profile, onNavigate }: OriginalHeaderProps) {
           ========================================================================= */}
       <div className="relative w-full min-h-[calc(100vh-4rem)] md:min-h-[820px] lg:min-h-[88vh] flex flex-col justify-center items-center text-center pt-28 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
         
-        {/* Imagem de Fundo Full-Width + SHADER 1: GridScan (Personal OS) */}
+        {/* Imagem de Fundo Full-Width + 3 SHADERS DINÂMICOS ALTERNANDO A CADA 3 SEGUNDOS */}
         <div className="absolute inset-0 z-0">
           <img
             src={profile?.heroGif || '/assets/hero_landscape.gif'}
             alt="Mateus Celestino Pro X Cover Cyberpunk"
             className="w-full h-full object-cover object-[center_40%] scale-102 transform filter brightness-[0.62] contrast-[1.2]"
           />
-          {/* GridScan Shader com Vermelho Obscurecido */}
-          <GridScanShader
-            className="z-1 mix-blend-screen"
-            opacity={0.55}
-            linesColor="#160003"
-            scanColor="#9e0015"
-            bloomIntensity={0.65}
-            scanGlow={0.45}
-          />
-          {/* Camadas de Fusão com Vanta Black 100% e Especular de Vidro */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/35 pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-transparent to-black/80 pointer-events-none" />
-          <div className="absolute inset-0 bg-radial from-transparent via-black/40 to-black/95 pointer-events-none" />
-          {/* Linha de Refração Carmesim Inferior do Cover */}
-          <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#8a0012] to-transparent opacity-80" />
+          {/* Suíte com 3 Shaders de Personal OS Adaptados ao Vermelho Carmesim */}
+          <AlternatingHeroShaders />
         </div>
 
         {/* NÚCLEO CENTRAL DO HERO — PERFEITAMENTE CENTRALIZADO */}
         <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center justify-center">
           
+          {/* TAGLINE SUPERIOR / EYEBROW */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-950/60 border border-red-500/40 text-xs sm:text-sm font-mono text-red-400 font-bold tracking-widest uppercase mb-6 shadow-[0_0_25px_rgba(255,7,58,0.25)]">
+            <span className="w-2 h-2 rounded-full bg-[#ff073a] animate-pulse" />
+            <span>Digital Marketing, Generative A.I, Sales.</span>
+          </div>
+
           {/* Ícone de Vidro Lapidado com Halo Sangue Obscurecido */}
           <div className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-3xl p-2 glass-crystal shadow-[0_25px_60px_rgba(0,0,0,0.98),0_0_35px_rgba(138,0,18,0.45)] shrink-0 group mb-6 transition-transform duration-500 hover:scale-105">
             <div className="w-full h-full rounded-2xl overflow-hidden bg-black border border-white/20">
@@ -108,16 +105,39 @@ export function OriginalHeader({ profile, onNavigate }: OriginalHeaderProps) {
             MATEUS CELESTINO PRO X
           </h1>
 
-          {/* Subtítulo Especialista */}
-          <p className="text-xs sm:text-sm md:text-base font-mono text-zinc-300 flex flex-wrap items-center justify-center gap-2 max-w-2xl mx-auto mb-4">
-            <span className="text-white font-semibold">T.I. & Digital Marketing Automation Specialist</span>
+          {/* Subtítulo Especialista Atualizado */}
+          <p className="text-xs sm:text-sm md:text-base font-mono text-zinc-300 flex flex-wrap items-center justify-center gap-2 max-w-3xl mx-auto mb-5">
+            <span className="text-white font-semibold">A.I Infrascruture</span>
             <span className="text-[#ff073a]">•</span>
-            <span className="text-zinc-400">n8n, Typebot, IA Generativa & Linux</span>
+            <span className="text-zinc-200 font-medium">Agentic Workers</span>
+            <span className="text-[#ff073a]">•</span>
+            <span className="text-zinc-300 font-medium">A.i system</span>
+            <span className="text-[#ff073a]">•</span>
+            <span className="text-red-400 font-semibold">Sod Demanda SmartSoftware Business</span>
           </p>
 
-          <p className="text-sm sm:text-base text-zinc-300 font-light leading-relaxed max-w-2xl mx-auto mb-8">
-            O primeiro portal brasileiro sobre hiperautomação, agentes autônomos com IA e engenharia de sistemas soberanos em Vanta Black e Apple Liquid Glass.
-          </p>
+          {/* Descrição com Botão Sutil para o SiteMap */}
+          <div className="text-sm sm:text-base text-zinc-300 font-light leading-relaxed max-w-2xl mx-auto mb-8 space-y-2">
+            <p>
+              Esse é Mateus Celestino PRO X, o portal de Inteligência Artificial aplicada a Business e Marketing digital de forma completa.
+            </p>
+            <p>
+              Free Resources totalmente de graça, A.I Resources e conteúdo de valor sobre o tema você encontra exatamente bem aqui.
+            </p>
+            <p className="flex items-center justify-center flex-wrap gap-1 text-zinc-200 pt-1">
+              <span>Use o SiteMap (</span>
+              <button
+                type="button"
+                onClick={() => setIsSitemapOpen(true)}
+                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-red-950/70 border border-red-500/50 text-[#ff073a] hover:text-white hover:bg-[#ff073a]/30 font-mono font-bold text-xs transition-all duration-200 shadow-[0_0_15px_rgba(255,7,58,0.3)] hover:scale-105 active:scale-95 cursor-pointer align-middle"
+                title="Abrir Fluxograma Visual do SiteMap"
+              >
+                <Compass className="w-3.5 h-3.5 text-[#ff073a]" />
+                <span>clicando aqui</span>
+              </button>
+              <span>) e navegue pelo portal de forma intuitiva.</span>
+            </p>
+          </div>
 
           {/* Ações Primárias do Hero Centralizadas */}
           <div className="flex flex-wrap items-center justify-center gap-4 w-full max-w-lg mx-auto">
@@ -155,6 +175,13 @@ export function OriginalHeader({ profile, onNavigate }: OriginalHeaderProps) {
         </div>
 
       </div>
+
+      {/* Modal / Página Centralizada Universal do Sitemap */}
+      <UniversalSitemapModal
+        isOpen={isSitemapOpen}
+        onClose={() => setIsSitemapOpen(false)}
+        onNavigateSection={onNavigate}
+      />
 
       {/* Zona Suave de Escurecimento e Blur Inferior do Cover */}
       <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black via-black/80 to-transparent pointer-events-none z-10 backdrop-blur-[2px]" />

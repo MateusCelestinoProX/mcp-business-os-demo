@@ -19,6 +19,7 @@ import {
   Link as LinkIcon
 } from 'lucide-react';
 import BalatroShader from '@/components/shaders/BalatroShader';
+import AlternatingHeroBanner from '@/components/portal/AlternatingHeroBanner';
 
 export interface ShopFeature {
   icon: string;
@@ -29,7 +30,8 @@ export interface ShopFeature {
 export interface ShopHero {
   welcome: string;
   tagline: string;
-  artImage: string;
+  artImage?: string;
+  artImages?: string[];
   features: ShopFeature[];
   idealFor: string[];
 }
@@ -43,6 +45,7 @@ export interface ShopProductItem {
   cover: string;
   headline: string;
   description: string;
+  pageLink?: string;
   highlights: string[];
   details?: {
     entrega?: string;
@@ -61,6 +64,7 @@ export interface ShopServiceItem {
   cover: string;
   headline: string;
   description: string;
+  pageLink?: string;
   highlights: string[];
   details?: {
     implementacao?: string;
@@ -337,29 +341,16 @@ export function ShopSection({ shopData, onOpenContact }: ShopSectionProps) {
               </div>
             </div>
 
-            {/* Coluna Direita: Imagem de Arte Oficial do Notion com Vidro e Carmesim */}
-            <div className="lg:col-span-5 flex justify-center">
-              <div className="relative w-full max-w-md aspect-square rounded-3xl overflow-hidden glass-card-nested border border-[#ff073a]/30 shadow-[0_0_50px_rgba(255,7,58,0.25)] group">
-                <img 
-                  src={hero.artImage} 
-                  alt="Arte Oficial Loja Mateus Celestino Pro"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
-                
-                <div className="absolute bottom-5 left-5 right-5 p-4 rounded-2xl glass-crystal border border-white/15 backdrop-blur-md">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <div className="w-2.5 h-2.5 rounded-full bg-[#ff073a] animate-pulse" />
-                      <span className="text-xs font-mono font-bold text-white">COMPRE AGORA</span>
-                    </div>
-                    <span className="text-[10px] font-mono text-zinc-400">100% VALIDADO</span>
-                  </div>
-                  <p className="mt-1 text-xs text-zinc-300 font-light">
-                    Soluções prontas para você economizar tempo e faturar alto.
-                  </p>
-                </div>
-              </div>
+            {/* Coluna Direita: Alternating Hero Banner (Se houver múltiplas imagens, alternam suavemente no mesmo espaço) */}
+            <div className="lg:col-span-5 flex justify-center w-full">
+              <AlternatingHeroBanner
+                images={hero.artImages && hero.artImages.length > 0 ? hero.artImages : [hero.artImage || '/assets/notion/shop/hero_art.png']}
+                title="Loja Oficial"
+                badgeText="100% VALIDADO"
+                tagline="Soluções prontas para você economizar tempo e faturar alto."
+                aspectRatio="aspect-square"
+                intervalMs={4500}
+              />
             </div>
 
           </div>
@@ -452,7 +443,7 @@ export function ShopSection({ shopData, onOpenContact }: ShopSectionProps) {
                   </div>
                 </div>
 
-                {/* Ações: Comprar via WhatsApp ou Detalhes */}
+                {/* Ações: Comprar via WhatsApp, Saiba mais (pageLink) ou Detalhes */}
                 <div className="mt-8 pt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-3">
                   <a
                     href={`https://api.whatsapp.com/send/?phone=553197724257&text=${encodeURIComponent(prod.whatsappMessage || `Oi Mateus, tenho interesse no produto ${prod.title}`)}&type=phone_number&app_absent=0`}
@@ -463,6 +454,18 @@ export function ShopSection({ shopData, onOpenContact }: ShopSectionProps) {
                     <MessageSquare className="w-4 h-4" />
                     <span>{prod.cta || 'OBTER AGORA'}</span>
                   </a>
+
+                  {prod.pageLink && (
+                    <a
+                      href={prod.pageLink}
+                      target={prod.pageLink.startsWith('http') ? '_blank' : '_self'}
+                      rel="noopener noreferrer"
+                      className="px-4 py-3 rounded-xl glass-pill text-xs font-mono text-[#ff073a] hover:text-white hover:bg-[#ff073a]/20 flex items-center gap-1.5 transition-colors border border-[#ff073a]/30"
+                    >
+                      <ExternalLink className="w-3.5 h-3.5" />
+                      <span>Saiba mais</span>
+                    </a>
+                  )}
 
                   <button
                     onClick={() => setSelectedProduct(prod)}
@@ -528,7 +531,7 @@ export function ShopSection({ shopData, onOpenContact }: ShopSectionProps) {
                   </div>
                 </div>
 
-                {/* Ações: Contratar via WhatsApp ou Detalhes */}
+                {/* Ações: Contratar via WhatsApp, Saiba mais (pageLink) ou Detalhes */}
                 <div className="mt-8 pt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-3">
                   <a
                     href={`https://api.whatsapp.com/send/?phone=553197724257&text=${encodeURIComponent(serv.whatsappMessage || `Oi Mateus, tenho interesse no serviço ${serv.title}`)}&type=phone_number&app_absent=0`}
@@ -539,6 +542,18 @@ export function ShopSection({ shopData, onOpenContact }: ShopSectionProps) {
                     <MessageSquare className="w-4 h-4" />
                     <span>{serv.cta || 'CONTRATAR AGORA'}</span>
                   </a>
+
+                  {serv.pageLink && (
+                    <a
+                      href={serv.pageLink}
+                      target={serv.pageLink.startsWith('http') ? '_blank' : '_self'}
+                      rel="noopener noreferrer"
+                      className="px-4 py-3 rounded-xl glass-pill text-xs font-mono text-[#ff073a] hover:text-white hover:bg-[#ff073a]/20 flex items-center gap-1.5 transition-colors border border-[#ff073a]/30"
+                    >
+                      <ExternalLink className="w-3.5 h-3.5" />
+                      <span>Saiba mais</span>
+                    </a>
+                  )}
 
                   <button
                     onClick={() => setSelectedService(serv)}
@@ -625,13 +640,24 @@ export function ShopSection({ shopData, onOpenContact }: ShopSectionProps) {
               </div>
             )}
 
-            <div className="mt-8 pt-6 border-t border-white/10 flex items-center justify-end gap-3">
+            <div className="mt-8 pt-6 border-t border-white/10 flex items-center justify-end gap-3 flex-wrap">
               <button
                 onClick={() => setSelectedProduct(null)}
                 className="px-5 py-2.5 rounded-xl glass-pill text-xs font-mono text-zinc-300 hover:text-white cursor-pointer"
               >
                 Fechar
               </button>
+              {selectedProduct.pageLink && (
+                <a
+                  href={selectedProduct.pageLink}
+                  target={selectedProduct.pageLink.startsWith('http') ? '_blank' : '_self'}
+                  rel="noopener noreferrer"
+                  className="px-5 py-2.5 rounded-xl glass-pill text-xs font-mono text-[#ff073a] hover:text-white hover:bg-[#ff073a]/20 flex items-center gap-1.5 border border-[#ff073a]/30 transition-colors"
+                >
+                  <ExternalLink className="w-3.5 h-3.5" />
+                  <span>Acessar Página Oficial</span>
+                </a>
+              )}
               <a
                 href={`https://api.whatsapp.com/send/?phone=553197724257&text=${encodeURIComponent(selectedProduct.whatsappMessage || `Oi Mateus, tenho interesse no produto ${selectedProduct.title}`)}&type=phone_number&app_absent=0`}
                 target="_blank"
@@ -716,13 +742,24 @@ export function ShopSection({ shopData, onOpenContact }: ShopSectionProps) {
               </div>
             )}
 
-            <div className="mt-8 pt-6 border-t border-white/10 flex items-center justify-end gap-3">
+            <div className="mt-8 pt-6 border-t border-white/10 flex items-center justify-end gap-3 flex-wrap">
               <button
                 onClick={() => setSelectedService(null)}
                 className="px-5 py-2.5 rounded-xl glass-pill text-xs font-mono text-zinc-300 hover:text-white cursor-pointer"
               >
                 Fechar
               </button>
+              {selectedService.pageLink && (
+                <a
+                  href={selectedService.pageLink}
+                  target={selectedService.pageLink.startsWith('http') ? '_blank' : '_self'}
+                  rel="noopener noreferrer"
+                  className="px-5 py-2.5 rounded-xl glass-pill text-xs font-mono text-[#ff073a] hover:text-white hover:bg-[#ff073a]/20 flex items-center gap-1.5 border border-[#ff073a]/30 transition-colors"
+                >
+                  <ExternalLink className="w-3.5 h-3.5" />
+                  <span>Acessar Página Oficial</span>
+                </a>
+              )}
               <a
                 href={`https://api.whatsapp.com/send/?phone=553197724257&text=${encodeURIComponent(selectedService.whatsappMessage || `Oi Mateus, tenho interesse no serviço ${selectedService.title}`)}&type=phone_number&app_absent=0`}
                 target="_blank"

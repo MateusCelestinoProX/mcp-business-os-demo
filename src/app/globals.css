@@ -84,16 +84,44 @@ body {
 
 /* 1. Vidro Cristalino Principal (Painéis, Seções e Navbars) */
 .glass-crystal {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.02) 40%, rgba(3, 3, 5, 0.75) 100%),
-              rgba(10, 10, 14, 0.75);
-  backdrop-filter: blur(40px) saturate(220%);
-  -webkit-backdrop-filter: blur(40px) saturate(220%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.03) 40%, rgba(8, 6, 10, 0.45) 100%);
+  backdrop-filter: blur(28px) saturate(220%);
+  -webkit-backdrop-filter: blur(28px) saturate(220%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-top: 1px solid rgba(255, 255, 255, 0.32);
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.25),
+              inset 0 -1px 1px 0 rgba(0, 0, 0, 0.3),
+              0 20px 50px -10px rgba(0, 0, 0, 0.6);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-clear {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 50%, rgba(12, 6, 10, 0.35) 100%);
+  backdrop-filter: blur(24px) saturate(200%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-top: 1px solid rgba(255, 255, 255, 0.34);
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.22),
+              0 15px 35px -5px rgba(0, 0, 0, 0.5);
+}
+
+/* 1.1. Vidro Ultra Claro Soberano (Full Screen Workspace & Post Editor) */
+.glass-ultra-clear {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.015) 60%, rgba(255, 7, 58, 0.025) 100%),
+              rgba(8, 6, 12, 0.25);
+  backdrop-filter: blur(32px) saturate(210%);
+  -webkit-backdrop-filter: blur(32px) saturate(210%);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-top: 1px solid rgba(255, 255, 255, 0.28);
-  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.22),
-              inset 0 -1px 1px 0 rgba(0, 0, 0, 0.6),
-              0 20px 50px -10px rgba(0, 0, 0, 0.95);
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.2),
+              0 25px 60px -10px rgba(0, 0, 0, 0.7);
+}
+
+.glass-ultra-pane {
+  background: rgba(255, 255, 255, 0.025);
+  backdrop-filter: blur(20px) saturate(190%);
+  -webkit-backdrop-filter: blur(20px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 /* 2. Vidro Interativo com Iluminação Especular (Cards & Botões de Ação) */
@@ -468,5 +496,40 @@ body {
 .animate-fadeIn {
   animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
+
+/* Photografy Fotografia Contato Hub Styles */
+.glass-button {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.02);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.glass-button:active {
+  transform: scale(0.98);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 1s ease-out forwards;
+}
+
 
 

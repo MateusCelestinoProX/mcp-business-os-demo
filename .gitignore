@@ -33,5 +33,8 @@ next-env.d.ts
 .DS_Store
 Thumbs.db
 
+# Graphify cache
+graphify-out/cache/
+
 # Agent team metadata exceptions (keep teamwork tracking)
 # .agents/teamwork is preserved for collaboration

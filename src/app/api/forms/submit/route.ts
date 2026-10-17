@@ -175,11 +175,19 @@ export async function POST(req: Request) {
 
     if (effectiveResendKey) {
       try {
+        const escapeHtml = (str: any) =>
+          String(str ?? '')
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;');
+
         const formattedResponsesHtml = Array.isArray(responses)
           ? responses
               .map(
                 (r: { label: string; answer: any }) =>
-                  `<div style="margin-bottom: 12px; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);"><strong style="color: #FF0033;">${r.label}:</strong> <span style="color: #ffffff;">${typeof r.answer === 'object' ? JSON.stringify(r.answer) : (r.answer || 'N/A')}</span></div>`
+                  `<div style="margin-bottom: 12px; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);"><strong style="color: #FF0033;">${escapeHtml(r.label)}:</strong> <span style="color: #ffffff;">${typeof r.answer === 'object' ? escapeHtml(JSON.stringify(r.answer)) : escapeHtml(r.answer || 'N/A')}</span></div>`
               )
               .join('')
           : '<p style="color: #aaa;">Sem respostas formatadas.</p>';

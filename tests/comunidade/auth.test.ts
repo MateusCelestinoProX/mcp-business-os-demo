@@ -1,5 +1,8 @@
-import { test, describe } from 'node:test';
+import { test, describe, after } from 'node:test';
 import assert from 'node:assert/strict';
+import { like } from 'drizzle-orm';
+import { db } from '../../src/lib/db';
+import { members } from '../../src/lib/db/schema';
 import { POST as registerRoute } from '../../src/app/api/auth/register/route';
 import { POST as loginRoute } from '../../src/app/api/auth/login/route';
 import { GET as meRoute, DELETE as logoutRoute } from '../../src/app/api/auth/me/route';
@@ -7,6 +10,14 @@ import { signToken, verifyToken } from '../../src/lib/auth/jwt';
 import { hashPassword, verifyPassword } from '../../src/lib/auth/auth';
 
 describe('Suite de Testes de Autenticação & Membros Soberanos', () => {
+  after(async () => {
+    try {
+      await db.delete(members).where(like(members.email, '%@soberano.com'));
+    } catch (e) {
+      console.warn('Erro ao limpar dados de teste de membros:', e);
+    }
+  });
+
   describe('Criptografia e JWT', () => {
     test('hashPassword e verifyPassword devem proteger senhas com bcrypt', async () => {
       const password = 'MinhaSenhaUltraSegura2026!';

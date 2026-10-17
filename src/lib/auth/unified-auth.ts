@@ -1,6 +1,7 @@
 export type UserRole = 'visitante' | 'user' | 'moder' | 'admin';
 
 export interface UnifiedUser {
+  id?: string;
   isLoggedIn: boolean;
   role: UserRole;
   name: string;

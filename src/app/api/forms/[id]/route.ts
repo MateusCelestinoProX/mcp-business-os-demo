@@ -3,6 +3,7 @@ import { db, isDbConfigured } from '@/lib/db';
 import { forms } from '@/lib/db/schema';
 import { eq, or } from 'drizzle-orm';
 import { INITIAL_FORM_TEMPLATE } from '@/types/builder';
+import { verifyAdminRequest, unauthorizedResponse } from '@/lib/auth/admin-guard';
 
 export async function GET(
   req: Request,
@@ -68,6 +69,11 @@ export async function PUT(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const auth = await verifyAdminRequest(req);
+    if (!auth.authorized) {
+      return unauthorizedResponse(auth.error);
+    }
+
     const { id } = await params;
     const body = await req.json();
     const { title, description, schemaJson, isActive } = body;
@@ -123,6 +129,11 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const auth = await verifyAdminRequest(req);
+    if (!auth.authorized) {
+      return unauthorizedResponse(auth.error);
+    }
+
     const { id } = await params;
 
     if (!isDbConfigured) {

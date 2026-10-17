@@ -58,7 +58,13 @@ export async function POST(req: Request) {
         console.warn('⚠️ [Webhook] Falha ao consultar detalhes do pagamento no MP:', err);
       }
     } else {
-      // Modo Sandbox / Testes: respeita body.status ou aprova por padrão em testes
+      // Modo Sandbox / Testes: apenas permitido fora de produção
+      if (process.env.NODE_ENV === 'production') {
+        return NextResponse.json(
+          { success: false, error: 'Webhooks não verificados pelo gateway são rejeitados em produção.' },
+          { status: 401 }
+        );
+      }
       isPaymentApproved = body?.status ? body.status === 'approved' : true;
     }
 

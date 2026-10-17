@@ -11,7 +11,7 @@ export default function NotFound() {
           Página não encontrada
         </h1>
         <p className="text-zinc-400 text-sm leading-relaxed">
-          O recurso ou documento solicitado não existe ou foi realocado na Plataforma Soberana.
+          O recurso ou documento solicitado não existe ou foi realocado no ecossistema Mateus Celestino Pro X.
         </p>
         <div>
           <Link

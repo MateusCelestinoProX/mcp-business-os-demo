@@ -5,12 +5,23 @@ import { Footer } from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
-  title: "Mateus Celestino Pro — Plataforma Unificada Soberana",
+  title: "Mateus Celestino Pro X",
   description:
-    "Ecossistema unificado de branding visual com shaders, área de membros restrita, construtor cinemático de formulários e cofre oculto de recursos.",
+    "Ecossistema de hiperautomação, agentes autônomos com IA, engenharia de sistemas e cofre de recursos de alta performance.",
+  icons: {
+    icon: [
+      { url: '/assets/site_icon.webp', type: 'image/webp' },
+      { url: '/icon.png', sizes: '256x256', type: 'image/png' },
+      { url: '/favicon.ico', sizes: '32x32' },
+    ],
+    shortcut: '/favicon.ico',
+    apple: '/icon.png',
+  },
   authors: [{ name: "Mateus Celestino", url: "https://mateuscelestino.pro" }],
   keywords: [
-    "Mateus Celestino Pro",
+    "Mateus Celestino Pro X",
+    "Hiperautomação",
+    "Agentes Autônomos IA",
     "Shaders WebGL",
     "Comunidade Exclusiva",
     "Form Builder Cinemático",
@@ -25,23 +36,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className="dark">
-      <head>
-        <style
-          dangerouslySetInnerHTML={{
-            __html: `
-              html, body {
-                background-color: #030305 !important;
-                color: #f3f4f6 !important;
-                margin: 0;
-                padding: 0;
-                font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
-              }
-              a { color: inherit; text-decoration: none; }
-              *, *::before, *::after { box-sizing: border-box; }
-            `,
-          }}
-        />
-      </head>
       <body className="bg-[#030305] text-[#f3f4f6] antialiased selection:bg-red-500/30 selection:text-white min-h-screen flex flex-col relative overflow-x-hidden">
         {/* Glows de Fundo Ambientais Soberanos */}
         <div

@@ -3,6 +3,7 @@ import { db, isDbConfigured } from '@/lib/db';
 import { forms } from '@/lib/db/schema';
 import { desc } from 'drizzle-orm';
 import { INITIAL_FORM_TEMPLATE } from '@/types/builder';
+import { verifyAdminRequest, unauthorizedResponse } from '@/lib/auth/admin-guard';
 
 export async function GET() {
   try {
@@ -47,6 +48,11 @@ export async function GET() {
 
 export async function POST(req: Request) {
   try {
+    const auth = await verifyAdminRequest(req);
+    if (!auth.authorized) {
+      return unauthorizedResponse(auth.error);
+    }
+
     const body = await req.json();
     const { title, description, slug, schemaJson } = body;
 

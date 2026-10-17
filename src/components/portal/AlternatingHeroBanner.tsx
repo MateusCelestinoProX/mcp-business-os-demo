@@ -1,0 +1,153 @@
+"use client";
+
+import React, { useState, useEffect } from "react";
+import { ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
+
+export interface AlternatingHeroBannerProps {
+  images: string[];
+  alt?: string;
+  intervalMs?: number;
+  className?: string;
+  badgeText?: string;
+  subText?: string;
+  title?: string;
+  tagline?: string;
+  aspectRatio?: string;
+}
+
+export function AlternatingHeroBanner({
+  images = [],
+  alt = "Hero Banner Alternado",
+  intervalMs = 4000,
+  className = "",
+  badgeText = "COMPRE AGORA",
+  subText = "Soluções validadas prontas para execução.",
+  title,
+  tagline,
+  aspectRatio = "aspect-square",
+}: AlternatingHeroBannerProps) {
+  const validImages = Array.isArray(images) && images.length > 0
+    ? images.filter(Boolean)
+    : ["/assets/notion/shop/hero_art.png"];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    if (validImages.length <= 1 || isPaused) return;
+
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % validImages.length);
+    }, intervalMs);
+
+    return () => clearInterval(timer);
+  }, [validImages.length, intervalMs, isPaused]);
+
+  const handlePrev = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrentIndex((prev) => (prev - 1 + validImages.length) % validImages.length);
+  };
+
+  const handleNext = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrentIndex((prev) => (prev + 1) % validImages.length);
+  };
+
+  return (
+    <div
+      className={`relative w-full ${aspectRatio} rounded-3xl overflow-hidden glass-card-nested border border-[#ff073a]/30 shadow-[0_0_50px_rgba(255,7,58,0.25)] group select-none ${className}`}
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
+      {/* Imagens Ocupando Exatamente o Mesmo Espaço com Cross-fade Fluido */}
+      {validImages.map((src, idx) => {
+        const isActive = idx === currentIndex;
+        return (
+          <div
+            key={idx}
+            className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
+              isActive
+                ? "opacity-100 scale-100 pointer-events-auto z-1"
+                : "opacity-0 scale-105 pointer-events-none z-0"
+            }`}
+          >
+            <img
+              src={src}
+              alt={`${alt} - Slide ${idx + 1}`}
+              className="w-full h-full object-cover"
+              loading={idx === 0 ? "eager" : "lazy"}
+              onError={(e) => {
+                // Fallback para capa padrão
+                (e.target as HTMLImageElement).src = "/assets/hero_cover.webp";
+              }}
+            />
+          </div>
+        );
+      })}
+
+      {/* Gradiente de Fusão Elegante */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent z-2 pointer-events-none" />
+
+      {/* Controles de Navegação Rápida (quando houver mais de 1 imagem) */}
+      {validImages.length > 1 && (
+        <>
+          <button
+            type="button"
+            onClick={handlePrev}
+            className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-black/60 hover:bg-[#ff073a] text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 backdrop-blur-md border border-white/10"
+            title="Imagem Anterior"
+          >
+            <ChevronLeft className="w-4 h-4" />
+          </button>
+          <button
+            type="button"
+            onClick={handleNext}
+            className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-black/60 hover:bg-[#ff073a] text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 backdrop-blur-md border border-white/10"
+            title="Próxima Imagem"
+          >
+            <ChevronRight className="w-4 h-4" />
+          </button>
+
+          {/* Indicadores Pontilhados de Slide Alternado */}
+          <div className="absolute top-4 right-4 z-10 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/10">
+            {validImages.map((_, idx) => (
+              <button
+                key={idx}
+                type="button"
+                onClick={() => setCurrentIndex(idx)}
+                className={`transition-all duration-300 rounded-full ${
+                  idx === currentIndex
+                    ? "w-4 h-1.5 bg-[#ff073a]"
+                    : "w-1.5 h-1.5 bg-white/40 hover:bg-white/80"
+                }`}
+                title={`Ir para imagem ${idx + 1}`}
+              />
+            ))}
+          </div>
+        </>
+      )}
+
+      {/* Badge Inferior em Vidro Líquido */}
+      <div className="absolute bottom-5 left-5 right-5 p-4 rounded-2xl glass-crystal border border-white/15 backdrop-blur-md z-10">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="w-2.5 h-2.5 rounded-full bg-[#ff073a] animate-pulse" />
+            <span className="text-xs font-mono font-bold text-white uppercase tracking-wider">
+              {badgeText}
+            </span>
+          </div>
+          <span className="text-[10px] font-mono text-zinc-400">
+            {validImages.length > 1
+              ? `${currentIndex + 1} DE ${validImages.length} ATIVOS`
+              : "100% VALIDADO"}
+          </span>
+        </div>
+        <p className="mt-1 text-xs text-zinc-300 font-light truncate">
+          {tagline || subText}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+export default AlternatingHeroBanner;

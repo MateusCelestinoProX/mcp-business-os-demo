@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import {
   Flame,
   BookOpen,
-  Layers,
   ShoppingBag,
   User,
   Mail,
@@ -36,7 +35,7 @@ export function PortalNavbar({
       const scrollY = window.scrollY;
       setIsScrolled(scrollY > 80);
 
-      const sections = ['contato', 'sobre', 'shop', 'recursos', 'publicacoes'];
+      const sections = ['contato', 'sobre', 'shop', 'publicacoes'];
       let detected = 'home';
 
       for (const sectionId of sections) {
@@ -60,7 +59,6 @@ export function PortalNavbar({
   const navItems = [
     { id: 'home', label: 'Início', icon: Flame },
     { id: 'publicacoes', label: 'Artigos (176)', icon: BookOpen },
-    { id: 'recursos', label: 'Recursos', icon: Layers },
     { id: 'shop', label: 'Shop', icon: ShoppingBag },
     { id: 'sobre', label: 'Sobre', icon: User },
     { id: 'contato', label: 'Contato', icon: Mail },
@@ -75,7 +73,11 @@ export function PortalNavbar({
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
         const el = document.getElementById(id);
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          window.location.href = `/#${id}`;
+        }
       }
     }
   };
@@ -98,14 +100,18 @@ export function PortalNavbar({
           className="group flex items-center gap-2.5 glass-crystal px-3.5 py-1.5 rounded-2xl shadow-[0_15px_35px_rgba(0,0,0,0.85)] hover:border-[#ff073a]/50 transition-all duration-300 cursor-pointer"
           title="Ir para o topo do portal"
         >
-          <div className="relative flex items-center justify-center w-7 h-7 rounded-xl bg-gradient-to-br from-[#9e0015] to-[#400007] shadow-[0_0_15px_rgba(158,0,21,0.6)] border border-white/20 shrink-0">
-            <span className="font-mono text-[11px] font-black text-white tracking-tighter">MC</span>
+          <div className="relative flex items-center justify-center w-7 h-7 rounded-xl bg-gradient-to-br from-[#9e0015] to-[#400007] shadow-[0_0_15px_rgba(158,0,21,0.6)] border border-white/20 shrink-0 overflow-hidden">
+            <img
+              src="/assets/site_icon.webp"
+              alt="Mateus Celestino Pro X Logo"
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+            />
             <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-[#9e0015] animate-ping" />
             <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-white shadow-[0_0_8px_#9e0015]" />
           </div>
           <div className="text-left hidden sm:block">
-            <span className="block text-[11px] font-mono font-bold tracking-widest text-white group-hover:text-[#a80018] transition-colors leading-tight">
-              MATEUS CELESTINO
+            <span className="block text-[11px] font-mono font-bold tracking-widest text-white group-hover:text-red-400 transition-colors leading-tight">
+              MATEUS CELESTINO <span className="text-[#ff073a]">PRO X</span>
             </span>
           </div>
         </button>

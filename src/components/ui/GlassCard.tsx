@@ -2,7 +2,7 @@ import React from "react";
 import { cn } from "@/lib/utils";
 
 export interface GlassCardProps extends React.HTMLAttributes<HTMLDivElement> {
-  variant?: "crystal" | "interactive" | "luxury" | "subtle" | "ultra";
+  variant?: "crystal" | "interactive" | "luxury" | "subtle" | "ultra" | "clear";
   glow?: boolean;
   glowColor?: "red" | "gold" | "white";
 }
@@ -11,6 +11,7 @@ export const GlassCard = React.forwardRef<HTMLDivElement, GlassCardProps>(
   ({ className, variant = "crystal", glow = false, glowColor = "red", children, ...props }, ref) => {
     const variantClasses = {
       crystal: "glass-crystal rounded-2xl p-6",
+      clear: "glass-clear rounded-2xl p-6",
       interactive: "glass-interactive rounded-2xl p-6 cursor-pointer",
       luxury: "glass-card-luxury p-8",
       ultra: "glass-card-luxury p-8 backdrop-blur-2xl border-white/20",

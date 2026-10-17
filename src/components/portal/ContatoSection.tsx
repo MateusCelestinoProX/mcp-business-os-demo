@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { Mail, MessageSquare, ExternalLink, Send, CheckCircle2, Shield, Phone, Sparkles } from 'lucide-react';
+import { PhotografyContactHub } from './PhotografyContactHub';
 
 export interface ContatoSectionProps {
   profile?: {
@@ -13,6 +14,7 @@ export interface ContatoSectionProps {
 }
 
 export function ContatoSection({ profile }: ContatoSectionProps) {
+  const [viewMode, setViewMode] = useState<'hub' | 'form'>('hub');
   const [formData, setFormData] = useState({
     nome: '',
     email: '',
@@ -78,22 +80,74 @@ export function ContatoSection({ profile }: ContatoSectionProps) {
     <section id="contato" className="py-24 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Header em Vidro Líquido */}
-        <div className="glass-crystal p-8 sm:p-10 rounded-3xl mb-14">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full glass-pill-red text-xs font-mono text-[#ff073a] uppercase tracking-wider mb-4 font-bold">
-            <Mail className="w-3.5 h-3.5" />
-            <span>CANAL DIRETO & CONTATO</span>
+        {/* Header em Vidro Líquido com Seletor de Modo */}
+        <div className="glass-crystal p-6 sm:p-8 rounded-3xl mb-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full glass-pill-red text-xs font-mono text-[#ff073a] uppercase tracking-wider mb-3 font-bold">
+              <Mail className="w-3.5 h-3.5" />
+              <span>CANAL DIRETO & CONTATO</span>
+            </div>
+            <h2 className="text-2xl sm:text-4xl font-black text-white tracking-tight leading-tight">
+              {viewMode === 'hub' ? 'Digital Hub & Fotografia Contato' : 'Vamos Automatizar Seu Negócio?'}
+            </h2>
+            <p className="mt-2 text-sm text-zinc-300 font-light leading-relaxed max-w-2xl">
+              {viewMode === 'hub'
+                ? 'Acesse os canais exclusivos, portfólios fotográficos, inteligência artificial e serviços de automação de Mateus Celestino.'
+                : 'Seja para implementar fluxos inteligentes com n8n, criar atendentes autônomos com IA ou blindar seus servidores Linux, entre em contato direto.'}
+            </p>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
-            Vamos Automatizar Seu Negócio?
-          </h2>
-          <p className="mt-3 text-base text-zinc-300 font-light leading-relaxed max-w-3xl">
-            Seja para implementar fluxos inteligentes com n8n, criar atendentes autônomos com IA ou blindar seus servidores Linux, entre em contato direto.
-          </p>
+
+          {/* Seletor de visualização */}
+          <div className="flex items-center p-1.5 rounded-2xl bg-black/60 border border-white/10 backdrop-blur-xl shrink-0 self-start md:self-center">
+            <button
+              type="button"
+              onClick={() => setViewMode('hub')}
+              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-mono font-bold transition-all cursor-pointer ${
+                viewMode === 'hub'
+                  ? 'bg-gradient-to-r from-[#9e0015] to-[#50000a] text-white shadow-[0_0_15px_rgba(158,0,21,0.6)] border border-red-500/40'
+                  : 'text-zinc-400 hover:text-white'
+              }`}
+            >
+              <Sparkles className="w-3.5 h-3.5 text-[#ff073a]" />
+              <span>HUB OFICIAL (PHOTOGRAFY)</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setViewMode('form')}
+              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-mono font-bold transition-all cursor-pointer ${
+                viewMode === 'form'
+                  ? 'bg-gradient-to-r from-[#9e0015] to-[#50000a] text-white shadow-[0_0_15px_rgba(158,0,21,0.6)] border border-red-500/40'
+                  : 'text-zinc-400 hover:text-white'
+              }`}
+            >
+              <MessageSquare className="w-3.5 h-3.5" />
+              <span>FORMULÁRIO B2B</span>
+            </button>
+          </div>
         </div>
 
-        {/* 2 Colunas em Vidro */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+        {/* Conteúdo da Aba de Contato */}
+        {viewMode === 'hub' ? (
+          <div className="w-full flex flex-col items-center justify-center">
+            <PhotografyContactHub isEmbedded={true} />
+
+            {/* Atalho para alternar para o briefing */}
+            <div className="mt-8 text-center">
+              <button
+                type="button"
+                onClick={() => setViewMode('form')}
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl glass-crystal text-xs font-mono text-zinc-300 hover:text-white hover:border-[#ff073a]/50 transition-all cursor-pointer shadow-lg group"
+              >
+                <span>Prefere solicitar um orçamento detalhado ou briefing técnico?</span>
+                <span className="text-[#ff073a] font-bold group-hover:underline flex items-center gap-1">
+                  Abrir Formulário B2B <ExternalLink className="w-3 h-3" />
+                </span>
+              </button>
+            </div>
+          </div>
+        ) : (
+          /* 2 Colunas em Vidro */
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
           
           {/* Canais Oficiais em Cartões de Vidro */}
           <div className="lg:col-span-5 space-y-4">
@@ -285,6 +339,7 @@ export function ContatoSection({ profile }: ContatoSectionProps) {
           </div>
 
         </div>
+      )}
 
       </div>
     </section>

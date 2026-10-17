@@ -60,13 +60,18 @@ export default function LoginPage() {
 
       const role = data.role || (data.user?.role === 'admin' ? 'admin' : 'user');
       const userPayload: UnifiedUser = {
+        id: data.user?.id,
         isLoggedIn: true,
         role: role,
-        name: data.user?.name || (role === 'admin' ? 'Mateus Celestino Pro' : 'Membro VIP Mateus Pro'),
+        name: data.user?.name || (role === 'admin' ? 'Mateus Celestino Pro X' : 'Membro Pro'),
         email: data.user?.email || email.trim(),
         avatar: '',
         tier: role === 'admin' ? 'max' : (data.user?.tier || 'vip'),
       };
+
+      if (data.token && typeof window !== 'undefined') {
+        localStorage.setItem('mcp_auth_token', data.token);
+      }
 
       const targetUrl = data.redirectUrl || (role === 'admin' ? '/admin' : '/comunidade');
       executeLoginSuccess(userPayload, targetUrl);
@@ -75,20 +80,6 @@ export default function LoginPage() {
       setIsLoading(false);
     }
   };
-
-  const fillAdminCredentials = () => {
-    setEmail('mateus@mateuscelestinopro.com');
-    setPassword('MateusProX@2026!');
-    setErrorMessage('');
-  };
-
-  const fillMemberCredentials = () => {
-    setEmail('membro@mateuscelestinopro.com');
-    setPassword('MembroProX@2026!');
-    setErrorMessage('');
-  };
-
-
 
   return (
     <div className="relative min-h-[calc(100vh-80px)] flex items-center justify-center px-4 py-12">
@@ -107,44 +98,8 @@ export default function LoginPage() {
               Acesso Unificado
             </h1>
             <p className="text-xs text-neutral-400">
-              Entre com suas credenciais de Administrador ou Membro Soberano.
+              Entre com suas credenciais reais de Administrador ou Membro Soberano.
             </p>
-          </div>
-
-          {/* Quick Demo Credentials Tabs */}
-          <div className="mb-6 space-y-2">
-            <span className="text-[11px] font-mono text-neutral-400 block uppercase tracking-wider font-semibold">
-              Preenchimento Rápido (1-Clique):
-            </span>
-            <div className="grid grid-cols-2 gap-2">
-              <button
-                type="button"
-                onClick={fillAdminCredentials}
-                className="cursor-pointer rounded-xl border border-red-500/30 bg-red-950/20 p-2.5 text-left text-xs transition-all hover:bg-red-500/10 hover:border-red-500/50"
-              >
-                <div className="flex items-center gap-1.5 font-bold text-red-400">
-                  <Crown className="h-3.5 w-3.5" />
-                  <span>Admin Master</span>
-                </div>
-                <p className="mt-1 font-mono text-[10px] text-neutral-400 truncate">
-                  mateus@mateuscelestino...
-                </p>
-              </button>
-
-              <button
-                type="button"
-                onClick={fillMemberCredentials}
-                className="cursor-pointer rounded-xl border border-white/10 bg-white/[0.03] p-2.5 text-left text-xs transition-all hover:bg-white/[0.08] hover:border-white/20"
-              >
-                <div className="flex items-center gap-1.5 font-bold text-neutral-200">
-                  <KeyRound className="h-3.5 w-3.5 text-amber-400" />
-                  <span>Membro VIP</span>
-                </div>
-                <p className="mt-1 font-mono text-[10px] text-neutral-400 truncate">
-                  membro@mateuscelestino...
-                </p>
-              </button>
-            </div>
           </div>
 
           {errorMessage && (
@@ -195,16 +150,24 @@ export default function LoginPage() {
             </Button>
           </form>
 
-
-
           {/* Footer Callout */}
-          <div className="mt-6 border-t border-white/5 pt-4 text-center">
-            <Link
-              href="/"
-              className="text-xs text-neutral-400 hover:text-white transition-colors"
-            >
-              ← Voltar ao Portal Institucional
-            </Link>
+          <div className="mt-6 border-t border-white/5 pt-4 text-center space-y-2">
+            <div>
+              <Link
+                href="/comunidade/cadastro"
+                className="text-xs text-neutral-300 hover:text-white font-semibold transition-colors"
+              >
+                Não possui conta? Cadastre-se na Comunidade →
+              </Link>
+            </div>
+            <div>
+              <Link
+                href="/"
+                className="text-xs text-neutral-500 hover:text-white transition-colors"
+              >
+                ← Voltar ao Portal Institucional
+              </Link>
+            </div>
           </div>
         </GlassCard>
       </div>

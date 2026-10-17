@@ -3,7 +3,7 @@ import { eq } from 'drizzle-orm';
 import { getSession, destroySession } from '@/lib/auth/session';
 import { verifyToken } from '@/lib/auth/jwt';
 import { db, isDbConfigured } from '@/lib/db';
-import { members } from '@/lib/db/schema';
+import { adminUsers, members } from '@/lib/db/schema';
 
 export async function GET(req: Request) {
   try {
@@ -26,41 +26,77 @@ export async function GET(req: Request) {
       );
     }
 
-    // 3. Tenta buscar informações atualizadas diretamente do banco de dados
+    // 3. Sincroniza informações atualizadas diretamente do banco de dados Supabase
     let memberDetails = {
       id: session.userId,
       email: session.email,
       name: session.name,
       role: session.role || 'member',
-      tier: session.tier || 'free',
+      tier: session.role === 'admin' ? ('vip' as const) : (session.tier || 'free'),
       status: 'active',
     };
 
     if (isDbConfigured && session.userId) {
       try {
-        const rows = await db
-          .select({
-            id: members.id,
-            email: members.email,
-            name: members.name,
-            tier: members.tier,
-            status: members.status,
-            createdAt: members.createdAt,
-          })
-          .from(members)
-          .where(eq(members.id, session.userId))
-          .limit(1);
+        if (session.role === 'admin') {
+          const adminRows = await db
+            .select({
+              id: adminUsers.id,
+              email: adminUsers.email,
+              name: adminUsers.name,
+              role: adminUsers.role,
+            })
+            .from(adminUsers)
+            .where(eq(adminUsers.id, session.userId))
+            .limit(1);
 
-        if (rows.length > 0) {
-          const m = rows[0];
-          memberDetails = {
-            id: m.id,
-            email: m.email,
-            name: m.name,
-            role: session.role || 'member',
-            tier: (m.tier as 'free' | 'pro' | 'vip') || 'free',
-            status: m.status || 'active',
-          };
+          if (adminRows.length > 0) {
+            const a = adminRows[0];
+            memberDetails = {
+              id: a.id,
+              email: a.email,
+              name: a.name,
+              role: 'admin',
+              tier: 'vip',
+              status: 'active',
+            };
+          } else {
+            return NextResponse.json(
+              { authenticated: false, member: null, error: 'Conta administrativa não encontrada.' },
+              { status: 401 }
+            );
+          }
+        } else {
+          const rows = await db
+            .select({
+              id: members.id,
+              email: members.email,
+              name: members.name,
+              tier: members.tier,
+              status: members.status,
+              createdAt: members.createdAt,
+            })
+            .from(members)
+            .where(eq(members.id, session.userId))
+            .limit(1);
+
+          if (rows.length > 0) {
+            const m = rows[0];
+            if (m.status !== 'active') {
+              return NextResponse.json(
+                { authenticated: false, member: null, error: 'Conta de membro inativa.' },
+                { status: 403 }
+              );
+            }
+            memberDetails = {
+              id: m.id,
+              email: m.email,
+              name: m.name,
+              role: session.role || 'member',
+              tier: (m.tier as 'free' | 'pro' | 'vip') || 'free',
+              status: m.status || 'active',
+            };
+          }
         }
       } catch (dbErr) {
         console.warn('⚠️ [Auth Me] Erro ao sincronizar dados com o banco:', dbErr);

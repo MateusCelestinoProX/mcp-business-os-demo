@@ -12,13 +12,17 @@ export function Footer() {
           {/* Coluna 1: Branding MCP */}
           <div className="md:col-span-1 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-red-600 to-black p-[1px] flex items-center justify-center shadow-[0_0_15px_rgba(255,7,58,0.4)]">
-                <div className="w-full h-full bg-[#030305] rounded-[7px] flex items-center justify-center">
-                  <span className="font-extrabold text-xs text-white">MCP</span>
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-red-600 via-red-800 to-black p-[1px] flex items-center justify-center shadow-[0_0_15px_rgba(255,7,58,0.4)] overflow-hidden shrink-0">
+                <div className="w-full h-full bg-[#030305] rounded-[7px] overflow-hidden flex items-center justify-center">
+                  <img
+                    src="/assets/site_icon.webp"
+                    alt="Mateus Celestino Pro X Logo"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
-              <span className="font-bold text-sm tracking-wide text-white">
-                MATEUS CELESTINO <span className="text-red-500">PRO</span>
+              <span className="font-bold text-sm tracking-wide text-white uppercase">
+                MATEUS CELESTINO <span className="text-red-500 font-extrabold">PRO X</span>
               </span>
             </div>
             <p className="text-xs text-neutral-400 leading-relaxed">
@@ -45,6 +49,15 @@ export function Footer() {
                 >
                   <span>Portal Institucional</span>
                   <span className="text-[10px] text-neutral-600">/</span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/showcase"
+                  className="hover:text-red-400 transition-colors flex items-center justify-between"
+                >
+                  <span>Showcase &amp; C.V</span>
+                  <span className="text-[10px] text-red-500/80">PRO</span>
                 </Link>
               </li>
               <li>

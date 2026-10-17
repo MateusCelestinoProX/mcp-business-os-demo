@@ -9,7 +9,6 @@ import {
   CheckCircle,
   ExternalLink,
   Lock,
-  Layers,
   ArrowRight,
   BookOpen,
 } from 'lucide-react';
@@ -18,8 +17,6 @@ import LiquidGlassBackground from '@/components/portal/LiquidGlassBackground';
 import PortalNavbar from '@/components/portal/PortalNavbar';
 import OriginalHeader from '@/components/portal/OriginalHeader';
 import MainNotionLayout from '@/components/portal/MainNotionLayout';
-import RecursosSection from '@/components/portal/RecursosSection';
-import ShopSection from '@/components/portal/ShopSection';
 import SobreSection from '@/components/portal/SobreSection';
 import ContatoSection from '@/components/portal/ContatoSection';
 import ArticleModal, { ArticleData } from '@/components/portal/ArticleModal';
@@ -101,6 +98,10 @@ export default function HomePage() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
+    if (tabId === 'shop') {
+      window.location.href = '/shop';
+      return;
+    }
     const el = document.getElementById(tabId);
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
@@ -158,49 +159,15 @@ export default function HomePage() {
           />
         </div>
 
-        {/* ZONA DE TRANSIÇÃO 02 -> 03: Ripple Grid -> Arc Lightning */}
+        {/* ZONA DE TRANSIÇÃO 02 -> 03: Ripple Grid -> Faulty Terminal */}
         <ShaderTransitionZone
           from="RIPPLE GRID"
-          to="ARC LIGHTNING"
+          to="FAULTY TERMINAL"
           index="02 // 03"
         />
 
         {/* =========================================================================
-            3. RECURSOS & PACKS OFICIAIS & SHADER 03: ARC LIGHTNING
-            ========================================================================= */}
-        <div id="recursos">
-          <RecursosSection
-            recursos={siteData?.recursos || []}
-            onOpenContact={() => handleNavigate('contato')}
-          />
-        </div>
-
-        {/* ZONA DE TRANSIÇÃO 03 -> 04: Arc Lightning -> Balatro Vortex */}
-        <ShaderTransitionZone
-          from="ARC LIGHTNING"
-          to="BALATRO VORTEX"
-          index="03 // 04"
-        />
-
-        {/* =========================================================================
-            4. LOJA & SERVIÇOS DE AUTOMAÇÃO & SHADER 04: BALATRO VORTEX
-            ========================================================================= */}
-        <div id="shop">
-          <ShopSection
-            shopData={siteData?.shop || {}}
-            onOpenContact={() => handleNavigate('contato')}
-          />
-        </div>
-
-        {/* ZONA DE TRANSIÇÃO 04 -> 05: Balatro Vortex -> Faulty Terminal */}
-        <ShaderTransitionZone
-          from="BALATRO VORTEX"
-          to="FAULTY TERMINAL"
-          index="04 // 05"
-        />
-
-        {/* =========================================================================
-            5. SOBRE MATEUS CELESTINO PRO X & SHADER 05: FAULTY TERMINAL
+            3. SOBRE MATEUS CELESTINO PRO X & SHADER 03: FAULTY TERMINAL
             ========================================================================= */}
         <div id="sobre">
           <SobreSection
@@ -208,15 +175,15 @@ export default function HomePage() {
           />
         </div>
 
-        {/* ZONA DE TRANSIÇÃO 05 -> END: Faulty Terminal -> Terminal de Contato */}
+        {/* ZONA DE TRANSIÇÃO 03 -> END: Faulty Terminal -> Terminal de Contato */}
         <ShaderTransitionZone
           from="FAULTY TERMINAL"
           to="TERMINAL DE CONTATO"
-          index="05 // END"
+          index="03 // END"
         />
 
         {/* =========================================================================
-            6. SEÇÃO DE PROVA SOCIAL E CASOS DE SUCESSO COMPROVADOS
+            5. SEÇÃO DE PROVA SOCIAL E CASOS DE SUCESSO COMPROVADOS
             ========================================================================= */}
         <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full relative overflow-hidden">
           {/* Fundo Cinemático com Shader LineWaves em Vermelho Obscurecido */}
@@ -286,7 +253,7 @@ export default function HomePage() {
         <MetricsBanner />
 
         {/* =========================================================================
-            8. VITRINE DOS 4 ECOSSISTEMAS UNIFICADOS DA PLATAFORMA SOBERANA
+            8. VITRINE DOS 4 ECOSSISTEMAS UNIFICADOS DE MATEUS CELESTINO PRO X
             ========================================================================= */}
         <EcosystemShowcase />
 

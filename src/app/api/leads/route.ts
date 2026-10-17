@@ -3,6 +3,7 @@ import { db } from '@/lib/db';
 import { leads } from '@/lib/db/schema';
 import { desc, eq } from 'drizzle-orm';
 import { randomUUID } from 'crypto';
+import { verifyAdminRequest, unauthorizedResponse } from '@/lib/auth/admin-guard';
 
 // Regex para validação de e-mail corporativo / pessoal
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -120,7 +121,7 @@ export async function POST(request: Request) {
       {
         success: true,
         leadId: createdLeadId,
-        message: 'Lead registrado com sucesso na Plataforma Soberana.',
+        message: 'Lead registrado com sucesso em Mateus Celestino Pro X.',
       },
       { status: 201 }
     );
@@ -139,6 +140,11 @@ export async function POST(request: Request) {
  */
 export async function GET(request: Request) {
   try {
+    const auth = await verifyAdminRequest(request);
+    if (!auth.authorized) {
+      return unauthorizedResponse(auth.error);
+    }
+
     const { searchParams } = new URL(request.url);
     const page = Math.max(1, parseInt(searchParams.get('page') || '1', 10));
     const limit = Math.min(100, Math.max(1, parseInt(searchParams.get('limit') || '20', 10)));

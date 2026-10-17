@@ -56,10 +56,9 @@ describe('Auth & Security Module Tests (bcryptjs + jose JWT)', () => {
 
   describe('Authentication Flow & Fallbacks', () => {
     test('authenticateAdmin deve autenticar com credenciais corretas', async () => {
-      const result = await authenticateAdmin(
-        'mateus@mateuscelestinopro.com',
-        'MateusProX@2026!'
-      );
+      const adminEmail = process.env.ADMIN_EMAIL || 'mcp6667@proton.me';
+      const adminPass = process.env.ADMIN_PASSWORD || 'McpProX#2026_Sovereign@Admin!7Kz9Pq';
+      const result = await authenticateAdmin(adminEmail, adminPass);
 
       assert.strictEqual(result.success, true, 'Deve autenticar com credenciais válidas');
       assert.ok(result.token, 'Deve retornar token de sessão');
@@ -68,8 +67,9 @@ describe('Auth & Security Module Tests (bcryptjs + jose JWT)', () => {
     });
 
     test('authenticateAdmin deve rejeitar credenciais inválidas', async () => {
+      const adminEmail = process.env.ADMIN_EMAIL || 'mcp6667@proton.me';
       const result = await authenticateAdmin(
-        'mateus@mateuscelestinopro.com',
+        adminEmail,
         'SenhaIncorreta@999'
       );
 

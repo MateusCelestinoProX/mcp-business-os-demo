@@ -173,23 +173,40 @@ export default function RippleGridShader({
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
     container.addEventListener('mouseleave', handleMouseLeave);
 
+    let isDestroyed = false;
     let isVisible = true;
     const io = new IntersectionObserver(([entry]) => {
       isVisible = entry.isIntersecting;
     }, { threshold: 0.05 });
     io.observe(container);
 
+    // Garantir que mesh possua children inicializado como array para evitar TypeError em OGL
+    if (mesh && !mesh.children) {
+      mesh.children = [];
+    }
+
     let raf = 0;
     const loop = (time: number) => {
+      if (isDestroyed) return;
       raf = requestAnimationFrame(loop);
       if (!isVisible || document.hidden) return;
+      if (!gl || (gl.isContextLost && gl.isContextLost())) return;
 
-      program.uniforms.iTime.value = time * 0.001;
-      renderer.render({ scene: mesh });
+      try {
+        if (program?.uniforms?.iTime) {
+          program.uniforms.iTime.value = time * 0.001;
+        }
+        if (renderer && mesh && Array.isArray(mesh.children)) {
+          renderer.render({ scene: mesh });
+        }
+      } catch (err) {
+        // Previne crashes de WebGL durante transições de viewport ou desmontagem
+      }
     };
     raf = requestAnimationFrame(loop);
 
     return () => {
+      isDestroyed = true;
       cancelAnimationFrame(raf);
       io.disconnect();
       ro.disconnect();

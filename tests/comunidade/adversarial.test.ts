@@ -1,5 +1,8 @@
-import { test, describe } from 'node:test';
+import { test, describe, after } from 'node:test';
 import assert from 'node:assert/strict';
+import { or, like } from 'drizzle-orm';
+import { db } from '../../src/lib/db';
+import { members } from '../../src/lib/db/schema';
 import { POST as registerRoute } from '../../src/app/api/auth/register/route';
 import { POST as loginRoute } from '../../src/app/api/auth/login/route';
 import { POST as checkoutRoute } from '../../src/app/api/payment/checkout/route';
@@ -7,6 +10,20 @@ import { POST as webhookRoute } from '../../src/app/api/payment/webhook/route';
 import { signToken, verifyToken } from '../../src/lib/auth/jwt';
 
 describe('Suite de Testes Adversariais & Resiliência (agent-members)', () => {
+  after(async () => {
+    try {
+      await db.delete(members).where(
+        or(
+          like(members.email, 'xss_test_%'),
+          like(members.email, 'mateus_unicode_%'),
+          like(members.email, "victim'%")
+        )
+      );
+    } catch (e) {
+      console.warn('Erro ao limpar dados de teste adversarial:', e);
+    }
+  });
+
   describe('Injeções e Caracteres Especiais', () => {
     test('Cadastro com payload de SQL Injection deve ser tratado com segurança sem crash', async () => {
       const sqlInjectionName = "Robert'); DROP TABLE members;--";

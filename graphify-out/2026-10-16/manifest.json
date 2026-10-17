@@ -240,9 +240,9 @@
     "semantic_hash": ""
   },
   "PROJECT.md": {
-    "mtime": 1791993331.2268693,
-    "seen": 1791993491.8950741,
-    "ast_hash": "c1700dd5f6be03159db8385ce8371cf9",
+    "mtime": 1792196506.9917912,
+    "seen": 1792196518.360451,
+    "ast_hash": "c1f828706725139d43e11b834b7523b9",
     "semantic_hash": ""
   },
   "next.config.ts": {
@@ -1428,9 +1428,9 @@
     "semantic_hash": ""
   },
   "src/app/layout.tsx": {
-    "mtime": 1792096550.1829312,
-    "seen": 1792097766.530627,
-    "ast_hash": "a9234765329c6e58317ebf1baf9171a1",
+    "mtime": 1792181776.6204407,
+    "seen": 1792181911.052842,
+    "ast_hash": "99d2419842f9352ff2b249fa07b1fc53",
     "semantic_hash": ""
   },
   "src/components/builder/FieldPalette.tsx": {
@@ -1452,15 +1452,15 @@
     "semantic_hash": ""
   },
   "src/components/layout/Footer.tsx": {
-    "mtime": 1792019183.5159118,
-    "seen": 1792019248.7071161,
-    "ast_hash": "57da66a92fd2bf373983fa7ace118897",
+    "mtime": 1792196328.21596,
+    "seen": 1792196351.895401,
+    "ast_hash": "aa83039023b0c43b2370bcba1feee05f",
     "semantic_hash": ""
   },
   "src/components/layout/Navbar.tsx": {
-    "mtime": 1792027870.5754335,
-    "seen": 1792028411.102651,
-    "ast_hash": "352b5473ccc048314222c47dec15aa06",
+    "mtime": 1792196027.1514924,
+    "seen": 1792196194.127647,
+    "ast_hash": "00aadaac6005bdf874b252c1cfaa2de1",
     "semantic_hash": ""
   },
   "src/components/shaders/ColorBends.tsx": {
@@ -1494,9 +1494,9 @@
     "semantic_hash": ""
   },
   "src/data/library_catalog_index.json": {
-    "mtime": 1791992624.377538,
-    "seen": 1791992645.227179,
-    "ast_hash": "363ce91768fa21126fa91d12dbad0e4b",
+    "mtime": 1792196105.5943055,
+    "seen": 1792196194.128844,
+    "ast_hash": "c53f941e6974b9c701da6b7f78db1ca8",
     "semantic_hash": ""
   },
   "src/lib/auth/auth.ts": {
@@ -1608,9 +1608,9 @@
     "semantic_hash": ""
   },
   "src/app/api/leads/route.ts": {
-    "mtime": 1792121922.9037383,
-    "seen": 1792122336.874249,
-    "ast_hash": "d3be643c7a3467927fa9fb5dfe1bcbd8",
+    "mtime": 1792180963.5365186,
+    "seen": 1792180988.538443,
+    "ast_hash": "d035fcc57c317a4196778fffa596a366",
     "semantic_hash": ""
   },
   "src/app/api/library/download/route.ts": {
@@ -1728,9 +1728,9 @@
     "semantic_hash": ""
   },
   "src/components/portal/EcosystemShowcase.tsx": {
-    "mtime": 1792004545.4557638,
-    "seen": 1792005104.743695,
-    "ast_hash": "0bae5aaf30b81314ff639588ef201e1a",
+    "mtime": 1792180925.2105002,
+    "seen": 1792180988.53951,
+    "ast_hash": "decc66d61a0fd475a1a3721200da7f60",
     "semantic_hash": ""
   },
   "src/components/shaders/GridScanShader.tsx": {
@@ -1842,9 +1842,9 @@
     "semantic_hash": ""
   },
   "src/lib/library/catalog.ts": {
-    "mtime": 1792011777.0333343,
-    "seen": 1792012067.954396,
-    "ast_hash": "a127715bd20557cf573a27607e23990d",
+    "mtime": 1792180208.5340345,
+    "seen": 1792180431.089998,
+    "ast_hash": "37e72297f1146d27b4b29ddff7cc7e03",
     "semantic_hash": ""
   },
   "src/app/builder/f/[id]/page.tsx": {
@@ -1950,9 +1950,9 @@
     "semantic_hash": ""
   },
   "src/app/page.tsx": {
-    "mtime": 1792096618.982394,
-    "seen": 1792097766.530638,
-    "ast_hash": "b234ae5c1ea4413655f9dbbd7906ced5",
+    "mtime": 1792196258.3554795,
+    "seen": 1792196351.895036,
+    "ast_hash": "c36943c5f9fdf6d9feb7a3dba09f8778",
     "semantic_hash": ""
   },
   ".agents/teamwork/worker_shaders/handoff.md": {
@@ -2046,9 +2046,9 @@
     "semantic_hash": ""
   },
   "public/comunidade/app.js": {
-    "mtime": 1792176250.5602942,
-    "seen": 1792176294.519802,
-    "ast_hash": "4ccae5efb2d359b2e37299e4c7bdb5f0",
+    "mtime": 1792176460.5216038,
+    "seen": 1792177738.9675882,
+    "ast_hash": "7615cfa87f64e5ce35ad7038fc047bbb",
     "semantic_hash": ""
   },
   "public/comunidade/netlify/functions/create-payment.js": {
@@ -2070,9 +2070,9 @@
     "semantic_hash": ""
   },
   "src/app/api/checkout/route.ts": {
-    "mtime": 1791994121.4865377,
-    "seen": 1791994209.397228,
-    "ast_hash": "9316bdf6486155be7fa813e8287402d4",
+    "mtime": 1792180971.5262592,
+    "seen": 1792180988.5382872,
+    "ast_hash": "df20e72da683b5652c6f7f952f655436",
     "semantic_hash": ""
   },
   "public/comunidade/DEPLOY.MD": {
@@ -2898,9 +2898,9 @@
     "semantic_hash": ""
   },
   "public/comunidade/index.html": {
-    "mtime": 1792176011.915717,
-    "seen": 1792176294.528239,
-    "ast_hash": "4c97c2631371c2c13f762b2cc111d72b",
+    "mtime": 1792196226.672249,
+    "seen": 1792196351.902148,
+    "ast_hash": "9f259eed75486c9c5520061701d1b7c0",
     "semantic_hash": ""
   },
   "public/comunidade/effects/CREATIVE EFFECT's/ANCESTRAL HAND STATUE RENDER/ChatGPT_Image_17_de_jul._de_2025_15_25_13.webp": {
@@ -13734,9 +13734,9 @@
     "semantic_hash": ""
   },
   "src/components/portal/OriginalHeader.tsx": {
-    "mtime": 1792004352.6527383,
-    "seen": 1792005104.743768,
-    "ast_hash": "a7dc9cc6848a07cddf327e780d02bf5b",
+    "mtime": 1792188542.4972215,
+    "seen": 1792188606.623084,
+    "ast_hash": "5ac6919673f17bdbc23fdc298f9e1e2e",
     "semantic_hash": ""
   },
   "src/app/api/contact/route.ts": {
@@ -13776,9 +13776,9 @@
     "semantic_hash": ""
   },
   "src/components/portal/ContatoSection.tsx": {
-    "mtime": 1791994468.7451234,
-    "seen": 1791994554.1759849,
-    "ast_hash": "5393f6fc344cac5de3954c8e6e2dcf4e",
+    "mtime": 1792196374.080451,
+    "seen": 1792196488.0433862,
+    "ast_hash": "0e0fe1a180681d97586e1eb44d7d0e96",
     "semantic_hash": ""
   },
   "src/components/portal/LegalModal.tsx": {
@@ -13791,12 +13791,6 @@
     "mtime": 1792004427.7696617,
     "seen": 1792005104.743766,
     "ast_hash": "6fd8ecc04dd6bff746e3d63d4b9ccff1",
-    "semantic_hash": ""
-  },
-  "src/components/portal/RecursosSection.tsx": {
-    "mtime": 1792102781.3054233,
-    "seen": 1792103551.407039,
-    "ast_hash": "461541676c71f2a8596e25ad84b9b292",
     "semantic_hash": ""
   },
   "src/components/portal/ShopSection.tsx": {
@@ -13836,9 +13830,9 @@
     "semantic_hash": ""
   },
   "src/app/admin/page.tsx": {
-    "mtime": 1792114805.4488335,
-    "seen": 1792114872.3083572,
-    "ast_hash": "72b44127a86531ffc55cf19920dee47d",
+    "mtime": 1792196504.0748637,
+    "seen": 1792196518.3557918,
+    "ast_hash": "9980548382974b568444328da23d973c",
     "semantic_hash": ""
   },
   "src/lib/auth/unified-auth.ts": {
@@ -13848,9 +13842,9 @@
     "semantic_hash": ""
   },
   "src/components/portal/PortalNavbar.tsx": {
-    "mtime": 1792004383.4642663,
-    "seen": 1792005104.7437692,
-    "ast_hash": "1c76d00965ef99f9e9bcf222b6effbb3",
+    "mtime": 1792196395.4536827,
+    "seen": 1792196488.043613,
+    "ast_hash": "2e521819c0de583add6bd8604ad8a3f9",
     "semantic_hash": ""
   },
   "src/components/shaders/LineWavesShader.tsx": {
@@ -15480,9 +15474,9 @@
     "semantic_hash": ""
   },
   "src/app/not-found.tsx": {
-    "mtime": 1792097601.0294333,
-    "seen": 1792097766.530633,
-    "ast_hash": "0a6a59def3edc183d8e544ff60312090",
+    "mtime": 1792180862.1263967,
+    "seen": 1792180988.538937,
+    "ast_hash": "f99a6cdc5a2edc700ab651aae569b615",
     "semantic_hash": ""
   },
   "src/data/articles-summary.json": {
@@ -15573,6 +15567,1002 @@
     "mtime": 1792171028.6928644,
     "seen": 1792171087.448353,
     "ast_hash": "cb084b0fcb3beb1938077997b20cf0bc",
+    "semantic_hash": ""
+  },
+  "src/app/admin/library-control/page.tsx": {
+    "mtime": 1792180899.4404485,
+    "seen": 1792180988.5378828,
+    "ast_hash": "943eb54a9d51e1816fcfdfaeffb3f2ff",
+    "semantic_hash": ""
+  },
+  "src/app/api/admin/libraries/cloud/route.ts": {
+    "mtime": 1792177002.3872902,
+    "seen": 1792177738.967824,
+    "ast_hash": "86019aa96c9dfa25efe062aade3e86bc",
+    "semantic_hash": ""
+  },
+  "src/app/api/admin/libraries/items/[id]/route.ts": {
+    "mtime": 1792180245.4379265,
+    "seen": 1792180431.0873868,
+    "ast_hash": "6259471327c931f01e44c3a1db0140b5",
+    "semantic_hash": ""
+  },
+  "src/app/api/admin/libraries/route.ts": {
+    "mtime": 1792176971.1023827,
+    "seen": 1792177738.967826,
+    "ast_hash": "8abb69c1f0b0509583cf6ea238d093e5",
+    "semantic_hash": ""
+  },
+  "src/app/api/admin/libraries/upload/route.ts": {
+    "mtime": 1792176986.6259868,
+    "seen": 1792177738.9678268,
+    "ast_hash": "2cae53332c3cd3811dfe0a235a24bab2",
+    "semantic_hash": ""
+  },
+  "src/components/admin/LibraryControlSuite.tsx": {
+    "mtime": 1792180912.2261288,
+    "seen": 1792180988.538965,
+    "ast_hash": "9aef9ceef352ace0f110ef3ae4601da5",
+    "semantic_hash": ""
+  },
+  "src/lib/library/library-manager.ts": {
+    "mtime": 1792180174.419271,
+    "seen": 1792180431.0899992,
+    "ast_hash": "54742cff24d3ed6a12beda7646f0f13d",
+    "semantic_hash": ""
+  },
+  "tests/comunidade_tag_editor.test.mjs": {
+    "mtime": 1792177710.203989,
+    "seen": 1792177738.9707909,
+    "ast_hash": "bbe06698fc957ddf53e657cabfe64697",
+    "semantic_hash": ""
+  },
+  "src/app/api/admin/libraries/bulk-delete/route.ts": {
+    "mtime": 1792180261.677133,
+    "seen": 1792180431.087348,
+    "ast_hash": "d035a8f81abca027ae32bf59986d54e1",
+    "semantic_hash": ""
+  },
+  "src/app/api/admin/libraries/create-document/route.ts": {
+    "mtime": 1792180284.8225093,
+    "seen": 1792180431.0873852,
+    "ast_hash": "56ab18cc2c988d66c8634bcfb510b240",
+    "semantic_hash": ""
+  },
+  "src/data/libraries.json": {
+    "mtime": 1792196105.6018026,
+    "seen": 1792196194.128843,
+    "ast_hash": "3e79a0df86ee6f7eb3acd51fbf5fad31",
+    "semantic_hash": ""
+  },
+  "public/icon.png": {
+    "mtime": 1792180513.1449604,
+    "seen": 1792180988.606621,
+    "ast_hash": "59a566a7ed6f3d54dffa1830c13737bd",
+    "semantic_hash": ""
+  },
+  "public/apple-touch-icon.png": {
+    "mtime": 1792181019.9040606,
+    "seen": 1792181285.9197361,
+    "ast_hash": "59a566a7ed6f3d54dffa1830c13737bd",
+    "semantic_hash": ""
+  },
+  "tests/library_control_suite.test.ts": {
+    "mtime": 1792181543.9574578,
+    "seen": 1792181648.71382,
+    "ast_hash": "e9427a1832642b36133e47a64ecf7be9",
+    "semantic_hash": ""
+  },
+  "src/components/portal/AlternatingHeroShaders.tsx": {
+    "mtime": 1792188295.131045,
+    "seen": 1792188606.622859,
+    "ast_hash": "b7891774838e5cdb36497065ef40f392",
+    "semantic_hash": ""
+  },
+  "src/components/portal/UniversalSitemapModal.tsx": {
+    "mtime": 1792196341.9559028,
+    "seen": 1792196351.89597,
+    "ast_hash": "dc7746ba78c374d7e469b7bcd3e164d8",
+    "semantic_hash": ""
+  },
+  "public/showcase/galaxy.js": {
+    "mtime": 1792195910.1899056,
+    "seen": 1792196013.767436,
+    "ast_hash": "c584b9d178cc5b2835b6f13dd237c796",
+    "semantic_hash": ""
+  },
+  "public/showcase/script.js": {
+    "mtime": 1792196061.2131054,
+    "seen": 1792196194.125938,
+    "ast_hash": "b0c76db8def0c25273df15ed859dcdee",
+    "semantic_hash": ""
+  },
+  "public/showcase/singularity.js": {
+    "mtime": 1792195910.1893895,
+    "seen": 1792196013.7674391,
+    "ast_hash": "b2c79fd18068ba6998eb72cd114c8788",
+    "semantic_hash": ""
+  },
+  "public/showcase/contact page/index.html": {
+    "mtime": 1792195910.2924097,
+    "seen": 1792196013.776235,
+    "ast_hash": "4591cc8388445ed813181386a08b702c",
+    "semantic_hash": ""
+  },
+  "public/showcase/index.html": {
+    "mtime": 1792196190.010069,
+    "seen": 1792196194.1347892,
+    "ast_hash": "2b511b8efd453abbdf0fb8c7d831e675",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/business/10 passos para sair das dividas.pdf": {
+    "mtime": 1792195910.2401597,
+    "seen": 1792196013.776236,
+    "ast_hash": "f22c44955a0c9866662687f7083992c0",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/business/150 scripts de videos de venda.pdf": {
+    "mtime": 1792195910.2405746,
+    "seen": 1792196013.776237,
+    "ast_hash": "0e807daf879629ecb1d1a68ba7a848fe",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/business/3 maneiras de vender mais para o mesmo cliente.pdf": {
+    "mtime": 1792195910.2451193,
+    "seen": 1792196013.7762392,
+    "ast_hash": "3ebfc8704f6e5150131d38bc1d52cd14",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/business/acelerendo vendas como profissional autonomo.pdf": {
+    "mtime": 1792195910.248526,
+    "seen": 1792196013.7762408,
+    "ast_hash": "0ecbca9a3c5b81984951cd1cbe3955e5",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/business/comecando a investir.pdf": {
+    "mtime": 1792195910.234231,
+    "seen": 1792196013.776242,
+    "ast_hash": "55ee39aa1c1bc3f98197ea1216f5e066",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/business/conquistando clientes como freelancer.pdf": {
+    "mtime": 1792195910.2389753,
+    "seen": 1792196013.776244,
+    "ast_hash": "877a3f158dfc90af260b0ec152c92a70",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/business/da criacao ao rezistro.pdf": {
+    "mtime": 1792195910.243205,
+    "seen": 1792196013.7762449,
+    "ast_hash": "c85f120e625174c96483d59af27978f2",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/business/de empregado a empreendedor.pdf": {
+    "mtime": 1792195910.241814,
+    "seen": 1792196013.776246,
+    "ast_hash": "a1015b504c8a31e9970d8f226216f69d",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/business/de pf a pj.pdf": {
+    "mtime": 1792195910.2475276,
+    "seen": 1792196013.776247,
+    "ast_hash": "6cf175d7818bd80e7c47f69755b19133",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/business/dominando o processo de venda.pdf": {
+    "mtime": 1792195910.2347028,
+    "seen": 1792196013.776248,
+    "ast_hash": "88b054556c80c8c14e1eb699e66807d0",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/business/emprestimos e produtos bancarios.pdf": {
+    "mtime": 1792195910.241409,
+    "seen": 1792196013.7762492,
+    "ast_hash": "1e4af5be9a80b7e1bfb6709fd64da14b",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/business/mudando de area profissional.pdf": {
+    "mtime": 1792195910.2459996,
+    "seen": 1792196013.7762501,
+    "ast_hash": "b0aab64fb6d1ccfb0309b86f8eb4ad98",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/business/organizacao financeira pessoal.pdf": {
+    "mtime": 1792195910.2409995,
+    "seen": 1792196013.7762518,
+    "ast_hash": "f7133c468d7e83dbd9b8afdedfdce09c",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/business/organiza\u00e7\u00e3o financeira pessoal.pdf": {
+    "mtime": 1792195910.2480228,
+    "seen": 1792196013.776253,
+    "ast_hash": "f7133c468d7e83dbd9b8afdedfdce09c",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/business/planejamento estrategico para negocios.pdf": {
+    "mtime": 1792195910.2394898,
+    "seen": 1792196013.776254,
+    "ast_hash": "12a1ad3190e83a367c6507667050ab8e",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/business/reserva de emergencia e metas financeiras.pdf": {
+    "mtime": 1792195910.24275,
+    "seen": 1792196013.776255,
+    "ast_hash": "69cb68e8c16fcda4255b57504afe1a95",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/business/seu negocio do zero.pdf": {
+    "mtime": 1792195910.2351415,
+    "seen": 1792196013.776256,
+    "ast_hash": "426765f444170eb01c6c3ce3b5d744ad",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/business/seu neg\u00f3cio do zero.pdf": {
+    "mtime": 1792195910.2368968,
+    "seen": 1792196013.776257,
+    "ast_hash": "426765f444170eb01c6c3ce3b5d744ad",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/business/start financeiro.pdf": {
+    "mtime": 1792195910.2446508,
+    "seen": 1792196013.776258,
+    "ast_hash": "cde733a84d0d28b5931b5b4e01a06270",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/business/treinamento caixa rapido.pdf": {
+    "mtime": 1792195910.244223,
+    "seen": 1792196013.7762592,
+    "ast_hash": "df4d0d4c03433c1f8d1fee5333530e3d",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/business/treinamento caixa r\u00e1pido.pdf": {
+    "mtime": 1792195910.2437112,
+    "seen": 1792196013.7762601,
+    "ast_hash": "df4d0d4c03433c1f8d1fee5333530e3d",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/business/vender mais em datas comemorativas.pdf": {
+    "mtime": 1792195910.242315,
+    "seen": 1792196013.776261,
+    "ast_hash": "39bdfe9f44b9f3968755e7624b2e7fd8",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/copywriter/como escrever para vender.pdf": {
+    "mtime": 1792195910.1971784,
+    "seen": 1792196013.7762618,
+    "ast_hash": "0a626e479460c496fe0a0c9881ec4724",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/copywriter/conquistando clientes de copy.pdf": {
+    "mtime": 1792195910.193372,
+    "seen": 1792196013.776263,
+    "ast_hash": "28fe856e4c41e4f9e99f5fdcb2bb274e",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/copywriter/copywriter express.pdf": {
+    "mtime": 1792195910.1926196,
+    "seen": 1792196013.776264,
+    "ast_hash": "7b9f757bfe7183ddd47eecbaff3e1ff0",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/copywriter/fundamentos de um copywriter de sucesso.pdf": {
+    "mtime": 1792195910.1966,
+    "seen": 1792196013.776265,
+    "ast_hash": "ac923db3217b9e0fdb7bf50d55329be6",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/copywriter/o jogo e mental- como ser um copywriter de sucesso.pdf": {
+    "mtime": 1792195910.1940792,
+    "seen": 1792196013.776266,
+    "ast_hash": "ac0befe7f6cc02e4775de012d24c9a46",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/copywriter/o jogo \u00e9 mental- como ser um copywriter de sucesso.pdf": {
+    "mtime": 1792195910.1919718,
+    "seen": 1792196013.776267,
+    "ast_hash": "ac0befe7f6cc02e4775de012d24c9a46",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/copywriter/profissao copywriter.pdf": {
+    "mtime": 1792195910.1959033,
+    "seen": 1792196013.776267,
+    "ast_hash": "10f388352b1c97a3aa91bfe232500ba2",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/copywriter/profiss\u00e3o copywriter.pdf": {
+    "mtime": 1792195910.1911979,
+    "seen": 1792196013.776268,
+    "ast_hash": "10f388352b1c97a3aa91bfe232500ba2",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/formacao/desenvolvimen to web.pdf": {
+    "mtime": 1792195910.287831,
+    "seen": 1792196013.776269,
+    "ast_hash": "2296b106399498d4fb8e0ad6fd0c6ea6",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/formacao/gestor de trafego.pdf": {
+    "mtime": 1792195910.2874055,
+    "seen": 1792196013.7762702,
+    "ast_hash": "37626a771bf54dd55b40bbbd4f810fe5",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/formacao/produtor de ebooks.pdf": {
+    "mtime": 1792195910.2882562,
+    "seen": 1792196013.776271,
+    "ast_hash": "2dc1f4e3910434465857deb1994f19be",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/gradua\u00e7\u00e3o/diplomadigital.pdf": {
+    "mtime": 1792195910.2188761,
+    "seen": 1792196013.7762718,
+    "ast_hash": "a1d31391b7e243d697790371406edc44",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/it certifications/cyber attack/ethical hacking kali linux.pdf": {
+    "mtime": 1792195910.265886,
+    "seen": 1792196013.776273,
+    "ast_hash": "8092af84fa058f30a15bf56ff146f972",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/it certifications/cyber attack/kali linux dos e ddos.pdf": {
+    "mtime": 1792195910.2674048,
+    "seen": 1792196013.776274,
+    "ast_hash": "c04e398a65efaa59372db10f9a27cb19",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/it certifications/cyber attack/kali linux nmap.pdf": {
+    "mtime": 1792195910.2684658,
+    "seen": 1792196013.776275,
+    "ast_hash": "cc22964fe586dbe4425d849131aa22e7",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/it certifications/cyber attack/tecnicas de invasao em redes sem fio.pdf": {
+    "mtime": 1792195910.2653592,
+    "seen": 1792196013.776275,
+    "ast_hash": "de02ec9f0f09721239db86d7750fff9f",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/it certifications/cyber attack/webhacking.pdf": {
+    "mtime": 1792195910.2679574,
+    "seen": 1792196013.7762759,
+    "ast_hash": "713459daedabecfdbb660a31867bbb37",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/it certifications/cyber defense/boas praticas em cyberecurity.pdf": {
+    "mtime": 1792195910.2791007,
+    "seen": 1792196013.7762802,
+    "ast_hash": "6569f32735168a57465859b13b2dbc99",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/it certifications/cyber defense/boas pr\u00e1ticas em cyberecurity.pdf": {
+    "mtime": 1792195910.2778416,
+    "seen": 1792196013.776281,
+    "ast_hash": "6569f32735168a57465859b13b2dbc99",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/it certifications/cyber defense/fundamentos da criptografia.pdf": {
+    "mtime": 1792195910.2783837,
+    "seen": 1792196013.776282,
+    "ast_hash": "76f5f3cd4ad2bc5763af18c90c9d2544",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/it certifications/cyber defense/fundamentos data center security.pdf": {
+    "mtime": 1792195910.272013,
+    "seen": 1792196013.776282,
+    "ast_hash": "1882157e61d018c3397ebb77c1442466",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/it certifications/cyber defense/redes para seguranca da informacao.pdf": {
+    "mtime": 1792195910.2773552,
+    "seen": 1792196013.7762828,
+    "ast_hash": "b79d818811de9ee8a82b15a9c2404b3f",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/it certifications/cyber defense/redes para seguran\u00e7a da informa\u00e7\u00e3o.pdf": {
+    "mtime": 1792195910.2697895,
+    "seen": 1792196013.776285,
+    "ast_hash": "b79d818811de9ee8a82b15a9c2404b3f",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/it certifications/cyber defense/seguranca da informacao corporativa.pdf": {
+    "mtime": 1792195910.2745702,
+    "seen": 1792196013.776286,
+    "ast_hash": "867029914e7bf77c7b5f55131621f07a",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/it certifications/cyber defense/seguranca da informacao e hacking.pdf": {
+    "mtime": 1792195910.274056,
+    "seen": 1792196013.776287,
+    "ast_hash": "cee2a0e2ff799358ddb2bf03147181d4",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/it certifications/cyber defense/seguranca da informacao_conceitos.pdf": {
+    "mtime": 1792195910.2692947,
+    "seen": 1792196013.776287,
+    "ast_hash": "1ca7034c7a915a809c364093e29e85d3",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/it certifications/cyber defense/seguran\u00e7a da informa\u00e7\u00e3o corporativa.pdf": {
+    "mtime": 1792195910.2755907,
+    "seen": 1792196013.776288,
+    "ast_hash": "867029914e7bf77c7b5f55131621f07a",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/it certifications/cyber defense/seguran\u00e7a da informa\u00e7\u00e3o e hacking.pdf": {
+    "mtime": 1792195910.2702458,
+    "seen": 1792196013.77629,
+    "ast_hash": "cee2a0e2ff799358ddb2bf03147181d4",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/it certifications/cyber defense/seguran\u00e7a da informa\u00e7\u00e3o_conceitos.pdf": {
+    "mtime": 1792195910.2750847,
+    "seen": 1792196013.7762911,
+    "ast_hash": "1ca7034c7a915a809c364093e29e85d3",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/it certifications/cyber defense/tecnicas hacker e redes wifi.pdf": {
+    "mtime": 1792195910.2735887,
+    "seen": 1792196013.776292,
+    "ast_hash": "5b2af4f863a63f1e128211939e9d5911",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/linkedin/certificate-g4z3w6c6bdgm-1751350935 1.pdf": {
+    "mtime": 1792195910.2912486,
+    "seen": 1792196013.776293,
+    "ast_hash": "729c3f6a7cee3169ede5ca0bd73ce5c9",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/linkedin/certificate-jp5w5z4v2juf-1751349666.pdf": {
+    "mtime": 1792195910.2895036,
+    "seen": 1792196013.776294,
+    "ast_hash": "f7139865428aac64b4daa8a3c184cfb9",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/linkedin/certificate-zpgfg9cyi76g-1751347572.pdf": {
+    "mtime": 1792195910.291775,
+    "seen": 1792196013.776294,
+    "ast_hash": "f5b0a88ddd0bc8c6d1d47f8e3f6b16f3",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/n8n/certificate_1urvj_1748844507094.pdf": {
+    "mtime": 1792195910.2833,
+    "seen": 1792196013.776295,
+    "ast_hash": "aa305e3605d97bbe03b83c8c88eb3322",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/overall marketing digital_/a importancia das redes socais no marketing digital.pdf": {
+    "mtime": 1792195910.2502546,
+    "seen": 1792196013.776296,
+    "ast_hash": "2ffd0d4c3a1d21d25ee5d937daa2d56e",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/overall marketing digital_/afiliado amazon.pdf": {
+    "mtime": 1792195910.2576551,
+    "seen": 1792196013.7762969,
+    "ast_hash": "b4f9fae530b963c55c2ca89d12961e3f",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/overall marketing digital_/afiliado com trafego pago.pdf": {
+    "mtime": 1792195910.2580516,
+    "seen": 1792196013.776298,
+    "ast_hash": "5c95935278ca1bc5bd3bd6e88c892032",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/overall marketing digital_/afiliado lucrativo.pdf": {
+    "mtime": 1792195910.2523212,
+    "seen": 1792196013.776299,
+    "ast_hash": "3c621dd9aaf733f56e4b4f30a9cec643",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/overall marketing digital_/cyberclass certification_como criar um funil de vendas e gerar renda semiautomatica.pdf": {
+    "mtime": 1792195910.2584639,
+    "seen": 1792196013.7763,
+    "ast_hash": "cd57f716c1038c4cf4d816c797c31e5a",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/overall marketing digital_/cyberclass certification_como criar um funil de vendas e gerar renda semiautom\u00e1tica.pdf": {
+    "mtime": 1792195910.2527692,
+    "seen": 1792196013.7763011,
+    "ast_hash": "cd57f716c1038c4cf4d816c797c31e5a",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/overall marketing digital_/desvendando lancamentos digitais.pdf": {
+    "mtime": 1792195910.255704,
+    "seen": 1792196013.776302,
+    "ast_hash": "410def1a2c1f680c95f2339bde137a87",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/overall marketing digital_/desvendando lan\u00e7amentos digitais.pdf": {
+    "mtime": 1792195910.2532308,
+    "seen": 1792196013.776303,
+    "ast_hash": "410def1a2c1f680c95f2339bde137a87",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/overall marketing digital_/mundo 3k de oportunidades do marketing digital.pdf": {
+    "mtime": 1792195910.2519047,
+    "seen": 1792196013.7763042,
+    "ast_hash": "fe2e55752d3a233fffc35168ea3d08fc",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/overall marketing digital_/o essencial do marketing digital.pdf": {
+    "mtime": 1792195910.2536747,
+    "seen": 1792196013.776305,
+    "ast_hash": "81f634eb1201b763b1f2a4d155c59c6e",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/overall marketing digital_/profissao co-produtor.pdf": {
+    "mtime": 1792195910.257248,
+    "seen": 1792196013.776305,
+    "ast_hash": "736b242e9b9c62d152735dd2331dd557",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/overall marketing digital_/profissao lancador digital.pdf": {
+    "mtime": 1792195910.2561438,
+    "seen": 1792196013.776306,
+    "ast_hash": "684052e8da395302cf704a57d603147c",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/overall marketing digital_/profiss\u00e3o co-produtor.pdf": {
+    "mtime": 1792195910.2565534,
+    "seen": 1792196013.7763069,
+    "ast_hash": "736b242e9b9c62d152735dd2331dd557",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/overall marketing digital_/profiss\u00e3o lan\u00e7ador digital.pdf": {
+    "mtime": 1792195910.2552044,
+    "seen": 1792196013.776308,
+    "ast_hash": "684052e8da395302cf704a57d603147c",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/prog_dev/programacao para leigos.pdf": {
+    "mtime": 1792195910.2857428,
+    "seen": 1792196013.776309,
+    "ast_hash": "dd134a7d3cf50ecec388d717bf0d0b1c",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/prog_dev/programa\u00e7\u00e3o para leigos.pdf": {
+    "mtime": 1792195910.284094,
+    "seen": 1792196013.77631,
+    "ast_hash": "dd134a7d3cf50ecec388d717bf0d0b1c",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/social media/camapanhas com reels.pdf": {
+    "mtime": 1792195910.2292826,
+    "seen": 1792196013.7763112,
+    "ast_hash": "80f1dfad3c8997eb46cb0b979b7dd3ab",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/social media/como bombar no insta.pdf": {
+    "mtime": 1792195910.2334685,
+    "seen": 1792196013.776314,
+    "ast_hash": "3cb38715d282b8a52fb2c93805c9f805",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/social media/como bombar no tiktok.pdf": {
+    "mtime": 1792195910.2325885,
+    "seen": 1792196013.776315,
+    "ast_hash": "be1792c065dec8a61ffbb50970f243c0",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/social media/como vender no instagram.pdf": {
+    "mtime": 1792195910.2321181,
+    "seen": 1792196013.776315,
+    "ast_hash": "e7012cea7259d08db751be35c4696d87",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/social media/crossplataform.pdf": {
+    "mtime": 1792195910.2316854,
+    "seen": 1792196013.776316,
+    "ast_hash": "c139bfb6b851a819dca94d5352818eaa",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/social media/gestao de redes sociais para marcas.pdf": {
+    "mtime": 1792195910.2265246,
+    "seen": 1792196013.776317,
+    "ast_hash": "79d7c8a91c034dd3c4436b8211176b50",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/social media/jornada social media.pdf": {
+    "mtime": 1792195910.2330341,
+    "seen": 1792196013.776317,
+    "ast_hash": "c273cbc58872cd14c1a64239b7cb3212",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/social media/social media para negocios locais.pdf": {
+    "mtime": 1792195910.2307873,
+    "seen": 1792196013.7763178,
+    "ast_hash": "88544b6e26764bf9cf6ef3bdfe54ca65",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/social media/stories que vendem.pdf": {
+    "mtime": 1792195910.2238715,
+    "seen": 1792196013.776319,
+    "ast_hash": "eac602907da608f7d97a1f44b59bc3ad",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/social media/trabalhando com reels.pdf": {
+    "mtime": 1792195910.2312543,
+    "seen": 1792196013.77632,
+    "ast_hash": "bc977e1e58f97699a400655ac47caad3",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/typebot/udemy typebot certification.pdf": {
+    "mtime": 1792195910.28887,
+    "seen": 1792196013.776321,
+    "ast_hash": "40b581fc00db1c267a33e263288f701b",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/youtube/camera e timidez.pdf": {
+    "mtime": 1792195910.263299,
+    "seen": 1792196013.7763221,
+    "ast_hash": "c0b07ceccd80d99779f6806080bdfaca",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/youtube/como produzir podcast.pdf": {
+    "mtime": 1792195910.2640824,
+    "seen": 1792196013.776323,
+    "ast_hash": "1a637c4b28a7c7fb450905fb40131f1c",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/youtube/gravacao profissional com celular.pdf": {
+    "mtime": 1792195910.2620955,
+    "seen": 1792196013.776324,
+    "ast_hash": "4ce043aff583024cf4f66b59774fbebf",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/youtube/nicho perfeito.pdf": {
+    "mtime": 1792195910.2590995,
+    "seen": 1792196013.7763252,
+    "ast_hash": "8cafbfd72ceba3215ea4461ab8a306cf",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/youtube/publicos e como usar.pdf": {
+    "mtime": 1792195910.2594786,
+    "seen": 1792196013.776326,
+    "ast_hash": "ce3647ced887bf4f31ec35abd6a8a1d8",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/youtube/seo youtube.pdf": {
+    "mtime": 1792195910.2637148,
+    "seen": 1792196013.776327,
+    "ast_hash": "fd6de787cb9f7dddf432d245f3a8cc42",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/youtube/titulos estrategicos para youtube.pdf": {
+    "mtime": 1792195910.2611907,
+    "seen": 1792196013.7763278,
+    "ast_hash": "28fe021b58dc4fc0f35b9f91526f285a",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/youtube/youtube analise juridica.pdf": {
+    "mtime": 1792195910.2624948,
+    "seen": 1792196013.776329,
+    "ast_hash": "00c0b2e47b5bf115d316d6c5fa0bd477",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/youtube/youtube roteiro mangetico.pdf": {
+    "mtime": 1792195910.2616699,
+    "seen": 1792196013.776329,
+    "ast_hash": "959b915690f82bfffd9dd9c55dbd28ad",
+    "semantic_hash": ""
+  },
+  "public/showcase/certifications/youtube/youtuber gamer.pdf": {
+    "mtime": 1792195910.2628953,
+    "seen": 1792196013.77633,
+    "ast_hash": "6f349a89701a19fe4b2613100cb4dee8",
+    "semantic_hash": ""
+  },
+  "public/showcase/cv-itens/api1.webp": {
+    "mtime": 1792195910.3355768,
+    "seen": 1792196013.8383539,
+    "ast_hash": "4adb0aa43e1449302a81e5ca8697c41a",
+    "semantic_hash": ""
+  },
+  "public/showcase/cv-itens/cyberclasss hero.webp": {
+    "mtime": 1792195910.4162886,
+    "seen": 1792196013.838357,
+    "ast_hash": "d008d7b3275bf83c4f2630d91e78ac0d",
+    "semantic_hash": ""
+  },
+  "public/showcase/cv-itens/discord2.webp": {
+    "mtime": 1792195910.3402963,
+    "seen": 1792196013.838359,
+    "ast_hash": "931e4202333b11afbfdf0fc18a2fb58f",
+    "semantic_hash": ""
+  },
+  "public/showcase/cv-itens/mac.webp": {
+    "mtime": 1792195910.3438008,
+    "seen": 1792196013.838361,
+    "ast_hash": "7d336c5819629503527e6d9aebd548ad",
+    "semantic_hash": ""
+  },
+  "public/showcase/cv-itens/mac2.webp": {
+    "mtime": 1792195910.2932367,
+    "seen": 1792196013.8383622,
+    "ast_hash": "da31f908d22e9ccbcab86756396959da",
+    "semantic_hash": ""
+  },
+  "public/showcase/cv-itens/mac3.webp": {
+    "mtime": 1792195910.3390968,
+    "seen": 1792196013.838364,
+    "ast_hash": "d86e406337822ab0f0910b7f4a368c73",
+    "semantic_hash": ""
+  },
+  "public/showcase/cv-itens/mac4.webp": {
+    "mtime": 1792195910.3426757,
+    "seen": 1792196013.8383648,
+    "ast_hash": "61ce160d2045b37b9d290b827858b967",
+    "semantic_hash": ""
+  },
+  "public/showcase/cv-itens/omniroute_cover.webp": {
+    "mtime": 1792195910.331002,
+    "seen": 1792196013.838367,
+    "ast_hash": "9a532a2d208ed95b1e9050af42846315",
+    "semantic_hash": ""
+  },
+  "public/showcase/cv-itens/opencode_cover.webp": {
+    "mtime": 1792195910.3231382,
+    "seen": 1792196013.838368,
+    "ast_hash": "a5f40f1ee5c0efbcec65c4c5edc05413",
+    "semantic_hash": ""
+  },
+  "public/showcase/cv-itens/openwork_cover.webp": {
+    "mtime": 1792195910.2936945,
+    "seen": 1792196013.8383691,
+    "ast_hash": "6db9cd77324719a64323bfd8ce73e3f1",
+    "semantic_hash": ""
+  },
+  "public/showcase/cv-itens/vps1.webp": {
+    "mtime": 1792195910.3064978,
+    "seen": 1792196013.83837,
+    "ast_hash": "df173cd3a788e6470aacc67bfd09eb8b",
+    "semantic_hash": ""
+  },
+  "public/showcase/cv-itens/vps2.webp": {
+    "mtime": 1792195910.4190466,
+    "seen": 1792196013.838372,
+    "ast_hash": "ff9163231d6e6dd316e076f34bac0b64",
+    "semantic_hash": ""
+  },
+  "public/showcase/cv-itens/vps3.webp": {
+    "mtime": 1792195910.3879538,
+    "seen": 1792196013.838372,
+    "ast_hash": "c708fbec9cdf501a6c56530e465d4ed5",
+    "semantic_hash": ""
+  },
+  "public/showcase/cv-itens/vps4.webp": {
+    "mtime": 1792195910.353536,
+    "seen": 1792196013.8383749,
+    "ast_hash": "a4c59c730cda789626e301de4b52eae3",
+    "semantic_hash": ""
+  },
+  "public/showcase/update-midia/20250912_200441.webp": {
+    "mtime": 1792195910.4882624,
+    "seen": 1792196013.838376,
+    "ast_hash": "0119b002d7cb89c6fc039b96d4fcba82",
+    "semantic_hash": ""
+  },
+  "public/showcase/update-midia/20251016_172611.webp": {
+    "mtime": 1792195910.4843056,
+    "seen": 1792196013.838378,
+    "ast_hash": "ccad49aa2a8ae4d7fafbeaa6fde0e98a",
+    "semantic_hash": ""
+  },
+  "public/showcase/update-midia/20260505_170907.webp": {
+    "mtime": 1792195910.4778774,
+    "seen": 1792196013.838379,
+    "ast_hash": "a8372fcf78d9f2c883dd7e5bae7e2dfc",
+    "semantic_hash": ""
+  },
+  "public/showcase/update-midia/art.webp": {
+    "mtime": 1792195910.4730644,
+    "seen": 1792196013.83838,
+    "ast_hash": "935d13fec0e6ffc2608f373b9cb654f4",
+    "semantic_hash": ""
+  },
+  "public/showcase/update-midia/captura_desktop.webp": {
+    "mtime": 1792195910.4675486,
+    "seen": 1792196013.838381,
+    "ast_hash": "f97bc3e36b6d77acb84dbf257049d32a",
+    "semantic_hash": ""
+  },
+  "public/showcase/update-midia/creative.webp": {
+    "mtime": 1792195910.4735205,
+    "seen": 1792196013.838381,
+    "ast_hash": "1b874f1cb34a1ecaf9983481104f9689",
+    "semantic_hash": ""
+  },
+  "public/showcase/update-midia/effects.webp": {
+    "mtime": 1792195910.478495,
+    "seen": 1792196013.8383832,
+    "ast_hash": "f764096789b5f6c3763772728e8105e0",
+    "semantic_hash": ""
+  },
+  "public/showcase/update-midia/enhanced_zzzzzz.webp": {
+    "mtime": 1792195910.4888902,
+    "seen": 1792196013.8384352,
+    "ast_hash": "f9cfeb545225acbc8d2a308386404400",
+    "semantic_hash": ""
+  },
+  "public/showcase/update-midia/mobile_analytics.webp": {
+    "mtime": 1792195910.4713683,
+    "seen": 1792196013.8384361,
+    "ast_hash": "6b37917fe89faf0eb73144a69c930b54",
+    "semantic_hash": ""
+  },
+  "public/showcase/update-midia/photo.webp": {
+    "mtime": 1792195910.4698021,
+    "seen": 1792196013.838437,
+    "ast_hash": "f027d23a6d06e5ba6f44ca16b4754ce0",
+    "semantic_hash": ""
+  },
+  "public/showcase/update-midia/portrait.webp": {
+    "mtime": 1792195910.4753053,
+    "seen": 1792196013.8384378,
+    "ast_hash": "d8471b88d1185b4333e94d8b61e76746",
+    "semantic_hash": ""
+  },
+  "public/showcase/update-midia/yt_studio.webp": {
+    "mtime": 1792195910.4758341,
+    "seen": 1792196013.838439,
+    "ast_hash": "65d6023b1f6e78fc4727d0780247bf83",
+    "semantic_hash": ""
+  },
+  "public/showcase/cv-itens/cyberclass.mp4": {
+    "mtime": 1792195910.3485782,
+    "seen": 1792196013.8384671,
+    "ast_hash": "0e3b55c9c52f49be6d2073c6dddc2b87",
+    "semantic_hash": ""
+  },
+  "public/showcase/cv-itens/discord.mp4": {
+    "mtime": 1792195910.3527992,
+    "seen": 1792196013.838468,
+    "ast_hash": "4e972c0ddcbb8febf0e7744cffe861e9",
+    "semantic_hash": ""
+  },
+  "public/showcase/cv-itens/kiwify cursos.mov": {
+    "mtime": 1792195910.335008,
+    "seen": 1792196013.838468,
+    "ast_hash": "f0986c4646555b8556938e6d8705cb51",
+    "semantic_hash": ""
+  },
+  "public/showcase/cv-itens/omniroute_final.mp4": {
+    "mtime": 1792195910.4142082,
+    "seen": 1792196013.838469,
+    "ast_hash": "820a01882b008c6c5a205b16c4773344",
+    "semantic_hash": ""
+  },
+  "public/showcase/cv-itens/opencode_final.mp4": {
+    "mtime": 1792195910.3036246,
+    "seen": 1792196013.83847,
+    "ast_hash": "5c6340536d6253788023d002b284efc3",
+    "semantic_hash": ""
+  },
+  "public/showcase/cv-itens/openwork_final.mp4": {
+    "mtime": 1792195910.3855143,
+    "seen": 1792196013.838471,
+    "ast_hash": "ade897c1592e42a29586d9dc880a0f78",
+    "semantic_hash": ""
+  },
+  "public/showcase/cv-itens/terminal1.mp4": {
+    "mtime": 1792195910.3216374,
+    "seen": 1792196013.838472,
+    "ast_hash": "7daf79d3c470586aff2b625d5fc2fcdb",
+    "semantic_hash": ""
+  },
+  "public/showcase/notion_videos/notion1.mp4": {
+    "mtime": 1792195910.4266238,
+    "seen": 1792196013.8384728,
+    "ast_hash": "1508c4e9696a339e8a90bf873c2dd426",
+    "semantic_hash": ""
+  },
+  "public/showcase/notion_videos/notion2.mp4": {
+    "mtime": 1792195910.4649005,
+    "seen": 1792196013.838474,
+    "ast_hash": "95c401ff7bd555f76b98ebddba54902b",
+    "semantic_hash": ""
+  },
+  "public/showcase/notion_videos/notion3.mp4": {
+    "mtime": 1792195910.4456837,
+    "seen": 1792196013.838475,
+    "ast_hash": "d63d887afd5ad4389386d5ed1d91a1d0",
+    "semantic_hash": ""
+  },
+  "src/app/shop/page.tsx": {
+    "mtime": 1792195997.2916355,
+    "seen": 1792196019.335863,
+    "ast_hash": "f9022bcdd0d935a35b752e39428715a4",
+    "semantic_hash": ""
+  },
+  "src/app/showcase/route.ts": {
+    "mtime": 1792196003.0783975,
+    "seen": 1792196019.335865,
+    "ast_hash": "f1ef20014442a0d134cee77f0115414f",
+    "semantic_hash": ""
+  },
+  "public/photografy-contato/kz.jpg": {
+    "mtime": 1792196097.4102318,
+    "seen": 1792196194.201219,
+    "ast_hash": "01d2b5ae1fd21338a01817468be57cdc",
+    "semantic_hash": ""
+  },
+  "public/photografy-contato/l1.jpg": {
+    "mtime": 1792196097.4135776,
+    "seen": 1792196194.201223,
+    "ast_hash": "6f02541f29387f7079f9b11cc66f02f7",
+    "semantic_hash": ""
+  },
+  "public/photografy-contato/l2.jpg": {
+    "mtime": 1792196097.4413195,
+    "seen": 1792196194.2012239,
+    "ast_hash": "33d60d2a58105d54814339d99db8e6e4",
+    "semantic_hash": ""
+  },
+  "public/photografy-contato/l3.jpg": {
+    "mtime": 1792196097.4537156,
+    "seen": 1792196194.201225,
+    "ast_hash": "f228fc6793e11fb63f85fcd770eee3c9",
+    "semantic_hash": ""
+  },
+  "public/photografy-contato/l3.png.jpg": {
+    "mtime": 1792196097.468174,
+    "seen": 1792196194.201226,
+    "ast_hash": "f228fc6793e11fb63f85fcd770eee3c9",
+    "semantic_hash": ""
+  },
+  "public/photografy-contato/l4.jpg": {
+    "mtime": 1792196097.4813912,
+    "seen": 1792196194.201227,
+    "ast_hash": "ae092237e4e057073bc47820a38aeb39",
+    "semantic_hash": ""
+  },
+  "public/photografy-contato/l4.png.jpg": {
+    "mtime": 1792196097.491641,
+    "seen": 1792196194.201229,
+    "ast_hash": "ae092237e4e057073bc47820a38aeb39",
+    "semantic_hash": ""
+  },
+  "public/photografy-contato/l5.jpg": {
+    "mtime": 1792196097.5012023,
+    "seen": 1792196194.20123,
+    "ast_hash": "6f8dbddef6b255414de9749892a06919",
+    "semantic_hash": ""
+  },
+  "public/photografy-contato/l5.png.jpg": {
+    "mtime": 1792196097.5095882,
+    "seen": 1792196194.201231,
+    "ast_hash": "6f8dbddef6b255414de9749892a06919",
+    "semantic_hash": ""
+  },
+  "src/components/portal/PhotografyContactHub.tsx": {
+    "mtime": 1792196216.3529832,
+    "seen": 1792196351.8958988,
+    "ast_hash": "366fdaa5db8b432daf63976ba7f8c80d",
+    "semantic_hash": ""
+  },
+  "src/app/contato/page.tsx": {
+    "mtime": 1792196381.8593981,
+    "seen": 1792196488.042656,
+    "ast_hash": "131cd91ef6948bc1a09cef57b31d385f",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1792196437.3279154,
+    "seen": 1792196488.046258,
+    "ast_hash": "410bbc0110281fbb56003ed1952b3634",
+    "semantic_hash": ""
+  },
+  "docs/BACKEND_ARCHITECTURE.md": {
+    "mtime": 1792196465.941348,
+    "seen": 1792196488.046259,
+    "ast_hash": "e5710ac31af289bdccd1bea47612be1e",
+    "semantic_hash": ""
+  },
+  "docs/RECURSOS_E_INTEGRACOES.md": {
+    "mtime": 1792196491.8547087,
+    "seen": 1792196518.360492,
+    "ast_hash": "eeb15f01bddfa38a0b9b4ac564f70ae2",
     "semantic_hash": ""
   }
 }

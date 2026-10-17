@@ -144,6 +144,15 @@ export const authSessions = pgTable('auth_sessions', {
 });
 
 // ------------------------------------------------------------
+// 9. SYSTEM SETTINGS (Configurações Globais, Shop & Recursos)
+// ------------------------------------------------------------
+export const systemSettings = pgTable('system_settings', {
+  key: varchar('key', { length: 255 }).primaryKey(),
+  value: jsonb('value').notNull(),
+  updatedAt: timestamp('updated_at', { withTimezone: true }).defaultNow().notNull(),
+});
+
+// ------------------------------------------------------------
 // RELAÇÕES DRIZZLE
 // ------------------------------------------------------------
 export const formsRelations = relations(forms, ({ many }) => ({

@@ -21,52 +21,359 @@ export async function runSeed() {
   }
 
   try {
-    // 1. Admin Inicial Soberano
-    const adminEmail = (process.env.ADMIN_EMAIL || '202405039459@alunos.estacio.br').toLowerCase().trim();
     const adminPass = process.env.ADMIN_PASSWORD;
-    if (!adminPass) {
-      throw new Error('ADMIN_PASSWORD não configurada no ambiente (.env.local) para execução do seed.');
+    const memberPass = process.env.MEMBER_PASSWORD;
+    if (!adminPass || !memberPass) {
+      throw new Error('ADMIN_PASSWORD e MEMBER_PASSWORD devem estar configuradas no ambiente (.env.local).');
     }
+
     const adminPasswordHash = await hashPassword(adminPass);
-
-    const existingAdmin = await db
-      .select()
-      .from(adminUsers)
-      .where(eq(adminUsers.email, adminEmail))
-      .limit(1);
-
-    if (existingAdmin.length === 0) {
-      await db.insert(adminUsers).values({
-        name: 'Mateus Celestino Pro',
-        email: adminEmail,
-        passwordHash: adminPasswordHash,
-        role: 'admin',
-      });
-      console.log(`✅ [Seed] Admin criado com sucesso: ${adminEmail}`);
-    } else {
-      console.log(`ℹ️ [Seed] Admin já existente: ${adminEmail}`);
-    }
-
-    // 2. Membro Pro de Exemplo
-    const memberEmail = 'membro@mateuscelestinopro.com';
-    const memberPass = process.env.MEMBER_PASSWORD || 'MembroProX@2026!';
     const memberPasswordHash = await hashPassword(memberPass);
 
-    const existingMember = await db
-      .select()
-      .from(members)
-      .where(eq(members.email, memberEmail))
-      .limit(1);
+    // 1. Provisionar Tabelas da Comunidade, Políticas RLS e Buckets no Supabase PostgreSQL
+    const connStr = (process.env.DATABASE_URL || '').replace(/[?&]sslmode=[^&]+/g, '').replace(/\?$/, '');
+    if (connStr) {
+      const { Pool } = await import('pg');
+      const pool = new Pool({ connectionString: connStr, ssl: { rejectUnauthorized: false } });
+      const client = await pool.connect();
+      try {
+        // Remover eventuais linhas residuais de testes automatizados / XSS
+        await client.query(`
+          DELETE FROM public.members
+          WHERE email LIKE 'xss_test_%'
+             OR email LIKE 'mateus_unicode_%'
+             OR email LIKE 'membro_179%'
+        `);
 
-    if (existingMember.length === 0) {
-      await db.insert(members).values({
-        name: 'Membro Fundador Pro',
-        email: memberEmail,
-        passwordHash: memberPasswordHash,
-        status: 'active',
-        tier: 'vip',
-      });
-      console.log(`✅ [Seed] Membro VIP criado: ${memberEmail}`);
+        // Tabelas do Ecossistema Comunidade (A.I Visuals)
+        await client.query(`
+          CREATE TABLE IF NOT EXISTS public.profiles (
+            id UUID PRIMARY KEY,
+            name VARCHAR(255) NOT NULL,
+            email VARCHAR(255) UNIQUE NOT NULL,
+            role VARCHAR(50) NOT NULL DEFAULT 'free',
+            avatar_url TEXT,
+            accessible_products JSONB DEFAULT '[]'::jsonb,
+            bio TEXT,
+            created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+            updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+          );
+
+          CREATE TABLE IF NOT EXISTS public.moderator_permissions (
+            id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+            moderator_id UUID NOT NULL REFERENCES public.profiles(id) ON DELETE CASCADE,
+            can_manage_servers BOOLEAN NOT NULL DEFAULT true,
+            can_manage_community BOOLEAN NOT NULL DEFAULT true,
+            created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+            UNIQUE(moderator_id)
+          );
+          CREATE INDEX IF NOT EXISTS idx_moderator_permissions_mod_id ON public.moderator_permissions(moderator_id);
+
+          CREATE TABLE IF NOT EXISTS public.community_posts (
+            id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+            user_id UUID NOT NULL REFERENCES public.profiles(id) ON DELETE CASCADE,
+            title VARCHAR(300),
+            content TEXT NOT NULL,
+            link_url TEXT,
+            link_title VARCHAR(255),
+            images JSONB DEFAULT '[]'::jsonb,
+            image_url TEXT,
+            is_pinned BOOLEAN NOT NULL DEFAULT false,
+            created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+          );
+          CREATE INDEX IF NOT EXISTS idx_community_posts_user_id ON public.community_posts(user_id);
+          CREATE INDEX IF NOT EXISTS idx_community_posts_created_at ON public.community_posts(created_at DESC);
+
+          CREATE TABLE IF NOT EXISTS public.community_comments (
+            id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+            post_id UUID NOT NULL REFERENCES public.community_posts(id) ON DELETE CASCADE,
+            user_id UUID NOT NULL REFERENCES public.profiles(id) ON DELETE CASCADE,
+            content TEXT NOT NULL,
+            created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+          );
+          CREATE INDEX IF NOT EXISTS idx_community_comments_post_id ON public.community_comments(post_id);
+          CREATE INDEX IF NOT EXISTS idx_community_comments_user_id ON public.community_comments(user_id);
+
+          CREATE TABLE IF NOT EXISTS public.community_likes (
+            id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+            post_id UUID NOT NULL REFERENCES public.community_posts(id) ON DELETE CASCADE,
+            user_id UUID NOT NULL REFERENCES public.profiles(id) ON DELETE CASCADE,
+            created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+            UNIQUE(post_id, user_id)
+          );
+          CREATE INDEX IF NOT EXISTS idx_community_likes_post_id ON public.community_likes(post_id);
+          CREATE INDEX IF NOT EXISTS idx_community_likes_user_id ON public.community_likes(user_id);
+
+          CREATE TABLE IF NOT EXISTS public.servers (
+            id VARCHAR(100) PRIMARY KEY DEFAULT ('srv_' || substr(md5(random()::text), 1, 10)),
+            title VARCHAR(255) NOT NULL,
+            description TEXT,
+            hero_image TEXT,
+            display_order INTEGER NOT NULL DEFAULT 0,
+            created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+          );
+
+          CREATE TABLE IF NOT EXISTS public.server_lessons (
+            id VARCHAR(100) PRIMARY KEY DEFAULT ('les_' || substr(md5(random()::text), 1, 10)),
+            server_id VARCHAR(100) NOT NULL REFERENCES public.servers(id) ON DELETE CASCADE,
+            title VARCHAR(255) NOT NULL,
+            video_url TEXT,
+            content_markdown TEXT,
+            display_order INTEGER NOT NULL DEFAULT 0,
+            created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+          );
+          CREATE INDEX IF NOT EXISTS idx_server_lessons_server_id ON public.server_lessons(server_id);
+
+          CREATE TABLE IF NOT EXISTS public.banners (
+            id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+            type VARCHAR(50) NOT NULL DEFAULT 'hero',
+            title VARCHAR(255) NOT NULL,
+            subtitle TEXT,
+            image_url TEXT,
+            link_url TEXT,
+            link_label VARCHAR(100) DEFAULT 'Saiba Mais',
+            is_active BOOLEAN NOT NULL DEFAULT true,
+            display_order INTEGER NOT NULL DEFAULT 0,
+            created_by UUID,
+            created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+          );
+
+          CREATE TABLE IF NOT EXISTS public.user_purchases (
+            id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+            user_id UUID NOT NULL REFERENCES public.profiles(id) ON DELETE CASCADE,
+            product_slug VARCHAR(150) NOT NULL,
+            created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+          );
+          CREATE INDEX IF NOT EXISTS idx_user_purchases_user_id ON public.user_purchases(user_id);
+        `);
+
+        const commTables = [
+          'profiles',
+          'moderator_permissions',
+          'community_posts',
+          'community_comments',
+          'community_likes',
+          'servers',
+          'server_lessons',
+          'banners',
+          'user_purchases',
+        ];
+        for (const tb of commTables) {
+          await client.query(`ALTER TABLE public.${tb} ENABLE ROW LEVEL SECURITY;`);
+          await client.query(`DROP POLICY IF EXISTS "Public read ${tb}" ON public.${tb};`);
+          await client.query(`CREATE POLICY "Public read ${tb}" ON public.${tb} FOR SELECT USING (true);`);
+          await client.query(`DROP POLICY IF EXISTS "Authenticated write ${tb}" ON public.${tb};`);
+          await client.query(
+            `CREATE POLICY "Authenticated write ${tb}" ON public.${tb} FOR ALL TO authenticated, service_role USING (true) WITH CHECK (true);`
+          );
+        }
+
+        // Provisionar contas reais em auth.users (via GoTrue Admin API), admin_users, members e profiles
+        const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL;
+        const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+        const officialAdmins = [
+          {
+            email: (process.env.ADMIN_EMAIL || 'mcp6667@proton.me').toLowerCase().trim(),
+            name: 'Mateus Celestino Pro X',
+            password: adminPass,
+            hash: adminPasswordHash,
+            isAdmin: true,
+            role: 'admin',
+            tier: 'vip',
+            avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=AdminBoss',
+          },
+          {
+            email: 'membro@mateuscelestinopro.com',
+            name: 'Membro Fundador Pro',
+            password: memberPass,
+            hash: memberPasswordHash,
+            isAdmin: false,
+            role: 'full',
+            tier: 'vip',
+            avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=MemberProX',
+          },
+        ];
+
+        let existingAuthUsers: any[] = [];
+        if (supabaseUrl && serviceKey) {
+          const listRes = await fetch(`${supabaseUrl}/auth/v1/admin/users`, {
+            headers: { Authorization: `Bearer ${serviceKey}`, apikey: serviceKey },
+          });
+          if (listRes.ok) {
+            const listData = await listRes.json();
+            existingAuthUsers = listData?.users || [];
+          }
+        }
+
+        for (const acc of officialAdmins) {
+          let authUserId: string | null = null;
+          if (supabaseUrl && serviceKey) {
+            const foundAuth = existingAuthUsers.find(
+              (u: any) => u.email?.toLowerCase() === acc.email.toLowerCase()
+            );
+            if (!foundAuth) {
+              const createRes = await fetch(`${supabaseUrl}/auth/v1/admin/users`, {
+                method: 'POST',
+                headers: {
+                  Authorization: `Bearer ${serviceKey}`,
+                  apikey: serviceKey,
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                  email: acc.email,
+                  password: acc.password,
+                  email_confirm: true,
+                  user_metadata: { name: acc.name, role: acc.role },
+                }),
+              });
+              if (createRes.ok) {
+                const createdUser = await createRes.json();
+                authUserId = createdUser.id;
+                console.log(`✅ [Seed] Criado em Supabase Auth (auth.users): ${acc.email}`);
+              }
+            } else {
+              authUserId = foundAuth.id;
+              await fetch(`${supabaseUrl}/auth/v1/admin/users/${authUserId}`, {
+                method: 'PUT',
+                headers: {
+                  Authorization: `Bearer ${serviceKey}`,
+                  apikey: serviceKey,
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                  password: acc.password,
+                  email_confirm: true,
+                  user_metadata: { name: acc.name, role: acc.role },
+                }),
+              });
+              console.log(`✅ [Seed] Sincronizado em Supabase Auth (auth.users): ${acc.email}`);
+            }
+          }
+
+          if (acc.isAdmin) {
+            await client.query(
+              `DELETE FROM public.admin_users WHERE email != $1`,
+              [acc.email]
+            );
+            await client.query(
+              `INSERT INTO public.admin_users (email, password_hash, role, name)
+               VALUES ($1, $2, 'admin', $3)
+               ON CONFLICT (email) DO UPDATE SET
+                 password_hash = EXCLUDED.password_hash,
+                 role = 'admin',
+                 name = EXCLUDED.name,
+                 updated_at = NOW()`,
+              [acc.email, acc.hash, acc.name]
+            );
+            await client.query(
+              `UPDATE public.profiles SET role = 'member' WHERE email != $1 AND role = 'admin'`,
+              [acc.email]
+            );
+          }
+
+          const memRes = await client.query(
+            `INSERT INTO public.members (email, password_hash, name, status, tier)
+             VALUES ($1, $2, $3, 'active', $4)
+             ON CONFLICT (email) DO UPDATE SET
+               password_hash = EXCLUDED.password_hash,
+               name = EXCLUDED.name,
+               status = 'active',
+               tier = EXCLUDED.tier
+             RETURNING id`,
+            [acc.email, acc.hash, acc.name, acc.tier]
+          );
+
+          const profileId = authUserId || memRes.rows[0]?.id;
+          if (profileId) {
+            await client.query(
+              `INSERT INTO public.profiles (id, name, email, role, avatar_url, accessible_products, bio)
+               VALUES ($1, $2, $3, $4, $5, $6::jsonb, $7)
+               ON CONFLICT (email) DO UPDATE SET
+                 name = EXCLUDED.name,
+                 role = EXCLUDED.role,
+                 avatar_url = EXCLUDED.avatar_url,
+                 accessible_products = EXCLUDED.accessible_products,
+                 updated_at = NOW()`,
+              [
+                profileId,
+                acc.name,
+                acc.email,
+                acc.role,
+                acc.avatar,
+                JSON.stringify(['ai-art', 'ai-portraits-pro', 'ai-effects-pro']),
+                acc.isAdmin
+                  ? 'Fundador & Arquiteto da Plataforma Soberana Mateus Celestino Pro X'
+                  : 'Membro Oficial da Comunidade A.I Visuals',
+              ]
+            );
+          }
+        }
+
+        // Buckets de Storage (community-media e avatars)
+        if (supabaseUrl && serviceKey) {
+          for (const bucketName of ['community-media', 'avatars']) {
+            await fetch(`${supabaseUrl}/storage/v1/bucket`, {
+              method: 'POST',
+              headers: {
+                Authorization: `Bearer ${serviceKey}`,
+                apikey: serviceKey,
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                id: bucketName,
+                name: bucketName,
+                public: true,
+                file_size_limit: 5242880,
+              }),
+            }).catch(() => null);
+          }
+        }
+
+        // Semeadura de Servers & Aulas da Comunidade
+        const srvCount = await client.query('SELECT COUNT(*)::int AS cnt FROM public.servers');
+        if (srvCount.rows[0].cnt === 0) {
+          await client.query(`
+            INSERT INTO public.servers (id, title, description, hero_image, display_order) VALUES
+            ('srv_art_pro', 'Masterclass A.I Art Pro', 'Treinamento completo em criação artística de ultra-alta resolução, fotorrealismo e direção de arte com IA.', './public/assets/images/opt_0008_img_exact_87ca3.webp', 1),
+            ('srv_prompts_mastery', 'Engenharia de Prompts & Consistência', 'Metodologias avançadas para geração consistente de personagens, estilos autorais e controle de sementes.', './public/assets/images/opt_0000_img_exact_29e38.webp', 2),
+            ('srv_effects_commercial', 'A.I Effects & Criação Comercial', 'Efeitos 3D, tipografia dinâmica, iluminação volumétrica e monetização com produtos digitais.', './public/assets/images/opt_0740_img_exact_666ee.webp', 3)
+          `);
+          await client.query(
+            `INSERT INTO public.server_lessons (id, server_id, title, video_url, content_markdown, display_order) VALUES
+             ($1, $2, $3, $4, $5, 1),
+             ($6, $7, $8, $9, $10, 2),
+             ($11, $12, $13, $14, $15, 1),
+             ($16, $17, $18, $19, $20, 1)`,
+            [
+              'les_art_1', 'srv_art_pro', 'Aula 1: Fundamentos da Direção Visual com IA Generativa', 'https://www.youtube.com/embed/dQw4w9WgXcQ', '### Módulo 1: Fundamentos Visuais\n\nNesta masterclass exploramos as bases essenciais da estética visual com modelos generativos, dominando iluminação, texturas fotorrealistas e composição harmônica.',
+              'les_art_2', 'srv_art_pro', 'Aula 2: Engenharia de Prompts Fotorrealistas & Câmeras', 'https://www.youtube.com/embed/dQw4w9WgXcQ', '### Módulo 2: Técnicas de Câmera e Objetivas\n\nAprenda a usar parâmetros como f/1.8, 85mm portrait lens, anamorphic bokeh e volumetria de luz natural para resultados de estúdio.',
+              'les_pm_1', 'srv_prompts_mastery', 'Aula 1: Consistência Facial e Identidade Visual', 'https://www.youtube.com/embed/dQw4w9WgXcQ', '### Módulo 1: Consistência de Personagem\n\nComo manter o mesmo rosto, roupas e expressividade ao longo de múltiplos ângulos e cenas.',
+              'les_ef_1', 'srv_effects_commercial', 'Aula 1: Tipografia Experimental e Efeitos 3D', 'https://www.youtube.com/embed/dQw4w9WgXcQ', '### Módulo 1: Efeitos Visuais de Impacto\n\nCriação de letras infláveis, vidro cromado, materiais translúcidos e iluminação neon.'
+            ]
+          );
+        }
+
+        const postCount = await client.query('SELECT COUNT(*)::int AS cnt FROM public.community_posts');
+        if (postCount.rows[0].cnt === 0) {
+          const adminProfile = await client.query("SELECT id FROM public.profiles WHERE role = 'admin' LIMIT 1");
+          if (adminProfile.rows[0]?.id) {
+            await client.query(
+              `INSERT INTO public.community_posts (user_id, title, content, images, is_pinned)
+               VALUES ($1, $2, $3, $4::jsonb, true)`,
+              [
+                adminProfile.rows[0].id,
+                '✨ Bem-vindos à Comunidade A.I Visuals!',
+                'Espaço exclusivo para membros e criadores de elite compartilharem seus prompts, novos estilos e masterclasses generativas. Sintam-se à vontade para postar suas dúvidas, prompts favoritos e feedbacks!',
+                JSON.stringify(['./public/assets/images/opt_0008_img_exact_87ca3.webp']),
+              ]
+            );
+          }
+        }
+      } finally {
+        client.release();
+        await pool.end();
+      }
     }
 
     // 3. Formulário de Diagnóstico Padrão

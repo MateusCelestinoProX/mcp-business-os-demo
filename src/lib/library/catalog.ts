@@ -160,48 +160,63 @@ function cleanTitle(filename: string): string {
     .replace(/\b\w/g, (c) => c.toUpperCase());
 }
 
-// Build normalized catalog once
-const catalogList: LibraryResource[] = (rawCatalog as any[]).map((item, index) => {
-  const id = item.id ? String(item.id) : String(index + 1);
-  const file = item.file || 'resource';
-  const slug = item.slug || `${id}-${file.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase()}`;
-  const title = item.title || cleanTitle(file);
-  const size = Number(item.size) || 0;
-  const ext = item.ext || (file.includes('.') ? `.${file.split('.').pop()}` : '');
-  const quick_categories = classifyQuickCategories(item);
-
-  let desc = item.description || '';
-  if (!desc && item.text_preview) {
-    const cleanPreview = item.text_preview.replace(/^#+\s+/gm, '').replace(/\n+/g, ' ').trim();
-    desc = cleanPreview.slice(0, 160) + (cleanPreview.length > 160 ? '...' : '');
-  }
-  if (!desc) {
-    desc = `Ativo técnico oficial ${title} (${ext}) pertencente ao cofre intelectual da Free Library.`;
+// Build normalized catalog dynamically from disk
+export function getCatalogList(): LibraryResource[] {
+  let catalogData: any[] = [];
+  try {
+    const jsonPath = path.resolve(process.cwd(), 'src/data/library_catalog_index.json');
+    if (fs.existsSync(jsonPath)) {
+      catalogData = JSON.parse(fs.readFileSync(jsonPath, 'utf-8'));
+    } else {
+      const fallback = path.resolve(process.cwd(), 'public/biblioteca/library_catalog_index.json');
+      catalogData = JSON.parse(fs.readFileSync(fallback, 'utf-8'));
+    }
+  } catch (err) {
+    console.error('Falha ao carregar catálogo JSON:', err);
   }
 
-  return {
-    id,
-    slug,
-    title,
-    description: desc,
-    file,
-    rel_path: item.rel_path || file,
-    category: item.category || 'root',
-    category_group: item.category_group || 'Geral / Core',
-    quick_categories,
-    ext,
-    size,
-    size_formatted: item.size_formatted || formatBytes(size),
-    pages: item.pages ?? null,
-    text_preview: item.text_preview || '',
-    tags: Array.isArray(item.tags) ? item.tags : [ext.replace('.', '')],
-    download_count: downloadCounters[id] || 0,
-    created_at: item.created_at || '2026-10-14T00:00:00.000Z',
-  };
-});
+  return catalogData.map((item, index) => {
+    const id = item.id ? String(item.id) : String(index + 1);
+    const file = item.file || 'resource';
+    const slug = item.slug || `${id}-${file.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase()}`;
+    const title = item.title || cleanTitle(file);
+    const size = Number(item.size) || 0;
+    const ext = item.ext || (file.includes('.') ? `.${file.split('.').pop()}` : '');
+    const quick_categories = classifyQuickCategories(item);
+
+    let desc = item.description || '';
+    if (!desc && item.text_preview) {
+      const cleanPreview = item.text_preview.replace(/^#+\s+/gm, '').replace(/\n+/g, ' ').trim();
+      desc = cleanPreview.slice(0, 160) + (cleanPreview.length > 160 ? '...' : '');
+    }
+    if (!desc) {
+      desc = `Ativo técnico oficial ${title} (${ext}) pertencente ao cofre intelectual da Free Library.`;
+    }
+
+    return {
+      id,
+      slug,
+      title,
+      description: desc,
+      file,
+      rel_path: item.rel_path || file,
+      category: item.category || 'root',
+      category_group: item.category_group || 'Geral / Core',
+      quick_categories,
+      ext,
+      size,
+      size_formatted: item.size_formatted || formatBytes(size),
+      pages: item.pages ?? null,
+      text_preview: item.text_preview || '',
+      tags: Array.isArray(item.tags) ? item.tags : [ext.replace('.', '')],
+      download_count: downloadCounters[id] || 0,
+      created_at: item.created_at || '2026-10-14T00:00:00.000Z',
+    };
+  });
+}
 
 export function getAllResources(): LibraryResource[] {
-  return catalogList.map((item) => ({
+  return getCatalogList().map((item) => ({
     ...item,
     download_count: downloadCounters[item.id] || 0,
   }));
@@ -209,7 +224,8 @@ export function getAllResources(): LibraryResource[] {
 
 export function getResourceById(idOrSlug: string): LibraryResource | undefined {
   const needle = decodeURIComponent(idOrSlug).toLowerCase().trim();
-  const found = catalogList.find(
+  const list = getCatalogList();
+  const found = list.find(
     (item) =>
       item.id.toLowerCase() === needle ||
       item.slug.toLowerCase() === needle ||

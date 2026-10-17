@@ -1,0 +1,2081 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mateus Celestino PRO | Marketer, AI Specialist & Automation</title>
+    <meta name="description" content="Curriculum Vitae de Mateus Celestino — Estrategista em Marketing Digital, Vendas, Inteligência Artificial e Automação. 70+ certificações oficiais.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,500;1,600;1,700&family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <!-- Three.js Import Map -->
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+        }
+      }
+    </script>
+
+    <!-- Base & Icons -->
+    <base href="/showcase/">
+    <link rel="icon" type="image/webp" href="/assets/site_icon.webp">
+    <link rel="icon" type="image/png" sizes="256x256" href="/icon.png">
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- ========================================================
+         MASTER SOVEREIGN BAR (BARRA DE NAVEGAÇÃO SOBERANA UNIFICADA)
+         ======================================================== -->
+    <style id="master-sovereign-bar-styles">
+      #master-sovereign-bar {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        height: 60px !important;
+        z-index: 99999 !important;
+        background: rgba(3, 3, 5, 0.94) !important;
+        backdrop-filter: blur(30px) saturate(200%) !important;
+        -webkit-backdrop-filter: blur(30px) saturate(200%) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+        box-shadow: 0 10px 35px rgba(0, 0, 0, 0.85) !important;
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif !important;
+        box-sizing: border-box !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      #master-sovereign-bar * {
+        box-sizing: border-box !important;
+      }
+      .msb-inner {
+        width: 100% !important;
+        height: 100% !important;
+        padding: 0 24px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        position: relative !important;
+      }
+      .msb-brand {
+        display: flex !important;
+        align-items: center !important;
+        gap: 12px !important;
+        text-decoration: none !important;
+        transition: transform 0.2s ease !important;
+        cursor: pointer !important;
+      }
+      .msb-brand:hover {
+        transform: scale(1.02) !important;
+      }
+      .msb-logo-badge {
+        width: 36px !important;
+        height: 36px !important;
+        border-radius: 11px !important;
+        background: linear-gradient(135deg, #dc2626, #991b1b, #000) !important;
+        padding: 1px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        box-shadow: 0 0 16px rgba(255, 7, 58, 0.45) !important;
+      }
+      .msb-logo-inner {
+        width: 100% !important;
+        height: 100% !important;
+        background: #030305 !important;
+        border-radius: 10px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+      .msb-brand-info {
+        display: flex !important;
+        flex-direction: column !important;
+      }
+      .msb-brand-name-row {
+        display: flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+      }
+      .msb-brand-name {
+        font-weight: 700 !important;
+        font-size: 13px !important;
+        letter-spacing: 0.5px !important;
+        color: #fff !important;
+        white-space: nowrap !important;
+      }
+      .msb-links-desktop {
+        display: flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+        background: rgba(0, 0, 0, 0.45) !important;
+        padding: 4px !important;
+        border-radius: 12px !important;
+        border: 1px solid rgba(255, 255, 255, 0.06) !important;
+      }
+      .msb-link {
+        display: flex !important;
+        align-items: center !important;
+        gap: 7px !important;
+        padding: 6px 12px !important;
+        border-radius: 8px !important;
+        font-size: 12px !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.2px !important;
+        color: #a3a3a3 !important;
+        text-decoration: none !important;
+        position: relative !important;
+        transition: all 0.2s ease !important;
+        white-space: nowrap !important;
+      }
+      .msb-link:hover {
+        color: #fff !important;
+        background: rgba(255, 255, 255, 0.05) !important;
+      }
+      .msb-link.active {
+        color: #fff !important;
+        background: rgba(255, 255, 255, 0.12) !important;
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.25) !important;
+      }
+      .msb-link.active .msb-link-icon {
+        color: #f87171 !important;
+      }
+      .msb-link-icon {
+        width: 14px !important;
+        height: 14px !important;
+        color: #9ca3af !important;
+        transition: color 0.2s ease !important;
+      }
+      .msb-link:hover .msb-link-icon {
+        color: #f87171 !important;
+      }
+      .msb-link-indicator {
+        position: absolute !important;
+        bottom: -1px !important;
+        left: 10px !important;
+        right: 10px !important;
+        height: 2px !important;
+        background: linear-gradient(90deg, transparent, #ef4444, transparent) !important;
+      }
+      .msb-actions-desktop {
+        display: flex !important;
+        align-items: center !important;
+        gap: 12px !important;
+      }
+      .msb-btn-admin {
+        display: none;
+        align-items: center !important;
+        gap: 6px !important;
+        padding: 6px 13px !important;
+        border-radius: 10px !important;
+        font-size: 12px !important;
+        font-weight: 700 !important;
+        color: #fcd34d !important;
+        background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(180, 83, 9, 0.3)) !important;
+        border: 1px solid rgba(245, 158, 11, 0.4) !important;
+        box-shadow: 0 0 15px rgba(245, 158, 11, 0.25) !important;
+        text-decoration: none !important;
+        transition: all 0.2s ease !important;
+        white-space: nowrap !important;
+      }
+      .msb-btn-admin.visible {
+        display: inline-flex !important;
+      }
+      .msb-btn-admin:hover {
+        background: linear-gradient(135deg, rgba(245, 158, 11, 0.35), rgba(180, 83, 9, 0.45)) !important;
+        box-shadow: 0 0 20px rgba(245, 158, 11, 0.4) !important;
+        transform: translateY(-1px) !important;
+      }
+      .msb-user-pill {
+        position: relative !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        padding: 4px 10px !important;
+        border-radius: 12px !important;
+        background: rgba(255, 255, 255, 0.06) !important;
+        border: 1px solid rgba(255, 255, 255, 0.12) !important;
+        cursor: pointer !important;
+        transition: all 0.2s ease !important;
+      }
+      .msb-user-pill:hover {
+        background: rgba(255, 255, 255, 0.12) !important;
+      }
+      .msb-user-avatar {
+        width: 24px !important;
+        height: 24px !important;
+        border-radius: 50% !important;
+        border: 1px solid rgba(255, 255, 255, 0.25) !important;
+      }
+      .msb-user-info {
+        display: flex !important;
+        flex-direction: column !important;
+        text-align: left !important;
+      }
+      .msb-user-name {
+        font-size: 11px !important;
+        font-weight: 700 !important;
+        color: #fff !important;
+        line-height: 1.1 !important;
+        max-width: 110px !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+      }
+      .msb-user-role-badge {
+        font-size: 8px !important;
+        font-weight: 800 !important;
+        text-transform: uppercase !important;
+        font-family: ui-monospace, monospace !important;
+        letter-spacing: 0.5px !important;
+      }
+      .msb-role-admin { color: #f87171 !important; }
+      .msb-role-moder { color: #fbbf24 !important; }
+      .msb-role-user { color: #60a5fa !important; }
+      .msb-role-visitante { color: #9ca3af !important; }
+      .msb-user-dropdown {
+        display: none;
+        position: absolute !important;
+        top: calc(100% + 8px) !important;
+        right: 0 !important;
+        width: 220px !important;
+        background: rgba(14, 14, 20, 0.98) !important;
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        border-radius: 14px !important;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8) !important;
+        padding: 8px !important;
+        z-index: 9999999 !important;
+        backdrop-filter: blur(25px) !important;
+        -webkit-backdrop-filter: blur(25px) !important;
+      }
+      .msb-user-dropdown.open {
+        display: block !important;
+      }
+      .msb-dropdown-title {
+        font-size: 9px !important;
+        text-transform: uppercase !important;
+        letter-spacing: 1px !important;
+        color: #9ca3af !important;
+        padding: 4px 8px !important;
+        display: block !important;
+      }
+      .msb-dropdown-item {
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        padding: 7px 10px !important;
+        font-size: 11px !important;
+        font-weight: 600 !important;
+        color: #e5e5e5 !important;
+        border-radius: 8px !important;
+        background: transparent !important;
+        border: none !important;
+        width: 100% !important;
+        text-align: left !important;
+        cursor: pointer !important;
+        transition: all 0.15s ease !important;
+      }
+      .msb-dropdown-item:hover {
+        background: rgba(255, 255, 255, 0.08) !important;
+        color: #fff !important;
+      }
+      .msb-menu-toggle {
+        display: none;
+        background: rgba(255, 255, 255, 0.06) !important;
+        border: 1px solid rgba(255, 255, 255, 0.12) !important;
+        border-radius: 10px !important;
+        padding: 6px !important;
+        color: #d1d5db !important;
+        cursor: pointer !important;
+      }
+      .msb-mobile-drawer {
+        display: none;
+        position: fixed !important;
+        top: 60px !important;
+        left: 0 !important;
+        right: 0 !important;
+        background: rgba(10, 10, 14, 0.98) !important;
+        backdrop-filter: blur(30px) !important;
+        -webkit-backdrop-filter: blur(30px) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
+        padding: 14px 20px !important;
+        flex-direction: column !important;
+        gap: 6px !important;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9) !important;
+        z-index: 999998 !important;
+      }
+      .msb-mobile-drawer.open {
+        display: flex !important;
+      }
+      @media (max-width: 900px) {
+        .msb-links-desktop, .msb-actions-desktop {
+          display: none !important;
+        }
+        .msb-menu-toggle {
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+        }
+      }
+      body {
+        padding-top: 60px !important;
+      }
+      .nav-main {
+        top: 60px !important;
+      }
+      .mobile-menu {
+        top: 136px !important;
+      }
+    </style>
+
+    <header id="master-sovereign-bar" data-component="MasterSovereignBar">
+      <div class="msb-inner">
+        <!-- Marca & Logo Soberano -->
+        <a href="/" target="_top" class="msb-brand" title="Ir para o Portal Institucional">
+          <div class="msb-logo-badge" style="overflow: hidden; padding: 1px; border-radius: 12px;">
+            <div class="msb-logo-inner" style="overflow: hidden; display: flex; align-items: center; justify-content: center; border-radius: 10px;">
+              <img src="/assets/site_icon.webp" alt="Mateus Celestino Pro X Logo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;" />
+            </div>
+          </div>
+          <div class="msb-brand-info">
+            <div class="msb-brand-name-row">
+              <span class="msb-brand-name">MATEUS CELESTINO <span style="color: #ff073a; font-weight: 800;">PRO X</span></span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Links Principais Centrais -->
+        <div class="msb-links-desktop">
+          <a href="/" target="_top" class="msb-link" title="Portal Institucional">
+            <svg class="msb-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>Portal Institucional</span>
+          </a>
+          <a href="/showcase" target="_top" class="msb-link active" title="Showcase">
+            <svg class="msb-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
+            <span>Showcase</span>
+            <span class="msb-link-indicator"></span>
+          </a>
+          <a href="/shop" target="_top" class="msb-link" title="Shop">
+            <svg class="msb-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            <span>Shop</span>
+          </a>
+          <a href="/comunidade" target="_top" class="msb-link" title="Comunidade">
+            <svg class="msb-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <span>Comunidade</span>
+          </a>
+          <a href="/biblioteca" target="_top" class="msb-link" title="Free Resources">
+            <svg class="msb-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 20H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H20a2 2 0 0 1 2 2v2"/><circle cx="13" cy="12" r="2"/><path d="M18 19c-2.8 0-5-2.2-5-5v8"/><circle cx="20" cy="19" r="2"/></svg>
+            <span>Free Resources</span>
+          </a>
+        </div>
+
+        <!-- Status, Painel Admin (apenas moder/admin) & Role Pill -->
+        <div class="msb-actions-desktop">
+          <a href="/admin" target="_top" id="msb-admin-btn" class="msb-btn-admin" title="Painel de Gestão e Form Builder">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"/></svg>
+            <span>👑 Painel Admin</span>
+          </a>
+
+          <div class="msb-user-pill" id="msb-user-pill" title="Clique para alternar sessão / login">
+            <img id="msb-user-avatar" class="msb-user-avatar" src="https://api.dicebear.com/7.x/bottts/svg?seed=GuestVisitor" alt="Avatar">
+            <div class="msb-user-info">
+              <span id="msb-user-name" class="msb-user-name">Visitante</span>
+              <span id="msb-user-role-badge" class="msb-user-role-badge msb-role-visitante">⚪ VISITANTE</span>
+            </div>
+
+            <div class="msb-user-dropdown" id="msb-user-dropdown">
+              <span class="msb-dropdown-title">Sessão da Plataforma</span>
+              <a href="/comunidade/login" id="msb-login-link" class="msb-dropdown-item" style="text-decoration: none;">
+                <span>🔑</span><span>Fazer Login / Identificar</span>
+              </a>
+              <button class="msb-dropdown-item" id="msb-profile-btn" type="button" style="display: none;">
+                <span>👤</span><span>Meu Perfil</span>
+              </button>
+              <button class="msb-dropdown-item" id="msb-logout-btn" type="button" style="display: none;">
+                <span>🚪</span><span>Encerrar Sessão</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Botão Menu Mobile -->
+        <button id="msb-mobile-toggle" class="msb-menu-toggle" aria-label="Abrir menu de navegação soberana">
+          <svg id="msb-icon-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+          <svg id="msb-icon-close" style="display:none;" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Drawer Mobile -->
+      <div id="msb-mobile-drawer" class="msb-mobile-drawer">
+        <a href="/" target="_top" class="msb-link">
+          <svg class="msb-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span>Portal Institucional</span>
+        </a>
+        <a href="/showcase" target="_top" class="msb-link active">
+          <svg class="msb-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
+          <span>Showcase</span>
+          <span class="msb-link-indicator"></span>
+        </a>
+        <a href="/shop" target="_top" class="msb-link">
+          <svg class="msb-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span>Shop</span>
+        </a>
+        <a href="/comunidade" target="_top" class="msb-link">
+          <svg class="msb-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span>Comunidade</span>
+        </a>
+        <a href="/biblioteca" target="_top" class="msb-link">
+          <svg class="msb-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 20H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H20a2 2 0 0 1 2 2v2"/><circle cx="13" cy="12" r="2"/><path d="M18 19c-2.8 0-5-2.2-5-5v8"/><circle cx="20" cy="19" r="2"/></svg>
+          <span>Free Resources</span>
+        </a>
+        <a href="/admin" target="_top" id="msb-mobile-admin-btn" class="msb-btn-admin" style="margin-top: 6px; justify-content: center;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"/></svg>
+          <span>👑 Painel Admin</span>
+        </a>
+        <a href="/comunidade/login" target="_top" id="msb-mobile-login-link" class="msb-link" style="margin-top: 6px;">
+          <span>🔑 Entrar / Login</span>
+        </a>
+        <button id="msb-mobile-logout-btn" type="button" class="msb-link" style="display:none; color:#f87171; width:100%; text-align:left; background:none; border:none; cursor:pointer;">
+          <span>🚪 Encerrar Sessão</span>
+        </button>
+      </div>
+    </header>
+
+    <script id="master-sovereign-bar-script">
+      (function() {
+        var STORAGE_KEY = 'mcp_session_user';
+        var GUEST_USER = {
+          isLoggedIn: false,
+          role: 'visitante',
+          name: 'Visitante',
+          email: '',
+          avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=GuestVisitor'
+        };
+
+        function getSession() {
+          try {
+            var raw = localStorage.getItem(STORAGE_KEY);
+            if (raw) {
+              var parsed = JSON.parse(raw);
+              if (parsed && parsed.role) return parsed;
+            }
+          } catch(e) {}
+          return GUEST_USER;
+        }
+
+        function setSession(u) {
+          try {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(u));
+            localStorage.setItem('mcp_user_role', u.role);
+            localStorage.setItem('mcp_admin_auth', (u.role === 'admin' || u.role === 'moder') ? 'true' : 'false');
+            window.dispatchEvent(new CustomEvent('mcp_auth_changed', { detail: u }));
+          } catch(e) {}
+        }
+
+        function renderMSB() {
+          var u = getSession();
+          var adminBtn = document.getElementById('msb-admin-btn');
+          var mobileAdminBtn = document.getElementById('msb-mobile-admin-btn');
+          var userName = document.getElementById('msb-user-name');
+          var userAvatar = document.getElementById('msb-user-avatar');
+          var userRoleBadge = document.getElementById('msb-user-role-badge');
+          var loginLink = document.getElementById('msb-login-link');
+          var profileBtn = document.getElementById('msb-profile-btn');
+          var logoutBtn = document.getElementById('msb-logout-btn');
+          var mobileLoginLink = document.getElementById('msb-mobile-login-link');
+          var mobileProfileBtn = document.getElementById('msb-mobile-profile-btn');
+          var mobileLogoutBtn = document.getElementById('msb-mobile-logout-btn');
+
+          var isAdminOrModer = (u.role === 'admin' || u.role === 'moder');
+          if (adminBtn) {
+            if (isAdminOrModer) adminBtn.classList.add('visible');
+            else adminBtn.classList.remove('visible');
+          }
+          if (mobileAdminBtn) {
+            mobileAdminBtn.style.display = isAdminOrModer ? 'flex' : 'none';
+          }
+
+          if (userName) userName.textContent = u.name;
+          if (userAvatar) userAvatar.src = u.avatar;
+          if (userRoleBadge) {
+            userRoleBadge.className = 'msb-user-role-badge msb-role-' + u.role;
+            var roleText = '⚪ VISITANTE';
+            if (u.role === 'admin') roleText = '👑 ADMIN';
+            else if (u.role === 'moder') roleText = '🛡️ MODER';
+            else if (u.role === 'user') roleText = '🔵 MEMBRO';
+            userRoleBadge.textContent = roleText;
+          }
+
+          if (u.isLoggedIn) {
+            if (loginLink) loginLink.style.display = 'none';
+            if (profileBtn) profileBtn.style.display = 'flex';
+            if (logoutBtn) logoutBtn.style.display = 'flex';
+            if (mobileLoginLink) mobileLoginLink.style.display = 'none';
+            if (mobileProfileBtn) mobileProfileBtn.style.display = 'flex';
+            if (mobileLogoutBtn) mobileLogoutBtn.style.display = 'flex';
+          } else {
+            if (loginLink) loginLink.style.display = 'flex';
+            if (profileBtn) profileBtn.style.display = 'none';
+            if (logoutBtn) logoutBtn.style.display = 'none';
+            if (mobileLoginLink) mobileLoginLink.style.display = 'flex';
+            if (mobileProfileBtn) mobileProfileBtn.style.display = 'none';
+            if (mobileLogoutBtn) mobileLogoutBtn.style.display = 'none';
+          }
+        }
+
+        window.addEventListener('DOMContentLoaded', renderMSB);
+        window.addEventListener('storage', renderMSB);
+        window.addEventListener('mcp_auth_changed', renderMSB);
+        setTimeout(renderMSB, 50);
+
+        var userPill = document.getElementById('msb-user-pill');
+        var userDropdown = document.getElementById('msb-user-dropdown');
+        if (userPill && userDropdown) {
+          userPill.addEventListener('click', function(e) {
+            e.stopPropagation();
+            userDropdown.classList.toggle('open');
+          });
+          document.addEventListener('click', function() {
+            userDropdown.classList.remove('open');
+          });
+        }
+
+        var profileBtn = document.getElementById('msb-profile-btn');
+        if (profileBtn) {
+          profileBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            if (userDropdown) userDropdown.classList.remove('open');
+            window.location.href = '/comunidade#profile';
+          });
+        }
+
+        var logoutBtn = document.getElementById('msb-logout-btn');
+        if (logoutBtn) {
+          logoutBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            localStorage.removeItem('mcp_auth_token');
+            setSession(GUEST_USER);
+            renderMSB();
+            if (userDropdown) userDropdown.classList.remove('open');
+            fetch('/api/auth/me', { method: 'DELETE' }).catch(function() {});
+          });
+        }
+
+        var mobileLogoutBtn = document.getElementById('msb-mobile-logout-btn');
+        if (mobileLogoutBtn) {
+          mobileLogoutBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            var drawer = document.getElementById('msb-mobile-drawer');
+            localStorage.removeItem('mcp_auth_token');
+            setSession(GUEST_USER);
+            renderMSB();
+            if (drawer) drawer.classList.remove('open');
+            fetch('/api/auth/me', { method: 'DELETE' }).catch(function() {});
+          });
+        }
+
+        var toggleBtn = document.getElementById('msb-mobile-toggle');
+        var drawer = document.getElementById('msb-mobile-drawer');
+        var iconOpen = document.getElementById('msb-icon-open');
+        var iconClose = document.getElementById('msb-icon-close');
+        if (toggleBtn && drawer) {
+          toggleBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            var isOpen = drawer.classList.toggle('open');
+            if (iconOpen && iconClose) {
+              iconOpen.style.display = isOpen ? 'none' : 'block';
+              iconClose.style.display = isOpen ? 'block' : 'none';
+            }
+          });
+          document.addEventListener('click', function(e) {
+            if (!drawer.contains(e.target) && !toggleBtn.contains(e.target)) {
+              drawer.classList.remove('open');
+              if (iconOpen && iconClose) {
+                iconOpen.style.display = 'block';
+                iconClose.style.display = 'none';
+              }
+            }
+          });
+        }
+      })();
+    </script>
+
+    <!-- ========== ENERGY CANVAS BACKGROUND ========== -->
+    <canvas id="energy-canvas"></canvas>
+
+    <!-- ========== NAVIGATION ========== -->
+    <nav class="nav-main" id="navbar">
+        <a href="#hero" class="nav-logo">
+            <!-- Logo Removido conforme instrução -->
+        </a>
+
+        <div class="nav-links liquid-glass">
+            <a href="#about">Sobre</a>
+            <a href="#skills">Habilidades</a>
+            <a href="#benefits">Diferenciais</a>
+            <a href="#vps">VPS</a>
+            <a href="#discord">Comunidades</a>
+            <a href="#products-digital">Produtos Digitais</a>
+            <a href="#cyberclass">CyberClass</a>
+            <a href="#opensource-projects">OpenSource</a>
+            <a href="#experience">Trajetória</a>
+            <a href="#certifications">Certificados</a>
+            <a href="#contact">Conexão</a>
+        </div>
+
+        <div class="nav-cta">
+            <a href="https://photografy-fotografia-contato.vercel.app/" target="_blank" class="btn-contact">Contato</a>
+        </div>
+
+        <button class="nav-mobile-btn" id="mobile-menu-btn" aria-label="Menu">
+            <i data-lucide="menu" style="width:20px;height:20px;"></i>
+        </button>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="#about">Sobre</a>
+        <a href="#skills">Habilidades</a>
+        <a href="#benefits">Diferenciais</a>
+        <a href="#vps">VPS</a>
+        <a href="#discord">Comunidades</a>
+        <a href="#products-digital">Produtos Digitais</a>
+        <a href="#cyberclass">CyberClass</a>
+        <a href="#opensource-projects">OpenSource</a>
+        <a href="#experience">Trajetória</a>
+        <a href="#certifications">Certificados</a>
+        <a href="#contact">Conexão</a>
+        <a href="https://photografy-fotografia-contato.vercel.app/" target="_blank" style="color:var(--accent-primary);font-weight:700;">Contato</a>
+    </div>
+
+
+    <!-- ============================================================
+         HERO 1: CINEMATIC STREAMING HERO (Example 3)
+         ============================================================ -->
+    <section id="hero" class="hero-stream">
+        <video class="hero-stream-video" autoplay loop muted playsinline>
+            <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260406_094145_4a271a6c-3869-4f1c-8aa7-aeb0cb227994.mp4" type="video/mp4">
+        </video>
+        <div class="bottom-blur-overlay"></div>
+
+        <div class="hero-stream-content">
+            <div class="hero-metadata animate-blur-fade-up" style="animation-delay: 300ms;">
+                <span><i data-lucide="star" style="width:16px;height:16px;fill:white;"></i> Mateus Celestino PRO</span>
+                <span><i data-lucide="clock" style="width:16px;height:16px;"></i> 26 Anos</span>
+                <span><i data-lucide="calendar" style="width:16px;height:16px;"></i> 2026</span>
+            </div>
+
+            <h1 class="hero-stream-title animate-blur-fade-up" style="animation-delay: 400ms;">
+                Mateus Celestino PRO.
+            </h1>
+
+            <p class="hero-stream-desc animate-blur-fade-up" style="animation-delay: 500ms;">
+                Graduado em Digital Marketing, especialista em Marketing Digital Full Stack, eterno estudante, pesquisador e implementador de soluções de segurança, T.I e Artificial Generative Intelligence.
+            </p>
+
+            <div class="hero-stream-actions animate-blur-fade-up" style="animation-delay: 600ms;">
+                <a href="https://photografy-fotografia-contato.vercel.app/" target="_blank" class="ultra-glass-contact-btn" style="padding: 14px 36px; font-size: 0.95rem;">
+                    <i data-lucide="sparkles" style="width:18px;height:18px;"></i>
+                    <span>Conexão</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============================================================
+         TRANSITION SECTION WITH VIDEO BACKGROUND 1 (Sobre + Skills)
+         ============================================================ -->
+    <div style="position: relative; background-color: black;">
+        <div id="singularity-container" class="video-bg-transition-wrapper">
+            <!-- HUD Singularity -->
+            <div id="overlay" style="position: absolute; inset: 0; pointer-events: none; display: flex; flex-direction: column; justify-content: space-between; padding: 40px; background: radial-gradient(circle at center, transparent 30%, rgba(0,0,0,0.5) 100%); z-index: 10;">
+                <div class="header" style="text-align: center;">
+                    <div class="title" id="main-title" style="font-size: 1.2rem; letter-spacing: 0.8em; text-transform: uppercase; color: #fff; margin-bottom: 12px; font-weight: 300; opacity: 0.9;">Stable Singularity</div>
+                    <div class="status-pill" id="status-text" style="display: inline-block; padding: 6px 20px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 30px; font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; transition: all 1.5s cubic-bezier(0.4, 0, 0.2, 1);">Topology: Nominal</div>
+                </div>
+                <div class="hud-bottom" style="display: flex; justify-content: space-between; align-items: flex-end; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; opacity: 0.6; letter-spacing: 1px;">
+                    <div>
+                        <div class="metric" style="margin-bottom: 6px;">MASS_INDEX: <span class="val" style="color: #00f3ff; font-weight: bold; transition: color 1.5s ease;">4.2M SOL</span></div>
+                        <div class="metric" style="margin-bottom: 6px;">LENSING: <span class="val" id="lensing-val" style="color: #00f3ff; font-weight: bold; transition: color 1.5s ease;">SCHWARZSCHILD</span></div>
+                    </div>
+                    <div style="text-align: right">
+                        <div class="metric" style="margin-bottom: 6px;">RELATIVITY: <span class="val" id="vel-val" style="color: #00f3ff; font-weight: bold; transition: color 1.5s ease;">0.45c</span></div>
+                        <div class="metric" style="margin-bottom: 6px;">RADIATION: <span class="val" style="color: #00f3ff; font-weight: bold; transition: color 1.5s ease;">DETECTION ON</span></div>
+                    </div>
+                </div>
+            </div>
+            <div id="vignette" style="position: absolute; inset: 0; background: radial-gradient(circle, transparent 50%, black 150%); pointer-events: none; z-index: 5;"></div>
+        </div>
+
+        <div class="main-content">
+            <!-- ========== SOBRE ========== -->
+            <section id="about" class="section">
+                <div class="section-label reveal">
+                    <i data-lucide="cpu" style="width:14px;height:14px;"></i>
+                    Sobre o Operador
+                </div>
+
+                <div style="max-width: 900px; margin: 0 auto;">
+                    <div class="liquid-glass-strong glass-padding reveal" style="border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(32px) saturate(250%); box-shadow: inset 0 1px 1px rgba(255,255,255,0.3), 0 30px 60px rgba(0,0,0,0.6); padding: 3rem;">
+                        <h2 class="section-title" style="font-size:clamp(1.8rem,4vw,2.5rem); margin-bottom:24px; text-align: center;">Operação de Alta Performance</h2>
+                        <div class="about-p-row" style="display: flex; flex-direction: column; gap: 16px;">
+                            <p style="font-size: 1.1rem; line-height: 1.8; color: rgba(255,255,255,0.9); text-align: justify;">
+                                Estrategista em Marketing Digital, Vendas e Inteligência Artificial aplicada a Negócios.
+                                Formado em Digital Marketing, possuo mais de <span style="color:var(--accent-primary);font-weight:700;">70 certificados oficiais</span> nas áreas de Media Buyer, Copywriting, Social Selling, T.I e Outbound Sales.
+                            </p>
+                            <p style="font-size: 1.1rem; line-height: 1.8; color: rgba(255,255,255,0.9); text-align: justify;">
+                                Minha formação vem diretamente dos maiores nomes do mercado: Giovanni Saraiva, Thiago Concer e a Growth Machine — mestres que moldaram minha visão sobre prospecção, negociação e fechamento de vendas.
+                                Hoje, aplico uma metodologia própria que combina <strong>Vendas, Outbound Marketing e IA</strong> para construir sistemas previsíveis de geração de oportunidades e crescimento escalável.
+                            </p>
+                            <div class="about-quote-box liquid-glass" style="margin-top: 32px; padding: 32px; font-size: 1.2rem; border-left: 4px solid var(--accent-primary); font-style: italic; text-align: center; background: rgba(255,255,255,0.05);">
+                                "Sou movido por dados, estratégia e performance, mas principalmente por comunicação eficaz e persuasão inteligente porque acredito que quem domina a comunicação, domina o mercado."
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+
+    <!-- ============================================================
+         DOBRA 3: RESULTADOS E ANALYTICS
+         ============================================================ -->
+    <div id="spotlight-section" class="spotlight-section" style="display:flex; flex-direction:column; justify-content:center; align-items:center; min-height:100vh; position:relative; padding: 4rem 2rem;">
+        <!-- Imagem Base (BG_IMAGE_1) -->
+        <div class="spotlight-base-bg hero-zoom" style="background-image: url('https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260609_195923_b0ba8ace-1d1d-4f2c-9a28-1ab84b330680.png&w=1280&q=85');"></div>
+
+        <div style="z-index:10; max-width:1200px; width:100%; text-align:center; margin-bottom: 3rem;">
+            <h1 class="spotlight-title" style="margin-bottom:1rem;">
+                <span class="display-playfair animate-blur-fade-up">Sistemas revelam</span>
+                <span class="display-normal animate-blur-fade-up" style="animation-delay: 200ms;">o valor do tempo</span>
+            </h1>
+            <p class="animate-blur-fade-up" style="animation-delay: 300ms; max-width:800px; margin:0 auto; font-size:1.1rem; color:rgba(255,255,255,0.8);">
+                +200 mil views no canal do YouTube (primeiro canal). Alto fluxo de tráfego orgânico para website usando isca digital. Experiência na criação de iscas digitais, Google Tag Manager e Analytics como um todo.
+            </p>
+        </div>
+
+        <!-- Galeria Elegante em Quadrados Verticais -->
+        <div class="analytics-gallery animate-blur-fade-up" style="animation-delay: 400ms; display:flex; gap:20px; z-index:10; width:100%; max-width:1200px; justify-content:center; flex-wrap:wrap;">
+            <div class="liquid-glass-strong" style="flex:1; min-width:250px; max-width:350px; height:450px; border-radius:24px; overflow:hidden; padding:12px; display:flex; flex-direction:column;">
+                <div style="width:100%; height:100%; border-radius:16px; overflow:hidden; position:relative;">
+                    <img src="update-midia/yt_studio.webp" style="width:100%; height:100%; object-fit:cover; filter: brightness(0.9);" alt="YT Studio Analytics">
+                </div>
+            </div>
+            
+            <div class="liquid-glass-strong" style="flex:1.2; min-width:300px; max-width:450px; height:450px; border-radius:24px; overflow:hidden; padding:12px; display:flex; flex-direction:column;">
+                <div style="width:100%; height:100%; border-radius:16px; overflow:hidden; position:relative;">
+                    <img src="update-midia/captura_desktop.webp" style="width:100%; height:100%; object-fit:cover; filter: brightness(0.9);" alt="Desktop Analytics">
+                </div>
+            </div>
+
+            <div class="liquid-glass-strong" style="flex:1; min-width:250px; max-width:350px; height:450px; border-radius:24px; overflow:hidden; padding:12px; display:flex; flex-direction:column;">
+                <div style="width:100%; height:100%; border-radius:16px; overflow:hidden; position:relative;">
+                    <img src="update-midia/mobile_analytics.webp" style="width:100%; height:100%; object-fit:cover; filter: brightness(0.9);" alt="Mobile Analytics">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ============================================================
+         TRANSITION SECTION WITH VIDEO BACKGROUND 2 (Skills)
+         ============================================================ -->
+    <div style="position: relative; background-color: black;">
+        <div id="galaxy-container" class="video-bg-transition-wrapper" style="overflow: hidden; background: #112;">
+        </div>
+
+        <div class="main-content">
+            <!-- ========== HABILIDADES ========== -->
+            <section id="skills" class="section">
+                <div style="text-align:center;" class="reveal">
+                    <div class="section-label" style="justify-content:center;">
+                        <i data-lucide="zap" style="width:14px;height:14px;"></i>
+                        HABILIDADES & STACK
+                    </div>
+                    <h2 class="section-title" style="margin-bottom:12px;">Arquitetura de Competências</h2>
+                </div>
+
+                <div class="liquid-glass-strong glass-padding reveal" style="margin-top:16px; border-radius: 24px;">
+                    <div class="skills-grid-columns reveal-stagger">
+                        <!-- Automação & IA -->
+                        <div class="skill-category-box">
+                            <h4><i data-lucide="bot"></i> Automação & IA</h4>
+                            <div class="skill-items-wrap">
+                                <span class="skill-tag-pill">N8N</span>
+                                <span class="skill-tag-pill">Typebot</span>
+                                <span class="skill-tag-pill">Evolution API</span>
+                                <span class="skill-tag-pill">Inteligência Artificial</span>
+                                <span class="skill-tag-pill">Chatbots</span>
+                                <span class="skill-tag-pill">Workflows</span>
+                            </div>
+                        </div>
+
+                        <!-- Marketing & Vendas -->
+                        <div class="skill-category-box">
+                            <h4><i data-lucide="trending-up"></i> Marketing & Vendas</h4>
+                            <div class="skill-items-wrap">
+                                <span class="skill-tag-pill">LinkedIn Ads</span>
+                                <span class="skill-tag-pill">Social Selling</span>
+                                <span class="skill-tag-pill">Copywriting</span>
+                                <span class="skill-tag-pill">Media Buyer</span>
+                                <span class="skill-tag-pill">Vendas Outbound</span>
+                                <span class="skill-tag-pill">Funil de Vendas</span>
+                            </div>
+                        </div>
+
+                        <!-- Tech & Design -->
+                        <div class="skill-category-box">
+                            <h4><i data-lucide="monitor"></i> Tech & Design</h4>
+                            <div class="skill-items-wrap">
+                                <span class="skill-tag-pill">Websites</span>
+                                <span class="skill-tag-pill">Editor de Vídeos</span>
+                                <span class="skill-tag-pill">Social Media</span>
+                                <span class="skill-tag-pill">Notion Master</span>
+                                <span class="skill-tag-pill">T.I. Generalist</span>
+                            </div>
+                        </div>
+
+                        <!-- Infra & DevOps -->
+                        <div class="skill-category-box">
+                            <h4><i data-lucide="server"></i> Infra & DevOps</h4>
+                            <div class="skill-items-wrap">
+                                <span class="skill-tag-pill">Linux Server</span>
+                                <span class="skill-tag-pill">Docker / Swarm</span>
+                                <span class="skill-tag-pill">VPS Deploy</span>
+                                <span class="skill-tag-pill">Terminal / CLI</span>
+                                <span class="skill-tag-pill">macOS Admin</span>
+                            </div>
+                        </div>
+
+                        <!-- Cybersecurity -->
+                        <div class="skill-category-box">
+                            <h4><i data-lucide="shield"></i> Cybersecurity</h4>
+                            <div class="skill-items-wrap">
+                                <span class="skill-tag-pill">Kali Linux</span>
+                                <span class="skill-tag-pill">Ethical Hacking</span>
+                                <span class="skill-tag-pill">Nmap</span>
+                                <span class="skill-tag-pill">Info Security</span>
+                                <span class="skill-tag-pill">Criptografia</span>
+                            </div>
+                        </div>
+
+                        <!-- Produtos Digitais -->
+                        <div class="skill-category-box">
+                            <h4><i data-lucide="store"></i> Produtos Digitais</h4>
+                            <div class="skill-items-wrap">
+                                <span class="skill-tag-pill">Hotmart</span>
+                                <span class="skill-tag-pill">Kiwify</span>
+                                <span class="skill-tag-pill">Área de Membros</span>
+                                <span class="skill-tag-pill">Discord Bots</span>
+                                <span class="skill-tag-pill">Comunidades</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+
+    <!-- BENEFICIOS REMOVIDOS - MANTENDO APENAS BLOBS NA PRÓXIMA SEÇÃO -->
+
+
+    <!-- ============================================================
+         TRANSITION SECTION WITH VIDEO BACKGROUND 3 (VPS + Discord)
+         ============================================================ -->
+    <div style="position: relative; background-color: black;">
+        <div class="video-bg-transition-wrapper" style="overflow: hidden;">
+            <div class="blue-blob" style="width: 600px; height: 600px; top: 10%; left: -200px; opacity: 0.5;"></div>
+            <div class="blue-blob" style="width: 400px; height: 400px; bottom: 10%; right: -100px; opacity: 0.4;"></div>
+            <video autoplay loop muted playsinline style="z-index:-1; position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity: 0.8;">
+                <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260405_171521_25968ba2-b594-4b32-aab7-f6b69398a6fa.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="main-content">
+            <!-- ========== SUTIL WHATSAPP API & VPS ========== -->
+            <section id="vps" class="section">
+                <!-- Sutil WhatsApp API (No Hero) -->
+                <div class="liquid-glass-strong whatsapp-api-sutil reveal" style="margin-bottom: 40px;">
+                    <img src="cv-itens/api1.webp" alt="WhatsApp API" data-lightbox style="cursor: pointer;">
+                    <div class="whatsapp-api-sutil-info">
+                        <h5>Conectividade & Escala</h5>
+                        <p>Experiência prática na estruturação e otimização de APIs de WhatsApp open source e auto-hospedadas (como Evolution API e similares) integradas a workflows avançados de atendimento e funis de marketing.</p>
+                    </div>
+                </div>
+
+                <div class="section-label reveal">
+                    <i data-lucide="server" style="width:14px;height:14px;"></i>
+                    VPS & Linux Servers
+                </div>
+                <h2 class="section-title reveal">Deploy em Nuvem & Infraestrutura</h2>
+
+                <p class="showcase-desc reveal" style="margin-bottom: 24px; max-w: 700px;">
+                    Experiência prática com servidores Linux Server (Interface CLI pura). Configuração de deploys em produção, escalonamento simples via Docker Swarm, manutenção de ambientes linux e segurança computacional geral.
+                </p>
+
+                <div class="vps-grid-four reveal-stagger">
+                    <div class="vps-img-card liquid-glass" data-lightbox>
+                        <img src="cv-itens/vps1.webp" alt="VPS Console" loading="lazy">
+                    </div>
+                    <div class="vps-img-card liquid-glass" data-lightbox>
+                        <img src="cv-itens/vps2.webp" alt="Docker Containers" loading="lazy">
+                    </div>
+                    <div class="vps-img-card liquid-glass" data-lightbox>
+                        <img src="cv-itens/vps3.webp" alt="System Monitoring" loading="lazy">
+                    </div>
+                    <div class="vps-img-card liquid-glass" data-lightbox>
+                        <img src="cv-itens/vps4.webp" alt="Server Terminals" loading="lazy">
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========== DISCORD ========== -->
+            <section id="discord" class="section">
+                <div class="section-label reveal">
+                    <i data-lucide="message-square" style="width:14px;height:14px;"></i>
+                    Comunidades Inteligentes
+                </div>
+                <h2 class="section-title reveal">Discord Server Architect</h2>
+
+                <p class="showcase-desc reveal" style="margin-bottom: 32px; max-w: 700px;">
+                    Criação de comunidades integradas e inteligentes contendo automoderação, bot de tickets dedicado, sincronizações com loja online, relógio de ponto para colaboradores e automações de logs.
+                </p>
+
+                <div class="discord-grid-split reveal-stagger" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: stretch; max-width: 1000px; margin: 0 auto;">
+                    <div class="discord-video-wrapper liquid-glass-strong" style="border-radius: 24px; overflow: hidden; padding: 12px; display: flex; flex-direction: column; justify-content: center;">
+                        <video controls preload="metadata" playsinline style="width: 100%; border-radius: 16px;">
+                            <source src="cv-itens/discord.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="discord-img-card liquid-glass-strong" data-lightbox style="border-radius: 24px; overflow: hidden; padding: 12px; display: flex; flex-direction: column; justify-content: center; cursor: pointer;">
+                        <img src="cv-itens/discord2.webp" alt="Discord Bot Panel" loading="lazy" style="width: 100%; border-radius: 16px; object-fit: cover;">
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+
+    <!-- ============================================================
+         HERO 4: BLOOM TWO-PANEL SPLIT (Example 4)
+         ============================================================ -->
+    <div id="products-digital" class="bloom-hero">
+        <video class="bloom-video-bg" autoplay loop muted playsinline>
+            <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260315_073750_51473149-4350-4920-ae24-c8214286f323.mp4" type="video/mp4">
+        </video>
+
+        <div class="bloom-split-container">
+            <!-- Left Panel (52% width) -->
+            <div class="bloom-panel-left liquid-glass-strong">
+                <div class="bloom-header-row">
+                    <div class="bloom-logo">
+                        <i data-lucide="sparkles" style="color: white; width: 24px; height: 24px;"></i>
+                        <span>Mateus Celestino PRO</span>
+                    </div>
+                    <button class="bloom-pill liquid-glass" style="border:none;">Produtos Digitais</button>
+                </div>
+
+                <div class="bloom-center-content">
+                    <div class="bloom-center-logo">
+                        <i data-lucide="package" style="width: 40px; height: 40px; color: white;"></i>
+                    </div>
+                    <h1 class="bloom-title-h1">
+                        Criação de <em>Produtos</em> Digitais Online
+                    </h1>
+                    <p style="font-size: 0.9rem; color: rgba(255,255,255,0.7); max-width: 440px; margin-bottom: 24px;">
+                        Experiência completa com áreas de membros externas e internas (Hotmart Club / Portais Customizados). Estruturei e hospedei meu próprio curso online.
+                    </p>
+                    
+                    <!-- Balões movidos para cá (Esquerda) -->
+                    <!-- Painel Unificado -->
+                    <div class="liquid-glass" style="padding: 24px; border-radius: 20px; display:flex; flex-direction:column; gap:20px; margin-bottom: 24px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03); backdrop-filter: blur(12px);">
+                        <div style="display:flex; align-items:flex-start; gap: 16px;">
+                            <div style="background: rgba(255,255,255,0.1); padding: 10px; border-radius: 12px;"><i data-lucide="wand-2" style="width: 20px; height: 20px; color: var(--accent-primary);"></i></div>
+                            <div>
+                                <h5 style="margin:0 0 4px 0; font-size: 1rem; font-weight: 600;">Hotmart Club</h5>
+                                <p style="margin:0; font-size: 0.85rem; color: rgba(255,255,255,0.7); line-height: 1.5;">Setup de áreas de membros exclusivas, estruturação de checkout de alta conversão e funis estratégicos.</p>
+                            </div>
+                        </div>
+                        <div style="width: 100%; height: 1px; background: rgba(255,255,255,0.1);"></div>
+                        <div style="display:flex; align-items:flex-start; gap: 16px;">
+                            <div style="background: rgba(255,255,255,0.1); padding: 10px; border-radius: 12px;"><i data-lucide="book-open" style="width: 20px; height: 20px; color: var(--accent-primary);"></i></div>
+                            <div>
+                                <h5 style="margin:0 0 4px 0; font-size: 1rem; font-weight: 600;">Kiwify Educação</h5>
+                                <p style="margin:0; font-size: 0.85rem; color: rgba(255,255,255,0.7); line-height: 1.5;">Imersão em capacitação avançada com mais de R$3.000 investidos na plataforma Kiwify, abrangendo referências absolutas em tráfego e automação.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bloom-pills-row">
+                        <span class="bloom-pill liquid-glass" style="border:none;">Área de Membros</span>
+                        <span class="bloom-pill liquid-glass" style="border:none;">Hotmart</span>
+                        <span class="bloom-pill liquid-glass" style="border:none;">Curso Próprio</span>
+                    </div>
+                </div>
+
+                <div class="bloom-bottom-quote">
+                    <span class="bloom-quote-label">Acesso para Avaliação</span>
+                    <p class="bloom-quote-text">
+                        "Para solicitar credenciais de acesso ao curso para fins de avaliação técnica e pedagógica, entre em contato direto."
+                    </p>
+                    <span class="bloom-quote-author">Mateus Celestino PRO</span>
+                </div>
+            </div>
+
+            <!-- Right Panel -->
+            <div class="bloom-panel-right">
+                <!-- Galeria de Produtos Digitais -->
+                <div class="products-gallery-grid" id="products-portfolio">
+                    <div class="product-gallery-item liquid-glass-strong">
+                        <a href="https://visuals-digital-art.vercel.app/" target="_blank" style="display:block; width:100%; height:100%;">
+                            <img src="update-midia/art.webp" alt="AI Art PRO" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover;">
+                        </a>
+                    </div>
+                    <div class="product-gallery-item liquid-glass-strong product-gallery-item--raised">
+                        <a href="https://visualslps-a-i-effects-pro-l-p.vercel.app/" target="_blank" style="display:block; width:100%; height:100%;">
+                            <img src="update-midia/effects.webp" alt="AI Effects PRO" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover;">
+                        </a>
+                    </div>
+                    <div class="product-gallery-item liquid-glass-strong">
+                        <a href="https://visualslps-ai-portraits-pro-l-p.vercel.app/" target="_blank" style="display:block; width:100%; height:100%;">
+                            <img src="update-midia/portrait.webp" alt="AI Portrait PRO" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover;">
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Link Portfólio -->
+                <a href="#products-portfolio" class="bloom-portfolio-link liquid-glass-strong">
+                    <i data-lucide="external-link" style="width: 18px; height: 18px; flex-shrink:0;"></i>
+                    <span>Ver portfólio completo de produtos</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ============================================================
+         TRANSITION SECTION WITH VIDEO BACKGROUND 1 (CyberClass + Mac + Exp)
+         ============================================================ -->
+    <div style="position: relative; background-color: black;">
+        <div class="video-bg-transition-wrapper">
+            <video autoplay loop muted playsinline>
+                <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260604_125109_19424216-4e2a-4560-b9f2-f1b5f6eb2c2e.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="main-content">
+            <!-- ========== CYBERCLASS & KIWIFY ========== -->
+            <section id="cyberclass-kiwify" class="section" style="padding-top: 2rem; padding-bottom: 2rem;">
+                <div class="section-label reveal">
+                    <i data-lucide="award" style="width:14px;height:14px;"></i>
+                    Aprendizado Contínuo
+                </div>
+                <h2 class="section-title reveal">Autoridade & Investimento</h2>
+
+                <p class="showcase-desc reveal" style="margin-bottom: 32px; max-w: 700px;">
+                    Posicionado oficialmente no Top 10 de alunos da plataforma CyberClass, destacando-se entre milhares de membros pelo nível de atividade e conclusão.
+                </p>
+
+                <div class="learning-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 32px; max-width: 1200px; margin: 0 auto; align-items: start;">
+                    
+                    <!-- Cyberclass (Cyberclass Only) -->
+                    <div class="liquid-glass-strong reveal" style="border-radius: 24px; padding: 32px; display: flex; flex-direction: column; gap: 24px;">
+                        <div style="display: flex; gap: 16px; align-items: center;">
+                            <div class="pj-avatar" style="width: 60px; height: 60px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; justify-content: center; align-items: center;">
+                                <i data-lucide="award" style="width: 28px; height: 28px; color: #ff0000;"></i>
+                            </div>
+                            <div>
+                                <h4 style="margin: 0; font-size: 1.2rem;">CyberClass</h4>
+                                <span style="color: rgba(255,255,255,0.6); font-size: 0.9rem;">Top 10 Alunos da Plataforma</span>
+                            </div>
+                        </div>
+                        <p style="color: rgba(255,255,255,0.8); font-size: 0.95rem; line-height: 1.6; min-height: 100px;">
+                            Presença consolidada entre os principais alunos da plataforma. Domínio absoluto de funis de vendas semiautomáticos, atração orgânica e conversão de tráfego qualificado, validados pela proficiência prática nas táticas aplicadas.
+                        </p>
+                        <div style="border-radius: 16px; overflow: hidden;" data-lightbox>
+                            <img src="cv-itens/cyberclasss hero.webp" alt="Cyberclass Comprovante" style="width: 100%; object-fit: cover; cursor: pointer;">
+                        </div>
+                        <div style="border-radius: 16px; overflow: hidden; margin-top: auto;">
+                             <video controls preload="metadata" playsinline style="width:100%; border-radius: 16px;">
+                                <source src="cv-itens/cyberclass.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <!-- Kiwify -->
+                    <div class="liquid-glass-strong reveal" style="border-radius: 24px; padding: 32px; display: flex; flex-direction: column; gap: 24px;">
+                        <div style="display: flex; gap: 16px; align-items: center;">
+                            <div style="width: 60px; height: 60px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; justify-content: center; align-items: center;">
+                                <i data-lucide="book-open" style="width: 28px; height: 28px; color: #00e676;"></i>
+                            </div>
+                            <div>
+                                <h4 style="margin: 0; font-size: 1.2rem;">Kiwify Educação</h4>
+                                <span style="color: rgba(255,255,255,0.6); font-size: 0.9rem;">Mais de R$3.000 Investidos</span>
+                            </div>
+                        </div>
+                        <p style="color: rgba(255,255,255,0.8); font-size: 0.95rem; line-height: 1.6; min-height: 100px;">
+                            Investimento massivo em treinamentos na plataforma Kiwify, abrangendo de ponta a ponta as maiores referências do mercado digital em tráfego, conversão e automação.
+                        </p>
+                        <div style="border-radius: 16px; overflow: hidden; display: flex; align-items: center; margin-top: auto;">
+                            <video controls preload="metadata" playsinline style="width: 100%; border-radius: 16px;">
+                                <source src="cv-itens/kiwify cursos.mov" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- ========== MAC OS & TERMINAL ========== -->
+            <section id="mac" class="section">
+                <div class="section-label reveal">
+                    <i data-lucide="laptop" style="width:14px;height:14px;"></i>
+                    macOS & CLI Command Line
+                </div>
+                <h2 class="section-title reveal">Administração macOS & Command Line</h2>
+
+                <p class="showcase-desc reveal" style="margin-bottom: 24px; max-w: 700px;">
+                    Competência comprovada na gerência de ambientes Apple macOS. Domínio de Command Line Interface (CLI/Terminal) para tarefas de compilação, deploys locais e monitoramento.
+                </p>
+
+                <div class="mac-grid-unified reveal-stagger" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; max-width: 1200px; margin: 0 auto;">
+                    <div class="mac-img-card liquid-glass" data-lightbox style="border-radius: 16px; overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 8px;">
+                        <img src="cv-itens/mac.webp" alt="macOS Admin Screen 1" loading="lazy" style="width: 100%; border-radius: 8px;">
+                    </div>
+                    <div class="mac-img-card liquid-glass" data-lightbox style="border-radius: 16px; overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 8px;">
+                        <img src="cv-itens/mac2.webp" alt="macOS Admin Screen 2" loading="lazy" style="width: 100%; border-radius: 8px;">
+                    </div>
+                    <div class="mac-img-card liquid-glass" data-lightbox style="border-radius: 16px; overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 8px;">
+                        <img src="cv-itens/mac3.webp" alt="macOS Admin Screen 3" loading="lazy" style="width: 100%; border-radius: 8px;">
+                    </div>
+                    <div class="mac-img-card liquid-glass" data-lightbox style="border-radius: 16px; overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 8px;">
+                        <img src="cv-itens/mac4.webp" alt="macOS Admin Screen 4" loading="lazy" style="width: 100%; border-radius: 8px;">
+                    </div>
+                    <div class="terminal-video-wrapper liquid-glass-strong" style="border-radius: 16px; overflow: hidden; padding: 8px; display: flex; align-items: center; justify-content: center; grid-column: 1 / -1; max-height: 500px;">
+                        <video controls preload="metadata" playsinline style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                            <source src="cv-itens/terminal1.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========== OPENSOURCE CUSTOMIZATION PROJECTS ========== -->
+            <section id="opensource-projects" class="section" style="padding-top: 3.5rem; padding-bottom: 3.5rem;">
+                <div style="text-align:center;" class="reveal">
+                    <div class="section-label" style="justify-content:center; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.85); box-shadow: none;">
+                        <i data-lucide="sparkles" style="width:14px;height:14px; color: #ffffff;"></i>
+                        OpenSource Showcase
+                    </div>
+                    <h2 class="section-title" style="letter-spacing: -0.03em; font-size: clamp(2rem, 4.5vw, 3rem); margin-bottom: 16px;">
+                        Opensource Customization Projects
+                    </h2>
+                    <p class="showcase-desc" style="max-width: 840px; margin: 0 auto 8px auto; font-size: 1.05rem; color: rgba(255,255,255,0.92); font-weight: 500;">
+                        Contribuições OpenSource de Mateus Celestino para a comunidade de IA.
+                    </p>
+                    <p style="max-width: 840px; margin: 0 auto 32px auto; font-size: 0.92rem; color: rgba(255,255,255,0.65); line-height: 1.6;">
+                        Estética translúcida super glassmorphism Apple Liquid Glass, juntamente com aprimoramentos.
+                    </p>
+
+                    <!-- Painel Dashboard Glassmorphism com os Controles & Features -->
+                    <div class="opensource-dashboard-controls liquid-glass-strong" style="max-width: 1060px; margin: 0 auto 52px auto; padding: 22px 28px; border-radius: 20px; display: flex; flex-direction: column; gap: 14px; text-align: left; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.14); backdrop-filter: blur(24px);">
+                        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 10px;">
+                            <div style="display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 0.85rem; color: #ffffff; letter-spacing: 0.05em; text-transform: uppercase;">
+                                <i data-lucide="sliders" style="width: 16px; height: 16px; color: rgba(255,255,255,0.85);"></i>
+                                Painel Dashboard Glassmorphism — Controles & Recursos
+                            </div>
+                            <span style="font-size: 0.72rem; font-family: monospace; color: rgba(255,255,255,0.5);">OPENSOURCE ECOSYSTEM</span>
+                        </div>
+                        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                            <span class="control-tag-pill"><i data-lucide="code-2" style="width:13px;height:13px;"></i> Skill Editor</span>
+                            <span class="control-tag-pill"><i data-lucide="cpu" style="width:13px;height:13px;"></i> MCP Manager</span>
+                            <span class="control-tag-pill"><i data-lucide="bot" style="width:13px;height:13px;"></i> Agent Editor</span>
+                            <span class="control-tag-pill"><i data-lucide="activity" style="width:13px;height:13px;"></i> Token Statistics & More</span>
+                            <span class="control-tag-pill"><i data-lucide="sun-medium" style="width:13px;height:13px;"></i> Intelligent High Contrast System</span>
+                            <span class="control-tag-pill"><i data-lucide="type" style="width:13px;height:13px;"></i> Custom Fonts & 50 Custom Themes</span>
+                            <span class="control-tag-pill"><i data-lucide="zap" style="width:13px;height:13px;"></i> 30 Light Shaders Energy Effects</span>
+                            <span class="control-tag-pill"><i data-lucide="shield-check" style="width:13px;height:13px;"></i> ConvertKit Liquid Glass & Super Pool AI Infrastructure</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="translucid-grid reveal-stagger">
+                    <!-- Project 1: OmniRoute Translucid Edition -->
+                    <div class="translucid-card">
+                        <div class="translucid-card-video-box">
+                            <video controls preload="metadata" playsinline poster="cv-itens/omniroute_cover.webp">
+                                <source src="cv-itens/omniroute_final.mp4" type="video/mp4">
+                            </video>
+                            <button class="video-expand-overlay-btn" title="Expandir Vídeo" onclick="openVideoModal('cv-itens/omniroute_final.mp4', 'OmniRoute Translucid Edition')">
+                                <i data-lucide="maximize-2"></i>
+                            </button>
+                        </div>
+                        <div class="translucid-card-body">
+                            <div class="translucid-tag-row">
+                                <span class="translucid-tag-pill">Apple Liquid Glass ConvertKit</span>
+                                <span class="translucid-repo-badge"><i data-lucide="unlock" style="width:12px;height:12px;"></i> Public Repo</span>
+                            </div>
+                            <h3 class="translucid-card-title">OmniRoute Translucid Edition</h3>
+                            <p class="translucid-card-desc">
+                                Interface translúcida de altíssima fidelidade com vidro líquido (Liquid Glass ConvertKit), alternância dinâmica entre provedores em Super Pool e sistema resiliente de failover com baixa latência.
+                            </p>
+                            <div class="translucid-badges-wrap">
+                                <span class="translucid-badge-item">Liquid Glass</span>
+                                <span class="translucid-badge-item">Super Pool AI</span>
+                                <span class="translucid-badge-item">Failover Engine</span>
+                                <span class="translucid-badge-item">Native Vibrancy</span>
+                            </div>
+                            <div class="translucid-card-actions">
+                                <a href="https://github.com/MateusCelestinoProX/translucid-omniroute" target="_blank" rel="noopener noreferrer" class="github-repo-btn">
+                                    <i data-lucide="github"></i>
+                                    <span>Ver no GitHub</span>
+                                </a>
+                                <button type="button" class="btn-expand-video" onclick="openVideoModal('cv-itens/omniroute_final.mp4', 'OmniRoute Translucid Edition')">
+                                    <i data-lucide="maximize-2"></i>
+                                    <span>Expandir</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2: OpenCode Translucid Studio -->
+                    <div class="translucid-card">
+                        <div class="translucid-card-video-box">
+                            <video controls preload="metadata" playsinline poster="cv-itens/opencode_cover.webp">
+                                <source src="cv-itens/opencode_final.mp4" type="video/mp4">
+                            </video>
+                            <button class="video-expand-overlay-btn" title="Expandir Vídeo" onclick="openVideoModal('cv-itens/opencode_final.mp4', 'OpenCode Translucid Studio')">
+                                <i data-lucide="maximize-2"></i>
+                            </button>
+                        </div>
+                        <div class="translucid-card-body">
+                            <div class="translucid-tag-row">
+                                <span class="translucid-tag-pill">Energy Shaders & Telemetry</span>
+                                <span class="translucid-repo-badge"><i data-lucide="unlock" style="width:12px;height:12px;"></i> Public Repo</span>
+                            </div>
+                            <h3 class="translucid-card-title">OpenCode Translucid Studio</h3>
+                            <p class="translucid-card-desc">
+                                Customização profunda com 30 shaders de energia luminosa (Walking Orbs, Celestial Radiance, Deep Horizon), dashboard telemétrico completo com Skill Editor, MCP Manager e monitor de tokens.
+                            </p>
+                            <div class="translucid-badges-wrap">
+                                <span class="translucid-badge-item">50 Themes</span>
+                                <span class="translucid-badge-item">30 Shaders</span>
+                                <span class="translucid-badge-item">Skill Editor</span>
+                                <span class="translucid-badge-item">MCP Manager</span>
+                                <span class="translucid-badge-item">High Contrast</span>
+                            </div>
+                            <div class="translucid-card-actions">
+                                <a href="https://github.com/MateusCelestinoProX/translucid-open-code" target="_blank" rel="noopener noreferrer" class="github-repo-btn">
+                                    <i data-lucide="github"></i>
+                                    <span>Ver no GitHub</span>
+                                </a>
+                                <button type="button" class="btn-expand-video" onclick="openVideoModal('cv-itens/opencode_final.mp4', 'OpenCode Translucid Studio')">
+                                    <i data-lucide="maximize-2"></i>
+                                    <span>Expandir</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3: OpenWork Autonomous Platform -->
+                    <div class="translucid-card">
+                        <div class="translucid-card-video-box">
+                            <video controls preload="metadata" playsinline poster="cv-itens/openwork_cover.webp">
+                                <source src="cv-itens/openwork_final.mp4" type="video/mp4">
+                            </video>
+                            <button class="video-expand-overlay-btn" title="Expandir Vídeo" onclick="openVideoModal('cv-itens/openwork_final.mp4', 'OpenWork Autonomous Platform')">
+                                <i data-lucide="maximize-2"></i>
+                            </button>
+                        </div>
+                        <div class="translucid-card-body">
+                            <div class="translucid-tag-row">
+                                <span class="translucid-tag-pill">Electron Glass & Agent Synergy</span>
+                                <span class="translucid-repo-badge"><i data-lucide="unlock" style="width:12px;height:12px;"></i> Public Repo</span>
+                            </div>
+                            <h3 class="translucid-card-title">OpenWork Autonomous Platform</h3>
+                            <p class="translucid-card-desc">
+                                Plataforma desktop Electron com transparência de vidro líquido e efeitos de iluminação em tempo real, orquestração multi-agente, widgets dinâmicos e sistema de alto contraste inteligente.
+                            </p>
+                            <div class="translucid-badges-wrap">
+                                <span class="translucid-badge-item">Electron App</span>
+                                <span class="translucid-badge-item">Agent Synergy</span>
+                                <span class="translucid-badge-item">Custom Fonts</span>
+                                <span class="translucid-badge-item">Live Widgets</span>
+                                <span class="translucid-badge-item">Energy Shaders</span>
+                            </div>
+                            <div class="translucid-card-actions">
+                                <a href="https://github.com/MateusCelestinoProX/translucid-openwork" target="_blank" rel="noopener noreferrer" class="github-repo-btn">
+                                    <i data-lucide="github"></i>
+                                    <span>Ver no GitHub</span>
+                                </a>
+                                <button type="button" class="btn-expand-video" onclick="openVideoModal('cv-itens/openwork_final.mp4', 'OpenWork Autonomous Platform')">
+                                    <i data-lucide="maximize-2"></i>
+                                    <span>Expandir</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========== WEB DESIGN SKILLS ========== -->
+            <section id="webdesign" class="section" style="padding-top: 2rem;">
+                <div style="text-align:center;" class="reveal">
+                    <div class="section-label" style="justify-content:center;">
+                        <i data-lucide="code" style="width:14px;height:14px;"></i>
+                        Web Design Skills
+                    </div>
+                    <h2 class="section-title">Websites Desenvolvidos do Zero</h2>
+                    <p class="showcase-desc" style="margin-bottom: 40px; max-width: 800px; margin-left:auto; margin-right:auto;">
+                        Eu, Mateus Celestino, desenvolvi completamente do zero esses dois websites completos, funcionais e estéticos.
+                    </p>
+                </div>
+
+                <div class="webdesign-split reveal-stagger">
+                    <!-- Photography Series -->
+                    <a href="https://photografy-home.vercel.app/" target="_blank" class="webdesign-card liquid-glass-strong">
+                        <div class="webdesign-card-bg" style="background-image: url('update-midia/photo.webp');"></div>
+                        <div class="webdesign-card-overlay"></div>
+                        <div class="webdesign-card-content">
+                            <span class="webdesign-badge">Photography Series</span>
+                            <h3>Mateus Celestino Fotografia PRO</h3>
+                            <p>Portfólio fotográfico profissional com design premium e galeria imersiva.</p>
+                            <div class="webdesign-link-row">
+                                <i data-lucide="external-link" style="width:16px;height:16px;"></i> Acessar Website
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Visuals Series -->
+                    <a href="https://visuals-visuals-home.vercel.app/" target="_blank" class="webdesign-card liquid-glass-strong">
+                        <div class="webdesign-card-bg" style="background-image: url('update-midia/creative.webp'); background-position: top center;"></div>
+                        <div class="webdesign-card-overlay"></div>
+                        <div class="webdesign-card-content">
+                            <span class="webdesign-badge">Visuals Series</span>
+                            <h3>Mateus Celestino Visuals</h3>
+                            <p>Plataforma visual com efeitos criativos e experiência cinematográfica.</p>
+                            <div class="webdesign-link-row">
+                                <i data-lucide="eye" style="width:16px;height:16px;"></i> Acessar Plataforma
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </section>
+        </div> <!-- End main-content -->
+    </div> <!-- End video wrapper -->
+
+    <!-- ========== APPS SERIES (Video 1) ========== -->
+    <div style="position: relative; background-color: black;">
+        <div class="video-bg-transition-wrapper">
+            <video autoplay loop muted playsinline>
+                <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260429_115139_0fc6bd3d-3631-4d26-ab9b-28293887dcc9.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="main-content">
+            <section id="apps-series" class="section">
+                <div style="text-align:center;" class="reveal">
+                    <div class="section-label" style="justify-content:center;">
+                        <i data-lucide="smartphone" style="width:14px;height:14px;"></i>
+                        Apps Series
+                    </div>
+                    <h2 class="section-title">Aplicações Reais & Complexas</h2>
+                    <p class="showcase-desc" style="margin-bottom: 40px; max-width: 800px; margin-left:auto; margin-right:auto;">
+                        Desenvolvimento Full-Stack. Nota: Todos os apps listados são totalmente reais. O Fitness PRO é público, os demais são proprietários (fechados para convidados).
+                    </p>
+                </div>
+
+                <div class="apps-grid reveal-stagger">
+                    <!-- App 1: Hidden Library -->
+                    <div class="app-card liquid-glass-strong">
+                        <div class="app-card-preview">
+                            <iframe src="https://saas-full-hidden-library.vercel.app/" title="Hidden Library"></iframe>
+                            <div class="app-card-overlay-click" onclick="window.open('https://saas-full-hidden-library.vercel.app/', '_blank')"></div>
+                        </div>
+                        <div class="app-card-info">
+                            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                                <h3>Hidden Library</h3>
+                                <span class="app-badge closed"><i data-lucide="lock" style="width:12px;height:12px;"></i> Closed</span>
+                            </div>
+                            <p>Biblioteca pessoal fechada com sistema de gestão de acervo.</p>
+                        </div>
+                    </div>
+
+                    <!-- App 2: Fitness PRO -->
+                    <div class="app-card liquid-glass-strong">
+                        <div class="app-card-preview">
+                            <iframe src="https://saas-fitness-pro.vercel.app/" title="Fitness PRO"></iframe>
+                            <div class="app-card-overlay-click" onclick="window.open('https://saas-fitness-pro.vercel.app/', '_blank')"></div>
+                        </div>
+                        <div class="app-card-info">
+                            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                                <h3>Fitness PRO</h3>
+                                <span class="app-badge open"><i data-lucide="unlock" style="width:12px;height:12px;"></i> Open</span>
+                            </div>
+                            <p>App de treino interativo com acompanhamento de progresso.</p>
+                        </div>
+                    </div>
+
+                    <!-- App 3: Binaural PRO -->
+                    <div class="app-card liquid-glass-strong">
+                        <div class="app-card-preview">
+                            <iframe src="https://mcpos-binaural-pro.vercel.app/" title="Binaural PRO"></iframe>
+                            <div class="app-card-overlay-click" onclick="window.open('https://mcpos-binaural-pro.vercel.app/', '_blank')"></div>
+                        </div>
+                        <div class="app-card-info">
+                            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                                <h3>Binaural PRO</h3>
+                                <span class="app-badge open"><i data-lucide="unlock" style="width:12px;height:12px;"></i> Open</span>
+                            </div>
+                            <p>App de meditação e foco baseado em frequências binaurais.</p>
+                        </div>
+                    </div>
+
+                    <!-- App 4: M.C.P Visuals Community -->
+                    <div class="app-card liquid-glass-strong">
+                        <div class="app-card-preview">
+                            <iframe src="https://mcp-community.vercel.app/" title="M.C.P Visuals Community"></iframe>
+                            <div class="app-card-overlay-click" onclick="window.open('https://mcp-community.vercel.app/', '_blank')"></div>
+                        </div>
+                        <div class="app-card-info">
+                            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                                <h3>M.C.P Visuals Community</h3>
+                                <span class="app-badge open"><i data-lucide="unlock" style="width:12px;height:12px;"></i> Open</span>
+                            </div>
+                            <p>Comunidade visual e plataforma interativa para criadores.</p>
+                        </div>
+                    </div>
+
+                    <!-- App 5: Futuristic Form Builder -->
+                    <div class="app-card liquid-glass-strong">
+                        <div class="app-card-preview">
+                            <iframe src="https://form-builder-7b61.vercel.app/" title="Futuristic Form Builder"></iframe>
+                            <div class="app-card-overlay-click" onclick="window.open('https://form-builder-7b61.vercel.app/', '_blank')"></div>
+                        </div>
+                        <div class="app-card-info">
+                            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                                <h3>Futuristic Form Builder</h3>
+                                <span class="app-badge open"><i data-lucide="unlock" style="width:12px;height:12px;"></i> Open</span>
+                            </div>
+                            <p>Construtor de formulários futurista com integração Notion e alertas por e-mail.</p>
+                        </div>
+                    </div>
+
+                    <!-- App 6: Pomodoro PRO com Notion Backlog -->
+                    <div class="app-card liquid-glass-strong">
+                        <div class="app-card-preview">
+                            <iframe src="https://mcpos-pomodoro-mcp.vercel.app/" title="Pomodoro PRO com Notion Backlog"></iframe>
+                            <div class="app-card-overlay-click" onclick="window.open('https://mcpos-pomodoro-mcp.vercel.app/', '_blank')"></div>
+                        </div>
+                        <div class="app-card-info">
+                            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                                <h3>Pomodoro com Notion Backlog</h3>
+                                <span class="app-badge open"><i data-lucide="unlock" style="width:12px;height:12px;"></i> Open</span>
+                            </div>
+                            <p>Aplicação de Pomodoro PRO integrada ao backlog do Notion para alto desempenho e foco.</p>
+                        </div>
+                    </div>
+
+                    <!-- App 7: Contagem Regressiva com Notion Backlog -->
+                    <div class="app-card liquid-glass-strong">
+                        <div class="app-card-preview">
+                            <iframe src="https://mcpos-iron-will.vercel.app/" title="Contagem Regressiva com Notion Backlog"></iframe>
+                            <div class="app-card-overlay-click" onclick="window.open('https://mcpos-iron-will.vercel.app/', '_blank')"></div>
+                        </div>
+                        <div class="app-card-info">
+                            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                                <h3>Contagem Regressiva (Iron Will)</h3>
+                                <span class="app-badge open"><i data-lucide="unlock" style="width:12px;height:12px;"></i> Open</span>
+                            </div>
+                            <p>Aplicação de contagem regressiva e disciplina integrada ao backlog do Notion.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 32px;" class="reveal">
+                    <a href="https://photografy-fotografia-contato.vercel.app/" target="_blank" class="ultra-glass-contact-btn" style="padding: 12px 24px;">
+                        <i data-lucide="key" style="width:16px;height:16px;"></i>
+                        <span>Solicitar Acesso (Apps Fechados)</span>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- ========== NOTION MASTER (Video 2) ========== -->
+    <div style="position: relative; background-color: black;">
+        <div class="video-bg-transition-wrapper">
+            <video autoplay loop muted playsinline>
+                <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260411_104032_69319010-2458-492b-b04d-b40a5dfa4482.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="main-content">
+            <section id="notion-master" class="section">
+                <div style="text-align:center;" class="reveal">
+                    <div class="section-label" style="justify-content:center;">
+                        <i data-lucide="layout" style="width:14px;height:14px;"></i>
+                        Notion Master
+                    </div>
+                    <h2 class="section-title">Engenharia de Sistemas Notion</h2>
+                    <p class="showcase-desc" style="margin-bottom: 40px; max-width: 800px; margin-left:auto; margin-right:auto;">
+                        Grande proficiência em criação de dashboards dinâmicos, e construção de sistemas Notion otimizados para monitoramento de equipe, projetos, clientes e vida pessoal e muito mais.
+                    </p>
+                </div>
+
+                <div class="notion-videos-grid reveal-stagger">
+                    <div class="notion-video-card liquid-glass-strong">
+                        <video autoplay loop muted playsinline>
+                            <source src="notion_videos/notion1.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="notion-video-card liquid-glass-strong">
+                        <video autoplay loop muted playsinline>
+                            <source src="notion_videos/notion2.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="notion-video-card liquid-glass-strong">
+                        <video autoplay loop muted playsinline>
+                            <source src="notion_videos/notion3.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+
+                <!-- Entregáveis Reais de Clientes Reais -->
+                <div class="reveal" style="margin-top: 36px; text-align: center;">
+                    <p style="font-size: 0.85rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255, 255, 255, 0.7); margin-bottom: 14px;">
+                        Entregáveis reais de clientes reais:
+                    </p>
+                    <div style="display: inline-flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap;">
+                        <a href="https://infinite-recourses.notion.site/ENTREG-VEIS-JUNIN-X1-38a8112a633280cc80bbf8c5fe635df7" target="_blank" rel="noopener noreferrer" class="github-repo-btn" style="padding: 10px 22px; font-size: 0.92rem;">
+                            <i data-lucide="external-link" style="width:16px;height:16px;"></i>
+                            <span>Juninho</span>
+                        </a>
+                        <a href="https://mateuscelestinopro.notion.site/LUIZ-VPN-3c38112a6332809bbd77e6739e525c78?pvs=73" target="_blank" rel="noopener noreferrer" class="github-repo-btn" style="padding: 10px 22px; font-size: 0.92rem;">
+                            <i data-lucide="external-link" style="width:16px;height:16px;"></i>
+                            <span>Luiz</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 48px;" class="reveal">
+                    <a href="https://photografy-fotografia-contato.vercel.app/" target="_blank" class="ultra-glass-contact-btn" style="padding: 12px 32px; font-size: 1.1rem;">
+                        <i data-lucide="mail" style="width:20px;height:20px;"></i>
+                        <span>Fale Comigo sobre Automações</span>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- ========== EXPERIÊNCIA & EDUCAÇÃO (Video 3) ========== -->
+    <div style="position: relative; background-color: black;">
+        <div class="video-bg-transition-wrapper">
+            <video autoplay loop muted playsinline>
+                <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260324_151826_c7218672-6e92-402c-9e45-f1e0f454bdc4.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="main-content">
+            <!-- ========== EXPERIÊNCIA & EDUCAÇÃO ========== -->
+            <section id="experience" class="section">
+                <div class="section-label reveal">
+                    <i data-lucide="briefcase" style="width:14px;height:14px;"></i>
+                    Trajetória
+                </div>
+                <h2 class="section-title reveal">Histórico & Formação</h2>
+
+                <div class="experience-split">
+                    <div class="liquid-glass-strong timeline-panel reveal">
+                        <h4 style="font-size:1.1rem;font-weight:600;color:white;margin-bottom:24px;display:flex;align-items:center;gap:8px;">
+                            <i data-lucide="briefcase" style="width:20px;height:20px;color:var(--accent-primary);"></i> Experiência Profissional
+                        </h4>
+                        <div class="timeline-wrap">
+                            <div class="timeline-node">
+                                <div class="timeline-dot-pin"></div>
+                                <h5>Secretária de Saúde</h5>
+                                <p class="node-date">SET 2022 — MAIO 2025</p>
+                                <p>Foco em gestão de processos públicos, liderança e otimização de fluxos administrativos.</p>
+                            </div>
+                            <div class="timeline-node">
+                                <div class="timeline-dot-pin muted"></div>
+                                <h5>Vendas</h5>
+                                <p class="node-date muted">SHOPPING SETE LAGOAS | 2022</p>
+                                <p>Atendimento direto ao cliente, estratégias de persuasão rápida e batimento de metas comerciais.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="liquid-glass-strong education-panel reveal" style="transition-delay:0.1s;">
+                        <h4 style="font-size:1.1rem;font-weight:600;color:white;margin-bottom:24px;display:flex;align-items:center;gap:8px;">
+                            <i data-lucide="graduation-cap" style="width:20px;height:20px;color:var(--accent-primary);"></i> Educação
+                        </h4>
+                        
+                        <div class="education-card">
+                            <h5>Digital Marketing (Graduação)</h5>
+                            <p>UNOPAR | 2022 — 2024</p>
+                        </div>
+                        <div class="education-card" style="margin-top: 12px;">
+                            <h5>Faculdade de T.I (Security, 1 Semestre)</h5>
+                            <p>ESTÁCIO</p>
+                        </div>
+
+                        <div style="margin-top:20px;">
+                            <h5 style="font-size:0.75rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent-primary);margin-bottom:12px;">Principais Certificações</h5>
+                            <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
+                                <li style="display:flex;align-items:center;gap:8px;font-size:0.85rem;"><i data-lucide="check-circle" style="width:14px;height:14px;color:var(--accent-primary);"></i> LinkedIn Marketing Strategy</li>
+                                <li style="display:flex;align-items:center;gap:8px;font-size:0.85rem;"><i data-lucide="check-circle" style="width:14px;height:14px;color:var(--accent-primary);"></i> LinkedIn Ads</li>
+                                <li style="display:flex;align-items:center;gap:8px;font-size:0.85rem;"><i data-lucide="check-circle" style="width:14px;height:14px;color:var(--accent-primary);"></i> LinkedIn Marketing Fundamentals</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 48px;" class="reveal">
+                        <a href="https://photografy-fotografia-contato.vercel.app/" target="_blank" class="ultra-glass-contact-btn" style="padding: 12px 32px; font-size: 1.1rem;">
+                            <i data-lucide="calendar" style="width:20px;height:20px;"></i>
+                            <span>Agende uma Consultoria Gratuita</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div> <!-- End main-content -->
+    </div> <!-- End video wrapper -->
+
+    <!-- ========== CERTIFICAÇÕES ACCORDION (Video 4) ========== -->
+    <div style="position: relative; background-color: black;">
+        <div class="video-bg-transition-wrapper">
+            <video autoplay loop muted playsinline>
+                <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260319_055001_8e16d972-3b2b-441c-86ad-2901a54682f9.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="main-content">
+            <!-- ========== CERTIFICAÇÕES ACCORDION ========== -->
+            <section id="certifications" class="section">
+                <div style="text-align:center;" class="reveal">
+                    <div class="section-label" style="justify-content:center;">
+                        <i data-lucide="file-badge" style="width:14px;height:14px;"></i>
+                        Certificados
+                    </div>
+                    <h2 class="section-title">Galeria de Certificações Oficiais</h2>
+                </div>
+
+                <div class="liquid-glass-strong certs-panel reveal">
+                    <div class="certs-counter-badge">
+                        <span class="num">70+</span>
+                        <span class="text"><strong>Certificações Digitais Oficiais</strong><br>Anexadas ao site. Clique em cada pasta para visualizar os PDFs correspondentes.</span>
+                    </div>
+
+                    <div class="certs-accordion-grid reveal-stagger">
+                        <!-- GRADUAÇÃO -->
+                        <div class="cert-cat-accordion">
+                            <div class="cert-cat-header-click">
+                                <div class="cert-cat-header-left">
+                                    
+                                    <div class="cert-cat-name-info">
+                                        <span class="cert-cat-title">Graduação</span>
+                                        <span class="cert-cat-count-sub">1 documento</span>
+                                    </div>
+                                </div>
+                                <i data-lucide="chevron-down" class="cert-cat-chevron" style="width:16px;height:16px;"></i>
+                            </div>
+                            <div class="cert-cat-body-list">
+                                <div class="cert-pdf-links-wrap">
+                                    <a href="certifications/graduação/diplomadigital.pdf" target="_blank" class="cert-pdf-item-a">
+                                        <i data-lucide="file-text"></i><span>Diploma Digital — Marketing Digital (UNOPAR)</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- LINKEDIN -->
+                        <div class="cert-cat-accordion">
+                            <div class="cert-cat-header-click">
+                                <div class="cert-cat-header-left">
+                                    
+                                    <div class="cert-cat-name-info">
+                                        <span class="cert-cat-title">LinkedIn</span>
+                                        <span class="cert-cat-count-sub">3 certificados</span>
+                                    </div>
+                                </div>
+                                <i data-lucide="chevron-down" class="cert-cat-chevron" style="width:16px;height:16px;"></i>
+                            </div>
+                            <div class="cert-cat-body-list">
+                                <div class="cert-pdf-links-wrap">
+                                    <a href="certifications/linkedin/certificate-g4z3w6c6bdgm-1751350935 1.pdf" target="_blank" class="cert-pdf-item-a">
+                                        <i data-lucide="file-text"></i><span>LinkedIn Marketing Strategy</span>
+                                    </a>
+                                    <a href="certifications/linkedin/certificate-jp5w5z4v2juf-1751349666.pdf" target="_blank" class="cert-pdf-item-a">
+                                        <i data-lucide="file-text"></i><span>LinkedIn Ads</span>
+                                    </a>
+                                    <a href="certifications/linkedin/certificate-zpgfg9cyi76g-1751347572.pdf" target="_blank" class="cert-pdf-item-a">
+                                        <i data-lucide="file-text"></i><span>LinkedIn Marketing Fundamentals</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- IT CERTIFICATIONS -->
+                        <div class="cert-cat-accordion">
+                            <div class="cert-cat-header-click">
+                                <div class="cert-cat-header-left">
+                                    
+                                    <div class="cert-cat-name-info">
+                                        <span class="cert-cat-title">TI & Cybersecurity</span>
+                                        <span class="cert-cat-count-sub">13 certificados</span>
+                                    </div>
+                                </div>
+                                <i data-lucide="chevron-down" class="cert-cat-chevron" style="width:16px;height:16px;"></i>
+                            </div>
+                            <div class="cert-cat-body-list">
+                                <div class="cert-pdf-links-wrap">
+                                    <div class="cert-sub-heading-lbl">Cyber Attack</div>
+                                    <a href="certifications/it certifications/cyber attack/ethical hacking kali linux.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Ethical Hacking Kali Linux</span></a>
+                                    <a href="certifications/it certifications/cyber attack/kali linux dos e ddos.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Kali Linux DOS e DDoS</span></a>
+                                    <a href="certifications/it certifications/cyber attack/kali linux nmap.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Kali Linux Nmap</span></a>
+                                    <a href="certifications/it certifications/cyber attack/tecnicas de invasao em redes sem fio.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Técnicas de Invasão em Redes Sem Fio</span></a>
+                                    <a href="certifications/it certifications/cyber attack/webhacking.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Web Hacking</span></a>
+                                    
+                                    <div class="cert-sub-heading-lbl" style="margin-top:12px;">Cyber Defense</div>
+                                    <a href="certifications/it certifications/cyber defense/boas práticas em cyberecurity.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Boas Práticas em Cybersecurity</span></a>
+                                    <a href="certifications/it certifications/cyber defense/segurança da informação e hacking.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Segurança da Informação e Hacking</span></a>
+                                    <a href="certifications/it certifications/cyber defense/segurança da informação_conceitos.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Segurança da Informação — Conceitos</span></a>
+                                    <a href="certifications/it certifications/cyber defense/fundamentos da criptografia.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Fundamentos da Criptografia</span></a>
+                                    <a href="certifications/it certifications/cyber defense/fundamentos data center security.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Fundamentos Data Center Security</span></a>
+                                    <a href="certifications/it certifications/cyber defense/redes para segurança da informação.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Redes para Segurança da Informação</span></a>
+                                    <a href="certifications/it certifications/cyber defense/segurança da informação corporativa.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Segurança da Informação Corporativa</span></a>
+                                    <a href="certifications/it certifications/cyber defense/tecnicas hacker e redes wifi.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Técnicas Hacker e Redes WiFi</span></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- BUSINESS -->
+                        <div class="cert-cat-accordion">
+                            <div class="cert-cat-header-click">
+                                <div class="cert-cat-header-left">
+                                    
+                                    <div class="cert-cat-name-info">
+                                        <span class="cert-cat-title">Business / Vendas</span>
+                                        <span class="cert-cat-count-sub">19 certificados</span>
+                                    </div>
+                                </div>
+                                <i data-lucide="chevron-down" class="cert-cat-chevron" style="width:16px;height:16px;"></i>
+                            </div>
+                            <div class="cert-cat-body-list">
+                                <div class="cert-pdf-links-wrap">
+                                    <a href="certifications/business/10 passos para sair das dividas.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>10 Passos para Sair das Dívidas</span></a>
+                                    <a href="certifications/business/150 scripts de videos de venda.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>150 Scripts de Vídeos de Venda</span></a>
+                                    <a href="certifications/business/3 maneiras de vender mais para o mesmo cliente.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>3 Maneiras de Vender Mais para o Mesmo Cliente</span></a>
+                                    <a href="certifications/business/acelerendo vendas como profissional autonomo.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Acelerando Vendas como Profissional Autônomo</span></a>
+                                    <a href="certifications/business/comecando a investir.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Começando a Investir</span></a>
+                                    <a href="certifications/business/conquistando clientes como freelancer.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Conquistando Clientes como Freelancer</span></a>
+                                    <a href="certifications/business/da criacao ao rezistro.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Da Criação ao Registro</span></a>
+                                    <a href="certifications/business/de empregado a empreendedor.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>De Empregado a Empreendedor</span></a>
+                                    <a href="certifications/business/de pf a pj.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>De PF a PJ</span></a>
+                                    <a href="certifications/business/dominando o processo de venda.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Dominando o Processo de Venda</span></a>
+                                    <a href="certifications/business/emprestimos e produtos bancarios.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Empréstimos e Produtos Bancários</span></a>
+                                    <a href="certifications/business/mudando de area profissional.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Mudando de Área Profissional</span></a>
+                                    <a href="certifications/business/organização financeira pessoal.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Organização Financeira Pessoal</span></a>
+                                    <a href="certifications/business/planejamento estrategico para negocios.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Planejamento Estratégico para Negócios</span></a>
+                                    <a href="certifications/business/reserva de emergencia e metas financeiras.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Reserva de Emergência e Metas Financeiras</span></a>
+                                    <a href="certifications/business/seu negócio do zero.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Seu Negócio do Zero</span></a>
+                                    <a href="certifications/business/start financeiro.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Start Financeiro</span></a>
+                                    <a href="certifications/business/treinamento caixa rápido.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Treinamento Caixa Rápido</span></a>
+                                    <a href="certifications/business/vender mais em datas comemorativas.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Vender Mais em Datas Comemorativas</span></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- COPYWRITER -->
+                        <div class="cert-cat-accordion">
+                            <div class="cert-cat-header-click">
+                                <div class="cert-cat-header-left">
+                                    
+                                    <div class="cert-cat-name-info">
+                                        <span class="cert-cat-title">Copywriter</span>
+                                        <span class="cert-cat-count-sub">6 certificados</span>
+                                    </div>
+                                </div>
+                                <i data-lucide="chevron-down" class="cert-cat-chevron" style="width:16px;height:16px;"></i>
+                            </div>
+                            <div class="cert-cat-body-list">
+                                <div class="cert-pdf-links-wrap">
+                                    <a href="certifications/copywriter/como escrever para vender.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Como Escrever para Vender</span></a>
+                                    <a href="certifications/copywriter/conquistando clientes de copy.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Conquistando Clientes de Copy</span></a>
+                                    <a href="certifications/copywriter/copywriter express.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Copywriter Express</span></a>
+                                    <a href="certifications/copywriter/fundamentos de um copywriter de sucesso.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Fundamentos de um Copywriter de Sucesso</span></a>
+                                    <a href="certifications/copywriter/o jogo é mental- como ser um copywriter de sucesso.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>O Jogo é Mental — Como Ser um Copywriter de Sucesso</span></a>
+                                    <a href="certifications/copywriter/profissão copywriter.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Profissão Copywriter</span></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- MARKETING DIGITAL -->
+                        <div class="cert-cat-accordion">
+                            <div class="cert-cat-header-click">
+                                <div class="cert-cat-header-left">
+                                    
+                                    <div class="cert-cat-name-info">
+                                        <span class="cert-cat-title">Marketing Digital</span>
+                                        <span class="cert-cat-count-sub">10 certificados</span>
+                                    </div>
+                                </div>
+                                <i data-lucide="chevron-down" class="cert-cat-chevron" style="width:16px;height:16px;"></i>
+                            </div>
+                            <div class="cert-cat-body-list">
+                                <div class="cert-pdf-links-wrap">
+                                    <a href="certifications/overall marketing digital_/a importancia das redes socais no marketing digital.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>A Importância das Redes Sociais no Marketing Digital</span></a>
+                                    <a href="certifications/overall marketing digital_/afiliado amazon.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Afiliado Amazon</span></a>
+                                    <a href="certifications/overall marketing digital_/afiliado com trafego pago.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Afiliado com Tráfego Pago</span></a>
+                                    <a href="CERTIFICATIONS/OVERALL MARKETING DIGITAL_/AFILIADO LUCRATIV.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Afiliado Lucrativo</span></a>
+                                    <a href="certifications/overall marketing digital_/cyberclass certification_como criar um funil de vendas e gerar renda semiautomática.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>CyberClass — Funil e Renda Semiautomática</span></a>
+                                    <a href="certifications/overall marketing digital_/desvendando lançamentos digitais.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Desvendando Lançamentos Digitais</span></a>
+                                    <a href="certifications/overall marketing digital_/mundo 3k de oportunidades do marketing digital.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Mundo 3K de Oportunidades do Marketing Digital</span></a>
+                                    <a href="certifications/overall marketing digital_/o essencial do marketing digital.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>O Essencial do Marketing Digital</span></a>
+                                    <a href="certifications/overall marketing digital_/profissão co-produtor.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Profissão Co-Produtor</span></a>
+                                    <a href="certifications/overall marketing digital_/profissão lançador digital.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Profissão Lançador Digital</span></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SOCIAL MEDIA -->
+                        <div class="cert-cat-accordion">
+                            <div class="cert-cat-header-click">
+                                <div class="cert-cat-header-left">
+                                    
+                                    <div class="cert-cat-name-info">
+                                        <span class="cert-cat-title">Social Media</span>
+                                        <span class="cert-cat-count-sub">10 certificados</span>
+                                    </div>
+                                </div>
+                                <i data-lucide="chevron-down" class="cert-cat-chevron" style="width:16px;height:16px;"></i>
+                            </div>
+                            <div class="cert-cat-body-list">
+                                <div class="cert-pdf-links-wrap">
+                                    <a href="certifications/social media/camapanhas com reels.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Campanhas com Reels</span></a>
+                                    <a href="certifications/social media/como bombar no insta.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Como Bombar no Instagram</span></a>
+                                    <a href="certifications/social media/como bombar no tiktok.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Como Bombar no TikTok</span></a>
+                                    <a href="certifications/social media/como vender no instagram.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Como Vender no Instagram</span></a>
+                                    <a href="certifications/social media/crossplataform.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Crossplataform</span></a>
+                                    <a href="certifications/social media/gestao de redes sociais para marcas.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Gestão de Redes Sociais para Marcas</span></a>
+                                    <a href="certifications/social media/jornada social media.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Jornada Social Media</span></a>
+                                    <a href="certifications/social media/social media para negocios locais.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Social Media para Negócios Locais</span></a>
+                                    <a href="certifications/social media/stories que vendem.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Stories que Vendem</span></a>
+                                    <a href="certifications/social media/trabalhando com reels.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Trabalhando com Reels</span></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- YOUTUBE -->
+                        <div class="cert-cat-accordion">
+                            <div class="cert-cat-header-click">
+                                <div class="cert-cat-header-left">
+                                    
+                                    <div class="cert-cat-name-info">
+                                        <span class="cert-cat-title">YouTube</span>
+                                        <span class="cert-cat-count-sub">10 certificados</span>
+                                    </div>
+                                </div>
+                                <i data-lucide="chevron-down" class="cert-cat-chevron" style="width:16px;height:16px;"></i>
+                            </div>
+                            <div class="cert-cat-body-list">
+                                <div class="cert-pdf-links-wrap">
+                                    <a href="certifications/youtube/camera e timidez.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Câmera e Timidez</span></a>
+                                    <a href="certifications/youtube/como produzir podcast.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Como Produzir Podcast</span></a>
+                                    <a href="certifications/youtube/gravacao profissional com celular.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Gravação Profissional com Celular</span></a>
+                                    <a href="certifications/youtube/nicho perfeito.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Nicho Perfeito</span></a>
+                                    <a href="certifications/youtube/publicos e como usar.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Públicos e Como Usar</span></a>
+                                    <a href="certifications/youtube/seo youtube.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>SEO YouTube</span></a>
+                                    <a href="certifications/youtube/titulos estrategicos para youtube.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Títulos Estratégicos para YouTube</span></a>
+                                    <a href="certifications/youtube/youtube analise juridica.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>YouTube Análise Jurídica</span></a>
+                                    <a href="certifications/youtube/youtube roteiro mangetico.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>YouTube Roteiro Magnético</span></a>
+                                    <a href="certifications/youtube/youtuber gamer.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>YouTuber Gamer</span></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FORMAÇÃO -->
+                        <div class="cert-cat-accordion">
+                            <div class="cert-cat-header-click">
+                                <div class="cert-cat-header-left">
+                                    
+                                    <div class="cert-cat-name-info">
+                                        <span class="cert-cat-title">Formação Livre</span>
+                                        <span class="cert-cat-count-sub">3 certificados</span>
+                                    </div>
+                                </div>
+                                <i data-lucide="chevron-down" class="cert-cat-chevron" style="width:16px;height:16px;"></i>
+                            </div>
+                            <div class="cert-cat-body-list">
+                                <div class="cert-pdf-links-wrap">
+                                    <a href="certifications/formacao/desenvolvimen to web.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Desenvolvimento Web</span></a>
+                                    <a href="certifications/formacao/gestor de trafego.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Gestor de Tráfego</span></a>
+                                    <a href="certifications/formacao/produtor de ebooks.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Produtor de Ebooks</span></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- AUTOMATION (N8N + TYPEBOT) -->
+                        <div class="cert-cat-accordion">
+                            <div class="cert-cat-header-click">
+                                <div class="cert-cat-header-left">
+                                    
+                                    <div class="cert-cat-name-info">
+                                        <span class="cert-cat-title">Automação (n8n/Typebot)</span>
+                                        <span class="cert-cat-count-sub">2 certificados</span>
+                                    </div>
+                                </div>
+                                <i data-lucide="chevron-down" class="cert-cat-chevron" style="width:16px;height:16px;"></i>
+                            </div>
+                            <div class="cert-cat-body-list">
+                                <div class="cert-pdf-links-wrap">
+                                    <a href="certifications/n8n/certificate_1urvj_1748844507094.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>N8N official certification</span></a>
+                                    <a href="certifications/typebot/udemy typebot certification.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Udemy Typebot Certification</span></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PROGRAMAÇÃO / DEV -->
+                        <div class="cert-cat-accordion">
+                            <div class="cert-cat-header-click">
+                                <div class="cert-cat-header-left">
+                                    
+                                    <div class="cert-cat-name-info">
+                                        <span class="cert-cat-title">Programação / Dev</span>
+                                        <span class="cert-cat-count-sub">1 certificado</span>
+                                    </div>
+                                </div>
+                                <i data-lucide="chevron-down" class="cert-cat-chevron" style="width:16px;height:16px;"></i>
+                            </div>
+                            <div class="cert-cat-body-list">
+                                <div class="cert-pdf-links-wrap">
+                                    <a href="certifications/prog_dev/programação para leigos.pdf" target="_blank" class="cert-pdf-item-a"><i data-lucide="file-text"></i><span>Programação para Leigos</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 48px; display: flex; flex-direction: column; align-items: center; gap: 24px;" class="reveal">
+                        <a href="https://drive.google.com/drive/folders/1WSAnyEhJSdu7wsVX7u_DgqXtR0ck-vFd?usp=sharing" target="_blank" class="liquid-glass-strong" style="padding: 20px 48px; border-radius: 40px; display: inline-flex; align-items: center; flex-direction: column; gap: 8px; color: white; text-decoration: none; font-weight: 600; border: 1px solid rgba(255,255,255,0.3); box-shadow: 0 10px 40px rgba(0,0,0,0.5); backdrop-filter: blur(24px) saturate(200%); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                            <span style="font-size: 0.85rem; letter-spacing: 1px; color: rgba(255,255,255,0.7); text-transform: uppercase;">Clique aqui para acessar as</span>
+                            <span style="font-size: 1.2rem; text-transform: uppercase; display: flex; align-items: center; gap: 8px;"><i data-lucide="folder-open" style="width: 24px; height: 24px; color: var(--accent-primary);"></i> Novas Novidades</span>
+                        </a>
+
+                        <a href="https://photografy-fotografia-contato.vercel.app/" target="_blank" class="ultra-glass-contact-btn" style="padding: 12px 32px; font-size: 1.1rem; border-radius: 40px;">
+                            <i data-lucide="message-square" style="width:20px;height:20px;"></i>
+                            <span>Converse com o meu time de Sucesso</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PORTIFOLIO DE CONEXOES REMOVIDO -->
+        </div> <!-- End main-content -->
+    </div> <!-- End video wrapper -->
+
+
+    <!-- ============================================================
+         SECTION 14: CONTACT / FOOTER (Apple Minimal Linktree - contact page style)
+         ============================================================ -->
+    <section id="contact" class="contact-apple-linktree-section">
+        <!-- Slider Background com as 3 fotos pessoais -->
+        <style>
+            @keyframes cinematicFade {
+                0%, 25% { opacity: 1; }
+                33.33%, 91.66% { opacity: 0; }
+                100% { opacity: 1; }
+            }
+            .slide-bg {
+                position: absolute;
+                inset: 0;
+                width: 100%;
+                height: 100%;
+                background-size: cover;
+                background-position: center;
+                animation: cinematicFade 15s infinite;
+            }
+            .slide-1 { background-image: url('update-midia/20250912_200441.webp'); animation-delay: 0s; }
+            .slide-2 { background-image: url('update-midia/20251016_172611.webp'); animation-delay: 5s; }
+            .slide-3 { background-image: url('update-midia/20260505_170907.webp'); animation-delay: 10s; }
+        </style>
+        <div style="position: absolute; inset:0; width:100%; height:100%; z-index:0; pointer-events: none; overflow: hidden;">
+            <div class="slide-bg slide-1"></div>
+            <div class="slide-bg slide-2"></div>
+            <div class="slide-bg slide-3"></div>
+        </div>
+        <div style="position: absolute; inset:0; width:100%; height:100%; z-index:0; background:rgba(0,0,0,0.65); pointer-events:none;"></div>
+
+        <div class="contact-apple-linktree-container fade-in-up">
+            <div class="contact-profile-img">
+                <img src="update-midia/enhanced_zzzzzz.webp" onerror="this.src='https://placehold.co/200x200/222/FFF?text=MC'" alt="Mateus Celestino">
+            </div>
+
+            <h1 class="contact-heading-h1">
+                <span class="bold-title">Mateus Celestino PRO.</span>
+                <span class="subtitle-lbl">Marketing & Inteligência Artificial</span>
+            </h1>
+
+            <div class="contact-buttons-wrap" style="display: flex; flex-direction: column; align-items: center; gap: 24px; margin-top: 32px;">
+                <a href="https://photografy-fotografia-contato.vercel.app/" target="_blank" class="ultra-glass-contact-btn" style="padding: 16px 40px; font-size: 1.2rem; border-radius: 40px; text-decoration: none;">
+                    <i data-lucide="message-square" style="width:24px;height:24px;"></i>
+                    <span>Fale Comigo Agora</span>
+                </a>
+            </div>
+
+            <p style="font-size:0.65rem; color:rgba(255,255,255,0.4); letter-spacing:0.15em; font-family:monospace; margin-top:48px; text-align:center;">
+                SYSTEM ID: MATEUS_CELESTINO_V3.0 // MARKETING & AI CONEXÃO
+            </p>
+        </div>
+    </section>
+
+
+    <!-- ========== FLUIDIC BACK TO TOP BUTTON ========== -->
+    <button id="back-to-top" class="back-to-top-btn" aria-label="Voltar ao Topo">
+        <svg class="progress-ring" width="48" height="48">
+            <circle class="progress-ring-circle" stroke="var(--accent-primary)" stroke-width="2.5" fill="transparent" r="20" cx="24" cy="24"/>
+        </svg>
+        <i data-lucide="arrow-up" style="width:20px;height:20px;color:white;position:relative;z-index:2;"></i>
+    </button>
+
+    <!-- ========== LIGHTBOX MODAL (Image & Video) ========== -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightbox-close" aria-label="Fechar">
+            <i data-lucide="x" style="width:20px;height:20px;"></i>
+        </button>
+        <img id="lightbox-img" src="" alt="Preview" style="display:none;">
+        <div id="lightbox-video-container" style="display:none; max-width:92vw; max-height:85vh; width:1200px; aspect-ratio:16/9; position:relative; border-radius:20px; overflow:hidden; box-shadow:0 30px 90px rgba(0,0,0,0.9); border: 1px solid rgba(255,255,255,0.2);">
+            <video id="lightbox-video" controls playsinline autoplay style="width:100%; height:100%; object-fit:contain; background:#000; display:block;"></video>
+        </div>
+    </div>
+
+    <!-- Script -->
+    <script src="script.js"></script>
+
+    <!-- 3D Backgrounds -->
+    <script type="module">
+        import { initSingularity } from './singularity.js';
+        import { initGalaxy } from './galaxy.js';
+        
+        // Initialize backgrounds when the DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            initSingularity('singularity-container');
+            initGalaxy('galaxy-container');
+        });
+    </script>
+</body>
+</html>

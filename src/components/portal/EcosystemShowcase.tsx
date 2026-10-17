@@ -125,7 +125,7 @@ export function EcosystemShowcase() {
         <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
           Quatro Ecossistemas. <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-neutral-200 to-red-400">
-            Uma Única Plataforma Soberana.
+            Um Único Ecossistema: Mateus Celestino Pro X.
           </span>
         </h2>
 

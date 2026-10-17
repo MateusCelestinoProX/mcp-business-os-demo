@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { verifyAdminRequest, unauthorizedResponse, forbiddenResponse } from '@/lib/auth/admin-guard';
 
 export const dynamic = 'force-dynamic';
 
@@ -8,17 +9,9 @@ export const dynamic = 'force-dynamic';
  */
 export async function GET(request: Request) {
   try {
-    const roleHeader = request.headers.get('x-user-role');
-    const isTestEnv = process.env.NODE_ENV === 'test';
-    if (!isTestEnv && roleHeader !== 'admin' && roleHeader !== 'moder') {
-      const authHeader = request.headers.get('authorization');
-      const hasBearer = authHeader && authHeader.startsWith('Bearer ');
-      if (!hasBearer) {
-        return NextResponse.json(
-          { success: false, error: 'Acesso restrito. Autenticação de Administrador obrigatória.' },
-          { status: 401 }
-        );
-      }
+    const auth = await verifyAdminRequest(request);
+    if (!auth.authorized) {
+      return unauthorizedResponse(auth.error);
     }
 
     // Por enquanto, sem webhooks de pagamentos reais concluídos na base, retorna array vazio e faturamento zerado

@@ -50,13 +50,14 @@ A Plataforma Unificada Soberana consolida os 4 ecossistemas independentes de sof
 | # | Nome | Escopo | Responsável | Status |
 |---|------|--------|-------------|--------|
 | M1 | Foundations & Shell Soberano | Next.js 15, package.json, Tailwind, Shell, Navbar, UI base | agent-foundations (`f29aeb8e`) | **DONE** |
-| M2 | WebGL & Shaders Engine | CinematicCanvas, Galaxy, Beams, ColorBends, Background | agent-shaders (`a711df2f`) | IN_PROGRESS |
+| M2 | WebGL & Shaders Engine | CinematicCanvas, Galaxy, Beams, ColorBends, Background | agent-shaders (`a711df2f`) | **DONE** |
 | M3 | Drizzle ORM & Auth Layer | Schema consolidado PostgreSQL, conexão resiliente, JWT | agent-database (`a60e82ea`) | **DONE** |
 | M4 | Portal Institucional & Leads | Landing Page, 176 Artigos, formulário UTM TikTok/Meta | agent-marketing (`cf9148ba`) | **DONE** |
 | M5 | Área de Membros & Comunidade | Dashboard, Feed, Vídeos, Checkout Mercado Pago | agent-members (`9f936e71`) | **DONE** |
-| M6 | Form Builder Cinemático | Construtor, Live Preview, submissão, Resend/Notion | agent-builder (`f64d22d7`) | IN_PROGRESS |
-| M7 | Biblioteca Oculta de Recursos | Catálogo 406 itens, busca instantânea, downloads | agent-library (`7af0bb02`) | IN_PROGRESS |
-| M8 | Auditoria Forense & Graphify | npm run build, graphify update ., validação localhost | agent-auditor (`5c0973c3`) | IN_PROGRESS |
+| M6 | Form Builder Cinemático | Construtor, Live Preview, submissão, Resend/Notion | agent-builder (`f64d22d7`) | **DONE** |
+| M7 | Biblioteca Oculta de Recursos | Catálogo 406 itens, busca instantânea, downloads | agent-library (`7af0bb02`) | **DONE** |
+| M8 | Auditoria Forense & Graphify | npm run build, graphify update ., validação localhost | agent-auditor (`5c0973c3`) | **DONE** |
+| M9 | Shop Oficial & Header Unificado | Nova rota /shop no header soberano, integração Balatro | agent-shop (`7b819e4a`) | **DONE** |
 
 ---
 
