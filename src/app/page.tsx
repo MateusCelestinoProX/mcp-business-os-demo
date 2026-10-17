@@ -4,13 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import {
   Sparkles,
-  Star,
-  Quote,
-  CheckCircle,
-  ExternalLink,
-  Lock,
   ArrowRight,
-  BookOpen,
 } from 'lucide-react';
 
 import LiquidGlassBackground from '@/components/portal/LiquidGlassBackground';
@@ -23,53 +17,11 @@ import ArticleModal, { ArticleData } from '@/components/portal/ArticleModal';
 import LegalModal from '@/components/portal/LegalModal';
 import ShaderTransitionZone from '@/components/shaders/ShaderTransitionZone';
 import ShaderBackground from '@/components/shaders/ShaderBackground';
-import { MetricsBanner } from '@/components/portal/MetricsBanner';
 import { EcosystemShowcase } from '@/components/portal/EcosystemShowcase';
-import { GlassCard } from '@/components/ui/GlassCard';
-import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 
 import rawArticles from '@/data/articles-summary.json';
 import siteData from '@/data/siteData.json';
-
-interface Testimonial {
-  name: string;
-  role: string;
-  company: string;
-  quote: string;
-  impact: string;
-  stars: number;
-}
-
-const testimonials: Testimonial[] = [
-  {
-    name: "Dr. Roberto Guimarães",
-    role: "Diretor de Operações",
-    company: "HealthTech Solutions",
-    quote:
-      "A implementação dos fluxos no n8n e atendimento com IA pelo Mateus reduziu nosso tempo de triagem de 45 minutos para 30 segundos, economizando mais de R$ 180 mil por trimestre.",
-    impact: "+92% Eficiência Operacional",
-    stars: 5,
-  },
-  {
-    name: "Juliana Mendes",
-    role: "Head de Growth",
-    company: "Apex Media Scale",
-    quote:
-      "O ecossistema de formulários dinâmicos e rastreio de tráfego com TikTok Ads e Meta Ads elevou nossa taxa de conversão de 3.2% para impressionantes 11.8% em 2 semanas.",
-    impact: "+268% Conversão de Tráfego",
-    stars: 5,
-  },
-  {
-    name: "Carlos Eduardo Silveira",
-    role: "Founder & CTO",
-    company: "Nexus Cloud B2B",
-    quote:
-      "A blindagem dos nossos servidores Linux e a criação da esteira de dados autônoma nos deram a soberania tecnológica que nenhum serviço SaaS genérico conseguiu entregar.",
-    impact: "99.99% Uptime Soberano",
-    stars: 5,
-  },
-];
 
 export default function HomePage() {
   const articles = rawArticles as ArticleData[];
@@ -182,75 +134,6 @@ export default function HomePage() {
           index="03 // END"
         />
 
-        {/* =========================================================================
-            5. SEÇÃO DE PROVA SOCIAL E CASOS DE SUCESSO COMPROVADOS
-            ========================================================================= */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full relative overflow-hidden">
-          {/* Fundo Cinemático com Shader LineWaves em Vermelho Obscurecido */}
-          <ShaderBackground mode="linewaves" colorHex="#8a0012" opacity={0.22} fixed={false} />
-
-          <div className="text-center max-w-3xl mx-auto mb-16 space-y-3 relative z-10">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-pill-red text-xs font-mono text-[#a80018] uppercase tracking-widest font-bold">
-              <Star className="w-3.5 h-3.5 fill-[#a80018]" />
-              <span>RESULTADOS COMPROVADOS EM CAMPO</span>
-            </div>
-            <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
-              Impacto Mensurável e Soberania Real
-            </h2>
-            <p className="text-sm sm:text-base text-neutral-400 font-light leading-relaxed">
-              Soluções aplicadas em operações de alta complexidade que exigem zero falhas, 
-              sigilo total e automações de ponta a ponta.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {testimonials.map((t, idx) => (
-              <GlassCard
-                key={idx}
-                variant="interactive"
-                glow
-                className="flex flex-col justify-between p-7 rounded-3xl border border-white/10 hover:border-red-500/40 transition-all duration-300"
-              >
-                <div className="space-y-4">
-                  {/* Estrelas & Badge de Impacto */}
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-1 text-amber-400">
-                      {[...Array(t.stars)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-amber-400" />
-                      ))}
-                    </div>
-                    <Badge variant="red" className="text-[10px] uppercase">
-                      {t.impact}
-                    </Badge>
-                  </div>
-
-                  {/* Citação */}
-                  <p className="text-sm text-neutral-300 font-light leading-relaxed italic">
-                    &ldquo;{t.quote}&rdquo;
-                  </p>
-                </div>
-
-                {/* Autor */}
-                <div className="pt-6 mt-6 border-t border-white/5 flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-red-600 to-black border border-white/20 flex items-center justify-center font-bold font-mono text-xs text-white shrink-0">
-                    {t.name.split(" ").map((n) => n[0]).slice(0, 2).join("")}
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-bold text-white">{t.name}</h4>
-                    <p className="text-xs text-neutral-400 font-mono">
-                      {t.role} • <span className="text-neutral-300">{t.company}</span>
-                    </p>
-                  </div>
-                </div>
-              </GlassCard>
-            ))}
-          </div>
-        </section>
-
-        {/* =========================================================================
-            7. STATUS DO NÚCLEO E MÉTRICAS
-            ========================================================================= */}
-        <MetricsBanner />
 
         {/* =========================================================================
             8. VITRINE DOS 4 ECOSSISTEMAS UNIFICADOS DE MATEUS CELESTINO PRO X
