@@ -264,9 +264,9 @@
     "semantic_hash": ""
   },
   "src/data/siteData.json": {
-    "mtime": 1792020878.537317,
-    "seen": 1792021184.231404,
-    "ast_hash": "e1db8cfcd52ea81053f1ba2360431bbe",
+    "mtime": 1792196691.1251087,
+    "seen": 1792196868.048725,
+    "ast_hash": "8a7a342f2b7ae837eaab3900bb4a29f5",
     "semantic_hash": ""
   },
   "tsconfig.json": {
@@ -13812,9 +13812,9 @@
     "semantic_hash": ""
   },
   "tests/portal_restoration.test.ts": {
-    "mtime": 1791994635.1400566,
-    "seen": 1791994651.0127811,
-    "ast_hash": "ce6baaedf71fbacca0f7c31860d507a4",
+    "mtime": 1792196715.5004282,
+    "seen": 1792196868.050306,
+    "ast_hash": "578fa81768841c71917207d6b5f28f6c",
     "semantic_hash": ""
   },
   "src/app/biblioteca/route.ts": {
@@ -13830,9 +13830,9 @@
     "semantic_hash": ""
   },
   "src/app/admin/page.tsx": {
-    "mtime": 1792196504.0748637,
-    "seen": 1792196518.3557918,
-    "ast_hash": "9980548382974b568444328da23d973c",
+    "mtime": 1792196581.719148,
+    "seen": 1792196868.045759,
+    "ast_hash": "a4d05dfc2d3e01f6b849d229b43ec3f6",
     "semantic_hash": ""
   },
   "src/lib/auth/unified-auth.ts": {
@@ -13842,9 +13842,9 @@
     "semantic_hash": ""
   },
   "src/components/portal/PortalNavbar.tsx": {
-    "mtime": 1792196395.4536827,
-    "seen": 1792196488.043613,
-    "ast_hash": "2e521819c0de583add6bd8604ad8a3f9",
+    "mtime": 1792196948.640448,
+    "seen": 1792196974.682148,
+    "ast_hash": "60108ef0fd94707d2a7a38b336e7ae78",
     "semantic_hash": ""
   },
   "src/components/shaders/LineWavesShader.tsx": {
@@ -13878,9 +13878,9 @@
     "semantic_hash": ""
   },
   "tests/shop_recursos_notion.test.mjs": {
-    "mtime": 1792021154.7737296,
-    "seen": 1792021184.232049,
-    "ast_hash": "01c4ee004e892d5e1b858d985579c930",
+    "mtime": 1792196736.9770713,
+    "seen": 1792196868.050354,
+    "ast_hash": "9ce9309f34d5029986cfcbaa806858f9",
     "semantic_hash": ""
   },
   "public/assets/notion/recursos/1.gif": {
@@ -15486,9 +15486,9 @@
     "semantic_hash": ""
   },
   "src/app/api/admin/shop-resources/route.ts": {
-    "mtime": 1792121754.1847217,
-    "seen": 1792122336.874013,
-    "ast_hash": "077da00d236ef56e0ff462e720683e78",
+    "mtime": 1792196649.2397635,
+    "seen": 1792196868.0459561,
+    "ast_hash": "182b8c4567d9fb257b92618da2d60663",
     "semantic_hash": ""
   },
   "src/app/api/articles/route.ts": {

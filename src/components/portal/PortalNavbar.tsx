@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import {
   Flame,
   BookOpen,
-  ShoppingBag,
+  Layers,
   User,
   Mail,
   Search,
@@ -35,7 +35,7 @@ export function PortalNavbar({
       const scrollY = window.scrollY;
       setIsScrolled(scrollY > 80);
 
-      const sections = ['contato', 'sobre', 'shop', 'publicacoes'];
+      const sections = ['contato', 'sobre', 'recursos', 'publicacoes'];
       let detected = 'home';
 
       for (const sectionId of sections) {
@@ -59,7 +59,7 @@ export function PortalNavbar({
   const navItems = [
     { id: 'home', label: 'Início', icon: Flame },
     { id: 'publicacoes', label: 'Artigos (176)', icon: BookOpen },
-    { id: 'shop', label: 'Shop', icon: ShoppingBag },
+    { id: 'recursos', label: 'Recursos', icon: Layers },
     { id: 'sobre', label: 'Sobre', icon: User },
     { id: 'contato', label: 'Contato', icon: Mail },
   ];
@@ -93,29 +93,6 @@ export function PortalNavbar({
       className="fixed top-16 left-0 right-0 z-40 px-3 sm:px-6 py-2.5 pointer-events-none transition-all duration-300"
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between pointer-events-auto">
-        
-        {/* Brand / Logo Cápsula em Vidro Líquido */}
-        <button
-          onClick={() => handleTabClick('home')}
-          className="group flex items-center gap-2.5 glass-crystal px-3.5 py-1.5 rounded-2xl shadow-[0_15px_35px_rgba(0,0,0,0.85)] hover:border-[#ff073a]/50 transition-all duration-300 cursor-pointer"
-          title="Ir para o topo do portal"
-        >
-          <div className="relative flex items-center justify-center w-7 h-7 rounded-xl bg-gradient-to-br from-[#9e0015] to-[#400007] shadow-[0_0_15px_rgba(158,0,21,0.6)] border border-white/20 shrink-0 overflow-hidden">
-            <img
-              src="/assets/site_icon.webp"
-              alt="Mateus Celestino Pro X Logo"
-              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-            />
-            <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-[#9e0015] animate-ping" />
-            <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-white shadow-[0_0_8px_#9e0015]" />
-          </div>
-          <div className="text-left hidden sm:block">
-            <span className="block text-[11px] font-mono font-bold tracking-widest text-white group-hover:text-red-400 transition-colors leading-tight">
-              MATEUS CELESTINO <span className="text-[#ff073a]">PRO X</span>
-            </span>
-          </div>
-        </button>
-
         {/* Links Centrais do Mapa de Navegação (Desktop) */}
         <div className="hidden lg:flex items-center gap-1.5 glass-crystal px-3 py-1.5 rounded-full shadow-[0_20px_45px_rgba(0,0,0,0.9)] border border-white/10">
           {navItems.map((item) => {
