@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 import {
   Shield,
   Users,
-  FolderGit2,
   Menu,
   X,
   Crown,
@@ -38,7 +37,6 @@ export const navLinks: NavLinkItem[] = [
   { name: "Showcase", href: "/showcase", icon: Sparkles },
   { name: "Shop", href: "/shop", icon: ShoppingBag },
   { name: "Comunidade", href: "/comunidade", icon: Users },
-  { name: "Free Resources", href: "/biblioteca", icon: FolderGit2 },
 ];
 
 export function Navbar() {

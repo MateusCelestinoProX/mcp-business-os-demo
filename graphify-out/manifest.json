@@ -1452,15 +1452,15 @@
     "semantic_hash": ""
   },
   "src/components/layout/Footer.tsx": {
-    "mtime": 1792196328.21596,
-    "seen": 1792196351.895401,
-    "ast_hash": "aa83039023b0c43b2370bcba1feee05f",
+    "mtime": 1792197231.0425005,
+    "seen": 1792197349.6244428,
+    "ast_hash": "252ec3727b807cbfaa498e35e5681e82",
     "semantic_hash": ""
   },
   "src/components/layout/Navbar.tsx": {
-    "mtime": 1792196027.1514924,
-    "seen": 1792196194.127647,
-    "ast_hash": "00aadaac6005bdf874b252c1cfaa2de1",
+    "mtime": 1792197216.1009932,
+    "seen": 1792197349.624445,
+    "ast_hash": "9724af913589088ccb0cb773f3745ee6",
     "semantic_hash": ""
   },
   "src/components/shaders/ColorBends.tsx": {
@@ -13734,9 +13734,9 @@
     "semantic_hash": ""
   },
   "src/components/portal/OriginalHeader.tsx": {
-    "mtime": 1792188542.4972215,
-    "seen": 1792188606.623084,
-    "ast_hash": "5ac6919673f17bdbc23fdc298f9e1e2e",
+    "mtime": 1792197235.677524,
+    "seen": 1792197349.6249652,
+    "ast_hash": "a1b0730f12b353d816041801f51e194b",
     "semantic_hash": ""
   },
   "src/app/api/contact/route.ts": {
@@ -13812,9 +13812,9 @@
     "semantic_hash": ""
   },
   "tests/portal_restoration.test.ts": {
-    "mtime": 1792197042.2503028,
-    "seen": 1792197084.3133178,
-    "ast_hash": "ce6baaedf71fbacca0f7c31860d507a4",
+    "mtime": 1792197297.4888606,
+    "seen": 1792197349.626636,
+    "ast_hash": "578fa81768841c71917207d6b5f28f6c",
     "semantic_hash": ""
   },
   "src/app/biblioteca/route.ts": {
@@ -13830,9 +13830,9 @@
     "semantic_hash": ""
   },
   "src/app/admin/page.tsx": {
-    "mtime": 1792197042.2477903,
-    "seen": 1792197084.3098,
-    "ast_hash": "3eeb46a6e9c2b9c97d4f7a80a502436f",
+    "mtime": 1792197264.5907056,
+    "seen": 1792197349.622241,
+    "ast_hash": "a4d05dfc2d3e01f6b849d229b43ec3f6",
     "semantic_hash": ""
   },
   "src/lib/auth/unified-auth.ts": {
@@ -13842,9 +13842,9 @@
     "semantic_hash": ""
   },
   "src/components/portal/PortalNavbar.tsx": {
-    "mtime": 1792196948.640448,
-    "seen": 1792196974.682148,
-    "ast_hash": "60108ef0fd94707d2a7a38b336e7ae78",
+    "mtime": 1792197225.4692926,
+    "seen": 1792197349.624993,
+    "ast_hash": "1b6235eb366c63a91df131bc5ffc7b0f",
     "semantic_hash": ""
   },
   "src/components/shaders/LineWavesShader.tsx": {
@@ -13878,9 +13878,9 @@
     "semantic_hash": ""
   },
   "tests/shop_recursos_notion.test.mjs": {
-    "mtime": 1792197042.251154,
-    "seen": 1792197084.313358,
-    "ast_hash": "01c4ee004e892d5e1b858d985579c930",
+    "mtime": 1792197307.595194,
+    "seen": 1792197349.626682,
+    "ast_hash": "3e9e9bd64ee73b8171a56d9e8fc8a9f9",
     "semantic_hash": ""
   },
   "public/assets/notion/recursos/1.gif": {
@@ -16563,12 +16563,6 @@
     "mtime": 1792196491.8547087,
     "seen": 1792196518.360492,
     "ast_hash": "eeb15f01bddfa38a0b9b4ac564f70ae2",
-    "semantic_hash": ""
-  },
-  "src/components/portal/RecursosSection.tsx": {
-    "mtime": 1792197009.36595,
-    "seen": 1792197084.3119402,
-    "ast_hash": "0ab52ec555e33398041f8d321a5b23bb",
     "semantic_hash": ""
   }
 }

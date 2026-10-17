@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import {
   Flame,
   BookOpen,
-  Layers,
   User,
   Mail,
   Search,
@@ -35,7 +34,7 @@ export function PortalNavbar({
       const scrollY = window.scrollY;
       setIsScrolled(scrollY > 80);
 
-      const sections = ['contato', 'sobre', 'recursos', 'publicacoes'];
+      const sections = ['contato', 'sobre', 'publicacoes'];
       let detected = 'home';
 
       for (const sectionId of sections) {
@@ -59,7 +58,6 @@ export function PortalNavbar({
   const navItems = [
     { id: 'home', label: 'Início', icon: Flame },
     { id: 'publicacoes', label: 'Artigos (176)', icon: BookOpen },
-    { id: 'recursos', label: 'Recursos', icon: Layers },
     { id: 'sobre', label: 'Sobre', icon: User },
     { id: 'contato', label: 'Contato', icon: Mail },
   ];

@@ -460,40 +460,6 @@ export default function AdminPanelPage() {
     showToast("Serviço duplicado com sucesso.");
   };
 
-  const handleAddRecurso = () => {
-    const newId = `rec-${Date.now()}`;
-    const newRec: RecursoConfig = {
-      id: newId,
-      title: "NOVO RECURSO DE ALTO VALOR",
-      subtitle: "ECOSSISTEMA & TECNOLOGIA",
-      badge: "EXCLUSIVO",
-      cover: "/assets/notion/shop/hero_art.png",
-      manifesto: "ACESSO LIVRE",
-      description: "Descreva os benefícios e recursos inclusos neste pacote.",
-      pageLink: "/biblioteca",
-      ctaText: "SAIBA MAIS",
-    };
-    setRecursosItems((prev) => [newRec, ...prev]);
-    showToast("Novo recurso adicionado à lista. Preencha e salve!");
-  };
-
-  const handleRemoveRecurso = (id: string) => {
-    if (confirm("Deseja remover este recurso da lista?")) {
-      setRecursosItems((prev) => prev.filter((r) => r.id !== id));
-      showToast("Recurso removido.");
-    }
-  };
-
-  const handleDuplicateRecurso = (rec: RecursoConfig) => {
-    const copy: RecursoConfig = {
-      ...rec,
-      id: `rec-${Date.now()}`,
-      title: `${rec.title} (Cópia)`,
-    };
-    setRecursosItems((prev) => [copy, ...prev]);
-    showToast("Recurso duplicado com sucesso.");
-  };
-
   const handleRestoreDefaultShopResources = () => {
     if (confirm("Deseja restaurar todos os Produtos e Serviços originais do Notion?")) {
       fetchShopResources();

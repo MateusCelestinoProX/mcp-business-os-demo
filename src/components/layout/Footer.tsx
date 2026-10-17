@@ -80,10 +80,10 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/biblioteca"
+                  href="/shop"
                   className="hover:text-red-400 transition-colors flex items-center justify-between"
                 >
-                  <span>Free Resources</span>
+                  <span>Loja &amp; Ativos</span>
                   <span className="text-[10px] text-amber-500/80">VAULT</span>
                 </Link>
               </li>

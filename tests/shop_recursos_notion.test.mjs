@@ -50,35 +50,13 @@ describe('Validação da Restauração Autêntica do Notion: Shop e Recursos', (
     }
   });
 
-  test('Recursos: 2 Packs Oficiais do Notion presentes com manifesto e licença GPL', () => {
-    const recursos = siteData.recursos || [];
-    assert.strictEqual(recursos.length, 2, 'Devem existir os 2 packs de recursos do Notion');
-
-    const autoPack = recursos.find(r => r.title === 'AUTOMATION PACK');
-    assert.ok(autoPack, 'AUTOMATION PACK deve existir');
-    assert.ok(autoPack.manifesto.includes('OPEN SOURCE'), 'AUTOMATION PACK deve conter manifesto open source');
-    assert.ok(fs.existsSync(path.join('public', autoPack.cover)), 'Capa do AUTOMATION PACK deve existir');
-
-    const wpPack = recursos.find(r => r.title === 'THE ULTIMATE WORDPRESS PACK');
-    assert.ok(wpPack, 'THE ULTIMATE WORDPRESS PACK deve existir');
-    assert.ok(/licen[cç]a gpl/i.test(wpPack.manifesto), 'THE ULTIMATE WP PACK deve destacar a licença GPL');
-    assert.ok(wpPack.cards?.length === 4, 'THE ULTIMATE WP PACK deve conter os 4 cards de valor');
-    assert.ok(fs.existsSync(path.join('public', wpPack.cover)), 'Capa do THE ULTIMATE WP PACK deve existir');
-  });
-
-  test('Renderização HTTP no portal (localhost:3000)', async () => {
+  test('Garantir que a aba e seção de Recursos foi removida do portal e do header', async () => {
     const res = await fetch('http://localhost:3000/');
     assert.strictEqual(res.status, 200);
     const html = await res.text();
 
-    // Validar presença de termos autênticos na página pré-renderizada
-    assert.ok(html.includes('SEJA BEM VINDO A LOJA VIRTUAL DE MATEUS CELESTINO PRO'));
-    assert.ok(html.includes('ULTIMATE TYPEBOT PACK'));
-    assert.ok(html.includes('ULTIMATE N8N PACK'));
-    assert.ok(html.includes('ULTIMATE MAKE PACK'));
-    assert.ok(html.includes('I.A PRO (CURSO)'));
-    assert.ok(html.includes('AUTOMATION PACK'));
-    assert.ok(html.includes('THE ULTIMATE WORDPRESS PACK'));
-    assert.ok(html.includes('SERVIÇOS'));
+    // Validar ausência do link Free Resources na navbar superior e Recursos na subnav
+    assert.ok(!html.includes('id="recursos"'), 'Seção #recursos não deve existir no HTML');
+    assert.ok(!html.includes('Free Resources totalmente de graça'), 'Texto antigo de recursos não deve constar');
   });
 });

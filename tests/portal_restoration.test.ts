@@ -12,7 +12,6 @@ const requiredComponents = [
   'src/components/portal/LiquidGlassBackground.tsx',
   'src/components/portal/OriginalHeader.tsx',
   'src/components/portal/MainNotionLayout.tsx',
-  'src/components/portal/RecursosSection.tsx',
   'src/components/portal/ShopSection.tsx',
   'src/components/portal/SobreSection.tsx',
   'src/components/portal/ContatoSection.tsx',
@@ -40,10 +39,9 @@ assert.ok(fs.existsSync(siteDataPath), 'siteData.json ausente!');
 const siteData = JSON.parse(fs.readFileSync(siteDataPath, 'utf8'));
 assert.ok(siteData.profile, 'Perfil ausente em siteData');
 assert.ok(siteData.categories, 'Categorias ausentes em siteData');
-assert.ok(siteData.recursos, 'Recursos ausentes em siteData');
 assert.ok(siteData.shop, 'Shop ausente em siteData');
 assert.ok(siteData.legal, 'Legal ausente em siteData');
-console.log(`✅ siteData.json validado com profile, recursos, shop e dados legais.`);
+console.log(`✅ siteData.json validado com profile, shop e dados legais.`);
 
 // 4. Testar POST /api/contact
 async function testContactApi() {

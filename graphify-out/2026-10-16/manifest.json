@@ -264,9 +264,9 @@
     "semantic_hash": ""
   },
   "src/data/siteData.json": {
-    "mtime": 1792196691.1251087,
-    "seen": 1792196868.048725,
-    "ast_hash": "8a7a342f2b7ae837eaab3900bb4a29f5",
+    "mtime": 1792197042.2491477,
+    "seen": 1792197084.312536,
+    "ast_hash": "e1db8cfcd52ea81053f1ba2360431bbe",
     "semantic_hash": ""
   },
   "tsconfig.json": {
@@ -13812,9 +13812,9 @@
     "semantic_hash": ""
   },
   "tests/portal_restoration.test.ts": {
-    "mtime": 1792196715.5004282,
-    "seen": 1792196868.050306,
-    "ast_hash": "578fa81768841c71917207d6b5f28f6c",
+    "mtime": 1792197042.2503028,
+    "seen": 1792197084.3133178,
+    "ast_hash": "ce6baaedf71fbacca0f7c31860d507a4",
     "semantic_hash": ""
   },
   "src/app/biblioteca/route.ts": {
@@ -13830,9 +13830,9 @@
     "semantic_hash": ""
   },
   "src/app/admin/page.tsx": {
-    "mtime": 1792196581.719148,
-    "seen": 1792196868.045759,
-    "ast_hash": "a4d05dfc2d3e01f6b849d229b43ec3f6",
+    "mtime": 1792197042.2477903,
+    "seen": 1792197084.3098,
+    "ast_hash": "3eeb46a6e9c2b9c97d4f7a80a502436f",
     "semantic_hash": ""
   },
   "src/lib/auth/unified-auth.ts": {
@@ -13878,9 +13878,9 @@
     "semantic_hash": ""
   },
   "tests/shop_recursos_notion.test.mjs": {
-    "mtime": 1792196736.9770713,
-    "seen": 1792196868.050354,
-    "ast_hash": "9ce9309f34d5029986cfcbaa806858f9",
+    "mtime": 1792197042.251154,
+    "seen": 1792197084.313358,
+    "ast_hash": "01c4ee004e892d5e1b858d985579c930",
     "semantic_hash": ""
   },
   "public/assets/notion/recursos/1.gif": {
@@ -15486,9 +15486,9 @@
     "semantic_hash": ""
   },
   "src/app/api/admin/shop-resources/route.ts": {
-    "mtime": 1792196649.2397635,
-    "seen": 1792196868.0459561,
-    "ast_hash": "182b8c4567d9fb257b92618da2d60663",
+    "mtime": 1792197042.248467,
+    "seen": 1792197084.310047,
+    "ast_hash": "077da00d236ef56e0ff462e720683e78",
     "semantic_hash": ""
   },
   "src/app/api/articles/route.ts": {
@@ -16563,6 +16563,12 @@
     "mtime": 1792196491.8547087,
     "seen": 1792196518.360492,
     "ast_hash": "eeb15f01bddfa38a0b9b4ac564f70ae2",
+    "semantic_hash": ""
+  },
+  "src/components/portal/RecursosSection.tsx": {
+    "mtime": 1792197009.36595,
+    "seen": 1792197084.3119402,
+    "ast_hash": "0ab52ec555e33398041f8d321a5b23bb",
     "semantic_hash": ""
   }
 }

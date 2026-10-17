@@ -122,7 +122,7 @@ export function OriginalHeader({ profile, onNavigate }: OriginalHeaderProps) {
               Esse é Mateus Celestino PRO X, o portal de Inteligência Artificial aplicada a Business e Marketing digital de forma completa.
             </p>
             <p>
-              Free Resources totalmente de graça, A.I Resources e conteúdo de valor sobre o tema você encontra exatamente bem aqui.
+              Inteligência artificial aplicada, esteiras de automação e conteúdo de alto valor técnico você encontra exatamente aqui.
             </p>
             <p className="flex items-center justify-center flex-wrap gap-1 text-zinc-200 pt-1">
               <span>Use o SiteMap (</span>
