@@ -15732,9 +15732,9 @@
     "semantic_hash": ""
   },
   "docs/ESTABILIDADE_VISUAL.md": {
-    "mtime": 1792288258.8089201,
-    "seen": 1792288263.7230961,
-    "ast_hash": "d4c5322a84f2eb91e39eb50d7f865d5b",
+    "mtime": 1792288918.5116951,
+    "seen": 1792288937.994238,
+    "ast_hash": "dfdcecb85282d89eb0cbcdfdc2076551",
     "semantic_hash": ""
   },
   "scripts/perf/scroll-probe.mjs": {
