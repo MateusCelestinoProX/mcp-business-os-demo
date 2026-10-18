@@ -1,12 +1,6 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import Link from 'next/link';
-import {
-  Sparkles,
-  ArrowRight,
-} from 'lucide-react';
-
 import LiquidGlassBackground from '@/components/portal/LiquidGlassBackground';
 import OriginalHeader from '@/components/portal/OriginalHeader';
 import MainNotionLayout from '@/components/portal/MainNotionLayout';
@@ -15,7 +9,6 @@ import ContatoSection from '@/components/portal/ContatoSection';
 import ArticleModal, { ArticleData } from '@/components/portal/ArticleModal';
 import LegalModal from '@/components/portal/LegalModal';
 import ShaderTransitionZone from '@/components/shaders/ShaderTransitionZone';
-import { Button } from '@/components/ui/Button';
 
 import rawArticles from '@/data/articles-summary.json';
 import siteData from '@/data/siteData.json';
@@ -122,51 +115,7 @@ export default function HomePage() {
           />
         </div>
 
-        {/* =========================================================================
-            9. BANNER FINAL DE FECHAMENTO SOBERANO
-            ========================================================================= */}
-        <section className="py-16 px-4 sm:px-6 lg:px-10 xl:px-16 w-full">
-          <div className="glass-crystal p-8 sm:p-14 rounded-3xl text-center space-y-6 border border-red-500/40 shadow-[0_0_60px_rgba(255,7,58,0.25),0_25px_60px_rgba(0,0,0,0.85)] relative overflow-hidden">
-            {/* Fundo Cinemático Gradiente Carmesim em Vidro */}
-            <div 
-              className="absolute inset-0 pointer-events-none opacity-40"
-              style={{
-                background: 'radial-gradient(circle at 50% 50%, rgba(255, 7, 58, 0.28) 0%, rgba(138, 0, 18, 0.15) 50%, transparent 80%)'
-              }}
-            />
 
-            <div className="relative z-10 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-950/40 border border-red-800/40 text-xs font-mono text-red-400 font-bold uppercase tracking-wider">
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>ENGENHARIA DE SOFTWARE SOBERANA</span>
-              </div>
-
-              <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight max-w-3xl mx-auto">
-                Pronto para Unificar e Escalar Seu Ecossistema Tecnológico?
-              </h2>
-
-            <p className="text-sm sm:text-base text-neutral-300 font-light max-w-2xl mx-auto leading-relaxed">
-              Junte-se à comunidade restrita, acesse o acervo com centenas de recursos confidenciais
-              e acelere sua operação com arquitetura de inteligência artificial de alta performance.
-            </p>
-
-            <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
-              <Link href="/comunidade">
-                <Button variant="fired" size="lg" className="gap-2 shadow-lg">
-                  <Sparkles className="w-4 h-4" />
-                  <span>Entrar na Área de Membros</span>
-                </Button>
-              </Link>
-              <Link href="/shop">
-                <Button variant="glass" size="lg" className="gap-2">
-                  <span>Conhecer a Loja de Ativos</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Button>
-              </Link>
-            </div>
-            </div>
-          </div>
-        </section>
       </div>
 
       {/* =========================================================================

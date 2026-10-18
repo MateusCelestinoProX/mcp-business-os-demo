@@ -52,7 +52,7 @@ export function Footer() {
         <div className="w-full max-w-xl h-[1px] bg-gradient-to-r from-transparent via-red-500/30 to-transparent" />
 
         {/* Identificação Oficial Solicitada: Mateus Celestino Pro X, Ano e Todos os Direitos Registrados */}
-        <div className="text-center space-y-2">
+        <div className="text-center">
           <div className="flex items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm font-mono text-neutral-300 flex-wrap">
             <span className="font-black tracking-wider uppercase text-white drop-shadow-[0_0_12px_rgba(255,7,58,0.4)]">
               MATEUS CELESTINO PRO X
@@ -65,10 +65,6 @@ export function Footer() {
               <span>Todos os direitos registrados.</span>
             </span>
           </div>
-
-          <p className="text-[11px] font-mono text-neutral-400/80 tracking-widest uppercase">
-            Plataforma Soberana de Hiperautomação, IA Generativa & Engenharia de Sistemas
-          </p>
         </div>
       </div>
     </footer>
