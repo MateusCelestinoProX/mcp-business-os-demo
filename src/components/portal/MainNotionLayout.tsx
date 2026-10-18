@@ -71,14 +71,14 @@ export function MainNotionLayout({
 
   return (
     <section id="publicacoes" className="py-12 w-full relative overflow-hidden">
-      {/* 0. Shader WebGL Dedicado da Sessão Publicações: RippleGrid */}
+      {/* 0. Shader WebGL Dedicado da Sessão Publicações: RippleGrid Encorpado */}
       <RippleGridShader
         className="z-0 mix-blend-screen pointer-events-none"
         gridColor="#ff073a"
-        rippleIntensity={0.08}
-        gridSize={16.0}
-        glowIntensity={0.35}
-        opacity={0.35}
+        rippleIntensity={0.085}
+        gridSize={14.0}
+        glowIntensity={0.45}
+        opacity={0.60}
       />
 
       {/* Cyber Dot-Grid Sutil de Alta Fidelidade */}

@@ -19,13 +19,13 @@ export function LiquidGlassBackground() {
         }}
       />
 
-      {/* 2. Shader WebGL OGL Real: Ondulação Viscosa de Cromo Líquido Carmesim (Escurricredio) */}
-      <div className="absolute inset-0 opacity-50 mix-blend-screen pointer-events-none">
+      {/* 2. Shader WebGL OGL Real: Ondulação Viscosa de Cromo Líquido Carmesim Encorpado */}
+      <div className="absolute inset-0 opacity-75 mix-blend-screen pointer-events-none">
         <LiquidChromeShader
-          baseColor="#e60026"
-          opacity={0.4}
-          speed={0.16}
-          amplitude={0.3}
+          baseColor="#ff073a"
+          opacity={0.6}
+          speed={0.18}
+          amplitude={0.35}
           frequencyX={2.0}
           frequencyY={2.0}
         />
@@ -34,26 +34,26 @@ export function LiquidGlassBackground() {
       {/* 3. Orbes de Plasma Fluido em Movimento Orgânico com Aceleração por GPU */}
       {/* Orbe 01 - Núcleo Superior Esquerdo */}
       <div 
-        className="absolute -top-[10%] left-[5%] w-[650px] h-[650px] rounded-full bg-gradient-to-br from-[#ff073a]/30 via-[#b3001e]/20 to-transparent blur-[55px] animate-liquid-flow-1 transform-gpu will-change-transform pointer-events-none" 
+        className="absolute -top-[10%] left-[5%] w-[650px] h-[650px] rounded-full bg-gradient-to-br from-[#ff073a]/45 via-[#b3001e]/30 to-transparent blur-[55px] animate-liquid-flow-1 transform-gpu will-change-transform pointer-events-none" 
       />
 
       {/* Orbe 02 - Reservatório Central Direita */}
       <div 
-        className="absolute top-[35%] -right-[5%] w-[700px] h-[700px] rounded-full bg-gradient-to-bl from-[#ff1744]/25 via-[#8a0012]/30 to-transparent blur-[65px] animate-liquid-flow-2 transform-gpu will-change-transform pointer-events-none" 
+        className="absolute top-[35%] -right-[5%] w-[700px] h-[700px] rounded-full bg-gradient-to-bl from-[#ff1744]/40 via-[#8a0012]/40 to-transparent blur-[65px] animate-liquid-flow-2 transform-gpu will-change-transform pointer-events-none" 
       />
 
       {/* Orbe 03 - Piscina Inferior Profunda Massiva */}
       <div 
-        className="absolute -bottom-[15%] left-[10%] w-[850px] h-[650px] rounded-full bg-gradient-to-t from-[#ff0033]/35 via-[#990018]/30 to-transparent blur-[65px] animate-liquid-breathe transform-gpu will-change-transform pointer-events-none" 
+        className="absolute -bottom-[15%] left-[10%] w-[850px] h-[650px] rounded-full bg-gradient-to-t from-[#ff0033]/50 via-[#990018]/40 to-transparent blur-[65px] animate-liquid-breathe transform-gpu will-change-transform pointer-events-none" 
       />
 
       {/* 4. Sutil Grid Holográfico Cyberpunk Vermelho */}
       <div 
-        className="absolute inset-0 opacity-[0.05] pointer-events-none"
+        className="absolute inset-0 opacity-[0.08] pointer-events-none"
         style={{
           backgroundImage: `
-            linear-gradient(to right, rgba(255, 40, 70, 0.25) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(255, 40, 70, 0.25) 1px, transparent 1px)
+            linear-gradient(to right, rgba(255, 40, 70, 0.35) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255, 40, 70, 0.35) 1px, transparent 1px)
           `,
           backgroundSize: '48px 48px'
         }}

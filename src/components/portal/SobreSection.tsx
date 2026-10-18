@@ -35,15 +35,16 @@ export function SobreSection({ profile }: SobreSectionProps) {
 
   return (
     <section id="sobre" className="py-24 relative overflow-hidden w-full">
-      {/* 0. Shader WebGL Dedicado da Sessão Sobre: GridScan Holográfico */}
+      {/* 0. Shader WebGL Dedicado da Sessão Sobre: GridScan Holográfico Encorpado */}
       <GridScanShader
         className="z-0 mix-blend-screen pointer-events-none"
-        linesColor="#ff073a"
-        scanColor="#ff1744"
-        lineThickness={1.2}
-        gridScale={0.12}
-        bloomIntensity={0.65}
-        opacity={0.32}
+        linesColor="#38000a"
+        scanColor="#ff073a"
+        lineThickness={1.3}
+        gridScale={0.11}
+        bloomIntensity={0.85}
+        scanGlow={0.65}
+        opacity={0.65}
       />
 
       {/* Zonas de Transição Internas com Blur e Escurecimento Progressivo */}

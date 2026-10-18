@@ -2,9 +2,9 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ArrowLeft, Flame, Sparkles } from 'lucide-react';
-import LiquidGlassBackground from '@/components/portal/LiquidGlassBackground';
-import PhotografyContactHub from '@/components/portal/PhotografyContactHub';
+import { ArrowLeft } from 'lucide-react';
+import ContatoSection from '@/components/portal/ContatoSection';
+import siteData from '@/data/siteData.json';
 
 export default function ContatoPage() {
   return (
@@ -23,15 +23,15 @@ export default function ContatoPage() {
           </Link>
         </div>
 
-        <div className="pointer-events-auto hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/60 border border-white/10 text-[11px] font-mono text-zinc-400 backdrop-blur-md">
+        <div className="pointer-events-auto hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/80 border border-white/10 text-[11px] font-mono text-zinc-400">
           <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
           <span>Canal de Contato Oficial Ativo</span>
         </div>
       </header>
 
-      {/* Main Content: Photografy Contact Hub Injetado em Tamanho Normal Soberano */}
-      <div className="flex-1 w-full h-full relative z-10 flex flex-col items-center justify-center py-8 sm:py-12 px-4">
-        <PhotografyContactHub isEmbedded={false} />
+      {/* Main Content: Sessão de Contato Soberana de Tamanho Completo */}
+      <div className="flex-1 w-full h-full relative z-10 pt-16">
+        <ContatoSection profile={siteData?.profile || {}} />
       </div>
     </div>
   );

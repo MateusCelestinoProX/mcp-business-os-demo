@@ -1476,8 +1476,8 @@
     "semantic_hash": ""
   },
   "src/data/library_catalog_index.json": {
-    "mtime": 1792279638.5791945,
-    "seen": 1792279820.4389582,
+    "mtime": 1792290101.7866278,
+    "seen": 1792290153.443748,
     "ast_hash": "c53f941e6974b9c701da6b7f78db1ca8",
     "semantic_hash": ""
   },
@@ -13626,9 +13626,9 @@
     "semantic_hash": ""
   },
   "src/components/portal/LiquidGlassBackground.tsx": {
-    "mtime": 1792278918.4530015,
-    "seen": 1792279589.510093,
-    "ast_hash": "ebe7c6310c00a39f47eb2b6f83464946",
+    "mtime": 1792289847.43674,
+    "seen": 1792289924.057191,
+    "ast_hash": "2ee81b85a0f5140c1c3b1494a5fc2950",
     "semantic_hash": ""
   },
   "src/components/portal/OriginalHeader.tsx": {
@@ -13668,9 +13668,9 @@
     "semantic_hash": ""
   },
   "src/components/portal/ContatoSection.tsx": {
-    "mtime": 1792287982.5715587,
-    "seen": 1792288263.720308,
-    "ast_hash": "0d80a987c6e0184e20db9dd5aaa72cd1",
+    "mtime": 1792290064.3211033,
+    "seen": 1792290153.442932,
+    "ast_hash": "f5c06af411e9c2caaa68fac76b2f6824",
     "semantic_hash": ""
   },
   "src/components/portal/LegalModal.tsx": {
@@ -13680,9 +13680,9 @@
     "semantic_hash": ""
   },
   "src/components/portal/MainNotionLayout.tsx": {
-    "mtime": 1792287982.5701094,
-    "seen": 1792288263.7203798,
-    "ast_hash": "6392e8756acd87dcdb06fa47dbb20c97",
+    "mtime": 1792289762.4008439,
+    "seen": 1792289924.0571918,
+    "ast_hash": "2db079146cae9a0888768f0d805cb0d1",
     "semantic_hash": ""
   },
   "src/components/portal/ShopSection.tsx": {
@@ -13692,9 +13692,9 @@
     "semantic_hash": ""
   },
   "src/components/portal/SobreSection.tsx": {
-    "mtime": 1792287982.5762615,
-    "seen": 1792288263.720457,
-    "ast_hash": "8709197be2a5fbd82d0d9feaa668dada",
+    "mtime": 1792289740.7420425,
+    "seen": 1792289752.749799,
+    "ast_hash": "9f2deb2e5789352a95567ccf12d0e62b",
     "semantic_hash": ""
   },
   "public/comunidade/music.mp3": {
@@ -14766,8 +14766,8 @@
     "semantic_hash": ""
   },
   "src/data/libraries.json": {
-    "mtime": 1792279638.5865703,
-    "seen": 1792279820.438956,
+    "mtime": 1792290101.7981074,
+    "seen": 1792290153.443747,
     "ast_hash": "3e79a0df86ee6f7eb3acd51fbf5fad31",
     "semantic_hash": ""
   },
@@ -14790,9 +14790,9 @@
     "semantic_hash": ""
   },
   "src/components/portal/AlternatingHeroShaders.tsx": {
-    "mtime": 1792288003.018749,
-    "seen": 1792288263.7202828,
-    "ast_hash": "f6a40fa96c804ef24ab11d519fc7d9e6",
+    "mtime": 1792289705.7778945,
+    "seen": 1792289752.749503,
+    "ast_hash": "bfa0debfd6beb22db1a279c9aa401dcc",
     "semantic_hash": ""
   },
   "src/components/portal/UniversalSitemapModal.tsx": {
@@ -15654,21 +15654,21 @@
     "semantic_hash": ""
   },
   "src/components/portal/PhotografyContactHub.tsx": {
-    "mtime": 1792278709.0861526,
-    "seen": 1792279589.510149,
-    "ast_hash": "f0eae35cff898561dde5e97d8fb22d9d",
+    "mtime": 1792289998.7446702,
+    "seen": 1792290153.443122,
+    "ast_hash": "3b2711320f57fb2f46e87488c3a24796",
     "semantic_hash": ""
   },
   "src/app/contato/page.tsx": {
-    "mtime": 1792286888.6185384,
-    "seen": 1792288263.7196958,
-    "ast_hash": "8c017fbcb405615c67e11d4c4097a8e2",
+    "mtime": 1792290089.541878,
+    "seen": 1792290153.442173,
+    "ast_hash": "b076eb1c57f5f2b67fe5012e4812da1e",
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1792196437.3279154,
-    "seen": 1792196488.046258,
-    "ast_hash": "410bbc0110281fbb56003ed1952b3634",
+    "mtime": 1792289077.6047044,
+    "seen": 1792289520.303095,
+    "ast_hash": "59a480d9b5d0620c1875c02d0723755d",
     "semantic_hash": ""
   },
   "docs/BACKEND_ARCHITECTURE.md": {
@@ -15732,9 +15732,9 @@
     "semantic_hash": ""
   },
   "docs/ESTABILIDADE_VISUAL.md": {
-    "mtime": 1792288918.5116951,
-    "seen": 1792288937.994238,
-    "ast_hash": "dfdcecb85282d89eb0cbcdfdc2076551",
+    "mtime": 1792289123.3945918,
+    "seen": 1792289520.303117,
+    "ast_hash": "278699d5f40cc8fffac3c8f7457dd1d6",
     "semantic_hash": ""
   },
   "scripts/perf/scroll-probe.mjs": {

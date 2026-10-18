@@ -14,37 +14,37 @@ export function AlternatingHeroShaders() {
 
   return (
     <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-      {/* SHADER 1: GridScan (Personal OS Matrix Scanning Grid em Carmesim) */}
+      {/* SHADER 1: GridScan (Personal OS Matrix Scanning Grid em Carmesim Encorpado) */}
       {activeShader === 0 && (
         <div className="absolute inset-0 z-10 animate-fadeIn">
           <GridScanShader
             className="w-full h-full mix-blend-screen"
-            opacity={0.65}
-            linesColor="#160003"
+            opacity={0.85}
+            linesColor="#38000a"
             scanColor="#ff073a"
-            bloomIntensity={0.7}
-            scanGlow={0.5}
+            bloomIntensity={0.95}
+            scanGlow={0.7}
           />
         </div>
       )}
 
-      {/* SHADER 2: RippleGrid (Personal OS 3D Wave Lattice em Vermelho Carmesim) */}
+      {/* SHADER 2: RippleGrid (Personal OS 3D Wave Lattice em Vermelho Carmesim Encorpado) */}
       {activeShader === 1 && (
         <div className="absolute inset-0 z-10 animate-fadeIn">
           <RippleGridShader
             className="w-full h-full mix-blend-screen"
-            gridColor="#e00025"
-            rippleIntensity={0.07}
-            glowIntensity={0.3}
-            opacity={0.65}
+            gridColor="#ff073a"
+            rippleIntensity={0.085}
+            glowIntensity={0.45}
+            opacity={0.80}
           />
         </div>
       )}
 
-      {/* Especular de Vidro & Gradientes de Fusão Vanta Black */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/35 pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-transparent to-black/85 pointer-events-none" />
-      <div className="absolute inset-0 bg-radial from-transparent via-black/40 to-black/95 pointer-events-none" />
+      {/* Especular de Vidro & Gradientes de Fusão Vanta Black Equilibrados para Visibilidade Máxima */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/60 pointer-events-none" />
+      <div className="absolute inset-0 bg-radial from-transparent via-black/20 to-black/80 pointer-events-none" />
       
       {/* Linha Carmesim de Refração Inferior */}
       <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#ff073a] to-transparent opacity-80" />

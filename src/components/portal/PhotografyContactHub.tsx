@@ -2,6 +2,8 @@
 
 import React, { useEffect, useState } from 'react';
 
+import { MessageSquare, Mail, Sparkles, CheckCircle2 } from 'lucide-react';
+
 interface PhotografyContactHubProps {
   className?: string;
   isEmbedded?: boolean;
@@ -20,7 +22,7 @@ const backgroundImages = [
 export function PhotografyContactHub({
   className = '',
   isEmbedded = false,
-  whatsappUrl = 'https://wa.me/5531998622489',
+  whatsappUrl = 'https://wa.me/553197724257',
   email = 'CONTATO-SMARTFLOW@proton.me',
 }: PhotografyContactHubProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -37,14 +39,14 @@ export function PhotografyContactHub({
 
   return (
     <div
-      className={`relative w-full max-w-[420px] mx-auto overflow-hidden text-white flex flex-col items-center justify-center rounded-[2.25rem] transition-all duration-300 ${
+      className={`relative w-full max-w-[420px] sm:max-w-[440px] mx-auto overflow-hidden text-white flex flex-col items-center justify-center rounded-[2rem] sm:rounded-[2.25rem] transition-all duration-500 ${
         isEmbedded
-          ? 'min-h-[560px] sm:min-h-[600px] py-10 px-5 shadow-[0_25px_60px_rgba(0,0,0,0.95),0_0_35px_rgba(255,7,58,0.2)] border border-white/15'
-          : 'min-h-[600px] my-auto py-12 px-6 shadow-[0_30px_70px_rgba(0,0,0,0.98),0_0_45px_rgba(255,7,58,0.25)] border border-white/20'
+          ? 'min-h-[580px] sm:min-h-[620px] py-10 px-5 sm:px-7 shadow-[0_25px_60px_rgba(0,0,0,0.85),0_0_35px_rgba(255,7,58,0.2)] border border-white/15 hover:border-red-500/30'
+          : 'min-h-[600px] my-auto py-12 px-6 shadow-[0_30px_70px_rgba(0,0,0,0.95),0_0_45px_rgba(255,7,58,0.25)] border border-white/20'
       } ${className}`}
       style={{ touchAction: 'pan-y' }}
     >
-      {/* 1. Background Slider Container */}
+      {/* 1. Background Slider Container com Suavização de Transição */}
       <div className="absolute inset-0 w-full h-full z-0 pointer-events-none select-none">
         {backgroundImages.map((src, index) => (
           <div
@@ -57,14 +59,15 @@ export function PhotografyContactHub({
         ))}
       </div>
 
-      {/* 2. Overlay escura principal */}
-      <div className="absolute inset-0 w-full h-full z-[1] pointer-events-none bg-gradient-to-b from-black/85 via-black/75 to-black/95" />
+      {/* 2. Overlays escuras com Vinheta e Gradiente Suave */}
+      <div className="absolute inset-0 w-full h-full z-[1] pointer-events-none bg-gradient-to-b from-black/85 via-black/70 to-black/95" />
+      <div className="absolute inset-0 w-full h-full z-[2] pointer-events-none shadow-[inset_0_0_60px_rgba(0,0,0,0.9)]" />
 
       {/* 3. Main Content Hub */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full w-full max-w-md mx-auto px-6 py-6 sm:py-8 animate-fade-in-up">
-        {/* Foto de Perfil */}
+      <div className="relative z-10 flex flex-col items-center justify-center h-full w-full max-w-md mx-auto px-4 sm:px-6 py-6 sm:py-8 animate-fade-in-up">
+        {/* Foto de Perfil com Indicador Ativo */}
         <div className="mb-4 relative">
-          <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full p-[2px] bg-gradient-to-tr from-white/20 to-white/50 backdrop-blur-sm shadow-2xl relative overflow-hidden">
+          <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full p-[2px] bg-gradient-to-tr from-[#ff073a]/60 via-white/30 to-white/60 shadow-2xl relative overflow-hidden">
             <img
               src="/photografy-contato/kz.jpg"
               alt="Mateus Celestino"
@@ -75,26 +78,32 @@ export function PhotografyContactHub({
               }}
             />
           </div>
+          {/* Indicador de Status Online / Ativo */}
+          <span
+            className="absolute bottom-1 right-1 w-4 h-4 rounded-full bg-emerald-500 border-2 border-black shadow-[0_0_10px_#10b981]"
+            title="Online // Atendimento Oficial Ativo"
+          />
         </div>
 
-        {/* Título */}
+        {/* Título com Tipografia Refinada */}
         <h1 className="text-xs sm:text-sm font-light tracking-[0.3em] uppercase text-center mb-6 text-white/90 font-sans">
           Mateus Celestino
-          <span className="text-[10px] tracking-[0.4em] text-white/60 mt-1 block">
-            Digital Hub
+          <span className="text-[10px] tracking-[0.4em] text-[#ff073a]/90 mt-1 block font-mono font-medium">
+            DIGITAL HUB // OFICIAL
           </span>
         </h1>
 
-        {/* Apenas os Botões de WhatsApp e E-mail em Glassmorphism */}
+        {/* Botões de Ação em Vidro Líquido Suave */}
         <div className="w-full flex flex-col gap-3 font-sans">
           {/* WhatsApp */}
           <a
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="glass-button w-full py-3.5 sm:py-4 px-4 rounded-2xl flex items-center justify-center group relative overflow-hidden bg-white/[0.05] hover:bg-white/[0.15] border border-white/[0.15] hover:border-white/30 backdrop-blur-md transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+            className="w-full py-3.5 sm:py-4 px-5 rounded-2xl flex items-center justify-center gap-2.5 group relative overflow-hidden bg-white/[0.08] hover:bg-[#ff073a]/25 border border-white/15 hover:border-[#ff073a]/50 text-white transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer shadow-lg hover:shadow-[0_0_25px_rgba(255,7,58,0.35)]"
           >
-            <span className="font-light tracking-wider text-xs sm:text-sm relative z-10 text-white">
+            <MessageSquare className="w-4 h-4 text-[#ff073a] group-hover:text-white transition-colors shrink-0" />
+            <span className="font-light tracking-[0.2em] text-xs sm:text-sm relative z-10 text-white font-mono">
               WHATSAPP
             </span>
           </a>
@@ -102,9 +111,10 @@ export function PhotografyContactHub({
           {/* Email */}
           <a
             href={emailHref}
-            className="glass-button w-full py-3.5 sm:py-4 px-4 rounded-2xl flex items-center justify-center group relative overflow-hidden bg-white/[0.05] hover:bg-white/[0.15] border border-white/[0.15] hover:border-white/30 backdrop-blur-md transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+            className="w-full py-3.5 sm:py-4 px-5 rounded-2xl flex items-center justify-center gap-2.5 group relative overflow-hidden bg-white/[0.08] hover:bg-[#ff073a]/25 border border-white/15 hover:border-[#ff073a]/50 text-white transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer shadow-lg hover:shadow-[0_0_25px_rgba(255,7,58,0.35)]"
           >
-            <span className="font-light tracking-wider text-xs sm:text-sm relative z-10 text-white">
+            <Mail className="w-4 h-4 text-zinc-300 group-hover:text-white transition-colors shrink-0" />
+            <span className="font-light tracking-[0.2em] text-xs sm:text-sm relative z-10 text-white font-mono">
               E-MAIL
             </span>
           </a>
