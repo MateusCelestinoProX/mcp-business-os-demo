@@ -1476,8 +1476,8 @@
     "semantic_hash": ""
   },
   "src/data/library_catalog_index.json": {
-    "mtime": 1792346178.6421502,
-    "seen": 1792346234.138082,
+    "mtime": 1792346524.7178452,
+    "seen": 1792346628.1090539,
     "ast_hash": "c53f941e6974b9c701da6b7f78db1ca8",
     "semantic_hash": ""
   },
@@ -13692,9 +13692,9 @@
     "semantic_hash": ""
   },
   "src/components/portal/SobreSection.tsx": {
-    "mtime": 1792345873.4111326,
-    "seen": 1792346234.137859,
-    "ast_hash": "c9aebc25332aca8b4185d86c11daa511",
+    "mtime": 1792346546.6355035,
+    "seen": 1792346628.108547,
+    "ast_hash": "c98071d89dbd2f8be5caa2282b1e4d90",
     "semantic_hash": ""
   },
   "public/comunidade/music.mp3": {
@@ -14766,8 +14766,8 @@
     "semantic_hash": ""
   },
   "src/data/libraries.json": {
-    "mtime": 1792346178.6504512,
-    "seen": 1792346234.138081,
+    "mtime": 1792346524.7338014,
+    "seen": 1792346628.109053,
     "ast_hash": "3e79a0df86ee6f7eb3acd51fbf5fad31",
     "semantic_hash": ""
   },
