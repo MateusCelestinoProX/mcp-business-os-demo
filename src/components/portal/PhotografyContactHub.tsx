@@ -39,9 +39,9 @@ export function PhotografyContactHub({
 
   return (
     <div
-      className={`relative w-full max-w-[420px] sm:max-w-[440px] mx-auto overflow-hidden text-white flex flex-col items-center justify-center rounded-[2rem] sm:rounded-[2.25rem] transition-all duration-500 ${
+      className={`relative w-full overflow-hidden text-white flex flex-col items-center justify-center rounded-3xl lg:rounded-[2.5rem] transition-all duration-500 ${
         isEmbedded
-          ? 'min-h-[580px] sm:min-h-[620px] py-10 px-5 sm:px-7 shadow-[0_25px_60px_rgba(0,0,0,0.85),0_0_35px_rgba(255,7,58,0.2)] border border-white/15 hover:border-red-500/30'
+          ? 'min-h-[640px] sm:min-h-[700px] lg:min-h-[760px] py-12 sm:py-16 px-6 sm:px-10 shadow-[0_30px_90px_rgba(0,0,0,0.85),0_0_45px_rgba(255,7,58,0.25)] border border-white/15 hover:border-red-500/40'
           : 'min-h-[600px] my-auto py-12 px-6 shadow-[0_30px_70px_rgba(0,0,0,0.95),0_0_45px_rgba(255,7,58,0.25)] border border-white/20'
       } ${className}`}
       style={{ touchAction: 'pan-y' }}
@@ -61,7 +61,11 @@ export function PhotografyContactHub({
 
       {/* 2. Overlays escuras com Vinheta e Gradiente Suave */}
       <div className="absolute inset-0 w-full h-full z-[1] pointer-events-none bg-gradient-to-b from-black/85 via-black/70 to-black/95" />
-      <div className="absolute inset-0 w-full h-full z-[2] pointer-events-none shadow-[inset_0_0_60px_rgba(0,0,0,0.9)]" />
+      <div className="absolute inset-0 w-full h-full z-[2] pointer-events-none shadow-[inset_0_0_80px_rgba(0,0,0,0.9)]" />
+
+      {/* Halos de Iluminação Ambiente Carmesim Integrados no Card */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-red-600/10 rounded-full blur-3xl pointer-events-none -mr-40 -mt-40 z-[3]" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-red-950/20 rounded-full blur-3xl pointer-events-none -ml-40 -mb-40 z-[3]" />
 
       {/* 3. Main Content Hub */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full w-full max-w-md mx-auto px-4 sm:px-6 py-6 sm:py-8 animate-fade-in-up">

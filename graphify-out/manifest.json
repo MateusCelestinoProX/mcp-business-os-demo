@@ -1476,8 +1476,8 @@
     "semantic_hash": ""
   },
   "src/data/library_catalog_index.json": {
-    "mtime": 1792290101.7866278,
-    "seen": 1792290153.443748,
+    "mtime": 1792334245.60147,
+    "seen": 1792334502.3697479,
     "ast_hash": "c53f941e6974b9c701da6b7f78db1ca8",
     "semantic_hash": ""
   },
@@ -13668,9 +13668,9 @@
     "semantic_hash": ""
   },
   "src/components/portal/ContatoSection.tsx": {
-    "mtime": 1792290064.3211033,
-    "seen": 1792290153.442932,
-    "ast_hash": "f5c06af411e9c2caaa68fac76b2f6824",
+    "mtime": 1792334486.354195,
+    "seen": 1792334502.343335,
+    "ast_hash": "b2aa4160ac2118c0d25c10c67ca3c851",
     "semantic_hash": ""
   },
   "src/components/portal/LegalModal.tsx": {
@@ -14766,8 +14766,8 @@
     "semantic_hash": ""
   },
   "src/data/libraries.json": {
-    "mtime": 1792290101.7981074,
-    "seen": 1792290153.443747,
+    "mtime": 1792334245.6641383,
+    "seen": 1792334502.369741,
     "ast_hash": "3e79a0df86ee6f7eb3acd51fbf5fad31",
     "semantic_hash": ""
   },
@@ -15654,9 +15654,9 @@
     "semantic_hash": ""
   },
   "src/components/portal/PhotografyContactHub.tsx": {
-    "mtime": 1792289998.7446702,
-    "seen": 1792290153.443122,
-    "ast_hash": "3b2711320f57fb2f46e87488c3a24796",
+    "mtime": 1792334456.897763,
+    "seen": 1792334502.347914,
+    "ast_hash": "62e1ded5cbd94f25a3f57533129c309a",
     "semantic_hash": ""
   },
   "src/app/contato/page.tsx": {
