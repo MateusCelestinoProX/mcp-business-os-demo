@@ -1476,8 +1476,8 @@
     "semantic_hash": ""
   },
   "src/data/library_catalog_index.json": {
-    "mtime": 1792361003.228589,
-    "seen": 1792361035.484295,
+    "mtime": 1792362780.809967,
+    "seen": 1792363482.286935,
     "ast_hash": "c53f941e6974b9c701da6b7f78db1ca8",
     "semantic_hash": ""
   },
@@ -2802,9 +2802,9 @@
     "semantic_hash": ""
   },
   "public/comunidade/index.html": {
-    "mtime": 1792359912.2828732,
-    "seen": 1792360071.753128,
-    "ast_hash": "663ce1f5a419509f9d4848663ac5e093",
+    "mtime": 1792363159.3958695,
+    "seen": 1792363482.292587,
+    "ast_hash": "ad5c77e31248b0c89a75767682053776",
     "semantic_hash": ""
   },
   "public/comunidade/effects/CREATIVE EFFECT's/ANCESTRAL HAND STATUE RENDER/ChatGPT_Image_17_de_jul._de_2025_15_25_13.webp": {
@@ -13716,9 +13716,9 @@
     "semantic_hash": ""
   },
   "tests/sovereign_stitch.test.mjs": {
-    "mtime": 1792271433.8312821,
-    "seen": 1792271541.055756,
-    "ast_hash": "193e94ae13949f99e3dfd1cc5791f855",
+    "mtime": 1792363427.2443492,
+    "seen": 1792363482.287828,
+    "ast_hash": "54c497f6d949991a42b97b7fdfab049a",
     "semantic_hash": ""
   },
   "src/app/admin/page.tsx": {
@@ -13734,9 +13734,9 @@
     "semantic_hash": ""
   },
   "src/components/portal/PortalNavbar.tsx": {
-    "mtime": 1792361031.3310447,
-    "seen": 1792361035.4837382,
-    "ast_hash": "fa9f035fc7c916e4821dc0be7b00b4cf",
+    "mtime": 1792363252.5903757,
+    "seen": 1792363482.2863948,
+    "ast_hash": "96a966bf596053d65d3a796c39febd1b",
     "semantic_hash": ""
   },
   "src/components/shaders/LineWavesShader.tsx": {
@@ -14766,8 +14766,8 @@
     "semantic_hash": ""
   },
   "src/data/libraries.json": {
-    "mtime": 1792361003.2374728,
-    "seen": 1792361035.484294,
+    "mtime": 1792362780.8210108,
+    "seen": 1792363482.286934,
     "ast_hash": "3e79a0df86ee6f7eb3acd51fbf5fad31",
     "semantic_hash": ""
   },

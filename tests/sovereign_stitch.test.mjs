@@ -63,6 +63,22 @@ describe('Sovereign Master Stitch & Navigation Tests', () => {
     );
   });
 
+  it('2.3 A Comunidade VIP (/comunidade) NÃO deve conter a barra de portal (Artigos, Sobre, Contato)', async () => {
+    const res = await fetch('http://localhost:3000/comunidade');
+    assert.strictEqual(res.status, 200);
+    const html = await res.text();
+    assert.strictEqual(
+      html.includes('id="portal-navigation-map"'),
+      false,
+      'Comunidade NÃO deve conter id="portal-navigation-map"'
+    );
+    assert.strictEqual(
+      html.includes('Artigos (176)'),
+      false,
+      'Comunidade NÃO deve conter links de Artigos (176)'
+    );
+  });
+
   it('3. Rotas de backend obrigatórias devem estar ativas no servidor local', async () => {
     const endpoints = [
       { url: 'http://localhost:3000/api/leads', method: 'GET', expectedStatus: 200 },
