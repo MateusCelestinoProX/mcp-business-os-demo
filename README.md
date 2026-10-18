@@ -129,6 +129,8 @@ O **MCP Business OS** consolida os pilares de produto, marketing, vendas, comuni
   - Drizzle ORM, schema relacional, autenticação JWT, controle de acesso RBAC, middleware Edge e especificação técnica de todos os endpoints REST.
 - 📙 [**Recursos Adicionais & Integrações**](docs/RECURSOS_E_INTEGRACOES.md)
   - Motor de Shaders WebGL 2, integrações externas (Mercado Pago, Resend, Notion, WhatsApp), acervo de 176 artigos, 406 recursos da biblioteca e suíte de testes automatizados.
+- 📕 [**Estabilidade Visual & Resolução de GPU Scroll**](docs/ESTABILIDADE_VISUAL.md)
+  - Post-mortem técnico completo, investigação de gargalos de GPU/Compositor, eliminação de gambiarras, 13 regras de ouro de estabilidade visual e suite de testes de regressão automatizados.
 
 ---
 
