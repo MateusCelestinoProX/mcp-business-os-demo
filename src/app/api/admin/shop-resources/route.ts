@@ -328,6 +328,20 @@ export async function POST(request: NextRequest) {
         },
       });
 
+    // Sincronização segura de fallback local em siteData.json
+    try {
+      const fs = await import('fs');
+      const path = await import('path');
+      const siteDataPath = path.resolve(process.cwd(), 'src/data/siteData.json');
+      if (fs.existsSync(siteDataPath)) {
+        const rawJson = JSON.parse(fs.readFileSync(siteDataPath, 'utf8'));
+        rawJson.shop = normalized.shop;
+        fs.writeFileSync(siteDataPath, JSON.stringify(rawJson, null, 2), 'utf8');
+      }
+    } catch (fsErr) {
+      console.warn('Aviso ao sincronizar siteData.json local:', fsErr);
+    }
+
     return NextResponse.json({
       success: true,
       message: 'Configurações de Shop e Recursos salvas com sucesso no Supabase!',

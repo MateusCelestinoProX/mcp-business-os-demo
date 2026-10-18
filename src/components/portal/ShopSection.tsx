@@ -21,6 +21,7 @@ import {
 } from 'lucide-react';
 import BalatroShader from '@/components/shaders/BalatroShader';
 import AlternatingHeroBanner from '@/components/portal/AlternatingHeroBanner';
+import { parseNotionMarkdown } from '@/lib/notion-diary-parser';
 
 export interface ShopFeature {
   icon: string;
@@ -47,6 +48,7 @@ export interface ShopProductItem {
   headline: string;
   description: string;
   pageLink?: string;
+  actionType?: 'modal' | 'link';
   highlights: string[];
   details?: {
     entrega?: string;
@@ -66,6 +68,7 @@ export interface ShopServiceItem {
   headline: string;
   description: string;
   pageLink?: string;
+  actionType?: 'modal' | 'link';
   highlights: string[];
   details?: {
     implementacao?: string;
@@ -505,10 +508,11 @@ export function ShopSection({ shopData, onOpenContact }: ShopSectionProps) {
                     {prod.headline}
                   </p>
 
-                  {/* Descrição */}
-                  <p className="mt-2.5 sm:mt-3 text-xs sm:text-sm text-zinc-300 font-light leading-relaxed">
-                    {prod.description}
-                  </p>
+                  {/* Descrição em Markdown */}
+                  <div 
+                    className="mt-2.5 sm:mt-3 text-xs sm:text-sm text-zinc-300 font-light leading-relaxed prose prose-invert prose-red max-w-none line-clamp-3 prose-p:my-0 prose-headings:text-white prose-strong:text-white prose-a:text-[#ff073a]"
+                    dangerouslySetInnerHTML={{ __html: parseNotionMarkdown(prod.description) }}
+                  />
 
                   {/* Highlights com Ícones de Checagem */}
                   <div className="mt-4 sm:mt-6 pt-3.5 sm:pt-5 border-t border-white/10 space-y-2 sm:space-y-2.5">
@@ -521,44 +525,28 @@ export function ShopSection({ shopData, onOpenContact }: ShopSectionProps) {
                   </div>
                 </div>
 
-                {/* Bloco de Ações do Card Touch-First */}
-                <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-white/10 flex flex-col gap-2.5">
-                  
-                  {/* Botão Primário WhatsApp (Full Width no Mobile para Máxima Conversão) */}
-                  <a
-                    href={`https://api.whatsapp.com/send/?phone=553197724257&text=${encodeURIComponent(prod.whatsappMessage || `Oi Mateus, tenho interesse no produto ${prod.title}`)}&type=phone_number&app_absent=0`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="glass-button-fired w-full min-h-[48px] py-3 px-4 rounded-xl text-xs font-mono font-bold text-white shadow-xl flex items-center justify-center gap-2 active:scale-[0.98] transition-all touch-manipulation cursor-pointer"
+                {/* Bloco de Ação do Card — Botão Único: Saiba mais */}
+                <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-white/10">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (prod.actionType === 'link' && prod.pageLink) {
+                        if (prod.pageLink.startsWith('http')) {
+                          window.open(prod.pageLink, '_blank', 'noopener,noreferrer');
+                        } else {
+                          window.location.href = prod.pageLink;
+                        }
+                      } else {
+                        setSelectedProduct(prod);
+                      }
+                    }}
+                    className="glass-button-fired w-full min-h-[48px] py-3 px-4 rounded-xl text-xs font-mono font-bold text-white shadow-xl flex items-center justify-center gap-2 active:scale-[0.98] transition-all touch-manipulation cursor-pointer group/btn"
+                    title={`Saiba mais sobre ${prod.title}`}
+                    aria-label={`Saiba mais sobre ${prod.title}`}
                   >
-                    <MessageSquare className="w-4 h-4 shrink-0" />
-                    <span className="truncate">{prod.cta || 'OBTER AGORA'}</span>
-                  </a>
-
-                  {/* Botões Secundários: Saiba Mais & Detalhes */}
-                  <div className="flex items-center gap-2 w-full">
-                    {prod.pageLink && (
-                      <a
-                        href={prod.pageLink}
-                        target={prod.pageLink.startsWith('http') ? '_blank' : '_self'}
-                        rel="noopener noreferrer"
-                        className="flex-1 min-h-[44px] px-3 py-2.5 rounded-xl glass-pill text-xs font-mono text-[#ff073a] hover:text-white hover:bg-[#ff073a]/20 flex items-center justify-center gap-1.5 transition-colors border border-[#ff073a]/30 active:scale-95 touch-manipulation"
-                      >
-                        <ExternalLink className="w-3.5 h-3.5 shrink-0" />
-                        <span>Saiba mais</span>
-                      </a>
-                    )}
-
-                    <button
-                      type="button"
-                      onClick={() => setSelectedProduct(prod)}
-                      className="flex-1 min-h-[44px] px-3 py-2.5 rounded-xl glass-pill text-xs font-mono text-zinc-300 hover:text-white flex items-center justify-center gap-1.5 cursor-pointer transition-colors border border-white/10 hover:border-white/20 active:scale-95 touch-manipulation"
-                    >
-                      <Info className="w-3.5 h-3.5 shrink-0" />
-                      <span>Ver Detalhes</span>
-                    </button>
-                  </div>
-
+                    <span>Saiba mais</span>
+                    <ArrowRight className="w-4 h-4 shrink-0 text-white/90 group-hover/btn:translate-x-1 transition-transform" />
+                  </button>
                 </div>
               </div>
             ))}
@@ -606,10 +594,11 @@ export function ShopSection({ shopData, onOpenContact }: ShopSectionProps) {
                     {serv.headline}
                   </p>
 
-                  {/* Descrição */}
-                  <p className="mt-2.5 sm:mt-3 text-xs sm:text-sm text-zinc-300 font-light leading-relaxed">
-                    {serv.description}
-                  </p>
+                  {/* Descrição em Markdown */}
+                  <div 
+                    className="mt-2.5 sm:mt-3 text-xs sm:text-sm text-zinc-300 font-light leading-relaxed prose prose-invert prose-red max-w-none line-clamp-3 prose-p:my-0 prose-headings:text-white prose-strong:text-white prose-a:text-[#ff073a]"
+                    dangerouslySetInnerHTML={{ __html: parseNotionMarkdown(serv.description) }}
+                  />
 
                   {/* Highlights do Escopo */}
                   <div className="mt-4 sm:mt-6 pt-3.5 sm:pt-5 border-t border-white/10 space-y-2 sm:space-y-2.5">
@@ -622,44 +611,28 @@ export function ShopSection({ shopData, onOpenContact }: ShopSectionProps) {
                   </div>
                 </div>
 
-                {/* Bloco de Ações do Card Touch-First */}
-                <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-white/10 flex flex-col gap-2.5">
-                  
-                  {/* Botão Primário WhatsApp */}
-                  <a
-                    href={`https://api.whatsapp.com/send/?phone=553197724257&text=${encodeURIComponent(serv.whatsappMessage || `Oi Mateus, tenho interesse no serviço ${serv.title}`)}&type=phone_number&app_absent=0`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="glass-button-fired w-full min-h-[48px] py-3 px-4 rounded-xl text-xs font-mono font-bold text-white shadow-xl flex items-center justify-center gap-2 active:scale-[0.98] transition-all touch-manipulation cursor-pointer"
+                {/* Bloco de Ação do Card — Botão Único: Saiba mais */}
+                <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-white/10">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (serv.actionType === 'link' && serv.pageLink) {
+                        if (serv.pageLink.startsWith('http')) {
+                          window.open(serv.pageLink, '_blank', 'noopener,noreferrer');
+                        } else {
+                          window.location.href = serv.pageLink;
+                        }
+                      } else {
+                        setSelectedService(serv);
+                      }
+                    }}
+                    className="glass-button-fired w-full min-h-[48px] py-3 px-4 rounded-xl text-xs font-mono font-bold text-white shadow-xl flex items-center justify-center gap-2 active:scale-[0.98] transition-all touch-manipulation cursor-pointer group/btn"
+                    title={`Saiba mais sobre ${serv.title}`}
+                    aria-label={`Saiba mais sobre ${serv.title}`}
                   >
-                    <MessageSquare className="w-4 h-4 shrink-0" />
-                    <span className="truncate">{serv.cta || 'CONTRATAR AGORA'}</span>
-                  </a>
-
-                  {/* Botões Secundários */}
-                  <div className="flex items-center gap-2 w-full">
-                    {serv.pageLink && (
-                      <a
-                        href={serv.pageLink}
-                        target={serv.pageLink.startsWith('http') ? '_blank' : '_self'}
-                        rel="noopener noreferrer"
-                        className="flex-1 min-h-[44px] px-3 py-2.5 rounded-xl glass-pill text-xs font-mono text-[#ff073a] hover:text-white hover:bg-[#ff073a]/20 flex items-center justify-center gap-1.5 transition-colors border border-[#ff073a]/30 active:scale-95 touch-manipulation"
-                      >
-                        <ExternalLink className="w-3.5 h-3.5 shrink-0" />
-                        <span>Saiba mais</span>
-                      </a>
-                    )}
-
-                    <button
-                      type="button"
-                      onClick={() => setSelectedService(serv)}
-                      className="flex-1 min-h-[44px] px-3 py-2.5 rounded-xl glass-pill text-xs font-mono text-zinc-300 hover:text-white flex items-center justify-center gap-1.5 cursor-pointer transition-colors border border-white/10 hover:border-white/20 active:scale-95 touch-manipulation"
-                    >
-                      <Info className="w-3.5 h-3.5 shrink-0" />
-                      <span>Ver Escopo</span>
-                    </button>
-                  </div>
-
+                    <span>Saiba mais</span>
+                    <ArrowRight className="w-4 h-4 shrink-0 text-white/90 group-hover/btn:translate-x-1 transition-transform" />
+                  </button>
                 </div>
               </div>
             ))}
@@ -721,9 +694,11 @@ export function ShopSection({ shopData, onOpenContact }: ShopSectionProps) {
               {selectedProduct.headline}
             </p>
 
-            <p className="mt-3.5 text-xs sm:text-sm text-zinc-300 font-light leading-relaxed">
-              {selectedProduct.description}
-            </p>
+            {/* Descrição em Markdown */}
+            <div 
+              className="mt-3.5 text-xs sm:text-sm text-zinc-300 font-light leading-relaxed prose prose-invert prose-red max-w-none prose-p:my-2 prose-headings:text-white prose-a:text-[#ff073a] prose-strong:text-white prose-ul:my-2 prose-li:my-0.5"
+              dangerouslySetInnerHTML={{ __html: parseNotionMarkdown(selectedProduct.description) }}
+            />
 
             <div className="mt-5 p-4 rounded-xl sm:rounded-2xl glass-card-nested border border-white/10 space-y-2.5">
               <h4 className="text-xs font-mono text-white font-bold uppercase tracking-wider flex items-center gap-2">
@@ -844,9 +819,11 @@ export function ShopSection({ shopData, onOpenContact }: ShopSectionProps) {
               {selectedService.headline}
             </p>
 
-            <p className="mt-3.5 text-xs sm:text-sm text-zinc-300 font-light leading-relaxed">
-              {selectedService.description}
-            </p>
+            {/* Descrição em Markdown */}
+            <div 
+              className="mt-3.5 text-xs sm:text-sm text-zinc-300 font-light leading-relaxed prose prose-invert prose-red max-w-none prose-p:my-2 prose-headings:text-white prose-a:text-[#ff073a] prose-strong:text-white prose-ul:my-2 prose-li:my-0.5"
+              dangerouslySetInnerHTML={{ __html: parseNotionMarkdown(selectedService.description) }}
+            />
 
             <div className="mt-5 p-4 rounded-xl sm:rounded-2xl glass-card-nested border border-white/10 space-y-2.5">
               <h4 className="text-xs font-mono text-white font-bold uppercase tracking-wider flex items-center gap-2">

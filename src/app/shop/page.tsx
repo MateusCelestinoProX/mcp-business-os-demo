@@ -1,13 +1,33 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { ShoppingBag, ArrowLeft, ShieldCheck, Sparkles } from 'lucide-react';
 import LiquidGlassBackground from '@/components/portal/LiquidGlassBackground';
-import ShopSection from '@/components/portal/ShopSection';
+import ShopSection, { ShopData } from '@/components/portal/ShopSection';
 import siteData from '@/data/siteData.json';
 
 export default function ShopPage() {
+  const [shopData, setShopData] = useState<ShopData>(siteData?.shop || {});
+
+  useEffect(() => {
+    let isMounted = true;
+    fetch('/api/admin/shop-resources')
+      .then((res) => res.json())
+      .then((data) => {
+        if (isMounted && data.success && data.config?.shop) {
+          setShopData(data.config.shop);
+        }
+      })
+      .catch((err) => {
+        console.warn('ShopPage: utilizando dados de cache local de siteData:', err);
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
   const handleOpenContact = () => {
     window.location.href = '/#contato';
   };
@@ -37,13 +57,22 @@ export default function ShopPage() {
             </div>
           </div>
 
-          {/* Badge de Status e Garantia (adaptativo: enxuto no mobile, completo no desktop) */}
-          <div className="flex items-center self-start sm:self-auto">
+          {/* Badge de Status e Garantia + Atalho Admin */}
+          <div className="flex items-center gap-2 self-start sm:self-auto flex-wrap">
             <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-red-950/70 border border-red-500/40 text-[11px] font-mono font-semibold text-red-300 shadow-[0_0_15px_rgba(255,7,58,0.15)]">
               <span className="w-2 h-2 rounded-full bg-[#ff073a] animate-pulse shrink-0" />
               <span className="sm:hidden">Checkout & Suporte 24/7</span>
               <span className="hidden sm:inline">Atendimento Direto & Checkout Validado</span>
             </span>
+
+            <Link
+              href="/admin/shop"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full glass-pill text-[11px] font-mono font-semibold text-zinc-300 hover:text-white border border-white/10 hover:border-[#ff073a]/50 transition-colors"
+              title="Acessar Gerenciador do Shop no Painel Admin"
+            >
+              <Sparkles className="w-3.5 h-3.5 text-[#ff073a]" />
+              <span className="hidden sm:inline">Gerenciar Shop</span>
+            </Link>
           </div>
 
         </div>
@@ -51,7 +80,7 @@ export default function ShopPage() {
 
       <div className="flex-1 relative z-10 w-full">
         <ShopSection
-          shopData={siteData?.shop || {}}
+          shopData={shopData}
           onOpenContact={handleOpenContact}
         />
       </div>
