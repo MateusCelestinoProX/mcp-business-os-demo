@@ -1836,6 +1836,19 @@ body {
   animation: heroSubEntrance 1.4s 0.25s cubic-bezier(0.16, 1, 0.3, 1) backwards;
 }
 
+@keyframes heroTitleEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(32px) scale(0.94);
+    filter: blur(14px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
 @keyframes heroSubEntrance {
   0% {
     opacity: 0;
@@ -1905,20 +1918,6 @@ body {
   font-size: 0.875rem;
   line-height: 1.6;
   padding: 0 16px;
-}
-
-.manifesto-btn {
-  padding: 12px 32px;
-  border-radius: 9999px;
-  color: #ffffff;
-  font-size: 0.875rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.manifesto-btn:hover {
-  background: rgba(255, 255, 255, 0.05) !important;
 }
 
 /* Social Footer */
