@@ -1916,21 +1916,6 @@ body {
   line-height: 1.6;
   padding: 0 16px;
 }
-
-.manifesto-btn {
-  padding: 12px 32px;
-  border-radius: 9999px;
-  color: #ffffff;
-  font-size: 0.875rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.manifesto-btn:hover {
-  background: rgba(255, 255, 255, 0.05) !important;
-}
-
 /* Social Footer */
 .hero-social-footer {
   position: relative;
