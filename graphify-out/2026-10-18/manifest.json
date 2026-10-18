@@ -1428,9 +1428,9 @@
     "semantic_hash": ""
   },
   "src/app/layout.tsx": {
-    "mtime": 1792360695.3634663,
-    "seen": 1792360714.562736,
-    "ast_hash": "36f5dc6610a49170bc3d73521ef060e4",
+    "mtime": 1792360801.390425,
+    "seen": 1792360891.0570781,
+    "ast_hash": "9c8b9bb162d538a32b8655cd14555348",
     "semantic_hash": ""
   },
   "src/components/layout/Footer.tsx": {
@@ -1476,8 +1476,8 @@
     "semantic_hash": ""
   },
   "src/data/library_catalog_index.json": {
-    "mtime": 1792360449.898003,
-    "seen": 1792360714.5633762,
+    "mtime": 1792360785.0823941,
+    "seen": 1792360891.058507,
     "ast_hash": "c53f941e6974b9c701da6b7f78db1ca8",
     "semantic_hash": ""
   },
@@ -1656,9 +1656,9 @@
     "semantic_hash": ""
   },
   "src/components/shaders/ShaderTransitionZone.tsx": {
-    "mtime": 1792360695.3661196,
-    "seen": 1792360714.563241,
-    "ast_hash": "bc858305a3a7214d17997cd19920703f",
+    "mtime": 1792360812.9305751,
+    "seen": 1792360891.05835,
+    "ast_hash": "c0ab3738ab9eb8e5a3ded2b42a2e2bfa",
     "semantic_hash": ""
   },
   "src/app/api/auth/me/route.ts": {
@@ -14640,9 +14640,9 @@
     "semantic_hash": ""
   },
   "src/components/portal/AlternatingHeroBanner.tsx": {
-    "mtime": 1792360695.3646324,
-    "seen": 1792360714.5631008,
-    "ast_hash": "f59cdcd9d6e9407b55fca1c8f1a01a16",
+    "mtime": 1792360898.9117556,
+    "seen": 1792360904.9498172,
+    "ast_hash": "250a7d9010b8efd2010786cc81ab5bad",
     "semantic_hash": ""
   },
   "src/lib/notion-diary-parser.ts": {
@@ -14766,8 +14766,8 @@
     "semantic_hash": ""
   },
   "src/data/libraries.json": {
-    "mtime": 1792360449.9054077,
-    "seen": 1792360714.563375,
+    "mtime": 1792360785.091008,
+    "seen": 1792360891.058506,
     "ast_hash": "3e79a0df86ee6f7eb3acd51fbf5fad31",
     "semantic_hash": ""
   },

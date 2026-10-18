@@ -3,6 +3,11 @@
 import React, { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 
+export interface BannerMetricItem {
+  label: string;
+  value: string;
+}
+
 export interface AlternatingHeroBannerProps {
   images: string[];
   alt?: string;
@@ -13,7 +18,16 @@ export interface AlternatingHeroBannerProps {
   title?: string;
   tagline?: string;
   aspectRatio?: string;
+  metrics?: BannerMetricItem[];
+  showMetrics?: boolean;
 }
+
+const DEFAULT_BANNER_METRICS: BannerMetricItem[] = [
+  { value: "176+", label: "Artigos" },
+  { value: "406+", label: "Recursos" },
+  { value: "4 em 1", label: "Sistemas" },
+  { value: "60 FPS", label: "Shaders" },
+];
 
 export function AlternatingHeroBanner({
   images = [],
@@ -25,7 +39,10 @@ export function AlternatingHeroBanner({
   title,
   tagline,
   aspectRatio = "aspect-square",
+  metrics,
+  showMetrics = false,
 }: AlternatingHeroBannerProps) {
+  const activeMetrics = metrics || (showMetrics ? DEFAULT_BANNER_METRICS : null);
   const validImages = Array.isArray(images) && images.length > 0
     ? images.filter(Boolean)
     : ["/assets/notion/shop/hero_art.png"];
@@ -170,6 +187,25 @@ export function AlternatingHeroBanner({
         <p className="mt-1 text-xs text-zinc-300 font-light truncate">
           {tagline || subText}
         </p>
+
+        {/* Métricas de Destaque Opcionais em Grid Responsivo (2 colunas no mobile) */}
+        {activeMetrics && activeMetrics.length > 0 && (
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5 sm:gap-2 mt-2 sm:mt-2.5 pt-2 border-t border-white/10">
+            {activeMetrics.map((m, i) => (
+              <div
+                key={i}
+                className="bg-black/60 border border-white/10 rounded-lg p-1.5 text-center"
+              >
+                <div className="text-xs sm:text-sm font-black font-mono text-white leading-tight">
+                  {m.value}
+                </div>
+                <div className="text-[9px] font-mono text-zinc-400 uppercase tracking-wider truncate">
+                  {m.label}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
