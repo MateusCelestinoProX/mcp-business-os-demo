@@ -1,12 +1,14 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import Image from 'next/image';
 import {
   MessageSquare,
   BookOpen,
   ArrowDown,
   Compass,
+  Sparkles,
 } from 'lucide-react';
 import AlternatingHeroShaders from './AlternatingHeroShaders';
 import UniversalSitemapModal from './UniversalSitemapModal';
@@ -94,7 +96,8 @@ export function OriginalHeader({ profile, onNavigate }: OriginalHeaderProps) {
           </div>
 
           {/* Título Monumental Soberano — Escala Cinematográfica Imponente */}
-          <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tight text-white leading-[1.08] drop-shadow-[0_25px_45px_rgba(0,0,0,0.95)] mb-2.5 sm:mb-3.5 max-w-full">
+          <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tight text-white leading-[1.08] drop-shadow-[0_25px_45px_rgba(0,0,0,0.95)] mb-2.5 sm:mb-3.5 max-w-full break-words">
+            <span className="sr-only">MATEUS CELESTINO PRO X</span>
             <span className="inline-block">MATEUS CELESTINO</span>{' '}
             <span className="text-[#ff073a] inline-block">PRO X</span>
           </h1>
@@ -142,27 +145,37 @@ export function OriginalHeader({ profile, onNavigate }: OriginalHeaderProps) {
             </div>
           </div>
 
-          {/* Ações Primárias do Hero Centralizadas — Mobile First (Fitts' Law: Target >= 48px) */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-3 w-full max-w-sm sm:max-w-lg mx-auto px-2">
+          {/* Ações Primárias do Hero Centralizadas — Mobile First (Fitts' Law: Target >= 44px) */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-3 w-full max-w-2xl mx-auto px-2">
             <a
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="glass-button-fired w-full sm:w-auto min-h-[48px] sm:min-h-[42px] px-5 sm:px-5 py-3 sm:py-2.5 rounded-xl text-xs sm:text-xs font-mono font-bold tracking-wide text-white flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(255,7,58,0.45)] active:scale-95 transition-all touch-manipulation cursor-pointer"
+              className="glass-button-fired w-full sm:w-auto min-h-[44px] px-5 sm:px-6 py-3 sm:py-2.5 rounded-xl text-xs sm:text-xs font-mono font-bold tracking-wide text-white flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(255,7,58,0.45)] active:scale-95 transition-all touch-manipulation cursor-pointer"
               title="Abrir WhatsApp oficial"
+              aria-label="VAMOS AUTOMATIZAR ?!"
             >
               <MessageSquare className="w-4 h-4 fill-white/20 shrink-0" />
-              <span>QUERO AUTOMATIZAR TUDO</span>
+              <span>VAMOS AUTOMATIZAR ?!</span>
             </a>
 
             <button
               onClick={handleExplore}
-              className="glass-interactive w-full sm:w-auto min-h-[48px] sm:min-h-[42px] px-4.5 sm:px-5 py-3 sm:py-2.5 rounded-xl text-xs sm:text-xs font-mono font-bold text-zinc-200 hover:text-white flex items-center justify-center gap-2 border border-white/15 hover:border-[#ff073a]/50 active:scale-95 transition-all touch-manipulation cursor-pointer"
+              className="glass-interactive w-full sm:w-auto min-h-[44px] px-4.5 sm:px-5 py-3 sm:py-2.5 rounded-xl text-xs sm:text-xs font-mono font-bold text-zinc-200 hover:text-white flex items-center justify-center gap-2 border border-white/15 hover:border-[#ff073a]/50 active:scale-95 transition-all touch-manipulation cursor-pointer"
               aria-label="Explorar 176 Guias Técnicos"
             >
               <BookOpen className="w-4 h-4 text-[#ff073a] shrink-0" />
               <span>EXPLORAR GUIAS TÉCNICOS (176)</span>
             </button>
+
+            <Link
+              href="/comunidade"
+              className="glass-interactive w-full sm:w-auto min-h-[44px] px-4.5 sm:px-5 py-3 sm:py-2.5 rounded-xl text-xs sm:text-xs font-mono font-bold text-amber-300 hover:text-white flex items-center justify-center gap-2 border border-amber-500/20 hover:border-amber-500/50 active:scale-95 transition-all touch-manipulation cursor-pointer"
+              title="Acessar Área de Membros / Comunidade"
+            >
+              <Sparkles className="w-4 h-4 text-amber-400 shrink-0" />
+              <span>COMUNIDADE VIP</span>
+            </Link>
           </div>
 
           {/* Indicador de Navegação Inferior para o Acervo */}

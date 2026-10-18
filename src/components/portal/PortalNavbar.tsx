@@ -179,7 +179,7 @@ export function PortalNavbar({
                 <button
                   key={item.id}
                   onClick={() => handleTabClick(item.id)}
-                  className={`flex-1 min-h-[48px] py-1 px-1.5 rounded-xl flex flex-col items-center justify-center gap-0.5 transition-all duration-200 active:scale-95 relative cursor-pointer touch-manipulation ${
+                  className={`flex-1 min-h-[36px] sm:min-h-[48px] py-1 px-1.5 rounded-xl flex flex-col items-center justify-center gap-0.5 transition-all duration-200 active:scale-95 relative cursor-pointer touch-manipulation ${
                     isActive
                       ? 'text-white glass-pill-red shadow-[0_0_15px_rgba(255,7,58,0.4)] font-bold'
                       : 'text-zinc-400 hover:text-zinc-200 active:bg-white/5'

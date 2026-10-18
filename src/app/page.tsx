@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import LiquidGlassBackground from '@/components/portal/LiquidGlassBackground';
 import OriginalHeader from '@/components/portal/OriginalHeader';
+import MetricsBanner from '@/components/portal/MetricsBanner';
 import MainNotionLayout from '@/components/portal/MainNotionLayout';
 import SobreSection from '@/components/portal/SobreSection';
 import ContatoSection from '@/components/portal/ContatoSection';
@@ -51,7 +52,7 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-transparent text-[#ececec] flex flex-col selection:bg-[#ff073a] selection:text-white relative">
+    <div className="min-h-screen bg-transparent text-[#ececec] flex flex-col selection:bg-[#ff073a] selection:text-white relative overflow-x-hidden">
       <div className="flex-1 relative z-10">
 
         {/* =========================================================================
@@ -61,6 +62,12 @@ export default function HomePage() {
           profile={siteData?.profile || {}}
           onNavigate={handleNavigate}
         />
+
+        {/* =========================================================================
+            MÉTRICAS DO ECOSSISTEMA SOBERANO (2 COLUNAS NO MOBILE)
+            ========================================================================= */}
+        <MetricsBanner />
+
 
 
         {/* =========================================================================
