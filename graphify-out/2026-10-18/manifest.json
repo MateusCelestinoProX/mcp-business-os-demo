@@ -13668,9 +13668,9 @@
     "semantic_hash": ""
   },
   "src/components/portal/ContatoSection.tsx": {
-    "mtime": 1792335423.5064955,
-    "seen": 1792335503.964812,
-    "ast_hash": "b8473cfd468f8a3df37f861253ef93cd",
+    "mtime": 1792338892.479629,
+    "seen": 1792338991.851243,
+    "ast_hash": "95b294ab13cbbf8a8131c9451ea70741",
     "semantic_hash": ""
   },
   "src/components/portal/LegalModal.tsx": {
@@ -15660,9 +15660,9 @@
     "semantic_hash": ""
   },
   "src/app/contato/page.tsx": {
-    "mtime": 1792290089.541878,
-    "seen": 1792290153.442173,
-    "ast_hash": "b076eb1c57f5f2b67fe5012e4812da1e",
+    "mtime": 1792338639.2938757,
+    "seen": 1792338818.996892,
+    "ast_hash": "333b4feede85c06fd4dc89b296ff5379",
     "semantic_hash": ""
   },
   "README.md": {

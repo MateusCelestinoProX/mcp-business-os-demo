@@ -1132,7 +1132,7 @@
       "file_type": "code",
       "norm_label": "originalheaderprops",
       "source_file": "src/components/portal/OriginalHeader.tsx",
-      "source_location": "L41"
+      "source_location": "L40"
     },
     {
       "id": "src_components_portal_originalheader_profiledata",
@@ -1145,7 +1145,7 @@
       "file_type": "code",
       "norm_label": "profiledata",
       "source_file": "src/components/portal/OriginalHeader.tsx",
-      "source_location": "L23"
+      "source_location": "L22"
     },
     {
       "id": "src_components_portal_universalsitemapmodal_universalsitemapmodalprops",
@@ -7987,7 +7987,7 @@
       "file_type": "code",
       "norm_label": "originalheader()",
       "source_file": "src/components/portal/OriginalHeader.tsx",
-      "source_location": "L46"
+      "source_location": "L45"
     },
     {
       "id": "src_components_portal_universalsitemapmodal_universalsitemapmodal",
@@ -38871,7 +38871,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/portal/OriginalHeader.tsx",
-      "source_location": "L20",
+      "source_location": "L19",
       "weight": 1.0
     },
     {
@@ -38883,7 +38883,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/portal/OriginalHeader.tsx",
-      "source_location": "L21",
+      "source_location": "L20",
       "weight": 1.0
     },
     {
@@ -44121,7 +44121,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/portal/OriginalHeader.tsx",
-      "source_location": "L20",
+      "source_location": "L19",
       "weight": 1.0
     },
     {
@@ -44133,7 +44133,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/portal/OriginalHeader.tsx",
-      "source_location": "L21",
+      "source_location": "L20",
       "weight": 1.0
     },
     {
@@ -44157,7 +44157,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/portal/OriginalHeader.tsx",
-      "source_location": "L6",
+      "source_location": "L5",
       "weight": 1.0
     },
     {
@@ -57562,7 +57562,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/portal/OriginalHeader.tsx",
-      "source_location": "L23",
+      "source_location": "L22",
       "weight": 1.0
     },
     {
@@ -57573,7 +57573,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/portal/OriginalHeader.tsx",
-      "source_location": "L41",
+      "source_location": "L40",
       "weight": 1.0
     },
     {
@@ -57584,7 +57584,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/portal/OriginalHeader.tsx",
-      "source_location": "L46",
+      "source_location": "L45",
       "weight": 1.0
     },
     {
@@ -65229,5 +65229,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "45be3e297deb1ee4ce8a6f890e5b6f949bb007aa"
+  "built_at_commit": "497ffcaaf55fcb0c66739a5d90b903528c9ab348"
 }

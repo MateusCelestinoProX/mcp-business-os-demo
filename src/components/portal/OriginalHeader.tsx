@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import {
   Layers,
   User,
@@ -142,14 +141,16 @@ export function OriginalHeader({ profile, onNavigate }: OriginalHeaderProps) {
 
           {/* Ações Primárias do Hero Centralizadas & Responsivas */}
           <div className="flex flex-wrap items-center justify-center gap-3.5 w-full max-w-2xl mx-auto">
-            <Link
-              href="/contato"
-              className="glass-button-fired px-6 py-3.5 sm:px-7 sm:py-3.5 rounded-2xl text-xs sm:text-sm font-mono font-bold text-white flex items-center justify-center gap-2.5 shadow-[0_0_35px_rgba(255,7,58,0.55)] hover:scale-105 active:scale-95 transition-all flex-1 sm:flex-initial cursor-pointer"
-              title="Abrir página de contato"
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="glass-button-fired px-6 py-3.5 sm:px-7 sm:py-3.5 rounded-2xl text-xs sm:text-sm font-mono font-bold tracking-wide text-white flex items-center justify-center gap-2.5 shadow-[0_0_35px_rgba(255,7,58,0.55)] hover:scale-105 active:scale-95 transition-all flex-1 sm:flex-initial cursor-pointer"
+              title="Abrir WhatsApp oficial"
             >
               <MessageSquare className="w-4 h-4 fill-white/20" />
-              <span>vamos  automatizar ?!</span>
-            </Link>
+              <span>QUERO AUTOMATIZAR TUDO</span>
+            </a>
 
             <button
               onClick={handleExplore}
