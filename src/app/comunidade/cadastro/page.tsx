@@ -71,30 +71,30 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="relative min-h-[calc(100vh-80px)] flex items-center justify-center px-4 py-12">
+    <div className="relative min-h-[calc(100vh-80px)] flex items-center justify-center px-3 sm:px-4 py-8 sm:py-12">
       {/* Luz ambiente de fundo */}
       <div className="pointer-events-none absolute left-1/3 top-1/2 -translate-x-1/2 -translate-y-1/2 h-96 w-96 rounded-full bg-red-600/10 blur-[130px]" />
       <div className="pointer-events-none absolute right-1/3 top-1/2 h-80 w-80 rounded-full bg-amber-500/10 blur-[120px]" />
 
-      <div className="relative w-full max-w-lg">
-        <GlassCard variant="luxury" className="p-8 border-white/15">
+      <div className="relative w-full max-w-lg mx-auto">
+        <GlassCard variant="luxury" className="p-5 sm:p-8 border-white/15 rounded-2xl sm:rounded-3xl shadow-2xl">
           {/* Header */}
-          <div className="text-center space-y-2 mb-8">
-            <Badge variant="red" dot className="mx-auto">
+          <div className="text-center space-y-2 mb-6 sm:mb-8">
+            <Badge variant="red" dot className="mx-auto text-[0.65rem] px-2 py-0.5">
               Novo Membro Soberano
             </Badge>
-            <h1 className="text-2xl md:text-3xl font-black text-white tracking-tight">
+            <h1 className="text-xl sm:text-2xl md:text-3xl font-black text-white tracking-tight leading-snug">
               Cadastre-se na Comunidade
             </h1>
-            <p className="text-xs text-neutral-400">
+            <p className="text-xs sm:text-sm text-neutral-400 max-w-xs sm:max-w-md mx-auto leading-relaxed">
               Crie seu acesso exclusivo para interagir com criadores, prompts de IA e trilhas em 4K.
             </p>
           </div>
 
           {errorMessage && (
-            <div className="mb-6 flex items-center gap-2 rounded-xl border border-red-500/30 bg-red-950/40 p-3.5 text-xs text-red-300">
-              <AlertCircle className="h-4 w-4 shrink-0 text-red-400" />
-              <span>{errorMessage}</span>
+            <div className="mb-5 sm:mb-6 flex items-start sm:items-center gap-2 rounded-xl border border-red-500/30 bg-red-950/40 p-3 sm:p-3.5 text-xs text-red-300">
+              <AlertCircle className="h-4 w-4 shrink-0 text-red-400 mt-0.5 sm:mt-0" />
+              <span className="leading-relaxed">{errorMessage}</span>
             </div>
           )}
 
@@ -119,7 +119,7 @@ export default function RegisterPage() {
               required
             />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <Input
                 label="Senha (mínimo 6 caracteres)"
                 type="password"
@@ -142,14 +142,14 @@ export default function RegisterPage() {
             </div>
 
             <div className="pt-1">
-              <label className="flex items-start gap-2.5 text-xs text-neutral-400 cursor-pointer select-none">
+              <label className="flex items-start gap-2.5 text-xs text-neutral-400 cursor-pointer select-none py-1">
                 <input
                   type="checkbox"
                   checked={termsAccepted}
                   onChange={(e) => setTermsAccepted(e.target.checked)}
-                  className="mt-0.5 rounded border-white/20 bg-black text-red-500 focus:ring-0"
+                  className="mt-0.5 h-4 w-4 rounded border-white/20 bg-black text-red-500 focus:ring-0 shrink-0"
                 />
-                <span>
+                <span className="leading-relaxed">
                   Concordo com os{' '}
                   <strong className="text-white">Termos da Comunidade Fechada</strong> e com o código de ética
                   de compartilhamento de ativos de IA de alta resolução.
@@ -162,7 +162,7 @@ export default function RegisterPage() {
               variant="fired"
               size="lg"
               isLoading={isLoading}
-              className="w-full gap-2 uppercase tracking-wider text-xs font-bold mt-4"
+              className="w-full gap-2 uppercase tracking-wider text-xs sm:text-sm font-bold mt-4 min-h-[48px] h-12 touch-manipulation shadow-xl"
             >
               <span>Criar Minha Conta de Membro</span>
               <ArrowRight className="h-4 w-4" />
@@ -170,12 +170,12 @@ export default function RegisterPage() {
           </form>
 
           {/* Footer Callout */}
-          <div className="mt-8 border-t border-white/5 pt-6 text-center">
+          <div className="mt-6 sm:mt-8 border-t border-white/5 pt-4 sm:pt-6 text-center">
             <p className="text-xs text-neutral-400">
               Já possui uma conta ativa?{' '}
               <Link
                 href="/comunidade/login"
-                className="font-bold text-red-400 hover:text-red-300 transition-colors underline underline-offset-4"
+                className="inline-block py-1 font-bold text-red-400 hover:text-red-300 transition-colors underline underline-offset-4 touch-manipulation"
               >
                 Fazer Login
               </Link>

@@ -41,7 +41,10 @@ export default function RippleGridShader({
 
     const rgb = hexToRgb(gridColor);
 
-    const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    const dpr = isMobile
+      ? Math.min(window.devicePixelRatio || 1, 1.2)
+      : Math.min(window.devicePixelRatio || 1, 1.5);
     let renderer: Renderer;
     try {
       renderer = new Renderer({

@@ -218,13 +218,13 @@ export function CommunityFeed() {
   });
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 w-full max-w-full overflow-hidden">
       {/* Box de Publicação para Membros */}
-      <GlassCard className="p-5 md:p-6">
+      <GlassCard className="p-4 sm:p-5 md:p-6">
         <form onSubmit={handleCreatePost} className="space-y-4">
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div className="flex items-center gap-2">
-              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-red-500/20 text-xs font-bold text-red-400">
+              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-red-500/20 text-xs font-bold text-red-400">
                 AI
               </span>
               <span className="text-sm font-semibold text-white">Criar Publicação ou Compartilhar Prompt</span>
@@ -232,7 +232,7 @@ export function CommunityFeed() {
             <select
               value={newPostCategory}
               onChange={(e) => setNewPostCategory(e.target.value as CommunityPost['category'])}
-              className="rounded-xl border border-white/10 bg-neutral-900/80 px-3 py-1.5 text-xs text-neutral-300 focus:border-red-500 focus:outline-none"
+              className="w-full sm:w-auto rounded-xl border border-white/10 bg-neutral-900/90 px-3 py-2 text-xs text-neutral-300 focus:border-red-500 focus:outline-none min-h-[38px] touch-manipulation"
             >
               <option value="Trilhas & Prompts">Trilhas & Prompts</option>
               <option value="Networking">Networking</option>
@@ -245,7 +245,7 @@ export function CommunityFeed() {
             onChange={(e) => setNewPostContent(e.target.value)}
             placeholder="Compartilhe suas descobertas, workflows com shaders ou dúvidas com os outros membros..."
             rows={3}
-            className="w-full resize-none rounded-xl border border-white/10 bg-black/40 p-3.5 text-sm text-white placeholder-neutral-500 focus:border-white/30 focus:outline-none"
+            className="w-full resize-none rounded-xl border border-white/10 bg-black/40 p-3.5 text-base sm:text-sm text-white placeholder-neutral-500 focus:border-white/30 focus:outline-none"
           />
 
           {showPromptInput && (
@@ -264,12 +264,12 @@ export function CommunityFeed() {
             </div>
           )}
 
-          <div className="flex items-center justify-between pt-1">
+          <div className="flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-2.5 pt-1">
             <button
               type="button"
               onClick={() => setShowPromptInput(!showPromptInput)}
               className={cn(
-                'flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-xs font-medium transition-all',
+                'flex items-center justify-center gap-1.5 rounded-xl border px-3.5 py-2.5 sm:py-1.5 text-xs font-medium transition-all min-h-[40px] touch-manipulation',
                 showPromptInput
                   ? 'border-red-500/50 bg-red-500/10 text-red-400'
                   : 'border-white/10 bg-white/5 text-neutral-400 hover:border-white/20 hover:text-white'
@@ -279,7 +279,7 @@ export function CommunityFeed() {
               {showPromptInput ? 'Remover Prompt' : 'Anexar Prompt de IA'}
             </button>
 
-            <Button type="submit" variant="fired" size="sm" className="gap-1.5">
+            <Button type="submit" variant="fired" size="sm" className="gap-1.5 min-h-[40px] touch-manipulation w-full sm:w-auto">
               <Send className="h-3.5 w-3.5" />
               Publicar no Feed
             </Button>
@@ -287,15 +287,15 @@ export function CommunityFeed() {
         </form>
       </GlassCard>
 
-      {/* Barra de Filtros */}
-      <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
+      {/* Barra de Filtros Touch-Friendly */}
+      <div className="flex items-center gap-2 overflow-x-auto pb-2 pt-1 scrollbar-none no-scrollbar touch-pan-x -webkit-overflow-scrolling-touch">
         <Filter className="h-4 w-4 text-neutral-500 shrink-0 ml-1 mr-1" />
         {filterOptions.map((filter) => (
           <button
             key={filter}
             onClick={() => setSelectedFilter(filter)}
             className={cn(
-              'rounded-full px-3.5 py-1.5 text-xs font-medium tracking-wide whitespace-nowrap transition-all',
+              'rounded-full px-4 py-2 text-xs font-medium tracking-wide whitespace-nowrap transition-all shrink-0 min-h-[38px] touch-manipulation select-none',
               selectedFilter === filter
                 ? 'border border-red-500/50 bg-red-500/15 text-red-400 shadow-[0_0_15px_rgba(255,7,58,0.2)]'
                 : 'border border-white/5 bg-white/[0.03] text-neutral-400 hover:border-white/15 hover:text-white'
@@ -306,20 +306,20 @@ export function CommunityFeed() {
         ))}
       </div>
 
-      {/* Lista de Publicações */}
+      {/* Lista de Publicações em 1 Coluna */}
       <div className="space-y-4">
         {filteredPosts.map((post) => (
           <GlassCard
             key={post.id}
             className={cn(
-              'p-5 md:p-6 transition-all duration-200 hover:border-white/15',
+              'p-4 sm:p-5 md:p-6 transition-all duration-200 hover:border-white/15 overflow-hidden',
               post.isPinned && 'border-red-500/30 bg-gradient-to-b from-red-950/10 to-transparent'
             )}
           >
             {/* Header da Postagem */}
-            <div className="flex items-start justify-between">
-              <div className="flex items-center gap-3">
-                <div className="relative flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-gradient-to-tr from-neutral-800 to-neutral-700 text-sm font-bold text-white shadow-md">
+            <div className="flex items-start justify-between gap-3">
+              <div className="flex items-center gap-3 min-w-0 flex-1">
+                <div className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-gradient-to-tr from-neutral-800 to-neutral-700 text-sm font-bold text-white shadow-md">
                   {post.authorName.charAt(0)}
                   {post.authorTier === 'vip' && (
                     <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-600 text-[9px] font-black text-white shadow-[0_0_8px_#ff073a]">
@@ -327,63 +327,63 @@ export function CommunityFeed() {
                     </span>
                   )}
                 </div>
-                <div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-sm font-bold text-white">{post.authorName}</span>
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="text-sm font-bold text-white truncate max-w-[160px] sm:max-w-xs">{post.authorName}</span>
                     <Badge
                       variant={post.authorTier === 'vip' ? 'red' : 'gold'}
-                      className="text-[0.65rem] px-2 py-0"
+                      className="text-[0.65rem] px-2 py-0 shrink-0"
                     >
                       {post.authorTier.toUpperCase()}
                     </Badge>
                   </div>
-                  <div className="flex items-center gap-2 text-xs text-neutral-400">
-                    <span>{post.authorRole}</span>
+                  <div className="flex items-center gap-1.5 text-xs text-neutral-400 truncate mt-0.5">
+                    <span className="truncate">{post.authorRole}</span>
                     <span>•</span>
-                    <span>{post.createdAt}</span>
+                    <span className="shrink-0">{post.createdAt}</span>
                   </div>
                 </div>
               </div>
 
               {post.isPinned && (
-                <div className="flex items-center gap-1 rounded-full border border-red-500/30 bg-red-500/10 px-2.5 py-0.5 text-[0.65rem] font-semibold text-red-400">
+                <div className="flex items-center gap-1 shrink-0 rounded-full border border-red-500/30 bg-red-500/10 px-2.5 py-0.5 text-[0.65rem] font-semibold text-red-400">
                   <Pin className="h-3 w-3" />
-                  Fixado
+                  <span>Fixado</span>
                 </div>
               )}
             </div>
 
             {/* Conteúdo textual */}
-            <div className="mt-4 text-sm leading-relaxed text-neutral-200">
+            <div className="mt-4 text-sm leading-relaxed text-neutral-200 break-words">
               {post.content}
             </div>
 
             {/* Snippet de Prompt com botão de cópia */}
             {post.promptSnippet && (
-              <div className="group relative mt-3 rounded-xl border border-white/10 bg-black/60 p-3.5 backdrop-blur-md">
-                <div className="mb-1 flex items-center justify-between text-xs text-neutral-400">
-                  <span className="flex items-center gap-1 font-mono text-[0.7rem] text-red-400">
-                    <Sparkles className="h-3 w-3" />
+              <div className="group relative mt-3 rounded-xl border border-white/10 bg-black/60 p-3 sm:p-3.5 backdrop-blur-md overflow-hidden">
+                <div className="mb-2 flex items-center justify-between gap-2 text-xs text-neutral-400">
+                  <span className="flex items-center gap-1 font-mono text-[0.7rem] text-red-400 truncate">
+                    <Sparkles className="h-3 w-3 shrink-0" />
                     PROMPT EXCLUSIVO
                   </span>
                   <button
                     onClick={() => handleCopyPrompt(post.id, post.promptSnippet!)}
-                    className="flex items-center gap-1 rounded-md border border-white/10 bg-white/5 px-2 py-0.5 text-[0.7rem] text-neutral-300 transition-all hover:bg-white/10 hover:text-white"
+                    className="flex items-center gap-1 rounded-lg border border-white/10 bg-white/5 px-2.5 py-1 text-[0.7rem] text-neutral-300 transition-all hover:bg-white/10 hover:text-white shrink-0 min-h-[32px] touch-manipulation"
                   >
                     {copiedSnippetId === post.id ? (
                       <>
-                        <Check className="h-3 w-3 text-emerald-400" />
+                        <Check className="h-3.5 w-3.5 text-emerald-400" />
                         <span className="text-emerald-400 font-semibold">Copiado</span>
                       </>
                     ) : (
                       <>
-                        <Copy className="h-3 w-3" />
+                        <Copy className="h-3.5 w-3.5" />
                         <span>Copiar Prompt</span>
                       </>
                     )}
                   </button>
                 </div>
-                <pre className="overflow-x-auto font-mono text-xs text-neutral-300 whitespace-pre-wrap selection:bg-red-500/30">
+                <pre className="overflow-x-auto font-mono text-xs text-neutral-300 whitespace-pre-wrap break-all sm:break-words selection:bg-red-500/30 max-h-48 overflow-y-auto">
                   {post.promptSnippet}
                 </pre>
               </div>
@@ -403,17 +403,18 @@ export function CommunityFeed() {
               </div>
             )}
 
-            {/* Ações (Curtir, Comentar, Compartilhar) */}
-            <div className="mt-4 flex items-center justify-between border-t border-white/5 pt-3">
-              <div className="flex items-center gap-4">
+            {/* Ações Touch-First (Curtir, Comentar, Compartilhar) */}
+            <div className="mt-4 flex items-center justify-between border-t border-white/5 pt-2">
+              <div className="flex items-center gap-3 sm:gap-4">
                 <button
                   onClick={() => handleLike(post.id)}
                   className={cn(
-                    'flex items-center gap-1.5 text-xs font-medium transition-all',
+                    'flex items-center gap-1.5 py-2 px-2.5 rounded-lg text-xs font-medium transition-all min-h-[44px] min-w-[44px] touch-manipulation',
                     post.isLiked
-                      ? 'text-red-500'
-                      : 'text-neutral-400 hover:text-red-400'
+                      ? 'text-red-500 bg-red-500/10'
+                      : 'text-neutral-400 hover:text-red-400 hover:bg-white/5'
                   )}
+                  aria-label="Curtir postagem"
                 >
                   <Heart
                     className={cn('h-4 w-4', post.isLiked && 'fill-current text-red-500')}
@@ -425,7 +426,8 @@ export function CommunityFeed() {
                   onClick={() =>
                     setActiveCommentPostId(activeCommentPostId === post.id ? null : post.id)
                   }
-                  className="flex items-center gap-1.5 text-xs font-medium text-neutral-400 transition-all hover:text-white"
+                  className="flex items-center gap-1.5 py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-400 transition-all hover:text-white hover:bg-white/5 min-h-[44px] touch-manipulation"
+                  aria-label="Comentar postagem"
                 >
                   <MessageSquare className="h-4 w-4" />
                   <span>{post.comments.length}</span>
@@ -434,25 +436,26 @@ export function CommunityFeed() {
 
               <button
                 onClick={() => handleCopyPrompt(post.id, post.content)}
-                className="flex items-center gap-1.5 text-xs font-medium text-neutral-400 transition-all hover:text-white"
+                className="flex items-center gap-1.5 py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-400 transition-all hover:text-white hover:bg-white/5 min-h-[44px] touch-manipulation"
+                aria-label="Compartilhar postagem"
               >
                 <Share2 className="h-4 w-4" />
-                <span className="hidden sm:inline">Compartilhar</span>
+                <span className="text-xs">Compartilhar</span>
               </button>
             </div>
 
             {/* Seção Expansível de Comentários */}
             {activeCommentPostId === post.id && (
-              <div className="mt-4 space-y-3 rounded-xl border border-white/5 bg-black/40 p-4">
+              <div className="mt-4 space-y-3 rounded-xl border border-white/5 bg-black/40 p-3 sm:p-4">
                 {post.comments.length > 0 ? (
                   <div className="space-y-2.5">
                     {post.comments.map((c) => (
                       <div key={c.id} className="rounded-lg border border-white/5 bg-neutral-900/60 p-3">
-                        <div className="flex items-center justify-between">
-                          <span className="text-xs font-bold text-white">{c.authorName}</span>
-                          <span className="text-[0.65rem] text-neutral-500">{c.createdAt}</span>
+                        <div className="flex items-center justify-between gap-2">
+                          <span className="text-xs font-bold text-white truncate">{c.authorName}</span>
+                          <span className="text-[0.65rem] text-neutral-500 shrink-0">{c.createdAt}</span>
                         </div>
-                        <p className="mt-1 text-xs text-neutral-300 leading-relaxed">{c.content}</p>
+                        <p className="mt-1 text-xs text-neutral-300 leading-relaxed break-words">{c.content}</p>
                       </div>
                     ))}
                   </div>
@@ -462,20 +465,20 @@ export function CommunityFeed() {
                   </p>
                 )}
 
-                <div className="flex gap-2 pt-2">
+                <div className="flex flex-col sm:flex-row gap-2 pt-2">
                   <input
                     type="text"
                     value={commentText}
                     onChange={(e) => setCommentText(e.target.value)}
-                    placeholder="Escreva sua resposta para os membros..."
-                    className="flex-1 rounded-xl border border-white/10 bg-black/60 px-3 py-2 text-xs text-white placeholder-neutral-500 focus:border-red-500 focus:outline-none"
+                    placeholder="Escreva sua resposta..."
+                    className="flex-1 rounded-xl border border-white/10 bg-black/60 px-3.5 py-2.5 text-base sm:text-xs text-white placeholder-neutral-500 focus:border-red-500 focus:outline-none min-h-[42px]"
                     onKeyDown={(e) => e.key === 'Enter' && handleAddComment(post.id)}
                   />
                   <Button
                     onClick={() => handleAddComment(post.id)}
                     variant="fired"
                     size="sm"
-                    className="text-xs px-3"
+                    className="text-xs px-4 min-h-[42px] touch-manipulation w-full sm:w-auto"
                   >
                     Enviar
                   </Button>

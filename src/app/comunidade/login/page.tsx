@@ -82,37 +82,37 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="relative min-h-[calc(100vh-80px)] flex items-center justify-center px-4 py-12">
+    <div className="relative min-h-[calc(100vh-80px)] flex items-center justify-center px-3 sm:px-4 py-8 sm:py-12">
       {/* Luz ambiente de fundo */}
       <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-96 w-96 rounded-full bg-red-600/10 blur-[120px]" />
       <div className="pointer-events-none absolute right-1/4 top-1/3 h-64 w-64 rounded-full bg-purple-600/10 blur-[100px]" />
 
-      <div className="relative w-full max-w-md">
-        <GlassCard variant="luxury" className="p-8 border-white/15 shadow-2xl">
+      <div className="relative w-full max-w-md mx-auto">
+        <GlassCard variant="luxury" className="p-5 sm:p-8 border-white/15 shadow-2xl rounded-2xl sm:rounded-3xl">
           {/* Top Brand & Badge */}
           <div className="text-center space-y-2 mb-6">
-            <Badge variant="red" dot className="mx-auto">
+            <Badge variant="red" dot className="mx-auto text-[0.65rem] px-2 py-0.5">
               Área Restrita Soberana
             </Badge>
-            <h1 className="text-2xl md:text-3xl font-black text-white tracking-tight">
+            <h1 className="text-xl sm:text-2xl md:text-3xl font-black text-white tracking-tight leading-snug">
               Acesso Unificado
             </h1>
-            <p className="text-xs text-neutral-400">
-              Entre com suas credenciais reais de Administrador ou Membro Soberano.
+            <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed max-w-xs mx-auto">
+              Entre com suas credenciais de Administrador ou Membro Soberano.
             </p>
           </div>
 
           {errorMessage && (
-            <div className="mb-5 flex items-center gap-2 rounded-xl border border-red-500/30 bg-red-950/40 p-3.5 text-xs text-red-300">
-              <AlertCircle className="h-4 w-4 shrink-0 text-red-400" />
-              <span>{errorMessage}</span>
+            <div className="mb-5 flex items-start sm:items-center gap-2 rounded-xl border border-red-500/30 bg-red-950/40 p-3 sm:p-3.5 text-xs text-red-300">
+              <AlertCircle className="h-4 w-4 shrink-0 text-red-400 mt-0.5 sm:mt-0" />
+              <span className="leading-relaxed">{errorMessage}</span>
             </div>
           )}
 
           {successMessage && (
-            <div className="mb-5 flex items-center gap-2 rounded-xl border border-emerald-500/30 bg-emerald-950/40 p-3.5 text-xs text-emerald-300">
-              <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-400" />
-              <span>{successMessage}</span>
+            <div className="mb-5 flex items-start sm:items-center gap-2 rounded-xl border border-emerald-500/30 bg-emerald-950/40 p-3 sm:p-3.5 text-xs text-emerald-300">
+              <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-400 mt-0.5 sm:mt-0" />
+              <span className="leading-relaxed">{successMessage}</span>
             </div>
           )}
 
@@ -143,7 +143,7 @@ export default function LoginPage() {
               variant="fired"
               size="lg"
               isLoading={isLoading}
-              className="w-full gap-2 uppercase tracking-wider text-xs font-bold mt-2 shadow-xl"
+              className="w-full gap-2 uppercase tracking-wider text-xs sm:text-sm font-bold mt-2 shadow-xl min-h-[48px] h-12 touch-manipulation"
             >
               <span>Entrar no Sistema</span>
               <ArrowRight className="h-4 w-4" />
@@ -155,7 +155,7 @@ export default function LoginPage() {
             <div>
               <Link
                 href="/comunidade/cadastro"
-                className="text-xs text-neutral-300 hover:text-white font-semibold transition-colors"
+                className="inline-block py-1.5 text-xs text-neutral-300 hover:text-white font-semibold transition-colors touch-manipulation"
               >
                 Não possui conta? Cadastre-se na Comunidade →
               </Link>
@@ -163,7 +163,7 @@ export default function LoginPage() {
             <div>
               <Link
                 href="/"
-                className="text-xs text-neutral-500 hover:text-white transition-colors"
+                className="inline-block py-1.5 text-xs text-neutral-500 hover:text-white transition-colors touch-manipulation"
               >
                 ← Voltar ao Portal Institucional
               </Link>

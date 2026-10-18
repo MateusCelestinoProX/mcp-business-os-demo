@@ -256,7 +256,11 @@ export default function GridScanShader({
       return;
     }
 
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    const dpr = isMobile
+      ? Math.min(window.devicePixelRatio || 1, 1.2)
+      : Math.min(window.devicePixelRatio || 1, 1.5);
+    renderer.setPixelRatio(dpr);
     renderer.domElement.style.width = '100%';
     renderer.domElement.style.height = '100%';
     renderer.domElement.style.position = 'absolute';
@@ -331,6 +335,11 @@ export default function GridScanShader({
       if (!container) return;
       const w = container.clientWidth || window.innerWidth || 1;
       const h = container.clientHeight || window.innerHeight || 1;
+      const currentIsMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+      const currentDpr = currentIsMobile
+        ? Math.min(window.devicePixelRatio || 1, 1.2)
+        : Math.min(window.devicePixelRatio || 1, 1.5);
+      renderer.setPixelRatio(currentDpr);
       renderer.setSize(w, h);
       material.uniforms.iResolution.value.set(w, h, renderer.getPixelRatio());
     };

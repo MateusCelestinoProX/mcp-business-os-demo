@@ -48,6 +48,34 @@ export function VideoPlayer({
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [showControls, setShowControls] = useState(true);
   const [copied, setCopied] = useState(false);
+  const controlsTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Auto-hide controls timer
+  const resetControlsTimeout = () => {
+    if (controlsTimeoutRef.current) {
+      clearTimeout(controlsTimeoutRef.current);
+    }
+    setShowControls(true);
+    if (isPlaying) {
+      controlsTimeoutRef.current = setTimeout(() => {
+        setShowControls(false);
+      }, 3500);
+    }
+  };
+
+  useEffect(() => {
+    if (isPlaying) {
+      resetControlsTimeout();
+    } else {
+      setShowControls(true);
+      if (controlsTimeoutRef.current) {
+        clearTimeout(controlsTimeoutRef.current);
+      }
+    }
+    return () => {
+      if (controlsTimeoutRef.current) clearTimeout(controlsTimeoutRef.current);
+    };
+  }, [isPlaying]);
 
   // Fallback default sample 4K video from visuals-app-saas if neither src nor youtubeId is provided
   const videoSource =
@@ -60,7 +88,10 @@ export function VideoPlayer({
 
     const handleTimeUpdate = () => setCurrentTime(video.currentTime);
     const handleLoadedMetadata = () => setDuration(video.duration);
-    const handleEnded = () => setIsPlaying(false);
+    const handleEnded = () => {
+      setIsPlaying(false);
+      setShowControls(true);
+    };
 
     video.addEventListener('timeupdate', handleTimeUpdate);
     video.addEventListener('loadedmetadata', handleLoadedMetadata);
@@ -87,9 +118,19 @@ export function VideoPlayer({
     if (isPlaying) {
       videoRef.current.pause();
       setIsPlaying(false);
+      setShowControls(true);
     } else {
       videoRef.current.play().catch(() => {});
       setIsPlaying(true);
+      resetControlsTimeout();
+    }
+  };
+
+  const handleVideoTouchOrClick = () => {
+    if (!showControls) {
+      resetControlsTimeout();
+    } else {
+      togglePlay();
     }
   };
 
@@ -154,13 +195,14 @@ export function VideoPlayer({
       ref={containerRef}
       onMouseEnter={() => setShowControls(true)}
       onMouseLeave={() => isPlaying && setShowControls(false)}
+      onTouchStart={resetControlsTimeout}
       className={cn(
-        'group relative overflow-hidden rounded-3xl border border-white/10 bg-neutral-950/80 shadow-[0_0_50px_rgba(0,0,0,0.8)] backdrop-blur-2xl transition-all duration-300',
+        'group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-white/10 bg-neutral-950/80 shadow-[0_0_50px_rgba(0,0,0,0.8)] backdrop-blur-2xl transition-all duration-300 w-full max-w-full',
         className
       )}
     >
-      {/* Container 16:9 */}
-      <div className="relative aspect-video w-full overflow-hidden bg-black">
+      {/* Container 16:9 estrito e responsivo */}
+      <div className="relative aspect-video w-full overflow-hidden bg-black select-none">
         {youtubeId ? (
           <iframe
             src={`https://www.youtube.com/embed/${youtubeId}?enablejsapi=1&autoplay=${autoPlay ? 1 : 0}&modestbranding=1&rel=0`}
@@ -177,72 +219,74 @@ export function VideoPlayer({
               poster={poster}
               playsInline
               autoPlay={autoPlay}
-              onClick={togglePlay}
+              onClick={handleVideoTouchOrClick}
               className="h-full w-full cursor-pointer object-cover"
             />
 
-            {/* Play Button Overlay (when paused) */}
+            {/* Play Button Overlay (quando pausado) */}
             {!isPlaying && (
               <div
                 onClick={togglePlay}
-                className="absolute inset-0 flex cursor-pointer items-center justify-center bg-black/40 backdrop-blur-[2px] transition-all hover:bg-black/20"
+                className="absolute inset-0 flex cursor-pointer items-center justify-center bg-black/40 backdrop-blur-[2px] transition-all hover:bg-black/20 touch-manipulation"
               >
-                <div className="relative flex h-20 w-20 items-center justify-center rounded-full border border-red-500/40 bg-neutral-900/80 text-white shadow-[0_0_35px_rgba(255,7,58,0.4)] backdrop-blur-xl transition-all duration-300 hover:scale-110 hover:border-red-500 hover:shadow-[0_0_50px_rgba(255,7,58,0.7)]">
-                  <Play className="ml-1 h-8 w-8 text-red-500" />
+                <div className="relative flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-full border border-red-500/40 bg-neutral-900/90 text-white shadow-[0_0_35px_rgba(255,7,58,0.4)] backdrop-blur-xl transition-all duration-300 hover:scale-110 hover:border-red-500 hover:shadow-[0_0_50px_rgba(255,7,58,0.7)]">
+                  <Play className="ml-1 h-7 w-7 sm:h-8 sm:w-8 text-red-500" />
                 </div>
               </div>
             )}
           </>
         )}
 
-        {/* Top Badges Bar */}
+        {/* Top Badges Bar Responsiva */}
         <div
           className={cn(
-            'pointer-events-none absolute top-4 left-4 right-4 flex items-center justify-between transition-opacity duration-300',
+            'pointer-events-none absolute top-3 sm:top-4 left-3 sm:left-4 right-3 sm:right-4 flex items-center justify-between gap-2 transition-opacity duration-300 z-10',
             showControls || !isPlaying ? 'opacity-100' : 'opacity-0'
           )}
         >
-          <div className="pointer-events-auto flex items-center gap-2">
-            <Badge variant="red" dot>
+          <div className="pointer-events-auto flex items-center gap-1.5 sm:gap-2 flex-wrap">
+            <Badge variant="red" dot className="text-[0.65rem] px-2 py-0.5">
               {category}
             </Badge>
-            <span className="rounded-md border border-white/10 bg-black/50 px-2 py-0.5 text-[0.65rem] font-bold text-neutral-300 backdrop-blur-md">
+            <span className="rounded-md border border-white/10 bg-black/60 px-2 py-0.5 text-[0.6rem] sm:text-[0.65rem] font-bold text-neutral-300 backdrop-blur-md">
               4K UHD 60FPS
             </span>
           </div>
 
           <button
             onClick={copyPromptOrShare}
-            className="pointer-events-auto flex items-center gap-1.5 rounded-full border border-white/10 bg-neutral-900/70 px-3 py-1 text-xs text-neutral-300 backdrop-blur-md transition-all hover:border-white/30 hover:text-white"
+            className="pointer-events-auto flex items-center gap-1.5 rounded-full border border-white/10 bg-neutral-900/80 px-3 py-1.5 text-xs text-neutral-300 backdrop-blur-md transition-all hover:border-white/30 hover:text-white shrink-0 min-h-[34px] touch-manipulation"
+            aria-label="Compartilhar vídeo"
           >
             {copied ? (
               <>
                 <CheckCircle2 className="h-3.5 w-3.5 text-emerald-400" />
-                <span className="text-emerald-400">Link Copiado</span>
+                <span className="text-emerald-400 text-xs font-semibold">Copiado</span>
               </>
             ) : (
               <>
                 <Sparkles className="h-3.5 w-3.5 text-amber-400" />
-                <span>Compartilhar</span>
+                <span className="text-xs">Compartilhar</span>
               </>
             )}
           </button>
         </div>
 
-        {/* Bottom Custom Controls Bar (for MP4 native video) */}
+        {/* Bottom Custom Controls Bar (Touch-First para MP4 nativo) */}
         {!youtubeId && (
           <div
             className={cn(
-              'absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/95 via-black/70 to-transparent p-4 pt-12 transition-all duration-300',
-              showControls || !isPlaying ? 'translate-y-0 opacity-100' : 'translate-y-2 opacity-0'
+              'absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/95 via-black/75 to-transparent p-3 sm:p-4 pt-10 sm:pt-12 transition-all duration-300 z-10',
+              showControls || !isPlaying ? 'translate-y-0 opacity-100' : 'translate-y-3 opacity-0 pointer-events-none'
             )}
+            onClick={(e) => e.stopPropagation()}
           >
-            {/* Timeline Progress Bar */}
-            <div className="group/slider mb-3 flex items-center gap-3">
-              <span className="text-xs font-mono text-neutral-400">
+            {/* Timeline Progress Bar Touch-Friendly */}
+            <div className="group/slider mb-2.5 sm:mb-3 flex items-center gap-2 sm:gap-3">
+              <span className="text-[11px] sm:text-xs font-mono text-neutral-400 shrink-0 min-w-[36px]">
                 {formatTime(currentTime)}
               </span>
-              <div className="relative flex-1">
+              <div className="relative flex-1 py-2 flex items-center">
                 <input
                   type="range"
                   min="0"
@@ -250,21 +294,23 @@ export function VideoPlayer({
                   step="0.1"
                   value={currentTime}
                   onChange={handleSeek}
-                  className="h-1.5 w-full cursor-pointer appearance-none rounded-lg bg-white/20 accent-red-500 transition-all hover:h-2"
+                  aria-label="Progresso do vídeo"
+                  className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-white/20 accent-red-500 transition-all hover:h-2.5 touch-manipulation"
                 />
               </div>
-              <span className="text-xs font-mono text-neutral-400">
+              <span className="text-[11px] sm:text-xs font-mono text-neutral-400 shrink-0 min-w-[36px]">
                 {formatTime(duration)}
               </span>
             </div>
 
-            {/* Controls Actions Row */}
+            {/* Controls Actions Row Touch-First */}
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2 sm:gap-3">
                 <button
                   type="button"
                   onClick={togglePlay}
-                  className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white transition-all hover:border-red-500/50 hover:bg-red-500/10 hover:text-red-400"
+                  className="flex h-10 w-10 sm:h-9 sm:w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white transition-all hover:border-red-500/50 hover:bg-red-500/10 hover:text-red-400 touch-manipulation"
+                  aria-label={isPlaying ? 'Pausar vídeo' : 'Reproduzir vídeo'}
                 >
                   {isPlaying ? <Pause className="h-4 w-4" /> : <Play className="ml-0.5 h-4 w-4" />}
                 </button>
@@ -272,18 +318,20 @@ export function VideoPlayer({
                 <button
                   type="button"
                   onClick={restartVideo}
-                  className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-neutral-400 transition-all hover:bg-white/10 hover:text-white"
+                  className="flex h-10 w-10 sm:h-9 sm:w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-neutral-400 transition-all hover:bg-white/10 hover:text-white touch-manipulation"
                   title="Reiniciar vídeo"
+                  aria-label="Reiniciar vídeo"
                 >
                   <RotateCcw className="h-4 w-4" />
                 </button>
 
                 {/* Volume Section */}
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1.5 sm:gap-2">
                   <button
                     type="button"
                     onClick={toggleMute}
-                    className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-neutral-300 transition-all hover:bg-white/10 hover:text-white"
+                    className="flex h-10 w-10 sm:h-9 sm:w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-neutral-300 transition-all hover:bg-white/10 hover:text-white touch-manipulation"
+                    aria-label={isMuted ? 'Ativar som' : 'Desativar som'}
                   >
                     {isMuted || volume === 0 ? (
                       <VolumeX className="h-4 w-4 text-red-400" />
@@ -291,31 +339,35 @@ export function VideoPlayer({
                       <Volume2 className="h-4 w-4" />
                     )}
                   </button>
-                  <input
-                    type="range"
-                    min="0"
-                    max="1"
-                    step="0.05"
-                    value={isMuted ? 0 : volume}
-                    onChange={handleVolumeChange}
-                    className="h-1 w-16 cursor-pointer appearance-none rounded-md bg-white/20 accent-neutral-200"
-                  />
+                  <div className="hidden sm:block">
+                    <input
+                      type="range"
+                      min="0"
+                      max="1"
+                      step="0.05"
+                      value={isMuted ? 0 : volume}
+                      onChange={handleVolumeChange}
+                      aria-label="Controle de volume"
+                      className="h-1.5 w-16 cursor-pointer appearance-none rounded-md bg-white/20 accent-neutral-200"
+                    />
+                  </div>
                 </div>
               </div>
 
-              {/* Title display */}
-              <div className="hidden max-w-[40%] truncate text-xs font-medium text-neutral-300 md:block">
+              {/* Title display on desktop */}
+              <div className="hidden max-w-[35%] truncate text-xs font-medium text-neutral-300 lg:block">
                 <span className="text-red-400">Tocando: </span>
                 {title}
               </div>
 
-              {/* Right tools */}
+              {/* Right tools (Fullscreen) */}
               <div className="flex items-center gap-2">
                 <button
                   type="button"
                   onClick={toggleFullscreen}
-                  className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-neutral-300 transition-all hover:bg-white/10 hover:text-white"
+                  className="flex h-10 w-10 sm:h-9 sm:w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-neutral-300 transition-all hover:bg-white/10 hover:text-white touch-manipulation"
                   title={isFullscreen ? 'Sair da tela cheia' : 'Tela cheia'}
+                  aria-label={isFullscreen ? 'Sair da tela cheia' : 'Tela cheia'}
                 >
                   {isFullscreen ? (
                     <Minimize className="h-4 w-4" />

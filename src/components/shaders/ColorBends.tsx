@@ -222,7 +222,11 @@ export default function ColorBends({
 
     rendererRef.current = renderer;
     renderer.outputColorSpace = THREE.SRGBColorSpace;
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    const dpr = isMobile
+      ? Math.min(window.devicePixelRatio || 1, 1.2)
+      : Math.min(window.devicePixelRatio || 1, 1.5);
+    renderer.setPixelRatio(dpr);
     renderer.setClearColor(0x000000, transparent ? 0 : 1);
     renderer.domElement.style.width = '100%';
     renderer.domElement.style.height = '100%';
@@ -236,6 +240,11 @@ export default function ColorBends({
       if (!container) return;
       const w = container.clientWidth || 1;
       const h = container.clientHeight || 1;
+      const currentIsMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+      const currentDpr = currentIsMobile
+        ? Math.min(window.devicePixelRatio || 1, 1.2)
+        : Math.min(window.devicePixelRatio || 1, 1.5);
+      renderer.setPixelRatio(currentDpr);
       renderer.setSize(w, h, false);
       material.uniforms.uCanvas.value.set(w, h);
     };

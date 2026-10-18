@@ -1,8 +1,15 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-
-import { MessageSquare, Mail, Sparkles, CheckCircle2 } from 'lucide-react';
+import React, { useEffect, useState, useRef } from 'react';
+import { 
+  MessageSquare, 
+  Mail, 
+  Sparkles, 
+  ChevronLeft, 
+  ChevronRight, 
+  Camera, 
+  ExternalLink 
+} from 'lucide-react';
 
 const LinkedinIcon = ({ className }: { className?: string }) => (
   <svg className={className} fill="currentColor" viewBox="0 0 24 24">
@@ -23,6 +30,7 @@ interface PhotografyContactHubProps {
   email?: string;
   linkedinUrl?: string;
   instagramUrl?: string;
+  photoPortfolioUrl?: string;
 }
 
 const backgroundImages = [
@@ -40,25 +48,65 @@ export function PhotografyContactHub({
   email = 'mcp6667@proton.me',
   linkedinUrl = 'https://www.linkedin.com/in/mateus-celestino-0ba50626a/',
   instagramUrl = 'https://www.instagram.com/celestinoautomacao/',
+  photoPortfolioUrl = 'https://photografy-home.vercel.app/',
 }: PhotografyContactHubProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
 
-  // Background slider cycling every 4 seconds
+  // Background slider cycling a cada 4.5 segundos se não estiver pausado
   useEffect(() => {
+    if (isPaused) return;
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % backgroundImages.length);
-    }, 4000);
+    }, 4500);
     return () => clearInterval(timer);
-  }, []);
+  }, [isPaused]);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % backgroundImages.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + backgroundImages.length) % backgroundImages.length);
+  };
+
+  // Suporte a gestos touch swipe no mobile
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+    const diff = touchStartX.current - touchEndX.current;
+    // Mínimo de 45px para registrar swipe
+    if (diff > 45) {
+      nextSlide();
+    } else if (diff < -45) {
+      prevSlide();
+    }
+    touchStartX.current = null;
+    touchEndX.current = null;
+  };
 
   const emailHref = email.startsWith('mailto:') ? email : `mailto:${email}`;
 
   return (
     <div
-      className={`relative w-full overflow-hidden text-white flex flex-col items-center justify-center rounded-3xl lg:rounded-[2.5rem] transition-all duration-500 ${
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      className={`relative w-full overflow-hidden text-white flex flex-col items-center justify-center rounded-2xl sm:rounded-3xl lg:rounded-[2.5rem] transition-all duration-500 select-none ${
         isEmbedded
-          ? 'min-h-[640px] sm:min-h-[700px] lg:min-h-[760px] py-12 sm:py-16 px-6 sm:px-10 shadow-[0_30px_90px_rgba(0,0,0,0.85),0_0_45px_rgba(255,7,58,0.25)] border border-white/15 hover:border-red-500/40'
-          : 'min-h-[600px] my-auto py-12 px-6 shadow-[0_30px_70px_rgba(0,0,0,0.95),0_0_45px_rgba(255,7,58,0.25)] border border-white/20'
+          ? 'min-h-[580px] sm:min-h-[680px] lg:min-h-[740px] py-8 sm:py-14 px-4 sm:px-8 shadow-[0_30px_90px_rgba(0,0,0,0.85),0_0_45px_rgba(255,7,58,0.25)] border border-white/15 hover:border-red-500/40'
+          : 'min-h-[560px] my-auto py-10 px-4 sm:px-6 shadow-[0_30px_70px_rgba(0,0,0,0.95),0_0_45px_rgba(255,7,58,0.25)] border border-white/20'
       } ${className}`}
       style={{ touchAction: 'pan-y' }}
     >
@@ -68,9 +116,13 @@ export function PhotografyContactHub({
           <div
             key={src}
             className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ease-in-out ${
-              index === currentSlide ? 'opacity-100' : 'opacity-0'
+              index === currentSlide ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
             }`}
-            style={{ backgroundImage: `url('${src}')` }}
+            style={{
+              backgroundImage: `url('${src}')`,
+              transitionProperty: 'opacity, transform',
+              transitionDuration: '1500ms',
+            }}
           />
         ))}
       </div>
@@ -83,15 +135,34 @@ export function PhotografyContactHub({
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-red-600/10 rounded-full blur-3xl pointer-events-none -mr-40 -mt-40 z-[3]" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-red-950/20 rounded-full blur-3xl pointer-events-none -ml-40 -mb-40 z-[3]" />
 
+      {/* Controles de Navegação da Galeria (Anterior e Próximo) */}
+      <button
+        type="button"
+        onClick={prevSlide}
+        aria-label="Foto anterior"
+        className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full glass-crystal border border-white/10 flex items-center justify-center text-zinc-300 hover:text-white hover:border-[#ff073a]/50 transition-all opacity-70 hover:opacity-100 cursor-pointer"
+      >
+        <ChevronLeft className="w-5 h-5" />
+      </button>
+
+      <button
+        type="button"
+        onClick={nextSlide}
+        aria-label="Próxima foto"
+        className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full glass-crystal border border-white/10 flex items-center justify-center text-zinc-300 hover:text-white hover:border-[#ff073a]/50 transition-all opacity-70 hover:opacity-100 cursor-pointer"
+      >
+        <ChevronRight className="w-5 h-5" />
+      </button>
+
       {/* 3. Main Content Hub */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full w-full max-w-md mx-auto px-4 sm:px-6 py-6 sm:py-8 animate-fade-in-up">
+      <div className="relative z-10 flex flex-col items-center justify-center h-full w-full max-w-md mx-auto px-2 sm:px-6 py-4 sm:py-6 animate-fade-in-up">
         {/* Foto de Perfil com Indicador Ativo */}
-        <div className="mb-4 relative">
-          <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full p-[2px] bg-gradient-to-tr from-[#ff073a]/60 via-white/30 to-white/60 shadow-2xl relative overflow-hidden">
+        <div className="mb-3.5 relative">
+          <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full p-[2.5px] bg-gradient-to-tr from-[#ff073a] via-white/40 to-white shadow-[0_0_25px_rgba(255,7,58,0.4)] relative overflow-hidden group">
             <img
               src="/photografy-contato/kz.jpg"
               alt="Mateus Celestino"
-              className="w-full h-full object-cover rounded-full"
+              className="w-full h-full object-cover rounded-full group-hover:scale-105 transition-transform duration-500"
               onError={(e) => {
                 (e.target as HTMLImageElement).src =
                   'https://placehold.co/200x200/111/FFF?text=MC';
@@ -106,24 +177,24 @@ export function PhotografyContactHub({
         </div>
 
         {/* Título com Tipografia Refinada */}
-        <h1 className="text-xs sm:text-sm font-light tracking-[0.3em] uppercase text-center mb-6 text-white/90 font-sans">
+        <h1 className="text-xs sm:text-sm font-light tracking-[0.3em] uppercase text-center mb-5 text-white/90 font-sans">
           Mateus Celestino
-          <span className="text-[10px] tracking-[0.4em] text-[#ff073a]/90 mt-1 block font-mono font-medium">
+          <span className="text-[10px] tracking-[0.35em] text-[#ff073a] mt-1 block font-mono font-bold">
             DIGITAL HUB // OFICIAL
           </span>
         </h1>
 
-        {/* Social Bubbles em Vidro Líquido & Neon Carmine */}
+        {/* Social Bubbles em Vidro Líquido & Neon Carmine — Touch Target >= 48px */}
         <div className="w-full grid grid-cols-2 gap-2.5 sm:gap-3 font-sans">
-          {/* WhatsApp */}
+          {/* WhatsApp com destaque supremo */}
           <a
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="py-3 sm:py-3.5 px-3.5 rounded-2xl flex items-center justify-center gap-2 group relative overflow-hidden bg-white/[0.08] hover:bg-[#ff073a]/25 border border-white/15 hover:border-[#ff073a]/50 text-white transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer shadow-lg hover:shadow-[0_0_20px_rgba(255,7,58,0.35)]"
+            className="min-h-[48px] py-3 px-3 rounded-xl sm:rounded-2xl flex items-center justify-center gap-2 group relative overflow-hidden bg-[#ff073a]/15 hover:bg-[#ff073a]/25 border border-[#ff073a]/40 hover:border-[#ff073a] text-white transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer shadow-lg hover:shadow-[0_0_20px_rgba(255,7,58,0.35)]"
           >
             <MessageSquare className="w-4 h-4 text-[#ff073a] group-hover:text-white transition-colors shrink-0" />
-            <span className="font-light tracking-[0.16em] text-[11px] sm:text-xs relative z-10 text-white font-mono truncate">
+            <span className="font-semibold tracking-[0.14em] text-[11px] sm:text-xs relative z-10 text-white font-mono truncate">
               WHATSAPP
             </span>
           </a>
@@ -133,10 +204,10 @@ export function PhotografyContactHub({
             href={instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="py-3 sm:py-3.5 px-3.5 rounded-2xl flex items-center justify-center gap-2 group relative overflow-hidden bg-white/[0.08] hover:bg-[#ff073a]/25 border border-white/15 hover:border-[#ff073a]/50 text-white transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer shadow-lg hover:shadow-[0_0_20px_rgba(255,7,58,0.35)]"
+            className="min-h-[48px] py-3 px-3 rounded-xl sm:rounded-2xl flex items-center justify-center gap-2 group relative overflow-hidden bg-white/[0.08] hover:bg-[#ff073a]/20 border border-white/15 hover:border-[#ff073a]/50 text-white transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer shadow-lg"
           >
-            <InstagramIcon className="w-4 h-4 text-[#ff073a] group-hover:text-white transition-colors shrink-0" />
-            <span className="font-light tracking-[0.16em] text-[11px] sm:text-xs relative z-10 text-white font-mono truncate">
+            <InstagramIcon className="w-4 h-4 text-zinc-300 group-hover:text-[#ff073a] transition-colors shrink-0" />
+            <span className="font-light tracking-[0.14em] text-[11px] sm:text-xs relative z-10 text-white font-mono truncate">
               INSTAGRAM
             </span>
           </a>
@@ -146,10 +217,10 @@ export function PhotografyContactHub({
             href={linkedinUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="py-3 sm:py-3.5 px-3.5 rounded-2xl flex items-center justify-center gap-2 group relative overflow-hidden bg-white/[0.08] hover:bg-[#ff073a]/25 border border-white/15 hover:border-[#ff073a]/50 text-white transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer shadow-lg hover:shadow-[0_0_20px_rgba(255,7,58,0.35)]"
+            className="min-h-[48px] py-3 px-3 rounded-xl sm:rounded-2xl flex items-center justify-center gap-2 group relative overflow-hidden bg-white/[0.08] hover:bg-[#ff073a]/20 border border-white/15 hover:border-[#ff073a]/50 text-white transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer shadow-lg"
           >
-            <LinkedinIcon className="w-4 h-4 text-[#ff073a] group-hover:text-white transition-colors shrink-0" />
-            <span className="font-light tracking-[0.16em] text-[11px] sm:text-xs relative z-10 text-white font-mono truncate">
+            <LinkedinIcon className="w-4 h-4 text-zinc-300 group-hover:text-[#ff073a] transition-colors shrink-0" />
+            <span className="font-light tracking-[0.14em] text-[11px] sm:text-xs relative z-10 text-white font-mono truncate">
               LINKEDIN
             </span>
           </a>
@@ -157,13 +228,50 @@ export function PhotografyContactHub({
           {/* Email Proton */}
           <a
             href={emailHref}
-            className="py-3 sm:py-3.5 px-3.5 rounded-2xl flex items-center justify-center gap-2 group relative overflow-hidden bg-white/[0.08] hover:bg-[#ff073a]/25 border border-white/15 hover:border-[#ff073a]/50 text-white transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer shadow-lg hover:shadow-[0_0_20px_rgba(255,7,58,0.35)]"
+            className="min-h-[48px] py-3 px-3 rounded-xl sm:rounded-2xl flex items-center justify-center gap-2 group relative overflow-hidden bg-white/[0.08] hover:bg-[#ff073a]/20 border border-white/15 hover:border-[#ff073a]/50 text-white transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer shadow-lg"
           >
-            <Mail className="w-4 h-4 text-zinc-300 group-hover:text-white transition-colors shrink-0" />
-            <span className="font-light tracking-[0.16em] text-[11px] sm:text-xs relative z-10 text-white font-mono truncate">
-              EMAIL PROTON
+            <Mail className="w-4 h-4 text-zinc-300 group-hover:text-[#ff073a] transition-colors shrink-0" />
+            <span className="font-light tracking-[0.14em] text-[11px] sm:text-xs relative z-10 text-white font-mono truncate">
+              PROTON MAIL
             </span>
           </a>
+        </div>
+
+        {/* Link de Destaque: Acessar Portfólio de Fotografia Completo */}
+        <div className="w-full mt-4 pt-3 border-t border-white/10">
+          <a
+            href={photoPortfolioUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full py-2.5 px-3 rounded-xl glass-crystal border border-white/10 hover:border-[#ff073a]/50 flex items-center justify-between gap-2 text-[11px] font-mono text-zinc-300 hover:text-white transition-all group"
+          >
+            <span className="flex items-center gap-2 truncate">
+              <Camera className="w-3.5 h-3.5 text-[#ff073a] shrink-0" />
+              <span>GALERIA COMPLETA DE FOTOGRAFIA</span>
+            </span>
+            <ExternalLink className="w-3.5 h-3.5 text-zinc-500 group-hover:text-white transition-colors shrink-0" />
+          </a>
+        </div>
+
+        {/* 4. Indicadores Táteis de Slides da Galeria (Dots Interativos) */}
+        <div className="mt-4 flex items-center justify-center gap-2">
+          {backgroundImages.map((_, idx) => (
+            <button
+              key={idx}
+              type="button"
+              onClick={() => setCurrentSlide(idx)}
+              aria-label={`Ir para foto ${idx + 1}`}
+              className={`transition-all duration-300 rounded-full cursor-pointer min-h-[32px] min-w-[32px] flex items-center justify-center p-1.5`}
+            >
+              <span
+                className={`block rounded-full transition-all duration-300 ${
+                  idx === currentSlide
+                    ? 'w-6 h-1.5 bg-[#ff073a] shadow-[0_0_8px_#ff073a]'
+                    : 'w-1.5 h-1.5 bg-white/30 hover:bg-white/60'
+                }`}
+              />
+            </button>
+          ))}
         </div>
       </div>
     </div>
