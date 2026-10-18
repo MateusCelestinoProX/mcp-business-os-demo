@@ -1836,23 +1836,6 @@ body {
   animation: heroSubEntrance 1.4s 0.25s cubic-bezier(0.16, 1, 0.3, 1) backwards;
 }
 
-.manifesto-btn {
-  animation: heroBtnEntrance 1.4s 0.45s cubic-bezier(0.16, 1, 0.3, 1) backwards;
-}
-
-@keyframes heroTitleEntrance {
-  0% {
-    opacity: 0;
-    transform: translateY(32px) scale(0.94);
-    filter: blur(14px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0);
-  }
-}
-
 @keyframes heroSubEntrance {
   0% {
     opacity: 0;
@@ -1863,17 +1846,6 @@ body {
     opacity: 1;
     transform: translateY(0);
     letter-spacing: 8px;
-  }
-}
-
-@keyframes heroBtnEntrance {
-  0% {
-    opacity: 0;
-    transform: translateY(24px) scale(0.92);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
   }
 }
 

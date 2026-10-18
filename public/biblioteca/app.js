@@ -1019,14 +1019,6 @@
       navigateTo([]);
     });
 
-    // Custom Interactive Events for Cinematic Hero
-    const manifestoBtn = document.getElementById('manifesto-btn');
-    if (manifestoBtn) {
-      manifestoBtn.addEventListener('click', () => {
-        document.getElementById('library-modules-section').scrollIntoView({ behavior: 'smooth' });
-      });
-    }
-
     // Logout via Header Button
     const logoutBtn = document.getElementById('btn-logout');
     if (logoutBtn) {

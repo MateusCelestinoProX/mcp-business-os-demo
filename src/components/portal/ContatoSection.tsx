@@ -1,485 +1,381 @@
 'use client';
 
-import React, { useState } from 'react';
-import { Mail, MessageSquare, ExternalLink, Send, CheckCircle2, Shield, Phone, Sparkles } from 'lucide-react';
-import { PhotografyContactHub } from './PhotografyContactHub';
+import React, { useEffect, useState } from 'react';
+import {
+  MessageSquare,
+  Mail,
+  ExternalLink,
+  Shield,
+  Phone,
+  Sparkles,
+  Camera,
+  Cpu,
+  FileText,
+  CheckCircle2,
+  ArrowUpRight,
+} from 'lucide-react';
 import LineWavesShader from '@/components/shaders/LineWavesShader';
+
+const LinkedinIcon = ({ className }: { className?: string }) => (
+  <svg className={className} fill="currentColor" viewBox="0 0 24 24">
+    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+  </svg>
+);
+
+const InstagramIcon = ({ className }: { className?: string }) => (
+  <svg className={className} fill="currentColor" viewBox="0 0 24 24">
+    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+  </svg>
+);
 
 export interface ContatoSectionProps {
   profile?: {
     whatsapp?: string;
     email?: string;
-    tallyForm?: string;
     whatsappNumber?: string;
     linkedin?: string;
     instagram?: string;
+    photoPortfolio?: string;
+    aiPortfolio?: string;
+    curriculum?: string;
   };
 }
 
+const backgroundImages = [
+  '/photografy-contato/l1.jpg',
+  '/photografy-contato/l2.jpg',
+  '/photografy-contato/l3.jpg',
+  '/photografy-contato/l4.jpg',
+  '/photografy-contato/l5.jpg',
+];
+
 export function ContatoSection({ profile }: ContatoSectionProps) {
-  const [viewMode, setViewMode] = useState<'hub' | 'form'>('hub');
-  const [formData, setFormData] = useState({
-    nome: '',
-    email: '',
-    whatsapp: '',
-    mensagem: '',
-    servico: 'Agentes de Atendimento WhatsApp'
-  });
-  const [submitting, setSubmitting] = useState(false);
-  const [sent, setSent] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitting(true);
-
-    try {
-      // Dispara persistência no backend soberano (/api/leads e /api/contact)
-      await fetch('/api/leads', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: formData.nome,
-          email: formData.email,
-          phone: formData.whatsapp,
-          source: 'organic',
-          metadata: {
-            service: formData.servico,
-            message: formData.mensagem,
-            channel: 'portal_institucional'
-          }
-        })
-      }).catch((err) => console.warn('Aviso ao sincronizar lead com /api/leads:', err));
-
-      // Também sincroniza com /api/contact para manter 100% de compatibilidade
-      await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-      }).catch((err) => console.warn('Aviso ao sincronizar com /api/contact:', err));
-    } catch (err) {
-      console.warn('Erro ao disparar gravação:', err);
-    }
-
-    const text = `*NOVO CONTATO VIA SITE MATEUS CELESTINO PRO X*%0A%0A*Nome:* ${encodeURIComponent(formData.nome)}%0A*Email:* ${encodeURIComponent(formData.email)}%0A*WhatsApp:* ${encodeURIComponent(formData.whatsapp)}%0A*Interesse:* ${encodeURIComponent(formData.servico)}%0A*Mensagem:* ${encodeURIComponent(formData.mensagem)}`;
-    const url = `https://api.whatsapp.com/send/?phone=553197724257&text=${text}&type=phone_number&app_absent=0`;
-    
-    if (typeof window !== 'undefined') {
-      window.open(url, '_blank');
-    }
-    
-    setSent(true);
-    setSubmitting(false);
-    setTimeout(() => setSent(false), 8000);
-  };
+  // Background slider cycling a cada 4 segundos
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % backgroundImages.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
 
   const whatsappLink =
     profile?.whatsapp ||
     'https://api.whatsapp.com/send/?phone=553197724257&text=QUERO+AUTOMATIZAR+TUDO.&type=phone_number&app_absent=0';
 
   const email = profile?.email || 'CONTATO-SMARTFLOW@proton.me';
-  const tallyForm = profile?.tallyForm || 'https://tally.so/r/w2V6LL';
+  const emailHref = email.startsWith('mailto:') ? email : `mailto:${email}`;
   const linkedinUrl = profile?.linkedin || 'https://www.linkedin.com/in/mateus-celestino-0ba50626a/';
   const instagramUrl = profile?.instagram || 'https://www.instagram.com/celestinoautomacao/';
+  const photoPortfolioUrl = profile?.photoPortfolio || 'https://photografy-home.vercel.app/';
+  const aiPortfolioUrl = profile?.aiPortfolio || 'https://visuals-visuals-home.vercel.app/';
+  const curriculumUrl = profile?.curriculum || 'https://outros-c-v.vercel.app/';
 
   return (
-    <section id="contato" className="scroll-mt-28 py-12 lg:py-20 min-h-[calc(100vh-4rem)] flex flex-col justify-center relative overflow-hidden w-full">
-      {/* 0. Shader WebGL Dedicado da Sessão Contato: LineWaves Fluido Encorpado */}
+    <section
+      id="contato"
+      className="scroll-mt-28 py-10 lg:py-16 min-h-[calc(100vh-4rem)] flex flex-col justify-center relative overflow-hidden w-full"
+    >
+      {/* =========================================================================
+          0. BACKGROUND SLIDER DINÂMICO DE TELA CHEIA (ORIGINAL PHOTOGRAFY HUB)
+          ========================================================================= */}
+      <div className="absolute inset-0 w-full h-full z-0 pointer-events-none select-none">
+        {backgroundImages.map((src, index) => (
+          <div
+            key={src}
+            className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ease-in-out ${
+              index === currentSlide ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
+            }`}
+            style={{
+              backgroundImage: `url('${src}')`,
+              transitionProperty: 'opacity, transform',
+              transitionDuration: '1500ms',
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Overlays escuras cinematográficas com gradiente e vinheta profunda */}
+      <div className="absolute inset-0 w-full h-full z-[1] pointer-events-none bg-gradient-to-b from-black/90 via-black/75 to-black/95" />
+      <div className="absolute inset-0 w-full h-full z-[2] pointer-events-none shadow-[inset_0_0_120px_rgba(0,0,0,0.95)]" />
+
+      {/* Shader WebGL LineWaves sutil em mix-blend para conferir a assinatura tecnológica */}
       <LineWavesShader
-        className="z-0 mix-blend-screen pointer-events-none"
+        className="z-[3] mix-blend-screen pointer-events-none opacity-30"
         color1="#ff073a"
-        color2="#b80018"
-        color3="#66000c"
-        opacity={0.65}
-        speed={0.26}
-        warpIntensity={0.85}
+        color2="#8a0012"
+        color3="#3a0006"
+        opacity={0.35}
+        speed={0.2}
+        warpIntensity={0.65}
       />
 
-      {/* Zonas de Transição Internas com Blur e Escurecimento Progressivo */}
-      <div className="absolute top-0 left-0 right-0 h-28 bg-gradient-to-b from-black/80 via-black/40 to-transparent pointer-events-none z-1" />
-      <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none z-1" />
+      {/* Halos de iluminação ambiente carmesim neon */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-red-600/15 rounded-full blur-[140px] pointer-events-none z-[4]" />
+      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-red-950/30 rounded-full blur-[140px] pointer-events-none z-[4]" />
 
-      <div className="w-full px-4 sm:px-6 lg:px-10 xl:px-16 relative z-10 flex-1 flex flex-col justify-center">
-
-        {/* =========================================================================
-            BOX SOBERANO DO SOCIAL PAGE // TAMANHO COMPLETO DA SESSÃO
-            ========================================================================= */}
-        <div className="glass-crystal rounded-3xl lg:rounded-[2.5rem] p-6 sm:p-8 lg:p-12 w-full min-h-[720px] lg:min-h-[780px] flex flex-col justify-between border border-white/10 shadow-[0_30px_90px_rgba(0,0,0,0.85)] relative overflow-hidden">
+      {/* =========================================================================
+          CONTEÚDO PRINCIPAL: PÁGINA COMPLETA DE CONTATO // DIGITAL HUB OFICIAL
+          ========================================================================= */}
+      <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex-1 flex flex-col justify-center py-6 sm:py-10">
+        
+        {/* Box Soberano em Vidro Cristalino de Alta Fidelidade */}
+        <div className="glass-crystal rounded-3xl lg:rounded-[2.5rem] p-6 sm:p-10 lg:p-12 w-full border border-white/15 shadow-[0_30px_90px_rgba(0,0,0,0.85),0_0_50px_rgba(255,7,58,0.15)] relative overflow-hidden">
           
-          {/* Halos de Iluminação Ambiente Carmesim Integrados no Box */}
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-red-600/10 rounded-full blur-3xl pointer-events-none -mr-40 -mt-40" />
-          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-red-950/20 rounded-full blur-3xl pointer-events-none -ml-40 -mb-40" />
+          {/* Luz interna suave no box */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-24 bg-gradient-to-b from-white/10 to-transparent pointer-events-none rounded-t-3xl" />
 
-          {/* Header Unificado do Box com Seletor de Modo */}
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-8 border-b border-white/10 relative z-10">
-            <div>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full glass-pill-red text-xs font-mono text-[#ff073a] uppercase tracking-wider mb-3 font-bold">
-                <Mail className="w-3.5 h-3.5" />
-                <span>CANAL DIRETO & CONTATO</span>
-              </div>
-              <h2 className="text-2xl sm:text-4xl font-black text-white tracking-tight leading-tight">
-                {viewMode === 'hub' ? 'Canais Oficiais & Contato' : 'Vamos Automatizar Seu Negócio?'}
-              </h2>
-              <p className="mt-2 text-sm text-zinc-300 font-light leading-relaxed max-w-2xl">
-                {viewMode === 'hub'
-                  ? 'Entre em contato direto pelos canais oficiais de WhatsApp e E-mail de Mateus Celestino.'
-                  : 'Seja para implementar fluxos inteligentes com n8n, criar atendentes autônomos com IA ou blindar seus servidores Linux, entre em contato direto.'}
-              </p>
+          {/* 1. Header do Perfil & Identidade */}
+          <div className="flex flex-col items-center text-center relative z-10 mb-8 sm:mb-10">
+            
+            {/* Badge de Status Oficial Ativo */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-950/60 border border-emerald-500/40 text-[11px] font-mono text-emerald-400 font-semibold mb-6 shadow-[0_0_15px_rgba(16,185,129,0.2)]">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span>CANAL OFICIAL ATIVO // ATENDIMENTO PRIORITÁRIO</span>
             </div>
 
-            {/* Seletor de visualização */}
-            <div className="flex items-center p-1.5 rounded-2xl bg-black/60 border border-white/10 shrink-0 self-start md:self-center">
-              <button
-                type="button"
-                onClick={() => setViewMode('hub')}
-                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-mono font-bold transition-all cursor-pointer ${
-                  viewMode === 'hub'
-                    ? 'bg-gradient-to-r from-[#9e0015] to-[#50000a] text-white shadow-[0_0_15px_rgba(158,0,21,0.6)] border border-red-500/40'
-                    : 'text-zinc-400 hover:text-white'
-                }`}
+            {/* Foto de Perfil com Anel de Vidro e Gradiente Carmesim */}
+            <div className="mb-5 relative">
+              <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full p-[3px] bg-gradient-to-tr from-[#ff073a] via-white/40 to-white shadow-[0_0_35px_rgba(255,7,58,0.4)] relative overflow-hidden group">
+                <img
+                  src="/photografy-contato/kz.jpg"
+                  alt="Mateus Celestino"
+                  className="w-full h-full object-cover rounded-full transition-transform duration-500 group-hover:scale-105"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src =
+                      'https://placehold.co/200x200/111/FFF?text=MC';
+                  }}
+                />
+              </div>
+              {/* Ponto de Status Online */}
+              <span
+                className="absolute bottom-1 right-1 w-5 h-5 rounded-full bg-emerald-500 border-2 border-black shadow-[0_0_12px_#10b981]"
+                title="Online // Atendimento Direto Disponível"
+              />
+            </div>
+
+            {/* Nome e Título da Marca */}
+            <h1 className="text-xl sm:text-3xl font-light tracking-[0.25em] uppercase text-white font-sans">
+              MATEUS CELESTINO
+            </h1>
+            <div className="text-xs sm:text-sm font-mono tracking-[0.35em] text-[#ff073a] font-semibold mt-1 uppercase">
+              DIGITAL HUB // CANAIS OFICIAIS & CONTATO DIRETO
+            </div>
+
+            <p className="mt-3 text-xs sm:text-sm text-zinc-300 font-light max-w-2xl leading-relaxed">
+              Conecte-se diretamente com Mateus Celestino para projetos de automação empresarial, agentes autônomos de IA no WhatsApp, integrações n8n e infraestrutura soberana.
+            </p>
+          </div>
+
+          {/* 2. Grade dos 4 Canais Oficiais Principais de Atendimento */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 relative z-10 mb-6">
+            
+            {/* Canal 1: WhatsApp Oficial */}
+            <a
+              href={whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="glass-crystal glass-interactive p-5 sm:p-6 rounded-2xl sm:rounded-3xl flex items-start gap-4 group transition-all duration-300 hover:border-red-500/50 hover:shadow-[0_0_30px_rgba(255,7,58,0.25)] relative overflow-hidden"
+            >
+              <div className="w-12 h-12 rounded-2xl glass-pill-red flex items-center justify-center text-[#ff073a] group-hover:scale-110 transition-transform shadow-lg shrink-0">
+                <MessageSquare className="w-6 h-6" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center justify-between gap-2">
+                  <span className="text-[11px] font-mono text-[#ff073a] font-bold uppercase tracking-wider">
+                    WHATSAPP OFICIAL
+                  </span>
+                  <span className="text-[10px] font-mono font-bold text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-500/40 shrink-0">
+                    &lt; 15 MIN
+                  </span>
+                </div>
+                <div className="text-base sm:text-lg font-bold text-white mt-1 group-hover:text-[#ff073a] transition-colors truncate">
+                  +55 (31) 9772-4257
+                </div>
+                <p className="text-xs text-zinc-400 font-light mt-1 flex items-center gap-1 leading-relaxed">
+                  <span>Mensagem instantânea: &ldquo;QUERO AUTOMATIZAR TUDO.&rdquo;</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-zinc-500 group-hover:text-white transition-colors shrink-0" />
+                </p>
+              </div>
+            </a>
+
+            {/* Canal 2: E-mail Corporativo Proton */}
+            <a
+              href={emailHref}
+              className="glass-crystal glass-interactive p-5 sm:p-6 rounded-2xl sm:rounded-3xl flex items-start gap-4 group transition-all duration-300 hover:border-red-500/50 hover:shadow-[0_0_30px_rgba(255,7,58,0.25)] relative overflow-hidden"
+            >
+              <div className="w-12 h-12 rounded-2xl glass-pill flex items-center justify-center text-zinc-300 group-hover:text-[#ff073a] group-hover:scale-110 transition-transform shadow-lg shrink-0">
+                <Mail className="w-6 h-6" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center justify-between gap-2">
+                  <span className="text-[11px] font-mono text-zinc-400 font-bold uppercase tracking-wider">
+                    E-MAIL CORPORATIVO
+                  </span>
+                  <span className="text-[10px] font-mono font-bold text-zinc-300 bg-white/5 px-2 py-0.5 rounded-full border border-white/10 shrink-0">
+                    CRIPTOGRAFADO
+                  </span>
+                </div>
+                <div className="text-sm sm:text-base font-bold text-white mt-1 group-hover:text-[#ff073a] transition-colors truncate" title={email}>
+                  {email}
+                </div>
+                <p className="text-xs text-zinc-400 font-light mt-1 flex items-center gap-1 leading-relaxed">
+                  <span>Proton Mail com criptografia ponta a ponta</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-zinc-500 group-hover:text-white transition-colors shrink-0" />
+                </p>
+              </div>
+            </a>
+
+            {/* Canal 3: Instagram Oficial */}
+            <a
+              href={instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="glass-crystal glass-interactive p-5 sm:p-6 rounded-2xl sm:rounded-3xl flex items-start gap-4 group transition-all duration-300 hover:border-red-500/50 hover:shadow-[0_0_30px_rgba(255,7,58,0.25)] relative overflow-hidden"
+            >
+              <div className="w-12 h-12 rounded-2xl glass-pill flex items-center justify-center text-zinc-300 group-hover:text-[#ff073a] group-hover:scale-110 transition-transform shadow-lg shrink-0">
+                <InstagramIcon className="w-6 h-6" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center justify-between gap-2">
+                  <span className="text-[11px] font-mono text-zinc-400 font-bold uppercase tracking-wider">
+                    INSTAGRAM OFICIAL
+                  </span>
+                  <span className="text-[10px] font-mono font-bold text-zinc-400 bg-white/5 px-2 py-0.5 rounded-full border border-white/10 shrink-0">
+                    CONTEÚDO & IA
+                  </span>
+                </div>
+                <div className="text-base sm:text-lg font-bold text-white mt-1 group-hover:text-[#ff073a] transition-colors truncate">
+                  @celestinoautomacao
+                </div>
+                <p className="text-xs text-zinc-400 font-light mt-1 flex items-center gap-1 leading-relaxed">
+                  <span>Bastidores, agentes de IA e engenharia prática</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-zinc-500 group-hover:text-white transition-colors shrink-0" />
+                </p>
+              </div>
+            </a>
+
+            {/* Canal 4: LinkedIn Executivo */}
+            <a
+              href={linkedinUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="glass-crystal glass-interactive p-5 sm:p-6 rounded-2xl sm:rounded-3xl flex items-start gap-4 group transition-all duration-300 hover:border-red-500/50 hover:shadow-[0_0_30px_rgba(255,7,58,0.25)] relative overflow-hidden"
+            >
+              <div className="w-12 h-12 rounded-2xl glass-pill flex items-center justify-center text-zinc-300 group-hover:text-[#ff073a] group-hover:scale-110 transition-transform shadow-lg shrink-0">
+                <LinkedinIcon className="w-6 h-6" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center justify-between gap-2">
+                  <span className="text-[11px] font-mono text-zinc-400 font-bold uppercase tracking-wider">
+                    LINKEDIN PROFISSIONAL
+                  </span>
+                  <span className="text-[10px] font-mono font-bold text-zinc-400 bg-white/5 px-2 py-0.5 rounded-full border border-white/10 shrink-0">
+                    B2B & CONEXÕES
+                  </span>
+                </div>
+                <div className="text-base sm:text-lg font-bold text-white mt-1 group-hover:text-[#ff073a] transition-colors truncate">
+                  Mateus Celestino
+                </div>
+                <p className="text-xs text-zinc-400 font-light mt-1 flex items-center gap-1 leading-relaxed">
+                  <span>Conexões corporativas e parcerias estratégicas</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-zinc-500 group-hover:text-white transition-colors shrink-0" />
+                </p>
+              </div>
+            </a>
+
+          </div>
+
+          {/* 3. Ecossistema de Portfólios & Hubs Complementares (Original Photografy Hub) */}
+          <div className="relative z-10 pt-4 pb-2 border-t border-white/10">
+            <div className="text-[11px] font-mono text-zinc-400 uppercase tracking-widest text-center mb-3 font-semibold">
+              ECOSSISTEMA DE PORTFÓLIOS & HUB DE ATIVOS
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              
+              {/* Photo Portfolio */}
+              <a
+                href={photoPortfolioUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="glass-interactive py-3 px-4 rounded-2xl flex items-center justify-center gap-2 group transition-all text-xs font-mono text-zinc-300 hover:text-white"
               >
-                <Sparkles className="w-3.5 h-3.5 text-[#ff073a]" />
-                <span>HUB OFICIAL (PHOTOGRAFY)</span>
-              </button>
-              <button
-                type="button"
-                onClick={() => setViewMode('form')}
-                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-mono font-bold transition-all cursor-pointer ${
-                  viewMode === 'form'
-                    ? 'bg-gradient-to-r from-[#9e0015] to-[#50000a] text-white shadow-[0_0_15px_rgba(158,0,21,0.6)] border border-red-500/40'
-                    : 'text-zinc-400 hover:text-white'
-                }`}
+                <Camera className="w-4 h-4 text-[#ff073a]" />
+                <span className="tracking-wider">PHOTO PORTFOLIO</span>
+                <ArrowUpRight className="w-3 h-3 text-zinc-500 group-hover:text-white transition-colors" />
+              </a>
+
+              {/* AI Portfolio */}
+              <a
+                href={aiPortfolioUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="glass-interactive py-3 px-4 rounded-2xl flex items-center justify-center gap-2 group transition-all text-xs font-mono text-zinc-300 hover:text-white"
               >
-                <MessageSquare className="w-3.5 h-3.5" />
-                <span>FORMULÁRIO B2B</span>
-              </button>
+                <Cpu className="w-4 h-4 text-[#ff073a]" />
+                <span className="tracking-wider">AI PORTFOLIO</span>
+                <ArrowUpRight className="w-3 h-3 text-zinc-500 group-hover:text-white transition-colors" />
+              </a>
+
+              {/* Curriculum Online */}
+              <a
+                href={curriculumUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="glass-interactive py-3 px-4 rounded-2xl flex items-center justify-center gap-2 group transition-all text-xs font-mono text-zinc-300 hover:text-white"
+              >
+                <FileText className="w-4 h-4 text-[#ff073a]" />
+                <span className="tracking-wider">CURRICULUM ONLINE</span>
+                <ArrowUpRight className="w-3 h-3 text-zinc-500 group-hover:text-white transition-colors" />
+              </a>
+
             </div>
           </div>
 
-          {/* =========================================================================
-              MODO 1: HUB OFICIAL (PHOTOGRAFY) // INSERÇÃO SUAVE DO CARD NO LAYOUT
-              ========================================================================= */}
-          {viewMode === 'hub' ? (
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center flex-1 py-8 sm:py-10 relative z-10">
-              
-              {/* Painel Esquerdo: Contexto Institucional, Canais e Ações Rápidas */}
-              <div className="lg:col-span-6 space-y-6">
-                <div className="space-y-3">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/40 border border-emerald-500/30 text-[11px] font-mono text-emerald-400 font-semibold">
-                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                    <span>CANAL OFICIAL ATIVO // ATENDIMENTO PRIORITÁRIO</span>
-                  </div>
-                  <h3 className="text-xl sm:text-3xl font-black text-white tracking-tight leading-snug">
-                    Comunicação Ágil & Parcerias de Alta Performance
-                  </h3>
-                  <p className="text-xs sm:text-sm text-zinc-300 font-light leading-relaxed">
-                    Conecte-se diretamente com Mateus Celestino para projetos de automação empresarial, agentes autônomos de IA no WhatsApp, integrações n8n e infraestrutura soberana.
-                  </p>
+          {/* 4. Botão Especial Master PRO // CTA de Alta Performance */}
+          <div className="relative z-10 pt-5 pb-2">
+            <a
+              href={whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="glass-button-fired w-full py-4 sm:py-5 px-6 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left group cursor-pointer shadow-[0_15px_40px_rgba(255,7,58,0.35)] hover:scale-[1.01] active:scale-[0.99] transition-all"
+            >
+              <div className="flex items-center gap-3.5">
+                <div className="w-10 h-10 rounded-xl bg-black/40 border border-white/20 flex items-center justify-center text-white shrink-0 group-hover:rotate-6 transition-transform">
+                  <Sparkles className="w-5 h-5 text-white" />
                 </div>
-
-                {/* Cards Interativos dos Canais Oficiais */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                  <a
-                    href={whatsappLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="glass-interactive p-4 sm:p-5 rounded-2xl block group transition-all"
-                  >
-                    <div className="flex items-center justify-between mb-2.5">
-                      <div className="w-9 h-9 rounded-xl glass-pill-red flex items-center justify-center text-[#ff073a] shadow-md">
-                        <MessageSquare className="w-4 h-4" />
-                      </div>
-                      <span className="text-[10px] font-mono font-bold text-emerald-400 bg-emerald-950/40 px-2 py-0.5 rounded-full border border-emerald-500/30">
-                        &lt; 15 MIN
-                      </span>
-                    </div>
-                    <div className="text-[11px] font-mono text-[#ff073a] font-bold uppercase tracking-wider">
-                      WHATSAPP OFICIAL
-                    </div>
-                    <div className="text-sm sm:text-base font-bold text-white mt-0.5 group-hover:text-[#ff073a] transition-colors">
-                      +55 (31) 9772-4257
-                    </div>
-                    <div className="text-[10px] sm:text-[11px] text-zinc-400 font-light mt-1 flex items-center gap-1">
-                      <span>Mensagem instantânea direta</span>
-                      <ExternalLink className="w-3 h-3 text-zinc-500 group-hover:text-white transition-colors" />
-                    </div>
-                  </a>
-
-                  <a
-                    href={`mailto:${email}`}
-                    className="glass-interactive p-4 sm:p-5 rounded-2xl block group transition-all"
-                  >
-                    <div className="flex items-center justify-between mb-2.5">
-                      <div className="w-9 h-9 rounded-xl glass-pill flex items-center justify-center text-zinc-300 group-hover:text-[#ff073a] shadow-md">
-                        <Mail className="w-4 h-4" />
-                      </div>
-                      <span className="text-[10px] font-mono font-bold text-zinc-400 bg-white/5 px-2 py-0.5 rounded-full border border-white/10">
-                        CRIPTOGRAFADO
-                      </span>
-                    </div>
-                    <div className="text-[11px] font-mono text-zinc-400 font-bold uppercase tracking-wider">
-                      E-MAIL CORPORATIVO
-                    </div>
-                    <div className="text-xs sm:text-sm font-bold text-white mt-0.5 group-hover:text-[#ff073a] transition-colors truncate" title={email}>
-                      {email}
-                    </div>
-                    <div className="text-[10px] sm:text-[11px] text-zinc-400 font-light mt-1 flex items-center gap-1">
-                      <span>Proton Mail ponta a ponta</span>
-                      <ExternalLink className="w-3 h-3 text-zinc-500 group-hover:text-white transition-colors" />
-                    </div>
-                  </a>
-                </div>
-
-                {/* Box de Transição Suave para o Formulário B2B */}
-                <div className="p-4 sm:p-5 rounded-2xl bg-black/40 border border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                  <div className="space-y-1">
-                    <span className="text-xs font-mono text-white font-bold block">
-                      Prefere solicitar um orçamento detalhado?
-                    </span>
-                    <span className="text-[11px] text-zinc-400 font-light block">
-                      Acesse o formulário técnico com requisitos e receba uma análise de viabilidade técnica.
-                    </span>
+                <div>
+                  <div className="font-bold tracking-[0.15em] text-sm sm:text-base text-white uppercase">
+                    MATEUS CELESTINO PRO
                   </div>
-                  <button
-                    type="button"
-                    onClick={() => setViewMode('form')}
-                    className="glass-button-fired px-4 py-2 rounded-xl text-xs font-mono font-bold text-white whitespace-nowrap shadow-lg flex items-center gap-1.5 cursor-pointer shrink-0"
-                  >
-                    <span>Abrir Formulário B2B</span>
-                    <ExternalLink className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-
-                {/* Garantias & Escopo de Confiabilidade */}
-                <div className="flex flex-wrap items-center gap-3 pt-1 text-[11px] font-mono text-zinc-400">
-                  <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/5">
-                    <Shield className="w-3 h-3 text-[#ff073a]" />
-                    <span>Sigilo & NDA Garantidos</span>
-                  </div>
-                  <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/5">
-                    <Sparkles className="w-3 h-3 text-[#ff073a]" />
-                    <span>Atendimento Pessoal Direto</span>
-                  </div>
-                  <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/5">
-                    <Phone className="w-3 h-3 text-emerald-400" />
-                    <span>Brasil & Internacional</span>
+                  <div className="font-light tracking-widest text-[10px] sm:text-xs text-white/80 font-mono">
+                    (AUTOMATION & HIGH PERFORMANCE SERVICES) // INICIAR PROJETO
                   </div>
                 </div>
               </div>
-
-              {/* Painel Direito: O Card Inserido de Forma Suave Dentro do Layout */}
-              <div className="lg:col-span-6 flex items-center justify-center relative">
-                {/* Halo Suave de Luz Ambiente Carmesim ao Redor do Card */}
-                <div className="absolute -inset-6 bg-gradient-to-tr from-[#ff073a]/20 via-[#8a0012]/15 to-transparent blur-3xl rounded-full pointer-events-none" />
-                
-                {/* Enquadramento Suave que Aninha o Card ao Layout */}
-                <div className="relative w-full max-w-[420px] sm:max-w-[440px] flex items-center justify-center transition-transform duration-500 hover:scale-[1.01]">
-                  <PhotografyContactHub
-                    isEmbedded={true}
-                    whatsappUrl={whatsappLink}
-                    email={email}
-                    linkedinUrl={linkedinUrl}
-                    instagramUrl={instagramUrl}
-                  />
-                </div>
+              <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 border border-white/20 text-xs font-mono font-bold text-white shrink-0">
+                <span>QUERO AUTOMATIZAR TUDO</span>
+                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </div>
+            </a>
+          </div>
+
+          {/* 5. Rodapé Institucional com Selos de Garantia e Confiabilidade */}
+          <div className="relative z-10 pt-6 mt-4 border-t border-white/10 flex flex-wrap items-center justify-center sm:justify-between gap-3 text-[11px] font-mono text-zinc-400">
+            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/5">
+              <Shield className="w-3.5 h-3.5 text-[#ff073a]" />
+              <span>Sigilo & NDA Garantidos</span>
             </div>
-          ) : (
-            /* =========================================================================
-                MODO 2: FORMULÁRIO B2B DENTRO DO MESMO BOX SOBERANO
-                ========================================================================= */
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start flex-1 py-8 relative z-10">
-              
-              {/* Canais Oficiais em Cartões de Vidro */}
-              <div className="lg:col-span-5 space-y-4">
-                
-                {/* WhatsApp Card */}
-                <a
-                  href={whatsappLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="glass-crystal glass-interactive p-6 rounded-3xl flex items-start gap-4 block group"
-                >
-                  <div className="w-12 h-12 rounded-2xl glass-pill-red flex items-center justify-center text-[#ff073a] shadow-lg shrink-0">
-                    <MessageSquare className="w-6 h-6" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs font-mono text-[#ff073a] font-bold uppercase tracking-wider">WHATSAPP OFICIAL</span>
-                      <ExternalLink className="w-4 h-4 text-zinc-500 group-hover:text-white transition-colors" />
-                    </div>
-                    <h4 className="text-lg font-bold text-white mt-1 group-hover:text-[#ff073a] transition-all">
-                      +55 (31) 9772-4257
-                    </h4>
-                    <p className="mt-1 text-xs text-zinc-400 font-light leading-relaxed">
-                      Mensagem instantânea: &ldquo;QUERO AUTOMATIZAR TUDO.&rdquo; Atendimento rápido e prioritário.
-                    </p>
-                  </div>
-                </a>
-
-                {/* Email Proton Card */}
-                <a
-                  href={`mailto:${email}`}
-                  className="glass-crystal glass-interactive p-6 rounded-3xl flex items-start gap-4 block group"
-                >
-                  <div className="w-12 h-12 rounded-2xl glass-pill flex items-center justify-center text-zinc-300 group-hover:text-[#ff073a] shrink-0">
-                    <Mail className="w-6 h-6" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs font-mono text-zinc-400 font-bold uppercase tracking-wider">E-MAIL CORPORATIVO</span>
-                      <ExternalLink className="w-4 h-4 text-zinc-500 group-hover:text-white transition-colors" />
-                    </div>
-                    <h4 className="text-base font-bold text-white mt-1 group-hover:text-[#ff073a] transition-all break-all">
-                      {email}
-                    </h4>
-                    <p className="mt-1 text-xs text-zinc-400 font-light leading-relaxed">
-                      Comunicação criptografada de ponta a ponta via Proton Mail para contratos confidenciais.
-                    </p>
-                  </div>
-                </a>
-
-                {/* Tally Form Card */}
-                <a
-                  href={tallyForm}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="glass-crystal glass-interactive p-6 rounded-3xl flex items-start gap-4 block group"
-                >
-                  <div className="w-12 h-12 rounded-2xl glass-pill flex items-center justify-center text-zinc-300 group-hover:text-[#ff073a] shrink-0">
-                    <Shield className="w-6 h-6" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs font-mono text-zinc-400 font-bold uppercase tracking-wider">FORMULÁRIO OFICIAL TALLY</span>
-                      <ExternalLink className="w-4 h-4 text-zinc-500 group-hover:text-white transition-colors" />
-                    </div>
-                    <h4 className="text-base font-bold text-white mt-1 group-hover:text-[#ff073a] transition-all">
-                      Questionário de Diagnóstico
-                    </h4>
-                    <p className="mt-1 text-xs text-zinc-400 font-light leading-relaxed">
-                      Preencha o briefing detalhado do seu projeto e receba uma análise de viabilidade técnica.
-                    </p>
-                  </div>
-                </a>
-              </div>
-
-              {/* Formulário em Vidro Líquido */}
-              <div className="lg:col-span-7">
-                <div className="glass-crystal p-8 sm:p-9 rounded-3xl shadow-2xl relative">
-                  <h3 className="text-xl sm:text-2xl font-black text-white mb-2 tracking-tight">
-                    Envie Uma Proposta ou Dúvida
-                  </h3>
-                  <p className="text-xs font-mono text-zinc-400 mb-6">
-                    Preencha os campos abaixo para abrir um canal direto prioritário com Mateus Celestino.
-                  </p>
-
-                  {sent && (
-                    <div className="mb-6 p-4 rounded-2xl glass-pill-red text-white text-xs font-mono flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                      <span>Mensagem preparada e enviada com sucesso para o WhatsApp!</span>
-                    </div>
-                  )}
-
-                  <form onSubmit={handleSubmit} className="space-y-4">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      <div>
-                        <label className="block text-xs font-mono text-zinc-400 uppercase tracking-wider mb-2 font-bold">
-                          Seu Nome Completo
-                        </label>
-                        <input
-                          type="text"
-                          required
-                          placeholder="Ex: Mateus Silva"
-                          value={formData.nome}
-                          onChange={(e) => setFormData({ ...formData, nome: e.target.value })}
-                          className="w-full px-4 py-3 rounded-2xl glass-input text-white text-sm"
-                        />
-                      </div>
-
-                      <div>
-                        <label className="block text-xs font-mono text-zinc-400 uppercase tracking-wider mb-2 font-bold">
-                          Seu E-mail Profissional
-                        </label>
-                        <input
-                          type="email"
-                          required
-                          placeholder="Ex: contato@empresa.com"
-                          value={formData.email}
-                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          className="w-full px-4 py-3 rounded-2xl glass-input text-white text-sm"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      <div>
-                        <label className="block text-xs font-mono text-zinc-400 uppercase tracking-wider mb-2 font-bold">
-                          WhatsApp com DDD
-                        </label>
-                        <input
-                          type="tel"
-                          required
-                          placeholder="Ex: (31) 99999-9999"
-                          value={formData.whatsapp}
-                          onChange={(e) => setFormData({ ...formData, whatsapp: e.target.value })}
-                          className="w-full px-4 py-3 rounded-2xl glass-input text-white text-sm"
-                        />
-                      </div>
-
-                      <div>
-                        <label className="block text-xs font-mono text-zinc-400 uppercase tracking-wider mb-2 font-bold">
-                          Área de Interesse
-                        </label>
-                        <select
-                          value={formData.servico}
-                          onChange={(e) => setFormData({ ...formData, servico: e.target.value })}
-                          className="w-full px-4 py-3 rounded-2xl glass-input text-white text-sm bg-black/80"
-                        >
-                          <option value="Agentes de Atendimento WhatsApp">Agentes de Atendimento WhatsApp</option>
-                          <option value="Automação Empresarial n8n">Automação Empresarial n8n</option>
-                          <option value="Infraestrutura Linux & Docker">Infraestrutura Linux & Docker</option>
-                          <option value="Consultoria Estratégica Pro">Consultoria Estratégica Pro</option>
-                          <option value="Acesso aos Packs de Automação">Acesso aos Packs de Automação</option>
-                          <option value="Outro Projeto">Outro Projeto Customizado</option>
-                        </select>
-                      </div>
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-mono text-zinc-400 uppercase tracking-wider mb-2 font-bold">
-                        Descreva Brevemente o Seu Desafio ou Objetivo
-                      </label>
-                      <textarea
-                        rows={4}
-                        required
-                        placeholder="Conte sobre sua operação, processos que deseja automatizar ou dúvidas técnicas..."
-                        value={formData.mensagem}
-                        onChange={(e) => setFormData({ ...formData, mensagem: e.target.value })}
-                        className="w-full px-4 py-3 rounded-2xl glass-input text-white text-sm resize-none"
-                      />
-                    </div>
-
-                    <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
-                      <div className="flex items-center gap-2 text-[11px] font-mono text-zinc-400">
-                        <Shield className="w-3.5 h-3.5 text-[#ff073a]" />
-                        <span>Seus dados são confidenciais e nunca serão compartilhados.</span>
-                      </div>
-
-                      <button
-                        type="submit"
-                        disabled={submitting}
-                        className="glass-button-fired px-8 py-3.5 rounded-2xl text-xs font-mono font-bold text-white flex items-center justify-center gap-2.5 shadow-xl w-full sm:w-auto cursor-pointer"
-                      >
-                        <Send className="w-4 h-4" />
-                        <span>{submitting ? 'ENVIANDO...' : 'ENVIAR PARA WHATSAPP'}</span>
-                      </button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-
+            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/5">
+              <Sparkles className="w-3.5 h-3.5 text-[#ff073a]" />
+              <span>Atendimento Pessoal Direto</span>
             </div>
-          )}
+            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/5">
+              <Phone className="w-3.5 h-3.5 text-emerald-400" />
+              <span>Brasil & Internacional</span>
+            </div>
+          </div>
 
         </div>
       </div>

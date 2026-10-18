@@ -1970,10 +1970,6 @@ input, textarea, [contenteditable="true"] {
   animation: heroSubEntrance 1.4s 0.25s cubic-bezier(0.16, 1, 0.3, 1) backwards;
 }
 
-.manifesto-btn {
-  animation: heroBtnEntrance 1.4s 0.45s cubic-bezier(0.16, 1, 0.3, 1) backwards;
-}
-
 @keyframes heroTitleEntrance {
   0% {
     opacity: 0;
@@ -1997,17 +1993,6 @@ input, textarea, [contenteditable="true"] {
     opacity: 1;
     transform: translateY(0);
     letter-spacing: 8px;
-  }
-}
-
-@keyframes heroBtnEntrance {
-  0% {
-    opacity: 0;
-    transform: translateY(24px) scale(0.92);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
   }
 }
 
@@ -2067,34 +2052,6 @@ input, textarea, [contenteditable="true"] {
   font-size: 0.875rem;
   line-height: 1.6;
   padding: 0 16px;
-}
-
-.manifesto-btn {
-  padding: 14px 36px;
-  border-radius: 9999px;
-  color: #ffffff;
-  font-size: 0.95rem;
-  font-weight: 600;
-  cursor: pointer;
-  touch-action: manipulation;
-  background: rgba(255, 255, 255, 0.08) !important;
-  backdrop-filter: blur(28px) saturate(200%) !important;
-  -webkit-backdrop-filter: blur(28px) saturate(200%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.22) !important;
-  box-shadow: inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.4), 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 24px rgba(168, 85, 247, 0.15) !important;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.manifesto-btn:hover {
-  background: rgba(255, 255, 255, 0.14) !important;
-  border-color: rgba(255, 255, 255, 0.35) !important;
-  transform: translateY(-2px);
-  box-shadow: inset 0 1px 2px 0 rgba(255, 255, 255, 0.5), 0 20px 44px rgba(0, 0, 0, 0.7), 0 0 32px rgba(168, 85, 247, 0.25) !important;
-}
-
-.manifesto-btn:active {
-  transform: scale(0.96) !important;
-  background: rgba(255, 255, 255, 0.2) !important;
 }
 
 /* Social Footer */
@@ -3092,10 +3049,6 @@ input, textarea, [contenteditable="true"] {
                 <div class="search-shortcut">⌘K</div>
             </div>
             <div class="header-actions">
-                <a id="btn-apk-download" href="/biblioteca/galadriel-mobile.apk" class="header-btn" title="Baixar Free Resources Mobile (APK Android)" download="galadriel-mobile.apk" style="display: inline-flex; align-items: center; gap: 7px; text-decoration: none; padding: 0 14px; height: 38px; font-size: 0.8rem; font-family: var(--font-mono); letter-spacing: 0.5px; border: 1px solid var(--liquid-glass-border); border-radius: 9999px; background: var(--liquid-glass-bg); color: var(--divine-bright); backdrop-filter: var(--liquid-glass-blur); -webkit-backdrop-filter: var(--liquid-glass-blur); transition: all 0.25s var(--ease-out);">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                    <span>Baixar APK</span>
-                </a>
                 <button id="btn-expand-all" class="header-btn" title="Expandir tudo">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
                 </button>
@@ -3145,16 +3098,9 @@ input, textarea, [contenteditable="true"] {
                             FREE RESOURCES
                             <span class="hero-center-subtitle" style="display: block; font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 8px; text-transform: uppercase; color: var(--divine-muted); margin-top: 18px;">KNOWLEDGE VAULT & RECURSOS LIVRES</span>
                         </h1>
-                        <p style="max-width: 620px; margin: 0 auto 28px; font-size: 1rem; color: rgba(255, 255, 255, 0.65); line-height: 1.6; font-family: 'Outfit', sans-serif;">
+                        <p style="max-width: 620px; margin: 0 auto; font-size: 1rem; color: rgba(255, 255, 255, 0.65); line-height: 1.6; font-family: 'Outfit', sans-serif;">
                             Repositório aberto com automações avançadas, modelos cognitivos, packs e blueprints selecionados para a nova era da IA.
                         </p>
-                        <div style="display: flex; gap: 14px; justify-content: center; align-items: center; flex-wrap: wrap;">
-                            <button class="manifesto-btn liquid-glass" id="manifesto-btn" style="margin: 0;">Acessar Recursos</button>
-                            <a href="/biblioteca/galadriel-mobile.apk" download="galadriel-mobile.apk" class="manifesto-btn liquid-glass" style="margin: 0; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                                <span>Download APK Android</span>
-                            </a>
-                        </div>
                     </div>
                 </div>
                 <!-- Smooth Cinematic Hero Bottom Fade -->
@@ -4232,14 +4178,6 @@ input, textarea, [contenteditable="true"] {
     document.getElementById('btn-collapse-all').addEventListener('click', () => {
       navigateTo([]);
     });
-
-    // Custom Interactive Events for Cinematic Hero
-    const manifestoBtn = document.getElementById('manifesto-btn');
-    if (manifestoBtn) {
-      manifestoBtn.addEventListener('click', () => {
-        document.getElementById('library-modules-section').scrollIntoView({ behavior: 'smooth' });
-      });
-    }
 
     // Logout via Header Button
     const logoutBtn = document.getElementById('btn-logout');
@@ -5411,7 +5349,7 @@ input, textarea, [contenteditable="true"] {
         if (!window.AndroidBridge) return;
 
         // Feedback pesado para confirmações e logins
-        const heavyTarget = e.target.closest('.login-btn, .manifesto-btn, .zip-btn, #login-btn');
+        const heavyTarget = e.target.closest('.login-btn, .zip-btn, #login-btn');
         if (heavyTarget) {
           if (typeof window.AndroidBridge.triggerHapticType === 'function') {
             window.AndroidBridge.triggerHapticType('heavy');

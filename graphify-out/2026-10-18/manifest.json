@@ -13668,9 +13668,9 @@
     "semantic_hash": ""
   },
   "src/components/portal/ContatoSection.tsx": {
-    "mtime": 1792334486.354195,
-    "seen": 1792334502.343335,
-    "ast_hash": "b2aa4160ac2118c0d25c10c67ca3c851",
+    "mtime": 1792335423.5064955,
+    "seen": 1792335503.964812,
+    "ast_hash": "b8473cfd468f8a3df37f861253ef93cd",
     "semantic_hash": ""
   },
   "src/components/portal/LegalModal.tsx": {
@@ -13692,9 +13692,9 @@
     "semantic_hash": ""
   },
   "src/components/portal/SobreSection.tsx": {
-    "mtime": 1792289740.7420425,
-    "seen": 1792289752.749799,
-    "ast_hash": "9f2deb2e5789352a95567ccf12d0e62b",
+    "mtime": 1792335132.5544517,
+    "seen": 1792335503.965038,
+    "ast_hash": "63e62fc65771a84534ec956ec9e923c0",
     "semantic_hash": ""
   },
   "public/comunidade/music.mp3": {
@@ -15654,9 +15654,9 @@
     "semantic_hash": ""
   },
   "src/components/portal/PhotografyContactHub.tsx": {
-    "mtime": 1792334456.897763,
-    "seen": 1792334502.347914,
-    "ast_hash": "62e1ded5cbd94f25a3f57533129c309a",
+    "mtime": 1792335250.599384,
+    "seen": 1792335503.964993,
+    "ast_hash": "22dde8ca820456df7888db5f8597a231",
     "semantic_hash": ""
   },
   "src/app/contato/page.tsx": {

@@ -1,16 +1,16 @@
 # Graph Report - plataforma-unificada-soberana  (2026-10-18)
 
 ## Corpus Check
-- 226 files · ~8,520,860 words
+- 226 files · ~8,520,883 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1928 nodes · 3661 edges · 153 communities (102 shown, 39 thin omitted)
-- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 75 edges (avg confidence: 0.85)
+- 1928 nodes · 3660 edges · 155 communities (100 shown, 43 thin omitted)
+- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 73 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `e07dcc4e`
+- Built from commit: `c99cfda3`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -77,12 +77,12 @@
 - Relatório de Handoff — WebGL & Shaders Specialist (agent-shaders)
 - devDependencies
 - Relatório de Handoff — Members Area & Community Engineer (agent-members)
-- GlassCard.tsx
+- Button.tsx
 - Relatório de Handoff — Lead Frontend & Glassmorphism Architect (agent-foundations)
 - scripts
 - library.test.mjs
 - admin/page.tsx
-- GridScanShader.tsx
+- OriginalHeader.tsx
 - Relatório de Handoff — Database Architect & Drizzle Master (agent-database)
 - auth.ts
 - cn
@@ -90,7 +90,7 @@
 - Relatório de Handoff — Growth Engineer & Portal Institucional Specialist (agent-marketing)
 - auth_feedback_comunidade.test.mjs
 - articles/route.ts
-- shaders.test.ts
+- shaders/index.ts
 - tn
 - pt
 - adversarial.test.ts
@@ -108,13 +108,13 @@
 - ar
 - next
 - .z
-- ResourceCard.tsx
-- .intersectMeshes
+- Badge.tsx
+- .computeFrenetFrames
 - library-manager.ts
 - ks
 - le
 - V
-- shaders/index.ts
+- ShopSection.tsx
 - script.js
 - vercel.json
 - MCP Business OS — Plataforma Unificada Soberana
@@ -124,7 +124,7 @@
 - me/route.ts
 - l
 - K
-- LineWavesShader.tsx
+- .copy
 - W
 - drizzle-kit
 - .x
@@ -142,25 +142,27 @@
 - 3. Acervos de Dados Embutidos & Ativos Intelectuais
 - As
 - send-email/route.ts
-- .copy
-- CatalogGrid.tsx
+- .sub
+- .getRenderList
 - Beams.tsx
-- three
+- webgl-utils.ts
 - ke
 - vt
 - gr
-- SearchHeader.tsx
+- Galaxy
 - .constructor
 - Estabilidade Visual & Resolução de GPU Scroll — Incidente INC-2026-10-17-SCROLL
 - 🔬 Diagnóstico e Investigação das Causas Raízes
-- .copy
+- initSingularity
 - on
 - un
+- .multiply
+- De
 
 ## God Nodes (most connected - your core abstractions)
 1. `_` - 208 edges
 2. `react` - 68 edges
-3. `lucide-react` - 44 edges
+3. `lucide-react` - 45 edges
 4. `requestAnimationFrame()` - 39 edges
 5. `instantiateShader()` - 35 edges
 6. `U` - 35 edges
@@ -174,17 +176,17 @@
   tests/portal_marketing.test.ts → src/app/api/leads/route.ts
 - `runTests()` --calls--> `GET()`  [EXTRACTED]
   tests/portal_marketing.test.ts → src/app/api/leads/route.ts
-- `SearchHeader()` --calls--> `cn()`  [EXTRACTED]
-  src/components/library/SearchHeader.tsx → src/lib/utils.ts
-- `ShaderSelector()` --calls--> `isWebGLSupported`  [EXTRACTED]
-  src/components/shaders/ShaderSelector.tsx → src/lib/shaders/webgl-utils.ts
+- `CommunityFeed()` --calls--> `cn()`  [EXTRACTED]
+  src/components/comunidade/CommunityFeed.tsx → src/lib/utils.ts
 - `AdminPanelPage()` --calls--> `cn()`  [EXTRACTED]
   src/app/admin/page.tsx → src/lib/utils.ts
+- `verifyServerSession()` --calls--> `setStoredUser()`  [EXTRACTED]
+  src/app/admin/page.tsx → src/lib/auth/unified-auth.ts
 
 ## Import Cycles
 - None detected.
 
-## Communities (153 total, 39 thin omitted)
+## Communities (155 total, 43 thin omitted)
 
 ### Community 0 - "Relatório de Survey Técnico — Explorer 2"
 Cohesion: 0.08
@@ -311,12 +313,12 @@ Cohesion: 0.07
 Nodes (91): applyBgSettingsUI(), clearAuthAlert(), convertToEmbedUrl(), _deprecatedAdminViewLegacy(), embedLessonMetadata(), escapeHtml(), escapeJs(), extractLessonMetadata() (+83 more)
 
 ### Community 48 - "it"
-Cohesion: 0.16
+Cohesion: 0.17
 Nodes (3): Ds(), it, St
 
 ### Community 49 - "react"
-Cohesion: 0.11
-Nodes (18): lucide-react, react, metadata, metadata, LibraryControlSuite(), Footer(), AlternatingHeroBanner(), AlternatingHeroBannerProps (+10 more)
+Cohesion: 0.12
+Nodes (13): lucide-react, react, metadata, metadata, LibraryControlSuite(), Footer(), ContatoSection(), ContatoSectionProps (+5 more)
 
 ### Community 50 - "BRIEFING — 2026-10-14T15:40:00Z"
 Cohesion: 0.18
@@ -347,8 +349,8 @@ Cohesion: 0.23
 Nodes (14): DEFAULT_CONFIG, dynamic, GET(), normalizeShopResourcesConfig(), POST(), dynamic, GET(), GET() (+6 more)
 
 ### Community 59 - "ShaderBackground.tsx"
-Cohesion: 0.20
-Nodes (17): ogl, AdminRedShader(), AdminRedShaderProps, BalatroShader(), BalatroShaderProps, FaultyTerminalShader(), FaultyTerminalShaderProps, LightningShader() (+9 more)
+Cohesion: 0.13
+Nodes (26): ogl, AdminRedShader(), AdminRedShaderProps, CinematicCanvas(), resolveEffectiveStep(), FaultyTerminalShader(), FaultyTerminalShaderProps, LightningShader() (+18 more)
 
 ### Community 60 - "Relatório de Handoff — WebGL & Shaders Specialist (agent-shaders)"
 Cohesion: 0.29
@@ -362,9 +364,9 @@ Nodes (13): devDependencies, drizzle-kit, postcss, tailwindcss, @tailwindcss/pos
 Cohesion: 0.29
 Nodes (6): 1. Observation (Observações Diretas), 2. Logic Chain (Cadeia de Raciocínio), 3. Caveats (Ressalvas e Limitações), 4. Conclusion (Conclusão), 5. Verification Method (Método de Verificação), Relatório de Handoff — Members Area & Community Engineer (agent-members)
 
-### Community 63 - "GlassCard.tsx"
-Cohesion: 0.09
-Nodes (17): Section, SECTIONS, TERM_SECTIONS, TermSection, FormData, SERVICES_LIST, ArticleItem, HeroSectionProps (+9 more)
+### Community 63 - "Button.tsx"
+Cohesion: 0.13
+Nodes (10): TERM_SECTIONS, TermSection, FormData, SERVICES_LIST, ArticleItem, CapturedUTMs, Button, ButtonProps (+2 more)
 
 ### Community 64 - "Relatório de Handoff — Lead Frontend & Glassmorphism Architect (agent-foundations)"
 Cohesion: 0.29
@@ -379,12 +381,12 @@ Cohesion: 0.29
 Nodes (4): PROJECT_ROOT, PUBLIC_CATALOG_PATH, SOURCE_DIR, SRC_CATALOG_PATH
 
 ### Community 67 - "admin/page.tsx"
-Cohesion: 0.14
-Nodes (22): AdminPanelPage(), verifyServerSession(), ArticleItem, LeadItem, MemberItem, ShopHeroConfig, ShopProductConfig, ShopServiceConfig (+14 more)
+Cohesion: 0.12
+Nodes (24): AdminPanelPage(), verifyServerSession(), ArticleItem, LeadItem, MemberItem, ShopHeroConfig, ShopProductConfig, ShopServiceConfig (+16 more)
 
-### Community 68 - "GridScanShader.tsx"
-Cohesion: 0.15
-Nodes (15): AlternatingHeroShaders(), OriginalHeader(), OriginalHeaderProps, ProfileData, InstagramIcon(), LinkedinIcon(), SobreSection(), SobreSectionProps (+7 more)
+### Community 68 - "OriginalHeader.tsx"
+Cohesion: 0.28
+Nodes (6): AlternatingHeroShaders(), OriginalHeader(), OriginalHeaderProps, ProfileData, UniversalSitemapModal(), UniversalSitemapModalProps
 
 ### Community 69 - "Relatório de Handoff — Database Architect & Drizzle Master (agent-database)"
 Cohesion: 0.29
@@ -395,8 +397,8 @@ Cohesion: 0.26
 Nodes (15): POST(), POST(), authenticateAdmin(), authenticateMember(), hashPassword(), verifyPassword(), getJwtSecret(), SessionPayload (+7 more)
 
 ### Community 71 - "cn"
-Cohesion: 0.15
-Nodes (19): MEDIA_CATALOG, MediaItem, MidiasPage(), CheckoutModal(), CommunityFeed(), CommunityPost, INITIAL_POSTS, PostComment (+11 more)
+Cohesion: 0.10
+Nodes (25): MEDIA_CATALOG, MediaItem, MidiasPage(), CheckoutModal(), MemberCard(), MemberCardProps, MemberProfile, VideoPlayer() (+17 more)
 
 ### Community 72 - "[slug]/page.tsx"
 Cohesion: 0.25
@@ -410,17 +412,17 @@ Nodes (6): 1. Observation (Observações Diretas), 2. Logic Chain (Cadeia Lógic
 Cohesion: 0.16
 Nodes (21): dynamic, GET(), dynamic, GET(), POST(), PUT(), slugify(), generateMetadata() (+13 more)
 
-### Community 76 - "shaders.test.ts"
-Cohesion: 0.22
-Nodes (12): CinematicCanvas(), ColorBends, Galaxy, resolveEffectiveStep(), ShaderMode, ColorBends(), Galaxy(), GalaxyProps (+4 more)
+### Community 76 - "shaders/index.ts"
+Cohesion: 0.24
+Nodes (9): CinematicCanvasProps, CinematicShaderMode, ColorBends, Galaxy, GridScanShader, ShaderMode, ColorBendsProps, GalaxyProps (+1 more)
 
 ### Community 77 - "tn"
 Cohesion: 0.15
 Nodes (6): fr(), A(), E(), m(), ns(), tn
 
 ### Community 78 - "pt"
-Cohesion: 0.11
-Nodes (7): bi(), _i(), pt, Se(), Si(), Ti(), vi()
+Cohesion: 0.10
+Nodes (8): bi(), _i(), pt, Se(), Si(), Ti(), vi(), zi()
 
 ### Community 79 - "adversarial.test.ts"
 Cohesion: 0.23
@@ -431,8 +433,8 @@ Cohesion: 0.09
 Nodes (24): author, dependencies, html-minifier, sharp, description, engines, node, name (+16 more)
 
 ### Community 81 - "sr"
-Cohesion: 0.16
-Nodes (10): v(), nn(), sr(), C(), et(), j(), L(), N() (+2 more)
+Cohesion: 0.19
+Nodes (9): v(), sr(), C(), et(), j(), L(), N(), tt() (+1 more)
 
 ### Community 82 - "community-shaders.js"
 Cohesion: 0.07
@@ -440,39 +442,39 @@ Nodes (60): buildStrandsPalette(), easePower2InOut(), getOptimizedDPR(), hexToRg
 
 ### Community 84 - "_"
 Cohesion: 0.03
-Nodes (47): _, ae(), at, bs(), ce(), De(), dt, Ei (+39 more)
+Nodes (47): _, ae(), at, bs(), ce(), dt, Ei, Et (+39 more)
 
 ### Community 89 - "🚀 Guia Oficial de Deploy na Vercel & Auditoria de Segurança — A.I VISUALS"
 Cohesion: 0.20
 Nodes (9): 📧 Autenticação e Domínio Próprio no Resend, 🌐 Configuração Global do Resend MCP (Antigravity), 🚀 Guia Oficial de Deploy na Vercel & Auditoria de Segurança — A.I VISUALS, Passo 1: Enviar o Código para o GitHub, Passo 2: Importar o Projeto na Vercel, Passo 3: Configurar Variáveis de Ambiente (Environment Variables), Passo 4: Concluir o Deploy, 📋 Passo a Passo para Deploy na Vercel (+1 more)
 
 ### Community 90 - "app/page.tsx"
-Cohesion: 0.19
-Nodes (10): ArticleData, ArticleModal(), ArticleModalProps, LegalModal(), LegalModalProps, CategoryItem, MainNotionLayout(), MainNotionLayoutProps (+2 more)
+Cohesion: 0.16
+Nodes (12): ArticleData, ArticleModal(), ArticleModalProps, LegalModal(), LegalModalProps, CategoryItem, MainNotionLayout(), MainNotionLayoutProps (+4 more)
 
 ### Community 92 - "U"
-Cohesion: 0.04
-Nodes (19): ai(), ci(), di(), _e(), gi(), hi(), ii(), li() (+11 more)
+Cohesion: 0.05
+Nodes (17): ai(), ci(), di(), gi(), hi(), ii(), li(), mi() (+9 more)
 
 ### Community 95 - "ar"
-Cohesion: 0.08
-Nodes (7): ar, dr(), kt(), mr, pr(), Ut(), yr
+Cohesion: 0.09
+Nodes (5): ar, kt(), mr, Ut(), yr
 
 ### Community 96 - "next"
 Cohesion: 0.22
 Nodes (4): nextConfig, next, metadata, metadata
 
 ### Community 97 - ".z"
-Cohesion: 0.07
-Nodes (5): Gs(), Hs(), qs(), Xs(), Ys()
+Cohesion: 0.08
+Nodes (4): Gs(), Hs(), qs(), Xs()
 
-### Community 98 - "ResourceCard.tsx"
-Cohesion: 0.29
-Nodes (5): ResourceCardProps, ResourceDetailViewerProps, LibraryCategoryGroup, LibraryItem, LibraryResponse
+### Community 98 - "Badge.tsx"
+Cohesion: 0.11
+Nodes (18): Section, SECTIONS, CommunityFeed(), CommunityPost, INITIAL_POSTS, PostComment, ResourceCardProps, ResourceDetailViewerProps (+10 more)
 
-### Community 100 - ".intersectMeshes"
-Cohesion: 0.18
-Nodes (3): cr, Ee(), ki()
+### Community 100 - ".computeFrenetFrames"
+Cohesion: 0.14
+Nodes (5): cr, dr(), Ee(), ki(), pr()
 
 ### Community 101 - "library-manager.ts"
 Cohesion: 0.10
@@ -482,9 +484,9 @@ Nodes (43): dynamic, POST(), dynamic, POST(), dynamic, POST(), DELETE(), dynamic
 Cohesion: 0.10
 Nodes (5): bt(), le(), Tt(), wi(), zs
 
-### Community 105 - "shaders/index.ts"
-Cohesion: 0.16
-Nodes (12): CinematicCanvasProps, CinematicShaderMode, ColorBendsProps, LiquidChromeShaderProps, ShaderBackgroundMode, ShaderBackgroundProps, COLOR_PRESETS, SHADER_OPTIONS (+4 more)
+### Community 105 - "ShopSection.tsx"
+Cohesion: 0.13
+Nodes (13): LiquidGlassBackground(), ShopData, ShopFeature, ShopHero, ShopProductItem, ShopSection(), ShopSectionProps, ShopServiceItem (+5 more)
 
 ### Community 106 - "script.js"
 Cohesion: 0.15
@@ -499,28 +501,32 @@ Cohesion: 0.24
 Nodes (4): Ie(), Ne(), or, zt
 
 ### Community 112 - "q"
-Cohesion: 0.23
-Nodes (4): p(), q, ze, zi()
+Cohesion: 0.29
+Nodes (3): p(), q, ze
 
 ### Community 116 - "me/route.ts"
 Cohesion: 0.23
 Nodes (13): drizzle-orm, DELETE(), GET(), dynamic, GET(), verifyToken(), destroySession(), getSession() (+5 more)
 
 ### Community 117 - "l"
-Cohesion: 0.19
-Nodes (7): be(), gt, rn, l(), zr, h(), l()
+Cohesion: 0.21
+Nodes (7): be(), gt, nn(), rn, l(), h(), l()
 
 ### Community 118 - "K"
-Cohesion: 0.15
-Nodes (4): br, K, kr, nr
+Cohesion: 0.22
+Nodes (3): br, K, kr
 
-### Community 119 - "LineWavesShader.tsx"
-Cohesion: 0.21
-Nodes (7): ContatoSection(), ContatoSectionProps, backgroundImages, PhotografyContactHub(), PhotografyContactHubProps, LineWavesShader(), LineWavesShaderProps
+### Community 119 - ".copy"
+Cohesion: 0.18
+Nodes (3): he(), Ot, ye()
 
 ### Community 120 - "W"
-Cohesion: 0.10
-Nodes (6): Fs(), is, pn, rr, W, xn
+Cohesion: 0.15
+Nodes (4): Fs(), pn, W, xn
+
+### Community 124 - ".update"
+Cohesion: 0.16
+Nodes (4): cs, is, rr, Ys()
 
 ### Community 127 - "visual_stability.test.mjs"
 Cohesion: 0.38
@@ -558,33 +564,21 @@ Nodes (5): As(), ct(), fi(), ve, Vr()
 Cohesion: 0.50
 Nodes (3): dynamic, escapeHtml(), POST()
 
-### Community 139 - ".copy"
-Cohesion: 0.14
-Nodes (5): er, he(), Lt, Ot, ur()
-
-### Community 140 - "CatalogGrid.tsx"
-Cohesion: 0.25
-Nodes (8): CatalogGrid(), CatalogGridProps, getExtensionBadge(), DownloadButton(), DownloadButtonProps, ResourceViewer(), ResourceViewerProps, LibraryResource
-
 ### Community 141 - "Beams.tsx"
 Cohesion: 0.25
 Nodes (9): Beams(), BeamsProps, createStackedPlanesBufferGeometry(), degToRad(), extendMaterial(), hexToNormalizedRGB(), MergedPlanes, MergedPlanesProps (+1 more)
 
-### Community 142 - "three"
-Cohesion: 0.25
-Nodes (3): initGalaxy(), initSingularity(), three
+### Community 142 - "webgl-utils.ts"
+Cohesion: 0.32
+Nodes (9): initGalaxy(), three, ColorBends(), GridScanShader(), isWebGLAvailable(), safeDisposeMesh(), safeDisposeRenderer(), smoothDampVec2() (+1 more)
 
 ### Community 143 - "ke"
-Cohesion: 0.24
-Nodes (3): ke, we(), ye()
+Cohesion: 0.21
+Nodes (3): er, ke, we()
 
 ### Community 144 - "vt"
 Cohesion: 0.33
 Nodes (3): Es(), Ms(), vt()
-
-### Community 146 - "SearchHeader.tsx"
-Cohesion: 0.50
-Nodes (4): CATEGORY_ITEMS, SearchHeader(), SearchHeaderProps, QuickCategory
 
 ### Community 148 - "Estabilidade Visual & Resolução de GPU Scroll — Incidente INC-2026-10-17-SCROLL"
 Cohesion: 0.22
@@ -596,15 +590,15 @@ Nodes (8): 1. Causa Raiz Primária: `content-visibility: auto` com `contain-intr
 
 ## Knowledge Gaps
 - **613 isolated node(s):** `nextConfig`, `name`, `version`, `private`, `description` (+608 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 868 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **39 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 870 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **43 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `_` connect `_` to `As`, `.copy`, `ke`, `vt`, `gr`, `.constructor`, `.copy`, `on`, `un`, `it`, `tn`, `pt`, `sr`, `community-shaders.js`, `U`, `ar`, `.z`, `.intersectMeshes`, `ks`, `le`, `V`, `zt`, `q`, `en`, `l`, `K`, `W`, `.x`, `.update`, `.addAttribute`?**
+- **Why does `_` connect `_` to `As`, `.sub`, `.getRenderList`, `ke`, `vt`, `gr`, `.constructor`, `on`, `un`, `.multiply`, `De`, `it`, `tn`, `pt`, `sr`, `community-shaders.js`, `U`, `ar`, `.z`, `.computeFrenetFrames`, `ks`, `le`, `V`, `zt`, `q`, `en`, `l`, `K`, `.copy`, `W`, `.x`, `.update`, `.addAttribute`?**
   _High betweenness centrality (0.270) - this node is a cross-community bridge._
-- **Why does `cn()` connect `cn` to `ResourceCard.tsx`, `admin/page.tsx`, `CatalogGrid.tsx`, `react`, `SearchHeader.tsx`, `on`, `GlassCard.tsx`?**
+- **Why does `cn()` connect `cn` to `Badge.tsx`, `admin/page.tsx`, `react`, `on`, `Button.tsx`?**
   _High betweenness centrality (0.200) - this node is a cross-community bridge._
 - **Why does `on` connect `on` to `W`, `_`?**
   _High betweenness centrality (0.200) - this node is a cross-community bridge._

@@ -356,7 +356,6 @@ def generate_html(tree):
                             GALADRIEL
                             <span class="hero-center-subtitle" style="display: block; font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 8px; text-transform: uppercase; color: var(--divine-muted); margin-top: 20px;">PERSONAL LIBRARY</span>
                         </h1>
-                        <button class="manifesto-btn liquid-glass" id="manifesto-btn" style="margin-top: 24px;">Acessar Biblioteca</button>
                     </div>
                 </div>
                 <!-- Smooth Cinematic Hero Bottom Fade -->
