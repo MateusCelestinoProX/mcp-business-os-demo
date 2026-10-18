@@ -3,6 +3,7 @@ import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { PortalNavbar } from "@/components/portal/PortalNavbar";
 import { Footer } from "@/components/layout/Footer";
+import { MobileBottomNav } from "@/components/layout/MobileBottomNav";
 import LiquidGlassBackground from "@/components/portal/LiquidGlassBackground";
 
 export const metadata: Metadata = {
@@ -41,15 +42,17 @@ export default function RootLayout({
         {/* Fundo Global: Piscina de Energia Vermelha Massiva e Escurricredia */}
         <LiquidGlassBackground />
 
-
         {/* Barra de Navegação Soberana Superior */}
         <Navbar />
 
         {/* Sub-Header de Navegação do Sistema Universal */}
         <PortalNavbar />
 
-        {/* Conteúdo Principal com espaço para as duas barras fixas */}
-        <main className="flex-1 pt-32 relative z-10 flex flex-col">{children}</main>
+        {/* Conteúdo Principal com espaço para as duas barras fixas e margem inferior no mobile */}
+        <main className="flex-1 pt-32 pb-20 md:pb-0 relative z-10 flex flex-col">{children}</main>
+
+        {/* Barra de Navegação Móvel Flutuante Soberana */}
+        <MobileBottomNav />
 
         {/* Rodapé Oficial da Plataforma */}
         <Footer />

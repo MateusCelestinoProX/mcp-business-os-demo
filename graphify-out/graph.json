@@ -69,19 +69,6 @@
       "source_location": "L7"
     },
     {
-      "id": "public_comunidade_js_ogl_ji",
-      "label": "ji()",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 104,
-      "community_name": "V",
-      "file_type": "code",
-      "norm_label": "ji()",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L13"
-    },
-    {
       "id": "public_comunidade_js_ogl_v",
       "label": "V",
       "_callable": true,
@@ -95,6 +82,19 @@
       "source_location": "L13"
     },
     {
+      "id": "src_components_layout_mobilebottomnav_mobilenavitem",
+      "label": "MobileNavItem",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 105,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "mobilenavitem",
+      "source_file": "src/components/layout/MobileBottomNav.tsx",
+      "source_location": "L16"
+    },
+    {
       "id": "src_components_portal_alternatingherobanner_alternatingherobannerprops",
       "label": "AlternatingHeroBannerProps",
       "_callable": true,
@@ -106,6 +106,19 @@
       "norm_label": "alternatingherobannerprops",
       "source_file": "src/components/portal/AlternatingHeroBanner.tsx",
       "source_location": "L6"
+    },
+    {
+      "id": "src_components_portal_photografycontacthub_photografycontacthubprops",
+      "label": "PhotografyContactHubProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 105,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "photografycontacthubprops",
+      "source_file": "src/components/portal/PhotografyContactHub.tsx",
+      "source_location": "L19"
     },
     {
       "id": "src_components_portal_portalnavbar_portalnavbarprops",
@@ -303,17 +316,17 @@
       "source_location": "L13"
     },
     {
-      "id": "public_comunidade_js_ogl_rn",
-      "label": "rn",
+      "id": "public_comunidade_js_ogl_zr",
+      "label": "zr",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 117,
       "community_name": "l",
       "file_type": "code",
-      "norm_label": "rn",
+      "norm_label": "zr",
       "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L198"
+      "source_location": "L59"
     },
     {
       "id": "public_comunidade_js_ogl_br",
@@ -355,28 +368,41 @@
       "source_location": "L176"
     },
     {
-      "id": "public_comunidade_js_ogl_lt",
-      "label": "Lt",
+      "id": "public_comunidade_js_ogl_nr",
+      "label": "nr",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 119,
-      "community_name": ".copy",
+      "community": 118,
+      "community_name": "K",
       "file_type": "code",
-      "norm_label": "lt",
+      "norm_label": "nr",
       "source_file": "public/comunidade/js/ogl.js",
       "source_location": "L13"
     },
     {
-      "id": "public_comunidade_js_ogl_ot",
-      "label": "Ot",
+      "id": "public_comunidade_js_ogl_pt",
+      "label": "pt",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 119,
-      "community_name": ".copy",
+      "community_name": "pt",
       "file_type": "code",
-      "norm_label": "ot",
+      "norm_label": "pt",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L13"
+    },
+    {
+      "id": "public_comunidade_js_ogl_tr",
+      "label": "tr",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 120,
+      "community_name": "sr",
+      "file_type": "code",
+      "norm_label": "tr",
       "source_file": "public/comunidade/js/ogl.js",
       "source_location": "L13"
     },
@@ -407,32 +433,6 @@
       "source_location": "L198"
     },
     {
-      "id": "public_comunidade_js_ogl_is",
-      "label": "is",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 124,
-      "community_name": ".update",
-      "file_type": "code",
-      "norm_label": "is",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L32"
-    },
-    {
-      "id": "public_comunidade_js_ogl_rr",
-      "label": "rr",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 124,
-      "community_name": ".update",
-      "file_type": "code",
-      "norm_label": "rr",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L13"
-    },
-    {
       "id": "public_comunidade_js_ogl_r",
       "label": "_r",
       "_callable": true,
@@ -446,17 +446,69 @@
       "source_location": "L13"
     },
     {
-      "id": "src_components_portal_photografycontacthub_photografycontacthubprops",
-      "label": "PhotografyContactHubProps",
+      "id": "src_components_library_resourcecard_resourcecardprops",
+      "label": "ResourceCardProps",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 137,
-      "community_name": "PhotografyContactHub.tsx",
+      "community_name": "ResourceCard.tsx",
       "file_type": "code",
-      "norm_label": "photografycontacthubprops",
-      "source_file": "src/components/portal/PhotografyContactHub.tsx",
-      "source_location": "L19"
+      "norm_label": "resourcecardprops",
+      "source_file": "src/components/library/ResourceCard.tsx",
+      "source_location": "L25"
+    },
+    {
+      "id": "src_components_library_resourcedetailviewer_resourcedetailviewerprops",
+      "label": "ResourceDetailViewerProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 137,
+      "community_name": "ResourceCard.tsx",
+      "file_type": "code",
+      "norm_label": "resourcedetailviewerprops",
+      "source_file": "src/components/library/ResourceDetailViewer.tsx",
+      "source_location": "L24"
+    },
+    {
+      "id": "src_types_library_librarycategorygroup",
+      "label": "LibraryCategoryGroup",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 137,
+      "community_name": "ResourceCard.tsx",
+      "file_type": "code",
+      "norm_label": "librarycategorygroup",
+      "source_file": "src/types/library.ts",
+      "source_location": "L17"
+    },
+    {
+      "id": "src_types_library_libraryitem",
+      "label": "LibraryItem",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 137,
+      "community_name": "ResourceCard.tsx",
+      "file_type": "code",
+      "norm_label": "libraryitem",
+      "source_file": "src/types/library.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_types_library_libraryresponse",
+      "label": "LibraryResponse",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 137,
+      "community_name": "ResourceCard.tsx",
+      "file_type": "code",
+      "norm_label": "libraryresponse",
+      "source_file": "src/types/library.ts",
+      "source_location": "L22"
     },
     {
       "id": "src_components_library_searchheader_searchheaderprops",
@@ -483,32 +535,6 @@
       "norm_label": "quickcategory",
       "source_file": "src/lib/library/catalog.ts",
       "source_location": "L18"
-    },
-    {
-      "id": "public_comunidade_js_ogl_nr",
-      "label": "nr",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 140,
-      "community_name": ".getRenderList",
-      "file_type": "code",
-      "norm_label": "nr",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L13"
-    },
-    {
-      "id": "public_comunidade_js_ogl_zr",
-      "label": "zr",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 140,
-      "community_name": ".getRenderList",
-      "file_type": "code",
-      "norm_label": "zr",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L59"
     },
     {
       "id": "src_components_shaders_beams_beamsprops",
@@ -602,6 +628,19 @@
       "source_location": "L13"
     },
     {
+      "id": "public_comunidade_js_ogl_ji",
+      "label": "ji()",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 143,
+      "community_name": "ke",
+      "file_type": "code",
+      "norm_label": "ji()",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L13"
+    },
+    {
       "id": "public_comunidade_js_ogl_ke",
       "label": "ke",
       "_callable": true,
@@ -615,17 +654,30 @@
       "source_location": "L13"
     },
     {
-      "id": "public_comunidade_js_ogl_tr",
-      "label": "tr",
+      "id": "public_comunidade_js_ogl_lt",
+      "label": "Lt",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 143,
       "community_name": "ke",
       "file_type": "code",
-      "norm_label": "tr",
+      "norm_label": "lt",
       "source_file": "public/comunidade/js/ogl.js",
       "source_location": "L13"
+    },
+    {
+      "id": "public_comunidade_js_ogl_xn",
+      "label": "xn",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 143,
+      "community_name": "ke",
+      "file_type": "code",
+      "norm_label": "xn",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L269"
     },
     {
       "id": "public_comunidade_js_ogl_gr",
@@ -855,7 +907,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 49,
-      "community_name": "lucide-react",
+      "community_name": "CatalogGrid.tsx",
       "file_type": "code",
       "norm_label": "cataloggridprops",
       "source_file": "src/components/library/CatalogGrid.tsx",
@@ -868,7 +920,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 49,
-      "community_name": "lucide-react",
+      "community_name": "CatalogGrid.tsx",
       "file_type": "code",
       "norm_label": "downloadbuttonprops",
       "source_file": "src/components/library/DownloadButton.tsx",
@@ -881,7 +933,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 49,
-      "community_name": "lucide-react",
+      "community_name": "CatalogGrid.tsx",
       "file_type": "code",
       "norm_label": "resourceviewerprops",
       "source_file": "src/components/library/ResourceViewer.tsx",
@@ -894,7 +946,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 49,
-      "community_name": "lucide-react",
+      "community_name": "CatalogGrid.tsx",
       "file_type": "code",
       "norm_label": "libraryresource",
       "source_file": "src/lib/library/catalog.ts",
@@ -1070,19 +1122,6 @@
       "source_location": "L86"
     },
     {
-      "id": "src_components_admin_posteditormodal_posteditordata",
-      "label": "PostEditorData",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 67,
-      "community_name": "admin/page.tsx",
-      "file_type": "code",
-      "norm_label": "posteditordata",
-      "source_file": "src/components/admin/PostEditorModal.tsx",
-      "source_location": "L59"
-    },
-    {
       "id": "src_components_layout_navbar_navlinkitem",
       "label": "NavLinkItem",
       "_callable": true,
@@ -1200,6 +1239,19 @@
       "source_location": "L26"
     },
     {
+      "id": "src_components_admin_posteditormodal_posteditordata",
+      "label": "PostEditorData",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 71,
+      "community_name": "cn",
+      "file_type": "code",
+      "norm_label": "posteditordata",
+      "source_file": "src/components/admin/PostEditorModal.tsx",
+      "source_location": "L59"
+    },
+    {
       "id": "src_components_admin_posteditormodal_posteditormodalprops",
       "label": "PostEditorModalProps",
       "_callable": true,
@@ -1289,19 +1341,6 @@
       "norm_label": "resourcesearchprops",
       "source_file": "src/components/library/ResourceSearch.tsx",
       "source_location": "L16"
-    },
-    {
-      "id": "src_components_portal_herosection_herosectionprops",
-      "label": "HeroSectionProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 71,
-      "community_name": "cn",
-      "file_type": "code",
-      "norm_label": "herosectionprops",
-      "source_file": "src/components/portal/HeroSection.tsx",
-      "source_location": "L20"
     },
     {
       "id": "src_components_ui_badge_badgeprops",
@@ -1538,6 +1577,19 @@
       "source_location": "L7"
     },
     {
+      "id": "public_comunidade_js_ogl_is",
+      "label": "is",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 78,
+      "community_name": "W",
+      "file_type": "code",
+      "norm_label": "is",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L32"
+    },
+    {
       "id": "public_comunidade_js_ogl_on",
       "label": "on",
       "_callable": true,
@@ -1564,15 +1616,28 @@
       "source_location": "L247"
     },
     {
-      "id": "public_comunidade_js_ogl_pt",
-      "label": "pt",
+      "id": "public_comunidade_js_ogl_rn",
+      "label": "rn",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 78,
       "community_name": "W",
       "file_type": "code",
-      "norm_label": "pt",
+      "norm_label": "rn",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L198"
+    },
+    {
+      "id": "public_comunidade_js_ogl_rr",
+      "label": "rr",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 78,
+      "community_name": "W",
+      "file_type": "code",
+      "norm_label": "rr",
       "source_file": "public/comunidade/js/ogl.js",
       "source_location": "L13"
     },
@@ -1601,19 +1666,6 @@
       "norm_label": "w",
       "source_file": "public/comunidade/js/ogl.js",
       "source_location": "L13"
-    },
-    {
-      "id": "public_comunidade_js_ogl_xn",
-      "label": "xn",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 78,
-      "community_name": "W",
-      "file_type": "code",
-      "norm_label": "xn",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L269"
     },
     {
       "id": "src_components_comunidade_checkoutmodal_checkoutmodalprops",
@@ -1648,9 +1700,22 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 81,
-      "community_name": "sr",
+      "community_name": ".copy",
       "file_type": "code",
       "norm_label": "or",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L13"
+    },
+    {
+      "id": "public_comunidade_js_ogl_ot",
+      "label": "Ot",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 81,
+      "community_name": ".copy",
+      "file_type": "code",
+      "norm_label": "ot",
       "source_file": "public/comunidade/js/ogl.js",
       "source_location": "L13"
     },
@@ -1661,7 +1726,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 81,
-      "community_name": "sr",
+      "community_name": ".copy",
       "file_type": "code",
       "norm_label": "zt",
       "source_file": "public/comunidade/js/ogl.js",
@@ -1863,30 +1928,17 @@
       "source_location": "L32"
     },
     {
-      "id": "src_components_library_resourcecard_resourcecardprops",
-      "label": "ResourceCardProps",
+      "id": "src_components_portal_herosection_herosectionprops",
+      "label": "HeroSectionProps",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 98,
       "community_name": "GlassCard.tsx",
       "file_type": "code",
-      "norm_label": "resourcecardprops",
-      "source_file": "src/components/library/ResourceCard.tsx",
-      "source_location": "L25"
-    },
-    {
-      "id": "src_components_library_resourcedetailviewer_resourcedetailviewerprops",
-      "label": "ResourceDetailViewerProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 98,
-      "community_name": "GlassCard.tsx",
-      "file_type": "code",
-      "norm_label": "resourcedetailviewerprops",
-      "source_file": "src/components/library/ResourceDetailViewer.tsx",
-      "source_location": "L24"
+      "norm_label": "herosectionprops",
+      "source_file": "src/components/portal/HeroSection.tsx",
+      "source_location": "L20"
     },
     {
       "id": "src_components_portal_metricsbanner_metricitem",
@@ -1913,45 +1965,6 @@
       "norm_label": "glasscardprops",
       "source_file": "src/components/ui/GlassCard.tsx",
       "source_location": "L4"
-    },
-    {
-      "id": "src_types_library_librarycategorygroup",
-      "label": "LibraryCategoryGroup",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 98,
-      "community_name": "GlassCard.tsx",
-      "file_type": "code",
-      "norm_label": "librarycategorygroup",
-      "source_file": "src/types/library.ts",
-      "source_location": "L17"
-    },
-    {
-      "id": "src_types_library_libraryitem",
-      "label": "LibraryItem",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 98,
-      "community_name": "GlassCard.tsx",
-      "file_type": "code",
-      "norm_label": "libraryitem",
-      "source_file": "src/types/library.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_types_library_libraryresponse",
-      "label": "LibraryResponse",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 98,
-      "community_name": "GlassCard.tsx",
-      "file_type": "code",
-      "norm_label": "libraryresponse",
-      "source_file": "src/types/library.ts",
-      "source_location": "L22"
     },
     {
       "id": "public_comunidade_js_ogl_ar_computefrenetframes",
@@ -2034,18 +2047,6 @@
       "community_name": ".computeFrenetFrames",
       "file_type": "code",
       "norm_label": ".intersectmeshes()",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L13"
-    },
-    {
-      "id": "public_comunidade_js_ogl_cr_intersectplane",
-      "label": ".intersectPlane()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 100,
-      "community_name": ".computeFrenetFrames",
-      "file_type": "code",
-      "norm_label": ".intersectplane()",
       "source_file": "public/comunidade/js/ogl.js",
       "source_location": "L13"
     },
@@ -2252,30 +2253,6 @@
       "norm_label": ".inverse()",
       "source_file": "public/comunidade/js/ogl.js",
       "source_location": "L13"
-    },
-    {
-      "id": "public_comunidade_js_ogl_v_sub",
-      "label": ".sub()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 100,
-      "community_name": ".computeFrenetFrames",
-      "file_type": "code",
-      "norm_label": ".sub()",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L13"
-    },
-    {
-      "id": "public_comunidade_js_ogl_xn_constructor",
-      "label": ".constructor()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 100,
-      "community_name": ".computeFrenetFrames",
-      "file_type": "code",
-      "norm_label": ".constructor()",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L269"
     },
     {
       "id": "src_app_api_admin_libraries_bulk_delete_route_post",
@@ -2612,6 +2589,18 @@
       "norm_label": "updatelibraryitem()",
       "source_file": "src/lib/library/library-manager.ts",
       "source_location": "L523"
+    },
+    {
+      "id": "public_comunidade_js_ogl_ks_activetexture",
+      "label": ".activeTexture()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 102,
+      "community_name": "ks",
+      "file_type": "code",
+      "norm_label": ".activetexture()",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L13"
     },
     {
       "id": "public_comunidade_js_ogl_ks_disable",
@@ -3058,14 +3047,26 @@
       "source_location": "L7"
     },
     {
-      "id": "public_comunidade_js_ogl_ji_constructor",
-      "label": ".constructor()",
+      "id": "public_comunidade_js_ogl_is_update",
+      "label": ".update()",
       "_callable": true,
       "_origin": "ast",
       "community": 104,
       "community_name": "V",
       "file_type": "code",
-      "norm_label": ".constructor()",
+      "norm_label": ".update()",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L32"
+    },
+    {
+      "id": "public_comunidade_js_ogl_ke_fromarray",
+      "label": ".fromArray()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 104,
+      "community_name": "V",
+      "file_type": "code",
+      "norm_label": ".fromarray()",
       "source_file": "public/comunidade/js/ogl.js",
       "source_location": "L13"
     },
@@ -3202,6 +3203,18 @@
       "source_location": "L13"
     },
     {
+      "id": "public_comunidade_js_ogl_v_lerp",
+      "label": ".lerp()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 104,
+      "community_name": "V",
+      "file_type": "code",
+      "norm_label": ".lerp()",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L13"
+    },
+    {
       "id": "public_comunidade_js_ogl_v_multiply",
       "label": ".multiply()",
       "_callable": true,
@@ -3234,18 +3247,6 @@
       "community_name": "V",
       "file_type": "code",
       "norm_label": ".normalize()",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L13"
-    },
-    {
-      "id": "public_comunidade_js_ogl_v_smoothlerp",
-      "label": ".smoothLerp()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 104,
-      "community_name": "V",
-      "file_type": "code",
-      "norm_label": ".smoothlerp()",
       "source_file": "public/comunidade/js/ogl.js",
       "source_location": "L13"
     },
@@ -3310,6 +3311,18 @@
       "source_location": "L13"
     },
     {
+      "id": "src_app_admin_library_control_page_adminlibrarycontrolpage",
+      "label": "AdminLibraryControlPage()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 105,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "adminlibrarycontrolpage()",
+      "source_file": "src/app/admin/library-control/page.tsx",
+      "source_location": "L12"
+    },
+    {
       "id": "src_app_layout_rootlayout",
       "label": "RootLayout()",
       "_callable": true,
@@ -3319,7 +3332,7 @@
       "file_type": "code",
       "norm_label": "rootlayout()",
       "source_file": "src/app/layout.tsx",
-      "source_location": "L33"
+      "source_location": "L34"
     },
     {
       "id": "src_app_shop_page_shoppage",
@@ -3334,6 +3347,18 @@
       "source_location": "L10"
     },
     {
+      "id": "src_components_admin_librarycontrolsuite_librarycontrolsuite",
+      "label": "LibraryControlSuite()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 105,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "librarycontrolsuite()",
+      "source_file": "src/components/admin/LibraryControlSuite.tsx",
+      "source_location": "L43"
+    },
+    {
       "id": "src_components_layout_footer_footer",
       "label": "Footer()",
       "_callable": true,
@@ -3344,6 +3369,18 @@
       "norm_label": "footer()",
       "source_file": "src/components/layout/Footer.tsx",
       "source_location": "L8"
+    },
+    {
+      "id": "src_components_layout_mobilebottomnav_mobilebottomnav",
+      "label": "MobileBottomNav()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 105,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "mobilebottomnav()",
+      "source_file": "src/components/layout/MobileBottomNav.tsx",
+      "source_location": "L32"
     },
     {
       "id": "src_components_portal_alternatingherobanner_alternatingherobanner",
@@ -3368,6 +3405,42 @@
       "norm_label": "liquidglassbackground()",
       "source_file": "src/components/portal/LiquidGlassBackground.tsx",
       "source_location": "L6"
+    },
+    {
+      "id": "src_components_portal_photografycontacthub_instagramicon",
+      "label": "InstagramIcon()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 105,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "instagramicon()",
+      "source_file": "src/components/portal/PhotografyContactHub.tsx",
+      "source_location": "L13"
+    },
+    {
+      "id": "src_components_portal_photografycontacthub_linkedinicon",
+      "label": "LinkedinIcon()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 105,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "linkedinicon()",
+      "source_file": "src/components/portal/PhotografyContactHub.tsx",
+      "source_location": "L7"
+    },
+    {
+      "id": "src_components_portal_photografycontacthub_photografycontacthub",
+      "label": "PhotografyContactHub()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 105,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "photografycontacthub()",
+      "source_file": "src/components/portal/PhotografyContactHub.tsx",
+      "source_location": "L36"
     },
     {
       "id": "src_components_portal_portalnavbar_portalnavbar",
@@ -3678,18 +3751,6 @@
       "community_name": "q",
       "file_type": "code",
       "norm_label": ".constructor()",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L13"
-    },
-    {
-      "id": "public_comunidade_js_ogl_ks_activetexture",
-      "label": ".activeTexture()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 112,
-      "community_name": "q",
-      "file_type": "code",
-      "norm_label": ".activetexture()",
       "source_file": "public/comunidade/js/ogl.js",
       "source_location": "L13"
     },
@@ -4030,18 +4091,6 @@
       "source_location": "L13"
     },
     {
-      "id": "public_comunidade_js_ogl_rn_constructor",
-      "label": ".constructor()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 117,
-      "community_name": "l",
-      "file_type": "code",
-      "norm_label": ".constructor()",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L198"
-    },
-    {
       "id": "public_comunidade_js_ogl_rn_constructor_l",
       "label": "l()",
       "_callable": true,
@@ -4102,6 +4151,18 @@
       "source_location": "L59"
     },
     {
+      "id": "public_comunidade_js_ogl_zr_update",
+      "label": ".update()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 117,
+      "community_name": "l",
+      "file_type": "code",
+      "norm_label": ".update()",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L59"
+    },
+    {
       "id": "public_comunidade_js_ogl_zt_r",
       "label": ".r()",
       "_callable": true,
@@ -4138,6 +4199,18 @@
       "source_location": "L13"
     },
     {
+      "id": "public_comunidade_js_ogl_br_render",
+      "label": ".render()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 118,
+      "community_name": "K",
+      "file_type": "code",
+      "norm_label": ".render()",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L13"
+    },
+    {
       "id": "public_comunidade_js_ogl_br_resize",
       "label": ".resize()",
       "_callable": true,
@@ -4146,18 +4219,6 @@
       "community_name": "K",
       "file_type": "code",
       "norm_label": ".resize()",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L13"
-    },
-    {
-      "id": "public_comunidade_js_ogl_k_setsize",
-      "label": ".setSize()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 118,
-      "community_name": "K",
-      "file_type": "code",
-      "norm_label": ".setsize()",
       "source_file": "public/comunidade/js/ogl.js",
       "source_location": "L13"
     },
@@ -4174,6 +4235,18 @@
       "source_location": "L176"
     },
     {
+      "id": "public_comunidade_js_ogl_kr_render",
+      "label": ".render()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 118,
+      "community_name": "K",
+      "file_type": "code",
+      "norm_label": ".render()",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L176"
+    },
+    {
       "id": "public_comunidade_js_ogl_kr_setsize",
       "label": ".setSize()",
       "_callable": true,
@@ -4184,18 +4257,6 @@
       "norm_label": ".setsize()",
       "source_file": "public/comunidade/js/ogl.js",
       "source_location": "L176"
-    },
-    {
-      "id": "public_comunidade_js_ogl_ks_bindframebuffer",
-      "label": ".bindFramebuffer()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 118,
-      "community_name": "K",
-      "file_type": "code",
-      "norm_label": ".bindframebuffer()",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L13"
     },
     {
       "id": "public_comunidade_js_ogl_ks_constructor",
@@ -4210,122 +4271,170 @@
       "source_location": "L13"
     },
     {
-      "id": "public_comunidade_js_ogl_he",
-      "label": "he()",
+      "id": "public_comunidade_js_ogl_nr_addpass",
+      "label": ".addPass()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 118,
+      "community_name": "K",
+      "file_type": "code",
+      "norm_label": ".addpass()",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L97"
+    },
+    {
+      "id": "public_comunidade_js_ogl_nr_constructor",
+      "label": ".constructor()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 118,
+      "community_name": "K",
+      "file_type": "code",
+      "norm_label": ".constructor()",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L97"
+    },
+    {
+      "id": "public_comunidade_js_ogl_nr_render",
+      "label": ".render()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 118,
+      "community_name": "K",
+      "file_type": "code",
+      "norm_label": ".render()",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L97"
+    },
+    {
+      "id": "public_comunidade_js_ogl_bi",
+      "label": "bi()",
       "_callable": true,
       "_origin": "ast",
       "community": 119,
-      "community_name": ".copy",
+      "community_name": "pt",
       "file_type": "code",
-      "norm_label": "he()",
+      "norm_label": "bi()",
       "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L7"
+      "source_location": "L13"
     },
     {
-      "id": "public_comunidade_js_ogl_lt_constructor",
+      "id": "public_comunidade_js_ogl_i",
+      "label": "_i()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 119,
+      "community_name": "pt",
+      "file_type": "code",
+      "norm_label": "_i()",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L13"
+    },
+    {
+      "id": "public_comunidade_js_ogl_pt_constructor",
       "label": ".constructor()",
       "_callable": true,
       "_origin": "ast",
       "community": 119,
-      "community_name": ".copy",
+      "community_name": "pt",
       "file_type": "code",
       "norm_label": ".constructor()",
       "source_file": "public/comunidade/js/ogl.js",
       "source_location": "L13"
     },
     {
-      "id": "public_comunidade_js_ogl_lt_getcatmullrompoints",
-      "label": "._getCatmullRomPoints()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 119,
-      "community_name": ".copy",
-      "file_type": "code",
-      "norm_label": "._getcatmullrompoints()",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L13"
-    },
-    {
-      "id": "public_comunidade_js_ogl_lt_getcubicbezierpoints",
-      "label": "._getCubicBezierPoints()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 119,
-      "community_name": ".copy",
-      "file_type": "code",
-      "norm_label": "._getcubicbezierpoints()",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L13"
-    },
-    {
-      "id": "public_comunidade_js_ogl_lt_getpoints",
-      "label": ".getPoints()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 119,
-      "community_name": ".copy",
-      "file_type": "code",
-      "norm_label": ".getpoints()",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L13"
-    },
-    {
-      "id": "public_comunidade_js_ogl_lt_getquadraticbezierpoints",
-      "label": "._getQuadraticBezierPoints()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 119,
-      "community_name": ".copy",
-      "file_type": "code",
-      "norm_label": "._getquadraticbezierpoints()",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L13"
-    },
-    {
-      "id": "public_comunidade_js_ogl_ot_clone",
-      "label": ".clone()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 119,
-      "community_name": ".copy",
-      "file_type": "code",
-      "norm_label": ".clone()",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L13"
-    },
-    {
-      "id": "public_comunidade_js_ogl_ot_constructor",
-      "label": ".constructor()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 119,
-      "community_name": ".copy",
-      "file_type": "code",
-      "norm_label": ".constructor()",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L13"
-    },
-    {
-      "id": "public_comunidade_js_ogl_ot_copy",
+      "id": "public_comunidade_js_ogl_pt_copy",
       "label": ".copy()",
       "_callable": true,
       "_origin": "ast",
       "community": 119,
-      "community_name": ".copy",
+      "community_name": "pt",
       "file_type": "code",
       "norm_label": ".copy()",
       "source_file": "public/comunidade/js/ogl.js",
       "source_location": "L13"
     },
     {
-      "id": "public_comunidade_js_ogl_ot_gettiltat",
-      "label": ".getTiltAt()",
+      "id": "public_comunidade_js_ogl_pt_frombasis",
+      "label": ".fromBasis()",
       "_callable": true,
       "_origin": "ast",
       "community": 119,
-      "community_name": ".copy",
+      "community_name": "pt",
       "file_type": "code",
-      "norm_label": ".gettiltat()",
+      "norm_label": ".frombasis()",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L13"
+    },
+    {
+      "id": "public_comunidade_js_ogl_pt_frommatrix4",
+      "label": ".fromMatrix4()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 119,
+      "community_name": "pt",
+      "file_type": "code",
+      "norm_label": ".frommatrix4()",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L13"
+    },
+    {
+      "id": "public_comunidade_js_ogl_pt_fromquaternion",
+      "label": ".fromQuaternion()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 119,
+      "community_name": "pt",
+      "file_type": "code",
+      "norm_label": ".fromquaternion()",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L13"
+    },
+    {
+      "id": "public_comunidade_js_ogl_pt_identity",
+      "label": ".identity()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 119,
+      "community_name": "pt",
+      "file_type": "code",
+      "norm_label": ".identity()",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L13"
+    },
+    {
+      "id": "public_comunidade_js_ogl_pt_inverse",
+      "label": ".inverse()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 119,
+      "community_name": "pt",
+      "file_type": "code",
+      "norm_label": ".inverse()",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L13"
+    },
+    {
+      "id": "public_comunidade_js_ogl_pt_multiply",
+      "label": ".multiply()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 119,
+      "community_name": "pt",
+      "file_type": "code",
+      "norm_label": ".multiply()",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L13"
+    },
+    {
+      "id": "public_comunidade_js_ogl_pt_rotate",
+      "label": ".rotate()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 119,
+      "community_name": "pt",
+      "file_type": "code",
+      "norm_label": ".rotate()",
       "source_file": "public/comunidade/js/ogl.js",
       "source_location": "L13"
     },
@@ -4335,35 +4444,35 @@
       "_callable": true,
       "_origin": "ast",
       "community": 119,
-      "community_name": ".copy",
+      "community_name": "pt",
       "file_type": "code",
       "norm_label": ".set()",
       "source_file": "public/comunidade/js/ogl.js",
       "source_location": "L13"
     },
     {
-      "id": "public_comunidade_js_ogl_ri",
-      "label": "ri()",
+      "id": "public_comunidade_js_ogl_se",
+      "label": "Se()",
       "_callable": true,
       "_origin": "ast",
       "community": 119,
-      "community_name": ".copy",
+      "community_name": "pt",
       "file_type": "code",
-      "norm_label": "ri()",
+      "norm_label": "se()",
       "source_file": "public/comunidade/js/ogl.js",
       "source_location": "L13"
     },
     {
-      "id": "public_comunidade_js_ogl_sub",
-      "label": ".sub()",
+      "id": "public_comunidade_js_ogl_si",
+      "label": "Si()",
       "_callable": true,
       "_origin": "ast",
       "community": 119,
-      "community_name": ".copy",
+      "community_name": "pt",
       "file_type": "code",
-      "norm_label": ".sub()",
+      "norm_label": "si()",
       "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L7"
+      "source_location": "L13"
     },
     {
       "id": "public_comunidade_js_ogl_ti",
@@ -4371,69 +4480,213 @@
       "_callable": true,
       "_origin": "ast",
       "community": 119,
-      "community_name": ".copy",
+      "community_name": "pt",
       "file_type": "code",
       "norm_label": "ti()",
       "source_file": "public/comunidade/js/ogl.js",
       "source_location": "L13"
     },
     {
-      "id": "public_comunidade_js_ogl_u_set",
-      "label": ".set()",
+      "id": "public_comunidade_js_ogl_vi",
+      "label": "vi()",
       "_callable": true,
       "_origin": "ast",
       "community": 119,
-      "community_name": ".copy",
+      "community_name": "pt",
       "file_type": "code",
-      "norm_label": ".set()",
+      "norm_label": "vi()",
       "source_file": "public/comunidade/js/ogl.js",
       "source_location": "L13"
     },
     {
-      "id": "public_comunidade_js_ogl_ur",
-      "label": "ur()",
+      "id": "public_comunidade_js_ogl_w_constructor",
+      "label": ".constructor()",
       "_callable": true,
       "_origin": "ast",
       "community": 119,
-      "community_name": ".copy",
+      "community_name": "pt",
       "file_type": "code",
-      "norm_label": "ur()",
+      "norm_label": ".constructor()",
       "source_file": "public/comunidade/js/ogl.js",
       "source_location": "L13"
     },
     {
-      "id": "public_comunidade_js_ogl_v_scale",
-      "label": ".scale()",
+      "id": "public_comunidade_js_ogl_fr_m_v",
+      "label": "v()",
       "_callable": true,
       "_origin": "ast",
-      "community": 119,
-      "community_name": ".copy",
+      "community": 120,
+      "community_name": "sr",
       "file_type": "code",
-      "norm_label": ".scale()",
+      "norm_label": "v()",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L32"
+    },
+    {
+      "id": "public_comunidade_js_ogl_sr",
+      "label": "sr()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 120,
+      "community_name": "sr",
+      "file_type": "code",
+      "norm_label": "sr()",
       "source_file": "public/comunidade/js/ogl.js",
       "source_location": "L13"
     },
     {
-      "id": "public_comunidade_js_ogl_v_set",
-      "label": ".set()",
+      "id": "public_comunidade_js_ogl_sr_b",
+      "label": "B()",
       "_callable": true,
       "_origin": "ast",
-      "community": 119,
-      "community_name": ".copy",
+      "community": 120,
+      "community_name": "sr",
       "file_type": "code",
-      "norm_label": ".set()",
+      "norm_label": "b()",
       "source_file": "public/comunidade/js/ogl.js",
       "source_location": "L13"
     },
     {
-      "id": "public_comunidade_js_ogl_z_set",
-      "label": ".set()",
+      "id": "public_comunidade_js_ogl_sr_et",
+      "label": "et()",
       "_callable": true,
       "_origin": "ast",
-      "community": 119,
-      "community_name": ".copy",
+      "community": 120,
+      "community_name": "sr",
       "file_type": "code",
-      "norm_label": ".set()",
+      "norm_label": "et()",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L13"
+    },
+    {
+      "id": "public_comunidade_js_ogl_sr_j",
+      "label": "j()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 120,
+      "community_name": "sr",
+      "file_type": "code",
+      "norm_label": "j()",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L13"
+    },
+    {
+      "id": "public_comunidade_js_ogl_sr_l",
+      "label": "L()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 120,
+      "community_name": "sr",
+      "file_type": "code",
+      "norm_label": "l()",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L13"
+    },
+    {
+      "id": "public_comunidade_js_ogl_sr_ms",
+      "label": "ms()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 120,
+      "community_name": "sr",
+      "file_type": "code",
+      "norm_label": "ms()",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L13"
+    },
+    {
+      "id": "public_comunidade_js_ogl_sr_tt",
+      "label": "tt()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 120,
+      "community_name": "sr",
+      "file_type": "code",
+      "norm_label": "tt()",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L13"
+    },
+    {
+      "id": "public_comunidade_js_ogl_sr_xs",
+      "label": "xs()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 120,
+      "community_name": "sr",
+      "file_type": "code",
+      "norm_label": "xs()",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L13"
+    },
+    {
+      "id": "public_comunidade_js_ogl_sr_ys",
+      "label": "ys()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 120,
+      "community_name": "sr",
+      "file_type": "code",
+      "norm_label": "ys()",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L13"
+    },
+    {
+      "id": "public_comunidade_js_ogl_st_lookat",
+      "label": ".lookAt()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 120,
+      "community_name": "sr",
+      "file_type": "code",
+      "norm_label": ".lookat()",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L13"
+    },
+    {
+      "id": "public_comunidade_js_ogl_tr_constructor",
+      "label": ".constructor()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 120,
+      "community_name": "sr",
+      "file_type": "code",
+      "norm_label": ".constructor()",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L13"
+    },
+    {
+      "id": "public_comunidade_js_ogl_tr_constructor_r",
+      "label": "R()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 120,
+      "community_name": "sr",
+      "file_type": "code",
+      "norm_label": "r()",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L13"
+    },
+    {
+      "id": "public_comunidade_js_ogl_tr_constructor_v",
+      "label": "v()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 120,
+      "community_name": "sr",
+      "file_type": "code",
+      "norm_label": "v()",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L13"
+    },
+    {
+      "id": "public_comunidade_js_ogl_zt_g",
+      "label": ".g()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 120,
+      "community_name": "sr",
+      "file_type": "code",
+      "norm_label": ".g()",
       "source_file": "public/comunidade/js/ogl.js",
       "source_location": "L13"
     },
@@ -4594,110 +4847,26 @@
       "source_location": "L198"
     },
     {
-      "id": "public_comunidade_js_ogl_is_constructor",
-      "label": ".constructor()",
+      "id": "public_comunidade_js_ogl_k_setsize",
+      "label": ".setSize()",
       "_callable": true,
       "_origin": "ast",
       "community": 124,
       "community_name": ".update",
       "file_type": "code",
-      "norm_label": ".constructor()",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L32"
-    },
-    {
-      "id": "public_comunidade_js_ogl_is_update",
-      "label": ".update()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 124,
-      "community_name": ".update",
-      "file_type": "code",
-      "norm_label": ".update()",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L32"
-    },
-    {
-      "id": "public_comunidade_js_ogl_rr_addanimation",
-      "label": ".addAnimation()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 124,
-      "community_name": ".update",
-      "file_type": "code",
-      "norm_label": ".addanimation()",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L32"
-    },
-    {
-      "id": "public_comunidade_js_ogl_rr_createbonetexture",
-      "label": ".createBoneTexture()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 124,
-      "community_name": ".update",
-      "file_type": "code",
-      "norm_label": ".createbonetexture()",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L32"
-    },
-    {
-      "id": "public_comunidade_js_ogl_rr_draw",
-      "label": ".draw()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 124,
-      "community_name": ".update",
-      "file_type": "code",
-      "norm_label": ".draw()",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L32"
-    },
-    {
-      "id": "public_comunidade_js_ogl_rr_update",
-      "label": ".update()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 124,
-      "community_name": ".update",
-      "file_type": "code",
-      "norm_label": ".update()",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L32"
-    },
-    {
-      "id": "public_comunidade_js_ogl_v_lerp",
-      "label": ".lerp()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 124,
-      "community_name": ".update",
-      "file_type": "code",
-      "norm_label": ".lerp()",
+      "norm_label": ".setsize()",
       "source_file": "public/comunidade/js/ogl.js",
       "source_location": "L13"
     },
     {
-      "id": "public_comunidade_js_ogl_ys",
-      "label": "Ys()",
+      "id": "public_comunidade_js_ogl_ks_bindframebuffer",
+      "label": ".bindFramebuffer()",
       "_callable": true,
       "_origin": "ast",
       "community": 124,
       "community_name": ".update",
       "file_type": "code",
-      "norm_label": "ys()",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L13"
-    },
-    {
-      "id": "public_comunidade_js_ogl_z_slerp",
-      "label": ".slerp()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 124,
-      "community_name": ".update",
-      "file_type": "code",
-      "norm_label": ".slerp()",
+      "norm_label": ".bindframebuffer()",
       "source_file": "public/comunidade/js/ogl.js",
       "source_location": "L13"
     },
@@ -4870,40 +5039,28 @@
       "source_location": "L14"
     },
     {
-      "id": "src_components_portal_photografycontacthub_instagramicon",
-      "label": "InstagramIcon()",
+      "id": "src_components_library_resourcecard_resourcecard",
+      "label": "ResourceCard()",
       "_callable": true,
       "_origin": "ast",
       "community": 137,
-      "community_name": "PhotografyContactHub.tsx",
+      "community_name": "ResourceCard.tsx",
       "file_type": "code",
-      "norm_label": "instagramicon()",
-      "source_file": "src/components/portal/PhotografyContactHub.tsx",
-      "source_location": "L13"
+      "norm_label": "resourcecard()",
+      "source_file": "src/components/library/ResourceCard.tsx",
+      "source_location": "L31"
     },
     {
-      "id": "src_components_portal_photografycontacthub_linkedinicon",
-      "label": "LinkedinIcon()",
+      "id": "src_components_library_resourcedetailviewer_resourcedetailviewer",
+      "label": "ResourceDetailViewer()",
       "_callable": true,
       "_origin": "ast",
       "community": 137,
-      "community_name": "PhotografyContactHub.tsx",
+      "community_name": "ResourceCard.tsx",
       "file_type": "code",
-      "norm_label": "linkedinicon()",
-      "source_file": "src/components/portal/PhotografyContactHub.tsx",
-      "source_location": "L7"
-    },
-    {
-      "id": "src_components_portal_photografycontacthub_photografycontacthub",
-      "label": "PhotografyContactHub()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 137,
-      "community_name": "PhotografyContactHub.tsx",
-      "file_type": "code",
-      "norm_label": "photografycontacthub()",
-      "source_file": "src/components/portal/PhotografyContactHub.tsx",
-      "source_location": "L36"
+      "norm_label": "resourcedetailviewer()",
+      "source_file": "src/components/library/ResourceDetailViewer.tsx",
+      "source_location": "L30"
     },
     {
       "id": "src_app_api_send_email_route_escapehtml",
@@ -4954,14 +5111,14 @@
       "source_location": "L38"
     },
     {
-      "id": "public_comunidade_js_ogl_br_render",
-      "label": ".render()",
+      "id": "public_comunidade_js_ogl_ci",
+      "label": "ci()",
       "_callable": true,
       "_origin": "ast",
       "community": 140,
       "community_name": ".getRenderList",
       "file_type": "code",
-      "norm_label": ".render()",
+      "norm_label": "ci()",
       "source_file": "public/comunidade/js/ogl.js",
       "source_location": "L13"
     },
@@ -4978,18 +5135,6 @@
       "source_location": "L13"
     },
     {
-      "id": "public_comunidade_js_ogl_kr_render",
-      "label": ".render()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 140,
-      "community_name": ".getRenderList",
-      "file_type": "code",
-      "norm_label": ".render()",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L176"
-    },
-    {
       "id": "public_comunidade_js_ogl_ks_getrenderlist",
       "label": ".getRenderList()",
       "_callable": true,
@@ -5002,52 +5147,16 @@
       "source_location": "L13"
     },
     {
-      "id": "public_comunidade_js_ogl_nr_addpass",
-      "label": ".addPass()",
+      "id": "public_comunidade_js_ogl_u_gettranslation",
+      "label": ".getTranslation()",
       "_callable": true,
       "_origin": "ast",
       "community": 140,
       "community_name": ".getRenderList",
       "file_type": "code",
-      "norm_label": ".addpass()",
+      "norm_label": ".gettranslation()",
       "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L97"
-    },
-    {
-      "id": "public_comunidade_js_ogl_nr_constructor",
-      "label": ".constructor()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 140,
-      "community_name": ".getRenderList",
-      "file_type": "code",
-      "norm_label": ".constructor()",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L97"
-    },
-    {
-      "id": "public_comunidade_js_ogl_nr_render",
-      "label": ".render()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 140,
-      "community_name": ".getRenderList",
-      "file_type": "code",
-      "norm_label": ".render()",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L97"
-    },
-    {
-      "id": "public_comunidade_js_ogl_zr_update",
-      "label": ".update()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 140,
-      "community_name": ".getRenderList",
-      "file_type": "code",
-      "norm_label": ".update()",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L59"
+      "source_location": "L13"
     },
     {
       "id": "src_components_shaders_beams_beams",
@@ -5254,6 +5363,18 @@
       "source_location": "L104"
     },
     {
+      "id": "public_comunidade_js_ogl_cr_intersectplane",
+      "label": ".intersectPlane()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 143,
+      "community_name": "ke",
+      "file_type": "code",
+      "norm_label": ".intersectplane()",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L13"
+    },
+    {
       "id": "public_comunidade_js_ogl_er_constructor",
       "label": ".constructor()",
       "_callable": true,
@@ -5314,16 +5435,28 @@
       "source_location": "L13"
     },
     {
-      "id": "public_comunidade_js_ogl_fr_m_v",
-      "label": "v()",
+      "id": "public_comunidade_js_ogl_he",
+      "label": "he()",
       "_callable": true,
       "_origin": "ast",
       "community": 143,
       "community_name": "ke",
       "file_type": "code",
-      "norm_label": "v()",
+      "norm_label": "he()",
       "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L32"
+      "source_location": "L7"
+    },
+    {
+      "id": "public_comunidade_js_ogl_ji_constructor",
+      "label": ".constructor()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 143,
+      "community_name": "ke",
+      "file_type": "code",
+      "norm_label": ".constructor()",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L13"
     },
     {
       "id": "public_comunidade_js_ogl_ke_constructor",
@@ -5358,18 +5491,6 @@
       "community_name": "ke",
       "file_type": "code",
       "norm_label": ".normalize()",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L13"
-    },
-    {
-      "id": "public_comunidade_js_ogl_ke_set",
-      "label": ".set()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 143,
-      "community_name": "ke",
-      "file_type": "code",
-      "norm_label": ".set()",
       "source_file": "public/comunidade/js/ogl.js",
       "source_location": "L13"
     },
@@ -5422,6 +5543,18 @@
       "source_location": "L13"
     },
     {
+      "id": "public_comunidade_js_ogl_kr_add",
+      "label": ".add()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 143,
+      "community_name": "ke",
+      "file_type": "code",
+      "norm_label": ".add()",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L176"
+    },
+    {
       "id": "public_comunidade_js_ogl_lerp",
       "label": ".lerp()",
       "_callable": true,
@@ -5434,19 +5567,7 @@
       "source_location": "L7"
     },
     {
-      "id": "public_comunidade_js_ogl_sr_j",
-      "label": "j()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 143,
-      "community_name": "ke",
-      "file_type": "code",
-      "norm_label": "j()",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L13"
-    },
-    {
-      "id": "public_comunidade_js_ogl_tr_constructor",
+      "id": "public_comunidade_js_ogl_lt_constructor",
       "label": ".constructor()",
       "_callable": true,
       "_origin": "ast",
@@ -5458,28 +5579,100 @@
       "source_location": "L13"
     },
     {
-      "id": "public_comunidade_js_ogl_tr_constructor_r",
-      "label": "R()",
+      "id": "public_comunidade_js_ogl_lt_getcatmullrompoints",
+      "label": "._getCatmullRomPoints()",
       "_callable": true,
       "_origin": "ast",
       "community": 143,
       "community_name": "ke",
       "file_type": "code",
-      "norm_label": "r()",
+      "norm_label": "._getcatmullrompoints()",
       "source_file": "public/comunidade/js/ogl.js",
       "source_location": "L13"
     },
     {
-      "id": "public_comunidade_js_ogl_tr_constructor_v",
-      "label": "v()",
+      "id": "public_comunidade_js_ogl_lt_getcubicbezierpoints",
+      "label": "._getCubicBezierPoints()",
       "_callable": true,
       "_origin": "ast",
       "community": 143,
       "community_name": "ke",
       "file_type": "code",
-      "norm_label": "v()",
+      "norm_label": "._getcubicbezierpoints()",
       "source_file": "public/comunidade/js/ogl.js",
       "source_location": "L13"
+    },
+    {
+      "id": "public_comunidade_js_ogl_lt_getpoints",
+      "label": ".getPoints()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 143,
+      "community_name": "ke",
+      "file_type": "code",
+      "norm_label": ".getpoints()",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L13"
+    },
+    {
+      "id": "public_comunidade_js_ogl_lt_getquadraticbezierpoints",
+      "label": "._getQuadraticBezierPoints()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 143,
+      "community_name": "ke",
+      "file_type": "code",
+      "norm_label": "._getquadraticbezierpoints()",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L13"
+    },
+    {
+      "id": "public_comunidade_js_ogl_nn",
+      "label": "nn()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 143,
+      "community_name": "ke",
+      "file_type": "code",
+      "norm_label": "nn()",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L198"
+    },
+    {
+      "id": "public_comunidade_js_ogl_sr_c",
+      "label": "C()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 143,
+      "community_name": "ke",
+      "file_type": "code",
+      "norm_label": "c()",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L13"
+    },
+    {
+      "id": "public_comunidade_js_ogl_sr_n",
+      "label": "N()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 143,
+      "community_name": "ke",
+      "file_type": "code",
+      "norm_label": "n()",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L13"
+    },
+    {
+      "id": "public_comunidade_js_ogl_sub",
+      "label": ".sub()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 143,
+      "community_name": "ke",
+      "file_type": "code",
+      "norm_label": ".sub()",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L7"
     },
     {
       "id": "public_comunidade_js_ogl_ue",
@@ -5492,6 +5685,54 @@
       "norm_label": "ue()",
       "source_file": "public/comunidade/js/ogl.js",
       "source_location": "L7"
+    },
+    {
+      "id": "public_comunidade_js_ogl_ur",
+      "label": "ur()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 143,
+      "community_name": "ke",
+      "file_type": "code",
+      "norm_label": "ur()",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L13"
+    },
+    {
+      "id": "public_comunidade_js_ogl_v_scale",
+      "label": ".scale()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 143,
+      "community_name": "ke",
+      "file_type": "code",
+      "norm_label": ".scale()",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L13"
+    },
+    {
+      "id": "public_comunidade_js_ogl_v_smoothlerp",
+      "label": ".smoothLerp()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 143,
+      "community_name": "ke",
+      "file_type": "code",
+      "norm_label": ".smoothlerp()",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L13"
+    },
+    {
+      "id": "public_comunidade_js_ogl_v_sub",
+      "label": ".sub()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 143,
+      "community_name": "ke",
+      "file_type": "code",
+      "norm_label": ".sub()",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L13"
     },
     {
       "id": "public_comunidade_js_ogl_we",
@@ -5518,16 +5759,16 @@
       "source_location": "L13"
     },
     {
-      "id": "public_comunidade_js_ogl_ye",
-      "label": "ye()",
+      "id": "public_comunidade_js_ogl_xn_constructor",
+      "label": ".constructor()",
       "_callable": true,
       "_origin": "ast",
       "community": 143,
       "community_name": "ke",
       "file_type": "code",
-      "norm_label": "ye()",
+      "norm_label": ".constructor()",
       "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L13"
+      "source_location": "L269"
     },
     {
       "id": "public_showcase_galaxy_initgalaxy",
@@ -7114,6 +7355,18 @@
       "source_location": "L13"
     },
     {
+      "id": "public_comunidade_js_ogl_it_constructor",
+      "label": ".constructor()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "it",
+      "file_type": "code",
+      "norm_label": ".constructor()",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L13"
+    },
+    {
       "id": "public_comunidade_js_ogl_it_decompose",
       "label": ".decompose()",
       "_callable": true,
@@ -7186,18 +7439,6 @@
       "source_location": "L13"
     },
     {
-      "id": "public_comunidade_js_ogl_ke_fromarray",
-      "label": ".fromArray()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 48,
-      "community_name": "it",
-      "file_type": "code",
-      "norm_label": ".fromarray()",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L13"
-    },
-    {
       "id": "public_comunidade_js_ogl_ke_toarray",
       "label": ".toArray()",
       "_callable": true,
@@ -7230,30 +7471,6 @@
       "community_name": "it",
       "file_type": "code",
       "norm_label": ".constructor()",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L13"
-    },
-    {
-      "id": "public_comunidade_js_ogl_st_frustumintersectsmesh",
-      "label": ".frustumIntersectsMesh()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 48,
-      "community_name": "it",
-      "file_type": "code",
-      "norm_label": ".frustumintersectsmesh()",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L13"
-    },
-    {
-      "id": "public_comunidade_js_ogl_st_frustumintersectssphere",
-      "label": ".frustumIntersectsSphere()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 48,
-      "community_name": "it",
-      "file_type": "code",
-      "norm_label": ".frustumintersectssphere()",
       "source_file": "public/comunidade/js/ogl.js",
       "source_location": "L13"
     },
@@ -7330,60 +7547,12 @@
       "source_location": "L198"
     },
     {
-      "id": "public_comunidade_js_ogl_u_getmaxscaleonaxis",
-      "label": ".getMaxScaleOnAxis()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 48,
-      "community_name": "it",
-      "file_type": "code",
-      "norm_label": ".getmaxscaleonaxis()",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L13"
-    },
-    {
-      "id": "public_comunidade_js_ogl_ui",
-      "label": "ui()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 48,
-      "community_name": "it",
-      "file_type": "code",
-      "norm_label": "ui()",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L13"
-    },
-    {
-      "id": "src_app_admin_library_control_page_adminlibrarycontrolpage",
-      "label": "AdminLibraryControlPage()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 49,
-      "community_name": "lucide-react",
-      "file_type": "code",
-      "norm_label": "adminlibrarycontrolpage()",
-      "source_file": "src/app/admin/library-control/page.tsx",
-      "source_location": "L12"
-    },
-    {
-      "id": "src_components_admin_librarycontrolsuite_librarycontrolsuite",
-      "label": "LibraryControlSuite()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 49,
-      "community_name": "lucide-react",
-      "file_type": "code",
-      "norm_label": "librarycontrolsuite()",
-      "source_file": "src/components/admin/LibraryControlSuite.tsx",
-      "source_location": "L43"
-    },
-    {
       "id": "src_components_library_cataloggrid_cataloggrid",
       "label": "CatalogGrid()",
       "_callable": true,
       "_origin": "ast",
       "community": 49,
-      "community_name": "lucide-react",
+      "community_name": "CatalogGrid.tsx",
       "file_type": "code",
       "norm_label": "cataloggrid()",
       "source_file": "src/components/library/CatalogGrid.tsx",
@@ -7395,7 +7564,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 49,
-      "community_name": "lucide-react",
+      "community_name": "CatalogGrid.tsx",
       "file_type": "code",
       "norm_label": "getextensionbadge()",
       "source_file": "src/components/library/CatalogGrid.tsx",
@@ -7407,7 +7576,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 49,
-      "community_name": "lucide-react",
+      "community_name": "CatalogGrid.tsx",
       "file_type": "code",
       "norm_label": "downloadbutton()",
       "source_file": "src/components/library/DownloadButton.tsx",
@@ -7419,7 +7588,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 49,
-      "community_name": "lucide-react",
+      "community_name": "CatalogGrid.tsx",
       "file_type": "code",
       "norm_label": "resourceviewer()",
       "source_file": "src/components/library/ResourceViewer.tsx",
@@ -8206,18 +8375,6 @@
       "source_location": "L29"
     },
     {
-      "id": "src_components_portal_herosection_herosection",
-      "label": "HeroSection()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 71,
-      "community_name": "cn",
-      "file_type": "code",
-      "norm_label": "herosection()",
-      "source_file": "src/components/portal/HeroSection.tsx",
-      "source_location": "L25"
-    },
-    {
       "id": "src_lib_utils_cn",
       "label": "cn()",
       "_callable": true,
@@ -8842,18 +8999,6 @@
       "source_location": "L198"
     },
     {
-      "id": "public_comunidade_js_ogl_bi",
-      "label": "bi()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 78,
-      "community_name": "W",
-      "file_type": "code",
-      "norm_label": "bi()",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L13"
-    },
-    {
       "id": "public_comunidade_js_ogl_fs_constructor",
       "label": ".constructor()",
       "_callable": true,
@@ -8902,16 +9047,16 @@
       "source_location": "L198"
     },
     {
-      "id": "public_comunidade_js_ogl_i",
-      "label": "_i()",
+      "id": "public_comunidade_js_ogl_is_constructor",
+      "label": ".constructor()",
       "_callable": true,
       "_origin": "ast",
       "community": 78,
       "community_name": "W",
       "file_type": "code",
-      "norm_label": "_i()",
+      "norm_label": ".constructor()",
       "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L13"
+      "source_location": "L32"
     },
     {
       "id": "public_comunidade_js_ogl_on_constructor",
@@ -8950,66 +9095,6 @@
       "source_location": "L247"
     },
     {
-      "id": "public_comunidade_js_ogl_pt_constructor",
-      "label": ".constructor()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 78,
-      "community_name": "W",
-      "file_type": "code",
-      "norm_label": ".constructor()",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L13"
-    },
-    {
-      "id": "public_comunidade_js_ogl_pt_copy",
-      "label": ".copy()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 78,
-      "community_name": "W",
-      "file_type": "code",
-      "norm_label": ".copy()",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L13"
-    },
-    {
-      "id": "public_comunidade_js_ogl_pt_frombasis",
-      "label": ".fromBasis()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 78,
-      "community_name": "W",
-      "file_type": "code",
-      "norm_label": ".frombasis()",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L13"
-    },
-    {
-      "id": "public_comunidade_js_ogl_pt_frommatrix4",
-      "label": ".fromMatrix4()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 78,
-      "community_name": "W",
-      "file_type": "code",
-      "norm_label": ".frommatrix4()",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L13"
-    },
-    {
-      "id": "public_comunidade_js_ogl_pt_fromquaternion",
-      "label": ".fromQuaternion()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 78,
-      "community_name": "W",
-      "file_type": "code",
-      "norm_label": ".fromquaternion()",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L13"
-    },
-    {
       "id": "public_comunidade_js_ogl_pt_getnormalmatrix",
       "label": ".getNormalMatrix()",
       "_callable": true,
@@ -9022,52 +9107,28 @@
       "source_location": "L13"
     },
     {
-      "id": "public_comunidade_js_ogl_pt_identity",
-      "label": ".identity()",
+      "id": "public_comunidade_js_ogl_rn_constructor",
+      "label": ".constructor()",
       "_callable": true,
       "_origin": "ast",
       "community": 78,
       "community_name": "W",
       "file_type": "code",
-      "norm_label": ".identity()",
+      "norm_label": ".constructor()",
       "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L13"
+      "source_location": "L198"
     },
     {
-      "id": "public_comunidade_js_ogl_pt_inverse",
-      "label": ".inverse()",
+      "id": "public_comunidade_js_ogl_rr_addanimation",
+      "label": ".addAnimation()",
       "_callable": true,
       "_origin": "ast",
       "community": 78,
       "community_name": "W",
       "file_type": "code",
-      "norm_label": ".inverse()",
+      "norm_label": ".addanimation()",
       "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L13"
-    },
-    {
-      "id": "public_comunidade_js_ogl_pt_multiply",
-      "label": ".multiply()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 78,
-      "community_name": "W",
-      "file_type": "code",
-      "norm_label": ".multiply()",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L13"
-    },
-    {
-      "id": "public_comunidade_js_ogl_pt_rotate",
-      "label": ".rotate()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 78,
-      "community_name": "W",
-      "file_type": "code",
-      "norm_label": ".rotate()",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L13"
+      "source_location": "L32"
     },
     {
       "id": "public_comunidade_js_ogl_rr_constructor",
@@ -9082,28 +9143,40 @@
       "source_location": "L32"
     },
     {
-      "id": "public_comunidade_js_ogl_se",
-      "label": "Se()",
+      "id": "public_comunidade_js_ogl_rr_createbonetexture",
+      "label": ".createBoneTexture()",
       "_callable": true,
       "_origin": "ast",
       "community": 78,
       "community_name": "W",
       "file_type": "code",
-      "norm_label": "se()",
+      "norm_label": ".createbonetexture()",
       "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L13"
+      "source_location": "L32"
     },
     {
-      "id": "public_comunidade_js_ogl_si",
-      "label": "Si()",
+      "id": "public_comunidade_js_ogl_rr_draw",
+      "label": ".draw()",
       "_callable": true,
       "_origin": "ast",
       "community": 78,
       "community_name": "W",
       "file_type": "code",
-      "norm_label": "si()",
+      "norm_label": ".draw()",
       "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L13"
+      "source_location": "L32"
+    },
+    {
+      "id": "public_comunidade_js_ogl_rr_update",
+      "label": ".update()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 78,
+      "community_name": "W",
+      "file_type": "code",
+      "norm_label": ".update()",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L32"
     },
     {
       "id": "public_comunidade_js_ogl_un_constructor",
@@ -9116,30 +9189,6 @@
       "norm_label": ".constructor()",
       "source_file": "public/comunidade/js/ogl.js",
       "source_location": "L232"
-    },
-    {
-      "id": "public_comunidade_js_ogl_vi",
-      "label": "vi()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 78,
-      "community_name": "W",
-      "file_type": "code",
-      "norm_label": "vi()",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L13"
-    },
-    {
-      "id": "public_comunidade_js_ogl_w_constructor",
-      "label": ".constructor()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 78,
-      "community_name": "W",
-      "file_type": "code",
-      "norm_label": ".constructor()",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L13"
     },
     {
       "id": "public_comunidade_js_ogl_w_draw",
@@ -9303,23 +9352,23 @@
       "_callable": true,
       "_origin": "ast",
       "community": 81,
-      "community_name": "sr",
+      "community_name": ".copy",
       "file_type": "code",
       "norm_label": "ie()",
       "source_file": "public/comunidade/js/ogl.js",
       "source_location": "L13"
     },
     {
-      "id": "public_comunidade_js_ogl_kr_add",
-      "label": ".add()",
+      "id": "public_comunidade_js_ogl_ke_set",
+      "label": ".set()",
       "_callable": true,
       "_origin": "ast",
       "community": 81,
-      "community_name": "sr",
+      "community_name": ".copy",
       "file_type": "code",
-      "norm_label": ".add()",
+      "norm_label": ".set()",
       "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L176"
+      "source_location": "L13"
     },
     {
       "id": "public_comunidade_js_ogl_ne",
@@ -9327,23 +9376,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 81,
-      "community_name": "sr",
+      "community_name": ".copy",
       "file_type": "code",
       "norm_label": "ne()",
       "source_file": "public/comunidade/js/ogl.js",
       "source_location": "L13"
-    },
-    {
-      "id": "public_comunidade_js_ogl_nn",
-      "label": "nn()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 81,
-      "community_name": "sr",
-      "file_type": "code",
-      "norm_label": "nn()",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L198"
     },
     {
       "id": "public_comunidade_js_ogl_or_constructor",
@@ -9351,7 +9388,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 81,
-      "community_name": "sr",
+      "community_name": ".copy",
       "file_type": "code",
       "norm_label": ".constructor()",
       "source_file": "public/comunidade/js/ogl.js",
@@ -9363,7 +9400,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 81,
-      "community_name": "sr",
+      "community_name": ".copy",
       "file_type": "code",
       "norm_label": ".resize()",
       "source_file": "public/comunidade/js/ogl.js",
@@ -9375,141 +9412,165 @@
       "_callable": true,
       "_origin": "ast",
       "community": 81,
-      "community_name": "sr",
+      "community_name": ".copy",
       "file_type": "code",
       "norm_label": ".updategeometry()",
       "source_file": "public/comunidade/js/ogl.js",
       "source_location": "L116"
     },
     {
-      "id": "public_comunidade_js_ogl_sr",
-      "label": "sr()",
+      "id": "public_comunidade_js_ogl_ot_clone",
+      "label": ".clone()",
       "_callable": true,
       "_origin": "ast",
       "community": 81,
-      "community_name": "sr",
+      "community_name": ".copy",
       "file_type": "code",
-      "norm_label": "sr()",
+      "norm_label": ".clone()",
       "source_file": "public/comunidade/js/ogl.js",
       "source_location": "L13"
     },
     {
-      "id": "public_comunidade_js_ogl_sr_b",
-      "label": "B()",
+      "id": "public_comunidade_js_ogl_ot_constructor",
+      "label": ".constructor()",
       "_callable": true,
       "_origin": "ast",
       "community": 81,
-      "community_name": "sr",
+      "community_name": ".copy",
       "file_type": "code",
-      "norm_label": "b()",
+      "norm_label": ".constructor()",
       "source_file": "public/comunidade/js/ogl.js",
       "source_location": "L13"
     },
     {
-      "id": "public_comunidade_js_ogl_sr_c",
-      "label": "C()",
+      "id": "public_comunidade_js_ogl_ot_copy",
+      "label": ".copy()",
       "_callable": true,
       "_origin": "ast",
       "community": 81,
-      "community_name": "sr",
+      "community_name": ".copy",
       "file_type": "code",
-      "norm_label": "c()",
+      "norm_label": ".copy()",
       "source_file": "public/comunidade/js/ogl.js",
       "source_location": "L13"
     },
     {
-      "id": "public_comunidade_js_ogl_sr_et",
-      "label": "et()",
+      "id": "public_comunidade_js_ogl_ot_gettiltat",
+      "label": ".getTiltAt()",
       "_callable": true,
       "_origin": "ast",
       "community": 81,
-      "community_name": "sr",
+      "community_name": ".copy",
       "file_type": "code",
-      "norm_label": "et()",
+      "norm_label": ".gettiltat()",
       "source_file": "public/comunidade/js/ogl.js",
       "source_location": "L13"
     },
     {
-      "id": "public_comunidade_js_ogl_sr_l",
-      "label": "L()",
+      "id": "public_comunidade_js_ogl_ri",
+      "label": "ri()",
       "_callable": true,
       "_origin": "ast",
       "community": 81,
-      "community_name": "sr",
+      "community_name": ".copy",
       "file_type": "code",
-      "norm_label": "l()",
+      "norm_label": "ri()",
       "source_file": "public/comunidade/js/ogl.js",
       "source_location": "L13"
     },
     {
-      "id": "public_comunidade_js_ogl_sr_ms",
-      "label": "ms()",
+      "id": "public_comunidade_js_ogl_st_frustumintersectsmesh",
+      "label": ".frustumIntersectsMesh()",
       "_callable": true,
       "_origin": "ast",
       "community": 81,
-      "community_name": "sr",
+      "community_name": ".copy",
       "file_type": "code",
-      "norm_label": "ms()",
+      "norm_label": ".frustumintersectsmesh()",
       "source_file": "public/comunidade/js/ogl.js",
       "source_location": "L13"
     },
     {
-      "id": "public_comunidade_js_ogl_sr_n",
-      "label": "N()",
+      "id": "public_comunidade_js_ogl_st_frustumintersectssphere",
+      "label": ".frustumIntersectsSphere()",
       "_callable": true,
       "_origin": "ast",
       "community": 81,
-      "community_name": "sr",
+      "community_name": ".copy",
       "file_type": "code",
-      "norm_label": "n()",
+      "norm_label": ".frustumintersectssphere()",
       "source_file": "public/comunidade/js/ogl.js",
       "source_location": "L13"
     },
     {
-      "id": "public_comunidade_js_ogl_sr_tt",
-      "label": "tt()",
+      "id": "public_comunidade_js_ogl_u_getmaxscaleonaxis",
+      "label": ".getMaxScaleOnAxis()",
       "_callable": true,
       "_origin": "ast",
       "community": 81,
-      "community_name": "sr",
+      "community_name": ".copy",
       "file_type": "code",
-      "norm_label": "tt()",
+      "norm_label": ".getmaxscaleonaxis()",
       "source_file": "public/comunidade/js/ogl.js",
       "source_location": "L13"
     },
     {
-      "id": "public_comunidade_js_ogl_sr_xs",
-      "label": "xs()",
+      "id": "public_comunidade_js_ogl_u_set",
+      "label": ".set()",
       "_callable": true,
       "_origin": "ast",
       "community": 81,
-      "community_name": "sr",
+      "community_name": ".copy",
       "file_type": "code",
-      "norm_label": "xs()",
+      "norm_label": ".set()",
       "source_file": "public/comunidade/js/ogl.js",
       "source_location": "L13"
     },
     {
-      "id": "public_comunidade_js_ogl_sr_ys",
-      "label": "ys()",
+      "id": "public_comunidade_js_ogl_ui",
+      "label": "ui()",
       "_callable": true,
       "_origin": "ast",
       "community": 81,
-      "community_name": "sr",
+      "community_name": ".copy",
       "file_type": "code",
-      "norm_label": "ys()",
+      "norm_label": "ui()",
       "source_file": "public/comunidade/js/ogl.js",
       "source_location": "L13"
     },
     {
-      "id": "public_comunidade_js_ogl_st_lookat",
-      "label": ".lookAt()",
+      "id": "public_comunidade_js_ogl_v_set",
+      "label": ".set()",
       "_callable": true,
       "_origin": "ast",
       "community": 81,
-      "community_name": "sr",
+      "community_name": ".copy",
       "file_type": "code",
-      "norm_label": ".lookat()",
+      "norm_label": ".set()",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L13"
+    },
+    {
+      "id": "public_comunidade_js_ogl_ye",
+      "label": "ye()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 81,
+      "community_name": ".copy",
+      "file_type": "code",
+      "norm_label": "ye()",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L13"
+    },
+    {
+      "id": "public_comunidade_js_ogl_z_set",
+      "label": ".set()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 81,
+      "community_name": ".copy",
+      "file_type": "code",
+      "norm_label": ".set()",
       "source_file": "public/comunidade/js/ogl.js",
       "source_location": "L13"
     },
@@ -9519,7 +9580,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 81,
-      "community_name": "sr",
+      "community_name": ".copy",
       "file_type": "code",
       "norm_label": ".b()",
       "source_file": "public/comunidade/js/ogl.js",
@@ -9531,7 +9592,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 81,
-      "community_name": "sr",
+      "community_name": ".copy",
       "file_type": "code",
       "norm_label": ".constructor()",
       "source_file": "public/comunidade/js/ogl.js",
@@ -9543,21 +9604,9 @@
       "_callable": true,
       "_origin": "ast",
       "community": 81,
-      "community_name": "sr",
+      "community_name": ".copy",
       "file_type": "code",
       "norm_label": ".copy()",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L13"
-    },
-    {
-      "id": "public_comunidade_js_ogl_zt_g",
-      "label": ".g()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 81,
-      "community_name": "sr",
-      "file_type": "code",
-      "norm_label": ".g()",
       "source_file": "public/comunidade/js/ogl.js",
       "source_location": "L13"
     },
@@ -9567,7 +9616,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 81,
-      "community_name": "sr",
+      "community_name": ".copy",
       "file_type": "code",
       "norm_label": ".set()",
       "source_file": "public/comunidade/js/ogl.js",
@@ -11290,18 +11339,6 @@
       "source_location": "L13"
     },
     {
-      "id": "public_comunidade_js_ogl_ci",
-      "label": "ci()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 92,
-      "community_name": "U",
-      "file_type": "code",
-      "norm_label": "ci()",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L13"
-    },
-    {
       "id": "public_comunidade_js_ogl_di",
       "label": "di()",
       "_callable": true,
@@ -11370,18 +11407,6 @@
       "community_name": "U",
       "file_type": "code",
       "norm_label": "ii()",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L13"
-    },
-    {
-      "id": "public_comunidade_js_ogl_it_constructor",
-      "label": ".constructor()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 92,
-      "community_name": "U",
-      "file_type": "code",
-      "norm_label": ".constructor()",
       "source_file": "public/comunidade/js/ogl.js",
       "source_location": "L13"
     },
@@ -11598,18 +11623,6 @@
       "community_name": "U",
       "file_type": "code",
       "norm_label": ".getrotation()",
-      "source_file": "public/comunidade/js/ogl.js",
-      "source_location": "L13"
-    },
-    {
-      "id": "public_comunidade_js_ogl_u_gettranslation",
-      "label": ".getTranslation()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 92,
-      "community_name": "U",
-      "file_type": "code",
-      "norm_label": ".gettranslation()",
       "source_file": "public/comunidade/js/ogl.js",
       "source_location": "L13"
     },
@@ -12262,6 +12275,18 @@
       "source_location": "L13"
     },
     {
+      "id": "public_comunidade_js_ogl_ys",
+      "label": "Ys()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 97,
+      "community_name": ".z",
+      "file_type": "code",
+      "norm_label": "ys()",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L13"
+    },
+    {
       "id": "public_comunidade_js_ogl_z_conjugate",
       "label": ".conjugate()",
       "_callable": true,
@@ -12442,6 +12467,18 @@
       "source_location": "L13"
     },
     {
+      "id": "public_comunidade_js_ogl_z_slerp",
+      "label": ".slerp()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 97,
+      "community_name": ".z",
+      "file_type": "code",
+      "norm_label": ".slerp()",
+      "source_file": "public/comunidade/js/ogl.js",
+      "source_location": "L13"
+    },
+    {
       "id": "public_comunidade_js_ogl_z_toarray",
       "label": ".toArray()",
       "_callable": true,
@@ -12526,28 +12563,16 @@
       "source_location": "L53"
     },
     {
-      "id": "src_components_library_resourcecard_resourcecard",
-      "label": "ResourceCard()",
+      "id": "src_components_portal_herosection_herosection",
+      "label": "HeroSection()",
       "_callable": true,
       "_origin": "ast",
       "community": 98,
       "community_name": "GlassCard.tsx",
       "file_type": "code",
-      "norm_label": "resourcecard()",
-      "source_file": "src/components/library/ResourceCard.tsx",
-      "source_location": "L31"
-    },
-    {
-      "id": "src_components_library_resourcedetailviewer_resourcedetailviewer",
-      "label": "ResourceDetailViewer()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 98,
-      "community_name": "GlassCard.tsx",
-      "file_type": "code",
-      "norm_label": "resourcedetailviewer()",
-      "source_file": "src/components/library/ResourceDetailViewer.tsx",
-      "source_location": "L30"
+      "norm_label": "herosection()",
+      "source_file": "src/components/portal/HeroSection.tsx",
+      "source_location": "L25"
     },
     {
       "id": "src_components_portal_metricsbanner_metricsbanner",
@@ -13513,6 +13538,28 @@
       "source_location": "L1"
     },
     {
+      "id": "src_app_admin_library_control_page",
+      "label": "library-control/page.tsx",
+      "_origin": "ast",
+      "community": 105,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "library-control/page.tsx",
+      "source_file": "src/app/admin/library-control/page.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_app_admin_library_control_page_metadata",
+      "label": "metadata",
+      "_origin": "ast",
+      "community": 105,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "metadata",
+      "source_file": "src/app/admin/library-control/page.tsx",
+      "source_location": "L7"
+    },
+    {
       "id": "src_app_layout",
       "label": "app/layout.tsx",
       "_origin": "ast",
@@ -13532,7 +13579,7 @@
       "file_type": "code",
       "norm_label": "metadata",
       "source_file": "src/app/layout.tsx",
-      "source_location": "L8"
+      "source_location": "L9"
     },
     {
       "id": "src_app_shop_page",
@@ -13546,6 +13593,17 @@
       "source_location": "L1"
     },
     {
+      "id": "src_components_admin_librarycontrolsuite",
+      "label": "LibraryControlSuite.tsx",
+      "_origin": "ast",
+      "community": 105,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "librarycontrolsuite.tsx",
+      "source_file": "src/components/admin/LibraryControlSuite.tsx",
+      "source_location": "L1"
+    },
+    {
       "id": "src_components_layout_footer",
       "label": "Footer.tsx",
       "_origin": "ast",
@@ -13555,6 +13613,28 @@
       "norm_label": "footer.tsx",
       "source_file": "src/components/layout/Footer.tsx",
       "source_location": "L1"
+    },
+    {
+      "id": "src_components_layout_mobilebottomnav",
+      "label": "MobileBottomNav.tsx",
+      "_origin": "ast",
+      "community": 105,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "mobilebottomnav.tsx",
+      "source_file": "src/components/layout/MobileBottomNav.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_layout_mobilebottomnav_mobilenavitems",
+      "label": "mobileNavItems",
+      "_origin": "ast",
+      "community": 105,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "mobilenavitems",
+      "source_file": "src/components/layout/MobileBottomNav.tsx",
+      "source_location": "L23"
     },
     {
       "id": "src_components_portal_alternatingherobanner",
@@ -13579,6 +13659,28 @@
       "source_location": "L1"
     },
     {
+      "id": "src_components_portal_photografycontacthub",
+      "label": "PhotografyContactHub.tsx",
+      "_origin": "ast",
+      "community": 105,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "photografycontacthub.tsx",
+      "source_file": "src/components/portal/PhotografyContactHub.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_portal_photografycontacthub_backgroundimages",
+      "label": "backgroundImages",
+      "_origin": "ast",
+      "community": 105,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "backgroundimages",
+      "source_file": "src/components/portal/PhotografyContactHub.tsx",
+      "source_location": "L28"
+    },
+    {
       "id": "src_components_portal_portalnavbar",
       "label": "PortalNavbar.tsx",
       "_origin": "ast",
@@ -13599,6 +13701,17 @@
       "norm_label": "shopsection.tsx",
       "source_file": "src/components/portal/ShopSection.tsx",
       "source_location": "L1"
+    },
+    {
+      "id": "ref_lucide_react",
+      "label": "lucide-react",
+      "_origin": "ast",
+      "community": 105,
+      "community_name": "react",
+      "file_type": "concept",
+      "norm_label": "lucide-react",
+      "source_file": "package.json",
+      "source_location": "L25"
     },
     {
       "id": "ref_react",
@@ -14050,17 +14163,6 @@
       "source_location": "L71"
     },
     {
-      "id": "ref_drizzle_orm",
-      "label": "drizzle-orm",
-      "_origin": "ast",
-      "community": 116,
-      "community_name": "me/route.ts",
-      "file_type": "concept",
-      "norm_label": "drizzle-orm",
-      "source_file": "package.json",
-      "source_location": "L22"
-    },
-    {
       "id": "project",
       "label": "PROJECT.md",
       "_origin": "ast",
@@ -14179,83 +14281,6 @@
       "norm_label": "project: plataforma unificada soberana \u2014 mateus celestino pro",
       "source_file": "PROJECT.md",
       "source_location": "L1"
-    },
-    {
-      "id": "tests_portal_restoration_test",
-      "label": "portal_restoration.test.ts",
-      "_origin": "ast",
-      "community": 120,
-      "community_name": "portal_restoration.test.ts",
-      "file_type": "code",
-      "norm_label": "portal_restoration.test.ts",
-      "source_file": "tests/portal_restoration.test.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "tests_portal_restoration_test_articles",
-      "label": "articles",
-      "_origin": "ast",
-      "community": 120,
-      "community_name": "portal_restoration.test.ts",
-      "file_type": "code",
-      "norm_label": "articles",
-      "source_file": "tests/portal_restoration.test.ts",
-      "source_location": "L32"
-    },
-    {
-      "id": "tests_portal_restoration_test_articlespath",
-      "label": "articlesPath",
-      "_origin": "ast",
-      "community": 120,
-      "community_name": "portal_restoration.test.ts",
-      "file_type": "code",
-      "norm_label": "articlespath",
-      "source_file": "tests/portal_restoration.test.ts",
-      "source_location": "L30"
-    },
-    {
-      "id": "tests_portal_restoration_test_base_dir",
-      "label": "BASE_DIR",
-      "_origin": "ast",
-      "community": 120,
-      "community_name": "portal_restoration.test.ts",
-      "file_type": "code",
-      "norm_label": "base_dir",
-      "source_file": "tests/portal_restoration.test.ts",
-      "source_location": "L6"
-    },
-    {
-      "id": "tests_portal_restoration_test_requiredcomponents",
-      "label": "requiredComponents",
-      "_origin": "ast",
-      "community": 120,
-      "community_name": "portal_restoration.test.ts",
-      "file_type": "code",
-      "norm_label": "requiredcomponents",
-      "source_file": "tests/portal_restoration.test.ts",
-      "source_location": "L11"
-    },
-    {
-      "id": "tests_portal_restoration_test_sitedata",
-      "label": "siteData",
-      "_origin": "ast",
-      "community": 120,
-      "community_name": "portal_restoration.test.ts",
-      "file_type": "code",
-      "norm_label": "sitedata",
-      "source_file": "tests/portal_restoration.test.ts",
-      "source_location": "L39"
-    },
-    {
-      "id": "tests_portal_restoration_test_sitedatapath",
-      "label": "siteDataPath",
-      "_origin": "ast",
-      "community": 120,
-      "community_name": "portal_restoration.test.ts",
-      "file_type": "code",
-      "norm_label": "sitedatapath",
-      "source_file": "tests/portal_restoration.test.ts",
-      "source_location": "L37"
     },
     {
       "id": "drizzle_config",
@@ -15108,26 +15133,37 @@
       "source_location": "L63"
     },
     {
-      "id": "src_components_portal_photografycontacthub",
-      "label": "PhotografyContactHub.tsx",
+      "id": "src_components_library_resourcecard",
+      "label": "ResourceCard.tsx",
       "_origin": "ast",
       "community": 137,
-      "community_name": "PhotografyContactHub.tsx",
+      "community_name": "ResourceCard.tsx",
       "file_type": "code",
-      "norm_label": "photografycontacthub.tsx",
-      "source_file": "src/components/portal/PhotografyContactHub.tsx",
+      "norm_label": "resourcecard.tsx",
+      "source_file": "src/components/library/ResourceCard.tsx",
       "source_location": "L1"
     },
     {
-      "id": "src_components_portal_photografycontacthub_backgroundimages",
-      "label": "backgroundImages",
+      "id": "src_components_library_resourcedetailviewer",
+      "label": "ResourceDetailViewer.tsx",
       "_origin": "ast",
       "community": 137,
-      "community_name": "PhotografyContactHub.tsx",
+      "community_name": "ResourceCard.tsx",
       "file_type": "code",
-      "norm_label": "backgroundimages",
-      "source_file": "src/components/portal/PhotografyContactHub.tsx",
-      "source_location": "L28"
+      "norm_label": "resourcedetailviewer.tsx",
+      "source_file": "src/components/library/ResourceDetailViewer.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_types_library",
+      "label": "library.ts",
+      "_origin": "ast",
+      "community": 137,
+      "community_name": "ResourceCard.tsx",
+      "file_type": "code",
+      "norm_label": "library.ts",
+      "source_file": "src/types/library.ts",
+      "source_location": "L1"
     },
     {
       "id": "src_app_api_send_email_route",
@@ -15433,6 +15469,17 @@
       "file_type": "code",
       "norm_label": "galaxy.js",
       "source_file": "public/showcase/galaxy.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "tests_mobile_navigation_test",
+      "label": "mobile_navigation.test.ts",
+      "_origin": "ast",
+      "community": 147,
+      "community_name": "mobile_navigation.test.ts",
+      "file_type": "code",
+      "norm_label": "mobile_navigation.test.ts",
+      "source_file": "tests/mobile_navigation.test.ts",
       "source_location": "L1"
     },
     {
@@ -17779,6 +17826,17 @@
       "source_location": "L24"
     },
     {
+      "id": "ref_marked",
+      "label": "marked",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "package.json",
+      "file_type": "concept",
+      "norm_label": "marked",
+      "source_file": "package.json",
+      "source_location": "L26"
+    },
+    {
       "id": "ref_neondatabase_serverless",
       "label": "@neondatabase/serverless",
       "_origin": "ast",
@@ -18538,6 +18596,17 @@
       "source_location": "L17"
     },
     {
+      "id": "src_lib_db_index_db",
+      "label": "db",
+      "_origin": "ast",
+      "community": 45,
+      "community_name": "schema.ts",
+      "file_type": "code",
+      "norm_label": "db",
+      "source_file": "src/lib/db/index.ts",
+      "source_location": "L131"
+    },
+    {
       "id": "src_lib_db_schema",
       "label": "schema.ts",
       "_origin": "ast",
@@ -18626,6 +18695,83 @@
       "source_location": "L1"
     },
     {
+      "id": "tests_portal_restoration_test",
+      "label": "portal_restoration.test.ts",
+      "_origin": "ast",
+      "community": 45,
+      "community_name": "schema.ts",
+      "file_type": "code",
+      "norm_label": "portal_restoration.test.ts",
+      "source_file": "tests/portal_restoration.test.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "tests_portal_restoration_test_articles",
+      "label": "articles",
+      "_origin": "ast",
+      "community": 45,
+      "community_name": "schema.ts",
+      "file_type": "code",
+      "norm_label": "articles",
+      "source_file": "tests/portal_restoration.test.ts",
+      "source_location": "L32"
+    },
+    {
+      "id": "tests_portal_restoration_test_articlespath",
+      "label": "articlesPath",
+      "_origin": "ast",
+      "community": 45,
+      "community_name": "schema.ts",
+      "file_type": "code",
+      "norm_label": "articlespath",
+      "source_file": "tests/portal_restoration.test.ts",
+      "source_location": "L30"
+    },
+    {
+      "id": "tests_portal_restoration_test_base_dir",
+      "label": "BASE_DIR",
+      "_origin": "ast",
+      "community": 45,
+      "community_name": "schema.ts",
+      "file_type": "code",
+      "norm_label": "base_dir",
+      "source_file": "tests/portal_restoration.test.ts",
+      "source_location": "L6"
+    },
+    {
+      "id": "tests_portal_restoration_test_requiredcomponents",
+      "label": "requiredComponents",
+      "_origin": "ast",
+      "community": 45,
+      "community_name": "schema.ts",
+      "file_type": "code",
+      "norm_label": "requiredcomponents",
+      "source_file": "tests/portal_restoration.test.ts",
+      "source_location": "L11"
+    },
+    {
+      "id": "tests_portal_restoration_test_sitedata",
+      "label": "siteData",
+      "_origin": "ast",
+      "community": 45,
+      "community_name": "schema.ts",
+      "file_type": "code",
+      "norm_label": "sitedata",
+      "source_file": "tests/portal_restoration.test.ts",
+      "source_location": "L39"
+    },
+    {
+      "id": "tests_portal_restoration_test_sitedatapath",
+      "label": "siteDataPath",
+      "_origin": "ast",
+      "community": 45,
+      "community_name": "schema.ts",
+      "file_type": "code",
+      "norm_label": "sitedatapath",
+      "source_file": "tests/portal_restoration.test.ts",
+      "source_location": "L37"
+    },
+    {
       "id": "postcss_config",
       "label": "postcss.config.mjs",
       "_origin": "ast",
@@ -18648,44 +18794,11 @@
       "source_location": "L1"
     },
     {
-      "id": "src_app_admin_library_control_page",
-      "label": "library-control/page.tsx",
-      "_origin": "ast",
-      "community": 49,
-      "community_name": "lucide-react",
-      "file_type": "code",
-      "norm_label": "library-control/page.tsx",
-      "source_file": "src/app/admin/library-control/page.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_app_admin_library_control_page_metadata",
-      "label": "metadata",
-      "_origin": "ast",
-      "community": 49,
-      "community_name": "lucide-react",
-      "file_type": "code",
-      "norm_label": "metadata",
-      "source_file": "src/app/admin/library-control/page.tsx",
-      "source_location": "L7"
-    },
-    {
-      "id": "src_components_admin_librarycontrolsuite",
-      "label": "LibraryControlSuite.tsx",
-      "_origin": "ast",
-      "community": 49,
-      "community_name": "lucide-react",
-      "file_type": "code",
-      "norm_label": "librarycontrolsuite.tsx",
-      "source_file": "src/components/admin/LibraryControlSuite.tsx",
-      "source_location": "L1"
-    },
-    {
       "id": "src_components_library_cataloggrid",
       "label": "CatalogGrid.tsx",
       "_origin": "ast",
       "community": 49,
-      "community_name": "lucide-react",
+      "community_name": "CatalogGrid.tsx",
       "file_type": "code",
       "norm_label": "cataloggrid.tsx",
       "source_file": "src/components/library/CatalogGrid.tsx",
@@ -18696,7 +18809,7 @@
       "label": "DownloadButton.tsx",
       "_origin": "ast",
       "community": 49,
-      "community_name": "lucide-react",
+      "community_name": "CatalogGrid.tsx",
       "file_type": "code",
       "norm_label": "downloadbutton.tsx",
       "source_file": "src/components/library/DownloadButton.tsx",
@@ -18707,22 +18820,11 @@
       "label": "ResourceViewer.tsx",
       "_origin": "ast",
       "community": 49,
-      "community_name": "lucide-react",
+      "community_name": "CatalogGrid.tsx",
       "file_type": "code",
       "norm_label": "resourceviewer.tsx",
       "source_file": "src/components/library/ResourceViewer.tsx",
       "source_location": "L1"
-    },
-    {
-      "id": "ref_lucide_react",
-      "label": "lucide-react",
-      "_origin": "ast",
-      "community": 49,
-      "community_name": "lucide-react",
-      "file_type": "concept",
-      "norm_label": "lucide-react",
-      "source_file": "package.json",
-      "source_location": "L25"
     },
     {
       "id": "agents_teamwork_original_request",
@@ -21041,17 +21143,6 @@
       "source_location": "L1"
     },
     {
-      "id": "src_components_portal_herosection",
-      "label": "HeroSection.tsx",
-      "_origin": "ast",
-      "community": 71,
-      "community_name": "cn",
-      "file_type": "code",
-      "norm_label": "herosection.tsx",
-      "source_file": "src/components/portal/HeroSection.tsx",
-      "source_location": "L1"
-    },
-    {
       "id": "src_components_ui_badge",
       "label": "Badge.tsx",
       "_origin": "ast",
@@ -21345,17 +21436,6 @@
       "source_location": "L1"
     },
     {
-      "id": "ref_marked",
-      "label": "marked",
-      "_origin": "ast",
-      "community": 75,
-      "community_name": "articles/route.ts",
-      "file_type": "concept",
-      "norm_label": "marked",
-      "source_file": "package.json",
-      "source_location": "L26"
-    },
-    {
       "id": "src_components_shaders_index",
       "label": "shaders/index.ts",
       "_origin": "ast",
@@ -21466,17 +21546,6 @@
       "source_location": "L1"
     },
     {
-      "id": "src_lib_db_index_db",
-      "label": "db",
-      "_origin": "ast",
-      "community": 79,
-      "community_name": "adversarial.test.ts",
-      "file_type": "code",
-      "norm_label": "db",
-      "source_file": "src/lib/db/index.ts",
-      "source_location": "L131"
-    },
-    {
       "id": "src_lib_plans",
       "label": "plans.ts",
       "_origin": "ast",
@@ -21519,6 +21588,17 @@
       "norm_label": "payment.test.ts",
       "source_file": "tests/comunidade/payment.test.ts",
       "source_location": "L1"
+    },
+    {
+      "id": "ref_drizzle_orm",
+      "label": "drizzle-orm",
+      "_origin": "ast",
+      "community": 79,
+      "community_name": "adversarial.test.ts",
+      "file_type": "concept",
+      "norm_label": "drizzle-orm",
+      "source_file": "package.json",
+      "source_location": "L22"
     },
     {
       "id": "agents_teamwork_worker_foundations_briefing",
@@ -22829,25 +22909,14 @@
       "source_location": "L40"
     },
     {
-      "id": "src_components_library_resourcecard",
-      "label": "ResourceCard.tsx",
+      "id": "src_components_portal_herosection",
+      "label": "HeroSection.tsx",
       "_origin": "ast",
       "community": 98,
       "community_name": "GlassCard.tsx",
       "file_type": "code",
-      "norm_label": "resourcecard.tsx",
-      "source_file": "src/components/library/ResourceCard.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_components_library_resourcedetailviewer",
-      "label": "ResourceDetailViewer.tsx",
-      "_origin": "ast",
-      "community": 98,
-      "community_name": "GlassCard.tsx",
-      "file_type": "code",
-      "norm_label": "resourcedetailviewer.tsx",
-      "source_file": "src/components/library/ResourceDetailViewer.tsx",
+      "norm_label": "herosection.tsx",
+      "source_file": "src/components/portal/HeroSection.tsx",
       "source_location": "L1"
     },
     {
@@ -22893,17 +22962,6 @@
       "norm_label": "glasscard",
       "source_file": "src/components/ui/GlassCard.tsx",
       "source_location": "L10"
-    },
-    {
-      "id": "src_types_library",
-      "label": "library.ts",
-      "_origin": "ast",
-      "community": 98,
-      "community_name": "GlassCard.tsx",
-      "file_type": "code",
-      "norm_label": "library.ts",
-      "source_file": "src/types/library.ts",
-      "source_location": "L1"
     },
     {
       "id": "src_app_not_found",
@@ -33503,6 +33561,18 @@
       "weight": 1.0
     },
     {
+      "source": "src_components_layout_mobilebottomnav_mobilebottomnav",
+      "target": "src_lib_utils_cn",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/components/layout/MobileBottomNav.tsx",
+      "source_location": "L66",
+      "weight": 1.0
+    },
+    {
       "source": "src_components_layout_navbar_navbar",
       "target": "src_lib_utils_cn",
       "relation": "calls",
@@ -33943,7 +34013,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/shaders/LiquidChromeShader.tsx",
-      "source_location": "L105",
+      "source_location": "L108",
       "weight": 1.0
     },
     {
@@ -37664,7 +37734,7 @@
     },
     {
       "source": "src_app_layout",
-      "target": "src_components_portal_liquidglassbackground_liquidglassbackground",
+      "target": "src_components_layout_mobilebottomnav_mobilebottomnav",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -37672,6 +37742,18 @@
       "context": "import",
       "source_file": "src/app/layout.tsx",
       "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_layout",
+      "target": "src_components_portal_liquidglassbackground_liquidglassbackground",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/app/layout.tsx",
+      "source_location": "L7",
       "weight": 1.0
     },
     {
@@ -38296,6 +38378,18 @@
       "context": "import",
       "source_file": "src/components/layout/Footer.tsx",
       "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_layout_mobilebottomnav",
+      "target": "src_lib_utils_cn",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/components/layout/MobileBottomNav.tsx",
+      "source_location": "L14",
       "weight": 1.0
     },
     {
@@ -42300,7 +42394,7 @@
     },
     {
       "source": "src_app_layout",
-      "target": "src_components_portal_liquidglassbackground",
+      "target": "src_components_layout_mobilebottomnav",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -42308,6 +42402,18 @@
       "context": "import",
       "source_file": "src/app/layout.tsx",
       "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_layout",
+      "target": "src_components_portal_liquidglassbackground",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/app/layout.tsx",
+      "source_location": "L7",
       "weight": 1.0
     },
     {
@@ -43137,6 +43243,42 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/layout/Footer.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_layout_mobilebottomnav",
+      "target": "src_lib_utils",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/components/layout/MobileBottomNav.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_layout_mobilebottomnav",
+      "target": "ref_react",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/components/layout/MobileBottomNav.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_layout_mobilebottomnav",
+      "target": "ref_lucide_react",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/components/layout/MobileBottomNav.tsx",
       "source_location": "L6",
       "weight": 1.0
     },
@@ -56583,7 +56725,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/app/layout.tsx",
-      "source_location": "L33",
+      "source_location": "L34",
       "weight": 1.0
     },
     {
@@ -56594,7 +56736,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/app/layout.tsx",
-      "source_location": "L8",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -56991,6 +57133,39 @@
       "confidence_score": 1.0,
       "source_file": "src/components/layout/Footer.tsx",
       "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_layout_mobilebottomnav",
+      "target": "src_components_layout_mobilebottomnav_mobilenavitem",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/components/layout/MobileBottomNav.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_layout_mobilebottomnav",
+      "target": "src_components_layout_mobilebottomnav_mobilenavitems",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/components/layout/MobileBottomNav.tsx",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_layout_mobilebottomnav",
+      "target": "src_components_layout_mobilebottomnav_mobilebottomnav",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/components/layout/MobileBottomNav.tsx",
+      "source_location": "L32",
       "weight": 1.0
     },
     {
@@ -65229,5 +65404,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "45be3e297deb1ee4ce8a6f890e5b6f949bb007aa"
+  "built_at_commit": "ec8bb838500f539b2fd3d3a9af107645f2dae93d"
 }
