@@ -28,7 +28,7 @@ export default function ShaderTransitionZone({
 }: ShaderTransitionZoneProps) {
   return (
     <div
-      className={`relative w-full overflow-hidden z-20 py-12 sm:py-16 md:py-20 lg:py-24 flex flex-col items-center justify-center pointer-events-none select-none ${className}`}
+      className={`relative w-full max-w-full overflow-hidden overflow-x-hidden z-20 py-12 sm:py-16 md:py-20 lg:py-24 flex flex-col items-center justify-center pointer-events-none select-none ${className}`}
     >
       {/* 1. SOMBRAS CINEMÁTICAS PROFUNDAS & VINHETAS DE TRANSIÇÃO (TOP & BOTTOM FADE) */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#030305] via-[#030305]/90 to-[#030305] pointer-events-none" />
