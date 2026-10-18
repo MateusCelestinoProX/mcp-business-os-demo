@@ -1866,9 +1866,9 @@
     "semantic_hash": ""
   },
   "src/app/page.tsx": {
-    "mtime": 1792360695.3636396,
-    "seen": 1792360714.562758,
-    "ast_hash": "890bc2cb5327f26ead4411de84caa92a",
+    "mtime": 1792360929.3482413,
+    "seen": 1792360930.088684,
+    "ast_hash": "839cede16695ccb5b2272ce7ea7fd334",
     "semantic_hash": ""
   },
   ".agents/teamwork/worker_shaders/handoff.md": {
