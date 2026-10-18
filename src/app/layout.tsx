@@ -1,9 +1,18 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { PortalNavbar } from "@/components/portal/PortalNavbar";
 import { Footer } from "@/components/layout/Footer";
+import { MobileBottomNav } from "@/components/layout/MobileBottomNav";
 import LiquidGlassBackground from "@/components/portal/LiquidGlassBackground";
+
+export const viewport: Viewport = {
+  themeColor: "#030305",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: "cover",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
@@ -49,7 +58,12 @@ export default function RootLayout({
         <PortalNavbar />
 
         {/* Conteúdo Principal com espaço inteligente: mobile-first enxuto e desktop com espaço para as duas barras fixas */}
-        <main className="flex-1 pt-16 sm:pt-20 lg:pt-32 pb-24 lg:pb-0 relative z-10 flex flex-col">{children}</main>
+        <main className="flex-1 pt-16 sm:pt-20 lg:pt-32 pb-20 md:pb-0 relative z-10 flex flex-col min-h-screen">
+          {children}
+        </main>
+
+        {/* Barra de Navegação Móvel Flutuante Soberana */}
+        <MobileBottomNav />
 
         {/* Rodapé Oficial da Plataforma */}
         <Footer />
