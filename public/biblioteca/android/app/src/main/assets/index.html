@@ -1960,10 +1960,6 @@ input, textarea, [contenteditable="true"] {
   animation: heroSubEntrance 1.4s 0.25s cubic-bezier(0.16, 1, 0.3, 1) backwards;
 }
 
-.manifesto-btn {
-  animation: heroBtnEntrance 1.4s 0.45s cubic-bezier(0.16, 1, 0.3, 1) backwards;
-}
-
 @keyframes heroTitleEntrance {
   0% {
     opacity: 0;
@@ -1987,17 +1983,6 @@ input, textarea, [contenteditable="true"] {
     opacity: 1;
     transform: translateY(0);
     letter-spacing: 8px;
-  }
-}
-
-@keyframes heroBtnEntrance {
-  0% {
-    opacity: 0;
-    transform: translateY(24px) scale(0.92);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
   }
 }
 
@@ -2057,34 +2042,6 @@ input, textarea, [contenteditable="true"] {
   font-size: 0.875rem;
   line-height: 1.6;
   padding: 0 16px;
-}
-
-.manifesto-btn {
-  padding: 14px 36px;
-  border-radius: 9999px;
-  color: #ffffff;
-  font-size: 0.95rem;
-  font-weight: 600;
-  cursor: pointer;
-  touch-action: manipulation;
-  background: rgba(255, 255, 255, 0.08) !important;
-  backdrop-filter: blur(28px) saturate(200%) !important;
-  -webkit-backdrop-filter: blur(28px) saturate(200%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.22) !important;
-  box-shadow: inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.4), 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 24px rgba(168, 85, 247, 0.15) !important;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.manifesto-btn:hover {
-  background: rgba(255, 255, 255, 0.14) !important;
-  border-color: rgba(255, 255, 255, 0.35) !important;
-  transform: translateY(-2px);
-  box-shadow: inset 0 1px 2px 0 rgba(255, 255, 255, 0.5), 0 20px 44px rgba(0, 0, 0, 0.7), 0 0 32px rgba(168, 85, 247, 0.25) !important;
-}
-
-.manifesto-btn:active {
-  transform: scale(0.96) !important;
-  background: rgba(255, 255, 255, 0.2) !important;
 }
 
 /* Social Footer */
@@ -4740,7 +4697,7 @@ input, textarea, [contenteditable="true"] {
         if (!window.AndroidBridge) return;
 
         // Feedback pesado para confirmações e logins
-        const heavyTarget = e.target.closest('.login-btn, .manifesto-btn, .zip-btn, #login-btn');
+        const heavyTarget = e.target.closest('.login-btn, .zip-btn, #login-btn');
         if (heavyTarget) {
           if (typeof window.AndroidBridge.triggerHapticType === 'function') {
             window.AndroidBridge.triggerHapticType('heavy');
