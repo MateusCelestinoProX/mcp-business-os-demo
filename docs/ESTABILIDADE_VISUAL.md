@@ -131,3 +131,7 @@ WebGL1/2. (`GridScanShader` usa three.js, que converte para GLSL 3.00 — não a
 | CLS | 0,14 (com CSS stale) | 0 |
 | Elementos com backdrop-filter | 87 | 3 |
 | Erros WebGL no console | 3 | 0 |
+
+### 13. Conflito entre `next build` e `next dev` (Falso "Layout quebrado")
+Nunca execute `next build` (ou `npm run build`) com o processo `next dev` ativo na mesma pasta sem limpar o cache depois. O build de produção sobrescreve o manifesto de chunks no `.next`, fazendo o `next dev` perder a referência do bundle de CSS e servir temporariamente o HTML cru (fundo branco, links azuis/roxos).
+Caso ocorra: pare o servidor, rode `rm -rf .next` e inicie `npm run dev` novamente.
