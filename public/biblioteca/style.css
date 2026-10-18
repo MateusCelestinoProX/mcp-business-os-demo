@@ -1687,7 +1687,7 @@ body {
   width: 100%;
   height: 92vh;
   min-height: 580px;
-  background: transparent !important;
+  background: #000000;
   overflow: hidden;
   z-index: 10;
   display: flex;
@@ -2188,7 +2188,7 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 1;
+  z-index: 0;
   pointer-events: none;
   overflow: hidden;
   isolation: isolate;
@@ -2229,7 +2229,7 @@ body {
 .cinematic-hero {
   position: relative;
   z-index: 10;
-  background: transparent !important;
+  background: #000000;
   -webkit-mask-image: linear-gradient(to bottom, #000000 0%, #000000 70%, rgba(0, 0, 0, 0.85) 82%, rgba(0, 0, 0, 0.4) 92%, transparent 100%);
   mask-image: linear-gradient(to bottom, #000000 0%, #000000 70%, rgba(0, 0, 0, 0.85) 82%, rgba(0, 0, 0, 0.4) 92%, transparent 100%);
 }

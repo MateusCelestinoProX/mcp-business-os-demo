@@ -1821,7 +1821,7 @@ input, textarea, [contenteditable="true"] {
   width: 100%;
   height: 92vh;
   min-height: 580px;
-  background: transparent !important;
+  background: #000000;
   overflow: hidden;
   z-index: 10;
   display: flex;
@@ -1857,7 +1857,6 @@ input, textarea, [contenteditable="true"] {
   height: 100%;
   object-fit: cover;
   opacity: 0;
-  mix-blend-mode: screen;
   will-change: opacity;
 }
 
@@ -2343,7 +2342,7 @@ input, textarea, [contenteditable="true"] {
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 1;
+  z-index: 0;
   pointer-events: none;
   overflow: hidden;
   isolation: isolate;
@@ -2384,7 +2383,7 @@ input, textarea, [contenteditable="true"] {
 .cinematic-hero {
   position: relative;
   z-index: 10;
-  background: transparent !important;
+  background: #000000;
   -webkit-mask-image: linear-gradient(to bottom, #000000 0%, #000000 70%, rgba(0, 0, 0, 0.85) 82%, rgba(0, 0, 0, 0.4) 92%, transparent 100%);
   mask-image: linear-gradient(to bottom, #000000 0%, #000000 70%, rgba(0, 0, 0, 0.85) 82%, rgba(0, 0, 0, 0.4) 92%, transparent 100%);
 }
@@ -2421,13 +2420,6 @@ input, textarea, [contenteditable="true"] {
         <div class="bg-canvas-wrapper" id="bg-wrapper-1"><canvas id="canvas-gradientwaves"></canvas></div>
         <div class="bg-canvas-wrapper" id="bg-wrapper-2"><canvas id="canvas-aeroshards"></canvas></div>
         <div class="bg-blur-veil"></div>
-    </div>
-
-    <!-- Floating 3-Shader Switcher Pill -->
-    <div id="shader-switcher-pill" style="position: fixed; top: 72px; right: 24px; z-index: 999999; display: flex; align-items: center; gap: 4px; background: rgba(10, 10, 18, 0.85); border: 1px solid rgba(255, 255, 255, 0.15); padding: 4px; border-radius: 9999px; backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); box-shadow: 0 10px 30px rgba(0,0,0,0.6);">
-        <button onclick="window.switchShader(0)" class="shader-pill-btn active" id="shader-pill-0" style="padding: 5px 12px; border-radius: 9999px; font-size: 11px; font-weight: 700; color: #fff; background: rgba(168, 85, 247, 0.35); border: 1px solid rgba(168, 85, 247, 0.5); cursor: pointer; transition: all 0.2s;">✦ 1. GhostFibers</button>
-        <button onclick="window.switchShader(1)" class="shader-pill-btn" id="shader-pill-1" style="padding: 5px 12px; border-radius: 9999px; font-size: 11px; font-weight: 600; color: #a1a1aa; background: transparent; border: 1px solid transparent; cursor: pointer; transition: all 0.2s;">✦ 2. GradientWaves</button>
-        <button onclick="window.switchShader(2)" class="shader-pill-btn" id="shader-pill-2" style="padding: 5px 12px; border-radius: 9999px; font-size: 11px; font-weight: 600; color: #a1a1aa; background: transparent; border: 1px solid transparent; cursor: pointer; transition: all 0.2s;">✦ 3. AeroShards</button>
     </div>
 
     <!-- Ambient Light Effects -->
@@ -3430,7 +3422,7 @@ input, textarea, [contenteditable="true"] {
     // Set initial opacity and play
     video.style.opacity = '0';
     video.play().then(() => {
-      fadeVideo(0.5, 600);
+      fadeVideo(1, 600);
     }).catch(err => console.log("Autoplay blocked:", err));
 
     video.addEventListener('timeupdate', () => {
@@ -3447,7 +3439,7 @@ input, textarea, [contenteditable="true"] {
         video.currentTime = 0;
         fadingOut = false;
         video.play().then(() => {
-          fadeVideo(0.5, 600);
+          fadeVideo(1, 600);
         });
       }, 100);
     });
@@ -4353,6 +4345,8 @@ input, textarea, [contenteditable="true"] {
 
     // Sistema Oficial de 3 Shaders: GhostFibers, GradientWaves e AeroShards
     let activeIndex = 0;
+    let prevIndex = -1;
+    let transitionEndTime = 0;
     const renderers = [null, null, null];
     const wrappers = [
       document.getElementById('bg-wrapper-0'),
@@ -4361,28 +4355,14 @@ input, textarea, [contenteditable="true"] {
     ];
 
     window.switchShader = function(idx) {
-      if (idx < 0 || idx >= 3) return;
+      if (idx < 0 || idx >= 3 || idx === activeIndex) return;
+      prevIndex = activeIndex;
       activeIndex = idx;
+      transitionEndTime = performance.now() + 1800;
       wrappers.forEach((w, i) => {
         if (w) {
           if (i === idx) w.classList.add('active');
           else w.classList.remove('active');
-        }
-        const btn = document.getElementById('shader-pill-' + i);
-        if (btn) {
-          if (i === idx) {
-            btn.classList.add('active');
-            btn.style.background = 'rgba(168, 85, 247, 0.45)';
-            btn.style.borderColor = 'rgba(168, 85, 247, 0.8)';
-            btn.style.color = '#fff';
-            btn.style.boxShadow = '0 0 16px rgba(168, 85, 247, 0.4)';
-          } else {
-            btn.classList.remove('active');
-            btn.style.background = 'transparent';
-            btn.style.borderColor = 'transparent';
-            btn.style.color = '#a1a1aa';
-            btn.style.boxShadow = 'none';
-          }
         }
       });
       if (typeof renderers[activeIndex] === 'function') {
@@ -4390,9 +4370,10 @@ input, textarea, [contenteditable="true"] {
       }
     };
 
+    // Rotação 100% automática e contínua dos shaders a cada 8.5 segundos
     setInterval(() => {
-      activeIndex = (activeIndex + 1) % 3;
-      window.switchShader(activeIndex);
+      const nextIdx = (activeIndex + 1) % 3;
+      window.switchShader(nextIdx);
     }, 8500);
 
     // Common WebGL helper
@@ -4523,7 +4504,7 @@ input, textarea, [contenteditable="true"] {
         vec2 resolution = max(uResolution, vec2(1.0));
         vec2 uv = (2.0 * gl_FragCoord.xy - resolution) / resolution.y;
         float time = uTime * uSpeed;
-        vec3 backdrop = mix(vec3(0.070588, 0.058824, 0.090196), vec3(1.0), step(0.5, uLightMode));
+        vec3 backdrop = mix(vec3(0.015, 0.002, 0.005), vec3(1.0), step(0.5, uLightMode));
         vec3 centerTone = max(uLineColor * 0.85567 - uGlowColor * 0.06186, vec3(0.0));
         vec3 cloudTone = uLineColor * 0.19588 + uGlowColor * 0.2268;
         vec2 p = uv;
@@ -4634,16 +4615,16 @@ input, textarea, [contenteditable="true"] {
         gl.uniform1f(uTwistSpeed, 1.2);
         gl.uniform1f(uLineFrequency, 5.0);
         gl.uniform1f(uLineSpacing, 2.0);
-        gl.uniform1f(uLineSharpness, 16.0);
-        gl.uniform1f(uGlowFalloff, 10.0);
-        gl.uniform1f(uGlowIntensity, 2.2);
-        gl.uniform1f(uBrightness, 2.4);
-        gl.uniform1f(uBlueBoost, 1.35);
-        gl.uniform1f(uVignette, 0.7);
-        gl.uniform1f(uGrain, 0.05);
+        gl.uniform1f(uGlowFalloff, 8.5);
+        gl.uniform1f(uGlowIntensity, 2.8);
+        gl.uniform1f(uBrightness, 2.7);
+        gl.uniform1f(uBlueBoost, 0.0);
+        gl.uniform1f(uVignette, 0.75);
+        gl.uniform1f(uGrain, 0.04);
         gl.uniform1f(uLightMode, 0.0);
-        gl.uniform3f(uLineColor, 140 / 255, 75 / 255, 245 / 255);
-        gl.uniform3f(uGlowColor, 80 / 255, 130 / 255, 255 / 255);
+        // Vermelho Neon Blaster Sanguine Blood Red
+        gl.uniform3f(uLineColor, 1.0, 0.02, 0.08);
+        gl.uniform3f(uGlowColor, 1.0, 0.06, 0.16);
 
         gl.drawArrays(gl.TRIANGLES, 0, 6);
       };
@@ -4718,11 +4699,12 @@ input, textarea, [contenteditable="true"] {
         vec3 ro = vec3(0.0, time * 1.8, 5.0);
         vec3 rd = normalize(vec3(uv, -1.3));
 
-        vec3 bgCol = vec3(18.0 / 255.0, 15.0 / 255.0, 23.0 / 255.0);
-        vec3 shardCol = vec3(137.0 / 255.0, 106.0 / 255.0, 189.0 / 255.0);
-        vec3 accentCol = vec3(168.0 / 255.0, 85.0 / 255.0, 247.0 / 255.0);
+        // Vermelho Neon Blaster Sanguine Blood Red
+        vec3 bgCol = vec3(12.0 / 255.0, 2.0 / 255.0, 4.0 / 255.0);
+        vec3 shardCol = vec3(190.0 / 255.0, 12.0 / 255.0, 30.0 / 255.0);
+        vec3 accentCol = vec3(255.0 / 255.0, 15.0 / 255.0, 45.0 / 255.0);
 
-        vec3 col = bgCol + vec3(0.04, 0.02, 0.08) * (1.0 - length(uv) * 0.7);
+        vec3 col = bgCol + vec3(0.06, 0.005, 0.015) * (1.0 - length(uv) * 0.7);
 
         float t = 0.5;
         float maxDist = 18.0;
@@ -4747,8 +4729,8 @@ input, textarea, [contenteditable="true"] {
 
             vec3 shardTint = mix(shardCol, accentCol, resM.y);
             vec3 surfaceCol = shardTint * (0.25 + 0.75 * diff);
-            surfaceCol += vec3(1.0, 0.95, 1.0) * spec * 0.9;
-            surfaceCol += accentCol * fresnel * 0.85;
+            surfaceCol += vec3(1.0, 0.85, 0.9) * spec * 0.95;
+            surfaceCol += accentCol * fresnel * 1.1;
 
             float fog = exp(-t * 0.14);
             col = mix(bgCol, surfaceCol, fog);
@@ -4758,7 +4740,7 @@ input, textarea, [contenteditable="true"] {
           if (t > maxDist) break;
         }
 
-        col += accentCol * glowAccum * 0.055;
+        col += accentCol * glowAccum * 0.075;
         col *= (1.0 - 0.45 * dot(uv, uv));
 
         fragColor = vec4(col, 1.0);
@@ -4916,22 +4898,21 @@ input, textarea, [contenteditable="true"] {
           f -= 0.65 * effect;
         }
 
-        // AMPLIFICADO AO MÁXIMO:
-        // Paleta Ultra Vívida Neon Cyberpunk (Electric Magenta, Cyber Cyan, Violet & Radiant Sun)
-        vec3 bgDeep = vec3(0.04, 0.01, 0.07);
-        vec3 colMagenta = vec3(1.15, 0.08, 0.75);
-        vec3 colCyan = vec3(0.05, 1.10, 1.25);
-        vec3 colGold = vec3(1.18, 0.85, 0.15);
-        vec3 colViolet = vec3(0.65, 0.05, 1.20);
+        // Vermelho Neon Blaster Sanguine Blood Red
+        vec3 bgDeep = vec3(0.02, 0.003, 0.006);
+        vec3 colCrimson = vec3(0.7, 0.01, 0.04);
+        vec3 colBlood = vec3(1.25, 0.02, 0.07);
+        vec3 colNeonBlaster = vec3(1.65, 0.09, 0.18);
+        vec3 colSanguineCore = vec3(0.95, 0.015, 0.05);
 
         float tVal = clamp(f * 1.35, 0.0, 1.0);
         vec3 dynamicWaveColor;
         if (tVal < 0.35) {
-          dynamicWaveColor = mix(bgDeep, colViolet, tVal / 0.35);
+          dynamicWaveColor = mix(bgDeep, colCrimson, tVal / 0.35);
         } else if (tVal < 0.7) {
-          dynamicWaveColor = mix(colViolet, colMagenta, (tVal - 0.35) / 0.35);
+          dynamicWaveColor = mix(colCrimson, colBlood, (tVal - 0.35) / 0.35);
         } else {
-          dynamicWaveColor = mix(colMagenta, mix(colCyan, colGold, sin(time * 1.5 + uv.x * 3.0) * 0.5 + 0.5), (tVal - 0.7) / 0.3);
+          dynamicWaveColor = mix(colBlood, mix(colSanguineCore, colNeonBlaster, sin(time * 1.5 + uv.x * 3.0) * 0.5 + 0.5), (tVal - 0.7) / 0.3);
         }
 
         vec3 finalColor = dither(uv, dynamicWaveColor);
@@ -5172,7 +5153,7 @@ input, textarea, [contenteditable="true"] {
         gl.uniform1f(uHeight, 5.5);
         gl.uniform1f(uFog, 18.0);
         gl.uniform1f(uSteps, 70.0);
-        gl.uniform1f(uBright, 1.4); // Brilho amplificado
+        gl.uniform1f(uBright, 1.45); // Brilho amplificado
         gl.uniform1f(uOpacity, 1.0);
         gl.uniform1f(uGrain, 1.0);
         gl.uniform1f(uGrainInt, 0.06);
@@ -5180,10 +5161,10 @@ input, textarea, [contenteditable="true"] {
         gl.uniform1f(uParallax, 0.6);
         gl.uniform1i(uEnMouse, 1);
 
-        // Cores alteradas e ultra intensas: Cyber Neon Deep Indigo + Electric Laser Pink + Radiant Cyan
-        gl.uniform3f(uHorizCol, 0.0, 0.12, 0.45); // Deep Indigo
-        gl.uniform3f(uWaveCol, 1.2, 0.04, 0.7);   // Laser Magenta
-        gl.uniform3f(uCrestCol, 0.1, 1.3, 1.4);   // Electric Aqua
+        // Vermelho Neon Blaster Sanguine Blood Red
+        gl.uniform3f(uHorizCol, 0.16, 0.004, 0.02); // Deep Sanguine Blood Void
+        gl.uniform3f(uWaveCol, 1.35, 0.02, 0.08);   // Arterial Blood Wave Core
+        gl.uniform3f(uCrestCol, 1.6, 0.08, 0.18);   // Blazing Neon Blaster Blood Crest
 
         gl.drawArrays(gl.TRIANGLES, 0, 6);
       };
@@ -5342,10 +5323,10 @@ input, textarea, [contenteditable="true"] {
         gl.uniform2f(uCenterOffset, 0.0, 0.0);
         gl.uniform1f(uZoom, 0.9);
 
-        // Cores alteradas e ultra intensas: Solar Ember Orange + Neon Pink Magenta + Deep Galactic Violet
-        gl.uniform3f(uColor1, 1.2, 0.35, 0.05); // Solar Ember Orange
-        gl.uniform3f(uColor2, 1.3, 0.0, 0.65);  // Electric Laser Pink
-        gl.uniform3f(uColor3, 0.05, 0.0, 0.32); // Deep Galactic Violet
+        // Vermelho Neon Blaster Sanguine Blood Red
+        gl.uniform3f(uColor1, 1.45, 0.04, 0.12); // Neon Blaster Red
+        gl.uniform3f(uColor2, 1.15, 0.01, 0.05); // Sanguine Blood Red
+        gl.uniform3f(uColor3, 0.12, 0.002, 0.015); // Deep Crimson Obsidian
 
         gl.drawArrays(gl.TRIANGLES, 0, 6);
       };
@@ -5359,9 +5340,11 @@ input, textarea, [contenteditable="true"] {
 
     function masterAnimLoop(now) {
       if (isPageVisible) {
-        const currentRenderer = renderers[activeIndex];
-        if (typeof currentRenderer === 'function') {
-          currentRenderer(now);
+        if (typeof renderers[activeIndex] === 'function') {
+          renderers[activeIndex](now);
+        }
+        if (now < transitionEndTime && prevIndex >= 0 && typeof renderers[prevIndex] === 'function') {
+          renderers[prevIndex](now);
         }
       }
       requestAnimationFrame(masterAnimLoop);

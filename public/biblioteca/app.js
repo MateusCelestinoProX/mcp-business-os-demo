@@ -1280,7 +1280,7 @@
         vec2 resolution = max(uResolution, vec2(1.0));
         vec2 uv = (2.0 * gl_FragCoord.xy - resolution) / resolution.y;
         float time = uTime * uSpeed;
-        vec3 backdrop = mix(vec3(0.070588, 0.058824, 0.090196), vec3(1.0), step(0.5, uLightMode));
+        vec3 backdrop = mix(vec3(0.015, 0.002, 0.005), vec3(1.0), step(0.5, uLightMode));
         vec3 centerTone = max(uLineColor * 0.85567 - uGlowColor * 0.06186, vec3(0.0));
         vec3 cloudTone = uLineColor * 0.19588 + uGlowColor * 0.2268;
         vec2 p = uv;
@@ -1391,16 +1391,16 @@
         gl.uniform1f(uTwistSpeed, 1.2);
         gl.uniform1f(uLineFrequency, 5.0);
         gl.uniform1f(uLineSpacing, 2.0);
-        gl.uniform1f(uLineSharpness, 16.0);
-        gl.uniform1f(uGlowFalloff, 10.0);
-        gl.uniform1f(uGlowIntensity, 2.2);
-        gl.uniform1f(uBrightness, 2.4);
-        gl.uniform1f(uBlueBoost, 1.35);
-        gl.uniform1f(uVignette, 0.7);
-        gl.uniform1f(uGrain, 0.05);
+        gl.uniform1f(uGlowFalloff, 8.5);
+        gl.uniform1f(uGlowIntensity, 2.8);
+        gl.uniform1f(uBrightness, 2.7);
+        gl.uniform1f(uBlueBoost, 0.0);
+        gl.uniform1f(uVignette, 0.75);
+        gl.uniform1f(uGrain, 0.04);
         gl.uniform1f(uLightMode, 0.0);
-        gl.uniform3f(uLineColor, 140 / 255, 75 / 255, 245 / 255);
-        gl.uniform3f(uGlowColor, 80 / 255, 130 / 255, 255 / 255);
+        // Vermelho Neon Blaster Sanguine Blood Red
+        gl.uniform3f(uLineColor, 1.0, 0.02, 0.08);
+        gl.uniform3f(uGlowColor, 1.0, 0.06, 0.16);
 
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         requestAnimationFrame(render);
@@ -1477,11 +1477,12 @@
         vec3 ro = vec3(0.0, time * 1.8, 5.0);
         vec3 rd = normalize(vec3(uv, -1.3));
 
-        vec3 bgCol = vec3(18.0 / 255.0, 15.0 / 255.0, 23.0 / 255.0);
-        vec3 shardCol = vec3(137.0 / 255.0, 106.0 / 255.0, 189.0 / 255.0);
-        vec3 accentCol = vec3(168.0 / 255.0, 85.0 / 255.0, 247.0 / 255.0);
+        // Vermelho Neon Blaster Sanguine Blood Red
+        vec3 bgCol = vec3(12.0 / 255.0, 2.0 / 255.0, 4.0 / 255.0);
+        vec3 shardCol = vec3(190.0 / 255.0, 12.0 / 255.0, 30.0 / 255.0);
+        vec3 accentCol = vec3(255.0 / 255.0, 15.0 / 255.0, 45.0 / 255.0);
 
-        vec3 col = bgCol + vec3(0.04, 0.02, 0.08) * (1.0 - length(uv) * 0.7);
+        vec3 col = bgCol + vec3(0.06, 0.005, 0.015) * (1.0 - length(uv) * 0.7);
 
         float t = 0.5;
         float maxDist = 18.0;
@@ -1506,8 +1507,8 @@
 
             vec3 shardTint = mix(shardCol, accentCol, resM.y);
             vec3 surfaceCol = shardTint * (0.25 + 0.75 * diff);
-            surfaceCol += vec3(1.0, 0.95, 1.0) * spec * 0.9;
-            surfaceCol += accentCol * fresnel * 0.85;
+            surfaceCol += vec3(1.0, 0.85, 0.9) * spec * 0.95;
+            surfaceCol += accentCol * fresnel * 1.1;
 
             float fog = exp(-t * 0.14);
             col = mix(bgCol, surfaceCol, fog);
@@ -1517,7 +1518,7 @@
           if (t > maxDist) break;
         }
 
-        col += accentCol * glowAccum * 0.055;
+        col += accentCol * glowAccum * 0.075;
         col *= (1.0 - 0.45 * dot(uv, uv));
 
         fragColor = vec4(col, 1.0);
@@ -1943,10 +1944,10 @@
         gl.uniform1f(uParallax, 0.6);
         gl.uniform1i(uEnMouse, 1);
 
-        // Cores alteradas e ultra intensas: Cyber Neon Deep Indigo + Electric Laser Pink + Radiant Cyan
-        gl.uniform3f(uHorizCol, 0.0, 0.12, 0.45); // Deep Indigo
-        gl.uniform3f(uWaveCol, 1.2, 0.04, 0.7);   // Laser Magenta
-        gl.uniform3f(uCrestCol, 0.1, 1.3, 1.4);   // Electric Aqua
+        // Vermelho Neon Blaster Sanguine Blood Red
+        gl.uniform3f(uHorizCol, 0.16, 0.004, 0.02); // Deep Sanguine Blood Void
+        gl.uniform3f(uWaveCol, 1.35, 0.02, 0.08);   // Arterial Blood Wave Core
+        gl.uniform3f(uCrestCol, 1.6, 0.08, 0.18);   // Blazing Neon Blaster Blood Crest
 
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         requestAnimationFrame(render);
