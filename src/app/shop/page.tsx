@@ -13,37 +13,43 @@ export default function ShopPage() {
   };
 
   return (
-    <div className="min-h-screen bg-transparent text-[#ececec] flex flex-col selection:bg-[#ff073a] selection:text-white relative">
+    <div className="min-h-screen bg-transparent text-[#ececec] flex flex-col selection:bg-[#ff073a] selection:text-white relative overflow-x-hidden">
 
-      <div className="relative z-10 w-full pt-4 pb-2 px-4 sm:px-6 lg:px-10 xl:px-16">
-        {/* Breadcrumb e Status do Shop */}
-        <div className="flex flex-wrap items-center justify-between gap-4 py-3 border-b border-white/10">
-          <div className="flex items-center gap-3">
+      {/* Top Header & Breadcrumb Mobile-First */}
+      <div className="relative z-10 w-full pt-2 sm:pt-4 pb-2 px-3 sm:px-6 lg:px-10 xl:px-16">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2.5 sm:gap-4 py-2.5 sm:py-3 border-b border-white/10">
+          
+          {/* Navegação e Identificação */}
+          <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
             <Link
               href="/"
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl glass-crystal text-xs font-mono text-zinc-400 hover:text-white hover:border-[#ff073a]/50 transition-all cursor-pointer group"
+              className="inline-flex items-center gap-2 px-3 py-2 sm:py-1.5 rounded-xl glass-crystal text-xs font-mono text-zinc-300 hover:text-white active:scale-95 transition-all cursor-pointer group min-h-[44px] sm:min-h-[36px] border border-white/10 hover:border-[#ff073a]/50 touch-manipulation"
               title="Voltar ao Portal Institucional"
+              aria-label="Voltar ao Portal Institucional"
             >
-              <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform text-[#ff073a]" />
-              <span>Portal Institucional</span>
+              <ArrowLeft className="w-4 h-4 sm:w-3.5 sm:h-3.5 group-hover:-translate-x-1 group-active:-translate-x-1 transition-transform text-[#ff073a] shrink-0" />
+              <span className="font-medium">Portal</span>
             </Link>
-            <span className="text-zinc-600 font-mono">/</span>
-            <div className="flex items-center gap-2 text-xs font-mono font-bold text-white">
-              <ShoppingBag className="w-4 h-4 text-[#ff073a]" />
-              <span>Loja & Serviços Oficiais</span>
+            <span className="text-zinc-600 font-mono text-xs">/</span>
+            <div className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-mono font-bold text-white tracking-wide">
+              <ShoppingBag className="w-4 h-4 text-[#ff073a] shrink-0" />
+              <span className="truncate">Loja & Serviços Oficiais</span>
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-950/60 border border-red-500/40 text-[11px] font-mono font-semibold text-red-400">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#ff073a] animate-pulse" />
-              <span>Atendimento Direto & Checkout Validado</span>
+          {/* Badge de Status e Garantia (adaptativo: enxuto no mobile, completo no desktop) */}
+          <div className="flex items-center self-start sm:self-auto">
+            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-red-950/70 border border-red-500/40 text-[11px] font-mono font-semibold text-red-300 shadow-[0_0_15px_rgba(255,7,58,0.15)]">
+              <span className="w-2 h-2 rounded-full bg-[#ff073a] animate-pulse shrink-0" />
+              <span className="sm:hidden">Checkout & Suporte 24/7</span>
+              <span className="hidden sm:inline">Atendimento Direto & Checkout Validado</span>
             </span>
           </div>
+
         </div>
       </div>
 
-      <div className="flex-1 relative z-10">
+      <div className="flex-1 relative z-10 w-full">
         <ShopSection
           shopData={siteData?.shop || {}}
           onOpenContact={handleOpenContact}

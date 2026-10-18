@@ -4,14 +4,12 @@ import React, { useEffect, useState } from 'react';
 import {
   MessageSquare,
   Mail,
-  ExternalLink,
   Shield,
   Phone,
   Sparkles,
   Camera,
   Cpu,
   FileText,
-  CheckCircle2,
   ArrowUpRight,
 } from 'lucide-react';
 import LineWavesShader from '@/components/shaders/LineWavesShader';
@@ -75,11 +73,9 @@ export function ContatoSection({ profile }: ContatoSectionProps) {
   return (
     <section
       id="contato"
-      className="scroll-mt-28 py-10 lg:py-16 min-h-[calc(100vh-4rem)] flex flex-col justify-center relative overflow-hidden w-full"
+      className="scroll-mt-20 sm:scroll-mt-28 py-10 sm:py-16 min-h-[calc(100svh-4rem)] lg:min-h-[calc(100vh-4rem)] flex flex-col justify-center relative overflow-hidden w-full"
     >
-      {/* =========================================================================
-          0. BACKGROUND SLIDER DINÂMICO DE TELA CHEIA (ORIGINAL PHOTOGRAFY HUB)
-          ========================================================================= */}
+      {/* 0. BACKGROUND SLIDER DINÂMICO DE TELA CHEIA */}
       <div className="absolute inset-0 w-full h-full z-0 pointer-events-none select-none">
         {backgroundImages.map((src, index) => (
           <div
@@ -100,7 +96,7 @@ export function ContatoSection({ profile }: ContatoSectionProps) {
       <div className="absolute inset-0 w-full h-full z-[1] pointer-events-none bg-gradient-to-b from-black/90 via-black/75 to-black/95" />
       <div className="absolute inset-0 w-full h-full z-[2] pointer-events-none shadow-[inset_0_0_120px_rgba(0,0,0,0.95)]" />
 
-      {/* Shader WebGL LineWaves sutil em mix-blend para conferir a assinatura tecnológica */}
+      {/* Shader WebGL LineWaves sutil */}
       <LineWavesShader
         className="z-[3] mix-blend-screen pointer-events-none opacity-30"
         color1="#ff073a"
@@ -112,32 +108,32 @@ export function ContatoSection({ profile }: ContatoSectionProps) {
       />
 
       {/* Halos de iluminação ambiente carmesim neon */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-red-600/15 rounded-full blur-[140px] pointer-events-none z-[4]" />
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-red-950/30 rounded-full blur-[140px] pointer-events-none z-[4]" />
+      <div className="absolute top-0 right-0 w-[350px] sm:w-[600px] h-[350px] sm:h-[600px] bg-red-600/15 rounded-full blur-[100px] sm:blur-[140px] pointer-events-none z-[4]" />
+      <div className="absolute bottom-0 left-0 w-[350px] sm:w-[600px] h-[350px] sm:h-[600px] bg-red-950/30 rounded-full blur-[100px] sm:blur-[140px] pointer-events-none z-[4]" />
 
       {/* =========================================================================
           CONTEÚDO PRINCIPAL: PÁGINA COMPLETA DE CONTATO // DIGITAL HUB OFICIAL
           ========================================================================= */}
-      <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex-1 flex flex-col justify-center py-6 sm:py-10">
+      <div className="w-full max-w-5xl mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10 flex-1 flex flex-col justify-center py-4 sm:py-10">
         
-        {/* Box Soberano em Vidro Cristalino de Alta Fidelidade */}
-        <div className="glass-crystal rounded-3xl lg:rounded-[2.5rem] p-6 sm:p-10 lg:p-12 w-full border border-white/15 shadow-[0_30px_90px_rgba(0,0,0,0.85),0_0_50px_rgba(255,7,58,0.15)] relative overflow-hidden">
+        {/* Box Soberano em Vidro Cristalino */}
+        <div className="glass-crystal rounded-2xl sm:rounded-3xl lg:rounded-[2.5rem] p-4 sm:p-8 lg:p-12 w-full border border-white/15 shadow-[0_30px_90px_rgba(0,0,0,0.85),0_0_50px_rgba(255,7,58,0.15)] relative overflow-hidden">
           
           {/* Luz interna suave no box */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-24 bg-gradient-to-b from-white/10 to-transparent pointer-events-none rounded-t-3xl" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-20 bg-gradient-to-b from-white/10 to-transparent pointer-events-none rounded-t-3xl" />
 
           {/* 1. Header do Perfil & Identidade */}
-          <div className="flex flex-col items-center text-center relative z-10 mb-8 sm:mb-10">
+          <div className="flex flex-col items-center text-center relative z-10 mb-6 sm:mb-10">
             
             {/* Badge de Status Oficial Ativo */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-950/60 border border-emerald-500/40 text-[11px] font-mono text-emerald-400 font-semibold mb-6 shadow-[0_0_15px_rgba(16,185,129,0.2)]">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-950/60 border border-emerald-500/40 text-[10px] sm:text-[11px] font-mono text-emerald-400 font-semibold mb-4 sm:mb-6 shadow-[0_0_15px_rgba(16,185,129,0.2)]">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
               <span>CANAL OFICIAL ATIVO // ATENDIMENTO PRIORITÁRIO</span>
             </div>
 
             {/* Foto de Perfil com Anel de Vidro e Gradiente Carmesim */}
-            <div className="mb-5 relative">
-              <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full p-[3px] bg-gradient-to-tr from-[#ff073a] via-white/40 to-white shadow-[0_0_35px_rgba(255,7,58,0.4)] relative overflow-hidden group">
+            <div className="mb-4 sm:mb-5 relative">
+              <div className="w-20 h-20 sm:w-28 sm:h-28 rounded-full p-[3px] bg-gradient-to-tr from-[#ff073a] via-white/40 to-white shadow-[0_0_35px_rgba(255,7,58,0.4)] relative overflow-hidden group">
                 <img
                   src="/photografy-contato/kz.jpg"
                   alt="Mateus Celestino"
@@ -150,51 +146,51 @@ export function ContatoSection({ profile }: ContatoSectionProps) {
               </div>
               {/* Ponto de Status Online */}
               <span
-                className="absolute bottom-1 right-1 w-5 h-5 rounded-full bg-emerald-500 border-2 border-black shadow-[0_0_12px_#10b981]"
+                className="absolute bottom-0 right-0 sm:bottom-1 sm:right-1 w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-emerald-500 border-2 border-black shadow-[0_0_12px_#10b981]"
                 title="Online // Atendimento Direto Disponível"
               />
             </div>
 
             {/* Nome e Título da Marca */}
-            <h1 className="text-xl sm:text-3xl font-light tracking-[0.25em] uppercase text-white font-sans">
+            <h1 className="text-xl sm:text-3xl font-light tracking-[0.2em] sm:tracking-[0.25em] uppercase text-white font-sans">
               MATEUS CELESTINO
             </h1>
-            <div className="text-xs sm:text-sm font-mono tracking-[0.35em] text-[#ff073a] font-semibold mt-1 uppercase">
+            <div className="text-[11px] sm:text-sm font-mono tracking-[0.25em] sm:tracking-[0.35em] text-[#ff073a] font-semibold mt-1 uppercase">
               DIGITAL HUB // CANAIS OFICIAIS & CONTATO DIRETO
             </div>
 
-            <p className="mt-3 text-xs sm:text-sm text-zinc-300 font-light max-w-2xl leading-relaxed">
+            <p className="mt-2.5 sm:mt-3 text-xs sm:text-sm text-zinc-300 font-light max-w-2xl leading-relaxed px-2">
               Conecte-se diretamente com Mateus Celestino para projetos de automação empresarial, agentes autônomos de IA no WhatsApp, integrações n8n e infraestrutura soberana.
             </p>
           </div>
 
-          {/* 2. Grade dos 4 Canais Oficiais Principais de Atendimento */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 relative z-10 mb-6">
+          {/* 2. Grade dos 4 Canais Oficiais Principais (Mobile-First Touch-Friendly) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 relative z-10 mb-5 sm:mb-6">
             
             {/* Canal 1: WhatsApp Oficial */}
             <a
               href={whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="glass-crystal glass-interactive p-5 sm:p-6 rounded-2xl sm:rounded-3xl flex items-start gap-4 group transition-all duration-300 hover:border-red-500/50 hover:shadow-[0_0_30px_rgba(255,7,58,0.25)] relative overflow-hidden"
+              className="glass-crystal glass-interactive p-4 sm:p-6 rounded-2xl sm:rounded-3xl flex items-start gap-3.5 sm:gap-4 group transition-all duration-300 hover:border-red-500/50 hover:shadow-[0_0_30px_rgba(255,7,58,0.25)] relative overflow-hidden active:scale-[0.98] touch-manipulation"
             >
-              <div className="w-12 h-12 rounded-2xl glass-pill-red flex items-center justify-center text-[#ff073a] group-hover:scale-110 transition-transform shadow-lg shrink-0">
-                <MessageSquare className="w-6 h-6" />
+              <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl glass-pill-red flex items-center justify-center text-[#ff073a] group-hover:scale-110 transition-transform shadow-lg shrink-0">
+                <MessageSquare className="w-5 h-5 sm:w-6 sm:h-6" />
               </div>
               <div className="flex-1 min-w-0">
-                <div className="flex items-center justify-between gap-2">
-                  <span className="text-[11px] font-mono text-[#ff073a] font-bold uppercase tracking-wider">
+                <div className="flex items-center justify-between gap-1.5">
+                  <span className="text-[10px] sm:text-[11px] font-mono text-[#ff073a] font-bold uppercase tracking-wider">
                     WHATSAPP OFICIAL
                   </span>
-                  <span className="text-[10px] font-mono font-bold text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-500/40 shrink-0">
+                  <span className="text-[9px] sm:text-[10px] font-mono font-bold text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-500/40 shrink-0">
                     &lt; 15 MIN
                   </span>
                 </div>
-                <div className="text-base sm:text-lg font-bold text-white mt-1 group-hover:text-[#ff073a] transition-colors truncate">
+                <div className="text-sm sm:text-lg font-bold text-white mt-0.5 group-hover:text-[#ff073a] transition-colors truncate">
                   +55 (31) 9772-4257
                 </div>
-                <p className="text-xs text-zinc-400 font-light mt-1 flex items-center gap-1 leading-relaxed">
-                  <span>Mensagem instantânea: &ldquo;QUERO AUTOMATIZAR TUDO.&rdquo;</span>
+                <p className="text-[11px] sm:text-xs text-zinc-400 font-light mt-0.5 flex items-center gap-1 leading-relaxed">
+                  <span className="truncate">&ldquo;QUERO AUTOMATIZAR TUDO.&rdquo;</span>
                   <ArrowUpRight className="w-3.5 h-3.5 text-zinc-500 group-hover:text-white transition-colors shrink-0" />
                 </p>
               </div>
@@ -203,25 +199,25 @@ export function ContatoSection({ profile }: ContatoSectionProps) {
             {/* Canal 2: E-mail Corporativo Proton */}
             <a
               href={emailHref}
-              className="glass-crystal glass-interactive p-5 sm:p-6 rounded-2xl sm:rounded-3xl flex items-start gap-4 group transition-all duration-300 hover:border-red-500/50 hover:shadow-[0_0_30px_rgba(255,7,58,0.25)] relative overflow-hidden"
+              className="glass-crystal glass-interactive p-4 sm:p-6 rounded-2xl sm:rounded-3xl flex items-start gap-3.5 sm:gap-4 group transition-all duration-300 hover:border-red-500/50 hover:shadow-[0_0_30px_rgba(255,7,58,0.25)] relative overflow-hidden active:scale-[0.98] touch-manipulation"
             >
-              <div className="w-12 h-12 rounded-2xl glass-pill flex items-center justify-center text-zinc-300 group-hover:text-[#ff073a] group-hover:scale-110 transition-transform shadow-lg shrink-0">
-                <Mail className="w-6 h-6" />
+              <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl glass-pill flex items-center justify-center text-zinc-300 group-hover:text-[#ff073a] group-hover:scale-110 transition-transform shadow-lg shrink-0">
+                <Mail className="w-5 h-5 sm:w-6 sm:h-6" />
               </div>
               <div className="flex-1 min-w-0">
-                <div className="flex items-center justify-between gap-2">
-                  <span className="text-[11px] font-mono text-zinc-400 font-bold uppercase tracking-wider">
+                <div className="flex items-center justify-between gap-1.5">
+                  <span className="text-[10px] sm:text-[11px] font-mono text-zinc-400 font-bold uppercase tracking-wider">
                     E-MAIL CORPORATIVO
                   </span>
-                  <span className="text-[10px] font-mono font-bold text-zinc-300 bg-white/5 px-2 py-0.5 rounded-full border border-white/10 shrink-0">
+                  <span className="text-[9px] sm:text-[10px] font-mono font-bold text-zinc-300 bg-white/5 px-2 py-0.5 rounded-full border border-white/10 shrink-0">
                     CRIPTOGRAFADO
                   </span>
                 </div>
-                <div className="text-sm sm:text-base font-bold text-white mt-1 group-hover:text-[#ff073a] transition-colors truncate" title={email}>
+                <div className="text-xs sm:text-base font-bold text-white mt-0.5 group-hover:text-[#ff073a] transition-colors truncate" title={email}>
                   {email}
                 </div>
-                <p className="text-xs text-zinc-400 font-light mt-1 flex items-center gap-1 leading-relaxed">
-                  <span>Proton Mail com criptografia ponta a ponta</span>
+                <p className="text-[11px] sm:text-xs text-zinc-400 font-light mt-0.5 flex items-center gap-1 leading-relaxed">
+                  <span className="truncate">Proton Mail criptografia ponta a ponta</span>
                   <ArrowUpRight className="w-3.5 h-3.5 text-zinc-500 group-hover:text-white transition-colors shrink-0" />
                 </p>
               </div>
@@ -232,25 +228,25 @@ export function ContatoSection({ profile }: ContatoSectionProps) {
               href={instagramUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="glass-crystal glass-interactive p-5 sm:p-6 rounded-2xl sm:rounded-3xl flex items-start gap-4 group transition-all duration-300 hover:border-red-500/50 hover:shadow-[0_0_30px_rgba(255,7,58,0.25)] relative overflow-hidden"
+              className="glass-crystal glass-interactive p-4 sm:p-6 rounded-2xl sm:rounded-3xl flex items-start gap-3.5 sm:gap-4 group transition-all duration-300 hover:border-red-500/50 hover:shadow-[0_0_30px_rgba(255,7,58,0.25)] relative overflow-hidden active:scale-[0.98] touch-manipulation"
             >
-              <div className="w-12 h-12 rounded-2xl glass-pill flex items-center justify-center text-zinc-300 group-hover:text-[#ff073a] group-hover:scale-110 transition-transform shadow-lg shrink-0">
-                <InstagramIcon className="w-6 h-6" />
+              <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl glass-pill flex items-center justify-center text-zinc-300 group-hover:text-[#ff073a] group-hover:scale-110 transition-transform shadow-lg shrink-0">
+                <InstagramIcon className="w-5 h-5 sm:w-6 sm:h-6" />
               </div>
               <div className="flex-1 min-w-0">
-                <div className="flex items-center justify-between gap-2">
-                  <span className="text-[11px] font-mono text-zinc-400 font-bold uppercase tracking-wider">
+                <div className="flex items-center justify-between gap-1.5">
+                  <span className="text-[10px] sm:text-[11px] font-mono text-zinc-400 font-bold uppercase tracking-wider">
                     INSTAGRAM OFICIAL
                   </span>
-                  <span className="text-[10px] font-mono font-bold text-zinc-400 bg-white/5 px-2 py-0.5 rounded-full border border-white/10 shrink-0">
+                  <span className="text-[9px] sm:text-[10px] font-mono font-bold text-zinc-400 bg-white/5 px-2 py-0.5 rounded-full border border-white/10 shrink-0">
                     CONTEÚDO & IA
                   </span>
                 </div>
-                <div className="text-base sm:text-lg font-bold text-white mt-1 group-hover:text-[#ff073a] transition-colors truncate">
+                <div className="text-sm sm:text-lg font-bold text-white mt-0.5 group-hover:text-[#ff073a] transition-colors truncate">
                   @celestinoautomacao
                 </div>
-                <p className="text-xs text-zinc-400 font-light mt-1 flex items-center gap-1 leading-relaxed">
-                  <span>Bastidores, agentes de IA e engenharia prática</span>
+                <p className="text-[11px] sm:text-xs text-zinc-400 font-light mt-0.5 flex items-center gap-1 leading-relaxed">
+                  <span className="truncate">Bastidores e agentes de IA na prática</span>
                   <ArrowUpRight className="w-3.5 h-3.5 text-zinc-500 group-hover:text-white transition-colors shrink-0" />
                 </p>
               </div>
@@ -261,25 +257,25 @@ export function ContatoSection({ profile }: ContatoSectionProps) {
               href={linkedinUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="glass-crystal glass-interactive p-5 sm:p-6 rounded-2xl sm:rounded-3xl flex items-start gap-4 group transition-all duration-300 hover:border-red-500/50 hover:shadow-[0_0_30px_rgba(255,7,58,0.25)] relative overflow-hidden"
+              className="glass-crystal glass-interactive p-4 sm:p-6 rounded-2xl sm:rounded-3xl flex items-start gap-3.5 sm:gap-4 group transition-all duration-300 hover:border-red-500/50 hover:shadow-[0_0_30px_rgba(255,7,58,0.25)] relative overflow-hidden active:scale-[0.98] touch-manipulation"
             >
-              <div className="w-12 h-12 rounded-2xl glass-pill flex items-center justify-center text-zinc-300 group-hover:text-[#ff073a] group-hover:scale-110 transition-transform shadow-lg shrink-0">
-                <LinkedinIcon className="w-6 h-6" />
+              <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl glass-pill flex items-center justify-center text-zinc-300 group-hover:text-[#ff073a] group-hover:scale-110 transition-transform shadow-lg shrink-0">
+                <LinkedinIcon className="w-5 h-5 sm:w-6 sm:h-6" />
               </div>
               <div className="flex-1 min-w-0">
-                <div className="flex items-center justify-between gap-2">
-                  <span className="text-[11px] font-mono text-zinc-400 font-bold uppercase tracking-wider">
+                <div className="flex items-center justify-between gap-1.5">
+                  <span className="text-[10px] sm:text-[11px] font-mono text-zinc-400 font-bold uppercase tracking-wider">
                     LINKEDIN PROFISSIONAL
                   </span>
-                  <span className="text-[10px] font-mono font-bold text-zinc-400 bg-white/5 px-2 py-0.5 rounded-full border border-white/10 shrink-0">
+                  <span className="text-[9px] sm:text-[10px] font-mono font-bold text-zinc-400 bg-white/5 px-2 py-0.5 rounded-full border border-white/10 shrink-0">
                     B2B & CONEXÕES
                   </span>
                 </div>
-                <div className="text-base sm:text-lg font-bold text-white mt-1 group-hover:text-[#ff073a] transition-colors truncate">
+                <div className="text-sm sm:text-lg font-bold text-white mt-0.5 group-hover:text-[#ff073a] transition-colors truncate">
                   Mateus Celestino
                 </div>
-                <p className="text-xs text-zinc-400 font-light mt-1 flex items-center gap-1 leading-relaxed">
-                  <span>Conexões corporativas e parcerias estratégicas</span>
+                <p className="text-[11px] sm:text-xs text-zinc-400 font-light mt-0.5 flex items-center gap-1 leading-relaxed">
+                  <span className="truncate">Conexões corporativas e parcerias</span>
                   <ArrowUpRight className="w-3.5 h-3.5 text-zinc-500 group-hover:text-white transition-colors shrink-0" />
                 </p>
               </div>
@@ -287,23 +283,23 @@ export function ContatoSection({ profile }: ContatoSectionProps) {
 
           </div>
 
-          {/* 3. Ecossistema de Portfólios & Hubs Complementares (Original Photografy Hub) */}
+          {/* 3. Ecossistema de Portfólios & Hubs Complementares */}
           <div className="relative z-10 pt-4 pb-2 border-t border-white/10">
-            <div className="text-[11px] font-mono text-zinc-400 uppercase tracking-widest text-center mb-3 font-semibold">
+            <div className="text-[10px] sm:text-[11px] font-mono text-zinc-400 uppercase tracking-widest text-center mb-2.5 font-semibold">
               ECOSSISTEMA DE PORTFÓLIOS & HUB DE ATIVOS
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3">
               
               {/* Photo Portfolio */}
               <a
                 href={photoPortfolioUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="glass-interactive py-3 px-4 rounded-2xl flex items-center justify-center gap-2 group transition-all text-xs font-mono text-zinc-300 hover:text-white"
+                className="glass-interactive min-h-[46px] py-2.5 px-4 rounded-xl sm:rounded-2xl flex items-center justify-center gap-2 group transition-all text-xs font-mono text-zinc-300 hover:text-white active:scale-95 touch-manipulation"
               >
-                <Camera className="w-4 h-4 text-[#ff073a]" />
+                <Camera className="w-4 h-4 text-[#ff073a] shrink-0" />
                 <span className="tracking-wider">PHOTO PORTFOLIO</span>
-                <ArrowUpRight className="w-3 h-3 text-zinc-500 group-hover:text-white transition-colors" />
+                <ArrowUpRight className="w-3 h-3 text-zinc-500 group-hover:text-white transition-colors shrink-0" />
               </a>
 
               {/* AI Portfolio */}
@@ -311,11 +307,11 @@ export function ContatoSection({ profile }: ContatoSectionProps) {
                 href={aiPortfolioUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="glass-interactive py-3 px-4 rounded-2xl flex items-center justify-center gap-2 group transition-all text-xs font-mono text-zinc-300 hover:text-white"
+                className="glass-interactive min-h-[46px] py-2.5 px-4 rounded-xl sm:rounded-2xl flex items-center justify-center gap-2 group transition-all text-xs font-mono text-zinc-300 hover:text-white active:scale-95 touch-manipulation"
               >
-                <Cpu className="w-4 h-4 text-[#ff073a]" />
+                <Cpu className="w-4 h-4 text-[#ff073a] shrink-0" />
                 <span className="tracking-wider">AI PORTFOLIO</span>
-                <ArrowUpRight className="w-3 h-3 text-zinc-500 group-hover:text-white transition-colors" />
+                <ArrowUpRight className="w-3 h-3 text-zinc-500 group-hover:text-white transition-colors shrink-0" />
               </a>
 
               {/* Curriculum Online */}
@@ -323,56 +319,56 @@ export function ContatoSection({ profile }: ContatoSectionProps) {
                 href={curriculumUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="glass-interactive py-3 px-4 rounded-2xl flex items-center justify-center gap-2 group transition-all text-xs font-mono text-zinc-300 hover:text-white"
+                className="glass-interactive min-h-[46px] py-2.5 px-4 rounded-xl sm:rounded-2xl flex items-center justify-center gap-2 group transition-all text-xs font-mono text-zinc-300 hover:text-white active:scale-95 touch-manipulation"
               >
-                <FileText className="w-4 h-4 text-[#ff073a]" />
+                <FileText className="w-4 h-4 text-[#ff073a] shrink-0" />
                 <span className="tracking-wider">CURRICULUM ONLINE</span>
-                <ArrowUpRight className="w-3 h-3 text-zinc-500 group-hover:text-white transition-colors" />
+                <ArrowUpRight className="w-3 h-3 text-zinc-500 group-hover:text-white transition-colors shrink-0" />
               </a>
 
             </div>
           </div>
 
           {/* 4. Botão Especial Master PRO // CTA de Alta Performance */}
-          <div className="relative z-10 pt-5 pb-2">
+          <div className="relative z-10 pt-4 sm:pt-5 pb-2">
             <a
               href={whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="glass-button-fired w-full py-4 sm:py-5 px-6 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left group cursor-pointer shadow-[0_15px_40px_rgba(255,7,58,0.35)] hover:scale-[1.01] active:scale-[0.99] transition-all"
+              className="glass-button-fired w-full min-h-[56px] py-4 sm:py-5 px-5 sm:px-6 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left group cursor-pointer shadow-[0_15px_40px_rgba(255,7,58,0.35)] active:scale-[0.98] transition-all touch-manipulation"
             >
-              <div className="flex items-center gap-3.5">
+              <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-xl bg-black/40 border border-white/20 flex items-center justify-center text-white shrink-0 group-hover:rotate-6 transition-transform">
                   <Sparkles className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <div className="font-bold tracking-[0.15em] text-sm sm:text-base text-white uppercase">
+                  <div className="font-bold tracking-[0.12em] text-xs sm:text-base text-white uppercase">
                     MATEUS CELESTINO PRO
                   </div>
-                  <div className="font-light tracking-widest text-[10px] sm:text-xs text-white/80 font-mono">
+                  <div className="font-light tracking-wider text-[9px] sm:text-xs text-white/80 font-mono">
                     (AUTOMATION & HIGH PERFORMANCE SERVICES) // INICIAR PROJETO
                   </div>
                 </div>
               </div>
-              <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 border border-white/20 text-xs font-mono font-bold text-white shrink-0">
+              <div className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white/10 border border-white/20 text-xs font-mono font-bold text-white shrink-0">
                 <span>QUERO AUTOMATIZAR TUDO</span>
                 <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </div>
             </a>
           </div>
 
-          {/* 5. Rodapé Institucional com Selos de Garantia e Confiabilidade */}
-          <div className="relative z-10 pt-6 mt-4 border-t border-white/10 flex flex-wrap items-center justify-center sm:justify-between gap-3 text-[11px] font-mono text-zinc-400">
+          {/* 5. Rodapé Institucional com Selos de Confiabilidade */}
+          <div className="relative z-10 pt-5 mt-3 border-t border-white/10 flex flex-wrap items-center justify-center sm:justify-between gap-2.5 sm:gap-3 text-[10px] sm:text-[11px] font-mono text-zinc-400">
             <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/5">
-              <Shield className="w-3.5 h-3.5 text-[#ff073a]" />
+              <Shield className="w-3.5 h-3.5 text-[#ff073a] shrink-0" />
               <span>Sigilo & NDA Garantidos</span>
             </div>
             <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/5">
-              <Sparkles className="w-3.5 h-3.5 text-[#ff073a]" />
+              <Sparkles className="w-3.5 h-3.5 text-[#ff073a] shrink-0" />
               <span>Atendimento Pessoal Direto</span>
             </div>
             <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/5">
-              <Phone className="w-3.5 h-3.5 text-emerald-400" />
+              <Phone className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
               <span>Brasil & Internacional</span>
             </div>
           </div>

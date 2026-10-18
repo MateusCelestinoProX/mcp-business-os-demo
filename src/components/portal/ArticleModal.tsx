@@ -69,7 +69,10 @@ export function ArticleModal({
 
   const handleCopy = () => {
     if (typeof window !== 'undefined') {
-      navigator.clipboard.writeText(`${article.title} - por Mateus Celestino Pro X`);
+      const shareUrl = window.location.href;
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(`${article.title} - ${shareUrl}`);
+      }
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     }
@@ -80,166 +83,178 @@ export function ArticleModal({
   const nextArticle = currentIndex < allArticles.length - 1 ? allArticles[currentIndex + 1] : null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto bg-black/85 backdrop-blur-3xl animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-0 sm:p-4 md:p-6 overflow-y-auto bg-black/90 backdrop-blur-2xl animate-in fade-in duration-200">
       <div 
-        className="fixed inset-0 -z-10" 
+        className="fixed inset-0 -z-10 cursor-pointer hidden sm:block" 
         onClick={onClose} 
       />
 
-      {/* Janela de Leitura em Vidro Cristalino Lapidado */}
-      <div className="relative w-full max-w-4xl max-h-[92vh] overflow-y-auto rounded-3xl glass-crystal border border-white/20 shadow-[0_30px_100px_rgba(0,0,0,0.98)] flex flex-col my-auto">
+      {/* Janela de Leitura: Full-Screen no Mobile / Caixa Flutuante Lapidada no Desktop */}
+      <div className="relative w-full h-full sm:h-auto sm:max-w-4xl sm:max-h-[92vh] overflow-y-auto rounded-none sm:rounded-3xl glass-crystal border-0 sm:border sm:border-white/20 shadow-[0_30px_100px_rgba(0,0,0,0.98)] flex flex-col my-auto safe-pt safe-pb">
         
-        {/* Barra Superior Fixa de Vidro */}
-        <div className="sticky top-0 z-20 flex items-center justify-between px-6 py-4 glass-crystal border-b border-white/10">
-          <div className="flex items-center gap-3">
-            <span className="px-3 py-1 rounded-xl glass-pill-red text-xs font-mono text-[#ff073a] font-bold uppercase tracking-wider">
+        {/* Barra Superior Fixa de Navegação e Fechamento */}
+        <div className="sticky top-0 z-20 flex items-center justify-between px-4 sm:px-6 py-3.5 sm:py-4 glass-crystal border-b border-white/10 backdrop-blur-xl">
+          <div className="flex items-center gap-2.5 sm:gap-3">
+            <span className="px-2.5 py-1 rounded-xl glass-pill-red text-[11px] sm:text-xs font-mono text-[#ff073a] font-bold uppercase tracking-wider">
               {article.category}
             </span>
-            <span className="hidden sm:inline-flex items-center gap-1.5 text-xs font-mono text-zinc-300">
+            <span className="flex items-center gap-1.5 text-[11px] sm:text-xs font-mono text-zinc-300">
               <Clock className="w-3.5 h-3.5 text-[#ff073a]" />
-              {article.readingTime || 5} min de leitura
+              <span>{article.readingTime || 5} min</span>
             </span>
           </div>
 
           <div className="flex items-center gap-2">
             <button
               onClick={handleCopy}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl glass-pill hover:border-white/25 text-xs font-mono text-zinc-300 hover:text-white transition-all cursor-pointer"
-              title="Copiar Título"
+              className="min-h-[44px] min-w-[44px] px-3 py-2 rounded-xl glass-crystal hover:bg-white/10 active:scale-95 transition-all text-xs font-mono text-zinc-300 flex items-center justify-center gap-1.5 border border-white/10 cursor-pointer touch-manipulation"
+              title="Copiar link do guia"
+              aria-label="Compartilhar artigo"
             >
-              {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Share2 className="w-3.5 h-3.5" />}
-              <span className="hidden sm:inline">{copied ? 'Copiado!' : 'Compartilhar'}</span>
+              {copied ? (
+                <>
+                  <Check className="w-3.5 h-3.5 text-emerald-400" />
+                  <span className="text-emerald-400 font-bold hidden xs:inline">Copiado!</span>
+                </>
+              ) : (
+                <>
+                  <Share2 className="w-3.5 h-3.5 text-[#ff073a]" />
+                  <span className="hidden xs:inline">Compartilhar</span>
+                </>
+              )}
             </button>
 
             <button
               onClick={onClose}
-              className="w-8 h-8 rounded-xl glass-pill hover:bg-[#ff073a] hover:text-white flex items-center justify-center text-zinc-400 transition-all duration-200 cursor-pointer"
-              title="Fechar (Esc)"
+              className="w-11 h-11 rounded-xl glass-crystal hover:bg-red-500/20 active:scale-95 transition-all flex items-center justify-center text-zinc-300 hover:text-white border border-white/10 hover:border-red-500/40 cursor-pointer touch-manipulation"
+              title="Fechar leitura"
+              aria-label="Fechar modal de artigo"
             >
-              <X className="w-4 h-4" />
+              <X className="w-5 h-5" />
             </button>
           </div>
         </div>
 
-        {/* Corpo do Artigo */}
-        <div className="p-6 sm:p-10">
-          {/* Capa Ampliada em Vidro */}
-          {article.coverImage && (
-            <div className="relative aspect-[21/9] sm:aspect-[24/9] w-full rounded-2xl overflow-hidden mb-8 border border-white/15 bg-black shadow-2xl">
-              <img
-                src={article.coverImage}
-                alt={article.title}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
-            </div>
-          )}
-
-          {/* Título Principal */}
-          <h1 className="text-2xl sm:text-4xl font-black text-white tracking-tight leading-tight">
-            {article.title}
-          </h1>
-
-          {/* Faixa de Autor em Vidro */}
-          <div className="mt-4 pb-6 border-b border-white/10 flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-zinc-400">
-            <div className="flex items-center gap-3">
-              <img
-                src="/assets/mateus_avatar.webp"
-                alt="Mateus Celestino"
-                className="w-10 h-10 rounded-2xl border border-[#ff073a]/50 object-cover shadow-lg"
-              />
-              <div>
-                <span className="text-white font-bold block">Mateus Celestino Pro</span>
-                <span className="text-zinc-500 text-[11px]">Especialista em Automação & IA</span>
-              </div>
-            </div>
-
-            {article.createdAt && (
-              <div className="flex items-center gap-1.5 text-zinc-400 glass-pill px-3 py-1 rounded-xl">
-                <Calendar className="w-3.5 h-3.5 text-[#ff073a]" />
-                <span>Publicado em: {article.createdAt}</span>
-              </div>
-            )}
+        {/* Corpo Editorial com Tipografia Nobre e Leitura Imersiva */}
+        <div className="p-4 sm:p-8 lg:p-10 flex-1 overflow-x-hidden">
+          
+          {/* Imagem de Capa do Artigo */}
+          <div className="relative aspect-[16/9] w-full rounded-2xl overflow-hidden mb-6 sm:mb-8 bg-black border border-white/10 shadow-2xl">
+            <img
+              src={article.coverImage || '/assets/hero_cover.webp'}
+              alt={article.title}
+              className="w-full h-full object-cover"
+              onError={(e) => {
+                const target = e.currentTarget;
+                if (!target.src.endsWith('/assets/hero_cover.webp')) {
+                  target.src = '/assets/hero_cover.webp';
+                }
+              }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
           </div>
 
-          {/* Conteúdo Editorial Formatado */}
-          <div className="mt-8 article-prose text-zinc-300">
+          {/* Metadados e Título */}
+          <div className="mb-6 sm:mb-8">
+            <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs font-mono text-zinc-400 mb-3">
+              <span className="text-[#ff073a] font-bold">Mateus Celestino Pro X</span>
+              <span>•</span>
+              <span className="flex items-center gap-1">
+                <Calendar className="w-3.5 h-3.5 text-zinc-500" />
+                {article.createdAt || 'Publicação Soberana'}
+              </span>
+            </div>
+
+            <h1 className="text-xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight leading-tight">
+              {article.title}
+            </h1>
+
+            <p className="mt-3 sm:mt-4 text-xs sm:text-base text-zinc-300 font-light leading-relaxed border-l-2 border-[#ff073a] pl-3 sm:pl-4 italic glass-pill p-3 rounded-r-xl">
+              {article.excerpt}
+            </p>
+          </div>
+
+          {/* Divisor Carmesim */}
+          <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-red-500/30 to-transparent my-6" />
+
+          {/* Conteúdo Integral do Artigo */}
+          <div className="prose prose-invert max-w-none text-zinc-200 text-sm sm:text-base leading-relaxed space-y-4">
             {loadingContent ? (
-              <div className="space-y-4 py-8 animate-pulse">
-                <div className="h-4 bg-white/10 rounded-full w-3/4" />
-                <div className="h-4 bg-white/10 rounded-full w-5/6" />
-                <div className="h-4 bg-white/10 rounded-full w-2/3" />
-                <div className="h-32 bg-white/5 rounded-2xl w-full" />
+              <div className="py-12 flex flex-col items-center justify-center gap-3">
+                <div className="w-8 h-8 rounded-full border-2 border-red-500 border-t-transparent animate-spin" />
+                <span className="text-xs font-mono text-zinc-400">Carregando guia técnico completo...</span>
               </div>
             ) : fullContent ? (
-              <div dangerouslySetInnerHTML={{ __html: fullContent }} />
+              <div
+                dangerouslySetInnerHTML={{ __html: fullContent }}
+                className="article-body font-sans leading-relaxed break-words"
+              />
             ) : (
               <div className="space-y-4">
-                <p>{article.excerpt}</p>
-                <div className="p-5 rounded-2xl glass-pill-red text-zinc-200">
-                  <p className="font-bold text-white">Conteúdo do Acervo Original:</p>
-                  <p className="mt-1 text-sm">Este guia faz parte do acervo original do primeiro site de automação do Mateus Celestino. Para discutir a aplicação prática deste fluxo ou ferramenta no seu negócio, entre em contato direto.</p>
-                </div>
+                <p>
+                  Este é um artigo completo do ecossistema <strong className="text-white">Mateus Celestino Pro X</strong>, cobrindo práticas de automação, integrações inteligentes com IA generativa, fluxos no n8n e infraestrutura soberana.
+                </p>
+                <p>
+                  Para implementar este fluxo de automação ou consultar mais detalhes técnicos diretamente com o arquiteto chefe, utilize o canal de atendimento rápido via WhatsApp.
+                </p>
               </div>
             )}
           </div>
 
-          {/* CTA de Rodapé do Artigo em Vidro Líquido */}
-          <div className="mt-12 p-6 sm:p-8 rounded-3xl glass-crystal border border-[#ff073a]/40 relative overflow-hidden shadow-2xl">
-            <h4 className="text-lg font-bold text-white tracking-tight">
-              Quer implementar essa automação na sua empresa?
-            </h4>
-            <p className="mt-2 text-sm text-zinc-300 font-light max-w-xl">
-              Mateus Celestino projeta, implementa e mantém sistemas de automação sob medida com n8n, Typebot, IA e servidores Linux autônomos.
-            </p>
-            <div className="mt-5 flex flex-wrap items-center gap-3">
-              <a
-                href={`https://api.whatsapp.com/send/?phone=553197724257&text=Oi+Mateus,+li+o+artigo+sobre+${encodeURIComponent(article.title)}+e+quero+automatizar+isso.&type=phone_number&app_absent=0`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="glass-button-fired flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-mono font-bold text-white shadow-lg"
-              >
-                <MessageSquare className="w-3.5 h-3.5" />
-                <span>Falar no WhatsApp sobre este artigo</span>
-              </a>
-              <button
-                onClick={() => { onClose(); if (onOpenContact) onOpenContact(); }}
-                className="px-4 py-2.5 rounded-xl text-xs font-mono text-zinc-300 hover:text-white glass-pill hover:border-white/20 transition-all cursor-pointer"
-              >
-                Ver outros canais de contato
-              </button>
+          {/* CTA Especial no Final da Leitura */}
+          <div className="mt-8 sm:mt-12 p-5 sm:p-6 rounded-2xl glass-crystal border border-[#ff073a]/40 shadow-xl flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+              <div className="text-xs font-mono font-bold text-[#ff073a] uppercase tracking-wider mb-1">
+                IMPLEMENTE ESTE SISTEMA NA SUA EMPRESA
+              </div>
+              <p className="text-xs sm:text-sm text-zinc-300 font-light">
+                Automações sob medida, esteiras n8n, agentes no WhatsApp e servidores self-hosted.
+              </p>
             </div>
+            <a
+              href="https://api.whatsapp.com/send/?phone=553197724257&text=QUERO+AUTOMATIZAR+TUDO.&type=phone_number&app_absent=0"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="glass-button-fired min-h-[48px] w-full sm:w-auto px-5 py-3 rounded-xl text-xs font-mono font-bold text-white flex items-center justify-center gap-2 shadow-lg active:scale-95 transition-transform touch-manipulation cursor-pointer shrink-0"
+            >
+              <MessageSquare className="w-4 h-4 fill-white/20" />
+              <span>QUERO AUTOMATIZAR TUDO</span>
+            </a>
           </div>
 
-          {/* Navegação Entre Artigos em Vidro */}
-          <div className="mt-10 pt-6 border-t border-white/10 flex items-center justify-between gap-4">
-            {prevArticle ? (
-              <button
-                onClick={() => onSelectArticle(prevArticle)}
-                className="group text-left max-w-[45%] flex items-center gap-2.5 text-xs font-mono text-zinc-400 hover:text-white transition-all glass-interactive p-3 rounded-2xl cursor-pointer"
-              >
-                <ArrowLeft className="w-4 h-4 text-[#ff073a] group-hover:-translate-x-1 transition-transform shrink-0" />
-                <div className="truncate">
-                  <span className="block text-[10px] text-zinc-500 uppercase">Anterior</span>
-                  <span className="truncate block font-semibold text-zinc-200 group-hover:text-white">{prevArticle.title}</span>
-                </div>
-              </button>
-            ) : <div />}
-
-            {nextArticle && (
-              <button
-                onClick={() => onSelectArticle(nextArticle)}
-                className="group text-right max-w-[45%] flex items-center gap-2.5 text-xs font-mono text-zinc-400 hover:text-white transition-all glass-interactive p-3 rounded-2xl ml-auto cursor-pointer"
-              >
-                <div className="truncate">
-                  <span className="block text-[10px] text-zinc-500 uppercase">Próximo</span>
-                  <span className="truncate block font-semibold text-zinc-200 group-hover:text-white">{nextArticle.title}</span>
-                </div>
-                <ArrowRight className="w-4 h-4 text-[#ff073a] group-hover:translate-x-1 transition-transform shrink-0" />
-              </button>
-            )}
-          </div>
         </div>
+
+        {/* Rodapé do Modal com Navegação Entre Artigos Touch-Friendly */}
+        <div className="sticky bottom-0 z-20 px-4 sm:px-6 py-3.5 glass-crystal border-t border-white/10 backdrop-blur-xl flex items-center justify-between gap-2">
+          {prevArticle ? (
+            <button
+              onClick={() => onSelectArticle(prevArticle)}
+              className="flex-1 min-h-[44px] px-3 py-2 rounded-xl glass-crystal text-xs font-mono text-zinc-300 hover:text-white border border-white/10 active:scale-95 transition-all flex items-center gap-1.5 touch-manipulation truncate cursor-pointer"
+              title={prevArticle.title}
+            >
+              <ArrowLeft className="w-3.5 h-3.5 text-[#ff073a] shrink-0" />
+              <span className="truncate hidden xs:inline">{prevArticle.title}</span>
+              <span className="xs:hidden">Anterior</span>
+            </button>
+          ) : (
+            <div className="flex-1" />
+          )}
+
+          {nextArticle ? (
+            <button
+              onClick={() => onSelectArticle(nextArticle)}
+              className="flex-1 min-h-[44px] px-3 py-2 rounded-xl glass-crystal text-xs font-mono text-zinc-300 hover:text-white border border-white/10 active:scale-95 transition-all flex items-center justify-end gap-1.5 touch-manipulation truncate cursor-pointer"
+              title={nextArticle.title}
+            >
+              <span className="truncate hidden xs:inline">{nextArticle.title}</span>
+              <span className="xs:hidden">Próximo</span>
+              <ArrowRight className="w-3.5 h-3.5 text-[#ff073a] shrink-0" />
+            </button>
+          ) : (
+            <div className="flex-1" />
+          )}
+        </div>
+
       </div>
     </div>
   );

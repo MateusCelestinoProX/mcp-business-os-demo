@@ -1428,21 +1428,21 @@
     "semantic_hash": ""
   },
   "src/app/layout.tsx": {
-    "mtime": 1792274764.2224212,
-    "seen": 1792274825.74194,
-    "ast_hash": "591f4bc186d420c4612b6d72ecbd648c",
+    "mtime": 1792357681.4148946,
+    "seen": 1792357705.952681,
+    "ast_hash": "36f5dc6610a49170bc3d73521ef060e4",
     "semantic_hash": ""
   },
   "src/components/layout/Footer.tsx": {
-    "mtime": 1792334129.3820465,
-    "seen": 1792334148.86088,
-    "ast_hash": "7a80fde1baca8656f54f4f5ed17453fa",
+    "mtime": 1792358009.9910152,
+    "seen": 1792358041.590964,
+    "ast_hash": "d3c88d029dcdf043ef49197988b2b174",
     "semantic_hash": ""
   },
   "src/components/layout/Navbar.tsx": {
-    "mtime": 1792287982.5381331,
-    "seen": 1792288263.720068,
-    "ast_hash": "483e7a350a997c25e24ab32938dad671",
+    "mtime": 1792358342.2231596,
+    "seen": 1792358349.5686998,
+    "ast_hash": "8904ba24a935fba9cc6aba314caec65a",
     "semantic_hash": ""
   },
   "src/components/shaders/ColorBends.tsx": {
@@ -1476,8 +1476,8 @@
     "semantic_hash": ""
   },
   "src/data/library_catalog_index.json": {
-    "mtime": 1792334245.60147,
-    "seen": 1792334502.3697479,
+    "mtime": 1792357869.8097794,
+    "seen": 1792358041.59196,
     "ast_hash": "c53f941e6974b9c701da6b7f78db1ca8",
     "semantic_hash": ""
   },
@@ -2802,9 +2802,9 @@
     "semantic_hash": ""
   },
   "public/comunidade/index.html": {
-    "mtime": 1792268957.2554233,
-    "seen": 1792269102.6279821,
-    "ast_hash": "62efd200c6799d4aa262938152c3dad5",
+    "mtime": 1792358406.9717658,
+    "seen": 1792358424.784256,
+    "ast_hash": "ee556928331186bf408621ff2e573871",
     "semantic_hash": ""
   },
   "public/comunidade/effects/CREATIVE EFFECT's/ANCESTRAL HAND STATUE RENDER/ChatGPT_Image_17_de_jul._de_2025_15_25_13.webp": {
@@ -13632,9 +13632,9 @@
     "semantic_hash": ""
   },
   "src/components/portal/OriginalHeader.tsx": {
-    "mtime": 1792287982.5725923,
-    "seen": 1792288263.720407,
-    "ast_hash": "84e1f8852447ece479490f60802175e7",
+    "mtime": 1792358325.2909124,
+    "seen": 1792358349.569144,
+    "ast_hash": "4739cc53f0b53dce88a917bf51116391",
     "semantic_hash": ""
   },
   "src/app/api/contact/route.ts": {
@@ -13662,39 +13662,39 @@
     "semantic_hash": ""
   },
   "src/components/portal/ArticleModal.tsx": {
-    "mtime": 1792096604.5309198,
-    "seen": 1792097766.5325341,
-    "ast_hash": "251eb07ce22369b487218984e1970e32",
+    "mtime": 1792357924.0466695,
+    "seen": 1792358041.5911949,
+    "ast_hash": "6132ad038129cf644aff663279e05c01",
     "semantic_hash": ""
   },
   "src/components/portal/ContatoSection.tsx": {
-    "mtime": 1792338892.479629,
-    "seen": 1792338991.851243,
-    "ast_hash": "95b294ab13cbbf8a8131c9451ea70741",
+    "mtime": 1792357894.4615462,
+    "seen": 1792358041.5911949,
+    "ast_hash": "88c044d1d1b95dc24b2b27bba54ecfdd",
     "semantic_hash": ""
   },
   "src/components/portal/LegalModal.tsx": {
-    "mtime": 1791994478.49654,
-    "seen": 1791994554.176089,
-    "ast_hash": "830679aef3714018239dcf9993a9e0be",
+    "mtime": 1792357990.948112,
+    "seen": 1792358041.591297,
+    "ast_hash": "b7c441afd7d2021e850e382e86d7ecdc",
     "semantic_hash": ""
   },
   "src/components/portal/MainNotionLayout.tsx": {
-    "mtime": 1792289762.4008439,
-    "seen": 1792289924.0571918,
-    "ast_hash": "2db079146cae9a0888768f0d805cb0d1",
+    "mtime": 1792357820.7744672,
+    "seen": 1792358041.591323,
+    "ast_hash": "4e06db1e22c9a18a494cbcb2e3c2657e",
     "semantic_hash": ""
   },
   "src/components/portal/ShopSection.tsx": {
-    "mtime": 1792277098.4055789,
-    "seen": 1792277115.3953989,
-    "ast_hash": "83d362078b3bdb5fa89e212cf8ef9bae",
+    "mtime": 1792358289.3664408,
+    "seen": 1792358303.1067038,
+    "ast_hash": "d19f3a071a9088eba83f19bc1871027b",
     "semantic_hash": ""
   },
   "src/components/portal/SobreSection.tsx": {
-    "mtime": 1792335132.5544517,
-    "seen": 1792335503.965038,
-    "ast_hash": "63e62fc65771a84534ec956ec9e923c0",
+    "mtime": 1792357845.5170798,
+    "seen": 1792358041.591402,
+    "ast_hash": "d8220c2cffe8c316186fd01c7789673b",
     "semantic_hash": ""
   },
   "public/comunidade/music.mp3": {
@@ -13734,9 +13734,9 @@
     "semantic_hash": ""
   },
   "src/components/portal/PortalNavbar.tsx": {
-    "mtime": 1792287982.5736585,
-    "seen": 1792288263.720433,
-    "ast_hash": "a02361a072219021dd4430a2948d05d1",
+    "mtime": 1792358057.469859,
+    "seen": 1792358303.106703,
+    "ast_hash": "44992d91e12b915d4924339a9cf47a4f",
     "semantic_hash": ""
   },
   "src/components/shaders/LineWavesShader.tsx": {
@@ -14640,9 +14640,9 @@
     "semantic_hash": ""
   },
   "src/components/portal/AlternatingHeroBanner.tsx": {
-    "mtime": 1792103505.1137776,
-    "seen": 1792103551.406759,
-    "ast_hash": "dd91d773221b20544669a6edd928c9b4",
+    "mtime": 1792357580.9003773,
+    "seen": 1792357705.953248,
+    "ast_hash": "f59cdcd9d6e9407b55fca1c8f1a01a16",
     "semantic_hash": ""
   },
   "src/lib/notion-diary-parser.ts": {
@@ -14766,8 +14766,8 @@
     "semantic_hash": ""
   },
   "src/data/libraries.json": {
-    "mtime": 1792334245.6641383,
-    "seen": 1792334502.369741,
+    "mtime": 1792357869.8182778,
+    "seen": 1792358041.591959,
     "ast_hash": "3e79a0df86ee6f7eb3acd51fbf5fad31",
     "semantic_hash": ""
   },
@@ -14790,33 +14790,33 @@
     "semantic_hash": ""
   },
   "src/components/portal/AlternatingHeroShaders.tsx": {
-    "mtime": 1792289705.7778945,
-    "seen": 1792289752.749503,
-    "ast_hash": "bfa0debfd6beb22db1a279c9aa401dcc",
+    "mtime": 1792357744.4741058,
+    "seen": 1792358041.5911932,
+    "ast_hash": "594c41ff8dcef6bdf94bcd2a18a2cf7b",
     "semantic_hash": ""
   },
   "src/components/portal/UniversalSitemapModal.tsx": {
-    "mtime": 1792270573.6633885,
-    "seen": 1792271541.0545769,
-    "ast_hash": "9d5dc47e1b45e33e20e019a4db4762a1",
+    "mtime": 1792357970.0977027,
+    "seen": 1792358041.591403,
+    "ast_hash": "ae7c34a67a2d5e67d4aad694f509d4b9",
     "semantic_hash": ""
   },
   "public/showcase/galaxy.js": {
-    "mtime": 1792195910.1899056,
-    "seen": 1792196013.767436,
-    "ast_hash": "c584b9d178cc5b2835b6f13dd237c796",
+    "mtime": 1792357824.6094024,
+    "seen": 1792358041.589531,
+    "ast_hash": "05712b2af5620e530983f6ea27c29814",
     "semantic_hash": ""
   },
   "public/showcase/script.js": {
-    "mtime": 1792196061.2131054,
-    "seen": 1792196194.125938,
-    "ast_hash": "b0c76db8def0c25273df15ed859dcdee",
+    "mtime": 1792358182.7706027,
+    "seen": 1792358303.104701,
+    "ast_hash": "a07a2365077e870dc7875245fba6d320",
     "semantic_hash": ""
   },
   "public/showcase/singularity.js": {
-    "mtime": 1792195910.1893895,
-    "seen": 1792196013.7674391,
-    "ast_hash": "b2c79fd18068ba6998eb72cd114c8788",
+    "mtime": 1792357853.3204403,
+    "seen": 1792358041.589555,
+    "ast_hash": "64e8fc02f6a9fc24a85c7321fb0f4260",
     "semantic_hash": ""
   },
   "public/showcase/contact page/index.html": {
@@ -14826,9 +14826,9 @@
     "semantic_hash": ""
   },
   "public/showcase/index.html": {
-    "mtime": 1792269029.0896425,
-    "seen": 1792269102.6280131,
-    "ast_hash": "f016c6a3a1da613fe9d1cc6598b4b8e7",
+    "mtime": 1792358335.5468993,
+    "seen": 1792358349.5754979,
+    "ast_hash": "aa986e63b35703aa816b0edd11d9f627",
     "semantic_hash": ""
   },
   "public/showcase/certifications/business/10 passos para sair das dividas.pdf": {
@@ -15606,9 +15606,9 @@
     "semantic_hash": ""
   },
   "src/app/shop/page.tsx": {
-    "mtime": 1792286888.6224387,
-    "seen": 1792288263.719821,
-    "ast_hash": "a569c1e86c4958b313af7f7bfd8ac0d8",
+    "mtime": 1792357602.3023999,
+    "seen": 1792357705.9527931,
+    "ast_hash": "c2fe43833ce5f0de1f186931e94c9005",
     "semantic_hash": ""
   },
   "src/app/showcase/route.ts": {

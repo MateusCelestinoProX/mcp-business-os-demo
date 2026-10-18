@@ -47,10 +47,11 @@ document.addEventListener('DOMContentLoaded', () => {
     handleScroll();
   }
 
-  // --- 4. Menu Mobile Fluído ---
+  // --- 4. Menu Mobile Fluído & Drawer Soberano ---
   const mobileBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
   const mobileOverlay = document.getElementById('mobile-menu-overlay');
+  const mobileCloseBtn = document.getElementById('mobile-menu-close-btn');
 
   function closeMobileMenu() {
     if (mobileBtn) mobileBtn.classList.remove('open');
@@ -76,6 +77,10 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
+    if (mobileCloseBtn) {
+      mobileCloseBtn.addEventListener('click', closeMobileMenu);
+    }
+
     if (mobileOverlay) {
       mobileOverlay.addEventListener('click', closeMobileMenu);
     }
@@ -91,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- 5. Rolar Suavemente (Smooth Scroll) ---
+  // --- 5. Rolar Suavemente (Smooth Scroll com Offset Adaptativo) ---
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       const href = this.getAttribute('href');
@@ -100,9 +105,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const target = document.querySelector(href);
       if (target) {
         e.preventDefault();
-        const navHeight = (nav ? nav.offsetHeight : 70) + 60;
-        const top = target.getBoundingClientRect().top + window.scrollY - navHeight - 12;
-        window.scrollTo({ top, behavior: 'smooth' });
+        const isMobile = window.innerWidth <= 900;
+        const navHeight = isMobile ? 116 : ((nav ? nav.offsetHeight : 70) + 60);
+        const top = target.getBoundingClientRect().top + window.scrollY - navHeight - 6;
+        window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
       }
     });
   });
@@ -390,22 +396,32 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- 10. Atualizar Link de Menu Ativo no Scroll ---
+  // --- 10. Atualizar Links Ativos no Scroll (ScrollSpy para Desktop, Chips e Dock) ---
   const sections = document.querySelectorAll('section[id], div[id].spotlight-section, div[id].bloom-hero, div[id].contact-apple-linktree-section');
-  const navLinks = document.querySelectorAll('.nav-links a, .mobile-menu a');
+  const allNavLinks = document.querySelectorAll('.nav-links a, .mobile-menu a, .showcase-chips-scroll a, .showcase-mobile-dock a');
+  const chipsScrollContainer = document.querySelector('.showcase-chips-scroll');
 
   function updateActiveLink() {
-    const scrollPos = window.scrollY + 160;
+    const isMobile = window.innerWidth <= 900;
+    const scrollPos = window.scrollY + (isMobile ? 120 : 180);
+
     sections.forEach(section => {
       const top = section.offsetTop;
       const bottom = top + section.offsetHeight;
       const id = section.getAttribute('id');
 
       if (scrollPos >= top && scrollPos < bottom) {
-        navLinks.forEach(link => {
-          link.classList.remove('active');
-          if (link.getAttribute('href') === '#' + id) {
+        allNavLinks.forEach(link => {
+          const href = link.getAttribute('href');
+          const isMatch = href === '#' + id;
+          if (isMatch) {
             link.classList.add('active');
+            // Auto scroll horizontal do chip para o centro da viewport móvel
+            if (chipsScrollContainer && link.classList.contains('chip-link') && isMobile) {
+              link.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            }
+          } else if (href && href.startsWith('#')) {
+            link.classList.remove('active');
           }
         });
       }

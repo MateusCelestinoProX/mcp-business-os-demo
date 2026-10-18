@@ -78,14 +78,14 @@ export function Navbar() {
       id="master-sovereign-bar"
       className="fixed top-0 left-0 right-0 w-full z-50 h-16 bg-[#030305]/95 border-b border-white/10 shadow-[0_10px_35px_rgba(0,0,0,0.85)] transition-all duration-300"
     >
-      <div className="w-full px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
-        {/* Logo & Marca */}
+      <div className="w-full px-3.5 sm:px-6 lg:px-8 h-full flex items-center justify-between">
+        {/* Logo & Marca com Shrink-safe para mobile */}
         <Link
           href="/"
           title="Ir para o Portal Institucional"
-          className="flex items-center gap-3 group transition-transform duration-200 active:scale-95"
+          className="flex items-center gap-2 sm:gap-3 group transition-transform duration-200 active:scale-95 shrink"
         >
-          <div className="relative w-9 h-9 rounded-xl bg-gradient-to-br from-red-600 via-red-800 to-black p-[1px] flex items-center justify-center shadow-[0_0_15px_rgba(255,7,58,0.4)] group-hover:shadow-[0_0_25px_rgba(255,7,58,0.7)] transition-all overflow-hidden shrink-0">
+          <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-red-600 via-red-800 to-black p-[1px] flex items-center justify-center shadow-[0_0_15px_rgba(255,7,58,0.4)] group-hover:shadow-[0_0_25px_rgba(255,7,58,0.7)] transition-all overflow-hidden shrink-0">
             <div className="w-full h-full bg-[#030305] rounded-[11px] overflow-hidden flex items-center justify-center">
               <img
                 src="/assets/site_icon.webp"
@@ -94,8 +94,8 @@ export function Navbar() {
               />
             </div>
           </div>
-          <div className="flex flex-col justify-center">
-            <span className="font-extrabold text-sm tracking-wide text-white uppercase group-hover:text-red-300 transition-colors">
+          <div className="flex flex-col justify-center min-w-0">
+            <span className="font-extrabold text-xs sm:text-sm tracking-tight sm:tracking-wide text-white uppercase group-hover:text-red-300 transition-colors truncate">
               MATEUS CELESTINO <span className="text-red-500 font-black">PRO X</span>
             </span>
           </div>
@@ -180,77 +180,99 @@ export function Navbar() {
           )}
         </div>
 
-        {/* Botão Mobile */}
+        {/* Botão Mobile com Touch Target Generoso (Fitts' Law) */}
         <div className="flex items-center gap-2 lg:hidden">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 rounded-xl bg-white/5 border border-white/10 text-neutral-300 hover:text-white"
+            aria-label={mobileMenuOpen ? "Fechar menu de navegação" : "Abrir menu de navegação"}
+            className="w-11 h-11 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-neutral-300 hover:text-white active:scale-95 transition-all touch-manipulation cursor-pointer"
           >
-            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {mobileMenuOpen ? <X className="w-5 h-5 text-red-400" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
       </div>
 
-      {/* Menu Mobile */}
+      {/* Menu Mobile com Backdrop e Altura Otimizada */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#030305]/98 backdrop-blur-2xl border-b border-white/10 px-4 py-4 space-y-3">
-          {navLinks.map((item) => {
-            const Icon = item.icon;
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-between px-3 py-2 rounded-lg text-sm font-medium text-neutral-300 hover:bg-white/5"
-              >
-                <div className="flex items-center gap-2.5">
-                  <Icon className="w-4 h-4 text-red-400" />
-                  <span>{item.name}</span>
-                </div>
-                {item.badge && (
-                  <Badge variant={item.badge === "PRO" ? "red" : "gold"}>
-                    {item.badge}
-                  </Badge>
-                )}
-              </Link>
-            );
-          })}
+        <>
+          <div
+            className="fixed inset-0 top-16 bg-black/80 backdrop-blur-md z-40 lg:hidden animate-in fade-in duration-200"
+            onClick={() => setMobileMenuOpen(false)}
+          />
+          <div className="relative z-50 lg:hidden bg-[#030305]/98 border-b border-white/10 px-4 py-4 space-y-2 shadow-2xl animate-in slide-in-from-top-2 duration-200">
+            {navLinks.map((item) => {
+              const Icon = item.icon;
+              const isActive =
+                item.href === "/"
+                  ? pathname === "/"
+                  : pathname.startsWith(item.href);
 
-          <div className="pt-2 border-t border-white/10 space-y-2">
-            {currentUser.isLoggedIn ? (
-              <>
-                {isUserAdmin && (
-                  <Link
-                    href="/admin"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-bold text-red-400 bg-red-950/20"
-                  >
-                    <Crown className="w-4 h-4" />
-                    <span>Painel Admin</span>
-                  </Link>
-                )}
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={cn(
+                    "flex items-center justify-between min-h-[48px] px-4 py-2.5 rounded-xl text-sm font-semibold tracking-wide transition-all touch-manipulation active:scale-[0.98]",
+                    isActive
+                      ? "text-white bg-white/[0.12] border border-white/15 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)]"
+                      : "text-neutral-300 hover:text-white hover:bg-white/5 border border-transparent"
+                  )}
+                >
+                  <div className="flex items-center gap-3">
+                    <div className={cn(
+                      "w-7 h-7 rounded-lg flex items-center justify-center",
+                      isActive ? "bg-red-500/20 text-red-400" : "bg-white/5 text-neutral-400"
+                    )}>
+                      <Icon className="w-4 h-4" />
+                    </div>
+                    <span>{item.name}</span>
+                  </div>
+                  {item.badge && (
+                    <Badge variant={item.badge === "PRO" ? "red" : "gold"}>
+                      {item.badge}
+                    </Badge>
+                  )}
+                </Link>
+              );
+            })}
+
+            <div className="pt-3 border-t border-white/10 space-y-2.5">
+              <Link
+                href="/admin"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center justify-center gap-2 min-h-[48px] w-full px-4 py-3 rounded-xl text-sm font-bold text-red-400 bg-red-950/30 border border-red-500/30 shadow-lg active:scale-98 transition-all touch-manipulation"
+              >
+                <Crown className="w-4 h-4 text-red-400" />
+                <span>Acessar Painel Admin</span>
+              </Link>
+
+              {currentUser.isLoggedIn ? (
                 <button
                   onClick={() => {
                     handleLogout();
                     setMobileMenuOpen(false);
                   }}
-                  className="w-full flex items-center justify-center gap-2 py-2 text-xs text-red-400"
+                  className="w-full flex items-center justify-center gap-2 min-h-[44px] py-2.5 text-xs text-neutral-400 hover:text-red-400 transition-colors touch-manipulation cursor-pointer"
                 >
                   <LogOut className="w-3.5 h-3.5" />
-                  <span>Encerrar Sessão</span>
+                  <span>Encerrar Sessão ({currentUser.name || "Admin"})</span>
                 </button>
-              </>
-            ) : (
-              <div className="flex flex-col gap-2">
-                <Link href="/comunidade/login" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant="secondary" size="md" className="w-full justify-center">
-                    Entrar
+              ) : (
+                <Link
+                  href="/comunidade/login"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block"
+                >
+                  <Button variant="secondary" size="md" className="w-full justify-center min-h-[46px] touch-manipulation">
+                    <LogIn className="w-4 h-4 mr-2 text-neutral-400" />
+                    <span>Acessar Conta / Login</span>
                   </Button>
                 </Link>
-              </div>
-            )}
+              )}
+            </div>
           </div>
-        </div>
+        </>
       )}
     </header>
   );

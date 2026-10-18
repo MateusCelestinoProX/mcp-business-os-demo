@@ -49,6 +49,8 @@
 html {
   scroll-behavior: smooth;
   color-scheme: dark;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -56,6 +58,7 @@ body {
   color: #f3f4f6;
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   overflow-x: hidden;
+  max-width: 100%;
   position: relative;
   min-height: 100vh;
 }
@@ -568,3 +571,31 @@ body {
 .animate-liquid-breathe {
   animation: liquidEnergyBreathing 9s ease-in-out infinite;
 }
+
+/* ==========================================================================
+   UTILITÁRIOS MOBILE-FIRST DE ALTA PERFORMANCE & ERGONOMIA DE TOQUE
+   ========================================================================== */
+
+/* Previne atraso de 300ms no Safari iOS e remove highlight azul/cinza padrão */
+.touch-manipulation {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Carrosséis horizontais nativos sem barra de rolagem visível mas com toque fluido */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Safe areas para notch e barra de gestos do iOS */
+.safe-pb {
+  padding-bottom: max(env(safe-area-inset-bottom, 16px), 16px);
+}
+.safe-pt {
+  padding-top: max(env(safe-area-inset-top, 0px), 0px);
+}
+

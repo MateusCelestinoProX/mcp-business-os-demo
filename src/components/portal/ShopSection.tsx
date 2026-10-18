@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { 
   ShoppingBag, 
   Bot, 
@@ -16,7 +16,8 @@ import {
   Zap, 
   Layers,
   GraduationCap,
-  Link as LinkIcon
+  ChevronRight,
+  PhoneCall
 } from 'lucide-react';
 import BalatroShader from '@/components/shaders/BalatroShader';
 import AlternatingHeroBanner from '@/components/portal/AlternatingHeroBanner';
@@ -91,6 +92,40 @@ export function ShopSection({ shopData, onOpenContact }: ShopSectionProps) {
   const [activeShopTab, setActiveShopTab] = useState<'produtos' | 'servicos'>('produtos');
   const [selectedProduct, setSelectedProduct] = useState<ShopProductItem | null>(null);
   const [selectedService, setSelectedService] = useState<ShopServiceItem | null>(null);
+  const tabContentRef = useRef<HTMLDivElement>(null);
+  const [sheetTouchStartY, setSheetTouchStartY] = useState<number | null>(null);
+
+  // Travar o scroll do body quando o Bottom Sheet/Modal estiver ativo no mobile
+  useEffect(() => {
+    if (selectedProduct || selectedService) {
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = originalOverflow;
+      };
+    }
+  }, [selectedProduct, selectedService]);
+
+  const scrollToTabs = () => {
+    if (tabContentRef.current) {
+      const offset = tabContentRef.current.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({ top: offset, behavior: 'smooth' });
+    }
+  };
+
+  const handleSheetTouchStart = (e: React.TouchEvent) => {
+    setSheetTouchStartY(e.targetTouches[0].clientY);
+  };
+
+  const handleSheetTouchEnd = (e: React.TouchEvent, onClose: () => void) => {
+    if (sheetTouchStartY === null) return;
+    const currentY = e.changedTouches[0].clientY;
+    if (currentY - sheetTouchStartY > 55) {
+      // Gesto de puxar para baixo confirmado -> fechar bottom sheet
+      onClose();
+    }
+    setSheetTouchStartY(null);
+  };
 
   const defaultHero: ShopHero = {
     welcome: 'SEJA BEM VINDO A LOJA VIRTUAL DE MATEUS CELESTINO PRO',
@@ -274,65 +309,88 @@ export function ShopSection({ shopData, onOpenContact }: ShopSectionProps) {
   const produtos = (shopData?.produtos && shopData.produtos.length > 0) ? shopData.produtos : defaultProdutos;
   const servicos = (shopData?.servicos && shopData.servicos.length > 0) ? shopData.servicos : defaultServicos;
 
+  const isModalOpen = Boolean(selectedProduct || selectedService);
+
   return (
-    <section id="shop" className="py-24 relative overflow-hidden">
-      {/* Balatro Shader — Vermelho Carmesim Profundo */}
+    <section id="shop" className="py-6 sm:py-16 lg:py-24 relative overflow-hidden pb-28 sm:pb-24">
+      {/* Balatro Shader — Fundo Otimizado com Hardware Acceleration */}
       <BalatroShader
-        className="z-0 mix-blend-screen"
+        className="z-0 mix-blend-screen pointer-events-none"
         color1="#8a0012"
         color2="#3a0008"
         color3="#000000"
         contrast={2.2}
-        opacity={0.32}
+        opacity={0.28}
       />
 
-      {/* Zonas de Transição com Blur Suave */}
-      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black via-black/85 to-transparent pointer-events-none z-1 backdrop-blur-[6px]" />
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black via-black/85 to-transparent pointer-events-none z-1 backdrop-blur-[6px]" />
+      {/* Gradientes Suaves de Transição Superior e Inferior */}
+      <div className="absolute top-0 left-0 right-0 h-24 sm:h-32 bg-gradient-to-b from-black via-black/85 to-transparent pointer-events-none z-1" />
+      <div className="absolute bottom-0 left-0 right-0 h-24 sm:h-32 bg-gradient-to-t from-black via-black/85 to-transparent pointer-events-none z-1" />
 
-      <div className="w-full px-4 sm:px-6 lg:px-10 xl:px-16 relative z-10">
+      <div className="w-full px-3 sm:px-6 lg:px-10 xl:px-16 relative z-10 max-w-7xl mx-auto">
         
-        {/* HEADER & HERO DA LOJA ORIGINAL NOTION EM 2 COLUNAS */}
-        <div className="glass-crystal p-8 sm:p-12 rounded-3xl mb-14 border border-white/10 shadow-2xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        {/* HERO CARD DA LOJA — MOBILE FIRST ULTRA RESPONSIVO */}
+        <div className="glass-crystal p-4 sm:p-8 lg:p-12 rounded-2xl sm:rounded-3xl mb-8 sm:mb-12 border border-white/10 shadow-2xl">
+          <div className="flex flex-col lg:grid lg:grid-cols-12 gap-6 sm:gap-10 items-center">
             
-            {/* Coluna Esquerda: Textos Originais do Notion */}
-            <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-pill-red text-xs font-mono text-[#ff073a] font-bold uppercase tracking-wider">
-                <ShoppingBag className="w-4 h-4" />
-                <span>LOJA VIRTUAL OFICIAL DE MATEUS CELESTINO PRO</span>
+            {/* Bloco de Texto & Apresentação */}
+            <div className="w-full lg:col-span-7 space-y-4 sm:space-y-6">
+              
+              {/* Badge da Loja */}
+              <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full glass-pill-red text-[10px] sm:text-xs font-mono text-[#ff073a] font-bold uppercase tracking-wider">
+                <ShoppingBag className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
+                <span className="truncate">LOJA VIRTUAL OFICIAL DE MATEUS CELESTINO PRO</span>
               </div>
 
-              <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
+              {/* Título Principal */}
+              <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-[1.15]">
                 {hero.welcome}
-              </h2>
+              </h1>
 
-              <p className="text-base sm:text-lg text-zinc-300 font-light leading-relaxed">
+              {/* Subtítulo Tagline */}
+              <p className="text-sm sm:text-base lg:text-lg text-zinc-300 font-light leading-relaxed">
                 {hero.tagline}
               </p>
 
-              {/* 3 Blocos de Destaque Originais */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+              {/* No Mobile: Exibir o Banner alternado aqui para impacto visual imediato */}
+              <div className="w-full lg:hidden pt-2 pb-2">
+                <AlternatingHeroBanner
+                  images={hero.artImages && hero.artImages.length > 0 ? hero.artImages : [hero.artImage || '/assets/notion/shop/hero_art.png']}
+                  title="Loja Oficial"
+                  badgeText="100% VALIDADO"
+                  tagline="Soluções prontas para você economizar tempo e faturar alto."
+                  aspectRatio="aspect-[16/10] sm:aspect-square"
+                  intervalMs={4500}
+                />
+              </div>
+
+              {/* 3 Blocos de Destaque Originais — Layout Touch Adaptativo */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 pt-1 sm:pt-2">
                 {hero.features.map((feat, idx) => (
-                  <div key={idx} className="glass-card-nested p-4 rounded-2xl border border-white/10 hover:border-[#ff073a]/40 transition-colors">
-                    <span className="text-2xl block mb-2">{feat.icon}</span>
-                    <h4 className="text-sm font-bold text-white mb-1.5">{feat.title}</h4>
-                    <p className="text-xs text-zinc-400 font-light leading-snug">{feat.desc}</p>
+                  <div 
+                    key={idx} 
+                    className="glass-card-nested p-3.5 sm:p-4 rounded-xl sm:rounded-2xl border border-white/10 hover:border-[#ff073a]/40 transition-colors flex sm:flex-col items-start gap-3 sm:gap-0"
+                  >
+                    <span className="text-2xl sm:text-2xl shrink-0 sm:mb-2">{feat.icon}</span>
+                    <div>
+                      <h4 className="text-xs sm:text-sm font-bold text-white mb-1">{feat.title}</h4>
+                      <p className="text-[11px] sm:text-xs text-zinc-400 font-light leading-snug">{feat.desc}</p>
+                    </div>
                   </div>
                 ))}
               </div>
 
-              {/* Bloco: Ideal Para */}
-              <div className="pt-4 border-t border-white/10">
-                <div className="flex items-center gap-2 text-xs font-mono text-zinc-400 mb-3 font-semibold uppercase tracking-wider">
-                  <Flame className="w-3.5 h-3.5 text-[#ff073a]" />
+              {/* Bloco: Ideal Para — Chips Fluidos com Scroll/Wrap Otimizado */}
+              <div className="pt-3 sm:pt-4 border-t border-white/10">
+                <div className="flex items-center gap-1.5 text-xs font-mono text-zinc-400 mb-2.5 font-semibold uppercase tracking-wider">
+                  <Flame className="w-3.5 h-3.5 text-[#ff073a] shrink-0" />
                   <span>Ideal para:</span>
                 </div>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1.5 sm:gap-2">
                   {hero.idealFor.map((item, idx) => (
                     <span 
                       key={idx}
-                      className="px-3 py-1 rounded-xl glass-pill text-xs font-mono text-zinc-200 border border-white/5"
+                      className="px-2.5 sm:px-3 py-1 rounded-lg sm:rounded-xl glass-pill text-[11px] sm:text-xs font-mono text-zinc-200 border border-white/5"
                     >
                       {item}
                     </span>
@@ -341,8 +399,8 @@ export function ShopSection({ shopData, onOpenContact }: ShopSectionProps) {
               </div>
             </div>
 
-            {/* Coluna Direita: Alternating Hero Banner (Se houver múltiplas imagens, alternam suavemente no mesmo espaço) */}
-            <div className="lg:col-span-5 flex justify-center w-full">
+            {/* No Desktop: Alternating Hero Banner na coluna direita */}
+            <div className="hidden lg:flex lg:col-span-5 justify-center w-full">
               <AlternatingHeroBanner
                 images={hero.artImages && hero.artImages.length > 0 ? hero.artImages : [hero.artImage || '/assets/notion/shop/hero_art.png']}
                 title="Loja Oficial"
@@ -355,213 +413,253 @@ export function ShopSection({ shopData, onOpenContact }: ShopSectionProps) {
 
           </div>
 
-          {/* Seletor de Abas da Loja (COMPRE AGORA): PRODUTOS vs SERVIÇOS */}
-          <div className="mt-10 pt-8 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
-            <div className="inline-flex p-1.5 rounded-2xl glass-pill border border-white/10">
+          {/* SELETOR DE ABAS DA LOJA: PRODUTOS vs SERVIÇOS (Segmented Control Mobile First) */}
+          <div 
+            ref={tabContentRef}
+            id="shop-tab-content"
+            className="mt-8 sm:mt-10 pt-6 sm:pt-8 border-t border-white/10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 scroll-mt-24"
+          >
+            
+            {/* Controle Segmentado com Hit Area >= 48px e feedback tátil */}
+            <div className="w-full sm:w-auto inline-flex p-1 sm:p-1.5 rounded-xl sm:rounded-2xl glass-pill border border-white/10 touch-manipulation">
               <button
+                type="button"
                 onClick={() => setActiveShopTab('produtos')}
-                className={`px-6 py-3 rounded-xl text-xs font-mono tracking-wider font-bold transition-all duration-300 cursor-pointer flex items-center gap-2 ${
+                className={`flex-1 sm:flex-initial px-4 sm:px-6 py-3 min-h-[48px] rounded-lg sm:rounded-xl text-xs font-mono tracking-wider font-bold transition-all duration-200 cursor-pointer flex items-center justify-center gap-2 active:scale-95 touch-manipulation ${
                   activeShopTab === 'produtos'
-                    ? 'glass-button-fired text-white shadow-xl scale-[1.02]'
+                    ? 'glass-button-fired text-white shadow-lg'
                     : 'text-zinc-400 hover:text-white'
                 }`}
+                aria-pressed={activeShopTab === 'produtos'}
               >
-                <Layers className="w-4 h-4 text-[#ff073a]" />
+                <Layers className="w-4 h-4 text-[#ff073a] shrink-0" />
                 <span>PRODUTOS ({produtos.length})</span>
               </button>
+              
               <button
+                type="button"
                 onClick={() => setActiveShopTab('servicos')}
-                className={`px-6 py-3 rounded-xl text-xs font-mono tracking-wider font-bold transition-all duration-300 cursor-pointer flex items-center gap-2 ${
+                className={`flex-1 sm:flex-initial px-4 sm:px-6 py-3 min-h-[48px] rounded-lg sm:rounded-xl text-xs font-mono tracking-wider font-bold transition-all duration-200 cursor-pointer flex items-center justify-center gap-2 active:scale-95 touch-manipulation ${
                   activeShopTab === 'servicos'
-                    ? 'glass-button-fired text-white shadow-xl scale-[1.02]'
+                    ? 'glass-button-fired text-white shadow-lg'
                     : 'text-zinc-400 hover:text-white'
                 }`}
+                aria-pressed={activeShopTab === 'servicos'}
               >
-                <Bot className="w-4 h-4 text-[#ff073a]" />
+                <Bot className="w-4 h-4 text-[#ff073a] shrink-0" />
                 <span>SERVIÇOS ({servicos.length})</span>
               </button>
             </div>
 
-            <div className="text-xs font-mono text-zinc-400 flex items-center gap-2">
-              <ShieldCheck className="w-4 h-4 text-[#ff073a]" />
+            {/* Garantia & Status */}
+            <div className="text-xs font-mono text-zinc-400 flex items-center gap-2 self-start sm:self-auto">
+              <ShieldCheck className="w-4 h-4 text-[#ff073a] shrink-0" />
               <span>Checkout seguro & atendimento direto</span>
             </div>
+
           </div>
         </div>
 
-        {/* ABA DE PRODUTOS: OS 4 PRODUTOS AUTÊNTICOS DO NOTION */}
+        {/* ABA DE PRODUTOS — CARDS MOBILE FIRST ULTRA FLUIDOS */}
         {activeShopTab === 'produtos' && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-8">
             {produtos.map((prod) => (
               <div
                 key={prod.id}
-                className="glass-crystal glass-interactive rounded-3xl p-6 sm:p-8 flex flex-col justify-between group border border-white/10 hover:border-[#ff073a]/50 transition-all duration-300"
+                className="glass-crystal rounded-2xl sm:rounded-3xl p-4 sm:p-7 flex flex-col justify-between group border border-white/10 hover:border-[#ff073a]/50 transition-all duration-300 shadow-xl"
               >
                 <div>
                   {/* Capa do Produto */}
-                  <div className="relative aspect-[16/9] w-full rounded-2xl overflow-hidden mb-6 bg-black border border-white/10 shadow-xl">
+                  <div className="relative aspect-[16/10] sm:aspect-[16/9] w-full rounded-xl sm:rounded-2xl overflow-hidden mb-4 sm:mb-6 bg-black border border-white/10 shadow-lg">
                     <img
                       src={prod.cover}
                       alt={prod.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-75" />
-                    <div className="absolute top-3.5 left-3.5 px-3 py-1 rounded-xl glass-pill-red text-xs font-mono text-[#ff073a] font-bold">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+                    
+                    {/* Badges Flutuantes na Capa */}
+                    <div className="absolute top-2.5 left-2.5 sm:top-3.5 sm:left-3.5 px-2.5 py-1 rounded-lg sm:rounded-xl glass-pill-red text-[10px] sm:text-xs font-mono text-[#ff073a] font-bold">
                       {prod.badge}
                     </div>
-                    <div className="absolute top-3.5 right-3.5 px-3 py-1 rounded-xl glass-pill text-xs font-mono text-zinc-300">
+                    <div className="absolute top-2.5 right-2.5 sm:top-3.5 sm:right-3.5 px-2.5 py-1 rounded-lg sm:rounded-xl glass-pill text-[10px] sm:text-xs font-mono text-zinc-300">
                       {prod.price}
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-[11px] font-mono px-2.5 py-0.5 rounded-lg glass-pill text-[#ff073a] font-semibold">
+                  {/* Tag da Categoria */}
+                  <div className="flex items-center gap-2 mb-1.5 sm:mb-2">
+                    <span className="text-[10px] sm:text-[11px] font-mono px-2.5 py-0.5 rounded-md sm:rounded-lg glass-pill text-[#ff073a] font-semibold">
                       {prod.tag}
                     </span>
                   </div>
 
-                  <h3 className="text-2xl font-black text-white group-hover:text-[#ff073a] transition-all">
+                  {/* Título do Produto */}
+                  <h3 className="text-xl sm:text-2xl font-black text-white group-hover:text-[#ff073a] transition-colors leading-tight">
                     {prod.title}
                   </h3>
 
-                  <p className="mt-1.5 text-xs font-mono text-zinc-400 font-bold uppercase tracking-wider">
+                  {/* Headline */}
+                  <p className="mt-1 sm:mt-1.5 text-[11px] sm:text-xs font-mono text-zinc-400 font-bold uppercase tracking-wider leading-snug">
                     {prod.headline}
                   </p>
 
-                  <p className="mt-3.5 text-sm text-zinc-300 font-light leading-relaxed">
+                  {/* Descrição */}
+                  <p className="mt-2.5 sm:mt-3 text-xs sm:text-sm text-zinc-300 font-light leading-relaxed">
                     {prod.description}
                   </p>
 
-                  {/* Highlights com ícones de checagem */}
-                  <div className="mt-6 pt-5 border-t border-white/10 space-y-2.5">
+                  {/* Highlights com Ícones de Checagem */}
+                  <div className="mt-4 sm:mt-6 pt-3.5 sm:pt-5 border-t border-white/10 space-y-2 sm:space-y-2.5">
                     {prod.highlights.slice(0, 4).map((h, idx) => (
-                      <div key={idx} className="flex items-start gap-2.5 text-xs text-zinc-300 font-mono">
-                        <Check className="w-4 h-4 text-[#ff073a] shrink-0 mt-0.5" />
-                        <span>{h}</span>
+                      <div key={idx} className="flex items-start gap-2 sm:gap-2.5 text-xs text-zinc-300 font-mono">
+                        <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#ff073a] shrink-0 mt-0.5" />
+                        <span className="leading-tight">{h}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                {/* Ações: Comprar via WhatsApp, Saiba mais (pageLink) ou Detalhes */}
-                <div className="mt-8 pt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-3">
+                {/* Bloco de Ações do Card Touch-First */}
+                <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-white/10 flex flex-col gap-2.5">
+                  
+                  {/* Botão Primário WhatsApp (Full Width no Mobile para Máxima Conversão) */}
                   <a
                     href={`https://api.whatsapp.com/send/?phone=553197724257&text=${encodeURIComponent(prod.whatsappMessage || `Oi Mateus, tenho interesse no produto ${prod.title}`)}&type=phone_number&app_absent=0`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="glass-button-fired flex-1 flex items-center justify-center gap-2 py-3 px-5 rounded-xl text-xs font-mono font-bold text-white shadow-xl hover:scale-[1.02] transition-transform"
+                    className="glass-button-fired w-full min-h-[48px] py-3 px-4 rounded-xl text-xs font-mono font-bold text-white shadow-xl flex items-center justify-center gap-2 active:scale-[0.98] transition-all touch-manipulation cursor-pointer"
                   >
-                    <MessageSquare className="w-4 h-4" />
-                    <span>{prod.cta || 'OBTER AGORA'}</span>
+                    <MessageSquare className="w-4 h-4 shrink-0" />
+                    <span className="truncate">{prod.cta || 'OBTER AGORA'}</span>
                   </a>
 
-                  {prod.pageLink && (
-                    <a
-                      href={prod.pageLink}
-                      target={prod.pageLink.startsWith('http') ? '_blank' : '_self'}
-                      rel="noopener noreferrer"
-                      className="px-4 py-3 rounded-xl glass-pill text-xs font-mono text-[#ff073a] hover:text-white hover:bg-[#ff073a]/20 flex items-center gap-1.5 transition-colors border border-[#ff073a]/30"
-                    >
-                      <ExternalLink className="w-3.5 h-3.5" />
-                      <span>Saiba mais</span>
-                    </a>
-                  )}
+                  {/* Botões Secundários: Saiba Mais & Detalhes */}
+                  <div className="flex items-center gap-2 w-full">
+                    {prod.pageLink && (
+                      <a
+                        href={prod.pageLink}
+                        target={prod.pageLink.startsWith('http') ? '_blank' : '_self'}
+                        rel="noopener noreferrer"
+                        className="flex-1 min-h-[44px] px-3 py-2.5 rounded-xl glass-pill text-xs font-mono text-[#ff073a] hover:text-white hover:bg-[#ff073a]/20 flex items-center justify-center gap-1.5 transition-colors border border-[#ff073a]/30 active:scale-95 touch-manipulation"
+                      >
+                        <ExternalLink className="w-3.5 h-3.5 shrink-0" />
+                        <span>Saiba mais</span>
+                      </a>
+                    )}
 
-                  <button
-                    onClick={() => setSelectedProduct(prod)}
-                    className="px-4 py-3 rounded-xl glass-pill text-xs font-mono text-zinc-300 hover:text-white flex items-center gap-1.5 cursor-pointer transition-colors border border-white/10 hover:border-white/20"
-                  >
-                    <Info className="w-3.5 h-3.5" />
-                    <span>Ver Detalhes</span>
-                  </button>
+                    <button
+                      type="button"
+                      onClick={() => setSelectedProduct(prod)}
+                      className="flex-1 min-h-[44px] px-3 py-2.5 rounded-xl glass-pill text-xs font-mono text-zinc-300 hover:text-white flex items-center justify-center gap-1.5 cursor-pointer transition-colors border border-white/10 hover:border-white/20 active:scale-95 touch-manipulation"
+                    >
+                      <Info className="w-3.5 h-3.5 shrink-0" />
+                      <span>Ver Detalhes</span>
+                    </button>
+                  </div>
+
                 </div>
               </div>
             ))}
           </div>
         )}
 
-        {/* ABA DE SERVIÇOS: OS 2 SERVIÇOS AUTÊNTICOS DO NOTION */}
+        {/* ABA DE SERVIÇOS — CARDS MOBILE FIRST */}
         {activeShopTab === 'servicos' && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-8">
             {servicos.map((serv) => (
               <div
                 key={serv.id}
-                className="glass-crystal glass-interactive rounded-3xl p-6 sm:p-8 flex flex-col justify-between group border border-white/10 hover:border-[#ff073a]/50 transition-all duration-300"
+                className="glass-crystal rounded-2xl sm:rounded-3xl p-4 sm:p-7 flex flex-col justify-between group border border-white/10 hover:border-[#ff073a]/50 transition-all duration-300 shadow-xl"
               >
                 <div>
                   {/* Capa do Serviço */}
-                  <div className="relative aspect-[16/9] w-full rounded-2xl overflow-hidden mb-6 bg-black border border-white/10 shadow-xl">
+                  <div className="relative aspect-[16/10] sm:aspect-[16/9] w-full rounded-xl sm:rounded-2xl overflow-hidden mb-4 sm:mb-6 bg-black border border-white/10 shadow-lg">
                     <img
                       src={serv.cover}
                       alt={serv.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-75" />
-                    <div className="absolute top-3.5 left-3.5 px-3 py-1 rounded-xl glass-pill-red text-xs font-mono text-[#ff073a] font-bold">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+                    
+                    <div className="absolute top-2.5 left-2.5 sm:top-3.5 sm:left-3.5 px-2.5 py-1 rounded-lg sm:rounded-xl glass-pill-red text-[10px] sm:text-xs font-mono text-[#ff073a] font-bold">
                       {serv.badge}
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-[11px] font-mono px-2.5 py-0.5 rounded-lg glass-pill text-[#ff073a] font-semibold">
+                  {/* Tag da Categoria */}
+                  <div className="flex items-center gap-2 mb-1.5 sm:mb-2">
+                    <span className="text-[10px] sm:text-[11px] font-mono px-2.5 py-0.5 rounded-md sm:rounded-lg glass-pill text-[#ff073a] font-semibold">
                       {serv.tag}
                     </span>
                   </div>
 
-                  <h3 className="text-2xl font-black text-white group-hover:text-[#ff073a] transition-all">
+                  {/* Título do Serviço */}
+                  <h3 className="text-xl sm:text-2xl font-black text-white group-hover:text-[#ff073a] transition-colors leading-tight">
                     {serv.title}
                   </h3>
 
-                  <p className="mt-1.5 text-xs font-mono text-zinc-400 font-bold uppercase tracking-wider">
+                  {/* Headline */}
+                  <p className="mt-1 sm:mt-1.5 text-[11px] sm:text-xs font-mono text-zinc-400 font-bold uppercase tracking-wider leading-snug">
                     {serv.headline}
                   </p>
 
-                  <p className="mt-3.5 text-sm text-zinc-300 font-light leading-relaxed">
+                  {/* Descrição */}
+                  <p className="mt-2.5 sm:mt-3 text-xs sm:text-sm text-zinc-300 font-light leading-relaxed">
                     {serv.description}
                   </p>
 
-                  {/* Highlights com ícones */}
-                  <div className="mt-6 pt-5 border-t border-white/10 space-y-2.5">
+                  {/* Highlights do Escopo */}
+                  <div className="mt-4 sm:mt-6 pt-3.5 sm:pt-5 border-t border-white/10 space-y-2 sm:space-y-2.5">
                     {serv.highlights.map((h, idx) => (
-                      <div key={idx} className="flex items-start gap-2.5 text-xs text-zinc-300 font-mono">
-                        <Check className="w-4 h-4 text-[#ff073a] shrink-0 mt-0.5" />
-                        <span>{h}</span>
+                      <div key={idx} className="flex items-start gap-2 sm:gap-2.5 text-xs text-zinc-300 font-mono">
+                        <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#ff073a] shrink-0 mt-0.5" />
+                        <span className="leading-tight">{h}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                {/* Ações: Contratar via WhatsApp, Saiba mais (pageLink) ou Detalhes */}
-                <div className="mt-8 pt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-3">
+                {/* Bloco de Ações do Card Touch-First */}
+                <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-white/10 flex flex-col gap-2.5">
+                  
+                  {/* Botão Primário WhatsApp */}
                   <a
                     href={`https://api.whatsapp.com/send/?phone=553197724257&text=${encodeURIComponent(serv.whatsappMessage || `Oi Mateus, tenho interesse no serviço ${serv.title}`)}&type=phone_number&app_absent=0`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="glass-button-fired flex-1 flex items-center justify-center gap-2 py-3 px-5 rounded-xl text-xs font-mono font-bold text-white shadow-xl hover:scale-[1.02] transition-transform"
+                    className="glass-button-fired w-full min-h-[48px] py-3 px-4 rounded-xl text-xs font-mono font-bold text-white shadow-xl flex items-center justify-center gap-2 active:scale-[0.98] transition-all touch-manipulation cursor-pointer"
                   >
-                    <MessageSquare className="w-4 h-4" />
-                    <span>{serv.cta || 'CONTRATAR AGORA'}</span>
+                    <MessageSquare className="w-4 h-4 shrink-0" />
+                    <span className="truncate">{serv.cta || 'CONTRATAR AGORA'}</span>
                   </a>
 
-                  {serv.pageLink && (
-                    <a
-                      href={serv.pageLink}
-                      target={serv.pageLink.startsWith('http') ? '_blank' : '_self'}
-                      rel="noopener noreferrer"
-                      className="px-4 py-3 rounded-xl glass-pill text-xs font-mono text-[#ff073a] hover:text-white hover:bg-[#ff073a]/20 flex items-center gap-1.5 transition-colors border border-[#ff073a]/30"
-                    >
-                      <ExternalLink className="w-3.5 h-3.5" />
-                      <span>Saiba mais</span>
-                    </a>
-                  )}
+                  {/* Botões Secundários */}
+                  <div className="flex items-center gap-2 w-full">
+                    {serv.pageLink && (
+                      <a
+                        href={serv.pageLink}
+                        target={serv.pageLink.startsWith('http') ? '_blank' : '_self'}
+                        rel="noopener noreferrer"
+                        className="flex-1 min-h-[44px] px-3 py-2.5 rounded-xl glass-pill text-xs font-mono text-[#ff073a] hover:text-white hover:bg-[#ff073a]/20 flex items-center justify-center gap-1.5 transition-colors border border-[#ff073a]/30 active:scale-95 touch-manipulation"
+                      >
+                        <ExternalLink className="w-3.5 h-3.5 shrink-0" />
+                        <span>Saiba mais</span>
+                      </a>
+                    )}
 
-                  <button
-                    onClick={() => setSelectedService(serv)}
-                    className="px-4 py-3 rounded-xl glass-pill text-xs font-mono text-zinc-300 hover:text-white flex items-center gap-1.5 cursor-pointer transition-colors border border-white/10 hover:border-white/20"
-                  >
-                    <Info className="w-3.5 h-3.5" />
-                    <span>Ver Escopo</span>
-                  </button>
+                    <button
+                      type="button"
+                      onClick={() => setSelectedService(serv)}
+                      className="flex-1 min-h-[44px] px-3 py-2.5 rounded-xl glass-pill text-xs font-mono text-zinc-300 hover:text-white flex items-center justify-center gap-1.5 cursor-pointer transition-colors border border-white/10 hover:border-white/20 active:scale-95 touch-manipulation"
+                    >
+                      <Info className="w-3.5 h-3.5 shrink-0" />
+                      <span>Ver Escopo</span>
+                    </button>
+                  </div>
+
                 </div>
               </div>
             ))}
@@ -570,24 +668,43 @@ export function ShopSection({ shopData, onOpenContact }: ShopSectionProps) {
 
       </div>
 
-      {/* MODAL DE DETALHES DE PRODUTO */}
+      {/* MODAL / BOTTOM SHEET MOBILE DE DETALHES DE PRODUTO */}
       {selectedProduct && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-fade-in">
-          <div className="relative max-w-2xl w-full max-h-[90vh] overflow-y-auto glass-crystal rounded-3xl p-6 sm:p-8 border border-white/20 shadow-2xl">
+        <div 
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setSelectedProduct(null);
+          }}
+          className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/85 backdrop-blur-md animate-fade-in touch-manipulation cursor-pointer"
+        >
+          <div className="relative max-w-2xl w-full max-h-[90vh] overflow-y-auto glass-crystal rounded-t-[28px] sm:rounded-3xl p-5 sm:p-8 border border-white/20 shadow-2xl pb-8 sm:pb-8 cursor-default">
+            
+            {/* Mobile Drag Indicator Bar com gesto de puxar para baixo */}
+            <div 
+              onTouchStart={handleSheetTouchStart}
+              onTouchEnd={(e) => handleSheetTouchEnd(e, () => setSelectedProduct(null))}
+              className="w-full py-1 mb-3 flex flex-col items-center sm:hidden cursor-grab active:cursor-grabbing touch-pan-y"
+              title="Puxe para baixo para fechar"
+            >
+              <div className="w-14 h-1.5 bg-white/30 rounded-full" />
+              <span className="text-[9px] font-mono text-zinc-400 mt-1 uppercase tracking-widest">Puxe para fechar</span>
+            </div>
+
             <button
+              type="button"
               onClick={() => setSelectedProduct(null)}
-              className="absolute top-5 right-5 p-2 rounded-xl glass-pill text-zinc-400 hover:text-white cursor-pointer transition-colors"
+              className="absolute top-4 right-4 sm:top-5 sm:right-5 p-2 rounded-xl glass-pill text-zinc-400 hover:text-white cursor-pointer transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center active:scale-90"
+              aria-label="Fechar Detalhes"
             >
               <X className="w-5 h-5" />
             </button>
 
-            <div className="relative aspect-[16/9] w-full rounded-2xl overflow-hidden mb-6 bg-black border border-white/10">
+            <div className="relative aspect-[16/9] w-full rounded-xl sm:rounded-2xl overflow-hidden mb-4 sm:mb-6 bg-black border border-white/10">
               <img
                 src={selectedProduct.cover}
                 alt={selectedProduct.title}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute top-3.5 left-3.5 px-3 py-1 rounded-xl glass-pill-red text-xs font-mono text-[#ff073a] font-bold">
+              <div className="absolute top-3 left-3 px-3 py-1 rounded-xl glass-pill-red text-xs font-mono text-[#ff073a] font-bold">
                 {selectedProduct.badge}
               </div>
             </div>
@@ -596,19 +713,19 @@ export function ShopSection({ shopData, onOpenContact }: ShopSectionProps) {
               {selectedProduct.tag}
             </span>
 
-            <h3 className="text-2xl sm:text-3xl font-black text-white">
+            <h3 className="text-2xl sm:text-3xl font-black text-white leading-tight">
               {selectedProduct.title}
             </h3>
 
-            <p className="mt-2 text-sm font-mono text-zinc-400 font-semibold">
+            <p className="mt-1.5 text-xs sm:text-sm font-mono text-zinc-400 font-semibold leading-snug">
               {selectedProduct.headline}
             </p>
 
-            <p className="mt-4 text-sm text-zinc-300 font-light leading-relaxed">
+            <p className="mt-3.5 text-xs sm:text-sm text-zinc-300 font-light leading-relaxed">
               {selectedProduct.description}
             </p>
 
-            <div className="mt-6 p-4 rounded-2xl glass-card-nested border border-white/10 space-y-3">
+            <div className="mt-5 p-4 rounded-xl sm:rounded-2xl glass-card-nested border border-white/10 space-y-2.5">
               <h4 className="text-xs font-mono text-white font-bold uppercase tracking-wider flex items-center gap-2">
                 <Sparkles className="w-4 h-4 text-[#ff073a]" />
                 <span>O QUE ESTÁ INCLUSO:</span>
@@ -624,7 +741,7 @@ export function ShopSection({ shopData, onOpenContact }: ShopSectionProps) {
             </div>
 
             {selectedProduct.details && (
-              <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-mono">
+              <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs font-mono">
                 {selectedProduct.details.entrega && (
                   <div className="p-3 rounded-xl glass-card-nested border border-white/5">
                     <span className="text-[#ff073a] font-bold block mb-1">📦 Entrega:</span>
@@ -640,10 +757,12 @@ export function ShopSection({ shopData, onOpenContact }: ShopSectionProps) {
               </div>
             )}
 
-            <div className="mt-8 pt-6 border-t border-white/10 flex items-center justify-end gap-3 flex-wrap">
+            {/* Ações no Rodapé do Bottom Sheet / Modal */}
+            <div className="mt-6 pt-5 border-t border-white/10 flex flex-col sm:flex-row items-stretch sm:items-center justify-end gap-2.5">
               <button
+                type="button"
                 onClick={() => setSelectedProduct(null)}
-                className="px-5 py-2.5 rounded-xl glass-pill text-xs font-mono text-zinc-300 hover:text-white cursor-pointer"
+                className="min-h-[44px] px-5 py-2.5 rounded-xl glass-pill text-xs font-mono text-zinc-300 hover:text-white cursor-pointer active:scale-95"
               >
                 Fechar
               </button>
@@ -652,7 +771,7 @@ export function ShopSection({ shopData, onOpenContact }: ShopSectionProps) {
                   href={selectedProduct.pageLink}
                   target={selectedProduct.pageLink.startsWith('http') ? '_blank' : '_self'}
                   rel="noopener noreferrer"
-                  className="px-5 py-2.5 rounded-xl glass-pill text-xs font-mono text-[#ff073a] hover:text-white hover:bg-[#ff073a]/20 flex items-center gap-1.5 border border-[#ff073a]/30 transition-colors"
+                  className="min-h-[44px] px-5 py-2.5 rounded-xl glass-pill text-xs font-mono text-[#ff073a] hover:text-white hover:bg-[#ff073a]/20 flex items-center justify-center gap-1.5 border border-[#ff073a]/30 transition-colors active:scale-95"
                 >
                   <ExternalLink className="w-3.5 h-3.5" />
                   <span>Acessar Página Oficial</span>
@@ -662,7 +781,7 @@ export function ShopSection({ shopData, onOpenContact }: ShopSectionProps) {
                 href={`https://api.whatsapp.com/send/?phone=553197724257&text=${encodeURIComponent(selectedProduct.whatsappMessage || `Oi Mateus, tenho interesse no produto ${selectedProduct.title}`)}&type=phone_number&app_absent=0`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="glass-button-fired px-6 py-2.5 rounded-xl text-xs font-mono font-bold text-white shadow-xl flex items-center gap-2"
+                className="glass-button-fired min-h-[48px] px-6 py-2.5 rounded-xl text-xs font-mono font-bold text-white shadow-xl flex items-center justify-center gap-2 active:scale-95 cursor-pointer"
               >
                 <MessageSquare className="w-4 h-4" />
                 <span>{selectedProduct.cta || 'OBTER AGORA'}</span>
@@ -672,24 +791,43 @@ export function ShopSection({ shopData, onOpenContact }: ShopSectionProps) {
         </div>
       )}
 
-      {/* MODAL DE DETALHES DE SERVIÇO */}
+      {/* MODAL / BOTTOM SHEET MOBILE DE DETALHES DE SERVIÇO */}
       {selectedService && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-fade-in">
-          <div className="relative max-w-2xl w-full max-h-[90vh] overflow-y-auto glass-crystal rounded-3xl p-6 sm:p-8 border border-white/20 shadow-2xl">
+        <div 
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setSelectedService(null);
+          }}
+          className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/85 backdrop-blur-md animate-fade-in touch-manipulation cursor-pointer"
+        >
+          <div className="relative max-w-2xl w-full max-h-[90vh] overflow-y-auto glass-crystal rounded-t-[28px] sm:rounded-3xl p-5 sm:p-8 border border-white/20 shadow-2xl pb-8 sm:pb-8 cursor-default">
+            
+            {/* Mobile Drag Indicator Bar com gesto de puxar para baixo */}
+            <div 
+              onTouchStart={handleSheetTouchStart}
+              onTouchEnd={(e) => handleSheetTouchEnd(e, () => setSelectedService(null))}
+              className="w-full py-1 mb-3 flex flex-col items-center sm:hidden cursor-grab active:cursor-grabbing touch-pan-y"
+              title="Puxe para baixo para fechar"
+            >
+              <div className="w-14 h-1.5 bg-white/30 rounded-full" />
+              <span className="text-[9px] font-mono text-zinc-400 mt-1 uppercase tracking-widest">Puxe para fechar</span>
+            </div>
+
             <button
+              type="button"
               onClick={() => setSelectedService(null)}
-              className="absolute top-5 right-5 p-2 rounded-xl glass-pill text-zinc-400 hover:text-white cursor-pointer transition-colors"
+              className="absolute top-4 right-4 sm:top-5 sm:right-5 p-2 rounded-xl glass-pill text-zinc-400 hover:text-white cursor-pointer transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center active:scale-90"
+              aria-label="Fechar Escopo"
             >
               <X className="w-5 h-5" />
             </button>
 
-            <div className="relative aspect-[16/9] w-full rounded-2xl overflow-hidden mb-6 bg-black border border-white/10">
+            <div className="relative aspect-[16/9] w-full rounded-xl sm:rounded-2xl overflow-hidden mb-4 sm:mb-6 bg-black border border-white/10">
               <img
                 src={selectedService.cover}
                 alt={selectedService.title}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute top-3.5 left-3.5 px-3 py-1 rounded-xl glass-pill-red text-xs font-mono text-[#ff073a] font-bold">
+              <div className="absolute top-3 left-3 px-3 py-1 rounded-xl glass-pill-red text-xs font-mono text-[#ff073a] font-bold">
                 {selectedService.badge}
               </div>
             </div>
@@ -698,19 +836,19 @@ export function ShopSection({ shopData, onOpenContact }: ShopSectionProps) {
               {selectedService.tag}
             </span>
 
-            <h3 className="text-2xl sm:text-3xl font-black text-white">
+            <h3 className="text-2xl sm:text-3xl font-black text-white leading-tight">
               {selectedService.title}
             </h3>
 
-            <p className="mt-2 text-sm font-mono text-zinc-400 font-semibold">
+            <p className="mt-1.5 text-xs sm:text-sm font-mono text-zinc-400 font-semibold leading-snug">
               {selectedService.headline}
             </p>
 
-            <p className="mt-4 text-sm text-zinc-300 font-light leading-relaxed">
+            <p className="mt-3.5 text-xs sm:text-sm text-zinc-300 font-light leading-relaxed">
               {selectedService.description}
             </p>
 
-            <div className="mt-6 p-4 rounded-2xl glass-card-nested border border-white/10 space-y-3">
+            <div className="mt-5 p-4 rounded-xl sm:rounded-2xl glass-card-nested border border-white/10 space-y-2.5">
               <h4 className="text-xs font-mono text-white font-bold uppercase tracking-wider flex items-center gap-2">
                 <Sparkles className="w-4 h-4 text-[#ff073a]" />
                 <span>ESCOPO DO SERVIÇO:</span>
@@ -726,7 +864,7 @@ export function ShopSection({ shopData, onOpenContact }: ShopSectionProps) {
             </div>
 
             {selectedService.details && (
-              <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-mono">
+              <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs font-mono">
                 {selectedService.details.implementacao && (
                   <div className="p-3 rounded-xl glass-card-nested border border-white/5">
                     <span className="text-[#ff073a] font-bold block mb-1">⚙️ Implementação:</span>
@@ -742,10 +880,12 @@ export function ShopSection({ shopData, onOpenContact }: ShopSectionProps) {
               </div>
             )}
 
-            <div className="mt-8 pt-6 border-t border-white/10 flex items-center justify-end gap-3 flex-wrap">
+            {/* Ações no Rodapé do Bottom Sheet / Modal */}
+            <div className="mt-6 pt-5 border-t border-white/10 flex flex-col sm:flex-row items-stretch sm:items-center justify-end gap-2.5">
               <button
+                type="button"
                 onClick={() => setSelectedService(null)}
-                className="px-5 py-2.5 rounded-xl glass-pill text-xs font-mono text-zinc-300 hover:text-white cursor-pointer"
+                className="min-h-[44px] px-5 py-2.5 rounded-xl glass-pill text-xs font-mono text-zinc-300 hover:text-white cursor-pointer active:scale-95"
               >
                 Fechar
               </button>
@@ -754,7 +894,7 @@ export function ShopSection({ shopData, onOpenContact }: ShopSectionProps) {
                   href={selectedService.pageLink}
                   target={selectedService.pageLink.startsWith('http') ? '_blank' : '_self'}
                   rel="noopener noreferrer"
-                  className="px-5 py-2.5 rounded-xl glass-pill text-xs font-mono text-[#ff073a] hover:text-white hover:bg-[#ff073a]/20 flex items-center gap-1.5 border border-[#ff073a]/30 transition-colors"
+                  className="min-h-[44px] px-5 py-2.5 rounded-xl glass-pill text-xs font-mono text-[#ff073a] hover:text-white hover:bg-[#ff073a]/20 flex items-center justify-center gap-1.5 border border-[#ff073a]/30 transition-colors active:scale-95"
                 >
                   <ExternalLink className="w-3.5 h-3.5" />
                   <span>Acessar Página Oficial</span>
@@ -764,7 +904,7 @@ export function ShopSection({ shopData, onOpenContact }: ShopSectionProps) {
                 href={`https://api.whatsapp.com/send/?phone=553197724257&text=${encodeURIComponent(selectedService.whatsappMessage || `Oi Mateus, tenho interesse no serviço ${selectedService.title}`)}&type=phone_number&app_absent=0`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="glass-button-fired px-6 py-2.5 rounded-xl text-xs font-mono font-bold text-white shadow-xl flex items-center gap-2"
+                className="glass-button-fired min-h-[48px] px-6 py-2.5 rounded-xl text-xs font-mono font-bold text-white shadow-xl flex items-center justify-center gap-2 active:scale-95 cursor-pointer"
               >
                 <MessageSquare className="w-4 h-4" />
                 <span>{selectedService.cta || 'CONTRATAR AGORA'}</span>
@@ -772,6 +912,68 @@ export function ShopSection({ shopData, onOpenContact }: ShopSectionProps) {
             </div>
           </div>
         </div>
+      )}
+
+      {/* MOBILE QUICK THUMB BAR — BARRA FLUTUANTE INFERIOR NATIVA NO SMARTPHONE (Thumb Zone Fitts' Law) */}
+      {!isModalOpen && (
+        <aside 
+          aria-label="Barra de Ação Rápida Móvel da Loja"
+          className="sm:hidden fixed bottom-3 inset-x-3 z-40 max-w-md mx-auto touch-manipulation pointer-events-auto select-none"
+          style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}
+        >
+          <div className="glass-crystal p-2 rounded-2xl border border-white/20 shadow-[0_15px_40px_rgba(0,0,0,0.95),0_0_25px_rgba(255,7,58,0.25)] flex items-center justify-between gap-2">
+            
+            {/* Botões Rápidos de Troca de Categoria com Touch Target Amplo */}
+            <div className="flex items-center gap-1 bg-black/60 p-1 rounded-xl border border-white/10 flex-1">
+              <button
+                type="button"
+                onClick={() => {
+                  setActiveShopTab('produtos');
+                  scrollToTabs();
+                }}
+                className={`flex-1 min-h-[44px] py-2 rounded-lg text-[11px] font-mono font-bold transition-all flex items-center justify-center gap-1.5 active:scale-95 touch-manipulation cursor-pointer ${
+                  activeShopTab === 'produtos'
+                    ? 'glass-button-fired text-white shadow-md'
+                    : 'text-zinc-400 hover:text-white'
+                }`}
+                aria-pressed={activeShopTab === 'produtos'}
+              >
+                <Layers className="w-3.5 h-3.5 text-[#ff073a] shrink-0" />
+                <span>Produtos ({produtos.length})</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  setActiveShopTab('servicos');
+                  scrollToTabs();
+                }}
+                className={`flex-1 min-h-[44px] py-2 rounded-lg text-[11px] font-mono font-bold transition-all flex items-center justify-center gap-1.5 active:scale-95 touch-manipulation cursor-pointer ${
+                  activeShopTab === 'servicos'
+                    ? 'glass-button-fired text-white shadow-md'
+                    : 'text-zinc-400 hover:text-white'
+                }`}
+                aria-pressed={activeShopTab === 'servicos'}
+              >
+                <Bot className="w-3.5 h-3.5 text-[#ff073a] shrink-0" />
+                <span>Serviços ({servicos.length})</span>
+              </button>
+            </div>
+
+            {/* Botão de Contato Instantâneo via WhatsApp */}
+            <a
+              href="https://api.whatsapp.com/send/?phone=553197724257&text=Oi%20Mateus,%20quero%20atendimento%20direto%20sobre%20a%20loja%20e%20servi%C3%A7os!&type=phone_number&app_absent=0"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="glass-button-fired min-h-[44px] px-3.5 py-2 rounded-xl text-[11px] font-mono font-bold text-white flex items-center gap-1.5 shadow-lg active:scale-95 shrink-0 touch-manipulation cursor-pointer"
+              title="Atendimento Direto WhatsApp"
+            >
+              <MessageSquare className="w-3.5 h-3.5 fill-white/20" />
+              <span>WhatsApp</span>
+            </a>
+
+          </div>
+        </aside>
       )}
 
     </section>

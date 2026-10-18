@@ -96,16 +96,16 @@ export function UniversalSitemapModal({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 md:p-8 bg-black/85 backdrop-blur-2xl animate-in fade-in duration-200"
+      className="fixed inset-0 z-50 flex items-center justify-center p-0 sm:p-5 md:p-8 bg-black/85 backdrop-blur-2xl animate-in fade-in duration-200"
       onClick={onClose}
     >
       {/* Container Central Monumental em Vidro Líquido com Shader Integrado */}
       <div
-        className="relative w-full max-w-6xl max-h-[92vh] flex flex-col rounded-3xl bg-[#060609]/90 border border-white/10 shadow-[0_0_80px_rgba(255,7,58,0.2),0_30px_70px_rgba(0,0,0,0.95)] overflow-hidden"
+        className="relative w-full h-full sm:h-auto sm:max-w-6xl sm:max-h-[92vh] flex flex-col rounded-none sm:rounded-3xl bg-[#060609]/95 border-0 sm:border sm:border-white/10 shadow-[0_0_80px_rgba(255,7,58,0.2),0_30px_70px_rgba(0,0,0,0.95)] overflow-hidden safe-pt safe-pb"
         onClick={(e) => e.stopPropagation()}
       >
         {/* SHADER DINÂMICO DE FUNDO (GridScan Vermelho Carmesim em Baixa Opacidade) */}
-        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none rounded-3xl">
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none rounded-none sm:rounded-3xl">
           <GridScanShader
             className="w-full h-full mix-blend-screen opacity-40"
             linesColor="#100003"
@@ -120,31 +120,44 @@ export function UniversalSitemapModal({
         </div>
 
         {/* =========================================================================
-            HEADER HUD MINIMALISTA & VISUAL
+            HEADER HUD MINIMALISTA & VISUAL MOBILE-FIRST
             ========================================================================= */}
-        <div className="relative z-10 px-5 sm:px-7 py-4 border-b border-white/[0.08] bg-black/40 backdrop-blur-xl flex flex-col md:flex-row md:items-center justify-between gap-3">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-red-600/30 via-red-950/40 to-black border border-red-500/40 flex items-center justify-center text-[#ff073a] shadow-[0_0_15px_rgba(255,7,58,0.3)] shrink-0">
-              <Compass className="w-5 h-5 text-[#ff073a]" />
-            </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#ff073a]">
-                  SITEMAP // FLUXOGRAMA VISUAL
-                </span>
-                <span className="text-zinc-600 text-xs">•</span>
-                <span className="text-[11px] font-mono text-zinc-400">Mateus Celestino Pro X</span>
+        <div className="relative z-10 px-4 sm:px-7 py-3.5 sm:py-4 border-b border-white/[0.08] bg-black/50 backdrop-blur-xl flex flex-col gap-3">
+          {/* Linha 1: Título e Botão Fechar */}
+          <div className="flex items-center justify-between gap-3">
+            <div className="flex items-center gap-2.5 sm:gap-3">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-gradient-to-br from-red-600/30 via-red-950/40 to-black border border-red-500/40 flex items-center justify-center text-[#ff073a] shadow-[0_0_15px_rgba(255,7,58,0.3)] shrink-0">
+                <Compass className="w-4 h-4 sm:w-5 sm:h-5 text-[#ff073a]" />
               </div>
-              <h2 className="text-base sm:text-lg font-black text-white tracking-tight">
-                Arquitetura Geral do Ecossistema
-              </h2>
+              <div>
+                <div className="flex items-center gap-1.5 sm:gap-2">
+                  <span className="text-[9px] sm:text-[10px] font-mono font-bold uppercase tracking-widest text-[#ff073a]">
+                    SITEMAP // FLUXOGRAMA
+                  </span>
+                  <span className="text-zinc-600 text-xs">•</span>
+                  <span className="text-[10px] sm:text-[11px] font-mono text-zinc-400">Mateus Celestino Pro X</span>
+                </div>
+                <h2 className="text-sm sm:text-lg font-black text-white tracking-tight">
+                  Arquitetura Geral do Ecossistema
+                </h2>
+              </div>
             </div>
+
+            {/* Botão Fechar Modal com Touch Target de 44px */}
+            <button
+              onClick={onClose}
+              className="w-11 h-11 rounded-xl bg-white/[0.05] hover:bg-red-950/60 active:scale-95 border border-white/10 hover:border-red-500/40 text-zinc-300 hover:text-white transition-all flex items-center justify-center cursor-pointer touch-manipulation shrink-0"
+              title="Fechar (ESC)"
+              aria-label="Fechar sitemap"
+            >
+              <X className="w-5 h-5" />
+            </button>
           </div>
 
-          {/* Controles: Filtros em Pílulas, Busca Rápida e Fechar */}
-          <div className="flex items-center gap-2.5 flex-wrap">
-            {/* Pílulas de Filtro */}
-            <div className="flex items-center gap-1 bg-black/50 p-1 rounded-xl border border-white/[0.08]">
+          {/* Linha 2: Filtros e Busca Rápida */}
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 pt-1">
+            {/* Pílulas de Filtro (Scroll horizontal suave) */}
+            <div className="flex items-center gap-1 overflow-x-auto no-scrollbar py-0.5 bg-black/40 p-1 rounded-xl border border-white/[0.08]">
               {[
                 { id: 'all', label: 'Tudo' },
                 { id: 'site', label: 'Site' },
@@ -155,7 +168,7 @@ export function UniversalSitemapModal({
                 <button
                   key={tab.id}
                   onClick={() => setActiveFilter(tab.id as any)}
-                  className={`px-3 py-1 rounded-lg text-xs font-mono transition-all cursor-pointer ${
+                  className={`min-h-[36px] px-3 py-1 rounded-lg text-xs font-mono transition-all cursor-pointer shrink-0 touch-manipulation active:scale-95 ${
                     activeFilter === tab.id
                       ? 'bg-red-950/80 text-white border border-red-500/50 shadow-[0_0_10px_rgba(255,7,58,0.25)] font-bold'
                       : 'text-zinc-400 hover:text-white hover:bg-white/[0.05]'
@@ -166,26 +179,17 @@ export function UniversalSitemapModal({
               ))}
             </div>
 
-            {/* Input de Busca Rápida */}
-            <div className="relative w-40 sm:w-52">
-              <Search className="w-3.5 h-3.5 text-zinc-400 absolute left-3 top-1/2 -translate-y-1/2" />
+            {/* Input de Busca Rápida (text-[16px] no mobile) */}
+            <div className="relative w-full sm:w-56">
+              <Search className="w-3.5 h-3.5 text-zinc-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
               <input
                 type="text"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                placeholder="Filtrar..."
-                className="w-full bg-black/60 border border-white/[0.08] rounded-xl pl-8 pr-3 py-1 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-red-500/50 font-mono"
+                placeholder="Filtrar rotas ou guias..."
+                className="w-full min-h-[40px] bg-black/60 border border-white/[0.08] rounded-xl pl-8 pr-3 py-1.5 text-[16px] sm:text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-red-500/50 font-mono touch-manipulation"
               />
             </div>
-
-            {/* Botão Fechar Modal */}
-            <button
-              onClick={onClose}
-              className="p-1.5 sm:p-2 rounded-xl bg-white/[0.05] hover:bg-red-950/60 border border-white/10 hover:border-red-500/40 text-zinc-300 hover:text-white transition-all cursor-pointer"
-              title="Fechar (ESC)"
-            >
-              <X className="w-4 h-4" />
-            </button>
           </div>
         </div>
 

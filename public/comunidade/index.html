@@ -2,7 +2,11 @@
 <html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5.0">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#030304">
     <title>A.I VISUALS — Members Area | Prompts Premium de IA</title>
     <meta name="description" content="Plataforma premium de prompts para IA generativa. Acervo exclusivo de AI Art Pro, AI Portraits Pro e AI Effects Pro.">
     <link rel="icon" type="image/webp" href="/assets/site_icon.webp">
@@ -51,6 +55,21 @@
     </script>
 
     <style>
+        /* MOBILE-FIRST TOUCH & PERFORMANCE FOUNDATIONS */
+        * {
+            -webkit-tap-highlight-color: transparent;
+            box-sizing: border-box;
+        }
+        :root {
+            --sat: env(safe-area-inset-top, 0px);
+            --sab: env(safe-area-inset-bottom, 0px);
+            --sal: env(safe-area-inset-left, 0px);
+            --sar: env(safe-area-inset-right, 0px);
+        }
+        button, a, input, select, textarea, [role="button"], [data-nav-product], [data-nav-cat-id] {
+            touch-action: manipulation;
+        }
+
         /* APPLE LIQUID GLASS CORE */
         body {
             background-color: #030304;
@@ -59,6 +78,7 @@
             -moz-osx-font-smoothing: grayscale;
             overflow-x: hidden;
             margin: 0;
+            padding-bottom: env(safe-area-inset-bottom, 0px);
         }
 
         /* SCROLLBAR */
@@ -67,7 +87,7 @@
         ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.3); }
         .hide-scrollbar::-webkit-scrollbar { display: none; }
-        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
 
         /* LIQUID GLASS NAV */
         .apple-nav {
@@ -131,11 +151,23 @@
         @media (min-width: 1024px) { .masonry { column-count: 3; } }
         .masonry > div { break-inside: avoid; margin-bottom: 1.5rem; }
 
+        @media (max-width: 639px) {
+            .masonry { column-gap: 0.75rem; }
+            .masonry > div { margin-bottom: 0.75rem; }
+        }
+
         .bento-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             grid-auto-rows: 300px;
             gap: 1.5rem;
+        }
+        @media (max-width: 639px) {
+            .bento-grid {
+                grid-template-columns: 1fr;
+                grid-auto-rows: 220px;
+                gap: 0.85rem;
+            }
         }
         @media (min-width: 768px) { .bento-grid { grid-template-columns: repeat(4, 1fr); } }
 
@@ -843,14 +875,187 @@
       .msb-mobile-drawer.open {
         display: flex !important;
       }
+      /* MOBILE DOCK & SEARCH SYSTEM */
+      .mobile-dock-btn {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
+        padding: 5px 2px;
+        color: rgba(255, 255, 255, 0.5);
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        min-height: 48px;
+        min-width: 48px;
+        text-decoration: none;
+      }
+      .mobile-dock-btn:active {
+        transform: scale(0.9);
+      }
+      .mobile-dock-btn.active {
+        color: #ffffff !important;
+      }
+      .mobile-dock-btn.active svg {
+        stroke: #ffffff;
+      }
+      .mobile-dock-btn .dock-indicator {
+        position: absolute;
+        bottom: 3px;
+        width: 4px;
+        height: 4px;
+        border-radius: 9999px;
+        background: #ef4444;
+        box-shadow: 0 0 10px #ef4444, 0 0 4px #ef4444;
+        opacity: 0;
+        transform: scale(0.4);
+        transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .mobile-dock-btn.active .dock-indicator {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      /* Mobile Search Overlay */
+      #mobileSearchOverlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 100004;
+        background: rgba(6, 6, 10, 0.96);
+        backdrop-filter: blur(35px);
+        -webkit-backdrop-filter: blur(35px);
+        padding: calc(14px + var(--sat)) 16px calc(16px + var(--sab)) 16px;
+        display: flex;
+        flex-direction: column;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-8px);
+        transition: opacity 0.25s ease, transform 0.25s ease;
+      }
+      #mobileSearchOverlay.open {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+
+      /* Mobile Action Buttons in Header */
+      .msb-mobile-btn {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.2s;
+        padding: 0;
+      }
+      .msb-mobile-btn:active {
+        transform: scale(0.92);
+        background: rgba(255, 255, 255, 0.15);
+      }
+
       @media (max-width: 900px) {
+        #master-sovereign-bar {
+          height: calc(56px + env(safe-area-inset-top, 0px)) !important;
+          padding-top: env(safe-area-inset-top, 0px) !important;
+        }
+        .msb-inner {
+          padding: 0 14px !important;
+        }
+        .msb-brand {
+          gap: 8px !important;
+        }
+        .msb-logo-badge {
+          width: 32px !important;
+          height: 32px !important;
+        }
+        .msb-brand-name {
+          font-size: 11px !important;
+          font-weight: 800 !important;
+        }
         .msb-links-desktop, .msb-actions-desktop {
           display: none !important;
+        }
+        .msb-mobile-actions {
+          display: flex !important;
+          align-items: center !important;
+          gap: 8px !important;
         }
         .msb-menu-toggle {
           display: flex !important;
           align-items: center !important;
           justify-content: center !important;
+        }
+        /* Oculta mapa desktop redundante e apple-nav redundante no mobile */
+        #portal-navigation-map {
+          display: none !important;
+        }
+        .apple-nav {
+          display: none !important;
+        }
+        /* Breadcrumb móvel compacto */
+        #breadcrumbBar {
+          top: calc(56px + env(safe-area-inset-top, 0px)) !important;
+          height: 34px !important;
+          padding: 6px 14px !important;
+          font-size: 11px !important;
+          display: flex !important;
+          align-items: center !important;
+          overflow-x: auto !important;
+          white-space: nowrap !important;
+          scrollbar-width: none !important;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+        }
+        #breadcrumbBar::-webkit-scrollbar {
+          display: none !important;
+        }
+        /* Espaçamento mobile-first para o container principal */
+        #mainAppContainer {
+          padding-top: calc(96px + env(safe-area-inset-top, 0px)) !important;
+          padding-bottom: calc(88px + env(safe-area-inset-bottom, 12px)) !important;
+          padding-left: 12px !important;
+          padding-right: 12px !important;
+        }
+        /* Drawer Mobile */
+        .msb-mobile-drawer {
+          top: calc(56px + env(safe-area-inset-top, 0px)) !important;
+          max-height: calc(100vh - 56px - env(safe-area-inset-top, 0px)) !important;
+          overflow-y: auto !important;
+          padding: 16px 18px !important;
+          gap: 8px !important;
+        }
+        /* Widget de background no mobile */
+        #bgSettingsWrapper {
+          bottom: calc(76px + env(safe-area-inset-bottom, 8px)) !important;
+          right: 14px !important;
+        }
+        #bgSettingsTrigger {
+          width: 44px !important;
+          height: 44px !important;
+          font-size: 18px !important;
+        }
+        #bgSettingsModal {
+          position: fixed !important;
+          bottom: 0 !important;
+          left: 0 !important;
+          right: 0 !important;
+          width: 100% !important;
+          border-radius: 26px 26px 0 0 !important;
+          max-height: 82vh !important;
+          overflow-y: auto !important;
+          box-shadow: 0 -20px 60px rgba(0,0,0,0.95) !important;
+          transform-origin: bottom center !important;
         }
       }
     </style>
@@ -928,18 +1133,38 @@
           </div>
         </div>
 
-        <!-- Botão Menu Mobile -->
-        <button id="msb-mobile-toggle" class="msb-menu-toggle" aria-label="Abrir menu de navegação soberana">
-          <svg id="msb-icon-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
-          <svg id="msb-icon-close" style="display:none;" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
-        </button>
+        <!-- Ações Rápidas Mobile & Toggle -->
+        <div class="msb-mobile-actions" style="display: none; align-items: center; gap: 8px;">
+          <button type="button" id="msb-mobile-search-btn" class="msb-mobile-btn" aria-label="Buscar prompts" title="Buscar prompts">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          </button>
+          <button type="button" id="msb-mobile-avatar-btn" class="msb-mobile-btn" aria-label="Abrir Perfil" title="Abrir Perfil">
+            <img id="msb-mobile-user-avatar" src="https://api.dicebear.com/7.x/bottts/svg?seed=GuestVisitor" class="w-6 h-6 rounded-full border border-white/30 object-cover" alt="Avatar">
+          </button>
+          <button id="msb-mobile-toggle" class="msb-menu-toggle" aria-label="Abrir menu de navegação soberana">
+            <svg id="msb-icon-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+            <svg id="msb-icon-close" style="display:none;" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+          </button>
+        </div>
       </div>
 
-      <!-- Drawer Mobile -->
+      <!-- Drawer Mobile Soberano com Links Completos -->
       <div id="msb-mobile-drawer" class="msb-mobile-drawer">
         <a href="/" target="_top" class="msb-link">
           <svg class="msb-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           <span>Portal Institucional</span>
+        </a>
+        <a href="/#publicacoes" target="_top" class="msb-link">
+          <svg class="msb-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          <span>Artigos Técnicos (176)</span>
+        </a>
+        <a href="/#sobre" target="_top" class="msb-link">
+          <svg class="msb-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span>Sobre Mim</span>
+        </a>
+        <a href="/#contato" target="_top" class="msb-link">
+          <svg class="msb-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          <span>Contato</span>
         </a>
         <a href="/showcase" target="_top" class="msb-link">
           <svg class="msb-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
@@ -951,7 +1176,7 @@
         </a>
         <a href="/comunidade" target="_top" class="msb-link active">
           <svg class="msb-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          <span>Comunidade</span>
+          <span>Comunidade VIP</span>
         </a>
         <a href="/biblioteca" target="_top" class="msb-link">
           <svg class="msb-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 20H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H20a2 2 0 0 1 2 2v2"/><circle cx="13" cy="12" r="2"/><path d="M18 19c-2.8 0-5-2.2-5-5v8"/><circle cx="20" cy="19" r="2"/></svg>
@@ -969,6 +1194,11 @@
         <button id="msb-mobile-logout-btn" type="button" class="msb-link" style="margin-top: 6px; color: #f87171; display: none; background: transparent; border: none; text-align: left; cursor: pointer;">
           <span>🚪 Encerrar Sessão</span>
         </button>
+        <!-- CTA Oficial WhatsApp integrado no Mobile Drawer -->
+        <a href="https://api.whatsapp.com/send/?phone=553197724257&text=QUERO+AUTOMATIZAR+TUDO.&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" style="margin-top: 8px; display: flex; align-items: center; justify-content: center; gap: 8px; background: linear-gradient(135deg, #a80018 0%, #ff073a 100%); color: #fff; font-size: 12px; font-family: monospace; font-weight: 700; letter-spacing: 0.05em; padding: 12px 14px; border-radius: 12px; text-decoration: none; box-shadow: 0 0 25px rgba(255, 7, 58, 0.4); min-height: 48px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <span>QUERO AUTOMATIZAR TUDO</span>
+        </a>
       </div>
     </header>
 
@@ -1066,6 +1296,8 @@
 
           if (userName) userName.textContent = u.name;
           if (userAvatar) userAvatar.src = u.avatar;
+          var mobileUserAvatar = document.getElementById('msb-mobile-user-avatar');
+          if (mobileUserAvatar) mobileUserAvatar.src = u.avatar;
           if (userRoleBadge) {
             userRoleBadge.className = 'msb-user-role-badge msb-role-' + u.role;
             var roleText = '⚪ VISITANTE';

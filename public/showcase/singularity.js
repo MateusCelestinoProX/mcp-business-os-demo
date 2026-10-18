@@ -112,8 +112,9 @@ export function initSingularity(containerId) {
     });
     coreGroup.add(new THREE.Mesh(new THREE.SphereGeometry(4.25, 64, 64), auraMat));
 
-    const instanceCount = 5000;
-    const streakGeo = new THREE.CylinderGeometry(0.01, 0.12, 2.2, 3);
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    const instanceCount = isMobile ? 1600 : 5000;
+    const streakGeo = new THREE.CylinderGeometry(0.01, isMobile ? 0.16 : 0.12, 2.2, 3);
     streakGeo.rotateX(Math.PI / 2);
 
     const diskMaterial = new THREE.ShaderMaterial({

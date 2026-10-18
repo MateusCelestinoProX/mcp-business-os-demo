@@ -25,10 +25,11 @@ export function initGalaxy(containerId) {
     canvas.style.pointerEvents = 'none';
     container.appendChild(canvas);
 
-    // Galaxy parameters
+    // Galaxy parameters - Adaptive for mobile performance
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
     const parameters = {
-        count: 50000,
-        size: 0.015,
+        count: isMobile ? 12000 : 50000,
+        size: isMobile ? 0.022 : 0.015,
         radius: 10,
         branches: 3,
         spin: 1,

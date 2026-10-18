@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5.0">
     <title>Mateus Celestino PRO | Marketer, AI Specialist & Automation</title>
     <meta name="description" content="Curriculum Vitae de Mateus Celestino — Estrategista em Marketing Digital, Vendas, Inteligência Artificial e Automação. 70+ certificações oficiais.">
 
@@ -457,6 +457,29 @@
       </div>
     </header>
 
+    <!-- ========================================================
+         SHOWCASE MOBILE QUICK NAV (CHIPS HORIZONTAIS TÁTEIS)
+         ======================================================== -->
+    <nav class="showcase-mobile-chips-bar" id="mobile-chips-bar" aria-label="Navegação Rápida Showcase">
+      <div class="showcase-chips-scroll">
+        <a href="#about" class="chip-link active"><i data-lucide="user"></i><span>Sobre</span></a>
+        <a href="#skills" class="chip-link"><i data-lucide="zap"></i><span>Habilidades</span></a>
+        <a href="#spotlight-section" class="chip-link"><i data-lucide="trending-up"></i><span>Resultados</span></a>
+        <a href="#vps" class="chip-link"><i data-lucide="server"></i><span>VPS & Linux</span></a>
+        <a href="#discord" class="chip-link"><i data-lucide="message-square"></i><span>Comunidades</span></a>
+        <a href="#products-digital" class="chip-link"><i data-lucide="package"></i><span>Produtos</span></a>
+        <a href="#cyberclass-kiwify" class="chip-link"><i data-lucide="award"></i><span>CyberClass</span></a>
+        <a href="#mac" class="chip-link"><i data-lucide="laptop"></i><span>macOS & CLI</span></a>
+        <a href="#opensource-projects" class="chip-link"><i data-lucide="code-2"></i><span>OpenSource</span></a>
+        <a href="#webdesign" class="chip-link"><i data-lucide="globe"></i><span>Web Design</span></a>
+        <a href="#apps-series" class="chip-link"><i data-lucide="smartphone"></i><span>Apps</span></a>
+        <a href="#notion-master" class="chip-link"><i data-lucide="layout"></i><span>Notion</span></a>
+        <a href="#experience" class="chip-link"><i data-lucide="briefcase"></i><span>Trajetória</span></a>
+        <a href="#certifications" class="chip-link"><i data-lucide="file-badge"></i><span>Certificados (70+)</span></a>
+        <a href="#contact" class="chip-link"><i data-lucide="send"></i><span>Conexão</span></a>
+      </div>
+    </nav>
+
     <!-- Sub-Header Universal do Sistema (Portal Navbar) -->
     <nav id="portal-navigation-map" aria-label="Mapa de Navegação Setorial Mateus Celestino Pro X" style="position: fixed; top: 64px; left: 0; right: 0; z-index: 45; padding: 10px 24px; pointer-events: none; transition: all 0.3s ease;">
       <div style="max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; pointer-events: auto;">
@@ -657,7 +680,7 @@
     <!-- ========== ENERGY CANVAS BACKGROUND ========== -->
     <canvas id="energy-canvas"></canvas>
 
-    <!-- ========== NAVIGATION ========== -->
+    <!-- ========== NAVIGATION (DESKTOP FLUIDIC) ========== -->
     <nav class="nav-main" id="navbar">
         <a href="#hero" class="nav-logo">
             <!-- Logo Removido conforme instrução -->
@@ -666,12 +689,14 @@
         <div class="nav-links liquid-glass">
             <a href="#about">Sobre</a>
             <a href="#skills">Habilidades</a>
-            <a href="#benefits">Diferenciais</a>
+            <a href="#spotlight-section">Resultados</a>
             <a href="#vps">VPS</a>
             <a href="#discord">Comunidades</a>
             <a href="#products-digital">Produtos Digitais</a>
-            <a href="#cyberclass">CyberClass</a>
+            <a href="#cyberclass-kiwify">CyberClass</a>
             <a href="#opensource-projects">OpenSource</a>
+            <a href="#webdesign">Web Design</a>
+            <a href="#apps-series">Apps</a>
             <a href="#experience">Trajetória</a>
             <a href="#certifications">Certificados</a>
             <a href="#contact">Conexão</a>
@@ -681,26 +706,54 @@
             <a href="https://photografy-fotografia-contato.vercel.app/" target="_blank" class="btn-contact">Contato</a>
         </div>
 
-        <button class="nav-mobile-btn" id="mobile-menu-btn" aria-label="Menu">
+        <button class="nav-mobile-btn" id="mobile-menu-btn" aria-label="Abrir Menu Completo">
             <i data-lucide="menu" style="width:20px;height:20px;"></i>
         </button>
     </nav>
 
-    <!-- Mobile Menu -->
+    <!-- Mobile Menu / Sheet Drawer -->
     <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
-    <div class="mobile-menu" id="mobile-menu">
-        <a href="#about">Sobre</a>
-        <a href="#skills">Habilidades</a>
-        <a href="#benefits">Diferenciais</a>
-        <a href="#vps">VPS</a>
-        <a href="#discord">Comunidades</a>
-        <a href="#products-digital">Produtos Digitais</a>
-        <a href="#cyberclass">CyberClass</a>
-        <a href="#opensource-projects">OpenSource</a>
-        <a href="#experience">Trajetória</a>
-        <a href="#certifications">Certificados</a>
-        <a href="#contact">Conexão</a>
-        <a href="https://photografy-fotografia-contato.vercel.app/" target="_blank" style="color:var(--accent-primary);font-weight:700;">Contato</a>
+    <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu Showcase">
+        <!-- Mobile Drawer Header -->
+        <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 14px; margin-bottom: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <img src="/assets/site_icon.webp" alt="Avatar" style="width: 32px; height: 32px; border-radius: 10px; border: 1px solid rgba(255, 15, 57, 0.5);">
+                <div>
+                    <div style="font-weight: 700; font-size: 0.95rem; color: #fff;">Mateus Celestino <span style="color: var(--accent-primary);">PRO</span></div>
+                    <div style="font-size: 0.72rem; color: #4ade80; display: flex; align-items: center; gap: 4px;">
+                        <span style="width: 6px; height: 6px; border-radius: 50%; background: #4ade80; display: inline-block;"></span> Operador Ativo
+                    </div>
+                </div>
+            </div>
+            <button id="mobile-menu-close-btn" aria-label="Fechar Menu" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 12px; color: #fff; cursor: pointer;">
+                <i data-lucide="x" style="width: 20px; height: 20px;"></i>
+            </button>
+        </div>
+
+        <!-- Links com Ícones -->
+        <a href="#about"><span style="display:flex; align-items:center; gap:10px;"><i data-lucide="user" style="width:18px;height:18px;color:var(--accent-primary);"></i> Sobre o Operador</span><i data-lucide="chevron-right" style="width:16px;height:16px;opacity:0.5;"></i></a>
+        <a href="#skills"><span style="display:flex; align-items:center; gap:10px;"><i data-lucide="zap" style="width:18px;height:18px;color:#facc15;"></i> Habilidades & Stack</span><i data-lucide="chevron-right" style="width:16px;height:16px;opacity:0.5;"></i></a>
+        <a href="#spotlight-section"><span style="display:flex; align-items:center; gap:10px;"><i data-lucide="trending-up" style="width:18px;height:18px;color:#38bdf8;"></i> Resultados & Analytics</span><i data-lucide="chevron-right" style="width:16px;height:16px;opacity:0.5;"></i></a>
+        <a href="#vps"><span style="display:flex; align-items:center; gap:10px;"><i data-lucide="server" style="width:18px;height:18px;color:#a855f7;"></i> VPS & Linux Deploy</span><i data-lucide="chevron-right" style="width:16px;height:16px;opacity:0.5;"></i></a>
+        <a href="#discord"><span style="display:flex; align-items:center; gap:10px;"><i data-lucide="message-square" style="width:18px;height:18px;color:#818cf8;"></i> Comunidades Discord</span><i data-lucide="chevron-right" style="width:16px;height:16px;opacity:0.5;"></i></a>
+        <a href="#products-digital"><span style="display:flex; align-items:center; gap:10px;"><i data-lucide="package" style="width:18px;height:18px;color:#ec4899;"></i> Produtos Digitais</span><i data-lucide="chevron-right" style="width:16px;height:16px;opacity:0.5;"></i></a>
+        <a href="#cyberclass-kiwify"><span style="display:flex; align-items:center; gap:10px;"><i data-lucide="award" style="width:18px;height:18px;color:#22c55e;"></i> CyberClass & Kiwify</span><i data-lucide="chevron-right" style="width:16px;height:16px;opacity:0.5;"></i></a>
+        <a href="#mac"><span style="display:flex; align-items:center; gap:10px;"><i data-lucide="laptop" style="width:18px;height:18px;color:#e2e8f0;"></i> macOS & Terminal CLI</span><i data-lucide="chevron-right" style="width:16px;height:16px;opacity:0.5;"></i></a>
+        <a href="#opensource-projects"><span style="display:flex; align-items:center; gap:10px;"><i data-lucide="code-2" style="width:18px;height:18px;color:#06b6d4;"></i> OpenSource Showcase</span><i data-lucide="chevron-right" style="width:16px;height:16px;opacity:0.5;"></i></a>
+        <a href="#webdesign"><span style="display:flex; align-items:center; gap:10px;"><i data-lucide="globe" style="width:18px;height:18px;color:#f97316;"></i> Web Design Skills</span><i data-lucide="chevron-right" style="width:16px;height:16px;opacity:0.5;"></i></a>
+        <a href="#apps-series"><span style="display:flex; align-items:center; gap:10px;"><i data-lucide="smartphone" style="width:18px;height:18px;color:#14b8a6;"></i> Apps Series (7 Apps)</span><i data-lucide="chevron-right" style="width:16px;height:16px;opacity:0.5;"></i></a>
+        <a href="#notion-master"><span style="display:flex; align-items:center; gap:10px;"><i data-lucide="layout" style="width:18px;height:18px;color:#cbd5e1;"></i> Notion Master</span><i data-lucide="chevron-right" style="width:16px;height:16px;opacity:0.5;"></i></a>
+        <a href="#experience"><span style="display:flex; align-items:center; gap:10px;"><i data-lucide="briefcase" style="width:18px;height:18px;color:#fbbf24;"></i> Trajetória & Educação</span><i data-lucide="chevron-right" style="width:16px;height:16px;opacity:0.5;"></i></a>
+        <a href="#certifications"><span style="display:flex; align-items:center; gap:10px;"><i data-lucide="file-badge" style="width:18px;height:18px;color:var(--accent-primary);"></i> Certificados Oficiais</span><span style="background:var(--accent-primary); color:#fff; font-size:0.7rem; font-weight:800; padding:2px 8px; border-radius:9999px;">70+</span></a>
+        <a href="#contact"><span style="display:flex; align-items:center; gap:10px;"><i data-lucide="send" style="width:18px;height:18px;color:#3b82f6;"></i> Conexão / Linktree</span><i data-lucide="chevron-right" style="width:16px;height:16px;opacity:0.5;"></i></a>
+
+        <!-- Botão CTA no rodapé do drawer -->
+        <div style="margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+            <a href="https://api.whatsapp.com/send/?phone=553197724257&text=Ol%C3%A1+Mateus%2C+vi+seu+Showcase+e+quero+falar+sobre+projetos.&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; justify-content: center; gap: 10px; background: linear-gradient(135deg, #15803d, #22c55e); color: #fff; font-weight: 700; border-radius: 14px; min-height: 50px; text-decoration: none; box-shadow: 0 4px 18px rgba(34, 197, 94, 0.35);">
+                <i data-lucide="message-circle" style="width:20px;height:20px;"></i>
+                <span>Falar Diretamente no WhatsApp</span>
+            </a>
+        </div>
     </div>
 
 
@@ -772,7 +825,7 @@
                 </div>
 
                 <div style="max-width: 900px; margin: 0 auto;">
-                    <div class="liquid-glass-strong glass-padding reveal" style="border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(32px) saturate(250%); box-shadow: inset 0 1px 1px rgba(255,255,255,0.3), 0 30px 60px rgba(0,0,0,0.6); padding: 3rem;">
+                    <div class="liquid-glass-strong glass-padding reveal" style="border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(32px) saturate(250%); box-shadow: inset 0 1px 1px rgba(255,255,255,0.3), 0 30px 60px rgba(0,0,0,0.6);">
                         <h2 class="section-title" style="font-size:clamp(1.8rem,4vw,2.5rem); margin-bottom:24px; text-align: center;">Operação de Alta Performance</h2>
                         <div class="about-p-row" style="display: flex; flex-direction: column; gap: 16px;">
                             <p style="font-size: 1.1rem; line-height: 1.8; color: rgba(255,255,255,0.9); text-align: justify;">
@@ -811,21 +864,21 @@
             </p>
         </div>
 
-        <!-- Galeria Elegante em Quadrados Verticais -->
+        <!-- Galeria Elegante em Quadrados Verticais com Lightbox Touch -->
         <div class="analytics-gallery animate-blur-fade-up" style="animation-delay: 400ms; display:flex; gap:20px; z-index:10; width:100%; max-width:1200px; justify-content:center; flex-wrap:wrap;">
-            <div class="liquid-glass-strong" style="flex:1; min-width:250px; max-width:350px; height:450px; border-radius:24px; overflow:hidden; padding:12px; display:flex; flex-direction:column;">
+            <div class="liquid-glass-strong" data-lightbox style="flex:1; min-width:250px; max-width:350px; height:450px; border-radius:24px; overflow:hidden; padding:12px; display:flex; flex-direction:column; cursor:pointer;" title="Toque para ampliar">
                 <div style="width:100%; height:100%; border-radius:16px; overflow:hidden; position:relative;">
                     <img src="update-midia/yt_studio.webp" style="width:100%; height:100%; object-fit:cover; filter: brightness(0.9);" alt="YT Studio Analytics">
                 </div>
             </div>
             
-            <div class="liquid-glass-strong" style="flex:1.2; min-width:300px; max-width:450px; height:450px; border-radius:24px; overflow:hidden; padding:12px; display:flex; flex-direction:column;">
+            <div class="liquid-glass-strong" data-lightbox style="flex:1.2; min-width:300px; max-width:450px; height:450px; border-radius:24px; overflow:hidden; padding:12px; display:flex; flex-direction:column; cursor:pointer;" title="Toque para ampliar">
                 <div style="width:100%; height:100%; border-radius:16px; overflow:hidden; position:relative;">
                     <img src="update-midia/captura_desktop.webp" style="width:100%; height:100%; object-fit:cover; filter: brightness(0.9);" alt="Desktop Analytics">
                 </div>
             </div>
 
-            <div class="liquid-glass-strong" style="flex:1; min-width:250px; max-width:350px; height:450px; border-radius:24px; overflow:hidden; padding:12px; display:flex; flex-direction:column;">
+            <div class="liquid-glass-strong" data-lightbox style="flex:1; min-width:250px; max-width:350px; height:450px; border-radius:24px; overflow:hidden; padding:12px; display:flex; flex-direction:column; cursor:pointer;" title="Toque para ampliar">
                 <div style="width:100%; height:100%; border-radius:16px; overflow:hidden; position:relative;">
                     <img src="update-midia/mobile_analytics.webp" style="width:100%; height:100%; object-fit:cover; filter: brightness(0.9);" alt="Mobile Analytics">
                 </div>
@@ -999,7 +1052,7 @@
                     Criação de comunidades integradas e inteligentes contendo automoderação, bot de tickets dedicado, sincronizações com loja online, relógio de ponto para colaboradores e automações de logs.
                 </p>
 
-                <div class="discord-grid-split reveal-stagger" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: stretch; max-width: 1000px; margin: 0 auto;">
+                <div class="discord-grid-split reveal-stagger" style="max-width: 1000px; margin: 0 auto;">
                     <div class="discord-video-wrapper liquid-glass-strong" style="border-radius: 24px; overflow: hidden; padding: 12px; display: flex; flex-direction: column; justify-content: center;">
                         <video controls preload="metadata" playsinline style="width: 100%; border-radius: 16px;">
                             <source src="cv-itens/discord.mp4" type="video/mp4">
@@ -1134,7 +1187,7 @@
                     Posicionado oficialmente no Top 10 de alunos da plataforma CyberClass, destacando-se entre milhares de membros pelo nível de atividade e conclusão.
                 </p>
 
-                <div class="learning-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 32px; max-width: 1200px; margin: 0 auto; align-items: start;">
+                <div class="learning-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr)); gap: 24px; max-width: 1200px; margin: 0 auto; align-items: start;">
                     
                     <!-- Cyberclass (Cyberclass Only) -->
                     <div class="liquid-glass-strong reveal" style="border-radius: 24px; padding: 32px; display: flex; flex-direction: column; gap: 24px;">
@@ -1196,7 +1249,7 @@
                     Competência comprovada na gerência de ambientes Apple macOS. Domínio de Command Line Interface (CLI/Terminal) para tarefas de compilação, deploys locais e monitoramento.
                 </p>
 
-                <div class="mac-grid-unified reveal-stagger" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; max-width: 1200px; margin: 0 auto;">
+                <div class="mac-grid-unified reveal-stagger" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 16px; max-width: 1200px; margin: 0 auto;">
                     <div class="mac-img-card liquid-glass" data-lightbox style="border-radius: 16px; overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 8px;">
                         <img src="cv-itens/mac.webp" alt="macOS Admin Screen 1" loading="lazy" style="width: 100%; border-radius: 8px;">
                     </div>
@@ -1445,105 +1498,126 @@
                     <!-- App 1: Hidden Library -->
                     <div class="app-card liquid-glass-strong">
                         <div class="app-card-preview">
-                            <iframe src="https://saas-full-hidden-library.vercel.app/" title="Hidden Library"></iframe>
+                            <iframe src="https://saas-full-hidden-library.vercel.app/" title="Hidden Library" loading="lazy"></iframe>
                             <div class="app-card-overlay-click" onclick="window.open('https://saas-full-hidden-library.vercel.app/', '_blank')"></div>
                         </div>
                         <div class="app-card-info">
-                            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-                                <h3>Hidden Library</h3>
+                            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom: 8px;">
+                                <h3 style="margin:0;">Hidden Library</h3>
                                 <span class="app-badge closed"><i data-lucide="lock" style="width:12px;height:12px;"></i> Closed</span>
                             </div>
-                            <p>Biblioteca pessoal fechada com sistema de gestão de acervo.</p>
+                            <p style="margin-bottom: 14px;">Biblioteca pessoal fechada com sistema de gestão de acervo.</p>
+                            <a href="https://saas-full-hidden-library.vercel.app/" target="_blank" class="chip-link" style="width:100%; justify-content:center; height:38px; font-size:0.85rem; border-radius:10px;">
+                                <i data-lucide="external-link" style="width:14px;height:14px;"></i> Testar App em Nova Aba
+                            </a>
                         </div>
                     </div>
 
                     <!-- App 2: Fitness PRO -->
                     <div class="app-card liquid-glass-strong">
                         <div class="app-card-preview">
-                            <iframe src="https://saas-fitness-pro.vercel.app/" title="Fitness PRO"></iframe>
+                            <iframe src="https://saas-fitness-pro.vercel.app/" title="Fitness PRO" loading="lazy"></iframe>
                             <div class="app-card-overlay-click" onclick="window.open('https://saas-fitness-pro.vercel.app/', '_blank')"></div>
                         </div>
                         <div class="app-card-info">
-                            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-                                <h3>Fitness PRO</h3>
+                            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom: 8px;">
+                                <h3 style="margin:0;">Fitness PRO</h3>
                                 <span class="app-badge open"><i data-lucide="unlock" style="width:12px;height:12px;"></i> Open</span>
                             </div>
-                            <p>App de treino interativo com acompanhamento de progresso.</p>
+                            <p style="margin-bottom: 14px;">App de treino interativo com acompanhamento de progresso.</p>
+                            <a href="https://saas-fitness-pro.vercel.app/" target="_blank" class="chip-link" style="width:100%; justify-content:center; height:38px; font-size:0.85rem; border-radius:10px;">
+                                <i data-lucide="external-link" style="width:14px;height:14px;"></i> Abrir Fitness PRO
+                            </a>
                         </div>
                     </div>
 
                     <!-- App 3: Binaural PRO -->
                     <div class="app-card liquid-glass-strong">
                         <div class="app-card-preview">
-                            <iframe src="https://mcpos-binaural-pro.vercel.app/" title="Binaural PRO"></iframe>
+                            <iframe src="https://mcpos-binaural-pro.vercel.app/" title="Binaural PRO" loading="lazy"></iframe>
                             <div class="app-card-overlay-click" onclick="window.open('https://mcpos-binaural-pro.vercel.app/', '_blank')"></div>
                         </div>
                         <div class="app-card-info">
-                            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-                                <h3>Binaural PRO</h3>
+                            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom: 8px;">
+                                <h3 style="margin:0;">Binaural PRO</h3>
                                 <span class="app-badge open"><i data-lucide="unlock" style="width:12px;height:12px;"></i> Open</span>
                             </div>
-                            <p>App de meditação e foco baseado em frequências binaurais.</p>
+                            <p style="margin-bottom: 14px;">App de meditação e foco baseado em frequências binaurais.</p>
+                            <a href="https://mcpos-binaural-pro.vercel.app/" target="_blank" class="chip-link" style="width:100%; justify-content:center; height:38px; font-size:0.85rem; border-radius:10px;">
+                                <i data-lucide="external-link" style="width:14px;height:14px;"></i> Abrir Binaural PRO
+                            </a>
                         </div>
                     </div>
 
                     <!-- App 4: M.C.P Visuals Community -->
                     <div class="app-card liquid-glass-strong">
                         <div class="app-card-preview">
-                            <iframe src="https://mcp-community.vercel.app/" title="M.C.P Visuals Community"></iframe>
+                            <iframe src="https://mcp-community.vercel.app/" title="M.C.P Visuals Community" loading="lazy"></iframe>
                             <div class="app-card-overlay-click" onclick="window.open('https://mcp-community.vercel.app/', '_blank')"></div>
                         </div>
                         <div class="app-card-info">
-                            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-                                <h3>M.C.P Visuals Community</h3>
+                            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom: 8px;">
+                                <h3 style="margin:0;">M.C.P Visuals Community</h3>
                                 <span class="app-badge open"><i data-lucide="unlock" style="width:12px;height:12px;"></i> Open</span>
                             </div>
-                            <p>Comunidade visual e plataforma interativa para criadores.</p>
+                            <p style="margin-bottom: 14px;">Comunidade visual e plataforma interativa para criadores.</p>
+                            <a href="https://mcp-community.vercel.app/" target="_blank" class="chip-link" style="width:100%; justify-content:center; height:38px; font-size:0.85rem; border-radius:10px;">
+                                <i data-lucide="external-link" style="width:14px;height:14px;"></i> Abrir Comunidade
+                            </a>
                         </div>
                     </div>
 
                     <!-- App 5: Futuristic Form Builder -->
                     <div class="app-card liquid-glass-strong">
                         <div class="app-card-preview">
-                            <iframe src="https://form-builder-7b61.vercel.app/" title="Futuristic Form Builder"></iframe>
+                            <iframe src="https://form-builder-7b61.vercel.app/" title="Futuristic Form Builder" loading="lazy"></iframe>
                             <div class="app-card-overlay-click" onclick="window.open('https://form-builder-7b61.vercel.app/', '_blank')"></div>
                         </div>
                         <div class="app-card-info">
-                            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-                                <h3>Futuristic Form Builder</h3>
+                            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom: 8px;">
+                                <h3 style="margin:0;">Futuristic Form Builder</h3>
                                 <span class="app-badge open"><i data-lucide="unlock" style="width:12px;height:12px;"></i> Open</span>
                             </div>
-                            <p>Construtor de formulários futurista com integração Notion e alertas por e-mail.</p>
+                            <p style="margin-bottom: 14px;">Construtor de formulários futurista com integração Notion e alertas por e-mail.</p>
+                            <a href="https://form-builder-7b61.vercel.app/" target="_blank" class="chip-link" style="width:100%; justify-content:center; height:38px; font-size:0.85rem; border-radius:10px;">
+                                <i data-lucide="external-link" style="width:14px;height:14px;"></i> Testar Form Builder
+                            </a>
                         </div>
                     </div>
 
                     <!-- App 6: Pomodoro PRO com Notion Backlog -->
                     <div class="app-card liquid-glass-strong">
                         <div class="app-card-preview">
-                            <iframe src="https://mcpos-pomodoro-mcp.vercel.app/" title="Pomodoro PRO com Notion Backlog"></iframe>
+                            <iframe src="https://mcpos-pomodoro-mcp.vercel.app/" title="Pomodoro PRO com Notion Backlog" loading="lazy"></iframe>
                             <div class="app-card-overlay-click" onclick="window.open('https://mcpos-pomodoro-mcp.vercel.app/', '_blank')"></div>
                         </div>
                         <div class="app-card-info">
-                            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-                                <h3>Pomodoro com Notion Backlog</h3>
+                            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom: 8px;">
+                                <h3 style="margin:0;">Pomodoro com Notion Backlog</h3>
                                 <span class="app-badge open"><i data-lucide="unlock" style="width:12px;height:12px;"></i> Open</span>
                             </div>
-                            <p>Aplicação de Pomodoro PRO integrada ao backlog do Notion para alto desempenho e foco.</p>
+                            <p style="margin-bottom: 14px;">Aplicação de Pomodoro PRO integrada ao backlog do Notion para alto desempenho e foco.</p>
+                            <a href="https://mcpos-pomodoro-mcp.vercel.app/" target="_blank" class="chip-link" style="width:100%; justify-content:center; height:38px; font-size:0.85rem; border-radius:10px;">
+                                <i data-lucide="external-link" style="width:14px;height:14px;"></i> Iniciar Pomodoro PRO
+                            </a>
                         </div>
                     </div>
 
                     <!-- App 7: Contagem Regressiva com Notion Backlog -->
                     <div class="app-card liquid-glass-strong">
                         <div class="app-card-preview">
-                            <iframe src="https://mcpos-iron-will.vercel.app/" title="Contagem Regressiva com Notion Backlog"></iframe>
+                            <iframe src="https://mcpos-iron-will.vercel.app/" title="Contagem Regressiva com Notion Backlog" loading="lazy"></iframe>
                             <div class="app-card-overlay-click" onclick="window.open('https://mcpos-iron-will.vercel.app/', '_blank')"></div>
                         </div>
                         <div class="app-card-info">
-                            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-                                <h3>Contagem Regressiva (Iron Will)</h3>
+                            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom: 8px;">
+                                <h3 style="margin:0;">Contagem Regressiva (Iron Will)</h3>
                                 <span class="app-badge open"><i data-lucide="unlock" style="width:12px;height:12px;"></i> Open</span>
                             </div>
-                            <p>Aplicação de contagem regressiva e disciplina integrada ao backlog do Notion.</p>
+                            <p style="margin-bottom: 14px;">Aplicação de contagem regressiva e disciplina integrada ao backlog do Notion.</p>
+                            <a href="https://mcpos-iron-will.vercel.app/" target="_blank" class="chip-link" style="width:100%; justify-content:center; height:38px; font-size:0.85rem; border-radius:10px;">
+                                <i data-lucide="external-link" style="width:14px;height:14px;"></i> Acessar Iron Will
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -2081,6 +2155,35 @@
         </div>
     </section>
 
+
+    <!-- ========================================================
+         SHOWCASE MOBILE DOCK (THUMB ZONE QUICK NAVIGATION BAR)
+         ======================================================== -->
+    <nav class="showcase-mobile-dock" id="mobile-dock" aria-label="Ações Rápidas Mobile">
+      <a href="#hero" class="dock-item active" id="dock-home" aria-label="Início / Topo">
+        <i data-lucide="home"></i>
+        <span>Início</span>
+      </a>
+      <a href="#skills" class="dock-item" id="dock-skills" aria-label="Habilidades">
+        <i data-lucide="zap"></i>
+        <span>Stack</span>
+      </a>
+      <a href="#opensource-projects" class="dock-item" id="dock-projects" aria-label="Projetos OpenSource">
+        <i data-lucide="code-2"></i>
+        <span>Projetos</span>
+      </a>
+      <a href="#certifications" class="dock-item" id="dock-certs" aria-label="70+ Certificações">
+        <div class="dock-badge-wrap">
+          <i data-lucide="award"></i>
+          <span class="dock-badge">70+</span>
+        </div>
+        <span>Certs</span>
+      </a>
+      <a href="https://api.whatsapp.com/send/?phone=553197724257&text=Ol%C3%A1+Mateus%2C+vi+seu+Showcase+e+quero+falar+sobre+projetos.&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="dock-item dock-item-highlight" id="dock-contact" aria-label="WhatsApp / Contato">
+        <i data-lucide="message-circle"></i>
+        <span>Contato</span>
+      </a>
+    </nav>
 
     <!-- ========== FLUIDIC BACK TO TOP BUTTON ========== -->
     <button id="back-to-top" class="back-to-top-btn" aria-label="Voltar ao Topo">

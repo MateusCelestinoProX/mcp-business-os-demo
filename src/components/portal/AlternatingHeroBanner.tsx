@@ -33,6 +33,8 @@ export function AlternatingHeroBanner({
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+
   useEffect(() => {
     if (validImages.length <= 1 || isPaused) return;
 
@@ -43,21 +45,41 @@ export function AlternatingHeroBanner({
     return () => clearInterval(timer);
   }, [validImages.length, intervalMs, isPaused]);
 
-  const handlePrev = (e: React.MouseEvent) => {
+  const handlePrev = (e: React.MouseEvent | React.TouchEvent) => {
     e.stopPropagation();
     setCurrentIndex((prev) => (prev - 1 + validImages.length) % validImages.length);
   };
 
-  const handleNext = (e: React.MouseEvent) => {
+  const handleNext = (e: React.MouseEvent | React.TouchEvent) => {
     e.stopPropagation();
     setCurrentIndex((prev) => (prev + 1) % validImages.length);
   };
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX === null) return;
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX - touchEndX;
+    if (diff > 40) {
+      // Swipe para a esquerda (próxima imagem)
+      setCurrentIndex((prev) => (prev + 1) % validImages.length);
+    } else if (diff < -40) {
+      // Swipe para a direita (imagem anterior)
+      setCurrentIndex((prev) => (prev - 1 + validImages.length) % validImages.length);
+    }
+    setTouchStartX(null);
+  };
+
   return (
     <div
-      className={`relative w-full ${aspectRatio} rounded-3xl overflow-hidden glass-card-nested border border-[#ff073a]/30 shadow-[0_0_50px_rgba(255,7,58,0.25)] group select-none ${className}`}
+      className={`relative w-full ${aspectRatio} rounded-3xl overflow-hidden glass-card-nested border border-[#ff073a]/30 shadow-[0_0_50px_rgba(255,7,58,0.25)] group select-none touch-pan-y ${className}`}
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
     >
       {/* Imagens Ocupando Exatamente o Mesmo Espaço com Cross-fade Fluido */}
       {validImages.map((src, idx) => {
@@ -94,33 +116,36 @@ export function AlternatingHeroBanner({
           <button
             type="button"
             onClick={handlePrev}
-            className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-black/60 hover:bg-[#ff073a] text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 backdrop-blur-md border border-white/10"
+            className="absolute left-2.5 top-1/2 -translate-y-1/2 z-10 w-9 h-9 sm:w-8 sm:h-8 rounded-full bg-black/70 hover:bg-[#ff073a] active:bg-[#ff073a] text-white flex items-center justify-center opacity-85 sm:opacity-0 sm:group-hover:opacity-100 transition-all duration-300 backdrop-blur-md border border-white/15 cursor-pointer touch-manipulation active:scale-90"
             title="Imagem Anterior"
+            aria-label="Imagem Anterior"
           >
             <ChevronLeft className="w-4 h-4" />
           </button>
           <button
             type="button"
             onClick={handleNext}
-            className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-black/60 hover:bg-[#ff073a] text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 backdrop-blur-md border border-white/10"
+            className="absolute right-2.5 top-1/2 -translate-y-1/2 z-10 w-9 h-9 sm:w-8 sm:h-8 rounded-full bg-black/70 hover:bg-[#ff073a] active:bg-[#ff073a] text-white flex items-center justify-center opacity-85 sm:opacity-0 sm:group-hover:opacity-100 transition-all duration-300 backdrop-blur-md border border-white/15 cursor-pointer touch-manipulation active:scale-90"
             title="Próxima Imagem"
+            aria-label="Próxima Imagem"
           >
             <ChevronRight className="w-4 h-4" />
           </button>
 
-          {/* Indicadores Pontilhados de Slide Alternado */}
-          <div className="absolute top-4 right-4 z-10 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/10">
+          {/* Indicadores Pontilhados de Slide Alternado com hit target touch amigável */}
+          <div className="absolute top-3.5 right-3.5 z-10 flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-black/70 backdrop-blur-md border border-white/15">
             {validImages.map((_, idx) => (
               <button
                 key={idx}
                 type="button"
                 onClick={() => setCurrentIndex(idx)}
-                className={`transition-all duration-300 rounded-full ${
+                className={`transition-all duration-300 rounded-full cursor-pointer touch-manipulation ${
                   idx === currentIndex
-                    ? "w-4 h-1.5 bg-[#ff073a]"
-                    : "w-1.5 h-1.5 bg-white/40 hover:bg-white/80"
+                    ? "w-5 h-2 bg-[#ff073a]"
+                    : "w-2 h-2 bg-white/40 hover:bg-white/80"
                 }`}
                 title={`Ir para imagem ${idx + 1}`}
+                aria-label={`Ir para imagem ${idx + 1}`}
               />
             ))}
           </div>

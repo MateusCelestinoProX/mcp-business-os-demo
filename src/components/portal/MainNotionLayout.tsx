@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
-import { Search, Clock, ArrowUpRight, Sparkles, BookOpen, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Search, Clock, ArrowUpRight, BookOpen, ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { ArticleData } from './ArticleModal';
 import RippleGridShader from '../shaders/RippleGridShader';
 
@@ -29,7 +29,7 @@ export function MainNotionLayout({
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 6; // 6 cards essenciais e curados por página (2 linhas x 3 colunas)
+  const itemsPerPage = 6; // 6 cards essenciais e curados por página
 
   // Filtragem precisa dos 176 artigos originais
   const filteredArticles = useMemo(() => {
@@ -69,8 +69,16 @@ export function MainNotionLayout({
     setCurrentPage(1);
   };
 
+  const handlePageChange = (newPage: number) => {
+    setCurrentPage(newPage);
+    const el = document.getElementById('publicacoes');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <section id="publicacoes" className="py-12 w-full relative overflow-hidden">
+    <section id="publicacoes" className="py-8 sm:py-12 w-full relative overflow-hidden">
       {/* 0. Shader WebGL Dedicado da Sessão Publicações: RippleGrid Encorpado */}
       <RippleGridShader
         className="z-0 mix-blend-screen pointer-events-none"
@@ -91,60 +99,61 @@ export function MainNotionLayout({
       />
       
       {/* =========================================================================
-          FULL-SCREEN MINIMALIST BLOG & GALLERY CONTAINER (LARGURA TOTAL E COMPLETA)
+          CONTAINER DA GALERIA (MOBILE FIRST ADAPTADO DE PONTA A PONTA)
           ========================================================================= */}
-      <div className="w-full px-4 sm:px-6 lg:px-10 xl:px-16 relative z-10">
+      <div className="w-full px-3.5 sm:px-6 lg:px-10 xl:px-16 relative z-10">
 
-        
         {/* Barra de Controle Horizontal Minimalista em Vidro Líquido */}
-        <div className="glass-crystal p-6 sm:p-8 rounded-3xl mb-8 border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.85)]">
-          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 pb-6 border-b border-white/[0.08]">
+        <div className="glass-crystal p-4 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl mb-6 sm:mb-8 border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.85)]">
+          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 sm:gap-6 pb-4 sm:pb-6 border-b border-white/[0.08]">
             
-            {/* Título & Contador Minimalista */}
-            <div>
-              <div className="flex flex-wrap items-center gap-2.5">
+            {/* Título & Contador */}
+            <div className="w-full lg:w-auto">
+              <div className="flex flex-wrap items-center gap-2 sm:gap-2.5">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#9e0015] shadow-[0_0_12px_#9e0015] animate-pulse" />
-                <h2 className="text-xl sm:text-2xl lg:text-3xl font-black text-white tracking-tight uppercase">
+                <h2 className="text-lg xs:text-xl sm:text-2xl lg:text-3xl font-black text-white tracking-tight uppercase">
                   PUBLICAÇÕES & GUIAS TÉCNICOS
                 </h2>
-                <span className="px-3 py-1 rounded-full glass-pill text-xs font-mono font-bold text-[#a80018] border border-[#a80018]/30">
+                <span className="px-2.5 py-0.5 rounded-full glass-pill text-[11px] sm:text-xs font-mono font-bold text-[#ff073a] border border-[#ff073a]/30">
                   {filteredArticles.length} GUIAS
                 </span>
               </div>
-              <p className="text-xs sm:text-sm text-zinc-400 font-light mt-1.5">
+              <p className="text-xs sm:text-sm text-zinc-400 font-light mt-1 leading-relaxed">
                 Galeria imersiva de artigos sobre automação avançada, n8n, Typebot, IA generativa e infraestrutura Linux.
               </p>
             </div>
 
-            {/* Barra de Pesquisa Minimalista em Vidro */}
+            {/* Barra de Pesquisa Touch-First (text-[16px] no mobile previne zoom no iOS) */}
             <div className="relative w-full lg:w-96">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#ff073a]" />
+              <Search className="absolute left-3.5 sm:left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#ff073a] pointer-events-none" />
               <input
                 ref={searchInputRef as any}
                 type="text"
-                placeholder="Pesquisar artigos por título, tecnologia ou tema..."
+                placeholder="Pesquisar artigos por título ou tema..."
                 value={searchTerm}
                 onChange={(e) => { setSearchTerm(e.target.value); setCurrentPage(1); }}
-                className="w-full pl-11 pr-12 py-3 rounded-2xl glass-input text-white text-xs sm:text-sm placeholder-zinc-500 transition-all font-sans"
+                className="w-full pl-10 pr-12 py-3 rounded-xl sm:rounded-2xl glass-input text-white text-[16px] sm:text-sm placeholder-zinc-500 transition-all font-sans min-h-[48px] touch-manipulation focus:border-[#ff073a]/60 focus:outline-none"
               />
               {searchTerm && (
                 <button
                   onClick={() => { setSearchTerm(''); setCurrentPage(1); }}
-                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[10px] font-mono text-zinc-400 hover:text-white px-2 py-0.5 rounded-md bg-white/10 cursor-pointer"
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 min-h-[36px] min-w-[36px] flex items-center justify-center text-xs font-mono text-zinc-400 hover:text-white rounded-lg bg-white/10 active:bg-white/20 transition-colors cursor-pointer touch-manipulation"
+                  title="Limpar busca"
+                  aria-label="Limpar busca"
                 >
-                  Limpar
+                  <X className="w-3.5 h-3.5" />
                 </button>
               )}
             </div>
 
           </div>
 
-          {/* Dock Horizontal de Categorias (Filtros em Pílulas de Cristal) */}
-          <div className="pt-6 flex items-center justify-between flex-wrap gap-3">
-            <div className="flex items-center gap-2 overflow-x-auto pb-1 max-w-full scrollbar-none">
+          {/* Dock Horizontal de Categorias (Scroll Horizontal Touch-First com Snap) */}
+          <div className="pt-4 sm:pt-6 flex items-center justify-between flex-wrap gap-3">
+            <div className="flex items-center gap-2 overflow-x-auto pb-2 max-w-full no-scrollbar snap-x snap-proximity -mx-1 px-1 sm:mx-0 sm:px-0">
               <button
                 onClick={() => handleCategorySelect('all')}
-                className={`px-4 py-2 rounded-2xl text-xs font-mono font-bold flex items-center gap-2 transition-all shrink-0 cursor-pointer ${
+                className={`min-h-[44px] px-3.5 sm:px-4 py-2 rounded-xl sm:rounded-2xl text-xs font-mono font-bold flex items-center gap-2 transition-all shrink-0 cursor-pointer snap-start touch-manipulation active:scale-95 ${
                   selectedCategory === 'all'
                     ? 'glass-button-fired text-white shadow-xl scale-[1.02]'
                     : 'glass-pill text-zinc-400 hover:text-white hover:border-white/30'
@@ -164,7 +173,7 @@ export function MainNotionLayout({
                   <button
                     key={cat.slug}
                     onClick={() => handleCategorySelect(cat.slug)}
-                    className={`px-4 py-2 rounded-2xl text-xs font-mono font-bold flex items-center gap-2 transition-all shrink-0 cursor-pointer ${
+                    className={`min-h-[44px] px-3.5 sm:px-4 py-2 rounded-xl sm:rounded-2xl text-xs font-mono font-bold flex items-center gap-2 transition-all shrink-0 cursor-pointer snap-start touch-manipulation active:scale-95 ${
                       isSelected
                         ? 'glass-button-fired text-white shadow-xl scale-[1.02]'
                         : 'glass-pill text-zinc-400 hover:text-white hover:border-white/30'
@@ -181,7 +190,7 @@ export function MainNotionLayout({
               })}
             </div>
 
-            {/* Aviso Sutil LEIA-ME em Vidro */}
+            {/* Aviso Sutil LEIA-ME em Vidro (Desktop) */}
             <div className="hidden xl:flex items-center gap-2 text-[11px] font-mono text-zinc-400">
               <span className="w-1.5 h-1.5 rounded-full bg-[#ff073a]" />
               <span>Clique no card para abrir o leitor editorial de cinema</span>
@@ -190,24 +199,30 @@ export function MainNotionLayout({
         </div>
 
         {/* =========================================================================
-            GRADE GALERIA FULL-SCREEN EM CARDS DE ULTRA LUXO (3 COLUNAS)
+            GRADE GALERIA EM CARDS DE ULTRA LUXO (1 COLUNA NO MOBILE // 3 NO DESKTOP)
             ========================================================================= */}
         {paginatedArticles.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8">
             {paginatedArticles.map((art) => (
               <article
                 key={art.id}
                 onClick={() => onSelectArticle(art)}
-                className="glass-card-luxury flex flex-col justify-between cursor-pointer group"
+                className="glass-card-luxury flex flex-col justify-between cursor-pointer group active:scale-[0.99] transition-transform touch-manipulation"
               >
                 {/* Top: Imagem de Capa Full Bleed com Fusão de Vidro */}
                 <div>
-                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-black">
+                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-black rounded-t-2xl">
                     <img
                       src={art.coverImage || '/assets/hero_cover.webp'}
                       alt={art.title}
-                      className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500 ease-out"
+                      className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500 ease-out text-[10px] text-zinc-600 overflow-hidden"
                       loading="lazy"
+                      onError={(e) => {
+                        const target = e.currentTarget;
+                        if (!target.src.endsWith('/assets/hero_cover.webp')) {
+                          target.src = '/assets/hero_cover.webp';
+                        }
+                      }}
                     />
                     
                     {/* Gradiente de Fusão na Base da Imagem com o Vidro */}
@@ -217,16 +232,16 @@ export function MainNotionLayout({
                     <div className="absolute inset-0 border-b border-white/10" />
 
                     {/* Tag de Categoria Flutuante de Cristal */}
-                    <div className="absolute top-3 left-3 z-10">
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl glass-pill-red text-[10px] font-mono font-bold text-[#ff073a] shadow-lg border border-[#ff073a]/40">
+                    <div className="absolute top-2.5 left-2.5 sm:top-3 sm:left-3 z-10">
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl glass-pill-red text-[10px] font-mono font-bold text-[#ff073a] shadow-lg border border-[#ff073a]/40">
                         <span className="w-1.5 h-1.5 rounded-full bg-[#ff073a] shadow-[0_0_6px_#ff073a]" />
                         {art.category}
                       </span>
                     </div>
 
                     {/* Badge de Tempo de Leitura Flutuante */}
-                    <div className="absolute top-3 right-3 z-10">
-                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl glass-pill text-[10px] font-mono text-zinc-300 shadow-lg border border-white/20">
+                    <div className="absolute top-2.5 right-2.5 sm:top-3 sm:right-3 z-10">
+                      <span className="inline-flex items-center gap-1.5 px-2 py-1 rounded-xl glass-pill text-[10px] font-mono text-zinc-300 shadow-lg border border-white/20">
                         <Clock className="w-3 h-3 text-[#ff073a]" />
                         {art.readingTime || 5} min
                       </span>
@@ -234,33 +249,33 @@ export function MainNotionLayout({
                   </div>
 
                   {/* Conteúdo Textual com Tipografia Nobre */}
-                  <div className="p-5 sm:p-6">
+                  <div className="p-4 sm:p-5 lg:p-6">
                     <h3 className="font-bold text-base sm:text-lg text-white group-hover:text-[#ff073a] transition-colors duration-300 leading-snug line-clamp-2 tracking-tight">
                       {art.title}
                     </h3>
 
-                    <p className="mt-2.5 text-xs sm:text-sm text-zinc-400 font-light line-clamp-2 leading-relaxed">
+                    <p className="mt-2 text-xs sm:text-sm text-zinc-400 font-light line-clamp-2 leading-relaxed">
                       {art.excerpt}
                     </p>
                   </div>
                 </div>
 
                 {/* Bottom: Micro-Dock de Ação e Metadados do Card */}
-                <div className="px-5 pb-5 sm:px-6 sm:pb-6 pt-2">
+                <div className="px-4 pb-4 sm:px-6 sm:pb-6 pt-1 sm:pt-2">
                   <div className="pt-3 border-t border-white/[0.08] flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <div className="w-5 h-5 rounded-full bg-zinc-800 border border-white/20 flex items-center justify-center overflow-hidden">
+                      <div className="w-5 h-5 rounded-full bg-zinc-800 border border-white/20 flex items-center justify-center overflow-hidden shrink-0">
                         <span className="text-[9px] font-mono text-[#ff073a] font-bold">MC</span>
                       </div>
-                      <span className="text-[11px] font-mono text-zinc-400">
+                      <span className="text-[11px] font-mono text-zinc-400 truncate max-w-[130px] sm:max-w-none">
                         {art.createdAt || 'Mateus Celestino'}
                       </span>
                     </div>
 
-                    {/* Botão Tátil de Ação em Vidro com Ícone com Efeito */}
-                    <div className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-[#ff073a] group-hover:text-white transition-colors">
+                    {/* Botão Tátil de Ação em Vidro (Min touch target 44px) */}
+                    <div className="min-h-[44px] inline-flex items-center gap-1.5 text-xs font-mono font-bold text-[#ff073a] group-hover:text-white transition-colors">
                       <span className="text-[11px] uppercase tracking-wider">Ler Guia</span>
-                      <div className="w-6 h-6 rounded-lg glass-pill flex items-center justify-center group-hover:bg-[#ff073a] group-hover:text-white group-hover:border-[#ff073a] transition-all">
+                      <div className="w-7 h-7 rounded-lg glass-pill flex items-center justify-center group-hover:bg-[#ff073a] group-hover:text-white group-hover:border-[#ff073a] transition-all">
                         <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                       </div>
                     </div>
@@ -271,15 +286,15 @@ export function MainNotionLayout({
           </div>
         ) : (
           /* Estado Vazio de Busca */
-          <div className="glass-crystal p-12 rounded-3xl text-center max-w-xl mx-auto my-12">
-            <BookOpen className="w-12 h-12 text-[#ff073a] mx-auto mb-4 opacity-80" />
-            <h3 className="text-xl font-bold text-white mb-2">Nenhum artigo encontrado</h3>
-            <p className="text-xs font-mono text-zinc-400 mb-6">
-              Não encontramos nenhuma publicação para o termo "{searchTerm}". Tente buscar por palavras-chave mais genéricas como "n8n", "IA", "Docker" ou "Linux".
+          <div className="glass-crystal p-8 sm:p-12 rounded-2xl sm:rounded-3xl text-center max-w-xl mx-auto my-8 sm:my-12">
+            <BookOpen className="w-10 h-10 sm:w-12 sm:h-12 text-[#ff073a] mx-auto mb-4 opacity-80" />
+            <h3 className="text-lg sm:text-xl font-bold text-white mb-2">Nenhum artigo encontrado</h3>
+            <p className="text-xs font-mono text-zinc-400 mb-6 leading-relaxed">
+              Não encontramos nenhuma publicação para o termo &ldquo;{searchTerm}&rdquo;. Tente buscar por palavras-chave mais genéricas como &ldquo;n8n&rdquo;, &ldquo;IA&rdquo;, &ldquo;Docker&rdquo; ou &ldquo;Linux&rdquo;.
             </p>
             <button
               onClick={() => { setSearchTerm(''); setSelectedCategory('all'); }}
-              className="glass-button-fired px-6 py-2.5 rounded-2xl text-xs font-mono font-bold text-white cursor-pointer"
+              className="glass-button-fired min-h-[44px] px-6 py-2.5 rounded-2xl text-xs font-mono font-bold text-white cursor-pointer active:scale-95 touch-manipulation"
             >
               Resetar Filtros
             </button>
@@ -287,53 +302,85 @@ export function MainNotionLayout({
         )}
 
         {/* =========================================================================
-            BARRA DE PAGINAÇÃO EM VIDRO LÍQUIDO
+            BARRA DE PAGINAÇÃO TOUCH-FIRST (RESPONSIVA & GENEROSA)
             ========================================================================= */}
         {totalPages > 1 && (
-          <div className="mt-12 flex items-center justify-center gap-2">
-            <button
-              onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
-              disabled={currentPage === 1}
-              className="p-2.5 rounded-xl glass-crystal border border-white/10 text-zinc-300 disabled:opacity-30 disabled:pointer-events-none hover:text-white hover:border-[#ff073a]/40 transition-all cursor-pointer"
-              title="Página Anterior"
-            >
-              <ChevronLeft className="w-4 h-4" />
-            </button>
+          <div className="mt-8 sm:mt-12">
+            {/* 1. Paginação Mobile (< 640px): Botões Grandes no Thumb Zone */}
+            <div className="flex sm:hidden items-center justify-between gap-3 w-full max-w-xs mx-auto">
+              <button
+                onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
+                disabled={currentPage === 1}
+                className="flex-1 min-h-[48px] py-2.5 px-4 rounded-xl glass-crystal border border-white/10 text-xs font-mono font-bold text-zinc-200 disabled:opacity-30 disabled:pointer-events-none active:scale-95 flex items-center justify-center gap-1.5 touch-manipulation"
+                aria-label="Página anterior"
+              >
+                <ChevronLeft className="w-4 h-4 text-[#ff073a]" />
+                <span>Anterior</span>
+              </button>
 
-            <div className="flex items-center gap-1.5 px-3 py-1 rounded-2xl glass-crystal border border-white/10">
-              {Array.from({ length: Math.min(totalPages, 7) }, (_, i) => {
-                let pageNumber = i + 1;
-                if (totalPages > 7) {
-                  if (currentPage > 4) {
-                    pageNumber = currentPage - 3 + i;
-                    if (pageNumber > totalPages) pageNumber = totalPages - (6 - i);
-                  }
-                }
-                const isActive = currentPage === pageNumber;
-                return (
-                  <button
-                    key={pageNumber}
-                    onClick={() => setCurrentPage(pageNumber)}
-                    className={`w-8 h-8 rounded-xl text-xs font-mono font-bold transition-all cursor-pointer ${
-                      isActive
-                        ? 'glass-button-fired text-white shadow-lg scale-105'
-                        : 'text-zinc-400 hover:text-white hover:bg-white/5'
-                    }`}
-                  >
-                    {pageNumber}
-                  </button>
-                );
-              })}
+              <div className="px-3 py-2 rounded-xl glass-crystal border border-white/10 text-xs font-mono text-zinc-300 font-semibold whitespace-nowrap">
+                <span className="text-white font-bold">{currentPage}</span> / {totalPages}
+              </div>
+
+              <button
+                onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))}
+                disabled={currentPage === totalPages}
+                className="flex-1 min-h-[48px] py-2.5 px-4 rounded-xl glass-crystal border border-white/10 text-xs font-mono font-bold text-zinc-200 disabled:opacity-30 disabled:pointer-events-none active:scale-95 flex items-center justify-center gap-1.5 touch-manipulation"
+                aria-label="Próxima página"
+              >
+                <span>Próxima</span>
+                <ChevronRight className="w-4 h-4 text-[#ff073a]" />
+              </button>
             </div>
 
-            <button
-              onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
-              disabled={currentPage === totalPages}
-              className="p-2.5 rounded-xl glass-crystal border border-white/10 text-zinc-300 disabled:opacity-30 disabled:pointer-events-none hover:text-white hover:border-[#ff073a]/40 transition-all cursor-pointer"
-              title="Próxima Página"
-            >
-              <ChevronRight className="w-4 h-4" />
-            </button>
+            {/* 2. Paginação Desktop (>= 640px) */}
+            <div className="hidden sm:flex items-center justify-center gap-2">
+              <button
+                onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
+                disabled={currentPage === 1}
+                className="p-2.5 rounded-xl glass-crystal border border-white/10 text-zinc-300 disabled:opacity-30 disabled:pointer-events-none hover:text-white hover:border-[#ff073a]/40 transition-all cursor-pointer min-h-[44px] min-w-[44px] flex items-center justify-center touch-manipulation"
+                title="Página Anterior"
+                aria-label="Página anterior"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+
+              <div className="flex items-center gap-1.5 px-3 py-1 rounded-2xl glass-crystal border border-white/10">
+                {Array.from({ length: Math.min(totalPages, 7) }, (_, i) => {
+                  let pageNumber = i + 1;
+                  if (totalPages > 7) {
+                    if (currentPage > 4) {
+                      pageNumber = currentPage - 3 + i;
+                      if (pageNumber > totalPages) pageNumber = totalPages - (6 - i);
+                    }
+                  }
+                  const isActive = currentPage === pageNumber;
+                  return (
+                    <button
+                      key={pageNumber}
+                      onClick={() => handlePageChange(pageNumber)}
+                      className={`w-9 h-9 rounded-xl text-xs font-mono font-bold transition-all cursor-pointer touch-manipulation ${
+                        isActive
+                          ? 'glass-button-fired text-white shadow-lg scale-105'
+                          : 'text-zinc-400 hover:text-white hover:bg-white/5'
+                      }`}
+                    >
+                      {pageNumber}
+                    </button>
+                  );
+                })}
+              </div>
+
+              <button
+                onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))}
+                disabled={currentPage === totalPages}
+                className="p-2.5 rounded-xl glass-crystal border border-white/10 text-zinc-300 disabled:opacity-30 disabled:pointer-events-none hover:text-white hover:border-[#ff073a]/40 transition-all cursor-pointer min-h-[44px] min-w-[44px] flex items-center justify-center touch-manipulation"
+                title="Próxima Página"
+                aria-label="Próxima página"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
           </div>
         )}
 
