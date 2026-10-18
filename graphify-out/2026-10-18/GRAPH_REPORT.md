@@ -1,16 +1,16 @@
 # Graph Report - plataforma-unificada-soberana  (2026-10-18)
 
 ## Corpus Check
-- 236 files · ~8,533,804 words
+- 236 files · ~8,533,874 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1980 nodes · 3735 edges · 144 communities (93 shown, 36 thin omitted)
+- 1980 nodes · 3737 edges · 145 communities (93 shown, 37 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 74 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `30bc6718`
+- Built from commit: `93ff87b8`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -62,7 +62,7 @@
 - catalog.ts
 - schema.ts
 - app.js
-- lucide-react
+- it
 - sr
 - BRIEFING — 2026-10-14T15:40:00Z
 - BRIEFING — 2026-10-14T15:54:00Z
@@ -85,12 +85,12 @@
 - server-guardian.js
 - Relatório de Handoff — Database Architect & Drizzle Master (agent-database)
 - auth.ts
-- cn
+- lucide-react
 - [slug]/page.tsx
 - Relatório de Handoff — Growth Engineer & Portal Institucional Specialist (agent-marketing)
 - auth_feedback_comunidade.test.mjs
 - articles/route.ts
-- gr
+- W
 - tn
 - pt
 - adversarial.test.ts
@@ -102,13 +102,14 @@
 - biblioteca/route.ts
 - comunidade/route.ts
 - 🚀 Guia Oficial de Deploy na Vercel & Auditoria de Segurança — A.I VISUALS
+- rr
 - tailwindcss
 - U
 - ar
 - app/layout.tsx
 - .z
 - ResourceCard.tsx
-- .computeFrenetFrames
+- fr
 - library-manager.ts
 - ks
 - le
@@ -172,7 +173,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (144 total, 36 thin omitted)
+## Communities (145 total, 37 thin omitted)
 
 ### Community 0 - "Relatório de Survey Técnico — Explorer 2"
 Cohesion: 0.08
@@ -298,13 +299,9 @@ Nodes (24): @neondatabase/serverless, dynamic, checkDatabaseHealth(), checkDbSta
 Cohesion: 0.07
 Nodes (93): applyBgSettingsUI(), clearAuthAlert(), convertToEmbedUrl(), _deprecatedAdminViewLegacy(), embedLessonMetadata(), escapeHtml(), escapeJs(), extractLessonMetadata() (+85 more)
 
-### Community 48 - "lucide-react"
-Cohesion: 0.16
-Nodes (7): lucide-react, metadata, LibraryControlSuite(), ContatoSection(), ContatoSectionProps, CapturedUTMs, LeadCaptureForm()
-
 ### Community 49 - "sr"
-Cohesion: 0.16
-Nodes (8): sr(), C(), et(), L(), N(), tt(), xs(), St
+Cohesion: 0.10
+Nodes (11): cr, ki(), sr(), C(), et(), j(), L(), N() (+3 more)
 
 ### Community 50 - "BRIEFING — 2026-10-14T15:40:00Z"
 Cohesion: 0.18
@@ -351,8 +348,8 @@ Cohesion: 0.29
 Nodes (6): 1. Observation (Observações Diretas), 2. Logic Chain (Cadeia de Raciocínio), 3. Caveats (Ressalvas e Limitações), 4. Conclusion (Conclusão), 5. Verification Method (Método de Verificação), Relatório de Handoff — Members Area & Community Engineer (agent-members)
 
 ### Community 63 - "Badge.tsx"
-Cohesion: 0.08
-Nodes (25): Section, SECTIONS, TERM_SECTIONS, TermSection, COVER_PRESETS, PostEditorModalProps, CommunityFeed(), CommunityPost (+17 more)
+Cohesion: 0.09
+Nodes (28): Section, SECTIONS, TERM_SECTIONS, TermSection, COVER_PRESETS, PostEditorModalProps, CheckoutModal(), CommunityFeed() (+20 more)
 
 ### Community 64 - "Relatório de Handoff — Lead Frontend & Glassmorphism Architect (agent-foundations)"
 Cohesion: 0.29
@@ -382,9 +379,9 @@ Nodes (6): 1. Observation (Observações Diretas), 2. Logic Chain (Cadeia de Rac
 Cohesion: 0.29
 Nodes (14): POST(), POST(), authenticateAdmin(), authenticateMember(), hashPassword(), verifyPassword(), SessionPayload, signToken() (+6 more)
 
-### Community 71 - "cn"
+### Community 71 - "lucide-react"
 Cohesion: 0.11
-Nodes (24): MEDIA_CATALOG, MediaItem, MidiasPage(), CheckoutModal(), VideoPlayer(), VideoPlayerProps, CatalogGrid(), CatalogGridProps (+16 more)
+Nodes (23): lucide-react, metadata, MEDIA_CATALOG, MediaItem, MidiasPage(), LibraryControlSuite(), VideoPlayer(), VideoPlayerProps (+15 more)
 
 ### Community 72 - "[slug]/page.tsx"
 Cohesion: 0.25
@@ -398,13 +395,13 @@ Nodes (6): 1. Observation (Observações Diretas), 2. Logic Chain (Cadeia Lógic
 Cohesion: 0.19
 Nodes (18): dynamic, GET(), dynamic, GET(), POST(), PUT(), slugify(), generateMetadata() (+10 more)
 
-### Community 77 - "tn"
-Cohesion: 0.05
-Nodes (16): Ds(), fr(), A(), E(), m(), p(), Fs(), it (+8 more)
+### Community 76 - "W"
+Cohesion: 0.14
+Nodes (5): on, pn, un, W, xn
 
 ### Community 78 - "pt"
-Cohesion: 0.10
-Nodes (8): bi(), _i(), pt, Se(), Si(), Ti(), vi(), zi()
+Cohesion: 0.12
+Nodes (7): bi(), _i(), pt, Se(), Si(), Ti(), vi()
 
 ### Community 79 - "adversarial.test.ts"
 Cohesion: 0.23
@@ -450,9 +447,9 @@ Nodes (4): Gs(), Hs(), qs(), Xs()
 Cohesion: 0.32
 Nodes (5): ResourceCardProps, ResourceDetailViewerProps, LibraryCategoryGroup, LibraryItem, LibraryResponse
 
-### Community 100 - ".computeFrenetFrames"
-Cohesion: 0.14
-Nodes (5): cr, dr(), Ee(), ki(), pr()
+### Community 100 - "fr"
+Cohesion: 0.60
+Nodes (5): fr(), A(), E(), m(), p()
 
 ### Community 101 - "library-manager.ts"
 Cohesion: 0.10
@@ -463,8 +460,8 @@ Cohesion: 0.08
 Nodes (4): De(), ji(), qi(), V
 
 ### Community 105 - "react"
-Cohesion: 0.12
-Nodes (14): react, ErrorProps, GlobalErrorProps, ArticleData, ArticleModal(), ArticleModalProps, LegalModal(), LegalModalProps (+6 more)
+Cohesion: 0.08
+Nodes (20): react, ErrorProps, GlobalErrorProps, ArticleData, ArticleModal(), ArticleModalProps, ContatoSection(), ContatoSectionProps (+12 more)
 
 ### Community 106 - "script.js"
 Cohesion: 0.15
@@ -473,6 +470,10 @@ Nodes (6): animate(), closeMobileMenu(), initParticles(), openMobileMenu(), Part
 ### Community 110 - "MCP Business OS — Plataforma Unificada Soberana"
 Cohesion: 0.20
 Nodes (7): 📚 Documentação Especializada, 🛠️ Instalação e Execução Local, MCP Business OS — Plataforma Unificada Soberana, Passo a Passo, Pré-requisitos, 🔒 Segurança e Governança, 🏛️ Visão Geral da Arquitetura
+
+### Community 112 - "q"
+Cohesion: 0.17
+Nodes (4): gr, q, ze, zi()
 
 ### Community 116 - "jwt.ts"
 Cohesion: 0.25
@@ -527,16 +528,16 @@ Cohesion: 0.50
 Nodes (4): 3.1. Acervo de 176 Artigos Técnicos, 3.2. Cofre com 406 Recursos Intelectuais, 3.3. Dados do Shop e Perfil Institucional, 3. Acervos de Dados Embutidos & Ativos Intelectuais
 
 ### Community 138 - ".copy"
-Cohesion: 0.11
-Nodes (9): v(), he(), ri(), j(), tr, R(), ui(), ws() (+1 more)
+Cohesion: 0.09
+Nodes (10): dr(), Ee(), he(), Lt, Ot, pr(), ri(), ui() (+2 more)
 
 ### Community 140 - "send-email/route.ts"
 Cohesion: 0.50
 Nodes (3): dynamic, escapeHtml(), POST()
 
 ### Community 143 - "ke"
-Cohesion: 0.11
-Nodes (7): er, ke, Lt, Ot, ur(), we(), xe()
+Cohesion: 0.10
+Nodes (8): er, v(), ke, tr, R(), ue(), we(), xe()
 
 ### Community 148 - "Estabilidade Visual & Resolução de GPU Scroll — Incidente INC-2026-10-17-SCROLL"
 Cohesion: 0.22
@@ -548,17 +549,17 @@ Nodes (8): 1. Causa Raiz Primária: `content-visibility: auto` com `contain-intr
 
 ## Knowledge Gaps
 - **632 isolated node(s):** `nextConfig`, `name`, `version`, `private`, `description` (+627 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 899 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **36 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 898 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **37 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `_` connect `_` to `.copy`, `ke`, `sr`, `gr`, `tn`, `pt`, `.update`, `community-shaders.js`, `U`, `ar`, `.z`, `.computeFrenetFrames`, `ks`, `le`, `V`, `q`, `en`, `l`, `K`, `zt`, `.x`, `.addAttribute`?**
+- **Why does `_` connect `_` to `.copy`, `ke`, `it`, `sr`, `W`, `tn`, `pt`, `.update`, `community-shaders.js`, `rr`, `U`, `ar`, `.z`, `fr`, `ks`, `le`, `V`, `q`, `en`, `l`, `K`, `zt`, `.x`, `.addAttribute`?**
   _High betweenness centrality (0.278) - this node is a cross-community bridge._
-- **Why does `cn()` connect `cn` to `app/layout.tsx`, `ResourceCard.tsx`, `admin/page.tsx`, `tn`, `lucide-react`, `Badge.tsx`?**
+- **Why does `cn()` connect `lucide-react` to `app/layout.tsx`, `ResourceCard.tsx`, `admin/page.tsx`, `W`, `Badge.tsx`?**
   _High betweenness centrality (0.211) - this node is a cross-community bridge._
-- **Why does `on` connect `tn` to `_`?**
+- **Why does `on` connect `W` to `_`?**
   _High betweenness centrality (0.208) - this node is a cross-community bridge._
 - **What connects `nextConfig`, `name`, `version` to the rest of the system?**
   _632 weakly-connected nodes found - possible documentation gaps or missing edges._

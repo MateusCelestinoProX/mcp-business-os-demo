@@ -1476,8 +1476,8 @@
     "semantic_hash": ""
   },
   "src/data/library_catalog_index.json": {
-    "mtime": 1792360785.0823941,
-    "seen": 1792360891.058507,
+    "mtime": 1792361003.228589,
+    "seen": 1792361035.484295,
     "ast_hash": "c53f941e6974b9c701da6b7f78db1ca8",
     "semantic_hash": ""
   },
@@ -1866,9 +1866,9 @@
     "semantic_hash": ""
   },
   "src/app/page.tsx": {
-    "mtime": 1792360929.3482413,
-    "seen": 1792360930.088684,
-    "ast_hash": "839cede16695ccb5b2272ce7ea7fd334",
+    "mtime": 1792360992.231103,
+    "seen": 1792361035.482857,
+    "ast_hash": "be07d81b02f41cf54d4600aa98d4522a",
     "semantic_hash": ""
   },
   ".agents/teamwork/worker_shaders/handoff.md": {
@@ -13632,9 +13632,9 @@
     "semantic_hash": ""
   },
   "src/components/portal/OriginalHeader.tsx": {
-    "mtime": 1792360695.36538,
-    "seen": 1792360714.56318,
-    "ast_hash": "d3ed675ba4d9012e44c6b6820f24dd98",
+    "mtime": 1792360970.8041422,
+    "seen": 1792361035.483713,
+    "ast_hash": "0559d19975af4cd04b0fed6974d4727c",
     "semantic_hash": ""
   },
   "src/app/api/contact/route.ts": {
@@ -13734,9 +13734,9 @@
     "semantic_hash": ""
   },
   "src/components/portal/PortalNavbar.tsx": {
-    "mtime": 1792360695.3655343,
-    "seen": 1792360714.5631812,
-    "ast_hash": "0c572a7161b9d4787d6a516c702670c6",
+    "mtime": 1792361031.3310447,
+    "seen": 1792361035.4837382,
+    "ast_hash": "fa9f035fc7c916e4821dc0be7b00b4cf",
     "semantic_hash": ""
   },
   "src/components/shaders/LineWavesShader.tsx": {
@@ -14766,8 +14766,8 @@
     "semantic_hash": ""
   },
   "src/data/libraries.json": {
-    "mtime": 1792360785.091008,
-    "seen": 1792360891.058506,
+    "mtime": 1792361003.2374728,
+    "seen": 1792361035.484294,
     "ast_hash": "3e79a0df86ee6f7eb3acd51fbf5fad31",
     "semantic_hash": ""
   },

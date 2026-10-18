@@ -200,17 +200,18 @@ export function PortalNavbar({
               );
             })}
 
-            {/* Botão de Ação Rápida WhatsApp no Thumb Dock (Min 48px hit target) */}
+            {/* Botão de Ação Rápida WhatsApp no Thumb Dock (Min 48px hit target / min-h-[36px] touch) */}
             <a
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               title="Quero Automatizar Tudo (WhatsApp Oficial)"
-              className="glass-button-fired min-h-[48px] min-w-[48px] px-3 rounded-xl flex flex-col items-center justify-center gap-0.5 text-white shadow-lg active:scale-95 transition-transform touch-manipulation shrink-0 ml-0.5 cursor-pointer"
+              aria-label="AUTOMATIZAR"
+              className="glass-button-fired min-h-[36px] sm:min-h-[48px] min-w-[48px] px-3 rounded-xl flex flex-col items-center justify-center gap-0.5 text-white shadow-lg active:scale-95 transition-transform touch-manipulation shrink-0 ml-0.5 cursor-pointer"
             >
               <MessageSquare className="w-4 h-4 fill-white/20" />
               <span className="text-[8px] font-mono font-bold leading-none uppercase tracking-wider">
-                AUTO
+                AUTOMATIZAR
               </span>
             </a>
           </div>
