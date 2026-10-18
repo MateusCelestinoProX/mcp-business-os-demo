@@ -1476,8 +1476,8 @@
     "semantic_hash": ""
   },
   "src/data/library_catalog_index.json": {
-    "mtime": 1792279585.759097,
-    "seen": 1792279589.510756,
+    "mtime": 1792279638.5791945,
+    "seen": 1792279820.4389582,
     "ast_hash": "c53f941e6974b9c701da6b7f78db1ca8",
     "semantic_hash": ""
   },
@@ -1512,8 +1512,8 @@
     "semantic_hash": ""
   },
   "src/lib/shaders/webgl-utils.ts": {
-    "mtime": 1791993040.8072784,
-    "seen": 1791993071.888899,
+    "mtime": 1792286837.627319,
+    "seen": 1792286879.359485,
     "ast_hash": "187d1ae2cb222bafe315da4320126156",
     "semantic_hash": ""
   },
@@ -1680,8 +1680,8 @@
     "semantic_hash": ""
   },
   "src/components/shaders/GridScanShader.tsx": {
-    "mtime": 1792276563.16415,
-    "seen": 1792276565.7217941,
+    "mtime": 1792286837.6238158,
+    "seen": 1792286879.35886,
     "ast_hash": "491225561409ace0ba7e019a10585737",
     "semantic_hash": ""
   },
@@ -1728,8 +1728,8 @@
     "semantic_hash": ""
   },
   "src/components/shaders/RippleGridShader.tsx": {
-    "mtime": 1792276589.4015124,
-    "seen": 1792276686.789748,
+    "mtime": 1792286837.6262026,
+    "seen": 1792286879.358886,
     "ast_hash": "034f8a22ab04abd24e2e021535106c34",
     "semantic_hash": ""
   },
@@ -1866,9 +1866,9 @@
     "semantic_hash": ""
   },
   "src/app/page.tsx": {
-    "mtime": 1792278897.1283693,
-    "seen": 1792279589.5089111,
-    "ast_hash": "1580ce99ca547158e6348b756958d324",
+    "mtime": 1792282888.8832726,
+    "seen": 1792283738.26558,
+    "ast_hash": "5caf086353bfcea417ff32f7f33c07b0",
     "semantic_hash": ""
   },
   ".agents/teamwork/worker_shaders/handoff.md": {
@@ -13740,14 +13740,14 @@
     "semantic_hash": ""
   },
   "src/components/shaders/LineWavesShader.tsx": {
-    "mtime": 1792004653.4174764,
-    "seen": 1792005104.7439418,
+    "mtime": 1792286837.625061,
+    "seen": 1792286879.358884,
     "ast_hash": "513f0d6346fcd7d0d53cb01e40bd45a5",
     "semantic_hash": ""
   },
   "src/components/shaders/LiquidChromeShader.tsx": {
-    "mtime": 1792004670.4906986,
-    "seen": 1792005104.743943,
+    "mtime": 1792286837.625651,
+    "seen": 1792286879.358885,
     "ast_hash": "667ff26e2cee170f9c6aafdfd8cc9e63",
     "semantic_hash": ""
   },
@@ -14766,8 +14766,8 @@
     "semantic_hash": ""
   },
   "src/data/libraries.json": {
-    "mtime": 1792279585.766814,
-    "seen": 1792279589.510755,
+    "mtime": 1792279638.5865703,
+    "seen": 1792279820.438956,
     "ast_hash": "3e79a0df86ee6f7eb3acd51fbf5fad31",
     "semantic_hash": ""
   },
@@ -15723,6 +15723,18 @@
     "mtime": 1792277356.8682454,
     "seen": 1792277425.8092,
     "ast_hash": "8a83ae44cedee897c2d5fef2ba997695",
+    "semantic_hash": ""
+  },
+  "tests/visual_stability.test.mjs": {
+    "mtime": 1792286864.8316317,
+    "seen": 1792286879.3599539,
+    "ast_hash": "c07405e790a79d4fb3e010688ba6ed58",
+    "semantic_hash": ""
+  },
+  "docs/ESTABILIDADE_VISUAL.md": {
+    "mtime": 1792286864.8391562,
+    "seen": 1792286879.361173,
+    "ast_hash": "404a2d4e0d76d027612fc458ea598a61",
     "semantic_hash": ""
   }
 }

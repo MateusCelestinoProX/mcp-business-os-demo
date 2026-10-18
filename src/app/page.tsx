@@ -15,7 +15,6 @@ import ContatoSection from '@/components/portal/ContatoSection';
 import ArticleModal, { ArticleData } from '@/components/portal/ArticleModal';
 import LegalModal from '@/components/portal/LegalModal';
 import ShaderTransitionZone from '@/components/shaders/ShaderTransitionZone';
-import ShaderBackground from '@/components/shaders/ShaderBackground';
 import { Button } from '@/components/ui/Button';
 
 import rawArticles from '@/data/articles-summary.json';
@@ -60,7 +59,7 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-transparent text-[#ececec] flex flex-col selection:bg-[#ff073a] selection:text-white relative">
-      <main className="flex-1 relative z-10">
+      <div className="flex-1 relative z-10">
 
         {/* =========================================================================
             1. HEADER AUTÊNTICO COM CAPA ANIMADA & SHADER 01: GRID SCAN (HERO CENTRALIZADO)
@@ -80,7 +79,7 @@ export default function HomePage() {
         {/* =========================================================================
             2. ACERVO HISTÓRICO & TÉCNICO (176 ARTIGOS)
             ========================================================================= */}
-        <div id="publicacoes">
+        <div>
           <MainNotionLayout
             articles={articles}
             categories={siteData?.categories || []}
@@ -100,7 +99,7 @@ export default function HomePage() {
         {/* =========================================================================
             3. SOBRE MATEUS CELESTINO PRO X
             ========================================================================= */}
-        <div id="sobre">
+        <div>
           <SobreSection
             profile={siteData?.profile || {}}
           />
@@ -117,7 +116,7 @@ export default function HomePage() {
         {/* =========================================================================
             8. CANAL DIRETO & FORMULÁRIO DE CAPTURA DE LEADS DE ALTA CONVERSÃO
             ========================================================================= */}
-        <div id="contato">
+        <div>
           <ContatoSection
             profile={siteData?.profile || {}}
           />
@@ -128,8 +127,13 @@ export default function HomePage() {
             ========================================================================= */}
         <section className="py-16 px-4 sm:px-6 lg:px-10 xl:px-16 w-full">
           <div className="glass-crystal p-8 sm:p-14 rounded-3xl text-center space-y-6 border border-red-500/40 shadow-[0_0_60px_rgba(255,7,58,0.25),0_25px_60px_rgba(0,0,0,0.85)] relative overflow-hidden">
-            {/* Fundo Cinemático Liquid Chrome em Vermelho Carmesim */}
-            <ShaderBackground mode="liquidchrome" colorHex="#b80018" opacity={0.35} fixed={false} />
+            {/* Fundo Cinemático Gradiente Carmesim em Vidro */}
+            <div 
+              className="absolute inset-0 pointer-events-none opacity-40"
+              style={{
+                background: 'radial-gradient(circle at 50% 50%, rgba(255, 7, 58, 0.28) 0%, rgba(138, 0, 18, 0.15) 50%, transparent 80%)'
+              }}
+            />
 
             <div className="relative z-10 space-y-6">
               <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-950/40 border border-red-800/40 text-xs font-mono text-red-400 font-bold uppercase tracking-wider">
@@ -163,7 +167,7 @@ export default function HomePage() {
             </div>
           </div>
         </section>
-      </main>
+      </div>
 
       {/* =========================================================================
           MODAL EDITORIAL DE LEITURA INTEGRAL DE ARTIGO (176 ARTIGOS)

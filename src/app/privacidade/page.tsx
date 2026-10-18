@@ -356,7 +356,7 @@ export default function PoliticaPrivacidadePage() {
           </aside>
 
           {/* COLUNA DIREITA: AS 11 CLÁUSULAS EM PLACAS DE VIDRO LAPIDADO */}
-          <main className="lg:col-span-8 space-y-8">
+          <div className="lg:col-span-8 space-y-8">
             {/* 01. PRINCÍPIO ZERO-TRUST */}
             <article id="principios" className="glass-crystal rounded-3xl p-6 sm:p-8 border border-white/15 shadow-xl relative scroll-mt-36">
               <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-red-500/30 to-transparent" />
@@ -852,7 +852,7 @@ export default function PoliticaPrivacidadePage() {
                 </Link>
               </div>
             </div>
-          </main>
+          </div>
         </div>
       </div>
     </div>

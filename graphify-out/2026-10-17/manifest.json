@@ -1476,8 +1476,8 @@
     "semantic_hash": ""
   },
   "src/data/library_catalog_index.json": {
-    "mtime": 1792277254.559357,
-    "seen": 1792277425.8104162,
+    "mtime": 1792279638.5791945,
+    "seen": 1792279820.4389582,
     "ast_hash": "c53f941e6974b9c701da6b7f78db1ca8",
     "semantic_hash": ""
   },
@@ -1512,9 +1512,9 @@
     "semantic_hash": ""
   },
   "src/lib/shaders/webgl-utils.ts": {
-    "mtime": 1791993040.8072784,
-    "seen": 1791993071.888899,
-    "ast_hash": "187d1ae2cb222bafe315da4320126156",
+    "mtime": 1792281974.6699796,
+    "seen": 1792283738.268791,
+    "ast_hash": "716fd4ebf5f8cb226e10a684038809b0",
     "semantic_hash": ""
   },
   "src/lib/utils.ts": {
@@ -1680,9 +1680,9 @@
     "semantic_hash": ""
   },
   "src/components/shaders/GridScanShader.tsx": {
-    "mtime": 1792276563.16415,
-    "seen": 1792276565.7217941,
-    "ast_hash": "491225561409ace0ba7e019a10585737",
+    "mtime": 1792282229.0326138,
+    "seen": 1792283738.267893,
+    "ast_hash": "a94508f818b672fa65de476a0bd8c070",
     "semantic_hash": ""
   },
   "src/lib/articles.ts": {
@@ -1728,9 +1728,9 @@
     "semantic_hash": ""
   },
   "src/components/shaders/RippleGridShader.tsx": {
-    "mtime": 1792276589.4015124,
-    "seen": 1792276686.789748,
-    "ast_hash": "034f8a22ab04abd24e2e021535106c34",
+    "mtime": 1792282375.8716743,
+    "seen": 1792283738.267932,
+    "ast_hash": "df42e266d35df407f20c251a51ad190d",
     "semantic_hash": ""
   },
   "src/components/shaders/ShaderBackground.tsx": {
@@ -1866,9 +1866,9 @@
     "semantic_hash": ""
   },
   "src/app/page.tsx": {
-    "mtime": 1792277015.4122639,
-    "seen": 1792277115.3945951,
-    "ast_hash": "1a6ef01f7bfac27320a42d3fc28f77b8",
+    "mtime": 1792282888.8832726,
+    "seen": 1792283738.26558,
+    "ast_hash": "5caf086353bfcea417ff32f7f33c07b0",
     "semantic_hash": ""
   },
   ".agents/teamwork/worker_shaders/handoff.md": {
@@ -13626,15 +13626,15 @@
     "semantic_hash": ""
   },
   "src/components/portal/LiquidGlassBackground.tsx": {
-    "mtime": 1792275550.3305175,
-    "seen": 1792275655.3129852,
-    "ast_hash": "61d3803270415fb88a5de25cefb5988b",
+    "mtime": 1792278918.4530015,
+    "seen": 1792279589.510093,
+    "ast_hash": "ebe7c6310c00a39f47eb2b6f83464946",
     "semantic_hash": ""
   },
   "src/components/portal/OriginalHeader.tsx": {
-    "mtime": 1792277222.7386768,
-    "seen": 1792277236.289906,
-    "ast_hash": "8b06c4aa041bb74ef984373f3f146c66",
+    "mtime": 1792278869.9942186,
+    "seen": 1792279589.510148,
+    "ast_hash": "84e1f8852447ece479490f60802175e7",
     "semantic_hash": ""
   },
   "src/app/api/contact/route.ts": {
@@ -13680,9 +13680,9 @@
     "semantic_hash": ""
   },
   "src/components/portal/MainNotionLayout.tsx": {
-    "mtime": 1792277093.7363088,
-    "seen": 1792277115.39535,
-    "ast_hash": "7cfe7ee898d9498e443c822367929225",
+    "mtime": 1792278844.3648174,
+    "seen": 1792279589.5100951,
+    "ast_hash": "76563c4423da3dce6107db6b1f18fc94",
     "semantic_hash": ""
   },
   "src/components/portal/ShopSection.tsx": {
@@ -13734,21 +13734,21 @@
     "semantic_hash": ""
   },
   "src/components/portal/PortalNavbar.tsx": {
-    "mtime": 1792277350.14702,
-    "seen": 1792277425.809881,
-    "ast_hash": "cfc00b44a15c8166cfc412bb88730e2f",
+    "mtime": 1792278807.4375427,
+    "seen": 1792279589.510151,
+    "ast_hash": "a02361a072219021dd4430a2948d05d1",
     "semantic_hash": ""
   },
   "src/components/shaders/LineWavesShader.tsx": {
-    "mtime": 1792004653.4174764,
-    "seen": 1792005104.7439418,
-    "ast_hash": "513f0d6346fcd7d0d53cb01e40bd45a5",
+    "mtime": 1792282556.1099095,
+    "seen": 1792283738.267929,
+    "ast_hash": "79eb6ea70be2b4b3f89066268a18f643",
     "semantic_hash": ""
   },
   "src/components/shaders/LiquidChromeShader.tsx": {
-    "mtime": 1792004670.4906986,
-    "seen": 1792005104.743943,
-    "ast_hash": "667ff26e2cee170f9c6aafdfd8cc9e63",
+    "mtime": 1792282736.19488,
+    "seen": 1792283738.26793,
+    "ast_hash": "dbee56b42be6edb6a738d77f75af565c",
     "semantic_hash": ""
   },
   "src/components/shaders/SilkShader.tsx": {
@@ -14766,8 +14766,8 @@
     "semantic_hash": ""
   },
   "src/data/libraries.json": {
-    "mtime": 1792277254.567083,
-    "seen": 1792277425.810415,
+    "mtime": 1792279638.5865703,
+    "seen": 1792279820.438956,
     "ast_hash": "3e79a0df86ee6f7eb3acd51fbf5fad31",
     "semantic_hash": ""
   },
@@ -15654,15 +15654,15 @@
     "semantic_hash": ""
   },
   "src/components/portal/PhotografyContactHub.tsx": {
-    "mtime": 1792277003.2960532,
-    "seen": 1792277115.3953972,
-    "ast_hash": "1c5a215383f45cbd883de095b4af5685",
+    "mtime": 1792278709.0861526,
+    "seen": 1792279589.510149,
+    "ast_hash": "f0eae35cff898561dde5e97d8fb22d9d",
     "semantic_hash": ""
   },
   "src/app/contato/page.tsx": {
-    "mtime": 1792274837.1525888,
-    "seen": 1792274903.518185,
-    "ast_hash": "08b16bf6bbababd7da52e8ad9b5f0f25",
+    "mtime": 1792278736.1367328,
+    "seen": 1792279589.508863,
+    "ast_hash": "854240a1346f3a76f3f84a7f37489272",
     "semantic_hash": ""
   },
   "README.md": {

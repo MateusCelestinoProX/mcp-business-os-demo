@@ -43,12 +43,12 @@ export default function ShopPage() {
         </div>
       </div>
 
-      <main className="flex-1 relative z-10">
+      <div className="flex-1 relative z-10">
         <ShopSection
           shopData={siteData?.shop || {}}
           onOpenContact={handleOpenContact}
         />
-      </main>
+      </div>
     </div>
   );
 }

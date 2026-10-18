@@ -351,7 +351,7 @@ export default function TermosDeUsoPage() {
           </aside>
 
           {/* COLUNA DIREITA: AS 10 SEÇÕES DE TERMOS EM PLACAS DE VIDRO */}
-          <main className="lg:col-span-8 space-y-8">
+          <div className="lg:col-span-8 space-y-8">
             {/* 01. OBJETO E ACEITAÇÃO */}
             <article id="objeto-aceitacao" className="glass-crystal rounded-3xl p-6 sm:p-8 border border-white/15 shadow-xl relative scroll-mt-36">
               <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-red-500/30 to-transparent" />
@@ -686,7 +686,7 @@ export default function TermosDeUsoPage() {
                 </Link>
               </div>
             </div>
-          </main>
+          </div>
         </div>
       </div>
     </div>

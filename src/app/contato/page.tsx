@@ -30,9 +30,9 @@ export default function ContatoPage() {
       </header>
 
       {/* Main Content: Photografy Contact Hub Injetado em Tamanho Normal Soberano */}
-      <main className="flex-1 w-full h-full relative z-10 flex flex-col items-center justify-center py-8 sm:py-12 px-4">
+      <div className="flex-1 w-full h-full relative z-10 flex flex-col items-center justify-center py-8 sm:py-12 px-4">
         <PhotografyContactHub isEmbedded={false} />
-      </main>
+      </div>
     </div>
   );
 }
