@@ -47,8 +47,8 @@ export function SobreSection({ profile }: SobreSectionProps) {
       />
 
       {/* Zonas de Transição Internas com Blur e Escurecimento Progressivo */}
-      <div className="absolute top-0 left-0 right-0 h-28 bg-gradient-to-b from-black/80 via-black/40 to-transparent pointer-events-none z-1 backdrop-blur-[4px]" />
-      <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none z-1 backdrop-blur-[4px]" />
+      <div className="absolute top-0 left-0 right-0 h-28 bg-gradient-to-b from-black/80 via-black/40 to-transparent pointer-events-none z-1" />
+      <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none z-1" />
 
       <div className="w-full px-4 sm:px-6 lg:px-10 xl:px-16 relative z-10">
 

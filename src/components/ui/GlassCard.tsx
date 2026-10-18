@@ -14,8 +14,8 @@ export const GlassCard = React.forwardRef<HTMLDivElement, GlassCardProps>(
       clear: "glass-clear rounded-2xl p-6",
       interactive: "glass-interactive rounded-2xl p-6 cursor-pointer",
       luxury: "glass-card-luxury p-8",
-      ultra: "glass-card-luxury p-8 backdrop-blur-2xl border-white/20",
-      subtle: "bg-white/[0.02] border border-white/5 backdrop-blur-md rounded-xl p-5 hover:border-white/10 transition-all",
+      ultra: "glass-card-luxury p-8 border-white/20",
+      subtle: "bg-white/[0.02] border border-white/5 rounded-xl p-5 hover:border-white/10 transition-all",
     };
 
     const glowClasses = {

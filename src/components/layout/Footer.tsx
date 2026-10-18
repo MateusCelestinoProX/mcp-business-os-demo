@@ -9,7 +9,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative z-20 mt-20 border-t border-red-500/30 bg-[#0c0003]/80 backdrop-blur-3xl shadow-[0_-25px_60px_rgba(180,0,25,0.3)] overflow-hidden w-full">
+    <footer className="relative z-20 mt-20 border-t border-red-500/30 bg-[#0c0003]/92 shadow-[0_-25px_60px_rgba(180,0,25,0.3)] overflow-hidden w-full">
       {/* Shader WebGL do Rodapé: Silk Líquido Carmesim */}
       <SilkShader
         className="z-0 mix-blend-screen pointer-events-none"

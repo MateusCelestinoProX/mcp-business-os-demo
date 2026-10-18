@@ -50,7 +50,7 @@ export function AlternatingHeroShaders() {
       <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#ff073a] to-transparent opacity-80" />
 
       {/* Seletor Manual Discreto no Canto Inferior Direito do Hero */}
-      <div className="absolute bottom-4 right-5 z-20 hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/70 border border-white/10 backdrop-blur-md shadow-[0_0_20px_rgba(0,0,0,0.8)] pointer-events-auto">
+      <div className="absolute bottom-4 right-5 z-20 hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/70 border border-white/10 shadow-[0_0_20px_rgba(0,0,0,0.8)] pointer-events-auto">
         <span className="w-1.5 h-1.5 rounded-full bg-[#ff073a] animate-pulse" />
         <span className="text-[10px] font-mono text-zinc-400 tracking-wider uppercase">
           Shader: <strong className="text-white">{shaderNames[activeShader]?.name}</strong>

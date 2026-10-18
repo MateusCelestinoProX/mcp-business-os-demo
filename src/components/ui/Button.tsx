@@ -35,9 +35,9 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       fired: "glass-button-fired text-white active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed",
       primary: "glass-button-fired text-white active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed",
       glass:
-        "bg-white/[0.05] hover:bg-white/[0.12] text-white border border-white/10 hover:border-white/25 backdrop-blur-xl shadow-lg transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed",
+        "bg-white/[0.05] hover:bg-white/[0.12] text-white border border-white/10 hover:border-white/25 shadow-lg transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed",
       secondary:
-        "bg-neutral-900/80 hover:bg-neutral-800 text-neutral-200 hover:text-white border border-white/5 hover:border-white/15 backdrop-blur-md shadow-md transition-all active:scale-95",
+        "bg-neutral-900/80 hover:bg-neutral-800 text-neutral-200 hover:text-white border border-white/5 hover:border-white/15 shadow-md transition-all active:scale-95",
       ghost:
         "bg-transparent hover:bg-white/[0.06] text-neutral-300 hover:text-white transition-all active:scale-95",
       outline:

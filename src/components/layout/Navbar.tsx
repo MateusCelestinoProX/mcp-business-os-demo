@@ -76,7 +76,7 @@ export function Navbar() {
   return (
     <header
       id="master-sovereign-bar"
-      className="fixed top-0 left-0 right-0 w-full z-50 h-16 bg-[#030305]/90 backdrop-blur-3xl border-b border-white/10 shadow-[0_10px_35px_rgba(0,0,0,0.85)] transition-all duration-300"
+      className="fixed top-0 left-0 right-0 w-full z-50 h-16 bg-[#030305]/95 border-b border-white/10 shadow-[0_10px_35px_rgba(0,0,0,0.85)] transition-all duration-300"
     >
       <div className="w-full px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
         {/* Logo & Marca */}

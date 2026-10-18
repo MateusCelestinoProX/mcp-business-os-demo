@@ -82,11 +82,21 @@ body {
    SISTEMA SOBERANO DE GLASSMORPHISM MATEUS CELESTINO PRO
    ========================================================================== */
 
+/* ==========================================================================
+   REGRA DE PERFORMANCE (ver docs/ESTABILIDADE_VISUAL.md — INC-2026-10-17-SCROLL)
+   NÃO usar backdrop-filter nas classes glass-* compartilhadas. O fundo global é
+   fixo e animado: cada elemento com backdrop-filter re-desfoca o fundo a cada
+   quadro (medido: 87 elementos => p99 282ms; sem eles => 83ms).
+   Para overlays/modais montados sob demanda use .glass-frosted (opt-in).
+   ========================================================================== */
+.glass-frosted {
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+}
+
 /* 1. Vidro Cristalino Principal (Painéis, Seções e Navbars) */
 .glass-crystal {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 40%, rgba(8, 6, 10, 0.65) 100%);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 40%, rgba(8, 6, 10, 0.78) 100%);
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-top: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.2),
@@ -96,9 +106,7 @@ body {
 }
 
 .glass-clear {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 50%, rgba(12, 6, 10, 0.45) 100%);
-  backdrop-filter: blur(14px) saturate(180%);
-  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 50%, rgba(12, 6, 10, 0.62) 100%);
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-top: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.2),
@@ -108,9 +116,7 @@ body {
 /* 1.1. Vidro Ultra Claro Soberano (Full Screen Workspace & Post Editor) */
 .glass-ultra-clear {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.015) 60%, rgba(255, 7, 58, 0.025) 100%),
-              rgba(8, 6, 12, 0.45);
-  backdrop-filter: blur(18px) saturate(180%);
-  -webkit-backdrop-filter: blur(18px) saturate(180%);
+              rgba(8, 6, 12, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-top: 1px solid rgba(255, 255, 255, 0.26);
   box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.18),
@@ -118,9 +124,7 @@ body {
 }
 
 .glass-ultra-pane {
-  background: rgba(255, 255, 255, 0.035);
-  backdrop-filter: blur(14px) saturate(170%);
-  -webkit-backdrop-filter: blur(14px) saturate(170%);
+  background: rgba(24, 14, 18, 0.55);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -130,8 +134,6 @@ body {
   overflow: hidden;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%),
               rgba(14, 14, 18, 0.7);
-  backdrop-filter: blur(18px) saturate(180%);
-  -webkit-backdrop-filter: blur(18px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-top: 1px solid rgba(255, 255, 255, 0.22);
   box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.16),
@@ -172,8 +174,6 @@ body {
   overflow: hidden;
   border-radius: 1.5rem;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.02) 25%, rgba(10, 10, 14, 0.85) 100%);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-top: 1.5px solid rgba(255, 255, 255, 0.35);
   box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.25),
@@ -213,8 +213,6 @@ body {
 /* 3. Vidro Sanguíneo Neon Fired (Botões de Alta Ação & CTAs Soberanos) */
 .glass-button-fired {
   background: linear-gradient(135deg, rgba(255, 7, 58, 0.92) 0%, rgba(184, 0, 36, 0.96) 100%);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.35);
   border-top: 1px solid rgba(255, 255, 255, 0.55);
   box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.5),
@@ -232,18 +230,14 @@ body {
 
 /* 4. Vidro Cápsula / Pill (Badges, Tags & Contadores) */
 .glass-pill {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  background: rgba(40, 28, 32, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-top: 1px solid rgba(255, 255, 255, 0.22);
   box-shadow: inset 0 1px 0.5px rgba(255, 255, 255, 0.18);
 }
 
 .glass-pill-red {
-  background: rgba(255, 7, 58, 0.12);
-  backdrop-filter: blur(24px) saturate(200%);
-  -webkit-backdrop-filter: blur(24px) saturate(200%);
+  background: rgba(70, 6, 22, 0.7);
   border: 1px solid rgba(255, 7, 58, 0.35);
   border-top: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: inset 0 1px 0.5px rgba(255, 255, 255, 0.3),
@@ -252,9 +246,7 @@ body {
 
 /* 5. Inputs & Textareas em Vidro */
 .glass-input {
-  background: rgba(10, 10, 14, 0.7);
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
+  background: rgba(10, 10, 14, 0.82);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.7);
@@ -420,8 +412,6 @@ body {
    ========================================================================== */
 .ultra-glass-frame {
   background: var(--glass-frame);
-  backdrop-filter: blur(36px) saturate(240%);
-  -webkit-backdrop-filter: blur(36px) saturate(240%);
   border: 1px solid rgba(255, 255, 255, 0.18);
   box-shadow: 0 40px 100px -10px rgba(0, 0, 0, 0.95),
               inset 0 1.5px 2px rgba(255, 255, 255, 0.4),
@@ -443,15 +433,12 @@ body {
 
 .ultra-glass-card {
   background: var(--glass-card);
-  backdrop-filter: blur(28px) saturate(220%);
-  -webkit-backdrop-filter: blur(28px) saturate(220%);
   border: 1px solid rgba(255, 255, 255, 0.18);
   box-shadow: inset 0 1.5px 2px rgba(255, 255, 255, 0.25), 0 20px 40px rgba(0, 0, 0, 0.6);
 }
 
 .ultra-glass-input {
   background: var(--glass-input);
-  backdrop-filter: blur(14px);
   border: 1px solid rgba(255, 255, 255, 0.18);
   color: #FFFFFF;
   box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.1);
@@ -469,7 +456,6 @@ body {
   border: 1px solid var(--accent-border);
   color: #FFFFFF;
   font-weight: 700;
-  backdrop-filter: blur(16px);
   box-shadow: 0 4px 20px var(--accent-glow), inset 0 1px 1px rgba(255, 255, 255, 0.25);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -499,9 +485,7 @@ body {
 
 /* Photografy Fotografia Contato Hub Styles */
 .glass-button {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: rgba(40, 28, 32, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.15);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }

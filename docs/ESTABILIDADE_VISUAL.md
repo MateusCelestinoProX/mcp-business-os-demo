@@ -56,3 +56,78 @@ gradiente CSS (menos 1 contexto WebGL).
 - Manual: Chrome DevTools → Rendering → *Frame rendering stats* + *Layout shift regions*;
   rolar `/` de cima a baixo com `End`/`Home` repetidos e arrastando a scrollbar. CLS ≈ 0
   e nenhuma região em branco.
+
+
+---
+
+# Fase 2 — Investigação completa da fonte (instabilidade residual)
+
+Após a fase 1 o usuário reportou: "menos perceptível, mas ainda existe". Medimos em vez
+de supor (Brave real, janela visível, DPR 2, roda do mouse em rajadas de 700px, 3x
+descendo/subindo; métricas: tempo de quadro, CLS, altura do documento). Script de
+referência: `scripts/perf/scroll-probe.mjs`.
+
+## Causas encontradas (em ordem de impacto)
+
+### 1. O servidor de desenvolvimento servia CSS ANTIGO (causa de "a correção não pegou")
+`.next` manteve `layout.css` com `content-visibility: auto` mesmo depois de a regra sair
+do `globals.css`. Evidência: `contato` media 792px→1082px e o documento crescia
+5474→5763px durante o scroll (CLS 0,14). Com o servidor reiniciado e `.next` limpo:
+CLS 0 e altura estável. O hot-reload de **CSS** não é confiável neste projeto
+(Next 15 + Tailwind v4): alterações em JS/TSX recarregam, CSS não.
+**Regra:** após editar `globals.css`, rode `rm -rf .next` e reinicie `npm run dev`; para
+validar, confira o CSS servido: `curl -s localhost:3000/_next/static/css/app/layout.css | grep <trecho>`.
+
+### 2. `backdrop-filter` sobre fundo animado (causa dominante da instabilidade residual)
+87 elementos tinham `backdrop-filter` (36 pílulas/badges com `blur(24px)`, 17 painéis
+`glass-crystal`, 6 cards, footer/navbar `blur(64px)`...). O fundo global é `fixed` e
+animado (shader WebGL + orbes CSS), então CADA elemento re-desfoca o fundo a cada
+quadro durante o scroll.
+
+Isolamento (variante → p99 / quadros >100ms): baseline 282ms/44 · sem canvases 266ms/22 ·
+sem GIF 267ms/41 · sem animações CSS 183ms/17 · **sem backdrop-filter 83ms/2** ·
+sem backdrop+canvas+animações 50ms/0. O GIF do hero, os shaders e as animações CSS são
+contribuintes menores; o `backdrop-filter` responde por ~70% do problema.
+
+Correção: removido de todas as classes `glass-*` compartilhadas e dos utilitários
+`backdrop-blur-*` em componentes sempre visíveis (Navbar, Footer, seções, pílulas,
+`Badge`, `Button`, `GlassCard`). A perda de "vidro" é imperceptível porque o que está
+atrás já é um gradiente muito desfocado; compensado com fundo ~10–15% mais opaco.
+Opt-in `.glass-frosted` para overlays/modais montados sob demanda.
+
+### 3. Shader RippleGrid não compilava (erro a cada quadro)
+`fwidth()` em GLSL ES 1.00 sem extensão: `'fwidth' : no matching overloaded function` +
+`useProgram: program not valid` no console durante toda a sessão. Corrigido com largura de
+pixel analítica (`gridSize * 2.0 / iResolution.y`), sem derivadas — funciona em
+WebGL1/2. (`GridScanShader` usa three.js, que converte para GLSL 3.00 — não afetado.)
+
+## Contribuintes menores (não corrigidos, documentados)
+- 6 contextos WebGL simultâneos, alguns do tamanho da seção inteira (até 1434×1432 CSS ×
+  DPR 1.5) com `mix-blend-screen`: custam ~15ms no p99 (65→50ms sem canvases).
+  Candidato futuro: um único shader fixo global, remover os de seção.
+- `hero_landscape.gif`: 240×360px esticado para tela cheia com `filter: brightness/contrast`
+  em imagem animada (54 quadros, 3,3MB). Impacto pequeno medido; substituir por
+  vídeo/WebP animado em resolução real quando houver asset.
+- Um quadro isolado de ~400ms no início do scroll (decodificação de imagens/primeiro
+  rasterize) — não recorrente.
+
+## Regras adicionais (somam às 7 da fase 1)
+8. **Nunca** `backdrop-filter`/`backdrop-blur-*` em elemento sempre visível ou repetido.
+   Só `.glass-frosted` em overlay/modal. Teste automatizado bloqueia.
+9. **Nunca** `fwidth`/`dFdx`/`dFdy` em shader OGL GLSL 1.00. Use cálculo analítico ou
+   `#version 300 es`.
+10. Console de WebGL deve ficar **vazio**: erro de shader a cada quadro é regressão.
+11. Reiniciar o dev server com `.next` limpo após mudar CSS global — e verificar o CSS servido.
+12. Medir antes de "otimizar": rodar `scripts/perf/scroll-probe.mjs`; meta p99 ≤ 70ms,
+    quadros >100ms ≤ 2, CLS = 0.
+
+## Resultado medido
+
+| Métrica (scroll rápido, Brave, DPR 2) | Antes | Depois |
+|---|---|---|
+| p99 tempo de quadro | 282 ms | 65 ms |
+| Quadros > 100 ms | 44 | 1 |
+| Quadros > 50 ms | 56 | 10 |
+| CLS | 0,14 (com CSS stale) | 0 |
+| Elementos com backdrop-filter | 87 | 3 |
+| Erros WebGL no console | 3 | 0 |

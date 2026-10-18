@@ -109,7 +109,11 @@ export default function RippleGridShader({
           rippleUv += uv * mouseWave * 0.04;
         }
 
-        vec2 g = abs(fract(rippleUv * gridSize - 0.5) - 0.5) / fwidth(rippleUv * gridSize);
+        // NÃO usar derivadas (fwidth): em GLSL ES 1.00 (WebGL2 sem #version 300 es) ele não compila e o
+        // programa inválido gera erro de useProgram a cada quadro. A largura de 1 pixel em
+        // coordenadas de grade é analítica: uv cobre 2 unidades na altura => 2 / iResolution.y.
+        float pxWidth = gridSize * 2.0 / iResolution.y * (1.0 + abs(func) * rippleIntensity * 2.0);
+        vec2 g = abs(fract(rippleUv * gridSize - 0.5) - 0.5) / vec2(pxWidth);
         float line = min(g.x, g.y);
         float grid = 1.0 - min(line / gridThickness, 1.0);
 

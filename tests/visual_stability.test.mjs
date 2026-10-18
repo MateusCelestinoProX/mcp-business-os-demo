@@ -54,3 +54,50 @@ test('shaders fixos com blend: DPR nunca fixado em 1.0 (blur/pixelização em re
   const bad = offenders(/(?:const dpr = 1\.0;|setPixelRatio\(1\.0\))/, (f) => /shaders/.test(f));
   assert.deepEqual(bad, []);
 });
+
+// ---------------------------------------------------------------------------
+// INC-2026-10-17-SCROLL (2ª fase): backdrop-filter sobre fundo animado
+// ---------------------------------------------------------------------------
+
+test('globals.css: backdrop-filter permitido SOMENTE em .glass-frosted (opt-in)', () => {
+  const css = read(path.join(SRC, 'app', 'globals.css'));
+  // remove blocos .glass-frosted e comentários, o que sobrar não pode ter backdrop-filter
+  const semFrosted = css
+    .replace(/\/\*[\s\S]*?\*\//g, '')
+    .replace(/\.glass-frosted\s*\{[^}]*\}/g, '');
+  assert.ok(!/backdrop-filter/.test(semFrosted), 'backdrop-filter encontrado fora de .glass-frosted');
+});
+
+test('componentes sempre visíveis da home não usam backdrop-blur-* (Tailwind)', () => {
+  const persistentes = [
+    'components/layout/Navbar.tsx:desktop',
+    'components/layout/Footer.tsx',
+    'components/portal/MainNotionLayout.tsx',
+    'components/portal/SobreSection.tsx',
+    'components/portal/ContatoSection.tsx',
+    'components/portal/PortalNavbar.tsx',
+    'components/portal/AlternatingHeroShaders.tsx',
+    'components/ui/Badge.tsx',
+    'components/ui/Button.tsx',
+    'components/ui/GlassCard.tsx',
+  ];
+  const bad = [];
+  for (const entry of persistentes) {
+    const [file, mode] = entry.split(':');
+    let txt = read(path.join(SRC, file));
+    // Navbar: o menu mobile só monta quando aberto (lg:hidden) — permitido
+    if (mode === 'desktop') txt = txt.split('\n').filter((l) => !/lg:hidden/.test(l)).join('\n');
+    if (/backdrop-blur/.test(txt)) bad.push(file);
+  }
+  assert.deepEqual(bad, []);
+});
+
+test('shaders: proibido fwidth() em GLSL ES 1.00 (não compila -> useProgram inválido a cada frame)', () => {
+  const bad = offenders(
+    /fwidth\(/,
+    // GridScanShader usa three.js (converte para GLSL 3.00 automaticamente) — permitido
+    (f) => /shaders[\\/]/.test(f) && !/GridScanShader/.test(f),
+  );
+  assert.deepEqual(bad, []);
+});
+

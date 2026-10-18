@@ -218,7 +218,7 @@ export function MainNotionLayout({
 
                     {/* Tag de Categoria Flutuante de Cristal */}
                     <div className="absolute top-3 left-3 z-10">
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl glass-pill-red text-[10px] font-mono font-bold text-[#ff073a] shadow-lg backdrop-blur-md border border-[#ff073a]/40">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl glass-pill-red text-[10px] font-mono font-bold text-[#ff073a] shadow-lg border border-[#ff073a]/40">
                         <span className="w-1.5 h-1.5 rounded-full bg-[#ff073a] shadow-[0_0_6px_#ff073a]" />
                         {art.category}
                       </span>
@@ -226,7 +226,7 @@ export function MainNotionLayout({
 
                     {/* Badge de Tempo de Leitura Flutuante */}
                     <div className="absolute top-3 right-3 z-10">
-                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl glass-pill text-[10px] font-mono text-zinc-300 shadow-lg backdrop-blur-md border border-white/20">
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl glass-pill text-[10px] font-mono text-zinc-300 shadow-lg border border-white/20">
                         <Clock className="w-3 h-3 text-[#ff073a]" />
                         {art.readingTime || 5} min
                       </span>

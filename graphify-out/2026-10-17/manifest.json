@@ -1512,9 +1512,9 @@
     "semantic_hash": ""
   },
   "src/lib/shaders/webgl-utils.ts": {
-    "mtime": 1792281974.6699796,
-    "seen": 1792283738.268791,
-    "ast_hash": "716fd4ebf5f8cb226e10a684038809b0",
+    "mtime": 1792286837.627319,
+    "seen": 1792286879.359485,
+    "ast_hash": "187d1ae2cb222bafe315da4320126156",
     "semantic_hash": ""
   },
   "src/lib/utils.ts": {
@@ -1680,9 +1680,9 @@
     "semantic_hash": ""
   },
   "src/components/shaders/GridScanShader.tsx": {
-    "mtime": 1792282229.0326138,
-    "seen": 1792283738.267893,
-    "ast_hash": "a94508f818b672fa65de476a0bd8c070",
+    "mtime": 1792286837.6238158,
+    "seen": 1792286879.35886,
+    "ast_hash": "491225561409ace0ba7e019a10585737",
     "semantic_hash": ""
   },
   "src/lib/articles.ts": {
@@ -1728,9 +1728,9 @@
     "semantic_hash": ""
   },
   "src/components/shaders/RippleGridShader.tsx": {
-    "mtime": 1792282375.8716743,
-    "seen": 1792283738.267932,
-    "ast_hash": "df42e266d35df407f20c251a51ad190d",
+    "mtime": 1792286837.6262026,
+    "seen": 1792286879.358886,
+    "ast_hash": "034f8a22ab04abd24e2e021535106c34",
     "semantic_hash": ""
   },
   "src/components/shaders/ShaderBackground.tsx": {
@@ -13740,15 +13740,15 @@
     "semantic_hash": ""
   },
   "src/components/shaders/LineWavesShader.tsx": {
-    "mtime": 1792282556.1099095,
-    "seen": 1792283738.267929,
-    "ast_hash": "79eb6ea70be2b4b3f89066268a18f643",
+    "mtime": 1792286837.625061,
+    "seen": 1792286879.358884,
+    "ast_hash": "513f0d6346fcd7d0d53cb01e40bd45a5",
     "semantic_hash": ""
   },
   "src/components/shaders/LiquidChromeShader.tsx": {
-    "mtime": 1792282736.19488,
-    "seen": 1792283738.26793,
-    "ast_hash": "dbee56b42be6edb6a738d77f75af565c",
+    "mtime": 1792286837.625651,
+    "seen": 1792286879.358885,
+    "ast_hash": "667ff26e2cee170f9c6aafdfd8cc9e63",
     "semantic_hash": ""
   },
   "src/components/shaders/SilkShader.tsx": {
@@ -15723,6 +15723,18 @@
     "mtime": 1792277356.8682454,
     "seen": 1792277425.8092,
     "ast_hash": "8a83ae44cedee897c2d5fef2ba997695",
+    "semantic_hash": ""
+  },
+  "tests/visual_stability.test.mjs": {
+    "mtime": 1792286864.8316317,
+    "seen": 1792286879.3599539,
+    "ast_hash": "c07405e790a79d4fb3e010688ba6ed58",
+    "semantic_hash": ""
+  },
+  "docs/ESTABILIDADE_VISUAL.md": {
+    "mtime": 1792286864.8391562,
+    "seen": 1792286879.361173,
+    "ast_hash": "404a2d4e0d76d027612fc458ea598a61",
     "semantic_hash": ""
   }
 }
