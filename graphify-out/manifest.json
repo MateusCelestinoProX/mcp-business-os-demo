@@ -252,9 +252,9 @@
     "semantic_hash": ""
   },
   "package.json": {
-    "mtime": 1792102307.3093545,
-    "seen": 1792103551.405168,
-    "ast_hash": "ba9a6a193f6ceb4f6d15f7bcc7b25bf9",
+    "mtime": 1792359404.1628902,
+    "seen": 1792359449.83305,
+    "ast_hash": "56eb03ae1b6ce45bafbd438535a18735",
     "semantic_hash": ""
   },
   "postcss.config.mjs": {
@@ -264,9 +264,9 @@
     "semantic_hash": ""
   },
   "src/data/siteData.json": {
-    "mtime": 1792197042.2491477,
-    "seen": 1792197084.312536,
-    "ast_hash": "e1db8cfcd52ea81053f1ba2360431bbe",
+    "mtime": 1792359618.1716468,
+    "seen": 1792359761.327102,
+    "ast_hash": "66914dd203d70690f9351269014693ef",
     "semantic_hash": ""
   },
   "tsconfig.json": {
@@ -1440,9 +1440,9 @@
     "semantic_hash": ""
   },
   "src/components/layout/Navbar.tsx": {
-    "mtime": 1792358342.2231596,
-    "seen": 1792358349.5686998,
-    "ast_hash": "8904ba24a935fba9cc6aba314caec65a",
+    "mtime": 1792359040.8977115,
+    "seen": 1792359045.745078,
+    "ast_hash": "ce625b62c5926732ee1df4c69d683381",
     "semantic_hash": ""
   },
   "src/components/shaders/ColorBends.tsx": {
@@ -1458,9 +1458,9 @@
     "semantic_hash": ""
   },
   "src/components/ui/Button.tsx": {
-    "mtime": 1792287982.5867279,
-    "seen": 1792288263.720855,
-    "ast_hash": "1de46b392bd4ca5bdc757e9c5e5408a3",
+    "mtime": 1792358838.555746,
+    "seen": 1792358950.514283,
+    "ast_hash": "15b621dd9ec198b2bc9e226d9804ae66",
     "semantic_hash": ""
   },
   "src/components/ui/GlassCard.tsx": {
@@ -1476,8 +1476,8 @@
     "semantic_hash": ""
   },
   "src/data/library_catalog_index.json": {
-    "mtime": 1792357869.8097794,
-    "seen": 1792358041.59196,
+    "mtime": 1792359581.898804,
+    "seen": 1792359761.3270972,
     "ast_hash": "c53f941e6974b9c701da6b7f78db1ca8",
     "semantic_hash": ""
   },
@@ -1656,9 +1656,9 @@
     "semantic_hash": ""
   },
   "src/components/shaders/ShaderTransitionZone.tsx": {
-    "mtime": 1792276703.8652635,
-    "seen": 1792276759.303226,
-    "ast_hash": "cf1c22703e7f4396b6a9121c16c3b1ff",
+    "mtime": 1792358864.8453417,
+    "seen": 1792358950.5142028,
+    "ast_hash": "bc858305a3a7214d17997cd19920703f",
     "semantic_hash": ""
   },
   "src/app/api/auth/me/route.ts": {
@@ -1866,9 +1866,9 @@
     "semantic_hash": ""
   },
   "src/app/page.tsx": {
-    "mtime": 1792333850.5623367,
-    "seen": 1792333862.767956,
-    "ast_hash": "c57edc395adafb8df52b3387fa9cba88",
+    "mtime": 1792359296.6998591,
+    "seen": 1792359311.761493,
+    "ast_hash": "890bc2cb5327f26ead4411de84caa92a",
     "semantic_hash": ""
   },
   ".agents/teamwork/worker_shaders/handoff.md": {
@@ -1950,9 +1950,9 @@
     "semantic_hash": ""
   },
   "public/comunidade/app.js": {
-    "mtime": 1792176460.5216038,
-    "seen": 1792177738.9675882,
-    "ast_hash": "7615cfa87f64e5ce35ad7038fc047bbb",
+    "mtime": 1792359567.3481948,
+    "seen": 1792359761.316182,
+    "ast_hash": "efa66a564298fd97727591c73b941421",
     "semantic_hash": ""
   },
   "public/comunidade/netlify/functions/create-payment.js": {
@@ -2802,9 +2802,9 @@
     "semantic_hash": ""
   },
   "public/comunidade/index.html": {
-    "mtime": 1792358406.9717658,
-    "seen": 1792358424.784256,
-    "ast_hash": "ee556928331186bf408621ff2e573871",
+    "mtime": 1792359540.7617128,
+    "seen": 1792359761.351928,
+    "ast_hash": "663ce1f5a419509f9d4848663ac5e093",
     "semantic_hash": ""
   },
   "public/comunidade/effects/CREATIVE EFFECT's/ANCESTRAL HAND STATUE RENDER/ChatGPT_Image_17_de_jul._de_2025_15_25_13.webp": {
@@ -13632,9 +13632,9 @@
     "semantic_hash": ""
   },
   "src/components/portal/OriginalHeader.tsx": {
-    "mtime": 1792358325.2909124,
-    "seen": 1792358349.569144,
-    "ast_hash": "4739cc53f0b53dce88a917bf51116391",
+    "mtime": 1792359610.8457189,
+    "seen": 1792359761.324577,
+    "ast_hash": "d3ed675ba4d9012e44c6b6820f24dd98",
     "semantic_hash": ""
   },
   "src/app/api/contact/route.ts": {
@@ -13668,9 +13668,9 @@
     "semantic_hash": ""
   },
   "src/components/portal/ContatoSection.tsx": {
-    "mtime": 1792357894.4615462,
-    "seen": 1792358041.5911949,
-    "ast_hash": "88c044d1d1b95dc24b2b27bba54ecfdd",
+    "mtime": 1792359711.3667293,
+    "seen": 1792359761.3241012,
+    "ast_hash": "c3f924ef5d6d913c07a680a2bd176073",
     "semantic_hash": ""
   },
   "src/components/portal/LegalModal.tsx": {
@@ -13680,9 +13680,9 @@
     "semantic_hash": ""
   },
   "src/components/portal/MainNotionLayout.tsx": {
-    "mtime": 1792357820.7744672,
-    "seen": 1792358041.591323,
-    "ast_hash": "4e06db1e22c9a18a494cbcb2e3c2657e",
+    "mtime": 1792359766.9774878,
+    "seen": 1792359786.588869,
+    "ast_hash": "f15857bba6b352a47762b9da6f25a3e1",
     "semantic_hash": ""
   },
   "src/components/portal/ShopSection.tsx": {
@@ -13692,9 +13692,9 @@
     "semantic_hash": ""
   },
   "src/components/portal/SobreSection.tsx": {
-    "mtime": 1792357845.5170798,
-    "seen": 1792358041.591402,
-    "ast_hash": "d8220c2cffe8c316186fd01c7789673b",
+    "mtime": 1792359794.5911698,
+    "seen": 1792359832.683025,
+    "ast_hash": "fdbfe475f1008e4149e3ec495b5d149c",
     "semantic_hash": ""
   },
   "public/comunidade/music.mp3": {
@@ -13734,9 +13734,9 @@
     "semantic_hash": ""
   },
   "src/components/portal/PortalNavbar.tsx": {
-    "mtime": 1792358057.469859,
-    "seen": 1792358303.106703,
-    "ast_hash": "44992d91e12b915d4924339a9cf47a4f",
+    "mtime": 1792359662.065026,
+    "seen": 1792359761.324587,
+    "ast_hash": "0c572a7161b9d4787d6a516c702670c6",
     "semantic_hash": ""
   },
   "src/components/shaders/LineWavesShader.tsx": {
@@ -14766,8 +14766,8 @@
     "semantic_hash": ""
   },
   "src/data/libraries.json": {
-    "mtime": 1792357869.8182778,
-    "seen": 1792358041.591959,
+    "mtime": 1792359581.9159966,
+    "seen": 1792359761.327093,
     "ast_hash": "3e79a0df86ee6f7eb3acd51fbf5fad31",
     "semantic_hash": ""
   },
@@ -14790,9 +14790,9 @@
     "semantic_hash": ""
   },
   "src/components/portal/AlternatingHeroShaders.tsx": {
-    "mtime": 1792357744.4741058,
-    "seen": 1792358041.5911932,
-    "ast_hash": "594c41ff8dcef6bdf94bcd2a18a2cf7b",
+    "mtime": 1792358823.4847476,
+    "seen": 1792358950.5118442,
+    "ast_hash": "a9623f968d881ce98ea610fb353a1a7b",
     "semantic_hash": ""
   },
   "src/components/portal/UniversalSitemapModal.tsx": {
@@ -14808,9 +14808,9 @@
     "semantic_hash": ""
   },
   "public/showcase/script.js": {
-    "mtime": 1792358182.7706027,
-    "seen": 1792358303.104701,
-    "ast_hash": "a07a2365077e870dc7875245fba6d320",
+    "mtime": 1792358954.408332,
+    "seen": 1792359039.70608,
+    "ast_hash": "0e856f13a3eeacdbad3edb1ace43d8d6",
     "semantic_hash": ""
   },
   "public/showcase/singularity.js": {
@@ -14826,9 +14826,9 @@
     "semantic_hash": ""
   },
   "public/showcase/index.html": {
-    "mtime": 1792358335.5468993,
-    "seen": 1792358349.5754979,
-    "ast_hash": "aa986e63b35703aa816b0edd11d9f627",
+    "mtime": 1792358912.9558506,
+    "seen": 1792358950.530184,
+    "ast_hash": "25da119815b6340991b0d7b4e3cbc86f",
     "semantic_hash": ""
   },
   "public/showcase/certifications/business/10 passos para sair das dividas.pdf": {
@@ -15654,9 +15654,9 @@
     "semantic_hash": ""
   },
   "src/components/portal/PhotografyContactHub.tsx": {
-    "mtime": 1792335250.599384,
-    "seen": 1792335503.964993,
-    "ast_hash": "22dde8ca820456df7888db5f8597a231",
+    "mtime": 1792359626.2932513,
+    "seen": 1792359761.3245828,
+    "ast_hash": "677e3ab8db01323de8aa2629153125bf",
     "semantic_hash": ""
   },
   "src/app/contato/page.tsx": {
@@ -15741,6 +15741,42 @@
     "mtime": 1792288258.8204117,
     "seen": 1792288263.718695,
     "ast_hash": "21ee9836a9019bdfb88b15fe92306a26",
+    "semantic_hash": ""
+  },
+  "scripts/server-guardian.js": {
+    "mtime": 1792359533.2924206,
+    "seen": 1792359761.317322,
+    "ast_hash": "e18024a69b783c40101d40eaaa936fc5",
+    "semantic_hash": ""
+  },
+  "src/app/api/health/route.ts": {
+    "mtime": 1792359342.5519667,
+    "seen": 1792359449.834346,
+    "ast_hash": "16d7dcaaff7a8df02b51932b2f12cf6f",
+    "semantic_hash": ""
+  },
+  "src/app/error.tsx": {
+    "mtime": 1792359606.9110112,
+    "seen": 1792359761.321344,
+    "ast_hash": "5bbab0730699decaf507aa9d78991e7d",
+    "semantic_hash": ""
+  },
+  "src/app/global-error.tsx": {
+    "mtime": 1792359616.0573044,
+    "seen": 1792359761.3213491,
+    "ast_hash": "2c84eb24d90348be71f9a87b86a64143",
+    "semantic_hash": ""
+  },
+  "src/instrumentation.ts": {
+    "mtime": 1792359372.2431436,
+    "seen": 1792359449.837058,
+    "ast_hash": "e0d0c818f814ff8aef479e8c700dadec",
+    "semantic_hash": ""
+  },
+  "tests/server_guardian.test.ts": {
+    "mtime": 1792359413.381008,
+    "seen": 1792359449.83811,
+    "ast_hash": "5d7a096b29ec3307b1e433f5e9c4b155",
     "semantic_hash": ""
   }
 }

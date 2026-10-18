@@ -62,12 +62,6 @@ export default function HomePage() {
           onNavigate={handleNavigate}
         />
 
-        {/* ZONA DE TRANSIÇÃO 01 -> 02: Hero -> Acervo */}
-        <ShaderTransitionZone
-          from="HERO PORTAL"
-          to="ACERVO TÉCNICO"
-          index="01 // 02"
-        />
 
         {/* =========================================================================
             2. ACERVO HISTÓRICO & TÉCNICO (176 ARTIGOS)

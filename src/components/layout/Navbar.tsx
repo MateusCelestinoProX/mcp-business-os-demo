@@ -101,8 +101,8 @@ export function Navbar() {
           </div>
         </Link>
 
-        {/* Links Centrais Desktop */}
-        <div className="hidden md:flex items-center gap-1.5 bg-black/40 p-1 rounded-xl border border-white/5">
+        {/* Links Centrais Desktop Compactos */}
+        <div className="hidden md:flex items-center gap-1 bg-black/40 p-1 rounded-xl border border-white/5">
           {navLinks.map((item) => {
             const Icon = item.icon;
             const isActive =
@@ -115,7 +115,7 @@ export function Navbar() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-semibold tracking-wide transition-all duration-200 relative group",
+                  "flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[11px] font-semibold tracking-wide transition-all duration-200 relative group",
                   isActive
                     ? "text-white bg-white/[0.12] shadow-[inset_0_1px_1px_rgba(255,255,255,0.25)] border border-white/15"
                     : "text-neutral-400 hover:text-neutral-100 hover:bg-white/[0.05]"
@@ -148,17 +148,17 @@ export function Navbar() {
           })}
         </div>
 
-        {/* Lado Direito Desktop: Botões fiéis e soberanos sempre presentes */}
-        <div className="hidden lg:flex items-center gap-3">
+        {/* Lado Direito Desktop: Botões fiéis e refinados */}
+        <div className="hidden lg:flex items-center gap-2.5">
           <Link href="/admin">
-            <Button variant="secondary" size="sm" className="gap-1.5 text-xs border-white/10 hover:border-white/20">
+            <Button variant="secondary" size="sm" className="gap-1.5 text-[11px] border-white/10 hover:border-white/20">
               <Crown className="w-3.5 h-3.5 text-red-400" />
               <span>Painel Admin</span>
             </Button>
           </Link>
 
           {currentUser.isLoggedIn ? (
-            <div className="flex items-center gap-2 px-2.5 py-1.5 rounded-xl bg-white/[0.04] border border-white/10 text-xs">
+            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white/[0.04] border border-white/10 text-[11px]">
               <span className="font-semibold text-white">{currentUser.name || "Mateus Celestino Pro X"}</span>
               <button
                 onClick={handleLogout}
@@ -172,7 +172,7 @@ export function Navbar() {
             <Link
               href="/comunidade/login"
               title="Acessar sessão / Login"
-              className="flex items-center gap-2 px-2.5 py-1.5 rounded-xl bg-white/[0.04] border border-white/10 text-xs hover:border-white/20 transition-colors group cursor-pointer"
+              className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white/[0.04] border border-white/10 text-[11px] hover:border-white/20 transition-colors group cursor-pointer"
             >
               <span className="font-semibold text-white">Mateus Celestino Pro X</span>
               <LogIn className="w-3.5 h-3.5 text-neutral-400 group-hover:text-red-400 transition-colors" />

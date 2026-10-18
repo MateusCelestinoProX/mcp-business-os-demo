@@ -48,53 +48,59 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --- 4. Menu Mobile Fluído & Drawer Soberano ---
-  const mobileBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
   const mobileOverlay = document.getElementById('mobile-menu-overlay');
   const mobileCloseBtn = document.getElementById('mobile-menu-close-btn');
 
   function closeMobileMenu() {
-    if (mobileBtn) mobileBtn.classList.remove('open');
+    document.querySelectorAll('.open-mobile-menu-trigger, #mobile-menu-btn, #dock-menu-btn, #chips-menu-btn').forEach(btn => btn.classList.remove('open'));
     if (mobileMenu) mobileMenu.classList.remove('open');
     if (mobileOverlay) mobileOverlay.classList.remove('open');
     document.body.style.overflow = '';
   }
 
   function openMobileMenu() {
-    if (mobileBtn) mobileBtn.classList.add('open');
+    document.querySelectorAll('.open-mobile-menu-trigger, #mobile-menu-btn, #dock-menu-btn, #chips-menu-btn').forEach(btn => btn.classList.add('open'));
     if (mobileMenu) mobileMenu.classList.add('open');
     if (mobileOverlay) mobileOverlay.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
 
-  if (mobileBtn && mobileMenu) {
-    mobileBtn.addEventListener('click', () => {
-      const isOpen = mobileMenu.classList.contains('open');
-      if (isOpen) {
-        closeMobileMenu();
-      } else {
-        openMobileMenu();
-      }
+  function toggleMobileMenu() {
+    if (mobileMenu && mobileMenu.classList.contains('open')) {
+      closeMobileMenu();
+    } else {
+      openMobileMenu();
+    }
+  }
+
+  document.querySelectorAll('.open-mobile-menu-trigger, #mobile-menu-btn, #dock-menu-btn, #chips-menu-btn').forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      toggleMobileMenu();
     });
+  });
 
-    if (mobileCloseBtn) {
-      mobileCloseBtn.addEventListener('click', closeMobileMenu);
-    }
+  if (mobileCloseBtn) {
+    mobileCloseBtn.addEventListener('click', closeMobileMenu);
+  }
 
-    if (mobileOverlay) {
-      mobileOverlay.addEventListener('click', closeMobileMenu);
-    }
+  if (mobileOverlay) {
+    mobileOverlay.addEventListener('click', closeMobileMenu);
+  }
 
+  if (mobileMenu) {
     mobileMenu.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', closeMobileMenu);
     });
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
-        closeMobileMenu();
-      }
-    });
   }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileMenu && mobileMenu.classList.contains('open')) {
+      closeMobileMenu();
+    }
+  });
 
   // --- 5. Rolar Suavemente (Smooth Scroll com Offset Adaptativo) ---
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -282,6 +288,25 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('mousemove', (e) => {
       pMouse.x = e.clientX;
       pMouse.y = e.clientY;
+    }, { passive: true });
+
+    window.addEventListener('touchmove', (e) => {
+      if (e.touches && e.touches[0]) {
+        pMouse.x = e.touches[0].clientX;
+        pMouse.y = e.touches[0].clientY;
+      }
+    }, { passive: true });
+
+    window.addEventListener('touchstart', (e) => {
+      if (e.touches && e.touches[0]) {
+        pMouse.x = e.touches[0].clientX;
+        pMouse.y = e.touches[0].clientY;
+      }
+    }, { passive: true });
+
+    window.addEventListener('touchend', () => {
+      pMouse.x = -9999;
+      pMouse.y = -9999;
     }, { passive: true });
 
     class Particle {

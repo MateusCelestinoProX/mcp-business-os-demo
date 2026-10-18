@@ -119,7 +119,7 @@ export function PortalNavbar({
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between pointer-events-auto">
           {/* Links Centrais do Mapa de Navegação */}
-          <div className="flex items-center gap-1.5 glass-crystal px-3 py-1.5 rounded-full shadow-[0_20px_45px_rgba(0,0,0,0.9)] border border-white/10">
+          <div className="flex items-center gap-1 glass-crystal px-2.5 py-1 rounded-full shadow-[0_20px_45px_rgba(0,0,0,0.9)] border border-white/10">
             {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = currentSection === item.id;
@@ -127,9 +127,9 @@ export function PortalNavbar({
                 <button
                   key={item.id}
                   onClick={() => handleTabClick(item.id)}
-                  className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-mono tracking-wide transition-all duration-300 relative cursor-pointer touch-manipulation ${
+                  className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] sm:text-xs font-mono tracking-wide transition-all duration-300 relative cursor-pointer touch-manipulation ${
                     isActive
-                      ? 'text-white glass-pill-red font-bold shadow-[0_0_20px_rgba(255,7,58,0.35)]'
+                      ? 'text-white glass-pill-red font-bold shadow-[0_0_15px_rgba(255,7,58,0.35)]'
                       : 'text-zinc-400 hover:text-white hover:bg-white/5 border border-transparent'
                   }`}
                 >
@@ -143,16 +143,16 @@ export function PortalNavbar({
             })}
           </div>
 
-          {/* Ação Rápida à Direita: CTA WhatsApp Soberano */}
+          {/* Ação Rápida à Direita: CTA WhatsApp Soberano Compacto */}
           <div className="flex items-center gap-2">
             <a
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="glass-button-fired flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold tracking-wide text-white shadow-xl hover:scale-105 active:scale-95 transition-transform touch-manipulation cursor-pointer"
+              className="glass-button-fired flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11px] font-mono font-bold tracking-wide text-white shadow-lg hover:scale-105 active:scale-95 transition-transform touch-manipulation cursor-pointer"
               title="Abrir WhatsApp oficial"
             >
-              <MessageSquare className="w-3.5 h-3.5 fill-white/20" />
+              <MessageSquare className="w-3 h-3 fill-white/20" />
               <span>QUERO AUTOMATIZAR TUDO</span>
             </a>
           </div>
@@ -161,7 +161,7 @@ export function PortalNavbar({
 
       {/* =========================================================================
           2. VERSÃO MOBILE (lg:hidden): FLOATING THUMB DOCK (ZONA DO POLEGAR - FITTS' LAW)
-          Alvos táteis generosos (≥48px), fácil alcance com uma mão, feedback tátil ultra-rápido.
+          Alvos táteis ergonômicos e refinados.
           Exibido exclusivamente na Home (/), liberando a tela móvel para controles dedicados em páginas setoriais como /shop.
           ========================================================================= */}
       {pathname === '/' && (
@@ -171,7 +171,7 @@ export function PortalNavbar({
           className="lg:hidden fixed bottom-3 sm:bottom-4 inset-x-3 sm:inset-x-6 z-40 max-w-md mx-auto pointer-events-auto select-none touch-manipulation"
           style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}
         >
-          <div className="glass-crystal rounded-2xl p-1.5 shadow-[0_15px_40px_rgba(0,0,0,0.95),0_0_25px_rgba(255,7,58,0.25)] border border-white/20 flex items-center justify-between gap-1">
+          <div className="glass-crystal rounded-2xl p-1 shadow-[0_15px_40px_rgba(0,0,0,0.95),0_0_25px_rgba(255,7,58,0.25)] border border-white/20 flex items-center justify-between gap-1">
             {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = currentSection === item.id;
@@ -179,18 +179,18 @@ export function PortalNavbar({
                 <button
                   key={item.id}
                   onClick={() => handleTabClick(item.id)}
-                  className={`flex-1 min-h-[48px] py-1.5 px-2 rounded-xl flex flex-col items-center justify-center gap-1 transition-all duration-200 active:scale-95 relative cursor-pointer touch-manipulation ${
+                  className={`flex-1 min-h-[48px] py-1 px-1.5 rounded-xl flex flex-col items-center justify-center gap-0.5 transition-all duration-200 active:scale-95 relative cursor-pointer touch-manipulation ${
                     isActive
                       ? 'text-white glass-pill-red shadow-[0_0_15px_rgba(255,7,58,0.4)] font-bold'
                       : 'text-zinc-400 hover:text-zinc-200 active:bg-white/5'
                   }`}
                 >
                   <Icon
-                    className={`w-4 h-4 transition-transform duration-200 ${
+                    className={`w-3.5 h-3.5 transition-transform duration-200 ${
                       isActive ? 'text-white scale-110 drop-shadow-[0_0_8px_#ff073a]' : 'text-zinc-400'
                     }`}
                   />
-                  <span className="text-[10px] font-mono leading-none tracking-tight">
+                  <span className="text-[9px] font-mono leading-none tracking-tight">
                     {item.shortLabel}
                   </span>
                   {isActive && (
@@ -200,16 +200,16 @@ export function PortalNavbar({
               );
             })}
 
-            {/* Botão de Ação Rápida WhatsApp no Thumb Dock */}
+            {/* Botão de Ação Rápida WhatsApp no Thumb Dock (Min 48px hit target) */}
             <a
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               title="Quero Automatizar Tudo (WhatsApp Oficial)"
-              className="glass-button-fired min-h-[48px] px-3.5 rounded-xl flex flex-col items-center justify-center gap-1 text-white shadow-lg active:scale-95 transition-transform touch-manipulation shrink-0 ml-0.5 cursor-pointer"
+              className="glass-button-fired min-h-[48px] min-w-[48px] px-3 rounded-xl flex flex-col items-center justify-center gap-0.5 text-white shadow-lg active:scale-95 transition-transform touch-manipulation shrink-0 ml-0.5 cursor-pointer"
             >
               <MessageSquare className="w-4 h-4 fill-white/20" />
-              <span className="text-[9px] font-mono font-bold leading-none uppercase tracking-wider">
+              <span className="text-[8px] font-mono font-bold leading-none uppercase tracking-wider">
                 AUTO
               </span>
             </a>

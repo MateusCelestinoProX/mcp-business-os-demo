@@ -1057,6 +1057,14 @@
           box-shadow: 0 -20px 60px rgba(0,0,0,0.95) !important;
           transform-origin: bottom center !important;
         }
+        /* Toast Notification no mobile: acima do dock para evitar sobreposição */
+        #toast {
+          bottom: calc(76px + env(safe-area-inset-bottom, 8px)) !important;
+          max-width: 90vw !important;
+          width: auto !important;
+          padding: 10px 18px !important;
+          font-size: 13px !important;
+        }
       }
     </style>
 
@@ -1529,16 +1537,16 @@
         </div>
     </div>
 
-    <!-- Toast Notification (Z-Index Máximo Universal) -->
-    <div id="toast" class="fixed bottom-8 left-1/2 -translate-x-1/2 bg-black/90 border border-white/25 text-white px-6 py-3.5 rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.85)] backdrop-blur-2xl font-semibold text-sm transform translate-y-[200%] transition-transform duration-300 pointer-events-auto flex items-center space-x-3 z-[100001]">
+    <!-- Toast Notification (Z-Index Máximo Universal - Acima do Dock no Mobile) -->
+    <div id="toast" class="fixed bottom-24 md:bottom-8 left-1/2 -translate-x-1/2 bg-black/90 border border-white/25 text-white px-6 py-3.5 rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.85)] backdrop-blur-2xl font-semibold text-sm transform translate-y-[200%] transition-transform duration-300 pointer-events-auto flex items-center space-x-3 z-[100001] max-w-[90vw]">
         <span id="toastIcon" class="text-base">✅</span>
         <span id="toastMessage" class="tracking-wide">Prompt copiado com 1 clique!</span>
     </div>
 
     <!-- AUTH MODAL (Login / Register com Z-Index Soberano e Feedback Visual) -->
     <div id="authModal" class="fixed inset-0 bg-black/85 backdrop-blur-2xl z-[100000] flex items-center justify-center hidden opacity-0 transition-opacity duration-300 p-4">
-        <div class="bg-black/95 border border-white/20 rounded-3xl p-7 sm:p-8 max-w-md w-full shadow-[0_40px_90px_rgba(0,0,0,0.9)] relative text-white transform scale-95 transition-transform duration-300">
-            <button id="closeAuthModal" class="absolute top-5 right-5 text-graphite hover:text-white transition-colors text-xl font-bold">✕</button>
+        <div class="bg-black/95 border border-white/20 rounded-3xl p-6 sm:p-8 max-w-md w-full max-h-[90vh] overflow-y-auto shadow-[0_40px_90px_rgba(0,0,0,0.9)] relative text-white transform scale-95 transition-transform duration-300">
+            <button id="closeAuthModal" class="absolute top-3 right-3 sm:top-5 sm:right-5 w-11 h-11 flex items-center justify-center text-graphite hover:text-white transition-colors text-xl font-bold">✕</button>
 
             <div class="text-center mb-5">
                 <div class="inline-block p-3 rounded-2xl bg-white/10 border border-white/20 mb-2 text-2xl">🔒</div>
@@ -1555,23 +1563,23 @@
             <form id="authForm" class="space-y-4">
                 <div id="authNameField" style="display:none">
                     <label class="block text-xs font-semibold text-graphite mb-1 uppercase tracking-wider">Nome Completo</label>
-                    <input type="text" id="authName" placeholder="Seu nome" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-white/40 focus:bg-white/10 transition-all text-white">
+                    <input type="text" id="authName" placeholder="Seu nome" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-base sm:text-sm focus:outline-none focus:border-white/40 focus:bg-white/10 transition-all text-white">
                 </div>
                 <div>
                     <label class="block text-xs font-semibold text-graphite mb-1 uppercase tracking-wider">E-mail</label>
-                    <input type="email" id="authEmail" required placeholder="seu@email.com" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-white/40 focus:bg-white/10 transition-all text-white">
+                    <input type="email" id="authEmail" required placeholder="seu@email.com" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-base sm:text-sm focus:outline-none focus:border-white/40 focus:bg-white/10 transition-all text-white">
                 </div>
                 <div>
                     <label class="block text-xs font-semibold text-graphite mb-1 uppercase tracking-wider">Senha</label>
-                    <input type="password" id="authPassword" required placeholder="••••••••" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-white/40 focus:bg-white/10 transition-all text-white">
+                    <input type="password" id="authPassword" required placeholder="••••••••" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-base sm:text-sm focus:outline-none focus:border-white/40 focus:bg-white/10 transition-all text-white">
                 </div>
-                <button type="submit" id="authSubmitBtn" class="w-full py-3.5 rounded-xl font-bold bg-white text-black hover:bg-white/90 hover:scale-[1.02] transition-all shadow-lg text-sm flex items-center justify-center gap-2">
+                <button type="submit" id="authSubmitBtn" class="w-full py-3.5 min-h-[48px] rounded-xl font-bold bg-white text-black hover:bg-white/90 hover:scale-[1.02] active:scale-95 transition-all shadow-lg text-sm flex items-center justify-center gap-2">
                     <span id="authBtnSpinner" class="hidden animate-spin">⏳</span>
                     <span id="authSubmitBtnLabel">Entrar</span>
                 </button>
             </form>
             <div class="text-center mt-4">
-                <button id="toggleAuthMode" class="text-xs text-white/60 hover:text-white transition-colors">Não tem conta? Registre-se Gratuitamente</button>
+                <button id="toggleAuthMode" class="text-xs text-white/60 hover:text-white transition-colors py-2 inline-block min-h-[36px]">Não tem conta? Registre-se Gratuitamente</button>
             </div>
         </div>
     </div>
@@ -1586,10 +1594,10 @@
             <p id="confirmModalMessage" class="text-graphite text-sm leading-relaxed mb-6">Tem certeza que deseja realizar esta ação?</p>
             
             <div class="flex items-center space-x-3 w-full">
-                <button id="confirmModalCancelBtn" class="flex-1 py-3 rounded-xl font-bold bg-white/10 hover:bg-white/20 border border-white/15 text-white text-xs transition-all">
+                <button id="confirmModalCancelBtn" class="flex-1 py-3 min-h-[48px] flex items-center justify-center rounded-xl font-bold bg-white/10 hover:bg-white/20 border border-white/15 text-white text-sm sm:text-xs transition-all">
                     Cancelar
                 </button>
-                <button id="confirmModalConfirmBtn" class="flex-1 py-3 rounded-xl font-bold bg-red-500/80 hover:bg-red-500 text-white text-xs transition-all shadow-lg">
+                <button id="confirmModalConfirmBtn" class="flex-1 py-3 min-h-[48px] flex items-center justify-center rounded-xl font-bold bg-red-500/80 hover:bg-red-500 text-white text-sm sm:text-xs transition-all shadow-lg">
                     Confirmar
                 </button>
             </div>
@@ -1598,15 +1606,15 @@
 
     <!-- CUSTOM GLASSMORPHISM TAG EDITOR MODAL (CRIAR / EDITAR TAGS) -->
     <div id="tagEditorModal" class="fixed inset-0 z-[125] bg-black/85 backdrop-blur-2xl flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
-        <div class="relative w-full max-w-lg glass-card rounded-3xl p-6 sm:p-8 border border-white/20 shadow-2xl overflow-hidden transform scale-95 transition-transform duration-300">
-            <!-- Botão fechar -->
-            <button onclick="window.appCloseTagModal()" class="absolute top-5 right-5 text-gray-400 hover:text-white p-2 rounded-full hover:bg-white/10 transition-all text-sm leading-none" title="Fechar">
+        <div class="relative w-full max-w-lg glass-card rounded-3xl p-6 sm:p-8 border border-white/20 shadow-2xl max-h-[92vh] overflow-y-auto transform scale-95 transition-transform duration-300">
+            <!-- Botão fechar (Área ergonômica de toque 44px) -->
+            <button onclick="window.appCloseTagModal()" class="absolute top-3 right-3 sm:top-5 sm:right-5 w-11 h-11 flex items-center justify-center text-gray-400 hover:text-white rounded-full hover:bg-white/10 transition-all text-base leading-none" title="Fechar">
                 ✕
             </button>
 
             <!-- Cabeçalho -->
-            <div class="flex items-center space-x-3.5 mb-6">
-                <div id="tagModalIconPreview" class="w-12 h-12 rounded-2xl bg-red-500/20 border border-red-500/40 flex items-center justify-center text-2xl shadow-inner">
+            <div class="flex items-center space-x-3.5 mb-6 pr-10">
+                <div id="tagModalIconPreview" class="w-12 h-12 rounded-2xl bg-red-500/20 border border-red-500/40 flex items-center justify-center text-2xl shadow-inner flex-shrink-0">
                     🏷️
                 </div>
                 <div>
@@ -1624,30 +1632,30 @@
                     <label class="block text-xs font-mono font-bold text-gray-300 mb-1.5">Nome da Tag *</label>
                     <input type="text" id="tagEditorName" placeholder="Ex: Modelos LoRA & Checkpoints"
                         oninput="window.appOnTagNameChange(this.value)"
-                        class="w-full bg-white/5 border border-white/15 focus:border-red-500/50 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-white/30 focus:outline-none transition-all font-medium">
+                        class="w-full bg-white/5 border border-white/15 focus:border-red-500/50 rounded-xl px-3.5 py-2.5 text-base sm:text-xs text-white placeholder-white/30 focus:outline-none transition-all font-medium">
                 </div>
 
-                <div class="grid grid-cols-2 gap-3">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <!-- Slug / Identificador -->
                     <div>
                         <label class="block text-xs font-mono font-bold text-gray-300 mb-1.5">Slug / ID da Tag *</label>
                         <input type="text" id="tagEditorSlug" placeholder="Ex: loras"
-                            class="w-full bg-white/5 border border-white/15 focus:border-red-500/50 rounded-xl px-3.5 py-2.5 text-xs font-mono text-red-300 placeholder-white/30 focus:outline-none transition-all">
+                            class="w-full bg-white/5 border border-white/15 focus:border-red-500/50 rounded-xl px-3.5 py-2.5 text-base sm:text-xs font-mono text-red-300 placeholder-white/30 focus:outline-none transition-all">
                     </div>
 
                     <!-- Emoji / Ícone -->
                     <div>
                         <label class="block text-xs font-mono font-bold text-gray-300 mb-1.5">Ícone / Emoji</label>
-                        <div class="flex items-center space-x-1.5">
+                        <div class="flex items-center space-x-2">
                             <input type="text" id="tagEditorIcon" placeholder="⚡" maxlength="4" value="⚡"
                                 oninput="if(document.getElementById('tagModalIconPreview')) document.getElementById('tagModalIconPreview').textContent = this.value || '🏷️'"
-                                class="w-12 text-center bg-white/5 border border-white/15 focus:border-red-500/50 rounded-xl px-1.5 py-2 text-sm text-white focus:outline-none transition-all">
-                            <div class="flex items-center space-x-1 text-xs">
-                                <button type="button" onclick="window.appSetTagIcon('⚡')" class="p-1 rounded-lg bg-white/5 hover:bg-white/15">⚡</button>
-                                <button type="button" onclick="window.appSetTagIcon('🎨')" class="p-1 rounded-lg bg-white/5 hover:bg-white/15">🎨</button>
-                                <button type="button" onclick="window.appSetTagIcon('💡')" class="p-1 rounded-lg bg-white/5 hover:bg-white/15">💡</button>
-                                <button type="button" onclick="window.appSetTagIcon('🔥')" class="p-1 rounded-lg bg-white/5 hover:bg-white/15">🔥</button>
-                                <button type="button" onclick="window.appSetTagIcon('📌')" class="p-1 rounded-lg bg-white/5 hover:bg-white/15">📌</button>
+                                class="w-12 text-center bg-white/5 border border-white/15 focus:border-red-500/50 rounded-xl px-1.5 py-2 text-base text-white focus:outline-none transition-all">
+                            <div class="flex items-center space-x-1 text-sm flex-wrap">
+                                <button type="button" onclick="window.appSetTagIcon('⚡')" class="p-2 rounded-lg bg-white/5 hover:bg-white/15 min-w-[34px] min-h-[34px] flex items-center justify-center">⚡</button>
+                                <button type="button" onclick="window.appSetTagIcon('🎨')" class="p-2 rounded-lg bg-white/5 hover:bg-white/15 min-w-[34px] min-h-[34px] flex items-center justify-center">🎨</button>
+                                <button type="button" onclick="window.appSetTagIcon('💡')" class="p-2 rounded-lg bg-white/5 hover:bg-white/15 min-w-[34px] min-h-[34px] flex items-center justify-center">💡</button>
+                                <button type="button" onclick="window.appSetTagIcon('🔥')" class="p-2 rounded-lg bg-white/5 hover:bg-white/15 min-w-[34px] min-h-[34px] flex items-center justify-center">🔥</button>
+                                <button type="button" onclick="window.appSetTagIcon('📌')" class="p-2 rounded-lg bg-white/5 hover:bg-white/15 min-w-[34px] min-h-[34px] flex items-center justify-center">📌</button>
                             </div>
                         </div>
                     </div>
@@ -1656,13 +1664,13 @@
                 <!-- Cor Temática -->
                 <div>
                     <label class="block text-xs font-mono font-bold text-gray-300 mb-1.5">Cor de Destaque</label>
-                    <div class="flex items-center space-x-2" id="tagColorPicker">
-                        <button type="button" onclick="window.appSelectTagColor('red')" data-color="red" class="tag-color-btn w-8 h-8 rounded-xl bg-red-500/20 border-2 border-red-500 flex items-center justify-center text-xs">🔴</button>
-                        <button type="button" onclick="window.appSelectTagColor('purple')" data-color="purple" class="tag-color-btn w-8 h-8 rounded-xl bg-purple-500/20 border border-purple-500/40 flex items-center justify-center text-xs">🟣</button>
-                        <button type="button" onclick="window.appSelectTagColor('amber')" data-color="amber" class="tag-color-btn w-8 h-8 rounded-xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-xs">🟠</button>
-                        <button type="button" onclick="window.appSelectTagColor('emerald')" data-color="emerald" class="tag-color-btn w-8 h-8 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-xs">🟢</button>
-                        <button type="button" onclick="window.appSelectTagColor('cyan')" data-color="cyan" class="tag-color-btn w-8 h-8 rounded-xl bg-cyan-500/20 border border-cyan-500/40 flex items-center justify-center text-xs">🔵</button>
-                        <button type="button" onclick="window.appSelectTagColor('pink')" data-color="pink" class="tag-color-btn w-8 h-8 rounded-xl bg-pink-500/20 border border-pink-500/40 flex items-center justify-center text-xs">🌸</button>
+                    <div class="flex items-center space-x-2.5 overflow-x-auto pb-1" id="tagColorPicker">
+                        <button type="button" onclick="window.appSelectTagColor('red')" data-color="red" class="tag-color-btn w-9 h-9 min-w-[36px] min-h-[36px] rounded-xl bg-red-500/20 border-2 border-red-500 flex items-center justify-center text-sm">🔴</button>
+                        <button type="button" onclick="window.appSelectTagColor('purple')" data-color="purple" class="tag-color-btn w-9 h-9 min-w-[36px] min-h-[36px] rounded-xl bg-purple-500/20 border border-purple-500/40 flex items-center justify-center text-sm">🟣</button>
+                        <button type="button" onclick="window.appSelectTagColor('amber')" data-color="amber" class="tag-color-btn w-9 h-9 min-w-[36px] min-h-[36px] rounded-xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-sm">🟠</button>
+                        <button type="button" onclick="window.appSelectTagColor('emerald')" data-color="emerald" class="tag-color-btn w-9 h-9 min-w-[36px] min-h-[36px] rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-sm">🟢</button>
+                        <button type="button" onclick="window.appSelectTagColor('cyan')" data-color="cyan" class="tag-color-btn w-9 h-9 min-w-[36px] min-h-[36px] rounded-xl bg-cyan-500/20 border border-cyan-500/40 flex items-center justify-center text-sm">🔵</button>
+                        <button type="button" onclick="window.appSelectTagColor('pink')" data-color="pink" class="tag-color-btn w-9 h-9 min-w-[36px] min-h-[36px] rounded-xl bg-pink-500/20 border border-pink-500/40 flex items-center justify-center text-sm">🌸</button>
                     </div>
                     <input type="hidden" id="tagEditorColor" value="red">
                 </div>
@@ -1671,16 +1679,16 @@
                 <div>
                     <label class="block text-xs font-mono font-bold text-gray-300 mb-1.5">Descrição Curta (Opcional)</label>
                     <input type="text" id="tagEditorDesc" placeholder="Ex: Discussões, pipelines e tutoriais avançados"
-                        class="w-full bg-white/5 border border-white/15 focus:border-red-500/50 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-white/30 focus:outline-none transition-all">
+                        class="w-full bg-white/5 border border-white/15 focus:border-red-500/50 rounded-xl px-3.5 py-2.5 text-base sm:text-xs text-white placeholder-white/30 focus:outline-none transition-all">
                 </div>
             </div>
 
             <!-- Botões de Ação -->
             <div class="flex items-center space-x-3 mt-6 pt-4 border-t border-white/10">
-                <button type="button" onclick="window.appCloseTagModal()" class="flex-1 py-3 rounded-xl font-bold bg-white/10 hover:bg-white/20 border border-white/15 text-white text-xs transition-all">
+                <button type="button" onclick="window.appCloseTagModal()" class="flex-1 py-3 min-h-[48px] flex items-center justify-center rounded-xl font-bold bg-white/10 hover:bg-white/20 border border-white/15 text-white text-sm sm:text-xs transition-all">
                     Cancelar
                 </button>
-                <button type="button" onclick="window.appSaveTag()" id="tagModalSaveBtn" class="flex-1 py-3 rounded-xl font-bold bg-red-600 hover:bg-red-500 text-white text-xs transition-all shadow-lg flex items-center justify-center space-x-1.5">
+                <button type="button" onclick="window.appSaveTag()" id="tagModalSaveBtn" class="flex-1 py-3 min-h-[48px] rounded-xl font-bold bg-red-600 hover:bg-red-500 text-white text-sm sm:text-xs transition-all shadow-lg flex items-center justify-center space-x-1.5">
                     <span>💾</span>
                     <span>Salvar Tag</span>
                 </button>
@@ -1713,7 +1721,7 @@
                 <span id="mandatoryPopupTimerText" class="text-xs font-bold font-mono text-white tracking-wide">
                     Este aviso fecha em 5...
                 </span>
-                <button id="mandatoryPopupCloseBtn" class="hidden text-xs font-bold text-white/70 hover:text-white ml-2 underline transition-colors">
+                <button id="mandatoryPopupCloseBtn" class="hidden text-xs font-bold text-white/70 hover:text-white ml-2 underline transition-colors py-2 px-2.5 min-h-[36px] inline-flex items-center">
                     Fechar Agora ✕
                 </button>
             </div>
@@ -1722,11 +1730,11 @@
 
     <!-- PROFILE MODAL -->
     <div id="profileModal" class="fixed inset-0 bg-black/80 backdrop-blur-xl z-50 flex items-center justify-center hidden opacity-0 transition-opacity duration-300 p-4">
-        <div class="bg-black/90 border border-white/15 rounded-3xl p-8 max-w-lg w-full shadow-2xl relative text-white transform scale-95 transition-transform duration-300">
-            <button id="closeProfileModal" class="absolute top-5 right-5 text-graphite hover:text-white transition-colors text-xl font-bold">✕</button>
+        <div class="bg-black/90 border border-white/15 rounded-3xl p-6 sm:p-8 max-w-lg w-full max-h-[92vh] overflow-y-auto shadow-2xl relative text-white transform scale-95 transition-transform duration-300">
+            <button id="closeProfileModal" class="absolute top-3 right-3 sm:top-5 sm:right-5 w-11 h-11 flex items-center justify-center text-graphite hover:text-white transition-colors text-xl font-bold">✕</button>
 
             <div class="flex items-center space-x-4 mb-6 pb-6 border-b border-white/10">
-                <img id="modalProfileAvatar" src="https://api.dicebear.com/7.x/bottts/svg?seed=AdminBoss" alt="Avatar" class="w-16 h-16 rounded-full border-2 border-white/30 shadow-lg">
+                <img id="modalProfileAvatar" src="https://api.dicebear.com/7.x/bottts/svg?seed=AdminBoss" alt="Avatar" class="w-16 h-16 rounded-full border-2 border-white/30 shadow-lg object-cover">
                 <div>
                     <h3 id="modalProfileName" class="text-xl font-bold">Administrador</h3>
                     <span id="modalProfileRole" class="text-xs font-mono text-white/60 font-bold uppercase">ADMIN ACCESS</span>
@@ -1746,7 +1754,7 @@
                     </div>
                 </div>
 
-                <button id="logoutBtn" class="w-full mt-4 py-2.5 rounded-xl font-semibold bg-red-500/20 hover:bg-red-500/30 text-red-400 border border-red-500/30 transition-all text-xs">
+                <button id="logoutBtn" class="w-full mt-4 py-3 min-h-[44px] flex items-center justify-center rounded-xl font-semibold bg-red-500/20 hover:bg-red-500/30 text-red-400 border border-red-500/30 transition-all text-xs">
                     Sair da Conta
                 </button>
             </div>
@@ -1785,7 +1793,7 @@
                             ⌘+S
                         </span>
 
-                        <button id="closeLessonEditorModal" title="Fechar (Esc)" class="w-8 h-8 rounded-full bg-white/5 hover:bg-white/15 border border-white/10 flex items-center justify-center text-white/70 hover:text-white transition-all text-sm font-bold">
+                        <button id="closeLessonEditorModal" title="Fechar (Esc)" class="w-10 h-10 rounded-full bg-white/5 hover:bg-white/15 border border-white/10 flex items-center justify-center text-white/70 hover:text-white transition-all text-base font-bold">
                             ✕
                         </button>
                     </div>
@@ -1840,7 +1848,7 @@
                     </div>
 
                     <!-- Seletor de Tipo de Aula (Skool Format) -->
-                    <div class="flex items-center justify-between p-3 rounded-2xl bg-white/[0.03] border border-white/10">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between p-3 rounded-2xl bg-white/[0.03] border border-white/10 gap-3">
                         <div class="flex items-center space-x-2.5">
                             <span class="text-sm">📌</span>
                             <div>
@@ -1849,11 +1857,11 @@
                             </div>
                         </div>
                         <div class="flex items-center space-x-1.5 bg-black/60 p-1 rounded-xl border border-white/10">
-                            <button type="button" id="lessonTypeVideoBtn" class="px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-white text-black shadow-sm flex items-center space-x-1.5">
+                            <button type="button" id="lessonTypeVideoBtn" class="flex-1 sm:flex-none px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-white text-black shadow-sm flex items-center justify-center space-x-1.5">
                                 <span>🎥 Vídeo + Resumo</span>
                             </button>
-                            <button type="button" id="lessonTypeArticleBtn" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-white/70 hover:text-white transition-all flex items-center space-x-1.5">
-                                <span>📄 Somente Texto / Artigo</span>
+                            <button type="button" id="lessonTypeArticleBtn" class="flex-1 sm:flex-none px-3 py-1.5 rounded-lg text-xs font-semibold text-white/70 hover:text-white transition-all flex items-center justify-center space-x-1.5">
+                                <span>📄 Somente Texto</span>
                             </button>
                         </div>
                     </div>
@@ -1869,7 +1877,7 @@
                             </div>
 
                             <div class="relative">
-                                <input type="text" id="editLessonVideoUrl" placeholder="https://www.youtube.com/watch?v=... ou Vimeo / Loom" class="w-full bg-white/5 border border-white/15 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-white/50 focus:bg-white/10 transition-all pr-20 font-mono">
+                                <input type="text" id="editLessonVideoUrl" placeholder="https://www.youtube.com/watch?v=... ou Vimeo / Loom" class="w-full bg-white/5 border border-white/15 rounded-xl px-4 py-2.5 text-base sm:text-xs text-white focus:outline-none focus:border-white/50 focus:bg-white/10 transition-all pr-20 font-mono">
                                 <div class="absolute right-2 top-1/2 -translate-y-1/2 flex items-center space-x-1">
                                     <button type="button" id="btnPasteVideoUrl" class="px-2 py-1 bg-white/10 hover:bg-white/20 text-white rounded text-[0.65rem] font-bold transition-all" title="Colar link da área de transferência">
                                         Colar
@@ -1934,17 +1942,17 @@
                             </div>
                         </div>
 
-                        <!-- Barra de Ferramentas / Rich Format Toolbar -->
-                        <div class="p-2 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center gap-1.5 flex-wrap">
+                        <!-- Barra de Ferramentas / Rich Format Toolbar (Rolar horizontalmente no mobile) -->
+                        <div class="p-2 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center gap-1.5 overflow-x-auto hide-scrollbar touch-pan-x flex-nowrap sm:flex-wrap">
                             <!-- Tipografia -->
-                            <div class="flex items-center space-x-1 pr-2 border-r border-white/10">
+                            <div class="flex items-center space-x-1 pr-2 border-r border-white/10 flex-shrink-0">
                                 <button type="button" onclick="window.appInsertMarkdown('# ')" title="Título H1" class="px-2.5 py-1 bg-white/5 hover:bg-white/15 border border-white/10 rounded-lg text-xs font-bold text-white transition-all">H1</button>
                                 <button type="button" onclick="window.appInsertMarkdown('## ')" title="Título H2" class="px-2.5 py-1 bg-white/5 hover:bg-white/15 border border-white/10 rounded-lg text-xs font-bold text-white transition-all">H2</button>
                                 <button type="button" onclick="window.appInsertMarkdown('### ')" title="Título H3" class="px-2.5 py-1 bg-white/5 hover:bg-white/15 border border-white/10 rounded-lg text-xs font-bold text-white transition-all">H3</button>
                             </div>
 
                             <!-- Estilo de Texto -->
-                            <div class="flex items-center space-x-1 pr-2 border-r border-white/10">
+                            <div class="flex items-center space-x-1 pr-2 border-r border-white/10 flex-shrink-0">
                                 <button type="button" onclick="window.appInsertMarkdownWrap('**', '**')" title="Negrito" class="w-7 h-7 bg-white/5 hover:bg-white/15 border border-white/10 rounded-lg text-xs font-bold text-white flex items-center justify-center transition-all"><b>B</b></button>
                                 <button type="button" onclick="window.appInsertMarkdownWrap('*', '*')" title="Itálico" class="w-7 h-7 bg-white/5 hover:bg-white/15 border border-white/10 rounded-lg text-xs italic text-white flex items-center justify-center transition-all"><i>I</i></button>
                                 <button type="button" onclick="window.appInsertMarkdownWrap('~~', '~~')" title="Riscado" class="w-7 h-7 bg-white/5 hover:bg-white/15 border border-white/10 rounded-lg text-xs text-white line-through flex items-center justify-center transition-all">S</button>
@@ -1952,7 +1960,7 @@
                             </div>
 
                             <!-- Blocos Skool / Callouts -->
-                            <div class="flex items-center space-x-1 pr-2 border-r border-white/10">
+                            <div class="flex items-center space-x-1 pr-2 border-r border-white/10 flex-shrink-0">
                                 <button type="button" onclick="window.appInsertSkoolCallout('tip')" title="Inserir Dica de Ouro" class="px-2 py-1 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 border border-emerald-500/20 rounded-lg text-xs font-semibold transition-all flex items-center space-x-1">
                                     <span>💡 Dica</span>
                                 </button>
@@ -1968,7 +1976,7 @@
                             </div>
 
                             <!-- Listas e Ações -->
-                            <div class="flex items-center space-x-1 pr-2 border-r border-white/10">
+                            <div class="flex items-center space-x-1 pr-2 border-r border-white/10 flex-shrink-0">
                                 <button type="button" onclick="window.appInsertMarkdown('- ')" title="Lista com Marcadores" class="px-2 py-1 bg-white/5 hover:bg-white/15 border border-white/10 rounded-lg text-xs font-mono text-white transition-all">• Lista</button>
                                 <button type="button" onclick="window.appInsertMarkdown('1. ')" title="Lista Numerada" class="px-2 py-1 bg-white/5 hover:bg-white/15 border border-white/10 rounded-lg text-xs font-mono text-white transition-all">1. Num</button>
                                 <button type="button" onclick="window.appInsertMarkdown('- [ ] ')" title="Checklist de Tarefas do Aluno" class="px-2.5 py-1 bg-white/10 hover:bg-white/20 border border-white/15 rounded-lg text-xs font-bold text-white transition-all flex items-center space-x-1">
@@ -1977,7 +1985,7 @@
                             </div>
 
                             <!-- Mídia & Extras -->
-                            <div class="flex items-center space-x-1">
+                            <div class="flex items-center space-x-1 flex-shrink-0">
                                 <button type="button" onclick="window.appInsertMarkdown('```javascript\n// Insira seu código aqui\n```\n')" title="Bloco de Código" class="px-2 py-1 bg-white/5 hover:bg-white/15 border border-white/10 rounded-lg text-xs font-mono text-white transition-all">💻 Código</button>
                                 <button type="button" onclick="window.appInsertMarkdown('> ')" title="Citação" class="px-2 py-1 bg-white/5 hover:bg-white/15 border border-white/10 rounded-lg text-xs font-mono text-white transition-all">" Quote</button>
                                 <button type="button" onclick="window.appInsertMarkdown('[Nome do Link](https://...)')" title="Link" class="px-2 py-1 bg-white/5 hover:bg-white/15 border border-white/10 rounded-lg text-xs text-white transition-all">🔗 Link</button>
@@ -1995,7 +2003,7 @@
                         <div id="lessonEditorSplitWrapper" class="grid grid-cols-1 gap-4 transition-all">
                             <!-- Textarea de Edição -->
                             <div id="editorPaneTextareaContainer" class="w-full">
-                                <textarea id="editLessonContent" rows="12" placeholder="Digite as diretrizes, prompts e conteúdo completo da aula no formato Notion / Markdown..." class="w-full bg-[#07080a] border border-white/15 rounded-2xl p-4 text-sm text-gray-200 focus:outline-none focus:border-white/40 focus:bg-[#0c0d12] transition-all font-mono leading-relaxed resize-y shadow-inner"></textarea>
+                                <textarea id="editLessonContent" rows="12" placeholder="Digite as diretrizes, prompts e conteúdo completo da aula no formato Notion / Markdown..." class="w-full bg-[#07080a] border border-white/15 rounded-2xl p-4 text-base sm:text-sm text-gray-200 focus:outline-none focus:border-white/40 focus:bg-[#0c0d12] transition-all font-mono leading-relaxed resize-y shadow-inner"></textarea>
                             </div>
 
                             <!-- Live Preview Split Pane (Oculto no modo normal, visível no modo split ou preview) -->
@@ -2102,7 +2110,7 @@
                                 <label class="block text-xs font-bold uppercase text-white/80 tracking-wider mb-1">Módulo / Seção do Curso</label>
                                 <p class="text-[0.7rem] text-white/50 mb-2">Agrupe esta aula em um módulo temático (ex: "Módulo 1: Fundamentos", "Módulo 2: Técnicas Avançadas").</p>
                             </div>
-                            <input type="text" id="editLessonModule" list="serverModulesList" placeholder="Ex: Módulo 1: Fundamentos Visuais" class="w-full bg-white/5 border border-white/15 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-white/40 focus:bg-white/10 transition-all font-semibold">
+                            <input type="text" id="editLessonModule" list="serverModulesList" placeholder="Ex: Módulo 1: Fundamentos Visuais" class="w-full bg-white/5 border border-white/15 rounded-xl px-4 py-2.5 text-base sm:text-xs text-white focus:outline-none focus:border-white/40 focus:bg-white/10 transition-all font-semibold">
                             <datalist id="serverModulesList">
                                 <option value="Módulo 1: Fundamentos & Setup">
                                 <option value="Módulo 2: Engenharia de Prompts Pro">
@@ -2119,7 +2127,7 @@
                                 <p class="text-[0.7rem] text-white/50 mb-2">Tempo estimado exibido aos alunos na lista lateral de aulas (ex: "15 min", "42 min").</p>
                             </div>
                             <div class="relative">
-                                <input type="text" id="editLessonDuration" placeholder="Ex: 18 min" class="w-full bg-white/5 border border-white/15 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-white/40 focus:bg-white/10 transition-all font-semibold">
+                                <input type="text" id="editLessonDuration" placeholder="Ex: 18 min" class="w-full bg-white/5 border border-white/15 rounded-xl px-4 py-2.5 text-base sm:text-xs text-white focus:outline-none focus:border-white/40 focus:bg-white/10 transition-all font-semibold">
                                 <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-white/40">⏱️</span>
                             </div>
                         </div>
@@ -2130,7 +2138,7 @@
                                 <label class="block text-xs font-bold uppercase text-white/80 tracking-wider mb-1">Nível de Acesso (Gamification Tier)</label>
                                 <p class="text-[0.7rem] text-white/50 mb-2">Controle quem pode acessar esta aula no servidor.</p>
                             </div>
-                            <select id="editLessonAccessLevel" class="w-full bg-white/5 border border-white/15 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-white/40">
+                            <select id="editLessonAccessLevel" class="w-full bg-white/5 border border-white/15 rounded-xl px-4 py-2.5 text-base sm:text-xs text-white focus:outline-none focus:border-white/40">
                                 <option value="all" class="bg-black text-white">🔓 Aberto a Todos os Membros (Free + Pro)</option>
                                 <option value="pro" class="bg-black text-white">⚡ Exclusivo Membros Pro / Assinantes</option>
                                 <option value="vip" class="bg-black text-white">👑 Restrito VIP / Nível 3+</option>
@@ -2146,7 +2154,7 @@
                             <div class="grid grid-cols-2 gap-3">
                                 <div>
                                     <label class="block text-[0.65rem] text-white/50 uppercase font-bold mb-1">Status</label>
-                                    <select id="editLessonStatus" class="w-full bg-white/5 border border-white/15 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-white/40">
+                                    <select id="editLessonStatus" class="w-full bg-white/5 border border-white/15 rounded-xl px-3 py-2 text-base sm:text-xs text-white focus:outline-none focus:border-white/40">
                                         <option value="published" class="bg-black text-white">🟢 Publicada</option>
                                         <option value="draft" class="bg-black text-white">🟡 Rascunho</option>
                                         <option value="upcoming" class="bg-black text-white">🔒 Em Breve</option>
@@ -2154,7 +2162,7 @@
                                 </div>
                                 <div>
                                     <label class="block text-[0.65rem] text-white/50 uppercase font-bold mb-1">Ordem (Posição)</label>
-                                    <input type="number" id="editLessonDisplayOrder" min="1" value="1" class="w-full bg-white/5 border border-white/15 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-white/40">
+                                    <input type="number" id="editLessonDisplayOrder" min="1" value="1" class="w-full bg-white/5 border border-white/15 rounded-xl px-3 py-2 text-base sm:text-xs text-white focus:outline-none focus:border-white/40">
                                 </div>
                             </div>
                         </div>
@@ -2183,9 +2191,9 @@
 
             </div>
 
-            <!-- FOOTER COM AÇÕES SKOOL-LIKE -->
-            <div class="pt-4 border-t border-white/10 flex items-center justify-between mt-4 flex-shrink-0 flex-wrap gap-y-3">
-                <button id="deleteLessonModalBtn" type="button" class="px-4 py-2.5 bg-red-500/15 hover:bg-red-500/25 text-red-400 border border-red-500/30 rounded-xl text-xs font-bold transition-all flex items-center space-x-1.5">
+            <!-- FOOTER COM AÇÕES SKOOL-LIKE (Touch Target Ergonômico Mobile-First) -->
+            <div class="pt-4 border-t border-white/10 flex items-center justify-between mt-4 flex-shrink-0 flex-wrap gap-3">
+                <button id="deleteLessonModalBtn" type="button" class="px-4 py-3 min-h-[44px] bg-red-500/15 hover:bg-red-500/25 text-red-400 border border-red-500/30 rounded-xl text-xs font-bold transition-all flex items-center space-x-1.5 active:scale-95">
                     <span>🗑️ Excluir Aula</span>
                 </button>
 
@@ -2193,14 +2201,14 @@
                     <span>💡 Pressione <kbd class="px-1.5 py-0.5 bg-white/10 rounded font-mono text-[0.65rem] text-white/70">Ctrl+S</kbd> para salvar a qualquer momento</span>
                 </div>
 
-                <div class="flex items-center space-x-2.5 ml-auto">
-                    <button id="cancelLessonModalBtn" type="button" class="px-4 py-2.5 bg-white/5 hover:bg-white/15 text-white/70 hover:text-white rounded-xl text-xs font-semibold transition-all">
+                <div class="flex items-center space-x-2 sm:space-x-2.5 ml-auto flex-wrap">
+                    <button id="cancelLessonModalBtn" type="button" class="px-4 py-3 min-h-[44px] bg-white/5 hover:bg-white/15 text-white/70 hover:text-white rounded-xl text-xs font-semibold transition-all flex items-center justify-center active:scale-95">
                         Cancelar
                     </button>
-                    <button id="previewLessonModalBtn" type="button" class="px-4 py-2.5 bg-white/10 hover:bg-white/20 text-white border border-white/15 rounded-xl text-xs font-semibold transition-all flex items-center space-x-1.5">
+                    <button id="previewLessonModalBtn" type="button" class="px-4 py-3 min-h-[44px] bg-white/10 hover:bg-white/20 text-white border border-white/15 rounded-xl text-xs font-semibold transition-all flex items-center space-x-1.5 active:scale-95">
                         <span>👁️ Pré-visualizar</span>
                     </button>
-                    <button id="saveLessonModalBtn" type="button" class="px-6 py-2.5 bg-white text-black hover:bg-white/90 rounded-xl text-xs font-bold shadow-[0_4px_20px_rgba(255,255,255,0.3)] hover:scale-105 active:scale-95 transition-all flex items-center space-x-2">
+                    <button id="saveLessonModalBtn" type="button" class="px-6 py-3 min-h-[44px] bg-white text-black hover:bg-white/90 rounded-xl text-xs font-bold shadow-[0_4px_20px_rgba(255,255,255,0.3)] hover:scale-105 active:scale-95 transition-all flex items-center space-x-2">
                         <span id="saveLessonBtnIcon">💾</span>
                         <span id="saveLessonBtnLabel">Salvar Aula</span>
                     </button>
@@ -2210,8 +2218,9 @@
         </div>
     </div>
 
+    <!-- GERENCIADOR DE SERVIDOR (MODAL MOBILE-FIRST) -->
     <div id="serverEditorModal" class="fixed inset-0 bg-black/90 backdrop-blur-2xl z-50 flex items-center justify-center hidden opacity-0 transition-opacity duration-300 p-4 sm:p-6">
-        <div class="bg-black/95 border border-white/20 rounded-3xl p-6 sm:p-8 max-w-xl w-full shadow-[0_40px_80px_rgba(0,0,0,0.8)] relative text-white transform scale-95 transition-transform duration-300">
+        <div class="bg-black/95 border border-white/20 rounded-3xl p-6 sm:p-8 max-w-xl w-full max-h-[92vh] overflow-y-auto shadow-[0_40px_80px_rgba(0,0,0,0.8)] relative text-white transform scale-95 transition-transform duration-300">
             <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-6">
                 <div class="flex items-center space-x-3">
                     <span class="text-2xl">🖥️</span>
@@ -2220,21 +2229,21 @@
                         <span class="text-xs text-white/50 font-mono">CONFIGURAÇÕES DO SERVIDOR</span>
                     </div>
                 </div>
-                <button id="closeServerEditorModal" class="text-graphite hover:text-white transition-colors text-2xl font-bold">✕</button>
+                <button id="closeServerEditorModal" class="w-11 h-11 flex items-center justify-center text-graphite hover:text-white transition-colors text-2xl font-bold">✕</button>
             </div>
 
             <div class="space-y-4">
                 <div>
                     <label class="block text-xs font-bold uppercase text-graphite mb-1 tracking-wider">Título do Servidor</label>
-                    <input type="text" id="editServerTitle" placeholder="Ex: Servidor A.I Art Pro Masterclass" class="w-full bg-white/5 border border-white/15 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-white/40 focus:bg-white/10 transition-all">
+                    <input type="text" id="editServerTitle" placeholder="Ex: Servidor A.I Art Pro Masterclass" class="w-full bg-white/5 border border-white/15 rounded-xl px-4 py-3 text-base sm:text-sm text-white focus:outline-none focus:border-white/40 focus:bg-white/10 transition-all">
                 </div>
                 <div>
                     <label class="block text-xs font-bold uppercase text-graphite mb-1 tracking-wider">Descrição Breve</label>
-                    <textarea id="editServerDescription" rows="3" placeholder="Descrição resumida do treinamento..." class="w-full bg-white/5 border border-white/15 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-white/40 focus:bg-white/10 transition-all resize-none"></textarea>
+                    <textarea id="editServerDescription" rows="3" placeholder="Descrição resumida do treinamento..." class="w-full bg-white/5 border border-white/15 rounded-xl p-3 text-base sm:text-xs text-white focus:outline-none focus:border-white/40 focus:bg-white/10 transition-all resize-none"></textarea>
                 </div>
                 <div>
                     <label class="block text-xs font-bold uppercase text-graphite mb-1 tracking-wider">URL da Imagem Hero</label>
-                    <input type="text" id="editServerHeroImage" placeholder="./public/assets/images/..." class="w-full bg-white/5 border border-white/15 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-white/40 focus:bg-white/10 transition-all">
+                    <input type="text" id="editServerHeroImage" placeholder="./public/assets/images/..." class="w-full bg-white/5 border border-white/15 rounded-xl px-4 py-2.5 text-base sm:text-xs text-white focus:outline-none focus:border-white/40 focus:bg-white/10 transition-all">
                 </div>
                 <div class="h-32 rounded-xl overflow-hidden border border-white/10 relative">
                     <img id="serverHeroPreviewImg" src="" class="w-full h-full object-cover">
@@ -2242,15 +2251,15 @@
                 </div>
             </div>
 
-            <div class="pt-6 border-t border-white/10 flex items-center justify-between mt-6">
-                <button id="deleteServerModalBtn" type="button" class="px-5 py-2.5 bg-red-500/20 hover:bg-red-500/30 text-red-400 border border-red-500/30 rounded-xl text-xs font-bold transition-all">
+            <div class="pt-6 border-t border-white/10 flex items-center justify-between mt-6 flex-wrap gap-3">
+                <button id="deleteServerModalBtn" type="button" class="px-5 py-3 min-h-[44px] bg-red-500/20 hover:bg-red-500/30 text-red-400 border border-red-500/30 rounded-xl text-xs font-bold transition-all flex items-center justify-center active:scale-95">
                     🗑️ Excluir Servidor
                 </button>
-                <div class="flex items-center space-x-3">
-                    <button id="cancelServerModalBtn" type="button" class="px-5 py-2.5 bg-white/10 hover:bg-white/20 text-graphite hover:text-white rounded-xl text-xs font-bold transition-all">
+                <div class="flex items-center space-x-3 ml-auto">
+                    <button id="cancelServerModalBtn" type="button" class="px-5 py-3 min-h-[44px] bg-white/10 hover:bg-white/20 text-graphite hover:text-white rounded-xl text-xs font-bold transition-all flex items-center justify-center active:scale-95">
                         Cancelar
                     </button>
-                    <button id="saveServerModalBtn" type="button" class="px-6 py-2.5 bg-white text-black rounded-xl text-xs font-bold shadow-lg hover:bg-white/90 hover:scale-105 transition-all">
+                    <button id="saveServerModalBtn" type="button" class="px-6 py-3 min-h-[44px] bg-white text-black rounded-xl text-xs font-bold shadow-lg hover:bg-white/90 hover:scale-105 active:scale-95 transition-all flex items-center justify-center">
                         💾 Salvar Servidor
                     </button>
                 </div>
@@ -2792,6 +2801,93 @@
             <button onclick="window.closeCommunityLightbox()" class="absolute -top-12 right-0 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-lg font-bold border border-white/20 transition-all">✕</button>
             <img id="lightboxImg" src="" class="max-w-full max-h-[80vh] object-contain rounded-2xl shadow-[0_20px_70px_rgba(0,0,0,0.9)] border border-white/15">
             <p id="lightboxCaption" class="mt-3 text-xs text-white/70 font-mono text-center max-w-xl"></p>
+        </div>
+    </div>
+
+    <!-- MOBILE BOTTOM DOCK (ERGONOMIA THUMB ZONE & LEI DE FITTS) -->
+    <nav id="mobile-bottom-dock" aria-label="Navegação Mobile" class="fixed bottom-0 left-0 right-0 z-[99998] bg-[#07070b]/92 backdrop-blur-2xl border-t border-white/10 shadow-[0_-10px_35px_rgba(0,0,0,0.8)] pb-[env(safe-area-inset-bottom,0px)] md:hidden">
+        <div class="h-16 px-3 max-w-md mx-auto grid grid-cols-5 items-center">
+            <!-- 1. Início -->
+            <button id="mobileDockHomeBtn" data-view="home" class="mobile-dock-btn active" aria-label="Início">
+                <svg class="w-5 h-5 mb-1 transition-transform group-active:scale-90" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                </svg>
+                <span class="text-[10px] font-semibold tracking-wide">Início</span>
+                <span class="dock-indicator"></span>
+            </button>
+            
+            <!-- 2. Feed Comunidade -->
+            <button id="mobileDockCommunityBtn" data-view="community" class="mobile-dock-btn" aria-label="Comunidade">
+                <svg class="w-5 h-5 mb-1 transition-transform group-active:scale-90" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
+                </svg>
+                <span class="text-[10px] font-semibold tracking-wide">Feed</span>
+                <span class="dock-indicator"></span>
+            </button>
+
+            <!-- 3. Servers & Aulas -->
+            <button id="mobileDockServersBtn" data-view="servers" class="mobile-dock-btn" aria-label="Servidores e Aulas">
+                <svg class="w-5 h-5 mb-1 transition-transform group-active:scale-90" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                </svg>
+                <span class="text-[10px] font-semibold tracking-wide">Servers</span>
+                <span class="dock-indicator"></span>
+            </button>
+
+            <!-- 4. Busca Rápida -->
+            <button id="mobileDockSearchBtn" class="mobile-dock-btn" aria-label="Buscar">
+                <svg class="w-5 h-5 mb-1 transition-transform group-active:scale-90" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <span class="text-[10px] font-semibold tracking-wide">Buscar</span>
+                <span class="dock-indicator"></span>
+            </button>
+
+            <!-- 5. Perfil / Auth -->
+            <button id="mobileDockProfileBtn" class="mobile-dock-btn" aria-label="Perfil">
+                <svg class="w-5 h-5 mb-1 transition-transform group-active:scale-90" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+                <span id="mobileDockProfileLabel" class="text-[10px] font-semibold tracking-wide">Perfil</span>
+                <span class="dock-indicator"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MOBILE SEARCH OVERLAY (FULL SCREEN TOUCH SEARCH) -->
+    <div id="mobileSearchOverlay" class="md:hidden" aria-hidden="true">
+        <!-- Top bar with search input and close button -->
+        <div class="flex items-center gap-2 mb-3">
+            <div class="relative flex-1">
+                <svg class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <input id="mobileSearchInput" type="search" inputmode="search" placeholder="Buscar prompts, packs, servidores..." class="w-full h-11 pl-10 pr-9 rounded-xl bg-white/[0.08] border border-white/15 text-white placeholder-white/40 text-[15px] focus:outline-none focus:border-red-500/80 focus:bg-white/[0.12] transition-all">
+                <button id="mobileSearchClearBtn" class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-white/10 text-white/70 flex items-center justify-center text-xs">✕</button>
+            </div>
+            <button id="mobileSearchCloseBtn" class="h-11 px-3 text-sm font-semibold text-white/70 hover:text-white flex items-center justify-center active:scale-95 transition-all">
+                Cancelar
+            </button>
+        </div>
+
+        <!-- Chips de pesquisa rápida -->
+        <div class="mb-4">
+            <p class="text-[11px] uppercase tracking-wider text-white/40 font-mono mb-2">Sugestões Rápidas</p>
+            <div class="flex items-center gap-1.5 overflow-x-auto pb-1 no-scrollbar -mx-1 px-1">
+                <button class="mobile-search-chip whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-medium bg-white/[0.06] border border-white/10 text-white/80 active:bg-red-600/30 active:text-white" data-chip="Flux">Flux.1</button>
+                <button class="mobile-search-chip whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-medium bg-white/[0.06] border border-white/10 text-white/80 active:bg-red-600/30 active:text-white" data-chip="Midjourney">Midjourney</button>
+                <button class="mobile-search-chip whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-medium bg-white/[0.06] border border-white/10 text-white/80 active:bg-red-600/30 active:text-white" data-chip="Prompt">Prompts</button>
+                <button class="mobile-search-chip whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-medium bg-white/[0.06] border border-white/10 text-white/80 active:bg-red-600/30 active:text-white" data-chip="ChatGPT">ChatGPT</button>
+                <button class="mobile-search-chip whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-medium bg-white/[0.06] border border-white/10 text-white/80 active:bg-red-600/30 active:text-white" data-chip="Server">Servidores</button>
+                <button class="mobile-search-chip whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-medium bg-white/[0.06] border border-white/10 text-white/80 active:bg-red-600/30 active:text-white" data-chip="Marketing">Marketing</button>
+            </div>
+        </div>
+
+        <!-- Resultados da Busca Mobile -->
+        <div id="mobileSearchResults" class="flex-1 overflow-y-auto no-scrollbar space-y-2">
+            <div class="py-12 text-center text-white/40 text-xs font-mono">
+                Digite um termo acima ou toque em uma sugestão rápida.
+            </div>
         </div>
     </div>
 

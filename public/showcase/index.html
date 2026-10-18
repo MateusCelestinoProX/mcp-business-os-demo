@@ -332,15 +332,19 @@
           align-items: center !important;
           justify-content: center !important;
         }
+        body {
+          padding-top: 108px !important;
+          padding-bottom: calc(72px + env(safe-area-inset-bottom)) !important;
+        }
+        .mobile-menu {
+          top: 60px !important;
+        }
       }
       body {
-        padding-top: 60px !important;
+        padding-top: 60px;
       }
       .nav-main {
-        top: 60px !important;
-      }
-      .mobile-menu {
-        top: 136px !important;
+        top: 60px;
       }
     </style>
 
@@ -462,6 +466,7 @@
          ======================================================== -->
     <nav class="showcase-mobile-chips-bar" id="mobile-chips-bar" aria-label="Navegação Rápida Showcase">
       <div class="showcase-chips-scroll">
+        <button type="button" class="chip-link chip-menu-trigger open-mobile-menu-trigger" id="chips-menu-btn" aria-label="Abrir Menu Completo de Seções"><i data-lucide="menu"></i><span>Menu ☰</span></button>
         <a href="#about" class="chip-link active"><i data-lucide="user"></i><span>Sobre</span></a>
         <a href="#skills" class="chip-link"><i data-lucide="zap"></i><span>Habilidades</span></a>
         <a href="#spotlight-section" class="chip-link"><i data-lucide="trending-up"></i><span>Resultados</span></a>
@@ -868,19 +873,19 @@
         <div class="analytics-gallery animate-blur-fade-up" style="animation-delay: 400ms; display:flex; gap:20px; z-index:10; width:100%; max-width:1200px; justify-content:center; flex-wrap:wrap;">
             <div class="liquid-glass-strong" data-lightbox style="flex:1; min-width:250px; max-width:350px; height:450px; border-radius:24px; overflow:hidden; padding:12px; display:flex; flex-direction:column; cursor:pointer;" title="Toque para ampliar">
                 <div style="width:100%; height:100%; border-radius:16px; overflow:hidden; position:relative;">
-                    <img src="update-midia/yt_studio.webp" style="width:100%; height:100%; object-fit:cover; filter: brightness(0.9);" alt="YT Studio Analytics">
+                    <img src="update-midia/yt_studio.webp" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:cover; filter: brightness(0.9);" alt="YT Studio Analytics">
                 </div>
             </div>
             
             <div class="liquid-glass-strong" data-lightbox style="flex:1.2; min-width:300px; max-width:450px; height:450px; border-radius:24px; overflow:hidden; padding:12px; display:flex; flex-direction:column; cursor:pointer;" title="Toque para ampliar">
                 <div style="width:100%; height:100%; border-radius:16px; overflow:hidden; position:relative;">
-                    <img src="update-midia/captura_desktop.webp" style="width:100%; height:100%; object-fit:cover; filter: brightness(0.9);" alt="Desktop Analytics">
+                    <img src="update-midia/captura_desktop.webp" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:cover; filter: brightness(0.9);" alt="Desktop Analytics">
                 </div>
             </div>
 
             <div class="liquid-glass-strong" data-lightbox style="flex:1; min-width:250px; max-width:350px; height:450px; border-radius:24px; overflow:hidden; padding:12px; display:flex; flex-direction:column; cursor:pointer;" title="Toque para ampliar">
                 <div style="width:100%; height:100%; border-radius:16px; overflow:hidden; position:relative;">
-                    <img src="update-midia/mobile_analytics.webp" style="width:100%; height:100%; object-fit:cover; filter: brightness(0.9);" alt="Mobile Analytics">
+                    <img src="update-midia/mobile_analytics.webp" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:cover; filter: brightness(0.9);" alt="Mobile Analytics">
                 </div>
             </div>
         </div>
@@ -1007,7 +1012,7 @@
             <section id="vps" class="section">
                 <!-- Sutil WhatsApp API (No Hero) -->
                 <div class="liquid-glass-strong whatsapp-api-sutil reveal" style="margin-bottom: 40px;">
-                    <img src="cv-itens/api1.webp" alt="WhatsApp API" data-lightbox style="cursor: pointer;">
+                    <img src="cv-itens/api1.webp" alt="WhatsApp API" loading="lazy" decoding="async" data-lightbox style="cursor: pointer;">
                     <div class="whatsapp-api-sutil-info">
                         <h5>Conectividade & Escala</h5>
                         <p>Experiência prática na estruturação e otimização de APIs de WhatsApp open source e auto-hospedadas (como Evolution API e similares) integradas a workflows avançados de atendimento e funis de marketing.</p>
@@ -1204,7 +1209,7 @@
                             Presença consolidada entre os principais alunos da plataforma. Domínio absoluto de funis de vendas semiautomáticos, atração orgânica e conversão de tráfego qualificado, validados pela proficiência prática nas táticas aplicadas.
                         </p>
                         <div style="border-radius: 16px; overflow: hidden;" data-lightbox>
-                            <img src="cv-itens/cyberclasss hero.webp" alt="Cyberclass Comprovante" style="width: 100%; object-fit: cover; cursor: pointer;">
+                            <img src="cv-itens/cyberclasss hero.webp" alt="Cyberclass Comprovante" loading="lazy" decoding="async" style="width: 100%; object-fit: cover; cursor: pointer;">
                         </div>
                         <div style="border-radius: 16px; overflow: hidden; margin-top: auto;">
                              <video controls preload="metadata" playsinline style="width:100%; border-radius: 16px;">
@@ -2134,7 +2139,7 @@
 
         <div class="contact-apple-linktree-container fade-in-up">
             <div class="contact-profile-img">
-                <img src="update-midia/enhanced_zzzzzz.webp" onerror="this.src='https://placehold.co/200x200/222/FFF?text=MC'" alt="Mateus Celestino">
+                <img src="update-midia/enhanced_zzzzzz.webp" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/200x200/222/FFF?text=MC'" alt="Mateus Celestino">
             </div>
 
             <h1 class="contact-heading-h1">
@@ -2164,10 +2169,6 @@
         <i data-lucide="home"></i>
         <span>Início</span>
       </a>
-      <a href="#skills" class="dock-item" id="dock-skills" aria-label="Habilidades">
-        <i data-lucide="zap"></i>
-        <span>Stack</span>
-      </a>
       <a href="#opensource-projects" class="dock-item" id="dock-projects" aria-label="Projetos OpenSource">
         <i data-lucide="code-2"></i>
         <span>Projetos</span>
@@ -2181,8 +2182,12 @@
       </a>
       <a href="https://api.whatsapp.com/send/?phone=553197724257&text=Ol%C3%A1+Mateus%2C+vi+seu+Showcase+e+quero+falar+sobre+projetos.&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="dock-item dock-item-highlight" id="dock-contact" aria-label="WhatsApp / Contato">
         <i data-lucide="message-circle"></i>
-        <span>Contato</span>
+        <span>WhatsApp</span>
       </a>
+      <button type="button" class="dock-item open-mobile-menu-trigger" id="dock-menu-btn" aria-label="Abrir Menu Completo de 15 Seções">
+        <i data-lucide="menu"></i>
+        <span>Menu ☰</span>
+      </button>
     </nav>
 
     <!-- ========== FLUIDIC BACK TO TOP BUTTON ========== -->

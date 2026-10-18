@@ -3102,6 +3102,11 @@ html, body {
   position: relative;
   -webkit-tap-highlight-color: transparent;
   user-select: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 0;
 }
 
 .dock-item i, .dock-item svg {
@@ -3112,6 +3117,19 @@ html, body {
 
 .dock-item:active {
   transform: scale(0.92);
+}
+
+.chip-menu-trigger {
+  background: rgba(255, 15, 57, 0.2) !important;
+  border-color: rgba(255, 15, 57, 0.45) !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+}
+
+.chip-menu-trigger i, .chip-menu-trigger svg {
+  color: #ff3b5c !important;
+  opacity: 1 !important;
 }
 
 .dock-item.active {
@@ -3651,6 +3669,10 @@ html, body {
     border-radius: 14px !important;
   }
 
+  .cert-cat-accordion.open .cert-cat-body-list {
+    max-height: 2500px !important;
+  }
+
   .cert-cat-header-click {
     padding: 14px 16px !important;
     min-height: 52px !important;
@@ -3710,10 +3732,22 @@ html, body {
     box-sizing: border-box !important;
   }
 
-  /* 17. LIGHTBOX & MODAIS NO MOBILE */
+  .video-expand-overlay-btn {
+    width: 44px !important;
+    height: 44px !important;
+  }
+
+  .github-repo-btn {
+    min-height: 48px !important;
+    min-width: 130px !important;
+    justify-content: center !important;
+    padding: 12px 20px !important;
+  }
+
+  /* 17. LIGHTBOX & MODAIS NO MOBILE COM SAFE AREA */
   .lightbox-close {
-    top: 14px !important;
-    right: 14px !important;
+    top: max(16px, env(safe-area-inset-top, 16px)) !important;
+    right: max(16px, env(safe-area-inset-right, 16px)) !important;
     width: 48px !important;
     height: 48px !important;
     background: rgba(0, 0, 0, 0.85) !important;
@@ -3730,6 +3764,20 @@ html, body {
     max-width: 96vw !important;
     max-height: 80vh !important;
     border-radius: 14px !important;
+  }
+
+  /* Feedback tátil universal :active para dispositivos móveis */
+  .chip-link:active,
+  .dock-item:active,
+  .btn-expand-video:active,
+  .github-repo-btn:active,
+  .cert-cat-header-click:active,
+  .cert-pdf-item-a:active,
+  .ultra-glass-contact-btn:active,
+  .video-expand-overlay-btn:active,
+  .bloom-portfolio-link:active {
+    transform: scale(0.96) !important;
+    opacity: 0.92 !important;
   }
 }
 

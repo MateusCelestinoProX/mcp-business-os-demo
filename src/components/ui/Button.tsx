@@ -25,10 +25,10 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ref
   ) => {
     const sizeClasses = {
-      sm: "h-9 px-3.5 text-xs rounded-xl font-medium",
-      md: "h-11 px-5 text-sm rounded-xl font-semibold",
-      lg: "h-13 px-8 text-base rounded-2xl font-bold tracking-wide",
-      icon: "h-10 w-10 p-0 rounded-xl flex items-center justify-center",
+      sm: "h-7 sm:h-8 px-2.5 sm:px-3 text-[11px] rounded-lg font-medium",
+      md: "h-8 sm:h-9 px-3.5 sm:px-4 text-xs rounded-lg font-semibold tracking-wide",
+      lg: "h-9 sm:h-10 px-5 sm:px-6 text-xs sm:text-sm rounded-xl font-bold tracking-wide",
+      icon: "h-8 w-8 p-0 rounded-lg flex items-center justify-center",
     };
 
     const variantClasses = {

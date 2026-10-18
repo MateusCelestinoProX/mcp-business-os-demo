@@ -28,9 +28,18 @@ export function SobreSection({ profile }: SobreSectionProps) {
         opacity={0.65}
       />
 
-      {/* Zonas de Transição Internas com Blur e Escurecimento Progressivo */}
-      <div className="absolute top-0 left-0 right-0 h-24 sm:h-28 bg-gradient-to-b from-black/80 via-black/40 to-transparent pointer-events-none z-1" />
-      <div className="absolute bottom-0 left-0 right-0 h-24 sm:h-28 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none z-1" />
+      {/* Zonas de Transição Internas com Blur Óptico e Sombras Volumétricas Suaves */}
+      <div className="absolute top-0 left-0 right-0 h-32 sm:h-44 bg-gradient-to-b from-[#030305] via-[#030305]/80 to-transparent pointer-events-none z-1" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 sm:h-44 bg-gradient-to-t from-[#030305] via-[#030305]/80 to-transparent pointer-events-none z-1" />
+
+      {/* Halo óptico difuso central suave com blur cinematográfico */}
+      <div
+        className="absolute top-8 left-1/2 -translate-x-1/2 w-96 sm:w-[40rem] h-28 rounded-full pointer-events-none opacity-20 z-1"
+        style={{
+          background: 'radial-gradient(ellipse at center, #ff073a 0%, rgba(138,0,18,0.4) 40%, transparent 75%)',
+          filter: 'blur(54px)',
+        }}
+      />
 
       <div className="w-full px-3.5 sm:px-6 lg:px-10 xl:px-16 relative z-10">
 
@@ -84,13 +93,13 @@ export function SobreSection({ profile }: SobreSectionProps) {
                   Sou formado em <strong className="text-white font-semibold">Marketing Digital</strong> por uma das principais faculdades do Brasil, com carreira construída unindo tecnologia, automação e estratégia de vendas.
                 </p>
                 <p>
-                  Apaixonado por inovação desde cedo, especializei-me em <strong className="text-[#ff073a] font-semibold">T.I. e automação de processos empresariais com inteligência artificial</strong>, criando soluções que eliminam tarefas repetitivas e constroem esteiras de vendas autônomas.
+                  Estudante de <strong className="text-[#ff073a] font-semibold">I.A. e Automação desde 2022</strong>, sou especialista em diversas ferramentas tradicionais e inovadoras, com mais de <strong className="text-white font-semibold">80 certificados de cursos livres</strong>, <strong className="text-white font-semibold">3 certificações</strong> e uma graduação e meia nas áreas de <strong className="text-white font-semibold">Digital Marketing e T.I. (Security)</strong>.
                 </p>
                 <p>
-                  Atuo como empreendedor digital focado em arquiteturas self-hosted, atendimento inteligente via WhatsApp sem fricção, e integração profunda de ferramentas modernas como <strong className="text-white font-semibold">n8n, Typebot, Baserow, Docker e LLMs</strong>.
+                  Com esse percurso, obtive um grande <strong className="text-white font-semibold">know-how</strong> dentro da área de automação, transformando demandas complexas em sistemas autônomos de alta confiabilidade.
                 </p>
                 <p className="border-l-2 border-[#ff073a] pl-3 sm:pl-4 italic text-zinc-200 glass-pill p-3 sm:p-3.5 rounded-r-2xl text-xs sm:text-sm">
-                  &ldquo;Minha missão é transformar ideias em sistemas inteligentes que funcionam de forma autônoma 24/7, liberando seu tempo e energia para focar no crescimento estratégico do seu negócio.&rdquo;
+                  &ldquo;Garanto resultados tangíveis, economia de tempo e resolução real de problemas, com o mínimo de atrito possível.&rdquo;
                 </p>
               </div>
             </div>
@@ -101,29 +110,9 @@ export function SobreSection({ profile }: SobreSectionProps) {
                 <div className="w-8 h-8 rounded-xl glass-pill-red flex items-center justify-center text-[#ff073a] mb-2.5">
                   <Award className="w-4 h-4" />
                 </div>
-                <h4 className="text-sm font-bold text-white">Marketing Digital com Foco em ROI</h4>
+                <h4 className="text-sm font-bold text-white leading-snug">Marketing digital && Automação trabalhando em sincronia.</h4>
                 <p className="mt-1 text-xs text-zinc-400 leading-relaxed font-light">
-                  Estratégias orientadas à conversão, retenção e funis de captação de clientes automatizados.
-                </p>
-              </div>
-
-              <div className="glass-crystal glass-interactive p-4 sm:p-5 rounded-2xl border border-white/10 touch-manipulation">
-                <div className="w-8 h-8 rounded-xl glass-pill-red flex items-center justify-center text-[#ff073a] mb-2.5">
-                  <Shield className="w-4 h-4" />
-                </div>
-                <h4 className="text-sm font-bold text-white">Segurança Linux & Infraestrutura</h4>
-                <p className="mt-1 text-xs text-zinc-400 leading-relaxed font-light">
-                  Servidores blindados, Docker Swarm, proxy reverso seguro e independência de SaaS caros.
-                </p>
-              </div>
-
-              <div className="glass-crystal glass-interactive p-4 sm:p-5 rounded-2xl border border-white/10 touch-manipulation">
-                <div className="w-8 h-8 rounded-xl glass-pill-red flex items-center justify-center text-[#ff073a] mb-2.5">
-                  <User className="w-4 h-4" />
-                </div>
-                <h4 className="text-sm font-bold text-white">Atendimento Autônomo WhatsApp</h4>
-                <p className="mt-1 text-xs text-zinc-400 leading-relaxed font-light">
-                  Chatbots e agentes inteligentes treinados com dados da empresa atendendo 24/7.
+                  Estratégias orientadas à conversão, retenção e funis de captação de clientes automatizados operando em perfeita sincronia.
                 </p>
               </div>
 
@@ -131,9 +120,29 @@ export function SobreSection({ profile }: SobreSectionProps) {
                 <div className="w-8 h-8 rounded-xl glass-pill-red flex items-center justify-center text-[#ff073a] mb-2.5">
                   <Cpu className="w-4 h-4" />
                 </div>
-                <h4 className="text-sm font-bold text-white">Integrações de APIs & Dados</h4>
+                <h4 className="text-sm font-bold text-white leading-snug">Automação multi sistema.</h4>
                 <p className="mt-1 text-xs text-zinc-400 leading-relaxed font-light">
-                  Conexão de ponta a ponta com Webhooks, bancos relacionais e inteligência generativa.
+                  Conexão de ponta a ponta com Webhooks, bancos relacionais, CRMs e ecossistemas inteligentes autônomos.
+                </p>
+              </div>
+
+              <div className="glass-crystal glass-interactive p-4 sm:p-5 rounded-2xl border border-white/10 touch-manipulation">
+                <div className="w-8 h-8 rounded-xl glass-pill-red flex items-center justify-center text-[#ff073a] mb-2.5">
+                  <User className="w-4 h-4" />
+                </div>
+                <h4 className="text-sm font-bold text-white leading-snug">Atendimento autônomo multi canal.</h4>
+                <p className="mt-1 text-xs text-zinc-400 leading-relaxed font-light">
+                  Chatbots e agentes inteligentes treinados com dados da empresa atendendo 24/7 em WhatsApp, Web e redes.
+                </p>
+              </div>
+
+              <div className="glass-crystal glass-interactive p-4 sm:p-5 rounded-2xl border border-white/10 touch-manipulation">
+                <div className="w-8 h-8 rounded-xl glass-pill-red flex items-center justify-center text-[#ff073a] mb-2.5">
+                  <Shield className="w-4 h-4" />
+                </div>
+                <h4 className="text-sm font-bold text-white leading-snug">Monitoramento real, resultado real, solução real.</h4>
+                <p className="mt-1 text-xs text-zinc-400 leading-relaxed font-light">
+                  Servidores blindados, Docker Swarm, telemetria contínua, alta estabilidade e resolução prática de gargalos.
                 </p>
               </div>
             </div>

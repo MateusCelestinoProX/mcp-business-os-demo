@@ -2418,6 +2418,268 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
     saveServerModalBtn?.addEventListener('click', handleSaveServerModal);
     deleteServerModalBtn?.addEventListener('click', handleDeleteServerModal);
     document.getElementById('editServerHeroImage')?.addEventListener('input', e => updateServerHeroPreview(e.target.value));
+
+    // ──────────────────────────────────────────────────────────────────────────
+    // MOBILE NAVIGATION DOCK & FAST SEARCH SYSTEM
+    // ──────────────────────────────────────────────────────────────────────────
+    const mobileDockHome = document.getElementById('mobileDockHomeBtn');
+    const mobileDockCommunity = document.getElementById('mobileDockCommunityBtn');
+    const mobileDockServers = document.getElementById('mobileDockServersBtn');
+    const mobileDockSearch = document.getElementById('mobileDockSearchBtn');
+    const mobileDockProfile = document.getElementById('mobileDockProfileBtn');
+
+    mobileDockHome?.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeMobileSearch();
+      navigateToHome();
+    });
+
+    mobileDockCommunity?.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeMobileSearch();
+      navigateToCommunity();
+    });
+
+    mobileDockServers?.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeMobileSearch();
+      navigateToServers();
+    });
+
+    mobileDockSearch?.addEventListener('click', (e) => {
+      e.preventDefault();
+      openMobileSearch();
+    });
+
+    mobileDockProfile?.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeMobileSearch();
+      if (isLoggedIn) navigateToProfile();
+      else showAuthModal();
+    });
+
+    // Mobile buttons no header da barra soberana
+    const msbMobileSearchBtn = document.getElementById('msb-mobile-search-btn');
+    const msbMobileAvatarBtn = document.getElementById('msb-mobile-avatar-btn');
+
+    msbMobileSearchBtn?.addEventListener('click', (e) => {
+      e.preventDefault();
+      openMobileSearch();
+    });
+
+    msbMobileAvatarBtn?.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (isLoggedIn) navigateToProfile();
+      else showAuthModal();
+    });
+
+    // Mobile Search Overlay Controls
+    const mobileSearchOverlay = document.getElementById('mobileSearchOverlay');
+    const mobileSearchInput = document.getElementById('mobileSearchInput');
+    const mobileSearchCloseBtn = document.getElementById('mobileSearchCloseBtn');
+    const mobileSearchClearBtn = document.getElementById('mobileSearchClearBtn');
+
+    function openMobileSearch() {
+      if (!mobileSearchOverlay) return;
+      mobileSearchOverlay.classList.add('open');
+      mobileSearchOverlay.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      if (mobileSearchInput) {
+        setTimeout(() => mobileSearchInput.focus(), 150);
+      }
+    }
+
+    function closeMobileSearch() {
+      if (!mobileSearchOverlay) return;
+      mobileSearchOverlay.classList.remove('open');
+      mobileSearchOverlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (mobileSearchInput) mobileSearchInput.blur();
+    }
+
+    window.openMobileSearch = openMobileSearch;
+    window.closeMobileSearch = closeMobileSearch;
+
+    mobileSearchCloseBtn?.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeMobileSearch();
+    });
+
+    mobileSearchClearBtn?.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (mobileSearchInput) {
+        mobileSearchInput.value = '';
+        mobileSearchClearBtn.classList.add('hidden');
+        handleMobileSearch('');
+        mobileSearchInput.focus();
+      }
+    });
+
+    let mobileSearchDebounce = null;
+    mobileSearchInput?.addEventListener('input', (e) => {
+      const q = e.target.value.trim();
+      if (mobileSearchClearBtn) {
+        mobileSearchClearBtn.classList.toggle('hidden', q.length === 0);
+      }
+      clearTimeout(mobileSearchDebounce);
+      mobileSearchDebounce = setTimeout(() => {
+        handleMobileSearch(q);
+      }, 120);
+    });
+
+    // Chips de busca rápida
+    document.querySelectorAll('.mobile-search-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        const term = chip.getAttribute('data-chip');
+        if (term && mobileSearchInput) {
+          mobileSearchInput.value = term;
+          if (mobileSearchClearBtn) mobileSearchClearBtn.classList.remove('hidden');
+          handleMobileSearch(term);
+        }
+      });
+    });
+
+    function handleMobileSearch(term) {
+      const resultsContainer = document.getElementById('mobileSearchResults');
+      if (!resultsContainer) return;
+
+      const q = (term || '').toLowerCase().trim();
+      if (!q) {
+        resultsContainer.innerHTML = `
+          <div class="py-12 text-center text-white/40 text-xs font-mono">
+            Digite um termo acima ou toque em uma sugestão rápida.
+          </div>`;
+        return;
+      }
+
+      const results = [];
+
+      // 1. Prompts & Categorias dos Produtos
+      (allProducts || []).forEach(prod => {
+        (prod.categories || []).forEach(cat => {
+          if ((cat.title || '').toLowerCase().includes(q)) {
+            results.push({
+              type: 'category',
+              title: cat.title,
+              subtitle: `${prod.title} • Estilo`,
+              image: cat.hero_image,
+              action: () => { closeMobileSearch(); navigateToCategory(prod.slug, cat.id); }
+            });
+          }
+          (cat.prompts || []).forEach(p => {
+            if ((p.prompt_text || '').toLowerCase().includes(q) || (p.title || '').toLowerCase().includes(q)) {
+              results.push({
+                type: 'prompt',
+                title: p.title || 'Prompt IA',
+                subtitle: `${cat.title}`,
+                promptText: p.prompt_text,
+                image: p.image_url,
+                pSlug: prod.slug
+              });
+            }
+          });
+        });
+      });
+
+      // 2. Servidores e Aulas
+      (serversData || []).forEach(srv => {
+        if ((srv.title || '').toLowerCase().includes(q)) {
+          results.push({
+            type: 'server',
+            title: srv.title,
+            subtitle: `Servidor • ${srv.lessons?.length || 0} aulas`,
+            image: srv.hero_image,
+            action: () => { closeMobileSearch(); navigateToServerDetail(srv.id); }
+          });
+        }
+        (srv.lessons || []).forEach(l => {
+          if ((l.title || '').toLowerCase().includes(q) || (l.content_markdown || '').toLowerCase().includes(q)) {
+            results.push({
+              type: 'lesson',
+              title: l.title,
+              subtitle: `Aula em ${srv.title}`,
+              image: srv.hero_image,
+              action: () => { closeMobileSearch(); navigateToServerDetail(srv.id, l.id); }
+            });
+          }
+        });
+      });
+
+      // 3. Posts da Comunidade
+      (communityPosts || []).forEach(post => {
+        if ((post.title || '').toLowerCase().includes(q) || (post.content || '').toLowerCase().includes(q) || (post.ai_prompt || '').toLowerCase().includes(q)) {
+          results.push({
+            type: 'community',
+            title: post.title || 'Post da Comunidade',
+            subtitle: `Por ${post.user_name || 'Membro'}`,
+            promptText: post.ai_prompt,
+            image: post.images?.[0] || null,
+            action: () => { closeMobileSearch(); navigateToCommunity(); }
+          });
+        }
+      });
+
+      if (results.length === 0) {
+        resultsContainer.innerHTML = `
+          <div class="py-16 text-center text-white/40 text-xs font-mono space-y-2">
+            <div class="text-3xl">🔍</div>
+            <p>Nenhum resultado para "<span class="text-white">${escapeHtml(q)}</span>"</p>
+            <p class="text-[11px] text-white/30">Tente buscar por termos como Flux, Midjourney, Retrato ou Efeitos.</p>
+          </div>`;
+        return;
+      }
+
+      // Renderiza resultados compactos táteis
+      resultsContainer.innerHTML = `
+        <div class="text-[11px] text-white/50 font-mono mb-2 flex items-center justify-between">
+          <span>${results.length} resultado(s) encontrado(s)</span>
+          <span class="text-red-400 font-bold uppercase text-[10px]">Toque para abrir</span>
+        </div>
+        <div class="space-y-2 pb-6">
+          ${results.slice(0, 30).map((r, idx) => {
+            const hasAction = typeof r.action === 'function';
+            const actionId = `mob_res_${idx}`;
+            if (hasAction) {
+              window[actionId] = r.action;
+            }
+            return `
+              <div class="p-3 rounded-2xl bg-white/[0.05] border border-white/10 active:bg-white/[0.1] transition-all flex items-center gap-3">
+                ${r.image ? `
+                  <img src="${r.image}" class="w-12 h-12 rounded-xl object-cover border border-white/10 flex-shrink-0" onerror="this.style.display='none'">
+                ` : `
+                  <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-base flex-shrink-0">
+                    ${r.type === 'server' ? '🖥️' : r.type === 'lesson' ? '📚' : r.type === 'community' ? '💬' : '✨'}
+                  </div>
+                `}
+                <div class="min-w-0 flex-1 ${hasAction ? 'cursor-pointer' : ''}" ${hasAction ? `onclick="window.${actionId}()"` : ''}>
+                  <p class="text-xs font-bold text-white truncate">${escapeHtml(r.title)}</p>
+                  <p class="text-[11px] text-white/50 truncate">${escapeHtml(r.subtitle)}</p>
+                </div>
+                ${r.promptText ? `
+                  <button onclick="window.appCopyMobilePrompt('${encodeURIComponent(r.promptText)}')" class="px-3 py-1.5 rounded-xl bg-red-600/80 hover:bg-red-600 active:scale-95 text-white text-[11px] font-bold tracking-wide flex-shrink-0 transition-all flex items-center gap-1 shadow-md">
+                    <span>📋</span>
+                    <span>Copiar</span>
+                  </button>
+                ` : hasAction ? `
+                  <button onclick="window.${actionId}()" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 active:scale-95 text-white text-[11px] font-bold flex-shrink-0 transition-all">
+                    Abrir →
+                  </button>
+                ` : ''}
+              </div>`;
+          }).join('')}
+        </div>`;
+    }
+
+    window.appCopyMobilePrompt = (enc) => {
+      if (!isLoggedIn) {
+        showToast('⚠️ Faça login para copiar este prompt.');
+        showAuthModal('Faça login ou crie sua conta para copiar os prompts exclusivos.');
+        return;
+      }
+      navigator.clipboard.writeText(decodeURIComponent(enc)).then(() => {
+        showToast('✅ Prompt copiado com sucesso!');
+      });
+    };
   }
 
   function updateAuthModalUI() {
@@ -2840,6 +3102,13 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
     document.querySelectorAll('.nav-item').forEach(item =>
       item.classList.toggle('text-white', item.getAttribute('data-view')===currentView)
     );
+    // Sincroniza Bottom Dock Mobile
+    document.querySelectorAll('.mobile-dock-btn').forEach(btn => {
+      const v = btn.getAttribute('data-view');
+      if (v) {
+        btn.classList.toggle('active', v === currentView || (v === 'servers' && currentView === 'server_detail'));
+      }
+    });
   }
 
   // ──────────────────────────────────────────────────────────────────────────
@@ -2865,44 +3134,44 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
     const imgsE = getImgs(pE, './public/assets/images/opt_0740_img_exact_666ee.webp');
 
     mainAppContainer.innerHTML = `
-      <section class="py-12 px-4 sm:px-6 lg:px-8 max-w-[1600px] mx-auto relative z-10">
+      <section class="py-6 sm:py-12 px-3 sm:px-6 lg:px-8 max-w-[1600px] mx-auto relative z-10">
 
         <!-- Hero Banner se existir -->
         ${renderHeroBanner()}
 
-        <div class="mb-14 text-center anim-element anim-fade-up">
-          <span class="inline-block px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-white text-xs font-mono font-bold tracking-wider uppercase mb-4 backdrop-blur-xl">✨ PLATAFORMA VIP VISUALS</span>
-          <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-6 drop-shadow-2xl">
+        <div class="mb-10 sm:mb-14 text-center anim-element anim-fade-up">
+          <span class="inline-block px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-white text-[11px] sm:text-xs font-mono font-bold tracking-wider uppercase mb-3 sm:mb-4 backdrop-blur-xl">✨ PLATAFORMA VIP VISUALS</span>
+          <h1 class="text-3xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight text-white mb-4 sm:mb-6 drop-shadow-2xl leading-tight">
             Seja Bem-Vindo a <span class="bg-gradient-to-r from-white via-white/80 to-white/50 bg-clip-text text-transparent">A.I Visuals</span>
           </h1>
-          <p class="text-graphite text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed">Explore o maior acervo exclusivo de inteligência artificial generativa.</p>
-          ${!isLoggedIn ? `<button onclick="window.appShowAuth()" class="mt-8 px-8 py-3.5 rounded-full font-bold bg-white text-black shadow-2xl hover:scale-105 transition-all text-sm">🔑 Criar Conta Grátis</button>` : ''}
+          <p class="text-graphite text-base sm:text-xl max-w-3xl mx-auto leading-relaxed">Explore o maior acervo exclusivo de inteligência artificial generativa.</p>
+          ${!isLoggedIn ? `<button onclick="window.appShowAuth()" class="mt-6 sm:mt-8 px-8 py-3.5 sm:py-4 rounded-full font-bold bg-white text-black shadow-2xl hover:scale-105 active:scale-95 transition-all text-sm min-h-[48px] inline-flex items-center justify-center">🔑 Criar Conta Grátis</button>` : ''}
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-8">
           ${[
             { p:pA, slug:'ai-art',          imgs:imgsA, t:'A.I ART PRO',      cnt:`${pA?.categories?.length || 40} Estilos Visuais`, learnLink: PRODUCT_LEARN_MORE_LINKS['ai-art'] },
             { p:pP, slug:'ai-portraits-pro', imgs:imgsP, t:'A.I PORTRAIT PRO', cnt:`${pP?.categories?.length || 15} Categorias VIP`, learnLink: PRODUCT_LEARN_MORE_LINKS['ai-portraits-pro'] },
             { p:pE, slug:'ai-effects-pro',   imgs:imgsE, t:'A.I EFFECT PRO',   cnt:`${pE?.categories?.length || 133} Estilos Pro`,   learnLink: PRODUCT_LEARN_MORE_LINKS['ai-effects-pro'] }
           ].map(({ p,slug,imgs,t,cnt,learnLink }, idx) => `
             <div class="img-card glass-card group anim-element anim-scale relative rounded-3xl overflow-hidden hover:border-white/40 transition-all duration-500 flex flex-col">
-              <div class="h-80 w-full overflow-hidden relative cursor-pointer" data-nav-product="${slug}">
+              <div class="h-56 sm:h-80 w-full overflow-hidden relative cursor-pointer" data-nav-product="${slug}">
                 <img id="home-slider-${slug}" src="${imgs[0]}" alt="${t}" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-1000 ease-in-out">
                 <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
-                <span class="absolute top-4 left-4 text-xs font-bold px-3 py-1.5 rounded-full bg-black/60 text-white border border-white/20 backdrop-blur-xl">R$ 120,00</span>
-                <span class="absolute top-4 right-4 text-[0.65rem] font-mono px-2.5 py-1 rounded-full bg-white/10 text-white/80 border border-white/20 backdrop-blur-md">🔄 Dynamic 3s</span>
+                <span class="absolute top-3 sm:top-4 left-3 sm:left-4 text-xs font-bold px-3 py-1.5 rounded-full bg-black/60 text-white border border-white/20 backdrop-blur-xl">R$ 120,00</span>
+                <span class="absolute top-3 sm:top-4 right-3 sm:right-4 text-[0.65rem] font-mono px-2.5 py-1 rounded-full bg-white/10 text-white/80 border border-white/20 backdrop-blur-md">🔄 Dynamic 3s</span>
               </div>
-              <div class="p-8 flex-1 flex flex-col justify-between">
+              <div class="p-5 sm:p-8 flex-1 flex flex-col justify-between">
                 <div>
-                  <h3 class="text-3xl font-extrabold text-white mb-2 group-hover:text-white/80 transition-colors cursor-pointer" data-nav-product="${slug}">${t}</h3>
-                  <p class="text-graphite text-sm leading-relaxed mb-6">${p?.description||'Coleção exclusiva de prompts profissionais para IA generativa.'}</p>
+                  <h3 class="text-2xl sm:text-3xl font-extrabold text-white mb-2 group-hover:text-white/80 transition-colors cursor-pointer" data-nav-product="${slug}">${t}</h3>
+                  <p class="text-graphite text-xs sm:text-sm leading-relaxed mb-5 sm:mb-6">${p?.description||'Coleção exclusiva de prompts profissionais para IA generativa.'}</p>
                 </div>
-                <div class="space-y-3 border-t border-white/10 pt-4">
+                <div class="space-y-2.5 sm:space-y-3 border-t border-white/10 pt-4">
                   <div class="flex items-center justify-between">
                     <span class="text-xs font-mono text-white/80">✨ ${cnt}</span>
-                    <button class="text-xs font-bold px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-white transition-all" data-nav-product="${slug}">Explorar Galeria →</button>
+                    <button class="text-xs font-bold px-4 py-2.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-white active:scale-95 transition-all min-h-[42px] flex items-center justify-center" data-nav-product="${slug}">Explorar Galeria →</button>
                   </div>
-                  <a href="${learnLink}" target="_blank" class="block w-full text-center py-2.5 rounded-xl font-bold bg-white text-black text-xs shadow-lg hover:bg-white/90 transition-all">
+                  <a href="${learnLink}" target="_blank" class="block w-full text-center py-3 rounded-xl font-bold bg-white text-black text-xs shadow-lg hover:bg-white/90 active:scale-95 transition-all min-h-[44px] flex items-center justify-center">
                     Saiba Mais ↗
                   </a>
                 </div>
@@ -2953,26 +3222,26 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
     const isLargeGallery = prod.slug === 'ai-effects-pro' || (prod.categories||[]).length > 20;
 
     mainAppContainer.innerHTML = `
-      <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-[1600px] mx-auto relative z-10">
-        <div class="mb-12 text-center anim-element anim-fade-up">
-          <span class="text-xs font-bold text-white/60 tracking-widest uppercase">ACERVO EXCLUSIVO (${prod.categories?.length || 0} CATEGORIAS)</span>
-          <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight mb-3 text-white mt-2">${prod.title}</h1>
-          <p class="text-graphite text-base sm:text-lg max-w-2xl mx-auto">${prod.description}</p>
+      <section class="py-8 sm:py-16 px-3 sm:px-6 lg:px-8 max-w-[1600px] mx-auto relative z-10">
+        <div class="mb-8 sm:mb-12 text-center anim-element anim-fade-up">
+          <span class="text-[11px] sm:text-xs font-bold text-white/60 tracking-widest uppercase">ACERVO EXCLUSIVO (${prod.categories?.length || 0} CATEGORIAS)</span>
+          <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight mb-2 sm:mb-3 text-white mt-1 sm:mt-2">${prod.title}</h1>
+          <p class="text-graphite text-sm sm:text-lg max-w-2xl mx-auto px-2 leading-relaxed">${prod.description}</p>
         </div>
 
         ${isLargeGallery ? `
           <!-- Notion-Style Uniform Grid for Large Galleries like A.I Effects Pro -->
-          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-5">
             ${(prod.categories||[]).map((cat, i) => {
               const cimg = cat.hero_image || './public/assets/images/opt_0008_img_exact_87ca3.webp';
               return `
-                <div class="img-card glass-card group cursor-pointer anim-element anim-scale rounded-2xl overflow-hidden border border-white/10 hover:border-white/30 transition-all duration-300 flex flex-col"
+                <div class="img-card glass-card group cursor-pointer anim-element anim-scale rounded-2xl overflow-hidden border border-white/10 hover:border-white/30 active:scale-95 transition-all duration-300 flex flex-col"
                   data-prod-slug="${prod.slug}" data-nav-cat-id="${cat.id}">
                   <div class="aspect-square w-full overflow-hidden relative bg-black/60">
                     <img src="${cimg}" alt="${cat.title}" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500" loading="lazy" onerror="this.src='./public/assets/images/opt_0008_img_exact_87ca3.webp'">
                   </div>
-                  <div class="p-3.5 bg-black/80 flex items-center space-x-2 border-t border-white/10">
-                    <span class="text-sm">📄</span>
+                  <div class="p-2.5 sm:p-3.5 bg-black/80 flex items-center space-x-2 border-t border-white/10">
+                    <span class="text-xs sm:text-sm">📄</span>
                     <div class="min-w-0 flex-1">
                       <h4 class="text-xs font-bold text-white truncate group-hover:text-white/80 transition-colors">${cat.title}</h4>
                       <span class="text-[0.65rem] text-graphite font-mono">${cat.prompts?.length || 0} variações</span>
@@ -2990,12 +3259,12 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
               if(i===0) cls+='md:col-span-2 md:row-span-2';
               else if(i===1||i===4) cls+='md:col-span-2 delay-100';
               else cls+='delay-200';
-              return `<div class="${cls}" data-prod-slug="${prod.slug}" data-nav-cat-id="${cat.id}">
+              return `<div class="${cls} active:scale-95 transition-transform" data-prod-slug="${prod.slug}" data-nav-cat-id="${cat.id}">
                 <div class="img-wrapper rounded-3xl w-full h-full relative overflow-hidden">
                   <img src="${cimg}" alt="${cat.title}" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700">
-                  <div class="absolute inset-0 flex flex-col justify-end p-6 bg-gradient-to-t from-black/90 via-black/30 to-transparent">
-                    <h3 class="text-2xl font-bold text-white mb-1 group-hover:text-white/80 transition-colors">${cat.title}</h3>
-                    <span class="text-xs text-graphite font-mono">✨ ${cat.prompts?.length||0} Variações</span>
+                  <div class="absolute inset-0 flex flex-col justify-end p-4 sm:p-6 bg-gradient-to-t from-black/90 via-black/30 to-transparent">
+                    <h3 class="text-lg sm:text-2xl font-bold text-white mb-0.5 sm:mb-1 group-hover:text-white/80 transition-colors">${cat.title}</h3>
+                    <span class="text-[11px] sm:text-xs text-graphite font-mono">✨ ${cat.prompts?.length||0} Variações</span>
                   </div>
                 </div>
               </div>`;
@@ -3003,10 +3272,10 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
           </div>
         `}
 
-        ${!hasAccess ? `<div class="mt-16 text-center p-8 rounded-3xl glass-card">
-          <h3 class="text-2xl font-extrabold text-white mb-2">🚀 Desbloquear Acesso Total — R$ 120,00</h3>
-          <p class="text-graphite text-sm mb-6">Liberar acesso completo a todos os estilos e prompts de ${prod.title}</p>
-          <button onclick="window.appTriggerMP('${prod.slug}')" class="inline-block px-10 py-4 rounded-full font-bold bg-white text-black shadow-2xl hover:scale-105 transition-all">Pagar com Mercado Pago — R$ 120,00</button>
+        ${!hasAccess ? `<div class="mt-10 sm:mt-16 text-center p-6 sm:p-8 rounded-3xl glass-card">
+          <h3 class="text-xl sm:text-2xl font-extrabold text-white mb-2">🚀 Desbloquear Acesso Total — R$ 120,00</h3>
+          <p class="text-graphite text-xs sm:text-sm mb-5 sm:mb-6">Liberar acesso completo a todos os estilos e prompts de ${prod.title}</p>
+          <button onclick="window.appTriggerMP('${prod.slug}')" class="w-full sm:w-auto inline-flex items-center justify-center px-8 sm:px-10 py-3.5 sm:py-4 rounded-full font-bold bg-white text-black shadow-2xl hover:scale-105 active:scale-95 transition-all min-h-[48px] text-sm">Pagar com Mercado Pago — R$ 120,00</button>
         </div>` : ''}
         ${renderSideBanner()}
       </section>`;
@@ -3032,24 +3301,26 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
     const hasAccess = currentUserRole==='admin'||currentUserRole==='full'||(currentUserProfile?.accessible_products||[]).includes(prod.slug);
 
     mainAppContainer.innerHTML = `
-      <section class="py-12 px-4 sm:px-6 lg:px-8 max-w-[1600px] mx-auto relative z-10">
-        <div class="flex items-center justify-between mb-10 anim-element anim-fade-up border-b border-white/10 pb-6">
-          <div>
-            <span class="text-xs font-bold text-white/60 tracking-widest uppercase">${prod.title}</span>
-            <h1 class="text-3xl sm:text-4xl font-extrabold text-white mt-1">${cat.title}</h1>
+      <section class="py-6 sm:py-12 px-3 sm:px-6 lg:px-8 max-w-[1600px] mx-auto relative z-10">
+        <div class="flex items-center justify-between mb-6 sm:mb-10 anim-element anim-fade-up border-b border-white/10 pb-4 sm:pb-6 gap-3">
+          <div class="min-w-0 flex-1">
+            <span class="text-[11px] sm:text-xs font-bold text-white/60 tracking-widest uppercase block truncate">${prod.title}</span>
+            <h1 class="text-2xl sm:text-4xl font-extrabold text-white mt-0.5 sm:mt-1 truncate">${cat.title}</h1>
           </div>
-          <button class="text-sm font-semibold text-graphite hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 px-5 py-2.5 rounded-full transition-all" onclick="window.appNavBack('${prod.slug}')">← Voltar</button>
+          <button class="text-xs sm:text-sm font-semibold text-graphite hover:text-white bg-white/5 hover:bg-white/10 active:scale-95 border border-white/10 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full transition-all min-h-[40px] flex items-center flex-shrink-0" onclick="window.appNavBack('${prod.slug}')">← Voltar</button>
         </div>
         <div class="masonry">
           ${prompts.map((p,i) => {
             const isPromptLockedForUser = isLoggedIn && (!hasAccess && !p.is_free_tier);
-            return `<div class="img-card group cursor-crosshair anim-element anim-blur" style="transition-delay:${(i%5)*80}ms">
+            return `<div class="img-card group cursor-pointer anim-element anim-blur" style="transition-delay:${(i%5)*80}ms">
               <div class="img-wrapper rounded-2xl relative overflow-hidden inline-block w-full border border-white/10 hover:border-white/30 transition-all duration-300">
                 <img src="${p.image_url}" loading="lazy" class="w-full h-auto block group-hover:scale-105 transition-all duration-500${isPromptLockedForUser?' brightness-[0.3]':''}" onerror="this.src='./public/assets/images/opt_0008_img_exact_87ca3.webp'">
                 ${p.is_free_tier ? '<span class="absolute top-2 right-2 text-[0.6rem] px-2.5 py-0.5 rounded-full bg-white/20 border border-white/30 text-white font-bold backdrop-blur-md">FREE</span>' : ''}
-                <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
-                  ${isPromptLockedForUser ? `<button class="bg-white text-black px-6 py-2.5 rounded-full text-xs font-bold transform translate-y-3 group-hover:translate-y-0 transition-all duration-300 shadow-xl" onclick="window.appTriggerMP('${prod.slug}')">🔒 Desbloquear (R$ 120)</button>`
-                                          : `<button class="bg-white text-black px-6 py-2.5 rounded-full text-xs font-bold transform translate-y-3 group-hover:translate-y-0 transition-all duration-300 shadow-xl" onclick="window.appCopy('${encodeURIComponent(p.prompt_text)}')">📋 Copiar Prompt</button>`}
+                <!-- Action Overlay: visível no mobile com gradiente e 1-toque; blur elegante no desktop -->
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent md:bg-black/50 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 flex items-end md:items-center justify-center p-2.5 md:p-4 backdrop-blur-none md:backdrop-blur-sm">
+                  ${isPromptLockedForUser
+                    ? `<button class="w-full md:w-auto bg-white text-black px-4 sm:px-6 py-2.5 rounded-xl md:rounded-full text-xs font-bold shadow-xl active:scale-95 transition-all min-h-[40px] flex items-center justify-center gap-1.5" onclick="window.appTriggerMP('${prod.slug}')"><span>🔒</span><span>Desbloquear (R$ 120)</span></button>`
+                    : `<button class="w-full md:w-auto bg-white/95 text-black hover:bg-white px-4 sm:px-6 py-2.5 rounded-xl md:rounded-full text-xs font-bold shadow-xl active:scale-95 transition-all min-h-[40px] flex items-center justify-center gap-1.5" onclick="window.appCopy('${encodeURIComponent(p.prompt_text)}')"><span>📋</span><span>Copiar Prompt</span></button>`}
                 </div>
               </div>
             </div>`;
@@ -3290,10 +3561,10 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
 
     return `
       <!-- FILTROS DE TAGS DINÂMICAS & BUSCA INTEGRADA COMPACTA -->
-      <div class="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-3">
-        <div class="flex items-center space-x-2 overflow-x-auto pb-1 text-xs">
+      <div class="mb-5 sm:mb-6 flex flex-col md:flex-row md:items-center justify-between gap-3">
+        <div class="flex items-center space-x-1.5 sm:space-x-2 overflow-x-auto no-scrollbar -mx-1 px-1 touch-pan-x pb-1 text-xs">
           <button onclick="window.appFilterCommunity('all')"
-            class="px-3.5 py-1.5 rounded-full font-bold transition-all whitespace-nowrap ${communityActiveFilter === 'all' ? 'bg-white text-black shadow-md' : 'bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/10'}">
+            class="px-3.5 py-2 rounded-full font-bold transition-all whitespace-nowrap active:scale-95 ${communityActiveFilter === 'all' ? 'bg-white text-black shadow-md' : 'bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/10'}">
             🌟 Todos (${communityPosts.length})
           </button>
           ${tags.map(t => {
@@ -3301,7 +3572,7 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
             const isAct = communityActiveFilter === t.id;
             return `
               <button onclick="window.appFilterCommunity('${t.id}')"
-                class="px-3.5 py-1.5 rounded-full font-bold transition-all whitespace-nowrap flex items-center space-x-1.5 ${isAct ? 'bg-white text-black shadow-md' : 'bg-white/5 text-gray-300 hover:text-white hover:bg-white/10 border border-white/10'}">
+                class="px-3.5 py-2 rounded-full font-bold transition-all whitespace-nowrap flex items-center space-x-1.5 active:scale-95 ${isAct ? 'bg-white text-black shadow-md' : 'bg-white/5 text-gray-300 hover:text-white hover:bg-white/10 border border-white/10'}">
                 <span>${t.icon || '🏷️'}</span>
                 <span>${escapeHtml(t.name)}</span>
                 <span class="text-[10px] opacity-70">(${count})</span>
@@ -3309,34 +3580,34 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
             `;
           }).join('')}
           <button onclick="window.appSwitchCommunityTab('tag-editor')" title="Gerenciar e editar tags"
-            class="px-3 py-1.5 rounded-full font-bold transition-all whitespace-nowrap text-xs text-white/50 hover:text-white bg-white/5 hover:bg-white/10 border border-dashed border-white/20 flex items-center space-x-1">
+            class="px-3 py-2 rounded-full font-bold transition-all whitespace-nowrap text-xs text-white/50 hover:text-white bg-white/5 hover:bg-white/10 active:scale-95 border border-dashed border-white/20 flex items-center space-x-1">
             <span>⚙️</span>
             <span>Tag Editor</span>
           </button>
         </div>
 
         <div class="relative w-full md:w-64">
-          <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs">🔍</span>
+          <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-xs">🔍</span>
           <input type="text" id="communitySearchInput" placeholder="Buscar no feed..."
             value="${escapeHtml(communitySearchQuery)}"
             oninput="window.appSearchCommunity(this.value)"
-            class="w-full bg-white/5 border border-white/15 focus:border-white/30 rounded-full pl-8 pr-3 py-1.5 text-xs text-white placeholder-white/30 focus:outline-none focus:bg-black/60 transition-all font-medium">
+            class="w-full bg-white/5 border border-white/15 focus:border-white/30 rounded-full pl-9 pr-3 py-2 text-base sm:text-xs text-white placeholder-white/30 focus:outline-none focus:bg-black/60 transition-all font-medium">
         </div>
       </div>
 
       <!-- LAYOUT ORIGINAL 2 COLUNAS: FEED (2/3) + SIDEBAR (1/3) -->
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-7">
-        <div class="lg:col-span-2 space-y-5">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-7">
+        <div class="lg:col-span-2 space-y-4 sm:space-y-5">
 
           <!-- POST COMPOSER ORIGINAL APRIMORADO -->
-          <div class="glass-card rounded-3xl overflow-hidden p-5 border border-white/10">
-            <div class="flex items-start space-x-3.5">
-              <img src="${currentUserAvatarUrl}" class="w-10 h-10 rounded-full border border-white/20 flex-shrink-0 cursor-pointer object-cover" onclick="window.appGoProfile()" title="Ver perfil">
+          <div class="glass-card rounded-3xl overflow-hidden p-4 sm:p-5 border border-white/10">
+            <div class="flex items-start space-x-3 sm:space-x-3.5">
+              <img src="${currentUserAvatarUrl}" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-white/20 flex-shrink-0 cursor-pointer object-cover" onclick="window.appGoProfile()" title="Ver perfil">
               <div class="flex-1 space-y-3 min-w-0">
                 <input type="text" id="newPostTitle" placeholder="Título do post (opcional)..."
-                  class="w-full bg-transparent border-b border-white/10 pb-2 text-sm font-bold text-white placeholder-white/30 focus:outline-none focus:border-white/30 transition-colors">
+                  class="w-full bg-transparent border-b border-white/10 pb-2 text-base sm:text-sm font-bold text-white placeholder-white/30 focus:outline-none focus:border-white/30 transition-colors">
                 <textarea id="newPostContent" rows="3" placeholder="Compartilhe uma ideia, prompt ou dúvida com a comunidade..."
-                  class="w-full bg-white/5 border border-white/10 rounded-2xl p-3.5 text-sm text-white focus:outline-none focus:border-white/25 focus:bg-white/10 transition-all resize-none placeholder-white/30 leading-relaxed"></textarea>
+                  class="w-full bg-white/5 border border-white/10 rounded-2xl p-3 sm:p-3.5 text-base sm:text-sm text-white focus:outline-none focus:border-white/25 focus:bg-white/10 transition-all resize-none placeholder-white/30 leading-relaxed"></textarea>
 
                 <!-- AI Prompt Studio Module (Expansível) -->
                 <div id="composerPromptBox" class="${communityPromptBoxOpen ? '' : 'hidden'} p-3.5 rounded-2xl bg-black/70 border border-white/10 space-y-2.5">
@@ -3344,7 +3615,7 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
                     <span class="text-xs font-bold text-white/80 flex items-center space-x-1.5 font-mono">
                       <span>🔮</span><span>AI Prompt Studio</span>
                     </span>
-                    <select id="newPostPromptModel" class="bg-black/80 border border-white/20 rounded-lg px-2 py-0.5 text-[11px] text-white focus:outline-none">
+                    <select id="newPostPromptModel" class="bg-black/80 border border-white/20 rounded-lg px-2 py-0.5 text-xs sm:text-[11px] text-white focus:outline-none">
                       <option value="Flux.1 Dev">Flux.1 Dev</option>
                       <option value="Flux.1 Schnell">Flux.1 Schnell</option>
                       <option value="Midjourney v6.1">Midjourney v6.1</option>
@@ -3355,29 +3626,29 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
                     </select>
                   </div>
                   <textarea id="newPostPromptCode" rows="2" placeholder="Cole aqui o prompt textual exato..."
-                    class="w-full bg-white/5 border border-white/10 rounded-xl p-2.5 text-xs font-mono text-gray-200 placeholder-white/30 focus:outline-none"></textarea>
+                    class="w-full bg-white/5 border border-white/10 rounded-xl p-2.5 text-base sm:text-xs font-mono text-gray-200 placeholder-white/30 focus:outline-none"></textarea>
                   <input type="text" id="newPostPromptParams" placeholder="Parâmetros ou flags (ex: --ar 16:9 --v 6.1 --stylize 350)"
-                    class="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-1.5 text-xs font-mono text-gray-300 placeholder-white/30 focus:outline-none">
+                    class="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-1.5 text-base sm:text-xs font-mono text-gray-300 placeholder-white/30 focus:outline-none">
                 </div>
 
                 <!-- Preview de Upload de Imagens -->
-                <div id="postImageUploadPreview" class="hidden grid grid-cols-5 gap-2 pt-1"></div>
+                <div id="postImageUploadPreview" class="hidden grid grid-cols-4 sm:grid-cols-5 gap-2 pt-1"></div>
 
                 <!-- Campo de Link -->
                 <div id="postLinkField" class="hidden p-3 bg-white/5 rounded-2xl border border-white/10 space-y-2">
-                  <input type="url" id="newPostLinkUrl" placeholder="URL do link (https://...)" class="w-full bg-transparent text-xs text-white placeholder-white/30 focus:outline-none border-b border-white/10 pb-1">
-                  <input type="text" id="newPostLinkTitle" placeholder="Título do link (opcional)" class="w-full bg-transparent text-xs text-white placeholder-white/30 focus:outline-none">
+                  <input type="url" id="newPostLinkUrl" placeholder="URL do link (https://...)" class="w-full bg-transparent text-base sm:text-xs text-white placeholder-white/30 focus:outline-none border-b border-white/10 pb-1">
+                  <input type="text" id="newPostLinkTitle" placeholder="Título do link (opcional)" class="w-full bg-transparent text-base sm:text-xs text-white placeholder-white/30 focus:outline-none">
                 </div>
 
                 <!-- Seleção de Tag no Composer -->
                 <div class="pt-2 border-t border-white/5 flex items-center space-x-2">
                   <span class="text-[11px] font-mono font-bold text-gray-400 whitespace-nowrap">🏷️ Tag:</span>
-                  <div class="flex items-center space-x-1.5 overflow-x-auto pb-1 text-xs" id="composerTagPills">
+                  <div class="flex items-center space-x-1.5 overflow-x-auto no-scrollbar pb-1 text-xs" id="composerTagPills">
                     ${tags.map(t => {
                       const isSel = (communitySelectedCategory || (tags[0] && tags[0].id)) === t.id;
                       return `
                         <button type="button" onclick="window.selectPostCategory('${t.id}', this)"
-                          class="post-cat-btn px-2.5 py-1 rounded-lg border font-bold transition-all text-xs flex items-center space-x-1 whitespace-nowrap ${isSel ? 'bg-red-500/20 text-red-200 border-red-500/40 shadow-sm' : 'bg-white/5 text-gray-400 border-white/10 hover:text-white'}">
+                          class="post-cat-btn px-2.5 py-1 rounded-lg border font-bold transition-all text-xs flex items-center space-x-1 whitespace-nowrap active:scale-95 ${isSel ? 'bg-red-500/20 text-red-200 border-red-500/40 shadow-sm' : 'bg-white/5 text-gray-400 border-white/10 hover:text-white'}">
                           <span>${t.icon || '🏷️'}</span>
                           <span>${escapeHtml(t.name)}</span>
                         </button>
@@ -3391,19 +3662,19 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
             <input type="file" id="communityFileInput" multiple accept="image/*" class="hidden">
 
             <!-- Composer Toolbar -->
-            <div class="flex items-center justify-between pt-3 mt-3 border-t border-white/10">
-              <div class="flex items-center space-x-2">
-                <button type="button" onclick="document.getElementById('communityFileInput').click()" class="flex items-center space-x-1.5 text-xs text-white/70 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 px-3 py-1.5 rounded-full transition-all">
-                  <span>📷</span><span>Upload de Imagem (Até 5MB)</span>
+            <div class="flex flex-wrap sm:flex-nowrap items-center justify-between gap-2.5 pt-3 mt-3 border-t border-white/10">
+              <div class="flex items-center space-x-1.5 sm:space-x-2 overflow-x-auto no-scrollbar py-1">
+                <button type="button" onclick="document.getElementById('communityFileInput').click()" class="flex items-center space-x-1.5 text-xs text-white/80 hover:text-white bg-white/5 hover:bg-white/10 active:scale-95 border border-white/10 px-3 py-2 rounded-full transition-all whitespace-nowrap min-h-[36px]">
+                  <span>📷</span><span class="hidden sm:inline">Upload Imagem</span><span class="sm:hidden">Foto</span>
                 </button>
-                <button type="button" onclick="window.toggleComposerPromptBox()" class="flex items-center space-x-1.5 text-xs text-white/70 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 px-3 py-1.5 rounded-full transition-all">
-                  <span>🔮</span><span>AI Prompt Studio</span>
+                <button type="button" onclick="window.toggleComposerPromptBox()" class="flex items-center space-x-1.5 text-xs text-white/80 hover:text-white bg-white/5 hover:bg-white/10 active:scale-95 border border-white/10 px-3 py-2 rounded-full transition-all whitespace-nowrap min-h-[36px]">
+                  <span>🔮</span><span>Prompt Studio</span>
                 </button>
-                <button type="button" onclick="window.togglePostLink()" class="flex items-center space-x-1.5 text-xs text-white/70 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 px-3 py-1.5 rounded-full transition-all">
+                <button type="button" onclick="window.togglePostLink()" class="flex items-center space-x-1.5 text-xs text-white/80 hover:text-white bg-white/5 hover:bg-white/10 active:scale-95 border border-white/10 px-3 py-2 rounded-full transition-all whitespace-nowrap min-h-[36px]">
                   <span>🔗</span><span>Link</span>
                 </button>
               </div>
-              <button id="submitPostBtn" onclick="window.appCreatePost()" class="px-6 py-2 rounded-full font-bold bg-white text-black text-xs shadow-xl hover:scale-105 active:scale-95 transition-all">
+              <button id="submitPostBtn" onclick="window.appCreatePost()" class="w-full sm:w-auto px-6 py-2.5 rounded-full font-bold bg-white text-black text-xs shadow-xl hover:scale-105 active:scale-95 transition-all min-h-[40px] flex items-center justify-center">
                 Publicar
               </button>
             </div>
@@ -4107,61 +4378,61 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
     const tagColorClasses = getTagColorClasses(tagColor);
 
     return `
-      <article class="glass-card-community rounded-3xl overflow-hidden p-6 border border-white/15 relative transition-all duration-300 hover:border-red-500/30" id="post-${post.id}">
+      <article class="glass-card-community rounded-3xl overflow-hidden p-4 sm:p-6 border border-white/15 relative transition-all duration-300 hover:border-red-500/30" id="post-${post.id}">
         <!-- Pinned Banner -->
         ${post.is_pinned ? `
-          <div class="mb-4 px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-red-950/60 to-red-900/30 border border-red-500/40 text-red-200 text-xs font-bold flex items-center space-x-2">
+          <div class="mb-3.5 sm:mb-4 px-3 sm:px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-red-950/60 to-red-900/30 border border-red-500/40 text-red-200 text-xs font-bold flex items-center space-x-2">
             <span>📌</span>
-            <span>POST FIXADO PELA ADMINISTRAÇÃO SOBERANA</span>
+            <span class="truncate">POST FIXADO PELA ADMINISTRAÇÃO SOBERANA</span>
           </div>` : ''}
 
         <!-- Post Header -->
-        <div class="flex items-start justify-between mb-4">
-          <div class="flex items-center space-x-3.5">
+        <div class="flex items-start justify-between mb-3.5 sm:mb-4 gap-2">
+          <div class="flex items-center space-x-3 sm:space-x-3.5 min-w-0">
             <div class="relative flex-shrink-0">
-              <img src="${post.user_avatar}" class="w-11 h-11 rounded-full border border-white/20 object-cover ${post.user_role === 'admin' ? 'border-red-500 shadow-[0_0_10px_rgba(239,68,68,0.4)]' : ''}">
+              <img src="${post.user_avatar}" class="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-white/20 object-cover ${post.user_role === 'admin' ? 'border-red-500 shadow-[0_0_10px_rgba(239,68,68,0.4)]' : ''}">
               ${post.user_role === 'admin' ? '<span class="absolute -top-1 -right-1 text-xs">👑</span>' : ''}
             </div>
-            <div>
-              <div class="flex items-center flex-wrap gap-x-2 gap-y-1">
-                <span class="text-sm font-extrabold text-white">${safeUserName}</span>
+            <div class="min-w-0">
+              <div class="flex items-center flex-wrap gap-x-1.5 sm:gap-x-2 gap-y-1">
+                <span class="text-xs sm:text-sm font-extrabold text-white truncate max-w-[130px] sm:max-w-none">${safeUserName}</span>
                 ${getBadge(post.user_role)}
                 <button type="button" onclick="window.appFilterCommunity('${escapeJs(postTagId)}'); event.stopPropagation();"
                   title="Filtrar feed por #${escapeHtml(postTagId)}"
-                  class="px-2.5 py-0.5 rounded-full text-[10px] font-mono border font-bold transition-transform hover:scale-105 active:scale-95 flex items-center space-x-1 cursor-pointer ${tagColorClasses.badge}">
+                  class="px-2 py-0.5 rounded-full text-[10px] font-mono border font-bold transition-transform hover:scale-105 active:scale-95 flex items-center space-x-1 cursor-pointer ${tagColorClasses.badge}">
                   <span>${tagIcon}</span>
-                  <span>${escapeHtml(tagName)}</span>
+                  <span class="truncate max-w-[100px] sm:max-w-none">${escapeHtml(tagName)}</span>
                 </button>
               </div>
-              <span class="text-[11px] text-gray-400 font-mono mt-0.5 block">${formatDate(post.created_at)}</span>
+              <span class="text-[10px] sm:text-[11px] text-gray-400 font-mono mt-0.5 block">${formatDate(post.created_at)}</span>
             </div>
           </div>
 
-          <div class="flex items-center space-x-2">
-            ${canDel ? `<button onclick="window.appDeletePost('${post.id}')" class="text-xs text-red-400/60 hover:text-red-400 p-2 rounded-xl hover:bg-white/5 transition-all" title="Excluir post">✕</button>` : ''}
+          <div class="flex items-center space-x-1 flex-shrink-0">
+            ${canDel ? `<button onclick="window.appDeletePost('${post.id}')" class="text-xs text-red-400/60 hover:text-red-400 p-2 rounded-xl hover:bg-white/5 active:scale-95 transition-all" title="Excluir post">✕</button>` : ''}
           </div>
         </div>
 
         <!-- Post Title -->
-        ${post.title ? `<h3 class="text-lg font-extrabold text-white mb-2 leading-snug">${safeTitle}</h3>` : ''}
+        ${post.title ? `<h3 class="text-base sm:text-lg font-extrabold text-white mb-2 leading-snug">${safeTitle}</h3>` : ''}
 
         <!-- Post Content -->
-        ${post.content ? `<p class="text-sm text-gray-200 leading-relaxed mb-4 font-normal">${safeContent}</p>` : ''}
+        ${post.content ? `<p class="text-xs sm:text-sm text-gray-200 leading-relaxed mb-3 sm:mb-4 font-normal">${safeContent}</p>` : ''}
 
         <!-- AI PROMPT STUDIO CARD (IF AVAILABLE) -->
         ${post.ai_prompt ? `
-          <div class="my-4 p-4 rounded-2xl bg-black/85 border border-red-500/35 relative overflow-hidden group shadow-inner">
-            <div class="flex items-center justify-between pb-2.5 mb-2.5 border-b border-red-500/20 text-xs font-mono">
-              <span class="text-red-400 font-bold flex items-center space-x-1.5">
+          <div class="my-3 sm:my-4 p-3.5 sm:p-4 rounded-2xl bg-black/85 border border-red-500/35 relative overflow-hidden group shadow-inner">
+            <div class="flex items-center justify-between pb-2 mb-2 sm:pb-2.5 sm:mb-2.5 border-b border-red-500/20 text-xs font-mono gap-2">
+              <span class="text-red-400 font-bold flex items-center space-x-1.5 truncate">
                 <span>🔮</span>
-                <span>MODELO: ${escapeHtml(post.ai_model || 'FLUX / MIDJOURNEY')}</span>
+                <span class="truncate">MODELO: ${escapeHtml(post.ai_model || 'FLUX / MIDJOURNEY')}</span>
               </span>
               <button onclick="window.appCopyPrompt(this, ${JSON.stringify(post.ai_prompt)})"
-                class="px-3 py-1.5 rounded-xl bg-red-950/70 hover:bg-red-900 border border-red-500/50 text-red-200 text-[11px] font-bold transition-all flex items-center space-x-1.5 shadow-md active:scale-95">
+                class="px-3 py-1.5 rounded-xl bg-red-950/70 hover:bg-red-900 border border-red-500/50 text-red-200 text-[11px] font-bold transition-all flex items-center space-x-1.5 shadow-md active:scale-95 flex-shrink-0 min-h-[36px]">
                 <span>📋</span><span>Copiar Prompt</span>
               </button>
             </div>
-            <pre class="text-xs text-gray-200 font-mono whitespace-pre-wrap leading-relaxed select-all bg-white/5 p-3 rounded-xl border border-white/5">${escapeHtml(post.ai_prompt)}</pre>
+            <pre class="text-xs text-gray-200 font-mono whitespace-pre-wrap leading-relaxed select-all bg-white/5 p-2.5 sm:p-3 rounded-xl border border-white/5">${escapeHtml(post.ai_prompt)}</pre>
             ${post.ai_params ? `
               <div class="mt-2.5 pt-2 border-t border-white/10 text-[10px] font-mono text-red-300/80 flex items-center space-x-2">
                 <span class="font-bold">⚙️ Flags:</span>
@@ -4171,8 +4442,8 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
 
         <!-- Link Preview Card -->
         ${post.link_url ? `
-          <a href="${safeLinkUrl}" target="_blank" rel="noopener noreferrer" class="mb-4 flex items-center space-x-3.5 p-3.5 rounded-2xl bg-white/5 border border-white/10 hover:border-red-500/40 hover:bg-white/10 transition-all group">
-            <div class="w-9 h-9 rounded-xl bg-red-500/20 border border-red-500/30 flex items-center justify-center text-sm flex-shrink-0 text-red-300">🔗</div>
+          <a href="${safeLinkUrl}" target="_blank" rel="noopener noreferrer" class="mb-3 sm:mb-4 flex items-center space-x-3 p-3 rounded-2xl bg-white/5 border border-white/10 hover:border-red-500/40 hover:bg-white/10 active:scale-95 transition-all group">
+            <div class="w-8 h-8 rounded-xl bg-red-500/20 border border-red-500/30 flex items-center justify-center text-sm flex-shrink-0 text-red-300">🔗</div>
             <div class="min-w-0 flex-1">
               <p class="text-xs font-bold text-white group-hover:text-red-300 transition-colors truncate">${safeLinkTitle}</p>
               <p class="text-[11px] text-graphite truncate">${safeLinkUrl}</p>
@@ -4184,26 +4455,26 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
         ${post.images?.length ? renderEnhancedImageGrid(post.images, post.title || safeUserName) : ''}
 
         <!-- Actions Bar -->
-        <div class="mt-5 pt-4 flex items-center justify-between border-t border-white/10">
-          <div class="flex items-center space-x-3">
+        <div class="mt-4 sm:mt-5 pt-3 sm:pt-4 flex items-center justify-between border-t border-white/10">
+          <div class="flex items-center space-x-2 sm:space-x-3">
             <button onclick="window.appLikePost('${post.id}')" id="like-btn-${post.id}"
-              class="flex items-center space-x-2 text-xs font-bold px-4 py-2 rounded-full border transition-all ${isLiked ? 'bg-red-600 text-white border-red-500 shadow-[0_0_15px_rgba(220,38,38,0.4)]' : 'bg-white/5 text-white/80 border-white/15 hover:bg-white/10'}">
+              class="flex items-center space-x-2 text-xs font-bold px-3.5 sm:px-4 py-2 rounded-full border active:scale-95 transition-all min-h-[40px] ${isLiked ? 'bg-red-600 text-white border-red-500 shadow-[0_0_15px_rgba(220,38,38,0.4)]' : 'bg-white/5 text-white/80 border-white/15 hover:bg-white/10'}">
               <span>${isLiked ? '❤️' : '🤍'}</span>
               <span id="like-count-${post.id}">${post.likes || 0}</span>
             </button>
 
             <button onclick="window.appToggleComments('${post.id}')"
-              class="flex items-center space-x-2 text-xs font-bold px-4 py-2 rounded-full border border-white/15 bg-white/5 text-white/80 hover:bg-white/10 transition-all">
+              class="flex items-center space-x-2 text-xs font-bold px-3.5 sm:px-4 py-2 rounded-full border border-white/15 bg-white/5 text-white/80 hover:bg-white/10 active:scale-95 transition-all min-h-[40px]">
               <span>💬</span>
               <span id="comment-count-${post.id}">${cCount}</span>
             </button>
           </div>
 
-          <div class="flex items-center space-x-2">
-            <button onclick="window.appSharePost('${post.id}')" class="p-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white/70 hover:text-white text-xs transition-all" title="Copiar link do post">
+          <div class="flex items-center space-x-1.5 sm:space-x-2">
+            <button onclick="window.appSharePost('${post.id}')" class="w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 active:scale-95 border border-white/10 text-white/70 hover:text-white text-xs transition-all flex items-center justify-center" title="Copiar link do post">
               <span>🔗</span>
             </button>
-            <button onclick="window.appBookmarkPost('${post.id}')" class="p-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white/70 hover:text-white text-xs transition-all" title="Salvar publicação">
+            <button onclick="window.appBookmarkPost('${post.id}')" class="w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 active:scale-95 border border-white/10 text-white/70 hover:text-white text-xs transition-all flex items-center justify-center" title="Salvar publicação">
               <span>🔖</span>
             </button>
           </div>
@@ -4216,13 +4487,13 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
           </div>
 
           <!-- Add Comment Input Row -->
-          <div class="flex items-center space-x-2.5 pt-2">
+          <div class="flex items-center space-x-2 pt-2">
             <img src="${currentUserAvatarUrl}" class="w-8 h-8 rounded-full border border-white/20 flex-shrink-0">
-            <input type="text" id="comment_input_${post.id}" placeholder="Escreva uma resposta para este criador..."
-              class="flex-1 bg-white/5 border border-white/15 rounded-full px-4 py-2.5 text-xs text-white placeholder-white/30 focus:outline-none focus:border-red-500/50"
+            <input type="text" id="comment_input_${post.id}" placeholder="Escreva uma resposta..."
+              class="flex-1 bg-white/5 border border-white/15 rounded-full px-4 py-2.5 text-base sm:text-xs text-white placeholder-white/30 focus:outline-none focus:border-red-500/50"
               onkeydown="if(event.key==='Enter') window.appAddComment('${post.id}')">
             <button onclick="window.appAddComment('${post.id}')"
-              class="px-5 py-2.5 bg-white text-black font-extrabold text-xs rounded-full hover:bg-gray-200 transition-all shadow-md">
+              class="px-4 sm:px-5 py-2.5 bg-white text-black font-extrabold text-xs rounded-full hover:bg-gray-200 active:scale-95 transition-all shadow-md min-h-[40px] flex items-center justify-center">
               Enviar
             </button>
           </div>
@@ -5006,9 +5277,98 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
           </div>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
-          <!-- LESSON SIDEBAR -->
-          <div class="lg:col-span-1">
+        <div class="flex flex-col lg:grid lg:grid-cols-4 gap-6">
+          <!-- MAIN VIEWER (NO TOPO NO MOBILE, DIREITA NO DESKTOP) -->
+          <div class="order-1 lg:order-2 lg:col-span-3 space-y-5">
+            ${lesson ? `
+              <!-- Player de Vídeo ou Banner de Artigo -->
+              ${embed ? `
+                <div class="bg-black rounded-3xl overflow-hidden border border-white/15 shadow-2xl">
+                  <div class="relative w-full" style="padding-top:56.25%">
+                    <iframe
+                      src="${embed}"
+                      class="absolute top-0 left-0 w-full h-full"
+                      frameborder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen>
+                    </iframe>
+                  </div>
+                </div>` : `
+                <div class="glass-card rounded-3xl p-6 sm:p-12 text-center space-y-3">
+                  <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mx-auto text-xl sm:text-2xl">📄</div>
+                  <h3 class="text-sm sm:text-base font-bold text-white">Artigo Técnico de Treinamento</h3>
+                  <p class="text-graphite text-xs max-w-md mx-auto leading-relaxed">Esta aula contém diretrizes completas em texto, prompts detalhados e materiais para estudo prático.</p>
+                </div>`}
+
+              <!-- Barra Ergonômica de Navegação Rápida entre Aulas (Thumb Zone) -->
+              <div class="flex items-center justify-between gap-2 p-3 rounded-2xl bg-white/[0.04] border border-white/10">
+                ${prev ? `
+                  <button onclick="window.appGoServerDetail('${srv.id}','${prev.id}')" class="px-3 sm:px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 active:scale-95 text-white text-xs font-bold transition-all flex items-center gap-1.5 min-h-[40px]">
+                    <span>←</span><span class="truncate max-w-[100px] sm:max-w-none">Anterior</span>
+                  </button>
+                ` : `<span class="text-[11px] text-white/30 px-2 py-2">Primeira aula</span>`}
+
+                <span class="text-[11px] font-mono text-white/50 text-center">Aula ${lesIdx + 1} de ${lessons.length}</span>
+
+                ${next ? `
+                  <button onclick="window.appGoServerDetail('${srv.id}','${next.id}')" class="px-3 sm:px-4 py-2 rounded-xl bg-white text-black hover:bg-white/90 active:scale-95 text-xs font-bold transition-all flex items-center gap-1.5 min-h-[40px] shadow-md">
+                    <span class="truncate max-w-[100px] sm:max-w-none">Próxima</span><span>→</span>
+                  </button>
+                ` : `<span class="text-[11px] text-emerald-400 font-bold px-2 py-2">Última aula 🎉</span>`}
+              </div>
+
+              <!-- Materiais & Recursos para Download (Skool Resources Box) -->
+              ${lesson.resources && lesson.resources.length > 0 ? `
+                <div class="glass-card rounded-3xl p-4 sm:p-6 space-y-3 border-emerald-500/20 bg-emerald-950/10 shadow-lg">
+                  <div class="flex items-center justify-between pb-2 border-b border-white/10">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-emerald-300 flex items-center space-x-2">
+                      <span>📎 Materiais de Apoio & Downloads (${lesson.resources.length})</span>
+                    </h3>
+                    <span class="text-[0.65rem] text-white/40">Anexos desta aula</span>
+                  </div>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-3">
+                    ${lesson.resources.map(res => `
+                      <a href="${escapeHtml(res.url)}" target="_blank" rel="noopener noreferrer" class="p-3 sm:p-3.5 rounded-2xl bg-white/[0.04] hover:bg-white/[0.08] active:scale-95 border border-white/10 hover:border-emerald-500/40 transition-all flex items-center justify-between group shadow-sm">
+                        <div class="flex items-center space-x-3 min-w-0">
+                          <span class="text-lg sm:text-xl flex-shrink-0">${typeIcons[res.type] || '📎'}</span>
+                          <div class="min-w-0">
+                            <p class="text-xs font-bold text-white group-hover:text-emerald-300 transition-colors truncate">${escapeHtml(res.title)}</p>
+                            <span class="text-[0.65rem] text-white/40 group-hover:text-white/60 transition-colors uppercase font-mono">${res.type || 'Link'}</span>
+                          </div>
+                        </div>
+                        <span class="text-xs text-white/40 group-hover:text-emerald-300 group-hover:translate-x-0.5 transition-all">↗</span>
+                      </a>
+                    `).join('')}
+                  </div>
+                </div>` : ''}
+
+              <!-- Conteúdo da Aula (Markdown com Callouts, Checklists e Code Blocks) -->
+              <div class="glass-card rounded-3xl p-4 sm:p-8 space-y-4">
+                <div class="flex items-center justify-between flex-wrap gap-2 pb-4 border-b border-white/10">
+                  <div class="space-y-0.5 min-w-0 flex-1">
+                    <span class="text-[0.65rem] font-bold uppercase tracking-wider text-white/50">${escapeHtml(lesson.module)}</span>
+                    <h2 class="text-base sm:text-xl font-bold text-white truncate">${escapeHtml(lesson.title)}</h2>
+                  </div>
+                  <div class="flex items-center space-x-2 flex-shrink-0">
+                    <button onclick="window.toggleCompleteLesson('${lesson.id}')" class="px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center space-x-1.5 active:scale-95 min-h-[40px] ${isCurrentLessonCompleted ? 'bg-emerald-500 text-black shadow-[0_0_15px_rgba(16,185,129,0.4)]' : 'bg-white/10 hover:bg-white/20 text-white border border-white/15'}">
+                      <span>${isCurrentLessonCompleted ? '✓ Concluída' : 'Marcar como Concluída'}</span>
+                    </button>
+                    ${(currentUserRole==='admin'||currentUserRole==='moderator') ? `
+                      <button onclick="window.appOpenLessonEditorModal('${srv.id}', '${lesson.id}')" class="px-3 sm:px-3.5 py-2 bg-white/15 hover:bg-white/25 border border-white/20 text-white rounded-xl text-xs font-bold transition-all shadow-md flex items-center space-x-1.5 min-h-[40px] active:scale-95" title="Editar Aula no Skool Studio">
+                        <span>✏️</span>
+                      </button>` : ''}
+                  </div>
+                </div>
+
+                <div class="prose prose-invert max-w-none leading-relaxed text-gray-200 text-sm sm:text-base">
+                  ${renderMarkdown(lesson.cleanContent || lesson.content_markdown || '')}
+                </div>
+              </div>
+            ` : ''}
+          </div>
+
+          <!-- LESSON SIDEBAR (ABAIXO NO MOBILE, ESQUERDA NO DESKTOP) -->
+          <div class="order-2 lg:order-1 lg:col-span-1">
             <div class="glass-card rounded-3xl p-4 sticky top-24 space-y-4">
               <!-- Progresso do Aluno (Skool Course Completion) -->
               <div class="p-3.5 rounded-2xl bg-white/[0.04] border border-white/10 space-y-2">
@@ -5048,7 +5408,7 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
                         <div class="rounded-xl border transition-all ${active ? 'bg-white/15 border-white/30 shadow-lg' : 'bg-white/5 border-white/10 hover:bg-white/10'}">
                           <div class="p-2.5 cursor-pointer flex items-center justify-between gap-2" onclick="window.appGoServerDetail('${srv.id}','${l.id}')">
                             <div class="flex items-center space-x-2 min-w-0 flex-1">
-                              <button type="button" onclick="event.stopPropagation(); window.toggleCompleteLesson('${l.id}')" title="${isCompleted ? 'Desmarcar conclusão' : 'Marcar como concluída'}" class="w-4 h-4 rounded border flex items-center justify-center flex-shrink-0 transition-all ${isCompleted ? 'bg-emerald-500 border-emerald-400 text-black text-[0.65rem] font-bold' : 'border-white/30 hover:border-white text-transparent'}">
+                              <button type="button" onclick="event.stopPropagation(); window.toggleCompleteLesson('${l.id}')" title="${isCompleted ? 'Desmarcar conclusão' : 'Marcar como concluída'}" class="w-5 h-5 rounded border flex items-center justify-center flex-shrink-0 transition-all ${isCompleted ? 'bg-emerald-500 border-emerald-400 text-black text-[0.65rem] font-bold' : 'border-white/30 hover:border-white text-transparent'}">
                                 ✓
                               </button>
                               <div class="min-w-0 flex-1">
@@ -5070,78 +5430,6 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
               </div>
             </div>
           </div>
-
-          <!-- MAIN VIEWER -->
-          <div class="lg:col-span-3 space-y-5">
-            ${lesson ? `
-              <!-- Player de Vídeo ou Banner de Artigo -->
-              ${embed ? `
-                <div class="bg-black rounded-3xl overflow-hidden border border-white/15 shadow-2xl">
-                  <div class="relative w-full" style="padding-top:56.25%">
-                    <iframe
-                      src="${embed}"
-                      class="absolute top-0 left-0 w-full h-full"
-                      frameborder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowfullscreen>
-                    </iframe>
-                  </div>
-                </div>` : `
-                <div class="glass-card rounded-3xl p-8 sm:p-12 text-center space-y-3">
-                  <div class="w-14 h-14 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mx-auto text-2xl">📄</div>
-                  <h3 class="text-base font-bold text-white">Artigo Técnico de Treinamento</h3>
-                  <p class="text-graphite text-xs max-w-md mx-auto">Esta aula contém diretrizes completas em texto, prompts detalhados e materiais para estudo prático.</p>
-                </div>`}
-
-              <!-- Materiais & Recursos para Download (Skool Resources Box) -->
-              ${lesson.resources && lesson.resources.length > 0 ? `
-                <div class="glass-card rounded-3xl p-5 sm:p-6 space-y-3 border-emerald-500/20 bg-emerald-950/10 shadow-lg">
-                  <div class="flex items-center justify-between pb-2 border-b border-white/10">
-                    <h3 class="text-xs font-bold uppercase tracking-wider text-emerald-300 flex items-center space-x-2">
-                      <span>📎 Materiais de Apoio & Downloads (${lesson.resources.length})</span>
-                    </h3>
-                    <span class="text-[0.65rem] text-white/40">Arquivos anexados a esta aula</span>
-                  </div>
-                  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                    ${lesson.resources.map(res => `
-                      <a href="${escapeHtml(res.url)}" target="_blank" rel="noopener noreferrer" class="p-3.5 rounded-2xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-emerald-500/40 transition-all flex items-center justify-between group shadow-sm">
-                        <div class="flex items-center space-x-3 min-w-0">
-                          <span class="text-xl flex-shrink-0">${typeIcons[res.type] || '📎'}</span>
-                          <div class="min-w-0">
-                            <p class="text-xs font-bold text-white group-hover:text-emerald-300 transition-colors truncate">${escapeHtml(res.title)}</p>
-                            <span class="text-[0.65rem] text-white/40 group-hover:text-white/60 transition-colors uppercase font-mono">${res.type || 'Link'}</span>
-                          </div>
-                        </div>
-                        <span class="text-xs text-white/40 group-hover:text-emerald-300 group-hover:translate-x-0.5 transition-all">↗</span>
-                      </a>
-                    `).join('')}
-                  </div>
-                </div>` : ''}
-
-              <!-- Conteúdo da Aula (Markdown com Callouts, Checklists e Code Blocks) -->
-              <div class="glass-card rounded-3xl p-6 sm:p-8 space-y-4">
-                <div class="flex items-center justify-between flex-wrap gap-2 pb-4 border-b border-white/10">
-                  <div class="space-y-0.5">
-                    <span class="text-[0.65rem] font-bold uppercase tracking-wider text-white/50">${escapeHtml(lesson.module)}</span>
-                    <h2 class="text-lg sm:text-xl font-bold text-white">${escapeHtml(lesson.title)}</h2>
-                  </div>
-                  <div class="flex items-center space-x-2">
-                    <button onclick="window.toggleCompleteLesson('${lesson.id}')" class="px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center space-x-1.5 ${isCurrentLessonCompleted ? 'bg-emerald-500 text-black shadow-[0_0_15px_rgba(16,185,129,0.4)]' : 'bg-white/10 hover:bg-white/20 text-white border border-white/15'}">
-                      <span>${isCurrentLessonCompleted ? '✓ Concluída' : 'Marcar como Concluída'}</span>
-                    </button>
-                    ${(currentUserRole==='admin'||currentUserRole==='moderator') ? `
-                      <button onclick="window.appOpenLessonEditorModal('${srv.id}', '${lesson.id}')" class="px-3.5 py-2 bg-white/15 hover:bg-white/25 border border-white/20 text-white rounded-xl text-xs font-bold transition-all shadow-md flex items-center space-x-1.5" title="Editar Aula no Skool Studio">
-                        <span>✏️ Editar</span>
-                      </button>` : ''}
-                  </div>
-                </div>
-
-                <div class="prose prose-invert max-w-none leading-relaxed text-gray-200">
-                  ${renderMarkdown(lesson.cleanContent || lesson.content_markdown || '')}
-                </div>
-              </div>
-            ` : ''}
-          </div>
         </div>
       </section>`;
 
@@ -5157,12 +5445,12 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
     if (!isLoggedIn) { showAuthModal(); return; }
 
     mainAppContainer.innerHTML = `
-      <section class="py-10 px-4 sm:px-6 lg:px-8 max-w-[860px] mx-auto relative z-10">
+      <section class="py-6 sm:py-10 px-3 sm:px-6 lg:px-8 max-w-[860px] mx-auto relative z-10">
 
         <!-- PROFILE CARD -->
         <div class="glass-card rounded-3xl overflow-hidden mb-6">
           <div class="h-28 bg-white/10 relative"></div>
-          <div class="px-6 pb-7 relative">
+          <div class="px-5 sm:px-6 pb-7 relative">
             <div class="flex items-end justify-between -mt-10 mb-5">
               <div class="relative group cursor-pointer" onclick="document.getElementById('profileAvatarInput').click()">
                 <img id="profileBigAvatar" src="${currentUserAvatarUrl}" class="w-20 h-20 rounded-full border-4 border-black shadow-2xl object-cover">
@@ -5170,7 +5458,7 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
                   <span class="text-white text-xs font-bold">Upload 📷</span>
                 </div>
               </div>
-              <button onclick="window.appSaveProfile()" class="px-6 py-2.5 rounded-full font-bold bg-white text-black text-xs shadow-xl hover:scale-105 transition-all">
+              <button onclick="window.appSaveProfile()" class="px-5 py-2.5 min-h-[44px] flex items-center justify-center rounded-full font-bold bg-white text-black text-xs shadow-xl hover:scale-105 active:scale-95 transition-all">
                 💾 Salvar Perfil
               </button>
             </div>
@@ -5191,33 +5479,33 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
               <div>
                 <label class="block text-[0.65rem] text-graphite font-bold uppercase tracking-wider mb-1">Biografia</label>
                 <textarea id="profileBio" rows="2" placeholder="Escreva sobre você..."
-                  class="w-full bg-white/5 border border-white/10 rounded-2xl p-3 text-sm text-white placeholder-white/30 focus:outline-none focus:border-white/30 resize-none">${currentUserProfile?.bio||''}</textarea>
+                  class="w-full bg-white/5 border border-white/10 rounded-2xl p-3 text-base sm:text-sm text-white placeholder-white/30 focus:outline-none focus:border-white/30 resize-none">${currentUserProfile?.bio||''}</textarea>
               </div>
             </div>
           </div>
         </div>
 
         <!-- MERCADO PAGO API KEY CONFIGURATION (ADMIN / USER) -->
-        <div class="glass-card rounded-3xl p-6 mb-6">
+        <div class="glass-card rounded-3xl p-5 sm:p-6 mb-6">
           <h3 class="text-sm font-bold text-white mb-2">💳 Configuração do Mercado Pago</h3>
           <p class="text-xs text-graphite mb-4">Insira suas chaves do Mercado Pago para receber vendas diretamente na sua conta.</p>
-          <div class="space-y-3 text-xs">
+          <div class="space-y-3.5 text-xs">
             <div>
               <label class="block text-graphite mb-1">Public Key (Chave Pública):</label>
-              <input type="text" id="mpPublicKey" placeholder="APP_USR-..." value="${localStorage.getItem('mp_public_key')||''}" class="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-white focus:outline-none">
+              <input type="text" id="mpPublicKey" placeholder="APP_USR-..." value="${localStorage.getItem('mp_public_key')||''}" class="w-full bg-white/5 border border-white/10 rounded-xl px-3.5 py-2.5 text-base sm:text-xs text-white focus:outline-none">
             </div>
             <div>
               <label class="block text-graphite mb-1">Access Token (Token de Acesso):</label>
-              <input type="password" id="mpAccessToken" placeholder="APP_USR-..." value="${localStorage.getItem('mp_access_token')||''}" class="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-white focus:outline-none">
+              <input type="password" id="mpAccessToken" placeholder="APP_USR-..." value="${localStorage.getItem('mp_access_token')||''}" class="w-full bg-white/5 border border-white/10 rounded-xl px-3.5 py-2.5 text-base sm:text-xs text-white focus:outline-none">
             </div>
-            <button onclick="window.appSaveMPKeys()" class="px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/15 rounded-xl text-white font-bold">Salvar Credenciais Mercado Pago</button>
+            <button onclick="window.appSaveMPKeys()" class="px-5 py-2.5 min-h-[44px] flex items-center justify-center bg-white/10 hover:bg-white/20 border border-white/15 rounded-xl text-white font-bold active:scale-95 transition-all">Salvar Credenciais Mercado Pago</button>
           </div>
         </div>
 
         <!-- ACCOUNT LOGOUT -->
-        <div class="glass-card rounded-3xl p-6">
+        <div class="glass-card rounded-3xl p-5 sm:p-6">
           <h3 class="text-sm font-bold text-red-400 mb-3">⚙️ Gerenciar Conta</h3>
-          <button onclick="window.appLogout()" class="px-5 py-2 bg-red-500/20 text-red-400 border border-red-500/30 rounded-xl text-xs font-bold">Sair da Conta</button>
+          <button onclick="window.appLogout()" class="px-5 py-2.5 min-h-[44px] flex items-center justify-center bg-red-500/20 text-red-400 border border-red-500/30 rounded-xl text-xs font-bold active:scale-95 transition-all">Sair da Conta</button>
         </div>
       </section>`;
 

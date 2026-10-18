@@ -50,7 +50,7 @@ export function AlternatingHeroShaders() {
       <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#ff073a] to-transparent opacity-80" />
 
       {/* Seletor Manual de Shaders Touch-Friendly: visível tanto no Mobile quanto no Desktop */}
-      <div className="absolute bottom-3 right-3 sm:bottom-4 sm:right-5 z-20 flex items-center gap-2 px-2.5 py-1.5 sm:px-3 sm:py-1.5 rounded-full bg-black/85 backdrop-blur-md border border-white/15 shadow-[0_0_20px_rgba(0,0,0,0.9)] pointer-events-auto touch-manipulation">
+      <div className="absolute bottom-3 right-3 sm:bottom-4 sm:right-5 z-20 flex items-center gap-2 px-2.5 py-1 rounded-full bg-black/90 border border-white/15 shadow-[0_0_20px_rgba(0,0,0,0.9)] pointer-events-auto touch-manipulation">
         <span className="w-1.5 h-1.5 rounded-full bg-[#ff073a] animate-pulse" />
         <span className="text-[10px] font-mono text-zinc-300 tracking-wider uppercase">
           <span className="hidden sm:inline">Shader: </span>
@@ -64,7 +64,7 @@ export function AlternatingHeroShaders() {
             <button
               key={s.id}
               onClick={() => setActiveShader(s.id)}
-              className={`p-1 flex items-center justify-center cursor-pointer transition-all touch-manipulation`}
+              className="min-h-[36px] min-w-[28px] px-1 flex items-center justify-center cursor-pointer transition-all touch-manipulation active:scale-90"
               title={`Trocar para ${s.name}`}
               aria-label={`Trocar shader para ${s.name}`}
             >

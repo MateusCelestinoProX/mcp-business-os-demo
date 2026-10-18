@@ -78,7 +78,7 @@ export function MainNotionLayout({
   };
 
   return (
-    <section id="publicacoes" className="py-8 sm:py-12 w-full relative overflow-hidden">
+    <section id="publicacoes" className="py-12 sm:py-16 md:py-20 w-full relative overflow-hidden">
       {/* 0. Shader WebGL Dedicado da Sessão Publicações: RippleGrid Encorpado */}
       <RippleGridShader
         className="z-0 mix-blend-screen pointer-events-none"
@@ -97,15 +97,28 @@ export function MainNotionLayout({
           backgroundSize: '28px 28px',
         }}
       />
+
+      {/* ZONAS DE TRANSIÇÃO CINEMÁTICA INTERNAS COM BLUR E SOMBRAS SUAVES */}
+      <div className="absolute top-0 left-0 right-0 h-28 sm:h-36 bg-gradient-to-b from-[#030305] via-[#030305]/80 to-transparent pointer-events-none z-1" />
+      <div className="absolute bottom-0 left-0 right-0 h-28 sm:h-36 bg-gradient-to-t from-[#030305] via-[#030305]/80 to-transparent pointer-events-none z-1" />
+      
+      {/* Halo óptico difuso central suave com blur cinematográfico */}
+      <div
+        className="absolute top-4 left-1/2 -translate-x-1/2 w-96 sm:w-[36rem] h-24 rounded-full pointer-events-none opacity-20 z-1"
+        style={{
+          background: 'radial-gradient(ellipse at center, #ff073a 0%, rgba(138,0,18,0.4) 40%, transparent 75%)',
+          filter: 'blur(50px)',
+        }}
+      />
       
       {/* =========================================================================
           CONTAINER DA GALERIA (MOBILE FIRST ADAPTADO DE PONTA A PONTA)
           ========================================================================= */}
       <div className="w-full px-3.5 sm:px-6 lg:px-10 xl:px-16 relative z-10">
 
-        {/* Barra de Controle Horizontal Minimalista em Vidro Líquido */}
-        <div className="glass-crystal p-4 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl mb-6 sm:mb-8 border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.85)]">
-          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 sm:gap-6 pb-4 sm:pb-6 border-b border-white/[0.08]">
+        {/* Barra de Controle Horizontal Minimalista em Vidro Líquido com Sombras Profundas */}
+        <div className="glass-crystal p-4 sm:p-6 lg:p-7 rounded-2xl sm:rounded-3xl mb-6 sm:mb-8 border border-white/10 shadow-[0_25px_65px_rgba(0,0,0,0.92),0_0_30px_rgba(255,7,58,0.08)]">
+          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-3.5 sm:gap-5 pb-3.5 sm:pb-5 border-b border-white/[0.08]">
             
             {/* Título & Contador */}
             <div className="w-full lg:w-auto">
@@ -123,7 +136,7 @@ export function MainNotionLayout({
               </p>
             </div>
 
-            {/* Barra de Pesquisa Touch-First (text-[16px] no mobile previne zoom no iOS) */}
+            {/* Barra de Pesquisa Touch-First Refinada */}
             <div className="relative w-full lg:w-96">
               <Search className="absolute left-3.5 sm:left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#ff073a] pointer-events-none" />
               <input
@@ -132,12 +145,12 @@ export function MainNotionLayout({
                 placeholder="Pesquisar artigos por título ou tema..."
                 value={searchTerm}
                 onChange={(e) => { setSearchTerm(e.target.value); setCurrentPage(1); }}
-                className="w-full pl-10 pr-12 py-3 rounded-xl sm:rounded-2xl glass-input text-white text-[16px] sm:text-sm placeholder-zinc-500 transition-all font-sans min-h-[48px] touch-manipulation focus:border-[#ff073a]/60 focus:outline-none"
+                className="w-full pl-10 pr-10 py-2 sm:py-2.5 rounded-xl glass-input text-white text-[16px] sm:text-xs md:text-sm placeholder-zinc-500 transition-all font-sans min-h-[40px] touch-manipulation focus:border-[#ff073a]/60 focus:outline-none"
               />
               {searchTerm && (
                 <button
                   onClick={() => { setSearchTerm(''); setCurrentPage(1); }}
-                  className="absolute right-2.5 top-1/2 -translate-y-1/2 min-h-[36px] min-w-[36px] flex items-center justify-center text-xs font-mono text-zinc-400 hover:text-white rounded-lg bg-white/10 active:bg-white/20 transition-colors cursor-pointer touch-manipulation"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 min-h-[30px] min-w-[30px] flex items-center justify-center text-xs font-mono text-zinc-400 hover:text-white rounded-lg bg-white/10 active:bg-white/20 transition-colors cursor-pointer touch-manipulation"
                   title="Limpar busca"
                   aria-label="Limpar busca"
                 >
@@ -148,19 +161,19 @@ export function MainNotionLayout({
 
           </div>
 
-          {/* Dock Horizontal de Categorias (Scroll Horizontal Touch-First com Snap) */}
-          <div className="pt-4 sm:pt-6 flex items-center justify-between flex-wrap gap-3">
-            <div className="flex items-center gap-2 overflow-x-auto pb-2 max-w-full no-scrollbar snap-x snap-proximity -mx-1 px-1 sm:mx-0 sm:px-0">
+          {/* Dock Horizontal de Categorias (Tamanhos Mais Compactos e Elegantes) */}
+          <div className="pt-3.5 sm:pt-4 flex items-center justify-between flex-wrap gap-2.5">
+            <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-1 max-w-full no-scrollbar snap-x snap-proximity -mx-1 px-1 sm:mx-0 sm:px-0">
               <button
                 onClick={() => handleCategorySelect('all')}
-                className={`min-h-[44px] px-3.5 sm:px-4 py-2 rounded-xl sm:rounded-2xl text-xs font-mono font-bold flex items-center gap-2 transition-all shrink-0 cursor-pointer snap-start touch-manipulation active:scale-95 ${
+                className={`min-h-[38px] sm:min-h-[34px] px-3.5 py-1.5 sm:py-1.5 rounded-lg sm:rounded-xl text-[11px] sm:text-xs font-mono font-semibold flex items-center gap-1.5 transition-all shrink-0 cursor-pointer snap-start touch-manipulation active:scale-95 ${
                   selectedCategory === 'all'
-                    ? 'glass-button-fired text-white shadow-xl scale-[1.02]'
+                    ? 'glass-button-fired text-white shadow-lg scale-[1.02]'
                     : 'glass-pill text-zinc-400 hover:text-white hover:border-white/30'
                 }`}
               >
                 <span>TODOS</span>
-                <span className={`px-2 py-0.5 rounded-lg text-[10px] ${
+                <span className={`px-1.5 py-0.2 rounded-md text-[9px] sm:text-[10px] ${
                   selectedCategory === 'all' ? 'bg-black/40 text-white' : 'glass-pill-red text-[#ff073a]'
                 }`}>
                   {articles.length}
@@ -173,14 +186,14 @@ export function MainNotionLayout({
                   <button
                     key={cat.slug}
                     onClick={() => handleCategorySelect(cat.slug)}
-                    className={`min-h-[44px] px-3.5 sm:px-4 py-2 rounded-xl sm:rounded-2xl text-xs font-mono font-bold flex items-center gap-2 transition-all shrink-0 cursor-pointer snap-start touch-manipulation active:scale-95 ${
+                    className={`min-h-[38px] sm:min-h-[34px] px-3.5 py-1.5 sm:py-1.5 rounded-lg sm:rounded-xl text-[11px] sm:text-xs font-mono font-semibold flex items-center gap-1.5 transition-all shrink-0 cursor-pointer snap-start touch-manipulation active:scale-95 ${
                       isSelected
-                        ? 'glass-button-fired text-white shadow-xl scale-[1.02]'
+                        ? 'glass-button-fired text-white shadow-lg scale-[1.02]'
                         : 'glass-pill text-zinc-400 hover:text-white hover:border-white/30'
                     }`}
                   >
                     <span>{cat.name}</span>
-                    <span className={`px-2 py-0.5 rounded-lg text-[10px] ${
+                    <span className={`px-1.5 py-0.2 rounded-md text-[9px] sm:text-[10px] ${
                       isSelected ? 'bg-black/40 text-white' : 'glass-pill-red text-[#ff073a]'
                     }`}>
                       {cat.count}
@@ -272,11 +285,11 @@ export function MainNotionLayout({
                       </span>
                     </div>
 
-                    {/* Botão Tátil de Ação em Vidro (Min touch target 44px) */}
-                    <div className="min-h-[44px] inline-flex items-center gap-1.5 text-xs font-mono font-bold text-[#ff073a] group-hover:text-white transition-colors">
-                      <span className="text-[11px] uppercase tracking-wider">Ler Guia</span>
-                      <div className="w-7 h-7 rounded-lg glass-pill flex items-center justify-center group-hover:bg-[#ff073a] group-hover:text-white group-hover:border-[#ff073a] transition-all">
-                        <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                    {/* Botão Tátil de Ação em Vidro Compacto */}
+                    <div className="min-h-[32px] inline-flex items-center gap-1.5 text-xs font-mono font-bold text-[#ff073a] group-hover:text-white transition-colors">
+                      <span className="text-[10px] sm:text-[11px] uppercase tracking-wider">Ler Guia</span>
+                      <div className="w-6 h-6 rounded-md glass-pill flex items-center justify-center group-hover:bg-[#ff073a] group-hover:text-white group-hover:border-[#ff073a] transition-all">
+                        <ArrowUpRight className="w-3 h-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                       </div>
                     </div>
                   </div>
@@ -286,15 +299,15 @@ export function MainNotionLayout({
           </div>
         ) : (
           /* Estado Vazio de Busca */
-          <div className="glass-crystal p-8 sm:p-12 rounded-2xl sm:rounded-3xl text-center max-w-xl mx-auto my-8 sm:my-12">
-            <BookOpen className="w-10 h-10 sm:w-12 sm:h-12 text-[#ff073a] mx-auto mb-4 opacity-80" />
-            <h3 className="text-lg sm:text-xl font-bold text-white mb-2">Nenhum artigo encontrado</h3>
-            <p className="text-xs font-mono text-zinc-400 mb-6 leading-relaxed">
+          <div className="glass-crystal p-6 sm:p-10 rounded-2xl sm:rounded-3xl text-center max-w-xl mx-auto my-6 sm:my-10">
+            <BookOpen className="w-8 h-8 sm:w-10 sm:h-10 text-[#ff073a] mx-auto mb-3 opacity-80" />
+            <h3 className="text-base sm:text-lg font-bold text-white mb-2">Nenhum artigo encontrado</h3>
+            <p className="text-xs font-mono text-zinc-400 mb-4 leading-relaxed">
               Não encontramos nenhuma publicação para o termo &ldquo;{searchTerm}&rdquo;. Tente buscar por palavras-chave mais genéricas como &ldquo;n8n&rdquo;, &ldquo;IA&rdquo;, &ldquo;Docker&rdquo; ou &ldquo;Linux&rdquo;.
             </p>
             <button
               onClick={() => { setSearchTerm(''); setSelectedCategory('all'); }}
-              className="glass-button-fired min-h-[44px] px-6 py-2.5 rounded-2xl text-xs font-mono font-bold text-white cursor-pointer active:scale-95 touch-manipulation"
+              className="glass-button-fired min-h-[34px] px-4 py-1.5 rounded-xl text-xs font-mono font-bold text-white cursor-pointer active:scale-95 touch-manipulation"
             >
               Resetar Filtros
             </button>
@@ -302,30 +315,30 @@ export function MainNotionLayout({
         )}
 
         {/* =========================================================================
-            BARRA DE PAGINAÇÃO TOUCH-FIRST (RESPONSIVA & GENEROSA)
+            BARRA DE PAGINAÇÃO TOUCH-FIRST (RESPONSIVA & ELEGANTE)
             ========================================================================= */}
         {totalPages > 1 && (
-          <div className="mt-8 sm:mt-12">
-            {/* 1. Paginação Mobile (< 640px): Botões Grandes no Thumb Zone */}
-            <div className="flex sm:hidden items-center justify-between gap-3 w-full max-w-xs mx-auto">
+          <div className="mt-6 sm:mt-10">
+            {/* 1. Paginação Mobile (< 640px) */}
+            <div className="flex sm:hidden items-center justify-between gap-2.5 w-full max-w-xs mx-auto">
               <button
                 onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
                 disabled={currentPage === 1}
-                className="flex-1 min-h-[48px] py-2.5 px-4 rounded-xl glass-crystal border border-white/10 text-xs font-mono font-bold text-zinc-200 disabled:opacity-30 disabled:pointer-events-none active:scale-95 flex items-center justify-center gap-1.5 touch-manipulation"
+                className="flex-1 min-h-[46px] py-2.5 px-3.5 rounded-xl glass-crystal border border-white/10 text-xs font-mono font-bold text-zinc-200 disabled:opacity-30 disabled:pointer-events-none active:scale-95 flex items-center justify-center gap-1.5 touch-manipulation cursor-pointer"
                 aria-label="Página anterior"
               >
                 <ChevronLeft className="w-4 h-4 text-[#ff073a]" />
                 <span>Anterior</span>
               </button>
 
-              <div className="px-3 py-2 rounded-xl glass-crystal border border-white/10 text-xs font-mono text-zinc-300 font-semibold whitespace-nowrap">
+              <div className="px-3 py-2 rounded-xl glass-crystal border border-white/10 text-xs font-mono text-zinc-300 font-semibold whitespace-nowrap min-h-[46px] flex items-center justify-center">
                 <span className="text-white font-bold">{currentPage}</span> / {totalPages}
               </div>
 
               <button
                 onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))}
                 disabled={currentPage === totalPages}
-                className="flex-1 min-h-[48px] py-2.5 px-4 rounded-xl glass-crystal border border-white/10 text-xs font-mono font-bold text-zinc-200 disabled:opacity-30 disabled:pointer-events-none active:scale-95 flex items-center justify-center gap-1.5 touch-manipulation"
+                className="flex-1 min-h-[46px] py-2.5 px-3.5 rounded-xl glass-crystal border border-white/10 text-xs font-mono font-bold text-zinc-200 disabled:opacity-30 disabled:pointer-events-none active:scale-95 flex items-center justify-center gap-1.5 touch-manipulation cursor-pointer"
                 aria-label="Próxima página"
               >
                 <span>Próxima</span>
@@ -334,18 +347,18 @@ export function MainNotionLayout({
             </div>
 
             {/* 2. Paginação Desktop (>= 640px) */}
-            <div className="hidden sm:flex items-center justify-center gap-2">
+            <div className="hidden sm:flex items-center justify-center gap-1.5">
               <button
                 onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
                 disabled={currentPage === 1}
-                className="p-2.5 rounded-xl glass-crystal border border-white/10 text-zinc-300 disabled:opacity-30 disabled:pointer-events-none hover:text-white hover:border-[#ff073a]/40 transition-all cursor-pointer min-h-[44px] min-w-[44px] flex items-center justify-center touch-manipulation"
+                className="p-1.5 rounded-lg glass-crystal border border-white/10 text-zinc-300 disabled:opacity-30 disabled:pointer-events-none hover:text-white hover:border-[#ff073a]/40 transition-all cursor-pointer min-h-[34px] min-w-[34px] flex items-center justify-center touch-manipulation"
                 title="Página Anterior"
                 aria-label="Página anterior"
               >
-                <ChevronLeft className="w-4 h-4" />
+                <ChevronLeft className="w-3.5 h-3.5" />
               </button>
 
-              <div className="flex items-center gap-1.5 px-3 py-1 rounded-2xl glass-crystal border border-white/10">
+              <div className="flex items-center gap-1 px-2 py-0.5 rounded-xl glass-crystal border border-white/10">
                 {Array.from({ length: Math.min(totalPages, 7) }, (_, i) => {
                   let pageNumber = i + 1;
                   if (totalPages > 7) {
@@ -359,9 +372,9 @@ export function MainNotionLayout({
                     <button
                       key={pageNumber}
                       onClick={() => handlePageChange(pageNumber)}
-                      className={`w-9 h-9 rounded-xl text-xs font-mono font-bold transition-all cursor-pointer touch-manipulation ${
+                      className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer touch-manipulation ${
                         isActive
-                          ? 'glass-button-fired text-white shadow-lg scale-105'
+                          ? 'glass-button-fired text-white shadow-md scale-105'
                           : 'text-zinc-400 hover:text-white hover:bg-white/5'
                       }`}
                     >
@@ -374,7 +387,7 @@ export function MainNotionLayout({
               <button
                 onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))}
                 disabled={currentPage === totalPages}
-                className="p-2.5 rounded-xl glass-crystal border border-white/10 text-zinc-300 disabled:opacity-30 disabled:pointer-events-none hover:text-white hover:border-[#ff073a]/40 transition-all cursor-pointer min-h-[44px] min-w-[44px] flex items-center justify-center touch-manipulation"
+                className="p-1.5 rounded-lg glass-crystal border border-white/10 text-zinc-300 disabled:opacity-30 disabled:pointer-events-none hover:text-white hover:border-[#ff073a]/40 transition-all cursor-pointer min-h-[34px] min-w-[34px] flex items-center justify-center touch-manipulation"
                 title="Próxima Página"
                 aria-label="Próxima página"
               >

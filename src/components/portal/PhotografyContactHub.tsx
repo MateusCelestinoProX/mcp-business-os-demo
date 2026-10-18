@@ -37,7 +37,7 @@ export function PhotografyContactHub({
   className = '',
   isEmbedded = false,
   whatsappUrl = 'https://api.whatsapp.com/send/?phone=553197724257&text=QUERO+AUTOMATIZAR+TUDO.&type=phone_number&app_absent=0',
-  email = 'CONTATO-SMARTFLOW@proton.me',
+  email = 'mcp6667@proton.me',
   linkedinUrl = 'https://www.linkedin.com/in/mateus-celestino-0ba50626a/',
   instagramUrl = 'https://www.instagram.com/celestinoautomacao/',
 }: PhotografyContactHubProps) {

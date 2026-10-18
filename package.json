@@ -4,7 +4,9 @@
   "private": true,
   "description": "Plataforma Unificada Soberana de Mateus Celestino Pro — Branding, Comunidade, Construtor e Biblioteca",
   "scripts": {
-    "dev": "next dev",
+    "dev": "node scripts/server-guardian.js",
+    "dev:raw": "next dev",
+    "dev:guardian": "node scripts/server-guardian.js",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
