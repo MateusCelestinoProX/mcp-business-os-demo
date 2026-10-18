@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import LiquidGlassBackground from '@/components/portal/LiquidGlassBackground';
 import OriginalHeader from '@/components/portal/OriginalHeader';
+import MetricsBanner from '@/components/portal/MetricsBanner';
 import MainNotionLayout from '@/components/portal/MainNotionLayout';
 import SobreSection from '@/components/portal/SobreSection';
 import ContatoSection from '@/components/portal/ContatoSection';
@@ -51,8 +52,8 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-transparent text-[#ececec] flex flex-col selection:bg-[#ff073a] selection:text-white relative">
-      <div className="flex-1 relative z-10">
+    <div className="min-h-screen bg-transparent text-[#ececec] flex flex-col selection:bg-[#ff073a] selection:text-white relative w-full max-w-full overflow-x-hidden">
+      <div className="flex-1 relative z-10 w-full max-w-full overflow-x-hidden">
 
         {/* =========================================================================
             1. HEADER AUTÊNTICO COM CAPA ANIMADA & SHADER 01: GRID SCAN (HERO CENTRALIZADO)
@@ -61,6 +62,11 @@ export default function HomePage() {
           profile={siteData?.profile || {}}
           onNavigate={handleNavigate}
         />
+
+        {/* =========================================================================
+            MÉTRICAS DO ECOSSISTEMA SOBERANO (2 COLUNAS NO MOBILE)
+            ========================================================================= */}
+        <MetricsBanner />
 
         {/* ZONA DE TRANSIÇÃO 01 -> 02: Hero -> Acervo */}
         <ShaderTransitionZone

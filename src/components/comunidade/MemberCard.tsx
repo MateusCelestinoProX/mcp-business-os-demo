@@ -74,16 +74,16 @@ export function MemberCard({
       variant="crystal"
       glow={currentMember.tier === 'vip'}
       glowColor="red"
-      className={cn('relative overflow-hidden p-6', className)}
+      className={cn('relative overflow-hidden p-4 sm:p-6 w-full max-w-full', className)}
     >
       {/* Background Holographic Glow */}
       <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-red-600/15 blur-3xl" />
       <div className="pointer-events-none absolute -left-16 -bottom-16 h-40 w-40 rounded-full bg-amber-500/10 blur-3xl" />
 
       {/* Top Identity Header */}
-      <div className="relative flex items-start justify-between">
-        <div className="flex items-center gap-3.5">
-          <div className="relative flex h-14 w-14 items-center justify-center rounded-2xl border border-white/20 bg-gradient-to-br from-neutral-800 to-black text-xl font-black text-white shadow-xl">
+      <div className="relative flex items-start justify-between gap-3">
+        <div className="flex items-center gap-3 min-w-0 flex-1">
+          <div className="relative flex h-12 w-12 sm:h-14 sm:w-14 shrink-0 items-center justify-center rounded-2xl border border-white/20 bg-gradient-to-br from-neutral-800 to-black text-lg sm:text-xl font-black text-white shadow-xl">
             {currentMember.name.charAt(0)}
             {currentMember.tier === 'vip' && (
               <span className="absolute -bottom-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-red-600 text-[11px] font-black text-white shadow-[0_0_12px_#ff073a]">
@@ -92,15 +92,15 @@ export function MemberCard({
             )}
           </div>
 
-          <div>
+          <div className="min-w-0 flex-1">
             <div className="flex items-center gap-2">
-              <h4 className="text-base font-bold text-white tracking-tight">{currentMember.name}</h4>
+              <h4 className="text-sm sm:text-base font-bold text-white tracking-tight truncate">{currentMember.name}</h4>
             </div>
-            <p className="text-xs text-neutral-400 font-mono truncate max-w-[190px]">
+            <p className="text-xs text-neutral-400 font-mono truncate max-w-full">
               {currentMember.email}
             </p>
             <div className="mt-1 flex items-center gap-1.5">
-              <Badge variant={tierInfo.variant} dot={currentMember.tier === 'vip'}>
+              <Badge variant={tierInfo.variant} dot={currentMember.tier === 'vip'} className="text-[0.65rem] px-2 py-0">
                 {tierInfo.label}
               </Badge>
             </div>
@@ -110,8 +110,9 @@ export function MemberCard({
         {onLogoutClick && (
           <button
             onClick={onLogoutClick}
-            className="flex h-8 w-8 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-neutral-400 transition-all hover:border-red-500/40 hover:bg-red-500/10 hover:text-red-400"
+            className="flex h-10 w-10 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-neutral-400 transition-all hover:border-red-500/40 hover:bg-red-500/10 hover:text-red-400 touch-manipulation"
             title="Sair da Conta"
+            aria-label="Sair da Conta"
           >
             <LogOut className="h-4 w-4" />
           </button>
@@ -119,16 +120,17 @@ export function MemberCard({
       </div>
 
       {/* Member ID and Verification */}
-      <div className="mt-4 flex items-center justify-between rounded-xl border border-white/5 bg-black/40 px-3.5 py-2">
-        <div className="flex items-center gap-1.5">
-          <ShieldCheck className="h-3.5 w-3.5 text-emerald-400" />
-          <span className="text-[0.7rem] font-mono text-neutral-400 truncate max-w-[170px]">
+      <div className="mt-4 flex items-center justify-between gap-2 rounded-xl border border-white/5 bg-black/40 px-3 sm:px-3.5 py-2">
+        <div className="flex items-center gap-1.5 min-w-0 flex-1">
+          <ShieldCheck className="h-3.5 w-3.5 shrink-0 text-emerald-400" />
+          <span className="text-[0.7rem] font-mono text-neutral-400 truncate">
             ID: {currentMember.id}
           </span>
         </div>
         <button
           onClick={copyMemberId}
-          className="flex items-center gap-1 text-[0.68rem] text-neutral-400 hover:text-white transition-all"
+          className="flex items-center gap-1 text-[0.68rem] text-neutral-400 hover:text-white transition-all shrink-0 py-1 px-2 rounded-lg hover:bg-white/5 min-h-[32px] touch-manipulation"
+          aria-label="Copiar ID do membro"
         >
           {copied ? (
             <>
@@ -145,21 +147,21 @@ export function MemberCard({
       </div>
 
       {/* Member Stats Grid */}
-      <div className="mt-4 grid grid-cols-3 gap-2">
-        <div className="rounded-xl border border-white/5 bg-white/[0.02] p-2.5 text-center">
+      <div className="mt-4 grid grid-cols-3 gap-1.5 sm:gap-2">
+        <div className="rounded-xl border border-white/5 bg-white/[0.02] p-2 sm:p-2.5 text-center">
           <div className="flex items-center justify-center gap-1 text-red-400">
             <Zap className="h-3 w-3" />
             <span className="text-xs font-bold text-white">40+</span>
           </div>
-          <span className="text-[0.65rem] text-neutral-400">Prompts VIP</span>
+          <span className="text-[0.62rem] sm:text-[0.65rem] text-neutral-400 block truncate">Prompts VIP</span>
         </div>
 
-        <div className="rounded-xl border border-white/5 bg-white/[0.02] p-2.5 text-center">
+        <div className="rounded-xl border border-white/5 bg-white/[0.02] p-2 sm:p-2.5 text-center">
           <div className="flex items-center justify-center gap-1 text-amber-400">
             <TrendingUp className="h-3 w-3" />
             <span className="text-xs font-bold text-white">100%</span>
           </div>
-          <span className="text-[0.65rem] text-neutral-400">Mídias 4K</span>
+          <span className="text-[0.62rem] sm:text-[0.65rem] text-neutral-400 block truncate">Mídias 4K</span>
         </div>
 
         <div className="rounded-xl border border-white/5 bg-white/[0.02] p-2.5 text-center">
@@ -167,23 +169,23 @@ export function MemberCard({
             <Award className="h-3 w-3" />
             <span className="text-xs font-bold text-white">Nível 8</span>
           </div>
-          <span className="text-[0.65rem] text-neutral-400">Reputação</span>
+          <span className="text-[0.62rem] sm:text-[0.65rem] text-neutral-400 block truncate">Reputação</span>
         </div>
       </div>
 
       {/* Upgrade Callout if not VIP */}
       {currentMember.tier !== 'vip' && (
-        <div className="mt-4 rounded-xl border border-red-500/30 bg-gradient-to-r from-red-950/40 to-neutral-900/60 p-3">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <Sparkles className="h-4 w-4 text-red-400" />
-              <div>
-                <p className="text-xs font-bold text-white">Upgrade para VIP Soberano</p>
-                <p className="text-[0.65rem] text-neutral-400">Acesso ilimitado e mentorias exclusivas.</p>
+        <div className="mt-4 rounded-xl border border-red-500/30 bg-gradient-to-r from-red-950/40 to-neutral-900/60 p-3 sm:p-3.5">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+            <div className="flex items-center gap-2 min-w-0">
+              <Sparkles className="h-4 w-4 shrink-0 text-red-400" />
+              <div className="min-w-0">
+                <p className="text-xs font-bold text-white truncate">Upgrade para VIP Soberano</p>
+                <p className="text-[0.65rem] text-neutral-400 truncate">Acesso ilimitado e mentorias exclusivas.</p>
               </div>
             </div>
             {onUpgradeClick && (
-              <Button onClick={onUpgradeClick} variant="fired" size="sm" className="text-xs px-3">
+              <Button onClick={onUpgradeClick} variant="fired" size="sm" className="text-xs px-4 min-h-[38px] touch-manipulation w-full sm:w-auto">
                 Upgrade
               </Button>
             )}

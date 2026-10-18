@@ -13,6 +13,7 @@ import {
   FileText,
   CheckCircle2,
   ArrowUpRight,
+  Send,
 } from 'lucide-react';
 import LineWavesShader from '@/components/shaders/LineWavesShader';
 
@@ -51,6 +52,8 @@ const backgroundImages = [
 
 export function ContatoSection({ profile }: ContatoSectionProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [quickName, setQuickName] = useState('');
+  const [quickMessage, setQuickMessage] = useState('');
 
   // Background slider cycling a cada 4 segundos
   useEffect(() => {
@@ -72,10 +75,17 @@ export function ContatoSection({ profile }: ContatoSectionProps) {
   const aiPortfolioUrl = profile?.aiPortfolio || 'https://visuals-visuals-home.vercel.app/';
   const curriculumUrl = profile?.curriculum || 'https://outros-c-v.vercel.app/';
 
+  // Envio rápido pelo WhatsApp
+  const handleQuickSend = (e: React.FormEvent) => {
+    e.preventDefault();
+    const text = `*MENSAGEM RÁPIDA VIA PORTAL*%0A%0A*Nome:* ${encodeURIComponent(quickName.trim() || 'Visitante do Portal')}%0A*Mensagem:* ${encodeURIComponent(quickMessage.trim() || 'Olá Mateus, gostaria de iniciar uma consultoria de automação!')}`;
+    window.open(`https://api.whatsapp.com/send/?phone=553197724257&text=${text}&type=phone_number&app_absent=0`, '_blank');
+  };
+
   return (
     <section
       id="contato"
-      className="scroll-mt-28 py-10 lg:py-16 min-h-[calc(100vh-4rem)] flex flex-col justify-center relative overflow-hidden w-full"
+      className="scroll-mt-28 py-8 sm:py-12 lg:py-16 min-h-[calc(100vh-4rem)] flex flex-col justify-center relative overflow-hidden w-full"
     >
       {/* =========================================================================
           0. BACKGROUND SLIDER DINÂMICO DE TELA CHEIA (ORIGINAL PHOTOGRAFY HUB)
@@ -118,26 +128,26 @@ export function ContatoSection({ profile }: ContatoSectionProps) {
       {/* =========================================================================
           CONTEÚDO PRINCIPAL: PÁGINA COMPLETA DE CONTATO // DIGITAL HUB OFICIAL
           ========================================================================= */}
-      <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex-1 flex flex-col justify-center py-6 sm:py-10">
+      <div className="w-full max-w-5xl mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10 flex-1 flex flex-col justify-center py-4 sm:py-8">
         
         {/* Box Soberano em Vidro Cristalino de Alta Fidelidade */}
-        <div className="glass-crystal rounded-3xl lg:rounded-[2.5rem] p-6 sm:p-10 lg:p-12 w-full border border-white/15 shadow-[0_30px_90px_rgba(0,0,0,0.85),0_0_50px_rgba(255,7,58,0.15)] relative overflow-hidden">
+        <div className="glass-crystal rounded-2xl sm:rounded-3xl lg:rounded-[2.5rem] p-5 sm:p-9 lg:p-12 w-full border border-white/15 shadow-[0_30px_90px_rgba(0,0,0,0.85),0_0_50px_rgba(255,7,58,0.15)] relative overflow-hidden">
           
           {/* Luz interna suave no box */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-24 bg-gradient-to-b from-white/10 to-transparent pointer-events-none rounded-t-3xl" />
 
           {/* 1. Header do Perfil & Identidade */}
-          <div className="flex flex-col items-center text-center relative z-10 mb-8 sm:mb-10">
+          <div className="flex flex-col items-center text-center relative z-10 mb-6 sm:mb-8">
             
             {/* Badge de Status Oficial Ativo */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-950/60 border border-emerald-500/40 text-[11px] font-mono text-emerald-400 font-semibold mb-6 shadow-[0_0_15px_rgba(16,185,129,0.2)]">
+            <div className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-emerald-950/60 border border-emerald-500/40 text-[10px] sm:text-[11px] font-mono text-emerald-400 font-semibold mb-4 sm:mb-6 shadow-[0_0_15px_rgba(16,185,129,0.2)]">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               <span>CANAL OFICIAL ATIVO // ATENDIMENTO PRIORITÁRIO</span>
             </div>
 
             {/* Foto de Perfil com Anel de Vidro e Gradiente Carmesim */}
-            <div className="mb-5 relative">
-              <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full p-[3px] bg-gradient-to-tr from-[#ff073a] via-white/40 to-white shadow-[0_0_35px_rgba(255,7,58,0.4)] relative overflow-hidden group">
+            <div className="mb-4 sm:mb-5 relative">
+              <div className="w-20 h-20 sm:w-28 sm:h-28 rounded-full p-[2.5px] sm:p-[3px] bg-gradient-to-tr from-[#ff073a] via-white/40 to-white shadow-[0_0_35px_rgba(255,7,58,0.4)] relative overflow-hidden group">
                 <img
                   src="/photografy-contato/kz.jpg"
                   alt="Mateus Celestino"
@@ -150,52 +160,52 @@ export function ContatoSection({ profile }: ContatoSectionProps) {
               </div>
               {/* Ponto de Status Online */}
               <span
-                className="absolute bottom-1 right-1 w-5 h-5 rounded-full bg-emerald-500 border-2 border-black shadow-[0_0_12px_#10b981]"
+                className="absolute bottom-1 right-1 w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-emerald-500 border-2 border-black shadow-[0_0_12px_#10b981]"
                 title="Online // Atendimento Direto Disponível"
               />
             </div>
 
             {/* Nome e Título da Marca */}
-            <h1 className="text-xl sm:text-3xl font-light tracking-[0.25em] uppercase text-white font-sans">
+            <h1 className="text-lg sm:text-3xl font-light tracking-[0.2em] sm:tracking-[0.25em] uppercase text-white font-sans">
               MATEUS CELESTINO
             </h1>
-            <div className="text-xs sm:text-sm font-mono tracking-[0.35em] text-[#ff073a] font-semibold mt-1 uppercase">
+            <div className="text-[11px] sm:text-sm font-mono tracking-[0.25em] sm:tracking-[0.35em] text-[#ff073a] font-bold mt-1 uppercase">
               DIGITAL HUB // CANAIS OFICIAIS & CONTATO DIRETO
             </div>
 
-            <p className="mt-3 text-xs sm:text-sm text-zinc-300 font-light max-w-2xl leading-relaxed">
+            <p className="mt-2.5 sm:mt-3 text-xs sm:text-sm text-zinc-300 font-light max-w-2xl leading-relaxed">
               Conecte-se diretamente com Mateus Celestino para projetos de automação empresarial, agentes autônomos de IA no WhatsApp, integrações n8n e infraestrutura soberana.
             </p>
           </div>
 
-          {/* 2. Grade dos 4 Canais Oficiais Principais de Atendimento */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 relative z-10 mb-6">
+          {/* 2. Grade dos 4 Canais Oficiais com WHATSAPP SUPREMO DESTACADO */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4 relative z-10 mb-6">
             
-            {/* Canal 1: WhatsApp Oficial */}
+            {/* Canal 1: WhatsApp Oficial SUPREMO com Borda Carmesim & Glow */}
             <a
               href={whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="glass-crystal glass-interactive p-5 sm:p-6 rounded-2xl sm:rounded-3xl flex items-start gap-4 group transition-all duration-300 hover:border-red-500/50 hover:shadow-[0_0_30px_rgba(255,7,58,0.25)] relative overflow-hidden"
+              className="glass-crystal glass-interactive p-4 sm:p-6 rounded-2xl sm:rounded-3xl flex items-start gap-3.5 sm:gap-4 group transition-all duration-300 border-2 border-[#ff073a]/60 bg-[#ff073a]/10 hover:border-[#ff073a] hover:bg-[#ff073a]/20 shadow-[0_0_35px_rgba(255,7,58,0.3)] relative overflow-hidden min-h-[80px]"
             >
-              <div className="w-12 h-12 rounded-2xl glass-pill-red flex items-center justify-center text-[#ff073a] group-hover:scale-110 transition-transform shadow-lg shrink-0">
-                <MessageSquare className="w-6 h-6" />
+              <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-[#ff073a]/25 border border-[#ff073a]/50 flex items-center justify-center text-[#ff073a] group-hover:scale-110 transition-transform shadow-lg shrink-0">
+                <MessageSquare className="w-5 h-5 sm:w-6 sm:h-6" />
               </div>
               <div className="flex-1 min-w-0">
-                <div className="flex items-center justify-between gap-2">
-                  <span className="text-[11px] font-mono text-[#ff073a] font-bold uppercase tracking-wider">
-                    WHATSAPP OFICIAL
+                <div className="flex items-center justify-between gap-1">
+                  <span className="text-[10px] sm:text-[11px] font-mono text-[#ff073a] font-black uppercase tracking-wider">
+                    WHATSAPP OFICIAL DIRETO
                   </span>
-                  <span className="text-[10px] font-mono font-bold text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-500/40 shrink-0">
+                  <span className="text-[9px] sm:text-[10px] font-mono font-bold text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded-full border border-emerald-500/50 shrink-0">
                     &lt; 15 MIN
                   </span>
                 </div>
-                <div className="text-base sm:text-lg font-bold text-white mt-1 group-hover:text-[#ff073a] transition-colors truncate">
+                <div className="text-base sm:text-lg font-black text-white mt-0.5 group-hover:text-[#ff073a] transition-colors truncate">
                   +55 (31) 9772-4257
                 </div>
-                <p className="text-xs text-zinc-400 font-light mt-1 flex items-center gap-1 leading-relaxed">
-                  <span>Mensagem instantânea: &ldquo;QUERO AUTOMATIZAR TUDO.&rdquo;</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-zinc-500 group-hover:text-white transition-colors shrink-0" />
+                <p className="text-xs text-zinc-300 font-light mt-1 flex items-center gap-1 leading-relaxed">
+                  <span className="truncate">Mensagem rápida: &ldquo;QUERO AUTOMATIZAR TUDO.&rdquo;</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-[#ff073a] group-hover:text-white transition-colors shrink-0" />
                 </p>
               </div>
             </a>
@@ -203,25 +213,25 @@ export function ContatoSection({ profile }: ContatoSectionProps) {
             {/* Canal 2: E-mail Corporativo Proton */}
             <a
               href={emailHref}
-              className="glass-crystal glass-interactive p-5 sm:p-6 rounded-2xl sm:rounded-3xl flex items-start gap-4 group transition-all duration-300 hover:border-red-500/50 hover:shadow-[0_0_30px_rgba(255,7,58,0.25)] relative overflow-hidden"
+              className="glass-crystal glass-interactive p-4 sm:p-6 rounded-2xl sm:rounded-3xl flex items-start gap-3.5 sm:gap-4 group transition-all duration-300 border border-white/10 hover:border-[#ff073a]/40 relative overflow-hidden min-h-[80px]"
             >
-              <div className="w-12 h-12 rounded-2xl glass-pill flex items-center justify-center text-zinc-300 group-hover:text-[#ff073a] group-hover:scale-110 transition-transform shadow-lg shrink-0">
-                <Mail className="w-6 h-6" />
+              <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl glass-pill flex items-center justify-center text-zinc-300 group-hover:text-[#ff073a] group-hover:scale-110 transition-transform shadow-lg shrink-0">
+                <Mail className="w-5 h-5 sm:w-6 sm:h-6" />
               </div>
               <div className="flex-1 min-w-0">
-                <div className="flex items-center justify-between gap-2">
-                  <span className="text-[11px] font-mono text-zinc-400 font-bold uppercase tracking-wider">
+                <div className="flex items-center justify-between gap-1">
+                  <span className="text-[10px] sm:text-[11px] font-mono text-zinc-400 font-bold uppercase tracking-wider">
                     E-MAIL CORPORATIVO
                   </span>
-                  <span className="text-[10px] font-mono font-bold text-zinc-300 bg-white/5 px-2 py-0.5 rounded-full border border-white/10 shrink-0">
+                  <span className="text-[9px] sm:text-[10px] font-mono font-bold text-zinc-300 bg-white/5 px-2 py-0.5 rounded-full border border-white/10 shrink-0">
                     CRIPTOGRAFADO
                   </span>
                 </div>
-                <div className="text-sm sm:text-base font-bold text-white mt-1 group-hover:text-[#ff073a] transition-colors truncate" title={email}>
+                <div className="text-sm sm:text-base font-bold text-white mt-0.5 group-hover:text-[#ff073a] transition-colors truncate" title={email}>
                   {email}
                 </div>
                 <p className="text-xs text-zinc-400 font-light mt-1 flex items-center gap-1 leading-relaxed">
-                  <span>Proton Mail com criptografia ponta a ponta</span>
+                  <span className="truncate">Proton Mail criptografado</span>
                   <ArrowUpRight className="w-3.5 h-3.5 text-zinc-500 group-hover:text-white transition-colors shrink-0" />
                 </p>
               </div>
@@ -232,25 +242,25 @@ export function ContatoSection({ profile }: ContatoSectionProps) {
               href={instagramUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="glass-crystal glass-interactive p-5 sm:p-6 rounded-2xl sm:rounded-3xl flex items-start gap-4 group transition-all duration-300 hover:border-red-500/50 hover:shadow-[0_0_30px_rgba(255,7,58,0.25)] relative overflow-hidden"
+              className="glass-crystal glass-interactive p-4 sm:p-6 rounded-2xl sm:rounded-3xl flex items-start gap-3.5 sm:gap-4 group transition-all duration-300 border border-white/10 hover:border-[#ff073a]/40 relative overflow-hidden min-h-[80px]"
             >
-              <div className="w-12 h-12 rounded-2xl glass-pill flex items-center justify-center text-zinc-300 group-hover:text-[#ff073a] group-hover:scale-110 transition-transform shadow-lg shrink-0">
-                <InstagramIcon className="w-6 h-6" />
+              <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl glass-pill flex items-center justify-center text-zinc-300 group-hover:text-[#ff073a] group-hover:scale-110 transition-transform shadow-lg shrink-0">
+                <InstagramIcon className="w-5 h-5 sm:w-6 sm:h-6" />
               </div>
               <div className="flex-1 min-w-0">
-                <div className="flex items-center justify-between gap-2">
-                  <span className="text-[11px] font-mono text-zinc-400 font-bold uppercase tracking-wider">
+                <div className="flex items-center justify-between gap-1">
+                  <span className="text-[10px] sm:text-[11px] font-mono text-zinc-400 font-bold uppercase tracking-wider">
                     INSTAGRAM OFICIAL
                   </span>
-                  <span className="text-[10px] font-mono font-bold text-zinc-400 bg-white/5 px-2 py-0.5 rounded-full border border-white/10 shrink-0">
+                  <span className="text-[9px] sm:text-[10px] font-mono font-bold text-zinc-400 bg-white/5 px-2 py-0.5 rounded-full border border-white/10 shrink-0">
                     CONTEÚDO & IA
                   </span>
                 </div>
-                <div className="text-base sm:text-lg font-bold text-white mt-1 group-hover:text-[#ff073a] transition-colors truncate">
+                <div className="text-base sm:text-lg font-bold text-white mt-0.5 group-hover:text-[#ff073a] transition-colors truncate">
                   @celestinoautomacao
                 </div>
                 <p className="text-xs text-zinc-400 font-light mt-1 flex items-center gap-1 leading-relaxed">
-                  <span>Bastidores, agentes de IA e engenharia prática</span>
+                  <span className="truncate">Bastidores e engenharia prática</span>
                   <ArrowUpRight className="w-3.5 h-3.5 text-zinc-500 group-hover:text-white transition-colors shrink-0" />
                 </p>
               </div>
@@ -261,25 +271,25 @@ export function ContatoSection({ profile }: ContatoSectionProps) {
               href={linkedinUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="glass-crystal glass-interactive p-5 sm:p-6 rounded-2xl sm:rounded-3xl flex items-start gap-4 group transition-all duration-300 hover:border-red-500/50 hover:shadow-[0_0_30px_rgba(255,7,58,0.25)] relative overflow-hidden"
+              className="glass-crystal glass-interactive p-4 sm:p-6 rounded-2xl sm:rounded-3xl flex items-start gap-3.5 sm:gap-4 group transition-all duration-300 border border-white/10 hover:border-[#ff073a]/40 relative overflow-hidden min-h-[80px]"
             >
-              <div className="w-12 h-12 rounded-2xl glass-pill flex items-center justify-center text-zinc-300 group-hover:text-[#ff073a] group-hover:scale-110 transition-transform shadow-lg shrink-0">
-                <LinkedinIcon className="w-6 h-6" />
+              <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl glass-pill flex items-center justify-center text-zinc-300 group-hover:text-[#ff073a] group-hover:scale-110 transition-transform shadow-lg shrink-0">
+                <LinkedinIcon className="w-5 h-5 sm:w-6 sm:h-6" />
               </div>
               <div className="flex-1 min-w-0">
-                <div className="flex items-center justify-between gap-2">
-                  <span className="text-[11px] font-mono text-zinc-400 font-bold uppercase tracking-wider">
+                <div className="flex items-center justify-between gap-1">
+                  <span className="text-[10px] sm:text-[11px] font-mono text-zinc-400 font-bold uppercase tracking-wider">
                     LINKEDIN PROFISSIONAL
                   </span>
-                  <span className="text-[10px] font-mono font-bold text-zinc-400 bg-white/5 px-2 py-0.5 rounded-full border border-white/10 shrink-0">
+                  <span className="text-[9px] sm:text-[10px] font-mono font-bold text-zinc-400 bg-white/5 px-2 py-0.5 rounded-full border border-white/10 shrink-0">
                     B2B & CONEXÕES
                   </span>
                 </div>
-                <div className="text-base sm:text-lg font-bold text-white mt-1 group-hover:text-[#ff073a] transition-colors truncate">
+                <div className="text-base sm:text-lg font-bold text-white mt-0.5 group-hover:text-[#ff073a] transition-colors truncate">
                   Mateus Celestino
                 </div>
                 <p className="text-xs text-zinc-400 font-light mt-1 flex items-center gap-1 leading-relaxed">
-                  <span>Conexões corporativas e parcerias estratégicas</span>
+                  <span className="truncate">Conexões e parcerias corporativas</span>
                   <ArrowUpRight className="w-3.5 h-3.5 text-zinc-500 group-hover:text-white transition-colors shrink-0" />
                 </p>
               </div>
@@ -287,19 +297,62 @@ export function ContatoSection({ profile }: ContatoSectionProps) {
 
           </div>
 
-          {/* 3. Ecossistema de Portfólios & Hubs Complementares (Original Photografy Hub) */}
+          {/* 2.5 Formulário Responsivo de Mensagem Rápida com Inputs >= 16px no mobile */}
+          <div className="relative z-10 my-6 p-4 sm:p-6 rounded-2xl glass-card-nested border border-white/10">
+            <div className="flex items-center justify-between gap-2 mb-3">
+              <div className="flex items-center gap-2">
+                <MessageSquare className="w-4 h-4 text-[#ff073a]" />
+                <h3 className="text-xs sm:text-sm font-bold text-white font-mono uppercase tracking-wider">
+                  Envio Direto de Mensagem ao WhatsApp Oficial
+                </h3>
+              </div>
+              <span className="text-[10px] font-mono text-zinc-400 hidden sm:inline">
+                Abertura instantânea
+              </span>
+            </div>
+
+            <form onSubmit={handleQuickSend} className="space-y-3">
+              <div>
+                <input
+                  type="text"
+                  placeholder="Seu Nome ou Empresa"
+                  value={quickName}
+                  onChange={(e) => setQuickName(e.target.value)}
+                  className="glass-input w-full rounded-xl px-4 py-3 text-base sm:text-sm text-white placeholder:text-neutral-500 focus:border-[#ff073a] focus:outline-none transition-all min-h-[46px]"
+                />
+              </div>
+              <div>
+                <textarea
+                  rows={2}
+                  placeholder="Descreva resumidamente o que você precisa automatizar..."
+                  value={quickMessage}
+                  onChange={(e) => setQuickMessage(e.target.value)}
+                  className="glass-input w-full rounded-xl px-4 py-3 text-base sm:text-sm text-white placeholder:text-neutral-500 focus:border-[#ff073a] focus:outline-none transition-all resize-none min-h-[76px]"
+                />
+              </div>
+              <button
+                type="submit"
+                className="glass-button-fired w-full py-3.5 px-5 rounded-xl font-mono text-xs sm:text-sm font-bold text-white shadow-xl flex items-center justify-center gap-2 min-h-[48px] cursor-pointer hover:scale-[1.01] active:scale-[0.99] transition-transform"
+              >
+                <Send className="w-4 h-4" />
+                <span>ENVIAR MENSAGEM NO WHATSAPP COM 1 CLIQUE</span>
+              </button>
+            </form>
+          </div>
+
+          {/* 3. Ecossistema de Portfólios & Hubs Complementares */}
           <div className="relative z-10 pt-4 pb-2 border-t border-white/10">
-            <div className="text-[11px] font-mono text-zinc-400 uppercase tracking-widest text-center mb-3 font-semibold">
+            <div className="text-[10px] sm:text-[11px] font-mono text-zinc-400 uppercase tracking-widest text-center mb-3 font-semibold">
               ECOSSISTEMA DE PORTFÓLIOS & HUB DE ATIVOS
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3">
               
               {/* Photo Portfolio */}
               <a
                 href={photoPortfolioUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="glass-interactive py-3 px-4 rounded-2xl flex items-center justify-center gap-2 group transition-all text-xs font-mono text-zinc-300 hover:text-white"
+                className="glass-interactive py-3 px-4 rounded-xl sm:rounded-2xl flex items-center justify-center gap-2 group transition-all text-xs font-mono text-zinc-300 hover:text-white min-h-[44px]"
               >
                 <Camera className="w-4 h-4 text-[#ff073a]" />
                 <span className="tracking-wider">PHOTO PORTFOLIO</span>
@@ -311,7 +364,7 @@ export function ContatoSection({ profile }: ContatoSectionProps) {
                 href={aiPortfolioUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="glass-interactive py-3 px-4 rounded-2xl flex items-center justify-center gap-2 group transition-all text-xs font-mono text-zinc-300 hover:text-white"
+                className="glass-interactive py-3 px-4 rounded-xl sm:rounded-2xl flex items-center justify-center gap-2 group transition-all text-xs font-mono text-zinc-300 hover:text-white min-h-[44px]"
               >
                 <Cpu className="w-4 h-4 text-[#ff073a]" />
                 <span className="tracking-wider">AI PORTFOLIO</span>
@@ -323,7 +376,7 @@ export function ContatoSection({ profile }: ContatoSectionProps) {
                 href={curriculumUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="glass-interactive py-3 px-4 rounded-2xl flex items-center justify-center gap-2 group transition-all text-xs font-mono text-zinc-300 hover:text-white"
+                className="glass-interactive py-3 px-4 rounded-xl sm:rounded-2xl flex items-center justify-center gap-2 group transition-all text-xs font-mono text-zinc-300 hover:text-white min-h-[44px]"
               >
                 <FileText className="w-4 h-4 text-[#ff073a]" />
                 <span className="tracking-wider">CURRICULUM ONLINE</span>
@@ -334,27 +387,27 @@ export function ContatoSection({ profile }: ContatoSectionProps) {
           </div>
 
           {/* 4. Botão Especial Master PRO // CTA de Alta Performance */}
-          <div className="relative z-10 pt-5 pb-2">
+          <div className="relative z-10 pt-4 pb-2">
             <a
               href={whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="glass-button-fired w-full py-4 sm:py-5 px-6 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left group cursor-pointer shadow-[0_15px_40px_rgba(255,7,58,0.35)] hover:scale-[1.01] active:scale-[0.99] transition-all"
+              className="glass-button-fired w-full py-4 sm:py-5 px-5 sm:px-6 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left group cursor-pointer shadow-[0_15px_40px_rgba(255,7,58,0.35)] hover:scale-[1.01] active:scale-[0.99] transition-all min-h-[52px]"
             >
-              <div className="flex items-center gap-3.5">
+              <div className="flex items-center gap-3 sm:gap-3.5">
                 <div className="w-10 h-10 rounded-xl bg-black/40 border border-white/20 flex items-center justify-center text-white shrink-0 group-hover:rotate-6 transition-transform">
                   <Sparkles className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <div className="font-bold tracking-[0.15em] text-sm sm:text-base text-white uppercase">
+                  <div className="font-bold tracking-[0.12em] sm:tracking-[0.15em] text-sm sm:text-base text-white uppercase">
                     MATEUS CELESTINO PRO
                   </div>
-                  <div className="font-light tracking-widest text-[10px] sm:text-xs text-white/80 font-mono">
+                  <div className="font-light tracking-wider sm:tracking-widest text-[10px] sm:text-xs text-white/80 font-mono">
                     (AUTOMATION & HIGH PERFORMANCE SERVICES) // INICIAR PROJETO
                   </div>
                 </div>
               </div>
-              <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 border border-white/20 text-xs font-mono font-bold text-white shrink-0">
+              <div className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white/10 border border-white/20 text-xs font-mono font-bold text-white shrink-0 min-h-[42px]">
                 <span>QUERO AUTOMATIZAR TUDO</span>
                 <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </div>
@@ -362,7 +415,7 @@ export function ContatoSection({ profile }: ContatoSectionProps) {
           </div>
 
           {/* 5. Rodapé Institucional com Selos de Garantia e Confiabilidade */}
-          <div className="relative z-10 pt-6 mt-4 border-t border-white/10 flex flex-wrap items-center justify-center sm:justify-between gap-3 text-[11px] font-mono text-zinc-400">
+          <div className="relative z-10 pt-5 mt-4 border-t border-white/10 flex flex-wrap items-center justify-center sm:justify-between gap-2.5 sm:gap-3 text-[10px] sm:text-[11px] font-mono text-zinc-400">
             <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/5">
               <Shield className="w-3.5 h-3.5 text-[#ff073a]" />
               <span>Sigilo & NDA Garantidos</span>

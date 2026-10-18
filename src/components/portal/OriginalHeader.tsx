@@ -84,13 +84,13 @@ export function OriginalHeader({ profile, onNavigate }: OriginalHeaderProps) {
         <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center justify-center">
           
           {/* TAGLINE SUPERIOR / EYEBROW */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-950/60 border border-red-500/40 text-[11px] sm:text-xs font-mono text-red-400 font-bold tracking-widest uppercase mb-4 shadow-[0_0_25px_rgba(255,7,58,0.25)]">
-            <span className="w-2 h-2 rounded-full bg-[#ff073a] animate-pulse" />
-            <span>Digital Marketing, Generative A.I, Sales.</span>
+          <div className="inline-flex items-center justify-center gap-2 px-3 py-1 rounded-full bg-red-950/60 border border-red-500/40 text-[10px] xs:text-[11px] sm:text-xs font-mono text-red-400 font-bold tracking-wider sm:tracking-widest uppercase mb-4 shadow-[0_0_25px_rgba(255,7,58,0.25)] max-w-full text-center">
+            <span className="w-2 h-2 rounded-full bg-[#ff073a] animate-pulse shrink-0" />
+            <span className="truncate xs:overflow-visible">Digital Marketing, Generative A.I, Sales.</span>
           </div>
 
           {/* Ícone de Vidro Lapidado com Halo Sangue Obscurecido */}
-          <div className="relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-2xl sm:rounded-3xl p-2 glass-crystal shadow-[0_20px_50px_rgba(0,0,0,0.95),0_0_30px_rgba(138,0,18,0.4)] shrink-0 group mb-4 transition-transform duration-500 hover:scale-105">
+          <div className="relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-2xl sm:rounded-3xl p-1.5 sm:p-2 glass-crystal shadow-[0_20px_50px_rgba(0,0,0,0.95),0_0_30px_rgba(138,0,18,0.4)] shrink-0 group mb-3.5 sm:mb-4 transition-transform duration-500 hover:scale-105">
             <div className="w-full h-full rounded-xl sm:rounded-2xl overflow-hidden bg-black border border-white/20">
               <img
                 src={profile?.siteIcon || '/assets/site_icon.webp'}
@@ -102,68 +102,82 @@ export function OriginalHeader({ profile, onNavigate }: OriginalHeaderProps) {
           </div>
 
           {/* Título Monumental Soberano */}
-          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-white leading-tight drop-shadow-[0_20px_35px_rgba(0,0,0,0.9)] mb-3">
+          <h1 className="text-2xl xs:text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-white leading-tight drop-shadow-[0_20px_35px_rgba(0,0,0,0.9)] mb-3 px-1 break-words">
             MATEUS CELESTINO PRO X
           </h1>
 
-          {/* Subtítulo Especialista Corrigido */}
-          <p className="text-xs sm:text-sm font-mono text-zinc-300 flex flex-wrap items-center justify-center gap-2 max-w-3xl mx-auto mb-4">
+          {/* Subtítulo Especialista Corrigido e Fluido no Mobile */}
+          <div className="text-[11px] sm:text-sm font-mono text-zinc-300 flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 max-w-3xl mx-auto mb-4 px-2">
             <span className="text-white font-semibold">A.I. Infrastructure</span>
             <span className="text-[#ff073a]">•</span>
             <span className="text-zinc-200 font-medium">Agentic Workers</span>
             <span className="text-[#ff073a]">•</span>
             <span className="text-zinc-300 font-medium">A.I. Systems</span>
             <span className="text-[#ff073a]">•</span>
-            <span className="text-red-400 font-semibold">Sob Demanda • Smart Software Business</span>
-          </p>
+            <span className="text-red-400 font-semibold text-center">Sob Demanda • Smart Software Business</span>
+          </div>
 
           {/* Descrição com Botão Sutil para o SiteMap */}
-          <div className="text-xs sm:text-sm md:text-base text-zinc-300 font-light leading-relaxed max-w-2xl mx-auto mb-6 space-y-1.5">
+          <div className="text-xs sm:text-sm md:text-base text-zinc-300 font-light leading-relaxed max-w-2xl mx-auto mb-6 space-y-2 px-2 text-center">
             <p>
               Esse é Mateus Celestino PRO X, o portal de Inteligência Artificial aplicada a Business e Marketing digital de forma completa.
             </p>
             <p>
               Inteligência artificial aplicada, esteiras de automação e conteúdo de alto valor técnico você encontra exatamente aqui.
             </p>
-            <p className="flex items-center justify-center flex-wrap gap-1 text-zinc-200 pt-0.5">
+            <p className="flex items-center justify-center flex-wrap gap-1.5 text-zinc-200 pt-0.5">
               <span>Use o SiteMap (</span>
               <button
                 type="button"
                 onClick={() => setIsSitemapOpen(true)}
-                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-red-950/70 border border-red-500/50 text-[#ff073a] hover:text-white hover:bg-[#ff073a]/30 font-mono font-bold text-xs transition-all duration-200 shadow-[0_0_15px_rgba(255,7,58,0.3)] hover:scale-105 active:scale-95 cursor-pointer align-middle"
+                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-red-950/70 border border-red-500/50 text-[#ff073a] hover:text-white hover:bg-[#ff073a]/30 font-mono font-bold text-xs transition-all duration-200 shadow-[0_0_15px_rgba(255,7,58,0.3)] hover:scale-105 active:scale-95 cursor-pointer align-middle min-h-[32px]"
                 title="Abrir Fluxograma Visual do SiteMap"
               >
-                <Compass className="w-3.5 h-3.5 text-[#ff073a]" />
+                <Compass className="w-3.5 h-3.5 text-[#ff073a] shrink-0" />
                 <span>clicando aqui</span>
               </button>
               <span>) e navegue pelo portal de forma intuitiva.</span>
             </p>
           </div>
 
-          {/* Ações Primárias do Hero Centralizadas & Responsivas */}
-          <div className="flex flex-wrap items-center justify-center gap-3.5 w-full max-w-2xl mx-auto">
-            <Link
-              href="/contato"
-              className="glass-button-fired px-6 py-3.5 sm:px-7 sm:py-3.5 rounded-2xl text-xs sm:text-sm font-mono font-bold text-white flex items-center justify-center gap-2.5 shadow-[0_0_35px_rgba(255,7,58,0.55)] hover:scale-105 active:scale-95 transition-all flex-1 sm:flex-initial cursor-pointer"
-              title="Abrir página de contato"
+          {/* Ações Primárias do Hero: WhatsApp, Explorar Acervo e Comunidade com Touch Targets Confortáveis */}
+          <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center justify-center gap-2.5 sm:gap-3.5 w-full max-w-2xl mx-auto px-2">
+            {/* 1. CTA WhatsApp / Contato */}
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="glass-button-fired px-5 py-3 sm:px-6 sm:py-3.5 rounded-2xl text-xs sm:text-sm font-mono font-bold text-white flex items-center justify-center gap-2 shadow-[0_0_35px_rgba(255,7,58,0.55)] hover:scale-105 active:scale-95 transition-all min-h-[44px] cursor-pointer"
+              title="Abrir WhatsApp oficial para automatizar"
             >
-              <MessageSquare className="w-4 h-4 fill-white/20" />
-              <span>vamos  automatizar ?!</span>
-            </Link>
+              <MessageSquare className="w-4 h-4 fill-white/20 shrink-0" />
+              <span>VAMOS AUTOMATIZAR ?!</span>
+            </a>
 
+            {/* 2. Explorar Acervo Técnico */}
             <button
               onClick={handleExplore}
-              className="glass-interactive px-5 py-3.5 sm:px-6 sm:py-3.5 rounded-2xl text-xs sm:text-sm font-mono font-bold text-zinc-200 hover:text-white flex items-center justify-center gap-2 border border-white/15 hover:border-[#ff073a]/50 hover:scale-105 active:scale-95 transition-all flex-1 sm:flex-initial cursor-pointer"
+              className="glass-interactive px-5 py-3 sm:px-6 sm:py-3.5 rounded-2xl text-xs sm:text-sm font-mono font-bold text-zinc-200 hover:text-white flex items-center justify-center gap-2 border border-white/15 hover:border-[#ff073a]/50 hover:scale-105 active:scale-95 transition-all min-h-[44px] cursor-pointer"
             >
-              <BookOpen className="w-4 h-4 text-[#ff073a]" />
+              <BookOpen className="w-4 h-4 text-[#ff073a] shrink-0" />
               <span>EXPLORAR GUIAS TÉCNICOS (176)</span>
             </button>
+
+            {/* 3. Comunidade VIP de Alta Performance */}
+            <Link
+              href="/comunidade"
+              className="glass-interactive px-4 py-3 sm:px-5 sm:py-3.5 rounded-2xl text-xs sm:text-sm font-mono font-bold text-amber-300 hover:text-white flex items-center justify-center gap-2 border border-amber-500/20 hover:border-amber-500/50 hover:scale-105 active:scale-95 transition-all min-h-[44px] cursor-pointer"
+              title="Acessar Área de Membros / Comunidade"
+            >
+              <Sparkles className="w-4 h-4 text-amber-400 shrink-0" />
+              <span>COMUNIDADE VIP</span>
+            </Link>
           </div>
 
           {/* Indicador de Navegação Inferior para o Acervo */}
           <button
             onClick={handleExplore}
-            className="mt-6 sm:mt-8 inline-flex flex-col items-center gap-1 text-zinc-400 hover:text-white transition-colors cursor-pointer group"
+            className="mt-6 sm:mt-8 inline-flex flex-col items-center gap-1 text-zinc-400 hover:text-white transition-colors cursor-pointer group py-2"
             title="Rolar para os artigos"
           >
             <span className="text-[10px] font-mono tracking-widest uppercase text-zinc-300 group-hover:text-[#ff073a] transition-colors">

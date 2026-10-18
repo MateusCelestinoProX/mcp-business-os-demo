@@ -211,3 +211,25 @@ export function cleanupWebGLContext(target: any, container?: HTMLElement | null)
   }
 }
 
+/**
+ * Identifica se a execução ocorre em viewport mobile (< 768px).
+ * SSR-safe.
+ */
+export function isMobileViewport(): boolean {
+  if (typeof window === 'undefined') return false;
+  return window.innerWidth < 768;
+}
+
+/**
+ * Retorna o Device Pixel Ratio (DPR) adaptativo para mobile e desktop,
+ * preservando 60 FPS estáveis e prevenindo sobreaquecimento de GPU em telas móveis.
+ * Mobile (< 768px): DPR limitado a no máximo 1.2.
+ * Desktop: DPR limitado a no máximo 1.5 (ou maxDesktopDPR).
+ */
+export function getAdaptiveDPR(maxMobileDPR: number = 1.2, maxDesktopDPR: number = 1.5): number {
+  if (typeof window === 'undefined') return 1;
+  const isMobile = window.innerWidth < 768;
+  const rawDpr = window.devicePixelRatio || 1;
+  return isMobile ? Math.min(rawDpr, maxMobileDPR) : Math.min(rawDpr, maxDesktopDPR);
+}
+

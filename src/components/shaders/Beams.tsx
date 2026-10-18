@@ -344,9 +344,12 @@ export default function Beams({
     );
   }
 
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  const targetDpr: [number, number] = isMobile ? [1, 1.2] : [1, 1.5];
+
   return (
     <div className={`beams-container ${className}`} style={style}>
-      <Canvas dpr={[1, 2]} frameloop="always" className="w-full h-full">
+      <Canvas dpr={targetDpr} frameloop="always" className="w-full h-full">
         <group rotation={[0, 0, degToRad(rotation)]}>
           <MergedPlanes material={beamMaterial} count={beamNumber} width={beamWidth} height={beamHeight} />
           <DirLight color={lightColor} position={[0, 3, 10]} />

@@ -149,7 +149,7 @@ export default function MidiasPage() {
   };
 
   return (
-    <div className="min-h-screen py-10 px-4 sm:px-6 lg:px-10 xl:px-16 w-full space-y-10 relative overflow-hidden">
+    <div className="min-h-screen py-6 sm:py-10 px-3 sm:px-6 lg:px-10 xl:px-16 w-full space-y-6 sm:space-y-10 relative overflow-hidden">
       {/* Shader WebGL do Catálogo de Mídias: LineWaves */}
       <LineWavesShader
         className="z-0 mix-blend-screen pointer-events-none"
@@ -162,24 +162,23 @@ export default function MidiasPage() {
 
       {/* Top Header & Navigation */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 relative z-10">
-
         <div>
           <Link
             href="/comunidade"
-            className="inline-flex items-center gap-1.5 text-xs text-neutral-400 hover:text-white transition-colors mb-2"
+            className="inline-flex items-center gap-1.5 text-xs text-neutral-400 hover:text-white transition-colors mb-2 py-1 min-h-[36px] touch-manipulation"
           >
             <ArrowLeft className="h-3.5 w-3.5" />
             <span>Voltar ao Dashboard da Comunidade</span>
           </Link>
-          <div className="flex items-center gap-3">
-            <h1 className="text-2xl md:text-3xl font-black text-white tracking-tight">
+          <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
+            <h1 className="text-xl sm:text-2xl md:text-3xl font-black text-white tracking-tight">
               Catálogo Cinemático de Mídias & Vídeos 4K
             </h1>
-            <Badge variant="red" dot>
+            <Badge variant="red" dot className="text-[0.65rem] px-2 py-0.5 shrink-0">
               UHD 60FPS
             </Badge>
           </div>
-          <p className="text-xs md:text-sm text-neutral-400 mt-1">
+          <p className="text-xs sm:text-sm text-neutral-400 mt-1 leading-relaxed">
             Mídias originais, masterclasses e templates audiovisuais gravados em altíssima definição.
           </p>
         </div>
@@ -196,14 +195,14 @@ export default function MidiasPage() {
         />
 
         {/* Technical Prompt Card for Featured Video */}
-        <GlassCard className="p-5 md:p-6">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
-            <div>
+        <GlassCard className="p-4 sm:p-5 md:p-6">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+            <div className="min-w-0 flex-1">
               <span className="text-xs font-mono text-red-400 font-bold uppercase tracking-wider flex items-center gap-1.5">
-                <Sparkles className="h-3.5 w-3.5" />
+                <Sparkles className="h-3.5 w-3.5 shrink-0" />
                 Workflow & Prompt Utilizado nesta Produção
               </span>
-              <p className="mt-1 font-mono text-xs text-neutral-300 leading-relaxed bg-black/50 p-3 rounded-xl border border-white/5 select-all">
+              <p className="mt-1 font-mono text-xs text-neutral-300 leading-relaxed bg-black/50 p-3 rounded-xl border border-white/5 select-all break-words max-h-36 overflow-y-auto">
                 {selectedVideo.promptExample}
               </p>
             </div>
@@ -212,7 +211,7 @@ export default function MidiasPage() {
               onClick={handleCopyPrompt}
               variant="fired"
               size="sm"
-              className="text-xs shrink-0 self-start md:self-center"
+              className="text-xs shrink-0 w-full sm:w-auto min-h-[40px] touch-manipulation"
             >
               {copiedPrompt ? (
                 <>
@@ -230,17 +229,17 @@ export default function MidiasPage() {
         </GlassCard>
       </div>
 
-      {/* Search and Filters Bar */}
+      {/* Search and Filters Bar Touch-Friendly */}
       <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 border-t border-white/5 pt-6">
-        {/* Category Pills */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
+        {/* Category Pills Carrossel */}
+        <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none no-scrollbar touch-pan-x -webkit-overflow-scrolling-touch">
           <Filter className="h-4 w-4 text-neutral-500 shrink-0 mr-1" />
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
               className={cn(
-                'rounded-full px-4 py-2 text-xs font-semibold whitespace-nowrap transition-all',
+                'rounded-full px-3.5 sm:px-4 py-2 text-xs font-semibold whitespace-nowrap transition-all shrink-0 min-h-[38px] touch-manipulation select-none',
                 selectedCategory === cat
                   ? 'border border-red-500/50 bg-red-500/15 text-red-400 shadow-[0_0_15px_rgba(255,7,58,0.2)]'
                   : 'border border-white/5 bg-white/[0.03] text-neutral-400 hover:border-white/15 hover:text-white'
@@ -251,7 +250,7 @@ export default function MidiasPage() {
           ))}
         </div>
 
-        {/* Search Input */}
+        {/* Search Input Touch-Friendly */}
         <div className="relative w-full md:w-72">
           <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-neutral-500" />
           <input
@@ -259,7 +258,7 @@ export default function MidiasPage() {
             placeholder="Pesquisar por título ou tag..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full rounded-xl border border-white/10 bg-black/50 pl-10 pr-4 py-2 text-xs text-white placeholder-neutral-500 focus:border-red-500 focus:outline-none"
+            className="w-full rounded-xl border border-white/10 bg-black/50 pl-10 pr-4 py-2.5 text-base sm:text-xs text-white placeholder-neutral-500 focus:border-red-500 focus:outline-none min-h-[42px]"
           />
         </div>
       </div>

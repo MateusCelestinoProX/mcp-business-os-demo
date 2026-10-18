@@ -80,19 +80,29 @@ export function ArticleModal({
   const nextArticle = currentIndex < allArticles.length - 1 ? allArticles[currentIndex + 1] : null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto bg-black/85 backdrop-blur-3xl animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-0 sm:p-4 md:p-6 overflow-hidden bg-black/90 backdrop-blur-3xl animate-in fade-in duration-200">
       <div 
         className="fixed inset-0 -z-10" 
         onClick={onClose} 
       />
 
-      {/* Janela de Leitura em Vidro Cristalino Lapidado */}
-      <div className="relative w-full max-w-4xl max-h-[92vh] overflow-y-auto rounded-3xl glass-crystal border border-white/20 shadow-[0_30px_100px_rgba(0,0,0,0.98)] flex flex-col my-auto">
+      {/* Janela de Leitura Notion em Vidro Cristalino (Full-Screen no Mobile, Card no Desktop) */}
+      <div className="relative w-full h-full sm:h-auto sm:max-w-4xl sm:max-h-[92vh] overflow-hidden rounded-none sm:rounded-3xl glass-crystal border-0 sm:border sm:border-white/20 shadow-[0_30px_100px_rgba(0,0,0,0.98)] flex flex-col">
         
-        {/* Barra Superior Fixa de Vidro */}
-        <div className="sticky top-0 z-20 flex items-center justify-between px-6 py-4 glass-crystal border-b border-white/10">
-          <div className="flex items-center gap-3">
-            <span className="px-3 py-1 rounded-xl glass-pill-red text-xs font-mono text-[#ff073a] font-bold uppercase tracking-wider">
+        {/* Barra Superior Fixa de Vidro com Altura Touch Ampla (Mínimo 44px) */}
+        <div className="sticky top-0 z-30 flex items-center justify-between px-3.5 sm:px-6 py-3 sm:py-4 bg-[#0a0a0c]/95 backdrop-blur-2xl border-b border-white/10 shrink-0">
+          <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+            {/* Botão Voltar no Mobile */}
+            <button
+              onClick={onClose}
+              className="sm:hidden w-11 h-11 min-w-[44px] min-h-[44px] rounded-xl glass-pill flex items-center justify-center text-zinc-300 hover:text-white transition-colors cursor-pointer touch-manipulation active:scale-95"
+              title="Voltar aos artigos"
+              aria-label="Voltar aos artigos"
+            >
+              <ArrowLeft className="w-5 h-5 text-[#ff073a]" />
+            </button>
+
+            <span className="px-2.5 sm:px-3 py-1 rounded-xl glass-pill-red text-[11px] sm:text-xs font-mono text-[#ff073a] font-bold uppercase tracking-wider truncate max-w-[140px] sm:max-w-none">
               {article.category}
             </span>
             <span className="hidden sm:inline-flex items-center gap-1.5 text-xs font-mono text-zinc-300">
@@ -101,31 +111,35 @@ export function ArticleModal({
             </span>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 shrink-0">
+            {/* Botão Compartilhar Touch-Friendly */}
             <button
               onClick={handleCopy}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl glass-pill hover:border-white/25 text-xs font-mono text-zinc-300 hover:text-white transition-all cursor-pointer"
+              className="flex items-center gap-1.5 px-3 sm:px-3.5 py-2 min-h-[44px] rounded-xl glass-pill hover:border-white/25 text-xs font-mono text-zinc-300 hover:text-white transition-all cursor-pointer touch-manipulation active:scale-95"
               title="Copiar Título"
+              aria-label="Compartilhar ou Copiar Título"
             >
-              {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Share2 className="w-3.5 h-3.5" />}
+              {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Share2 className="w-4 h-4 text-[#ff073a]" />}
               <span className="hidden sm:inline">{copied ? 'Copiado!' : 'Compartilhar'}</span>
             </button>
 
+            {/* Botão Fechar Acessível com Touch Target de 44x44px */}
             <button
               onClick={onClose}
-              className="w-8 h-8 rounded-xl glass-pill hover:bg-[#ff073a] hover:text-white flex items-center justify-center text-zinc-400 transition-all duration-200 cursor-pointer"
+              className="w-11 h-11 min-w-[44px] min-h-[44px] rounded-xl glass-pill hover:bg-[#ff073a] hover:text-white flex items-center justify-center text-zinc-300 transition-all duration-200 cursor-pointer touch-manipulation active:scale-95"
               title="Fechar (Esc)"
+              aria-label="Fechar leitor"
             >
-              <X className="w-4 h-4" />
+              <X className="w-5 h-5" />
             </button>
           </div>
         </div>
 
-        {/* Corpo do Artigo */}
-        <div className="p-6 sm:p-10">
-          {/* Capa Ampliada em Vidro */}
+        {/* Corpo do Artigo com Scroll Suave e Tipografia Fluida */}
+        <div className="p-4 sm:p-8 md:p-10 overflow-y-auto flex-1 overscroll-y-contain space-y-6 sm:space-y-8">
+          {/* Capa Ampliada em Proporção Nobre */}
           {article.coverImage && (
-            <div className="relative aspect-[21/9] sm:aspect-[24/9] w-full rounded-2xl overflow-hidden mb-8 border border-white/15 bg-black shadow-2xl">
+            <div className="relative aspect-[16/9] sm:aspect-[24/9] w-full rounded-2xl overflow-hidden border border-white/15 bg-black shadow-2xl shrink-0">
               <img
                 src={article.coverImage}
                 alt={article.title}
@@ -135,18 +149,18 @@ export function ArticleModal({
             </div>
           )}
 
-          {/* Título Principal */}
-          <h1 className="text-2xl sm:text-4xl font-black text-white tracking-tight leading-tight">
+          {/* Título Principal Fluido */}
+          <h1 className="text-xl sm:text-3xl md:text-4xl font-black text-white tracking-tight leading-tight break-words">
             {article.title}
           </h1>
 
-          {/* Faixa de Autor em Vidro */}
-          <div className="mt-4 pb-6 border-b border-white/10 flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-zinc-400">
+          {/* Faixa de Autor e Metadados em Vidro */}
+          <div className="pb-6 border-b border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 text-xs font-mono text-zinc-400">
             <div className="flex items-center gap-3">
               <img
                 src="/assets/mateus_avatar.webp"
                 alt="Mateus Celestino"
-                className="w-10 h-10 rounded-2xl border border-[#ff073a]/50 object-cover shadow-lg"
+                className="w-10 h-10 rounded-2xl border border-[#ff073a]/50 object-cover shadow-lg shrink-0"
               />
               <div>
                 <span className="text-white font-bold block">Mateus Celestino Pro</span>
@@ -154,16 +168,23 @@ export function ArticleModal({
               </div>
             </div>
 
-            {article.createdAt && (
-              <div className="flex items-center gap-1.5 text-zinc-400 glass-pill px-3 py-1 rounded-xl">
-                <Calendar className="w-3.5 h-3.5 text-[#ff073a]" />
-                <span>Publicado em: {article.createdAt}</span>
-              </div>
-            )}
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="sm:hidden inline-flex items-center gap-1 text-zinc-400 glass-pill px-2.5 py-1 rounded-xl text-[11px]">
+                <Clock className="w-3 h-3 text-[#ff073a]" />
+                <span>{article.readingTime || 5} min</span>
+              </span>
+
+              {article.createdAt && (
+                <div className="flex items-center gap-1.5 text-zinc-400 glass-pill px-3 py-1 rounded-xl text-[11px]">
+                  <Calendar className="w-3.5 h-3.5 text-[#ff073a]" />
+                  <span>Publicado em: {article.createdAt}</span>
+                </div>
+              )}
+            </div>
           </div>
 
-          {/* Conteúdo Editorial Formatado */}
-          <div className="mt-8 article-prose text-zinc-300">
+          {/* Conteúdo Editorial Formatado com Proteção Total contra Overflow */}
+          <div className="prose-soberana article-prose text-zinc-300 leading-relaxed text-sm sm:text-base break-words space-y-4 [&_pre]:overflow-x-auto [&_pre]:p-4 [&_pre]:rounded-2xl [&_pre]:bg-black/80 [&_pre]:border [&_pre]:border-white/10 [&_pre]:text-xs [&_pre]:sm:text-sm [&_code]:break-words sm:[&_code]:break-normal [&_img]:rounded-2xl [&_img]:max-w-full [&_table]:w-full [&_table]:overflow-x-auto [&_table]:block">
             {loadingContent ? (
               <div className="space-y-4 py-8 animate-pulse">
                 <div className="h-4 bg-white/10 rounded-full w-3/4" />
@@ -185,53 +206,53 @@ export function ArticleModal({
           </div>
 
           {/* CTA de Rodapé do Artigo em Vidro Líquido */}
-          <div className="mt-12 p-6 sm:p-8 rounded-3xl glass-crystal border border-[#ff073a]/40 relative overflow-hidden shadow-2xl">
-            <h4 className="text-lg font-bold text-white tracking-tight">
+          <div className="mt-8 sm:mt-12 p-5 sm:p-8 rounded-2xl sm:rounded-3xl glass-crystal border border-[#ff073a]/40 relative overflow-hidden shadow-2xl space-y-4">
+            <h4 className="text-base sm:text-lg font-bold text-white tracking-tight">
               Quer implementar essa automação na sua empresa?
             </h4>
-            <p className="mt-2 text-sm text-zinc-300 font-light max-w-xl">
+            <p className="text-xs sm:text-sm text-zinc-300 font-light max-w-xl leading-relaxed">
               Mateus Celestino projeta, implementa e mantém sistemas de automação sob medida com n8n, Typebot, IA e servidores Linux autônomos.
             </p>
-            <div className="mt-5 flex flex-wrap items-center gap-3">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-1">
               <a
                 href={`https://api.whatsapp.com/send/?phone=553197724257&text=Oi+Mateus,+li+o+artigo+sobre+${encodeURIComponent(article.title)}+e+quero+automatizar+isso.&type=phone_number&app_absent=0`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="glass-button-fired flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-mono font-bold text-white shadow-lg"
+                className="glass-button-fired flex items-center justify-center gap-2 px-5 py-3 min-h-[44px] rounded-xl text-xs font-mono font-bold text-white shadow-lg active:scale-95 transition-all text-center"
               >
-                <MessageSquare className="w-3.5 h-3.5" />
+                <MessageSquare className="w-4 h-4 shrink-0" />
                 <span>Falar no WhatsApp sobre este artigo</span>
               </a>
               <button
                 onClick={() => { onClose(); if (onOpenContact) onOpenContact(); }}
-                className="px-4 py-2.5 rounded-xl text-xs font-mono text-zinc-300 hover:text-white glass-pill hover:border-white/20 transition-all cursor-pointer"
+                className="px-4 py-3 min-h-[44px] rounded-xl text-xs font-mono text-zinc-300 hover:text-white glass-pill hover:border-white/20 transition-all cursor-pointer flex items-center justify-center touch-manipulation active:scale-95"
               >
                 Ver outros canais de contato
               </button>
             </div>
           </div>
 
-          {/* Navegação Entre Artigos em Vidro */}
-          <div className="mt-10 pt-6 border-t border-white/10 flex items-center justify-between gap-4">
+          {/* Navegação Entre Artigos em Vidro (Adaptada ao Mobile em Coluna ou Linha) */}
+          <div className="mt-8 sm:mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-4">
             {prevArticle ? (
               <button
                 onClick={() => onSelectArticle(prevArticle)}
-                className="group text-left max-w-[45%] flex items-center gap-2.5 text-xs font-mono text-zinc-400 hover:text-white transition-all glass-interactive p-3 rounded-2xl cursor-pointer"
+                className="group text-left w-full sm:max-w-[48%] flex items-center gap-2.5 text-xs font-mono text-zinc-400 hover:text-white transition-all glass-interactive p-3 rounded-2xl cursor-pointer min-h-[48px] touch-manipulation active:scale-95"
               >
                 <ArrowLeft className="w-4 h-4 text-[#ff073a] group-hover:-translate-x-1 transition-transform shrink-0" />
-                <div className="truncate">
+                <div className="truncate min-w-0">
                   <span className="block text-[10px] text-zinc-500 uppercase">Anterior</span>
                   <span className="truncate block font-semibold text-zinc-200 group-hover:text-white">{prevArticle.title}</span>
                 </div>
               </button>
-            ) : <div />}
+            ) : <div className="hidden sm:block" />}
 
             {nextArticle && (
               <button
                 onClick={() => onSelectArticle(nextArticle)}
-                className="group text-right max-w-[45%] flex items-center gap-2.5 text-xs font-mono text-zinc-400 hover:text-white transition-all glass-interactive p-3 rounded-2xl ml-auto cursor-pointer"
+                className="group text-right w-full sm:max-w-[48%] flex items-center justify-end gap-2.5 text-xs font-mono text-zinc-400 hover:text-white transition-all glass-interactive p-3 rounded-2xl sm:ml-auto cursor-pointer min-h-[48px] touch-manipulation active:scale-95"
               >
-                <div className="truncate">
+                <div className="truncate min-w-0">
                   <span className="block text-[10px] text-zinc-500 uppercase">Próximo</span>
                   <span className="truncate block font-semibold text-zinc-200 group-hover:text-white">{nextArticle.title}</span>
                 </div>

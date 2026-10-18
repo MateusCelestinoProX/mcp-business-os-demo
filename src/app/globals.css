@@ -44,11 +44,24 @@
 
 * {
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 130px;
   color-scheme: dark;
+}
+
+@media (max-width: 768px) {
+  html {
+    scroll-padding-top: 120px;
+  }
+
+  /* Prevenção soberana de zoom automático no iOS/Android em campos de entrada */
+  input, select, textarea {
+    font-size: 16px !important;
+  }
 }
 
 body {
@@ -58,6 +71,28 @@ body {
   overflow-x: hidden;
   position: relative;
   min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Utilitários de Safe-Area e Scroll Mobile */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.safe-bottom {
+  padding-bottom: max(0.5rem, env(safe-area-inset-bottom, 0px));
+}
+
+.touch-pan-x {
+  touch-action: pan-x;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Custom Scrollbar */

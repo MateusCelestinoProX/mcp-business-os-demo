@@ -184,24 +184,24 @@ export function LeadCaptureForm() {
   };
 
   return (
-    <section id="captura-leads" className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full relative">
+    <section id="captura-leads" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full relative">
       {/* Capturador de UTMs em Suspense */}
       <Suspense fallback={null}>
         <UTMTracker onCapture={setUtms} />
       </Suspense>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
         {/* Coluna da Esquerda: Autoridade e Canais Oficiais */}
         <div className="lg:col-span-5 space-y-6">
           <div className="space-y-3">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full glass-pill-red text-xs font-mono text-red-500 uppercase tracking-widest font-bold">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill-red text-xs font-mono text-[#ff073a] uppercase tracking-widest font-bold">
               <Zap className="w-3.5 h-3.5" />
               <span>CANAL DE TRÁFEGO DIRETO</span>
             </div>
-            <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
               Vamos Automatizar Seu Negócio?
             </h2>
-            <p className="text-sm sm:text-base text-neutral-400 font-light leading-relaxed">
+            <p className="text-xs sm:text-base text-neutral-300 font-light leading-relaxed">
               Solicite uma arquitetura personalizada com Mateus Celestino Pro. Da automação de atendimento
               com inteligência artificial até a blindagem completa de servidores corporativos.
             </p>
@@ -219,28 +219,30 @@ export function LeadCaptureForm() {
             </div>
           )}
 
-          {/* Cards de Contato Rápido em Vidro */}
-          <div className="space-y-4 pt-2">
+          {/* Cards de Contato Rápido em Vidro com WhatsApp Destacado */}
+          <div className="space-y-3.5 sm:space-y-4 pt-1 sm:pt-2">
             <a
               href="https://api.whatsapp.com/send/?phone=553197724257&text=QUERO%20AUTOMATIZAR%20TUDO"
               target="_blank"
               rel="noopener noreferrer"
-              className="glass-crystal glass-interactive p-5 rounded-2xl flex items-center gap-4 group transition-all"
+              className="glass-crystal glass-interactive p-4 sm:p-5 rounded-2xl flex items-center gap-4 group transition-all border border-[#ff073a]/50 bg-[#ff073a]/10 hover:border-[#ff073a] hover:bg-[#ff073a]/20 shadow-[0_0_25px_rgba(255,7,58,0.25)] relative overflow-hidden min-h-[72px]"
             >
-              <div className="w-12 h-12 rounded-xl bg-red-500/15 border border-red-500/30 flex items-center justify-center text-red-400 group-hover:scale-105 group-hover:bg-red-500/25 transition-all shrink-0">
+              <div className="w-12 h-12 rounded-xl bg-[#ff073a]/20 border border-[#ff073a]/40 flex items-center justify-center text-[#ff073a] group-hover:scale-105 group-hover:bg-[#ff073a]/30 transition-all shrink-0">
                 <MessageSquare className="w-6 h-6" />
               </div>
               <div className="flex-1 min-w-0">
-                <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-mono text-red-500 font-bold uppercase tracking-wider">
+                <div className="flex items-center justify-between gap-1">
+                  <span className="text-[10px] font-mono text-[#ff073a] font-bold uppercase tracking-wider">
                     WHATSAPP COMERCIAL OFICIAL
                   </span>
-                  <ExternalLink className="w-3.5 h-3.5 text-neutral-500 group-hover:text-white transition-colors" />
+                  <span className="text-[9px] font-mono font-bold text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded-full border border-emerald-500/50 shrink-0">
+                    &lt; 15 MIN
+                  </span>
                 </div>
-                <div className="text-base font-bold text-white group-hover:text-red-400 transition-colors">
+                <div className="text-base font-bold text-white group-hover:text-[#ff073a] transition-colors">
                   +55 (31) 9772-4257
                 </div>
-                <p className="text-xs text-neutral-400 truncate">
+                <p className="text-xs text-neutral-300 truncate">
                   Atendimento direto e prioritário com Mateus Pro
                 </p>
               </div>
@@ -248,9 +250,9 @@ export function LeadCaptureForm() {
 
             <a
               href="mailto:contato@mateuscelestinopro.com"
-              className="glass-crystal glass-interactive p-5 rounded-2xl flex items-center gap-4 group transition-all"
+              className="glass-crystal glass-interactive p-4 sm:p-5 rounded-2xl flex items-center gap-4 group transition-all border border-white/10 hover:border-white/20 min-h-[72px]"
             >
-              <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-neutral-300 group-hover:text-red-400 transition-colors shrink-0">
+              <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-neutral-300 group-hover:text-[#ff073a] transition-colors shrink-0">
                 <Mail className="w-6 h-6" />
               </div>
               <div className="flex-1 min-w-0">
@@ -260,17 +262,17 @@ export function LeadCaptureForm() {
                   </span>
                   <ExternalLink className="w-3.5 h-3.5 text-neutral-500 group-hover:text-white transition-colors" />
                 </div>
-                <div className="text-base font-bold text-white group-hover:text-red-400 transition-colors truncate">
+                <div className="text-sm sm:text-base font-bold text-white group-hover:text-[#ff073a] transition-colors truncate">
                   contato@mateuscelestinopro.com
                 </div>
-                <p className="text-xs text-neutral-400">
+                <p className="text-xs text-neutral-400 truncate">
                   Propostas, parcerias B2B e contratos de engenharia
                 </p>
               </div>
             </a>
           </div>
 
-          <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/5 space-y-2">
+          <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/5 space-y-1.5">
             <div className="flex items-center gap-2 text-xs font-bold text-white uppercase tracking-wider">
               <Shield className="w-4 h-4 text-emerald-400" />
               <span>Privacidade & Segurança Absoluta</span>
@@ -282,24 +284,24 @@ export function LeadCaptureForm() {
           </div>
         </div>
 
-        {/* Coluna da Direita: Formulário de Alta Conversão */}
+        {/* Coluna da Direita: Formulário de Alta Conversão com Inputs >= 16px no mobile */}
         <div className="lg:col-span-7">
           <GlassCard
             variant="luxury"
             glow
-            className="p-6 sm:p-10 rounded-3xl border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.9),0_0_40px_rgba(255,7,58,0.15)]"
+            className="p-5 sm:p-8 lg:p-10 rounded-2xl sm:rounded-3xl border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.9),0_0_40px_rgba(255,7,58,0.15)]"
           >
             {status === "success" ? (
-              <div className="py-8 text-center space-y-6 animate-in fade-in zoom-in-95 duration-300">
+              <div className="py-6 sm:py-8 text-center space-y-6 animate-in fade-in zoom-in-95 duration-300">
                 <div className="w-16 h-16 rounded-3xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 mx-auto shadow-[0_0_30px_rgba(16,185,129,0.3)]">
                   <CheckCircle2 className="w-8 h-8" />
                 </div>
 
                 <div className="space-y-2">
-                  <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
+                  <h3 className="text-xl sm:text-3xl font-extrabold text-white">
                     Solicitação Registrada com Sucesso!
                   </h3>
-                  <p className="text-sm text-neutral-300 max-w-md mx-auto leading-relaxed">
+                  <p className="text-xs sm:text-sm text-neutral-300 max-w-md mx-auto leading-relaxed">
                     Olá <strong className="text-white">{formData.name}</strong>, seus dados foram
                     recebidos com sucesso e nossa equipe técnica entrará em contato em menos de 2 horas.
                   </p>
@@ -311,12 +313,12 @@ export function LeadCaptureForm() {
                 </div>
 
                 {/* Acelerador: Iniciar no WhatsApp Agora */}
-                <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
+                <div className="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 w-full">
                   <Button
                     variant="fired"
                     size="lg"
                     onClick={openWhatsAppDirect}
-                    className="w-full sm:w-auto gap-2"
+                    className="w-full sm:w-auto min-h-[48px] gap-2 font-mono text-xs sm:text-sm font-bold uppercase"
                   >
                     <MessageSquare className="w-4 h-4" />
                     <span>Acelerar no WhatsApp Agora</span>
@@ -335,16 +337,16 @@ export function LeadCaptureForm() {
                         message: "",
                       });
                     }}
-                    className="w-full sm:w-auto"
+                    className="w-full sm:w-auto min-h-[48px] font-mono text-xs sm:text-sm font-bold"
                   >
                     Novo Envio
                   </Button>
                 </div>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <div className="border-b border-white/10 pb-4 mb-2">
-                  <h3 className="text-xl font-bold text-white">
+              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
+                <div className="border-b border-white/10 pb-3 mb-2">
+                  <h3 className="text-lg sm:text-xl font-bold text-white">
                     Formulário de Ativação Soberana
                   </h3>
                   <p className="text-xs text-neutral-400 mt-1">
@@ -353,13 +355,13 @@ export function LeadCaptureForm() {
                 </div>
 
                 {status === "error" && (
-                  <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/30 flex items-start gap-3 text-red-400 text-xs">
+                  <div className="p-3.5 rounded-xl bg-red-500/10 border border-red-500/30 flex items-start gap-3 text-red-400 text-xs">
                     <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
                     <span>{errorMessage}</span>
                   </div>
                 )}
 
-                {/* Campo Nome */}
+                {/* Campo Nome com text-base no mobile (>=16px) para evitar auto-zoom */}
                 <Input
                   label="Seu Nome Completo"
                   placeholder="Ex: Mateus Celestino"
@@ -367,6 +369,7 @@ export function LeadCaptureForm() {
                   onChange={(e) => setFormData((prev) => ({ ...prev, name: e.target.value }))}
                   required
                   icon={<User className="w-4 h-4" />}
+                  className="text-base sm:text-sm min-h-[48px]"
                 />
 
                 {/* Grid com Email e WhatsApp */}
@@ -379,6 +382,7 @@ export function LeadCaptureForm() {
                     onChange={(e) => setFormData((prev) => ({ ...prev, email: e.target.value }))}
                     required
                     icon={<Mail className="w-4 h-4" />}
+                    className="text-base sm:text-sm min-h-[48px]"
                   />
 
                   <Input
@@ -389,10 +393,11 @@ export function LeadCaptureForm() {
                     onChange={handlePhoneChange}
                     required
                     icon={<Phone className="w-4 h-4" />}
+                    className="text-base sm:text-sm min-h-[48px]"
                   />
                 </div>
 
-                {/* Dropdown de Serviços */}
+                {/* Dropdown de Serviços com text-base no mobile */}
                 <div className="space-y-1.5">
                   <label className="block text-xs font-semibold uppercase tracking-wider text-neutral-400">
                     Área Principal de Interesse
@@ -400,7 +405,7 @@ export function LeadCaptureForm() {
                   <select
                     value={formData.service}
                     onChange={(e) => setFormData((prev) => ({ ...prev, service: e.target.value }))}
-                    className="glass-input w-full rounded-xl px-4 py-3 text-sm text-white bg-neutral-900 border border-white/10 focus:border-red-500 focus:outline-none transition-all cursor-pointer"
+                    className="glass-input w-full rounded-xl px-4 py-3 sm:py-3.5 text-base sm:text-sm text-white bg-neutral-900 border border-white/10 focus:border-[#ff073a] focus:outline-none transition-all cursor-pointer min-h-[48px]"
                   >
                     <option value="Agentes de Atendimento WhatsApp" className="bg-[#0a0a0c] text-white">
                       Agentes Autônomos de Atendimento WhatsApp (IA)
@@ -423,7 +428,7 @@ export function LeadCaptureForm() {
                   </select>
                 </div>
 
-                {/* Mensagem Opcional */}
+                {/* Mensagem Opcional com text-base no mobile */}
                 <div className="space-y-1.5">
                   <label className="block text-xs font-semibold uppercase tracking-wider text-neutral-400">
                     Mensagem ou Detalhes do Projeto (Opcional)
@@ -433,17 +438,17 @@ export function LeadCaptureForm() {
                     placeholder="Conte resumidamente seu desafio atual ou objetivo de escala..."
                     value={formData.message}
                     onChange={(e) => setFormData((prev) => ({ ...prev, message: e.target.value }))}
-                    className="glass-input w-full rounded-xl px-4 py-3 text-sm text-white placeholder:text-neutral-500 focus:border-red-500 focus:outline-none transition-all resize-none"
+                    className="glass-input w-full rounded-xl px-4 py-3 text-base sm:text-sm text-white placeholder:text-neutral-500 focus:border-[#ff073a] focus:outline-none transition-all resize-none min-h-[96px]"
                   />
                 </div>
 
-                {/* Botão de Envio com Efeito Fired */}
+                {/* Botão de Envio em Largura Total (w-full) com min-h de 50px */}
                 <Button
                   type="submit"
                   variant="fired"
                   size="lg"
                   isLoading={isSubmitting}
-                  className="w-full gap-2.5 font-mono text-sm tracking-wider uppercase mt-4 shadow-[0_0_30px_rgba(255,7,58,0.4)]"
+                  className="w-full min-h-[50px] gap-2.5 font-mono text-xs sm:text-sm tracking-wider uppercase mt-3 sm:mt-4 shadow-[0_0_30px_rgba(255,7,58,0.4)] cursor-pointer"
                 >
                   <Send className="w-4 h-4" />
                   <span>SOLICITAR AUTOMAÇÃO SOBERANA</span>

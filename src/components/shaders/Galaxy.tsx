@@ -234,11 +234,18 @@ export default function Galaxy({
     const ctn = ctnDom.current;
     if (!ctn) return;
 
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    const dpr = isMobile
+      ? Math.min(window.devicePixelRatio || 1, 1.2)
+      : Math.min(window.devicePixelRatio || 1, 1.5);
+
     let renderer: Renderer;
     try {
       renderer = new Renderer({
+        dpr,
         alpha: transparent,
         premultipliedAlpha: false,
+        powerPreference: 'low-power',
       });
     } catch {
       setHasWebGL(false);

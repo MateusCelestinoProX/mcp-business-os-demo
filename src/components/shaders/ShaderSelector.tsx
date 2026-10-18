@@ -78,12 +78,12 @@ export default function ShaderSelector({
   const currentOption = SHADER_OPTIONS.find((s) => s.id === selectedMode) || SHADER_OPTIONS[0];
 
   return (
-    <div className={`fixed bottom-6 right-6 z-50 select-none ${className}`}>
+    <div className={`fixed bottom-20 sm:bottom-6 right-4 sm:right-6 z-50 select-none max-w-[calc(100vw-2rem)] ${className}`}>
       {/* Botão Gatilho / Mini Badge Flutuante */}
       <div className="flex items-center gap-2">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="flex items-center gap-3 px-4 py-2.5 rounded-full bg-black/60 hover:bg-black/80 backdrop-blur-2xl border border-white/10 hover:border-[#ff073a]/50 text-white shadow-[0_12px_36px_rgba(0,0,0,0.85)] transition-all duration-300 group cursor-pointer"
+          className="flex items-center gap-3 px-4 py-2.5 min-h-[44px] rounded-full bg-black/60 hover:bg-black/80 backdrop-blur-2xl border border-white/10 hover:border-[#ff073a]/50 text-white shadow-[0_12px_36px_rgba(0,0,0,0.85)] transition-all duration-300 group cursor-pointer"
           title="Alternador de Shaders em Tempo Real"
         >
           <span className="relative flex h-2.5 w-2.5">
@@ -119,7 +119,7 @@ export default function ShaderSelector({
 
       {/* Painel Expansível */}
       {isOpen && (
-        <div className="mt-3 w-84 sm:w-96 rounded-2xl bg-black/85 backdrop-blur-3xl border border-white/15 p-4 shadow-[0_24px_50px_rgba(0,0,0,0.95)] animate-in fade-in slide-in-from-bottom-3 duration-200">
+        <div className="mt-3 w-[calc(100vw-2rem)] max-w-sm sm:w-96 rounded-2xl bg-black/85 backdrop-blur-3xl border border-white/15 p-4 shadow-[0_24px_50px_rgba(0,0,0,0.95)] animate-in fade-in slide-in-from-bottom-3 duration-200">
           {/* Cabeçalho */}
           <div className="flex items-center justify-between pb-3 border-b border-white/10 mb-3">
             <div className="flex items-center gap-2">
@@ -142,7 +142,7 @@ export default function ShaderSelector({
                 <button
                   key={opt.id}
                   onClick={() => handleSelectMode(opt.id)}
-                  className={`w-full text-left p-2.5 rounded-xl text-xs transition-all flex items-center justify-between cursor-pointer ${
+                  className={`w-full text-left p-2.5 min-h-[44px] rounded-xl text-xs transition-all flex items-center justify-between cursor-pointer ${
                     active
                       ? 'bg-white/10 border border-[#ff073a]/60 text-white shadow-[0_0_15px_rgba(255,7,58,0.2)]'
                       : 'bg-white/[0.02] border border-white/5 text-zinc-400 hover:text-zinc-200 hover:bg-white/[0.05]'
@@ -184,7 +184,7 @@ export default function ShaderSelector({
                   <button
                     key={color.hex}
                     onClick={() => handleSelectColor(color.hex)}
-                    className={`h-7 rounded-lg transition-transform hover:scale-105 relative flex items-center justify-center cursor-pointer border ${
+                    className={`h-9 min-h-[36px] rounded-lg transition-transform hover:scale-105 relative flex items-center justify-center cursor-pointer border ${
                       active ? 'ring-2 ring-white scale-105' : 'border-white/10'
                     }`}
                     style={{ backgroundColor: color.hex }}

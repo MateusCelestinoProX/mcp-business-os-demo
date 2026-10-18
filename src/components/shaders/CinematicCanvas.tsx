@@ -164,7 +164,10 @@ export default function CinematicCanvas({
 
     const resize = () => {
       if (!canvas) return;
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+      const dpr = isMobile
+        ? Math.min(window.devicePixelRatio || 1, 1.2)
+        : Math.min(window.devicePixelRatio || 1, 1.5);
       canvas.width = (canvas.parentElement?.clientWidth || window.innerWidth) * dpr;
       canvas.height = (canvas.parentElement?.clientHeight || window.innerHeight) * dpr;
       gl.viewport(0, 0, canvas.width, canvas.height);

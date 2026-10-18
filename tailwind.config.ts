@@ -50,6 +50,13 @@ const config: Config = {
         "pulse-slow": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
         "glow-fade": "glowFade 3s ease-in-out infinite alternate",
       },
+      screens: {
+        xs: "380px",
+      },
+      spacing: {
+        "safe-bottom": "env(safe-area-inset-bottom, 0px)",
+        "safe-top": "env(safe-area-inset-top, 0px)",
+      },
       keyframes: {
         glowFade: {
           "0%": { opacity: "0.4", filter: "blur(20px)" },
