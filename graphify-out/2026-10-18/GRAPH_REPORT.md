@@ -1,16 +1,16 @@
 # Graph Report - plataforma-unificada-soberana  (2026-10-18)
 
 ## Corpus Check
-- 226 files · ~8,520,841 words
+- 226 files · ~8,520,860 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1928 nodes · 3662 edges · 153 communities (102 shown, 39 thin omitted)
+- 1928 nodes · 3661 edges · 153 communities (102 shown, 39 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 75 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `771a2adf`
+- Built from commit: `e07dcc4e`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -160,7 +160,7 @@
 ## God Nodes (most connected - your core abstractions)
 1. `_` - 208 edges
 2. `react` - 68 edges
-3. `lucide-react` - 45 edges
+3. `lucide-react` - 44 edges
 4. `requestAnimationFrame()` - 39 edges
 5. `instantiateShader()` - 35 edges
 6. `U` - 35 edges

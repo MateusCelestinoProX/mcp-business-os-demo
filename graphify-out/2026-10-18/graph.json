@@ -378,7 +378,7 @@
       "file_type": "code",
       "norm_label": "contatosectionprops",
       "source_file": "src/components/portal/ContatoSection.tsx",
-      "source_location": "L8"
+      "source_location": "L7"
     },
     {
       "id": "src_components_portal_photografycontacthub_photografycontacthubprops",
@@ -4195,7 +4195,7 @@
       "file_type": "code",
       "norm_label": "contatosection()",
       "source_file": "src/components/portal/ContatoSection.tsx",
-      "source_location": "L17"
+      "source_location": "L16"
     },
     {
       "id": "src_components_portal_photografycontacthub_photografycontacthub",
@@ -38632,7 +38632,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/portal/ContatoSection.tsx",
-      "source_location": "L5",
+      "source_location": "L4",
       "weight": 1.0
     },
     {
@@ -38644,7 +38644,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/portal/ContatoSection.tsx",
-      "source_location": "L6",
+      "source_location": "L5",
       "weight": 1.0
     },
     {
@@ -43731,7 +43731,7 @@
     },
     {
       "source": "src_components_portal_contatosection",
-      "target": "ref_lucide_react",
+      "target": "src_components_portal_photografycontacthub",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -43743,18 +43743,6 @@
     },
     {
       "source": "src_components_portal_contatosection",
-      "target": "src_components_portal_photografycontacthub",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "src/components/portal/ContatoSection.tsx",
-      "source_location": "L5",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_portal_contatosection",
       "target": "src_components_shaders_linewavesshader",
       "relation": "imports_from",
       "_origin": "ast",
@@ -43762,7 +43750,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/portal/ContatoSection.tsx",
-      "source_location": "L6",
+      "source_location": "L5",
       "weight": 1.0
     },
     {
@@ -57332,7 +57320,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/portal/ContatoSection.tsx",
-      "source_location": "L17",
+      "source_location": "L16",
       "weight": 1.0
     },
     {
@@ -57343,7 +57331,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/portal/ContatoSection.tsx",
-      "source_location": "L8",
+      "source_location": "L7",
       "weight": 1.0
     },
     {
@@ -65221,5 +65209,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "771a2adf7002fb511e9170fe036b0ac165379234"
+  "built_at_commit": "e07dcc4e41df35cc0359a79d3b07fc76cc586524"
 }
