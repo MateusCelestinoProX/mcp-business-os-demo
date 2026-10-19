@@ -2358,29 +2358,191 @@ input, textarea, [contenteditable="true"] {
 
 
 
-    </style>
+    /* ========================================================
+   Personal OS Floating Shader Control Dock
+   ======================================================== */
+.shader-control-dock {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  background: rgba(8, 6, 12, 0.88);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  padding: 8px 12px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.85), 0 0 20px rgba(255, 7, 58, 0.18);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "JetBrains Mono", sans-serif;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  max-width: calc(100vw - 32px);
+  user-select: none;
+}
+
+.shader-control-dock:hover {
+  border-color: rgba(255, 7, 58, 0.4);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.9), 0 0 28px rgba(255, 7, 58, 0.28);
+}
+
+.shader-dock-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.shader-dock-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 2px 4px 4px 4px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.shader-pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ff073a;
+  box-shadow: 0 0 8px #ff073a;
+  animation: shaderPulse 1.8s infinite ease-in-out;
+}
+
+@keyframes shaderPulse {
+  0%, 100% { opacity: 0.5; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.3); }
+}
+
+.shader-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #f4f4f5;
+  white-space: nowrap;
+}
+
+.shader-auto-btn {
+  background: rgba(255, 7, 58, 0.15);
+  border: 1px solid rgba(255, 7, 58, 0.4);
+  color: #ff3366;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 9999px;
+  cursor: pointer;
+  letter-spacing: 0.8px;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.shader-auto-btn:hover {
+  background: rgba(255, 7, 58, 0.3);
+  color: #fff;
+  border-color: #ff073a;
+}
+
+.shader-auto-btn.paused {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.18);
+  color: #a1a1aa;
+}
+
+.shader-pills-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.shader-pill {
+  padding: 4px 9px;
+  border-radius: 9999px;
+  font-size: 0.66rem;
+  font-weight: 600;
+  color: #a1a1aa;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+.shader-pill:hover {
+  color: #ffffff;
+  background: rgba(255, 7, 58, 0.2);
+  border-color: rgba(255, 7, 58, 0.4);
+}
+
+.shader-pill.active {
+  color: #ffffff;
+  background: linear-gradient(135deg, rgba(255, 7, 58, 0.45), rgba(180, 0, 30, 0.55));
+  border-color: rgba(255, 7, 58, 0.7);
+  box-shadow: 0 0 12px rgba(255, 7, 58, 0.4);
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .shader-control-dock {
+    bottom: 12px;
+    right: 12px;
+    left: 12px;
+    border-radius: 14px;
+    padding: 6px 10px;
+  }
+  .shader-pills-row {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 2px;
+  }
+  .shader-pills-row::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+    
+</style>
 </head>
 <body>
-    <!-- Dynamic 5-Background System (GhostFibers, AeroShards, Dither, GradientWaves, Grainient) -->
+    <!-- Dynamic 8-Shader Personal OS Suite -->
     <div id="dynamic-bg-container" class="dynamic-bg-container">
         <div class="bg-canvas-wrapper active" id="bg-wrapper-0"><canvas id="canvas-ghostfibers"></canvas></div>
-        <div class="bg-canvas-wrapper" id="bg-wrapper-1"><canvas id="canvas-aeroshards"></canvas></div>
-        <div class="bg-canvas-wrapper" id="bg-wrapper-2"><canvas id="canvas-dither"></canvas></div>
-        <div class="bg-canvas-wrapper" id="bg-wrapper-3"><canvas id="canvas-gradientwaves"></canvas></div>
-        <div class="bg-canvas-wrapper" id="bg-wrapper-4"><canvas id="canvas-grainient"></canvas></div>
+        <div class="bg-canvas-wrapper" id="bg-wrapper-1"><canvas id="canvas-gradientwaves"></canvas></div>
+        <div class="bg-canvas-wrapper" id="bg-wrapper-2"><canvas id="canvas-liquidchrome"></canvas></div>
+        <div class="bg-canvas-wrapper" id="bg-wrapper-3"><canvas id="canvas-aeroshards"></canvas></div>
+        <div class="bg-canvas-wrapper" id="bg-wrapper-4"><canvas id="canvas-galaxy"></canvas></div>
+        <div class="bg-canvas-wrapper" id="bg-wrapper-5"><canvas id="canvas-gridscan"></canvas></div>
+        <div class="bg-canvas-wrapper" id="bg-wrapper-6"><canvas id="canvas-lightning"></canvas></div>
+        <div class="bg-canvas-wrapper" id="bg-wrapper-7"><canvas id="canvas-balatro"></canvas></div>
         <div class="bg-blur-veil"></div>
     </div>
 
-    <!-- Welcome Ceremony Popup -->
-    <div id="welcome-popup" class="welcome-popup">
-        <div class="welcome-popup-backdrop"></div>
-        <div class="welcome-popup-content liquid-glass">
-            <div class="welcome-halo"></div>
-            <div class="welcome-insignia">ΝΞΙΔ · NOVA ERA DA IA™</div>
-            <h1 class="welcome-title">Seja Bem Vindo, Galadriel e associados.</h1>
-            <div class="welcome-divider"></div>
-            <p class="welcome-subtitle">Que o conhecimento esteja sempre contigo.</p>
-            <div class="welcome-progress-bar"><div class="welcome-progress-fill"></div></div>
+    <!-- Personal OS Floating Shader Control Dock -->
+    <div id="shader-control-dock" class="shader-control-dock" aria-label="Controle de Shaders Personal OS">
+        <div class="shader-dock-inner">
+            <div class="shader-dock-header">
+                <span class="shader-pulse-dot"></span>
+                <span class="shader-title" id="active-shader-name">✦ 1. GhostFibers</span>
+                <button type="button" class="shader-auto-btn active" id="btn-shader-auto" title="Pausar / Retomar Rotação Automática">
+                    <span id="auto-cycle-icon">⏵</span> AUTO (8.5s)
+                </button>
+            </div>
+            <div class="shader-pills-row">
+                <button type="button" class="shader-pill active" data-shader="0" onclick="window.switchShader(0)">1. Fibers</button>
+                <button type="button" class="shader-pill" data-shader="1" onclick="window.switchShader(1)">2. Waves</button>
+                <button type="button" class="shader-pill" data-shader="2" onclick="window.switchShader(2)">3. Chrome</button>
+                <button type="button" class="shader-pill" data-shader="3" onclick="window.switchShader(3)">4. Shards</button>
+                <button type="button" class="shader-pill" data-shader="4" onclick="window.switchShader(4)">5. Galaxy</button>
+                <button type="button" class="shader-pill" data-shader="5" onclick="window.switchShader(5)">6. Grid</button>
+                <button type="button" class="shader-pill" data-shader="6" onclick="window.switchShader(6)">7. Plasma</button>
+                <button type="button" class="shader-pill" data-shader="7" onclick="window.switchShader(7)">8. Balatro</button>
+            </div>
         </div>
     </div>
 
@@ -3631,37 +3793,104 @@ input, textarea, [contenteditable="true"] {
     initDynamicBackgrounds();
   }
 
-  /* ========================================================
-     Dynamic 3-Background Rotation System (7 Seconds Crossfade)
-     Backgrounds: GhostFibers, AeroShards, Dither (Hyper-Amplified)
+    /* ========================================================
+     Dynamic 8-Shader Personal OS Suite & Control System
+     Shaders: GhostFibers, GradientWaves, LiquidChrome, AeroShards,
+              CosmicGalaxy, CyberGrid, PlasmaLightning, BalatroFlow
      ======================================================== */
   function initDynamicBackgrounds() {
     const container = document.getElementById('dynamic-bg-container');
     if (!container) return;
 
-    // Cycle between 5 backgrounds every 7 seconds
-    let activeIndex = 0;
-    const renderers = [null, null, null, null, null];
-    const wrappers = [
-      document.getElementById('bg-wrapper-0'),
-      document.getElementById('bg-wrapper-1'),
-      document.getElementById('bg-wrapper-2'),
-      document.getElementById('bg-wrapper-3'),
-      document.getElementById('bg-wrapper-4')
+    const SHADER_NAMES = [
+      '✦ 1. GhostFibers',
+      '✦ 2. GradientWaves',
+      '✦ 3. LiquidChrome',
+      '✦ 4. AeroShards',
+      '✦ 5. CosmicGalaxy',
+      '✦ 6. CyberGrid',
+      '✦ 7. PlasmaLightning',
+      '✦ 8. BalatroFlow'
     ];
+    const TOTAL_SHADERS = 8;
+    let activeIndex = 0;
+    let prevIndex = -1;
+    let transitionEndTime = 0;
+    let isAutoRotating = true;
+    let autoInterval = null;
 
-    setInterval(() => {
-      activeIndex = (activeIndex + 1) % 5;
-      wrappers.forEach((w, i) => {
-        if (w) {
-          if (i === activeIndex) {
-            w.classList.add('active');
-          } else {
-            w.classList.remove('active');
-          }
+    const renderers = new Array(TOTAL_SHADERS).fill(null);
+    const wrappers = [];
+    for (let i = 0; i < TOTAL_SHADERS; i++) {
+      wrappers.push(document.getElementById('bg-wrapper-' + i));
+    }
+
+    const titleEl = document.getElementById('active-shader-name');
+    const autoBtn = document.getElementById('btn-shader-auto');
+    const autoIcon = document.getElementById('auto-cycle-icon');
+    const pills = document.querySelectorAll('.shader-pill');
+
+    function updatePillsUI(idx) {
+      if (titleEl && SHADER_NAMES[idx]) {
+        titleEl.textContent = SHADER_NAMES[idx];
+      }
+      pills.forEach((p, i) => {
+        if (i === idx) {
+          p.classList.add('active');
+        } else {
+          p.classList.remove('active');
         }
       });
-    }, 7000);
+    }
+
+    window.switchShader = function(idx) {
+      if (idx < 0 || idx >= TOTAL_SHADERS || idx === activeIndex) return;
+      prevIndex = activeIndex;
+      activeIndex = idx;
+      transitionEndTime = performance.now() + 1800;
+      wrappers.forEach((w, i) => {
+        if (w) {
+          if (i === idx) w.classList.add('active');
+          else w.classList.remove('active');
+        }
+      });
+      updatePillsUI(idx);
+      if (typeof renderers[activeIndex] === 'function') {
+        renderers[activeIndex](performance.now());
+      }
+    };
+
+    function startAutoRotation() {
+      if (autoInterval) clearInterval(autoInterval);
+      autoInterval = setInterval(() => {
+        if (!isAutoRotating) return;
+        const nextIdx = (activeIndex + 1) % TOTAL_SHADERS;
+        window.switchShader(nextIdx);
+      }, 8500);
+    }
+    startAutoRotation();
+
+    window.toggleShaderAuto = function() {
+      isAutoRotating = !isAutoRotating;
+      if (autoBtn) {
+        if (isAutoRotating) {
+          autoBtn.classList.remove('paused');
+          autoBtn.classList.add('active');
+          if (autoIcon) autoIcon.textContent = '⏵';
+        } else {
+          autoBtn.classList.add('paused');
+          autoBtn.classList.remove('active');
+          if (autoIcon) autoIcon.textContent = '⏸';
+        }
+      }
+    };
+
+    if (autoBtn) {
+      autoBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        window.toggleShaderAuto();
+      });
+    }
 
     // Common WebGL helper
     function createGLContext(canvasId) {
@@ -3723,7 +3952,14 @@ input, textarea, [contenteditable="true"] {
       gl_Position = vec4(position, 0.0, 1.0);
     }`;
 
-    // 1. GhostFibers Background (React Bits)
+    // Common Global Mouse Tracker
+    let mouseX = 0.5, mouseY = 0.5;
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX / window.innerWidth;
+      mouseY = 1.0 - (e.clientY / window.innerHeight);
+    }, { passive: true });
+
+    // 0. GhostFibers Background (React Bits)
     (function initGhostFibers() {
       const ctx = createGLContext('canvas-ghostfibers');
       if (!ctx) return;
@@ -3747,7 +3983,6 @@ input, textarea, [contenteditable="true"] {
       uniform float uTwistSpeed;
       uniform float uLineFrequency;
       uniform float uLineSpacing;
-      uniform float uLineSharpness;
       uniform float uGlowFalloff;
       uniform float uGlowIntensity;
       uniform float uBrightness;
@@ -3797,44 +4032,41 @@ input, textarea, [contenteditable="true"] {
         vec2 p = uv;
         p /= max(uScale, 0.05);
         p = rotate2d(radians(uRotation) + time * uRotationSpeed) * p;
-        vec3 color = vec3(0.0);
-        float fiberField = 0.0;
 
-        for (int index = 0; index < MAX_LAYERS; index++) {
-          float fi = float(index) + 1.0;
-          if (fi > uLayers) break;
+        vec3 accumulator = vec3(0.0);
+        float activeLayers = clamp(uLayers, 1.0, float(MAX_LAYERS));
 
-          p += uWaveAmplitude * sin(p.yx * fi * uWaveFrequency + time * (uWaveSpeed + fi * uLayerSpeed));
+        for (int i = 0; i < MAX_LAYERS; i++) {
+          float layerIndex = float(i);
+          if (layerIndex >= activeLayers) break;
+          float layerFraction = layerIndex / max(activeLayers - 1.0, 1.0);
+          float progress = layerIndex + 1.0;
+          float layerTime = time + progress * uLayerSpeed;
 
-          float radius = length(p);
-          float polarAngle = atan(p.y, p.x);
-          polarAngle += sin(radius * uTwistFrequency - time * uTwistSpeed + fi) * uTwist;
-          p = vec2(cos(polarAngle), sin(polarAngle)) * radius;
+          vec2 q = p;
+          q += vec2(
+            sin(layerTime * uWaveSpeed + p.y * uWaveFrequency),
+            cos(layerTime * 0.8 * uWaveSpeed + p.x * (uWaveFrequency * 0.9))
+          ) * uWaveAmplitude;
 
-          float lines = abs(sin(p.x * (uLineFrequency + fi * uLineSpacing) + sin(p.y * 3.0 + time)));
-          lines = pow(max(0.0, 1.0 - lines), uLineSharpness);
-          fiberField += lines / fi;
-          color += uLineColor * lines / fi;
+          float angle = length(q) * uTwistFrequency - layerTime * uTwistSpeed;
+          q = rotate2d(angle * uTwist) * q;
 
-          float glow = exp(-uGlowFalloff * abs(sin(p.x * 3.0 + time + fi)));
-          color += uGlowColor * glow * uGlowIntensity / (fi * 2.0);
+          float wave = sin(q.x * uLineFrequency + layerTime);
+          float curve = cos(q.y * (uLineFrequency * 0.8) - layerTime * 1.2);
+          float pattern = 0.5 + 0.5 * sin((wave + curve) * uLineSpacing);
+
+          float lineGlow = pow(pattern, max(uGlowFalloff, 0.1)) * uGlowIntensity;
+          vec3 layerTone = mix(cloudTone, centerTone, layerFraction);
+          accumulator += layerTone * lineGlow;
         }
 
-        float center = exp(-2.2 * dot(uv, uv));
-        color += centerTone * center;
-
-        float cloud = exp(-1.5 * length(uv + vec2(sin(time * 0.3) * 0.25, cos(time * 0.25) * 0.18)));
-        color += cloudTone * cloud;
-
-        float vignette = 1.0 - smoothstep(0.35, 1.45, length(uv));
-        color *= mix(1.0 - uVignette, 1.0, vignette);
-        color = 1.0 - exp(-color * uBrightness);
-        color.b *= uBlueBoost;
-
-        vec3 outputColor = backdrop + color;
-        float noise = (layeredGrain(gl_FragCoord.xy) - 0.5) * uGrain;
-        outputColor = clamp(outputColor + noise, 0.0, 1.0);
-        fragColor = vec4(outputColor, 1.0);
+        accumulator *= uBrightness;
+        vec3 blended = accumulator + backdrop;
+        float diagonal = length(uv);
+        blended = mix(blended, backdrop, clamp(diagonal * (uVignette * 0.5), 0.0, 1.0));
+        blended += (layeredGrain(gl_FragCoord.xy) - 0.5) * uGrain;
+        fragColor = vec4(clamp(blended, 0.0, 1.0), 1.0);
       }`;
 
       const program = createProgram(gl, vsSource, fsSource);
@@ -3857,7 +4089,6 @@ input, textarea, [contenteditable="true"] {
       const uTwistSpeed = gl.getUniformLocation(program, 'uTwistSpeed');
       const uLineFrequency = gl.getUniformLocation(program, 'uLineFrequency');
       const uLineSpacing = gl.getUniformLocation(program, 'uLineSpacing');
-      const uLineSharpness = gl.getUniformLocation(program, 'uLineSharpness');
       const uGlowFalloff = gl.getUniformLocation(program, 'uGlowFalloff');
       const uGlowIntensity = gl.getUniformLocation(program, 'uGlowIntensity');
       const uBrightness = gl.getUniformLocation(program, 'uBrightness');
@@ -3917,7 +4148,250 @@ input, textarea, [contenteditable="true"] {
       };
     })();
 
-    // 2. AeroShards Background (React Bits procedural geometric shard flow)
+    // 1. GradientWaves Background (React Bits)
+    (function initGradientWaves() {
+      const ctx = createGLContext('canvas-gradientwaves');
+      if (!ctx) return;
+      const { canvas, gl } = ctx;
+
+      const fsSource = `#version 300 es
+      precision highp float;
+      uniform vec2 iResolution;
+      uniform float iTime;
+      uniform float uSpeed;
+      uniform float uAmplitude;
+      uniform float uWaveScale;
+      uniform float uWaveRatio;
+      uniform float uSwell;
+      uniform float uTurbulence;
+      uniform float uTilt;
+      uniform float uZoom;
+      uniform float uHeight;
+      uniform float uFogDepth;
+      uniform float uSteps;
+      uniform float uBrightness;
+      uniform float uOpacity;
+      uniform float uGrain;
+      uniform float uGrainIntensity;
+      uniform vec2 uMouse;
+      uniform float uParallax;
+      uniform int uEnableMouse;
+      uniform vec3 uHorizonColor;
+      uniform vec3 uWaveColor;
+      uniform vec3 uCrestColor;
+
+      out vec4 fragColor;
+
+      float hash21(vec2 p) {
+        return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123);
+      }
+
+      float noise(vec2 p) {
+        vec2 i = floor(p);
+        vec2 f = fract(p);
+        float a = hash21(i);
+        float b = hash21(i + vec2(1.0, 0.0));
+        float c = hash21(i + vec2(0.0, 1.0));
+        float d = hash21(i + vec2(1.0, 1.0));
+        vec2 u = f * f * (3.0 - 2.0 * f);
+        return mix(mix(a, b, u.x), mix(c, d, u.x), u.y);
+      }
+
+      float fbm(vec2 p) {
+        float v = 0.0;
+        float a = 0.5;
+        mat2 rot = mat2(0.8, 0.6, -0.6, 0.8);
+        for (int i = 0; i < 4; i++) {
+          v += a * noise(p);
+          p = rot * p * 2.0;
+          a *= 0.5;
+        }
+        return v;
+      }
+
+      void main() {
+        vec2 uv = (gl_FragCoord.xy - 0.5 * iResolution) / iResolution.y;
+        float t = iTime * uSpeed;
+
+        vec2 mOffset = (uMouse - 0.5) * uParallax;
+        uv += mOffset;
+
+        float wave = sin(uv.x * uWaveScale * 3.0 + t) * cos(uv.y * uWaveScale * 2.0 - t * 0.8);
+        float n = fbm(uv * uWaveScale * 2.5 + vec2(t * 0.3, wave * 0.5));
+
+        float height = uv.y * uHeight + wave * uAmplitude + n * (uTurbulence * 0.1);
+        float shape = smoothstep(-0.6, 0.6, height);
+
+        vec3 col = mix(uHorizonColor, uWaveColor, shape);
+        col = mix(col, uCrestColor, pow(shape, 3.5));
+
+        float grain = (hash21(gl_FragCoord.xy + fract(iTime)) - 0.5) * uGrainIntensity;
+        col += grain;
+        col *= uBrightness;
+
+        float vig = 1.0 - length(uv) * 0.6;
+        col *= max(vig, 0.2);
+
+        fragColor = vec4(col, uOpacity);
+      }`;
+
+      const program = createProgram(gl, vsSource, fsSource);
+      if (!program) return;
+      setupQuad(gl, program);
+
+      const uRes = gl.getUniformLocation(program, 'iResolution');
+      const uTime = gl.getUniformLocation(program, 'iTime');
+      const uSpeed = gl.getUniformLocation(program, 'uSpeed');
+      const uAmp = gl.getUniformLocation(program, 'uAmplitude');
+      const uScale = gl.getUniformLocation(program, 'uWaveScale');
+      const uRatio = gl.getUniformLocation(program, 'uWaveRatio');
+      const uSwell = gl.getUniformLocation(program, 'uSwell');
+      const uTurb = gl.getUniformLocation(program, 'uTurbulence');
+      const uTilt = gl.getUniformLocation(program, 'uTilt');
+      const uZoom = gl.getUniformLocation(program, 'uZoom');
+      const uHeight = gl.getUniformLocation(program, 'uHeight');
+      const uFog = gl.getUniformLocation(program, 'uFogDepth');
+      const uSteps = gl.getUniformLocation(program, 'uSteps');
+      const uBright = gl.getUniformLocation(program, 'uBrightness');
+      const uOpacity = gl.getUniformLocation(program, 'uOpacity');
+      const uGrain = gl.getUniformLocation(program, 'uGrain');
+      const uGrainInt = gl.getUniformLocation(program, 'uGrainIntensity');
+      const uMouse = gl.getUniformLocation(program, 'uMouse');
+      const uParallax = gl.getUniformLocation(program, 'uParallax');
+      const uEnMouse = gl.getUniformLocation(program, 'uEnableMouse');
+      const uHorizCol = gl.getUniformLocation(program, 'uHorizonColor');
+      const uWaveCol = gl.getUniformLocation(program, 'uWaveColor');
+      const uCrestCol = gl.getUniformLocation(program, 'uCrestColor');
+
+      function resize() {
+        const scale = 0.5;
+        const width = Math.max(160, Math.round(window.innerWidth * scale));
+        const height = Math.max(160, Math.round(window.innerHeight * scale));
+        if (canvas.width !== width || canvas.height !== height) {
+          canvas.width = width;
+          canvas.height = height;
+          gl.viewport(0, 0, width, height);
+        }
+      }
+      window.addEventListener('resize', resize, { passive: true });
+      resize();
+
+      let startTime = performance.now();
+      renderers[1] = function renderGradientWaves(now) {
+        gl.useProgram(program);
+        const elapsed = (now - startTime) * 0.001;
+
+        gl.uniform2f(uRes, canvas.width, canvas.height);
+        gl.uniform1f(uTime, elapsed);
+        gl.uniform1f(uSpeed, 0.45);
+        gl.uniform1f(uAmp, 3.2);
+        gl.uniform1f(uScale, 0.75);
+        gl.uniform1f(uRatio, 0.95);
+        gl.uniform1f(uSwell, 42.0);
+        gl.uniform1f(uTurb, 25.0);
+        gl.uniform1f(uTilt, 1.11);
+        gl.uniform1f(uZoom, 1.0);
+        gl.uniform1f(uHeight, 5.5);
+        gl.uniform1f(uFog, 18.0);
+        gl.uniform1f(uSteps, 70.0);
+        gl.uniform1f(uBright, 1.45);
+        gl.uniform1f(uOpacity, 1.0);
+        gl.uniform1f(uGrain, 1.0);
+        gl.uniform1f(uGrainInt, 0.06);
+        gl.uniform2f(uMouse, mouseX, mouseY);
+        gl.uniform1f(uParallax, 0.6);
+        gl.uniform1i(uEnMouse, 1);
+
+        // Vermelho Neon Blaster Sanguine Blood Red
+        gl.uniform3f(uHorizCol, 0.16, 0.004, 0.02);
+        gl.uniform3f(uWaveCol, 1.35, 0.02, 0.08);
+        gl.uniform3f(uCrestCol, 1.6, 0.08, 0.18);
+
+        gl.drawArrays(gl.TRIANGLES, 0, 6);
+      };
+    })();
+
+    // 2. LiquidChrome Background (Cybernetic Molten Chrome)
+    (function initLiquidChrome() {
+      const ctx = createGLContext('canvas-liquidchrome');
+      if (!ctx) return;
+      const { canvas, gl } = ctx;
+
+      const fsSource = `#version 300 es
+      precision highp float;
+      uniform vec2 uResolution;
+      uniform float uTime;
+      uniform vec2 uMouse;
+      out vec4 fragColor;
+
+      void main() {
+        vec2 uvCoord = gl_FragCoord.xy / uResolution.xy;
+        vec2 uv = (2.0 * gl_FragCoord.xy - uResolution.xy) / min(uResolution.x, uResolution.y);
+        
+        vec2 m = (uMouse - 0.5) * 0.35;
+        uv += m;
+
+        float amp = 0.35;
+        float freqX = 2.4;
+        float freqY = 2.4;
+        float t = uTime * 0.45;
+
+        for (float i = 1.0; i < 7.0; i++){
+          uv.x += (amp / i) * cos(i * freqX * uv.y + t);
+          uv.y += (amp / i) * cos(i * freqY * uv.x + t);
+        }
+
+        float wave = abs(sin(t - uv.y - uv.x));
+        
+        // Sanguine Blood Red & Cyber Chrome
+        vec3 baseColor = vec3(1.15, 0.04, 0.14);
+        vec3 chromeColor = baseColor / max(wave, 0.14);
+        chromeColor = clamp(chromeColor, vec3(0.0), vec3(1.6));
+
+        float spec = pow(max(1.0 - wave, 0.0), 4.0) * 0.85;
+        vec3 highlight = vec3(1.0, 0.8, 0.85) * spec;
+        
+        vec3 col = chromeColor * 0.65 + highlight;
+        col += vec3(0.015, 0.002, 0.005);
+        float vig = 1.0 - length(uvCoord - 0.5) * 0.75;
+        col *= max(vig, 0.2);
+
+        fragColor = vec4(col, 1.0);
+      }`;
+
+      const program = createProgram(gl, vsSource, fsSource);
+      if (!program) return;
+      setupQuad(gl, program);
+
+      const uRes = gl.getUniformLocation(program, 'uResolution');
+      const uTime = gl.getUniformLocation(program, 'uTime');
+      const uMouse = gl.getUniformLocation(program, 'uMouse');
+
+      function resize() {
+        const scale = 0.5;
+        const width = Math.max(160, Math.round(window.innerWidth * scale));
+        const height = Math.max(160, Math.round(window.innerHeight * scale));
+        if (canvas.width !== width || canvas.height !== height) {
+          canvas.width = width;
+          canvas.height = height;
+          gl.viewport(0, 0, width, height);
+        }
+      }
+      window.addEventListener('resize', resize, { passive: true });
+      resize();
+
+      let startTime = performance.now();
+      renderers[2] = function renderLiquidChrome(now) {
+        gl.useProgram(program);
+        const elapsed = (now - startTime) * 0.001;
+        gl.uniform2f(uRes, canvas.width, canvas.height);
+        gl.uniform1f(uTime, elapsed);
+        gl.uniform2f(uMouse, mouseX, mouseY);
+        gl.drawArrays(gl.TRIANGLES, 0, 6);
+      };
+    })();
+
+    // 3. AeroShards Background (Raymarched Geometric 3D Prisms)
     (function initAeroShards() {
       const ctx = createGLContext('canvas-aeroshards');
       if (!ctx) return;
@@ -3984,7 +4458,7 @@ input, textarea, [contenteditable="true"] {
 
         float time = uTime * 0.65;
         vec3 ro = vec3(0.0, time * 1.8, 5.0);
-        vec3 rd = normalize(vec3(uv, -1.3));
+        vec3 rd = normalize(vec3(uv + (uMouse - 0.5) * 0.25, -1.3));
 
         // Vermelho Neon Blaster Sanguine Blood Red
         vec3 bgCol = vec3(12.0 / 255.0, 2.0 / 255.0, 4.0 / 255.0);
@@ -4041,12 +4515,6 @@ input, textarea, [contenteditable="true"] {
       const uTime = gl.getUniformLocation(program, 'uTime');
       const uMouse = gl.getUniformLocation(program, 'uMouse');
 
-      let mouseX = 0.5, mouseY = 0.5;
-      window.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX / window.innerWidth;
-        mouseY = 1.0 - (e.clientY / window.innerHeight);
-      });
-
       function resize() {
         const scale = 0.5;
         const width = Math.max(160, Math.round(window.innerWidth * scale));
@@ -4061,7 +4529,7 @@ input, textarea, [contenteditable="true"] {
       resize();
 
       let startTime = performance.now();
-      renderers[1] = function renderAeroShards(now) {
+      renderers[3] = function renderAeroShards(now) {
         gl.useProgram(program);
         const elapsed = (now - startTime) * 0.001;
 
@@ -4073,339 +4541,64 @@ input, textarea, [contenteditable="true"] {
       };
     })();
 
-    // 3. Dither Background (React Bits - AMPLIFICADO AO MÁXIMO)
-    (function initDither() {
-      const ctx = createGLContext('canvas-dither');
+    // 4. CosmicGalaxy Background (Deep Space Vortex & Nebula Core)
+    (function initCosmicGalaxy() {
+      const ctx = createGLContext('canvas-galaxy');
       if (!ctx) return;
       const { canvas, gl } = ctx;
 
       const fsSource = `#version 300 es
       precision highp float;
-
-      uniform vec2 resolution;
-      uniform float time;
-      uniform float waveSpeed;
-      uniform float waveFrequency;
-      uniform float waveAmplitude;
-      uniform vec2 mousePos;
-      uniform int enableMouseInteraction;
-      uniform float mouseRadius;
-      uniform float colorNum;
-      uniform float pixelSize;
-
-      out vec4 fragColor;
-
-      const float bayerMatrix8x8[64] = float[64](
-        0.0/64.0, 48.0/64.0, 12.0/64.0, 60.0/64.0,  3.0/64.0, 51.0/64.0, 15.0/64.0, 63.0/64.0,
-        32.0/64.0,16.0/64.0, 44.0/64.0, 28.0/64.0, 35.0/64.0,19.0/64.0, 47.0/64.0, 31.0/64.0,
-        8.0/64.0, 56.0/64.0,  4.0/64.0, 52.0/64.0, 11.0/64.0,59.0/64.0,  7.0/64.0, 55.0/64.0,
-        40.0/64.0,24.0/64.0, 36.0/64.0, 20.0/64.0, 43.0/64.0,27.0/64.0, 39.0/64.0, 23.0/64.0,
-        2.0/64.0, 50.0/64.0, 14.0/64.0, 62.0/64.0,  1.0/64.0,49.0/64.0, 13.0/64.0, 61.0/64.0,
-        34.0/64.0,18.0/64.0, 46.0/64.0, 30.0/64.0, 33.0/64.0,17.0/64.0, 45.0/64.0, 29.0/64.0,
-        10.0/64.0,58.0/64.0,  6.0/64.0, 54.0/64.0,  9.0/64.0,57.0/64.0,  5.0/64.0, 53.0/64.0,
-        42.0/64.0,26.0/64.0, 38.0/64.0, 22.0/64.0, 41.0/64.0,25.0/64.0, 37.0/64.0, 21.0/64.0
-      );
-
-      vec4 mod289(vec4 x) { return x - floor(x * (1.0/289.0)) * 289.0; }
-      vec4 permute(vec4 x) { return mod289(((x * 34.0) + 1.0) * x); }
-      vec4 taylorInvSqrt(vec4 r) { return 1.79284291400159 - 0.85373472095314 * r; }
-      vec2 fade(vec2 t) { return t*t*t*(t*(t*6.0-15.0)+10.0); }
-
-      float cnoise(vec2 P) {
-        vec4 Pi = floor(P.xyxy) + vec4(0.0,0.0,1.0,1.0);
-        vec4 Pf = fract(P.xyxy) - vec4(0.0,0.0,1.0,1.0);
-        Pi = mod289(Pi);
-        vec4 ix = Pi.xzxz;
-        vec4 iy = Pi.yyww;
-        vec4 fx = Pf.xzxz;
-        vec4 fy = Pf.yyww;
-        vec4 i = permute(permute(ix) + iy);
-        vec4 gx = fract(i * (1.0/41.0)) * 2.0 - 1.0;
-        vec4 gy = abs(gx) - 0.5;
-        vec4 tx = floor(gx + 0.5);
-        gx = gx - tx;
-        vec2 g00 = vec2(gx.x, gy.x);
-        vec2 g10 = vec2(gx.y, gy.y);
-        vec2 g01 = vec2(gx.z, gy.z);
-        vec2 g11 = vec2(gx.w, gy.w);
-        vec4 norm = taylorInvSqrt(vec4(dot(g00,g00), dot(g01,g01), dot(g10,g10), dot(g11,g11)));
-        g00 *= norm.x; g01 *= norm.y; g10 *= norm.z; g11 *= norm.w;
-        float n00 = dot(g00, vec2(fx.x, fy.x));
-        float n10 = dot(g10, vec2(fx.y, fy.y));
-        float n01 = dot(g01, vec2(fx.z, fy.z));
-        float n11 = dot(g11, vec2(fx.w, fy.w));
-        vec2 fade_xy = fade(Pf.xy);
-        vec2 n_x = mix(vec2(n00, n01), vec2(n10, n11), fade_xy.x);
-        return 2.3 * mix(n_x.x, n_x.y, fade_xy.y);
-      }
-
-      const int OCTAVES = 4;
-      float fbm(vec2 p) {
-        float value = 0.0;
-        float amp = 1.0;
-        float freq = waveFrequency;
-        for (int i = 0; i < OCTAVES; i++) {
-          value += amp * abs(cnoise(p));
-          p *= freq;
-          amp *= waveAmplitude;
-        }
-        return value;
-      }
-
-      float pattern(vec2 p) {
-        vec2 p2 = p - time * waveSpeed;
-        return fbm(p + fbm(p2)); 
-      }
-
-      vec3 dither(vec2 uv, vec3 color) {
-        vec2 scaledCoord = floor(uv * resolution / pixelSize);
-        int x = int(mod(scaledCoord.x, 8.0));
-        int y = int(mod(scaledCoord.y, 8.0));
-        float threshold = bayerMatrix8x8[y * 8 + x] - 0.25;
-        float stepVal = 1.0 / (colorNum - 1.0);
-        color += threshold * stepVal;
-        float luminance = dot(color, vec3(0.2126, 0.7152, 0.0722));
-        float bias = mix(0.2, 0.0, smoothstep(0.45, 0.8, luminance));
-        color = clamp(color - bias, 0.0, 1.0);
-        return floor(color * (colorNum - 1.0) + 0.5) / (colorNum - 1.0);
-      }
-
-      void main() {
-        vec2 uv = gl_FragCoord.xy / resolution.xy;
-        vec2 p = uv - 0.5;
-        p.x *= resolution.x / resolution.y;
-
-        float f = pattern(p * 2.2);
-
-        if (enableMouseInteraction == 1) {
-          vec2 mouseNDC = (mousePos / resolution - 0.5) * vec2(1.0, -1.0);
-          mouseNDC.x *= resolution.x / resolution.y;
-          float dist = length(p - mouseNDC);
-          float effect = 1.0 - smoothstep(0.0, mouseRadius, dist);
-          f -= 0.65 * effect;
-        }
-
-        // AMPLIFICADO AO MÁXIMO:
-        // Paleta Ultra Vívida Neon Cyberpunk (Electric Magenta, Cyber Cyan, Violet & Radiant Sun)
-        vec3 bgDeep = vec3(0.04, 0.01, 0.07);
-        vec3 colMagenta = vec3(1.15, 0.08, 0.75);
-        vec3 colCyan = vec3(0.05, 1.10, 1.25);
-        vec3 colGold = vec3(1.18, 0.85, 0.15);
-        vec3 colViolet = vec3(0.65, 0.05, 1.20);
-
-        float tVal = clamp(f * 1.35, 0.0, 1.0);
-        vec3 dynamicWaveColor;
-        if (tVal < 0.35) {
-          dynamicWaveColor = mix(bgDeep, colViolet, tVal / 0.35);
-        } else if (tVal < 0.7) {
-          dynamicWaveColor = mix(colViolet, colMagenta, (tVal - 0.35) / 0.35);
-        } else {
-          dynamicWaveColor = mix(colMagenta, mix(colCyan, colGold, sin(time * 1.5 + uv.x * 3.0) * 0.5 + 0.5), (tVal - 0.7) / 0.3);
-        }
-
-        vec3 finalColor = dither(uv, dynamicWaveColor);
-
-        fragColor = vec4(finalColor, 1.0);
-      }`;
-
-      const program = createProgram(gl, vsSource, fsSource);
-      if (!program) return;
-      setupQuad(gl, program);
-
-      const uRes = gl.getUniformLocation(program, 'resolution');
-      const uTime = gl.getUniformLocation(program, 'time');
-      const uWaveSpeed = gl.getUniformLocation(program, 'waveSpeed');
-      const uWaveFreq = gl.getUniformLocation(program, 'waveFrequency');
-      const uWaveAmp = gl.getUniformLocation(program, 'waveAmplitude');
-      const uMousePos = gl.getUniformLocation(program, 'mousePos');
-      const uMouseInteract = gl.getUniformLocation(program, 'enableMouseInteraction');
-      const uMouseRad = gl.getUniformLocation(program, 'mouseRadius');
-      const uColorNum = gl.getUniformLocation(program, 'colorNum');
-      const uPixelSize = gl.getUniformLocation(program, 'pixelSize');
-
-      let mouseX = 0, mouseY = 0;
-      window.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-      });
-
-      function resize() {
-        const scale = 0.5;
-        const width = Math.max(160, Math.round(window.innerWidth * scale));
-        const height = Math.max(160, Math.round(window.innerHeight * scale));
-        if (canvas.width !== width || canvas.height !== height) {
-          canvas.width = width;
-          canvas.height = height;
-          gl.viewport(0, 0, width, height);
-        }
-      }
-      window.addEventListener('resize', resize, { passive: true });
-      resize();
-
-      let startTime = performance.now();
-      renderers[2] = function renderDither(now) {
-        gl.useProgram(program);
-        const elapsed = (now - startTime) * 0.001;
-
-        gl.uniform2f(uRes, canvas.width, canvas.height);
-        gl.uniform1f(uTime, elapsed);
-        gl.uniform1f(uWaveSpeed, 0.08);
-        gl.uniform1f(uWaveFreq, 3.4);
-        gl.uniform1f(uWaveAmp, 0.45);
-        gl.uniform2f(uMousePos, mouseX, mouseY);
-        gl.uniform1i(uMouseInteract, 1);
-        gl.uniform1f(uMouseRad, 0.45);
-        gl.uniform1f(uColorNum, 6.0);
-        gl.uniform1f(uPixelSize, 3.0);
-
-        gl.drawArrays(gl.TRIANGLES, 0, 6);
-      };
-    })();
-
-    // 4. GradientWaves Background (React Bits - Cores Alteradas & Intensidade Aumentada)
-    (function initGradientWaves() {
-      const ctx = createGLContext('canvas-gradientwaves');
-      if (!ctx) return;
-      const { canvas, gl } = ctx;
-
-      const fsSource = `#version 300 es
-      precision highp float;
-      uniform vec2 iResolution;
-      uniform float iTime;
-      uniform float uSpeed;
-      uniform float uAmplitude;
-      uniform float uWaveScale;
-      uniform float uWaveRatio;
-      uniform float uSwell;
-      uniform float uTurbulence;
-      uniform float uTilt;
-      uniform float uZoom;
-      uniform float uHeight;
-      uniform float uFogDepth;
-      uniform float uSteps;
-      uniform float uBrightness;
-      uniform float uOpacity;
-      uniform float uGrain;
-      uniform float uGrainIntensity;
+      uniform vec2 uResolution;
+      uniform float uTime;
       uniform vec2 uMouse;
-      uniform float uParallax;
-      uniform bool uEnableMouse;
-      uniform vec3 uHorizonColor;
-      uniform vec3 uWaveColor;
-      uniform vec3 uCrestColor;
       out vec4 fragColor;
-
-      const float MAX_DIST = 20000.0;
 
       float hash21(vec2 p) {
-        vec3 p3 = fract(vec3(p.xyx) * 0.1031);
-        p3 += dot(p3, p3.yzx + 33.33);
-        return fract((p3.x + p3.y) * p3.z);
-      }
-
-      float plasma(vec3 r, vec2 freq, vec4 tc) {
-        float mx = r.x + tc.x;
-        mx += uSwell * sin((r.y + mx) / 20.0 + tc.y);
-        float my = r.y - tc.z;
-        my += uTurbulence * cos(r.x / 23.0 + tc.w);
-        return r.z - (sin(mx * freq.x) * uAmplitude + sin(my * freq.y) * uAmplitude + uHeight);
-      }
-
-      float raymarch(vec3 pos, vec3 dir, vec2 freq, vec4 tc) {
-        float dist = 0.0;
-        for (int i = 0; i < 128; i++) {
-          if (float(i) >= uSteps) break;
-          float dscene = plasma(pos + dist * dir, freq, tc);
-          if (abs(dscene) < 0.1) break;
-          dist += 0.9 * dscene;
-          if (!(abs(dist) < MAX_DIST)) return MAX_DIST;
-        }
-        return dist;
+        p = fract(p * vec2(123.34, 456.21));
+        p += dot(p, p + 45.32);
+        return fract(p.x * p.y);
       }
 
       void main() {
-        float T = iTime * uSpeed;
-        vec2 freq = vec2(uWaveScale / 7.0, (uWaveScale * uWaveRatio) / 3.0);
-        vec4 tc = vec4(T / 0.130, T / 0.810, T / 0.200, T / 0.710);
-        float c, s;
-        float vfov = (3.14159 / 2.3) / max(uZoom, 0.05);
-        vec3 cam = vec3(0.0, 0.0, 30.0);
-        vec2 uv = (gl_FragCoord.xy / iResolution.xy) - 0.5;
-        uv.x *= iResolution.x / iResolution.y;
-        uv.y *= -1.0;
+        vec2 uv = (gl_FragCoord.xy - 0.5 * uResolution.xy) / min(uResolution.x, uResolution.y);
+        uv += (uMouse - 0.5) * 0.12;
 
-        vec3 dir = vec3(0.0, 0.0, -1.0);
-        float ulen = length(uv);
-        float xrot = vfov * ulen;
-        c = cos(xrot); s = sin(xrot);
-        dir = mat3(1.0, 0.0, 0.0, 0.0, c, -s, 0.0, s, c) * dir;
-        vec2 nuv = ulen > 1e-5 ? uv / ulen : vec2(1.0, 0.0);
-        c = nuv.x; s = nuv.y;
-        dir = mat3(c, -s, 0.0, s, c, 0.0, 0.0, 0.0, 1.0) * dir;
-        c = cos(uTilt); s = sin(uTilt);
-        dir = mat3(c, 0.0, s, 0.0, 1.0, 0.0, -s, 0.0, c) * dir;
+        float t = uTime * 0.25;
+        float d = length(uv);
 
-        if (uEnableMouse) {
-          float yaw = (uMouse.x - 0.5) * uParallax * 0.4;
-          float pitch = (uMouse.y - 0.5) * uParallax * 0.4;
-          c = cos(yaw); s = sin(yaw);
-          dir = mat3(c, 0.0, s, 0.0, 1.0, 0.0, -s, 0.0, c) * dir;
-          c = cos(pitch); s = sin(pitch);
-          dir = mat3(1.0, 0.0, 0.0, 0.0, c, -s, 0.0, s, c) * dir;
-        }
+        float angle = atan(uv.y, uv.x) + t * 0.4 + 2.4 / (d + 0.18);
+        vec2 suv = vec2(cos(angle), sin(angle)) * d;
 
-        float dist = raymarch(cam, dir, freq, tc);
-        vec3 pos = cam + dist * dir;
+        float core = 0.07 / (d + 0.04);
+        vec3 coreColor = vec3(1.4, 0.12, 0.22) * core;
 
-        float t = clamp(uFogDepth / max(dist, 0.001), 0.0, 1.0);
-        vec3 body = mix(uWaveColor, uCrestColor, clamp(pos.z * 0.08 + 0.5, 0.0, 1.0));
-        vec3 col = mix(uHorizonColor, body, t);
-        col *= uBrightness;
-        col = clamp(col, 0.0, 1.0);
+        float arm1 = smoothstep(0.2, 0.9, sin(suv.x * 12.0 + suv.y * 8.0 - t * 2.0));
+        float arm2 = smoothstep(0.2, 0.9, cos(suv.y * 14.0 - suv.x * 10.0 + t * 1.5));
+        float nebula = (arm1 * 0.6 + arm2 * 0.4) * exp(-d * 2.8);
+        vec3 nebulaColor = mix(vec3(0.55, 0.02, 0.08), vec3(1.0, 0.2, 0.15), arm1) * nebula * 2.2;
 
-        float alpha = clamp(t, 0.0, 1.0) * uOpacity;
-        if (uGrain > 0.5) {
-          float g = hash21(gl_FragCoord.xy + mod(iTime, 64.0) * 11.0);
-          alpha += (g - 0.5) * uGrainIntensity;
-        }
-        alpha = clamp(alpha, 0.0, 1.0);
-        fragColor = vec4(col * alpha, alpha);
+        vec2 stUv = uv * 9.0;
+        vec2 gv = fract(stUv) - 0.5;
+        vec2 id = floor(stUv);
+        float seed = hash21(id);
+        float starDist = length(gv - (vec2(seed, fract(seed * 34.1)) - 0.5) * 0.7);
+        float twinkle = sin(t * 4.0 + seed * 6.28) * 0.5 + 0.5;
+        float star = smoothstep(0.06, 0.005, starDist) * (seed > 0.4 ? 1.0 : 0.0) * (0.4 + 0.6 * twinkle);
+        vec3 starColor = vec3(1.0, 0.85, 0.9) * star * (0.8 + 0.5 * seed);
+
+        vec3 baseVoid = vec3(0.015, 0.003, 0.006) * (1.0 - d * 0.5);
+        vec3 col = baseVoid + coreColor + nebulaColor + starColor;
+        fragColor = vec4(col, 1.0);
       }`;
 
       const program = createProgram(gl, vsSource, fsSource);
       if (!program) return;
       setupQuad(gl, program);
 
-      const uRes = gl.getUniformLocation(program, 'iResolution');
-      const uTime = gl.getUniformLocation(program, 'iTime');
-      const uSpeed = gl.getUniformLocation(program, 'uSpeed');
-      const uAmp = gl.getUniformLocation(program, 'uAmplitude');
-      const uScale = gl.getUniformLocation(program, 'uWaveScale');
-      const uRatio = gl.getUniformLocation(program, 'uWaveRatio');
-      const uSwell = gl.getUniformLocation(program, 'uSwell');
-      const uTurb = gl.getUniformLocation(program, 'uTurbulence');
-      const uTilt = gl.getUniformLocation(program, 'uTilt');
-      const uZoom = gl.getUniformLocation(program, 'uZoom');
-      const uHeight = gl.getUniformLocation(program, 'uHeight');
-      const uFog = gl.getUniformLocation(program, 'uFogDepth');
-      const uSteps = gl.getUniformLocation(program, 'uSteps');
-      const uBright = gl.getUniformLocation(program, 'uBrightness');
-      const uOpacity = gl.getUniformLocation(program, 'uOpacity');
-      const uGrain = gl.getUniformLocation(program, 'uGrain');
-      const uGrainInt = gl.getUniformLocation(program, 'uGrainIntensity');
+      const uRes = gl.getUniformLocation(program, 'uResolution');
+      const uTime = gl.getUniformLocation(program, 'uTime');
       const uMouse = gl.getUniformLocation(program, 'uMouse');
-      const uParallax = gl.getUniformLocation(program, 'uParallax');
-      const uEnMouse = gl.getUniformLocation(program, 'uEnableMouse');
-      const uHorizCol = gl.getUniformLocation(program, 'uHorizonColor');
-      const uWaveCol = gl.getUniformLocation(program, 'uWaveColor');
-      const uCrestCol = gl.getUniformLocation(program, 'uCrestColor');
-
-      let targetMouseX = 0.5, targetMouseY = 0.5;
-      let currMouseX = 0.5, currMouseY = 0.5;
-      window.addEventListener('mousemove', (e) => {
-        targetMouseX = e.clientX / window.innerWidth;
-        targetMouseY = 1.0 - (e.clientY / window.innerHeight);
-      });
 
       function resize() {
         const scale = 0.5;
@@ -4421,125 +4614,166 @@ input, textarea, [contenteditable="true"] {
       resize();
 
       let startTime = performance.now();
-      renderers[3] = function renderGradientWaves(now) {
+      renderers[4] = function renderCosmicGalaxy(now) {
         gl.useProgram(program);
         const elapsed = (now - startTime) * 0.001;
-
-        currMouseX += (targetMouseX - currMouseX) * 0.05;
-        currMouseY += (targetMouseY - currMouseY) * 0.05;
-
         gl.uniform2f(uRes, canvas.width, canvas.height);
         gl.uniform1f(uTime, elapsed);
-        gl.uniform1f(uSpeed, 0.45);
-        gl.uniform1f(uAmp, 3.2); // Intensidade aumentada
-        gl.uniform1f(uScale, 0.75);
-        gl.uniform1f(uRatio, 0.95);
-        gl.uniform1f(uSwell, 42.0);
-        gl.uniform1f(uTurb, 25.0);
-        gl.uniform1f(uTilt, 1.11);
-        gl.uniform1f(uZoom, 1.0);
-        gl.uniform1f(uHeight, 5.5);
-        gl.uniform1f(uFog, 18.0);
-        gl.uniform1f(uSteps, 70.0);
-        gl.uniform1f(uBright, 1.4); // Brilho amplificado
-        gl.uniform1f(uOpacity, 1.0);
-        gl.uniform1f(uGrain, 1.0);
-        gl.uniform1f(uGrainInt, 0.06);
-        gl.uniform2f(uMouse, currMouseX, currMouseY);
-        gl.uniform1f(uParallax, 0.6);
-        gl.uniform1i(uEnMouse, 1);
-
-        // Vermelho Neon Blaster Sanguine Blood Red
-        gl.uniform3f(uHorizCol, 0.16, 0.004, 0.02); // Deep Sanguine Blood Void
-        gl.uniform3f(uWaveCol, 1.35, 0.02, 0.08);   // Arterial Blood Wave Core
-        gl.uniform3f(uCrestCol, 1.6, 0.08, 0.18);   // Blazing Neon Blaster Blood Crest
-
+        gl.uniform2f(uMouse, mouseX, mouseY);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
       };
     })();
 
-    // 5. Grainient Background (React Bits - Cores Alteradas & Intensidade Aumentada)
-    (function initGrainient() {
-      const ctx = createGLContext('canvas-grainient');
+    // 5. CyberGrid Background (Personal OS 3D Holographic Perspective Grid)
+    (function initCyberGrid() {
+      const ctx = createGLContext('canvas-gridscan');
       if (!ctx) return;
       const { canvas, gl } = ctx;
 
       const fsSource = `#version 300 es
       precision highp float;
-      uniform vec2 iResolution;
-      uniform float iTime;
-      uniform float uTimeSpeed;
-      uniform float uColorBalance;
-      uniform float uWarpStrength;
-      uniform float uWarpFrequency;
-      uniform float uWarpSpeed;
-      uniform float uWarpAmplitude;
-      uniform float uBlendAngle;
-      uniform float uBlendSoftness;
-      uniform float uRotationAmount;
-      uniform float uNoiseScale;
-      uniform float uGrainAmount;
-      uniform float uGrainScale;
-      uniform float uGrainAnimated;
-      uniform float uContrast;
-      uniform float uGamma;
-      uniform float uSaturation;
-      uniform vec2 uCenterOffset;
-      uniform float uZoom;
-      uniform vec3 uColor1;
-      uniform vec3 uColor2;
-      uniform vec3 uColor3;
+      uniform vec2 uResolution;
+      uniform float uTime;
+      uniform vec2 uMouse;
       out vec4 fragColor;
 
-      #define S(a,b,t) smoothstep(a,b,t)
-      mat2 Rot(float a){float s=sin(a),c=cos(a);return mat2(c,-s,s,c);} 
-      vec2 hash(vec2 p){p=vec2(dot(p,vec2(2127.1,81.17)),dot(p,vec2(1269.5,283.37)));return fract(sin(p)*43758.5453);} 
-      float noise(vec2 p){vec2 i=floor(p),f=fract(p),u=f*f*(3.0-2.0*f);float n=mix(mix(dot(-1.0+2.0*hash(i+vec2(0.0,0.0)),f-vec2(0.0,0.0)),dot(-1.0+2.0*hash(i+vec2(1.0,0.0)),f-vec2(1.0,0.0)),u.x),mix(dot(-1.0+2.0*hash(i+vec2(0.0,1.0)),f-vec2(0.0,1.0)),dot(-1.0+2.0*hash(i+vec2(1.0,1.0)),f-vec2(1.0,1.0)),u.x),u.y);return 0.5+0.5*n;}
+      void main() {
+        vec2 uv = (gl_FragCoord.xy - 0.5 * uResolution.xy) / uResolution.y;
+        float horizon = -0.15 + (uMouse.y - 0.5) * 0.1;
+        float fov = 0.55;
+        vec3 col = vec3(0.015, 0.002, 0.005);
+        
+        float py = uv.y - horizon;
+        if (py < 0.0) {
+          float z = fov / (-py);
+          float x = (uv.x + (uMouse.x - 0.5) * 0.2) * z;
+          
+          float speed = uTime * 1.6;
+          vec2 grid = vec2(x * 1.8, z - speed);
+          vec2 fgrid = abs(fract(grid - 0.5) - 0.5) / fwidth(grid);
+          float line = 1.0 - min(min(fgrid.x, fgrid.y), 1.0);
+          
+          float pulse = mod(z * 0.4 - uTime * 1.2, 3.0);
+          float scanGlow = exp(-pulse * pulse * 1.5) * 1.8;
+          float depthFog = exp(-z * 0.16);
+
+          vec3 gridCol = mix(vec3(0.8, 0.02, 0.1), vec3(1.2, 0.15, 0.35), scanGlow);
+          col += gridCol * (line * 0.75 + scanGlow * 0.4) * depthFog;
+        } else {
+          float glow = exp(-py * 12.0) * 0.85;
+          col += vec3(1.1, 0.08, 0.22) * glow;
+        }
+        
+        float vig = 1.0 - length((gl_FragCoord.xy / uResolution.xy) - 0.5) * 0.75;
+        col *= max(vig, 0.15);
+        fragColor = vec4(col, 1.0);
+      }`;
+
+      const program = createProgram(gl, vsSource, fsSource);
+      if (!program) return;
+      setupQuad(gl, program);
+
+      const uRes = gl.getUniformLocation(program, 'uResolution');
+      const uTime = gl.getUniformLocation(program, 'uTime');
+      const uMouse = gl.getUniformLocation(program, 'uMouse');
+
+      function resize() {
+        const scale = 0.5;
+        const width = Math.max(160, Math.round(window.innerWidth * scale));
+        const height = Math.max(160, Math.round(window.innerHeight * scale));
+        if (canvas.width !== width || canvas.height !== height) {
+          canvas.width = width;
+          canvas.height = height;
+          gl.viewport(0, 0, width, height);
+        }
+      }
+      window.addEventListener('resize', resize, { passive: true });
+      resize();
+
+      let startTime = performance.now();
+      renderers[5] = function renderCyberGrid(now) {
+        gl.useProgram(program);
+        const elapsed = (now - startTime) * 0.001;
+        gl.uniform2f(uRes, canvas.width, canvas.height);
+        gl.uniform1f(uTime, elapsed);
+        gl.uniform2f(uMouse, mouseX, mouseY);
+        gl.drawArrays(gl.TRIANGLES, 0, 6);
+      };
+    })();
+
+    // 6. PlasmaLightning Background (Electric Neural Synapse)
+    (function initPlasmaLightning() {
+      const ctx = createGLContext('canvas-lightning');
+      if (!ctx) return;
+      const { canvas, gl } = ctx;
+
+      const fsSource = `#version 300 es
+      precision highp float;
+      uniform vec2 uResolution;
+      uniform float uTime;
+      uniform vec2 uMouse;
+      out vec4 fragColor;
+
+      #define OCTAVES 6
+
+      float hash(vec2 p) {
+        p = fract(p * vec2(123.34, 456.21));
+        p += dot(p, p + 45.32);
+        return fract(p.x * p.y);
+      }
+
+      float noise(vec2 p) {
+        vec2 i = floor(p);
+        vec2 f = fract(p);
+        float a = hash(i);
+        float b = hash(i + vec2(1.0, 0.0));
+        float c = hash(i + vec2(0.0, 1.0));
+        float d = hash(i + vec2(1.0, 1.0));
+        vec2 u = f * f * (3.0 - 2.0 * f);
+        return mix(a, b, u.x) + (c - a) * u.y * (1.0 - u.x) + (d - b) * u.x * u.y;
+      }
+
+      float fbm(vec2 p) {
+        float v = 0.0;
+        float a = 0.5;
+        mat2 rot = mat2(0.8, 0.6, -0.6, 0.8);
+        for (int i = 0; i < OCTAVES; i++) {
+          v += a * noise(p);
+          p = rot * p * 2.0;
+          a *= 0.5;
+        }
+        return v;
+      }
 
       void main() {
-        float t = iTime * uTimeSpeed;
-        vec2 uv = gl_FragCoord.xy / iResolution.xy;
-        float ratio = iResolution.x / iResolution.y;
-        vec2 tuv = uv - 0.5 + uCenterOffset;
-        tuv /= max(uZoom, 0.001);
+        vec2 uv = (gl_FragCoord.xy - 0.5 * uResolution.xy) / min(uResolution.x, uResolution.y);
+        uv += (uMouse - 0.5) * 0.15;
 
-        float degree = noise(vec2(t * 0.1, tuv.x * tuv.y) * uNoiseScale);
-        tuv.y *= 1.0 / ratio;
-        tuv *= Rot(radians((degree - 0.5) * uRotationAmount + 180.0));
-        tuv.y *= ratio;
+        float t = uTime * 0.85;
+        vec2 p = uv * 2.2;
+        float displacement = fbm(p + vec2(t * 1.2, t * 0.4)) * 1.5 - 0.75;
+        float arcDist = abs(p.y + displacement * 0.6);
 
-        float frequency = uWarpFrequency;
-        float ws = max(uWarpStrength, 0.001);
-        float amplitude = uWarpAmplitude / ws;
-        float warpTime = t * uWarpSpeed;
-        tuv.x += sin(tuv.y * frequency + warpTime) / amplitude;
-        tuv.y += sin(tuv.x * (frequency * 1.5) + warpTime) / (amplitude * 0.5);
+        float tendril = fbm(p * 2.0 - vec2(t * 0.8, -t * 0.6)) * 1.2 - 0.6;
+        float tendrilDist = abs(p.x * 0.5 + p.y + tendril * 0.4);
 
-        vec3 col1 = uColor1;
-        vec3 col2 = uColor2;
-        vec3 col3 = uColor3;
-        float b = uColorBalance;
-        float s = max(uBlendSoftness, 0.0);
-        mat2 blendRot = Rot(radians(uBlendAngle));
-        float blendX = (tuv * blendRot).x;
-        float edge0 = -0.3 - b - s;
-        float edge1 = 0.2 - b + s;
-        float v0 = 0.5 - b + s;
-        float v1 = -0.3 - b - s;
-        vec3 layer1 = mix(col3, col2, S(edge0, edge1, blendX));
-        vec3 layer2 = mix(col2, col1, S(edge0, edge1, blendX));
-        vec3 col = mix(layer1, layer2, S(v0, v1, tuv.y));
+        float energy1 = 0.035 / (arcDist + 0.02);
+        float energy2 = 0.02 / (tendrilDist + 0.035);
 
-        vec2 grainUv = uv * max(uGrainScale, 0.001);
-        if (uGrainAnimated > 0.5) { grainUv += vec2(iTime * 0.05); } 
-        float grain = fract(sin(dot(grainUv, vec2(12.9898, 78.233))) * 43758.5453);
-        col += (grain - 0.5) * uGrainAmount;
+        float flicker = sin(t * 18.0) * 0.15 + 0.85;
+        float totalEnergy = (energy1 * 1.2 + energy2 * 0.7) * flicker;
 
-        col = (col - 0.5) * uContrast + 0.5;
-        float luma = dot(col, vec3(0.2126, 0.7152, 0.0722));
-        col = mix(vec3(luma), col, uSaturation);
-        col = pow(max(col, 0.0), vec3(1.0 / max(uGamma, 0.001)));
-        col = clamp(col, 0.0, 1.0);
+        vec3 darkBlood = vec3(0.35, 0.0, 0.04);
+        vec3 deepCrimson = vec3(0.95, 0.02, 0.14);
+        vec3 rubyCore = vec3(1.5, 0.35, 0.55);
+
+        vec3 col = mix(darkBlood, deepCrimson, clamp(totalEnergy * 0.5, 0.0, 1.0));
+        col = mix(col, rubyCore, clamp((totalEnergy - 1.2) * 0.6, 0.0, 1.0));
+        col *= totalEnergy;
+        col += vec3(0.015, 0.002, 0.005);
+        
+        float vig = 1.0 - length((gl_FragCoord.xy / uResolution.xy) - 0.5) * 0.8;
+        col *= max(vig, 0.2);
 
         fragColor = vec4(col, 1.0);
       }`;
@@ -4548,29 +4782,9 @@ input, textarea, [contenteditable="true"] {
       if (!program) return;
       setupQuad(gl, program);
 
-      const uRes = gl.getUniformLocation(program, 'iResolution');
-      const uTime = gl.getUniformLocation(program, 'iTime');
-      const uTimeSpeed = gl.getUniformLocation(program, 'uTimeSpeed');
-      const uColorBalance = gl.getUniformLocation(program, 'uColorBalance');
-      const uWarpStrength = gl.getUniformLocation(program, 'uWarpStrength');
-      const uWarpFrequency = gl.getUniformLocation(program, 'uWarpFrequency');
-      const uWarpSpeed = gl.getUniformLocation(program, 'uWarpSpeed');
-      const uWarpAmplitude = gl.getUniformLocation(program, 'uWarpAmplitude');
-      const uBlendAngle = gl.getUniformLocation(program, 'uBlendAngle');
-      const uBlendSoftness = gl.getUniformLocation(program, 'uBlendSoftness');
-      const uRotationAmount = gl.getUniformLocation(program, 'uRotationAmount');
-      const uNoiseScale = gl.getUniformLocation(program, 'uNoiseScale');
-      const uGrainAmount = gl.getUniformLocation(program, 'uGrainAmount');
-      const uGrainScale = gl.getUniformLocation(program, 'uGrainScale');
-      const uGrainAnimated = gl.getUniformLocation(program, 'uGrainAnimated');
-      const uContrast = gl.getUniformLocation(program, 'uContrast');
-      const uGamma = gl.getUniformLocation(program, 'uGamma');
-      const uSaturation = gl.getUniformLocation(program, 'uSaturation');
-      const uCenterOffset = gl.getUniformLocation(program, 'uCenterOffset');
-      const uZoom = gl.getUniformLocation(program, 'uZoom');
-      const uColor1 = gl.getUniformLocation(program, 'uColor1');
-      const uColor2 = gl.getUniformLocation(program, 'uColor2');
-      const uColor3 = gl.getUniformLocation(program, 'uColor3');
+      const uRes = gl.getUniformLocation(program, 'uResolution');
+      const uTime = gl.getUniformLocation(program, 'uTime');
+      const uMouse = gl.getUniformLocation(program, 'uMouse');
 
       function resize() {
         const scale = 0.5;
@@ -4586,36 +4800,99 @@ input, textarea, [contenteditable="true"] {
       resize();
 
       let startTime = performance.now();
-      renderers[4] = function renderGrainient(now) {
+      renderers[6] = function renderPlasmaLightning(now) {
         gl.useProgram(program);
         const elapsed = (now - startTime) * 0.001;
-
         gl.uniform2f(uRes, canvas.width, canvas.height);
         gl.uniform1f(uTime, elapsed);
-        gl.uniform1f(uTimeSpeed, 0.28);
-        gl.uniform1f(uColorBalance, 0.05);
-        gl.uniform1f(uWarpStrength, 1.6); // Warp aumentado
-        gl.uniform1f(uWarpFrequency, 5.2);
-        gl.uniform1f(uWarpSpeed, 2.2);
-        gl.uniform1f(uWarpAmplitude, 55.0);
-        gl.uniform1f(uBlendAngle, 25.0);
-        gl.uniform1f(uBlendSoftness, 0.06);
-        gl.uniform1f(uRotationAmount, 580.0);
-        gl.uniform1f(uNoiseScale, 2.2);
-        gl.uniform1f(uGrainAmount, 0.12);
-        gl.uniform1f(uGrainScale, 2.0);
-        gl.uniform1f(uGrainAnimated, 1.0);
-        gl.uniform1f(uContrast, 1.85); // Contraste amplificado
-        gl.uniform1f(uGamma, 1.0);
-        gl.uniform1f(uSaturation, 1.45); // Saturacao amplificada
-        gl.uniform2f(uCenterOffset, 0.0, 0.0);
-        gl.uniform1f(uZoom, 0.9);
+        gl.uniform2f(uMouse, mouseX, mouseY);
+        gl.drawArrays(gl.TRIANGLES, 0, 6);
+      };
+    })();
 
-        // Cores alteradas e ultra intensas: Solar Ember Orange + Neon Pink Magenta + Deep Galactic Violet
-        gl.uniform3f(uColor1, 1.2, 0.35, 0.05); // Solar Ember Orange
-        gl.uniform3f(uColor2, 1.3, 0.0, 0.65);  // Electric Laser Pink
-        gl.uniform3f(uColor3, 0.05, 0.0, 0.32); // Deep Galactic Violet
+    // 7. BalatroFlow Background (Psychedelic Liquid Flame)
+    (function initBalatroFlow() {
+      const ctx = createGLContext('canvas-balatro');
+      if (!ctx) return;
+      const { canvas, gl } = ctx;
 
+      const fsSource = `#version 300 es
+      precision highp float;
+      uniform vec2 uResolution;
+      uniform float uTime;
+      uniform vec2 uMouse;
+      out vec4 fragColor;
+
+      void main() {
+        vec2 screenSize = uResolution.xy;
+        vec2 screen_coords = gl_FragCoord.xy;
+        float pixel_size = length(screenSize.xy) / 600.0;
+        vec2 uv = (floor(screen_coords.xy * (1.0 / pixel_size)) * pixel_size - 0.5 * screenSize.xy) / length(screenSize.xy);
+        float uv_len = length(uv);
+
+        float spinRotation = -1.8;
+        float spinSpeed = 4.5;
+        float speed = (spinRotation * 0.2) * uTime + 302.2;
+        float mouseInfluence = (uMouse.x * 2.0 - 1.0);
+        speed += mouseInfluence * 0.15;
+
+        float new_pixel_angle = atan(uv.y, uv.x) + speed - 20.0 * (0.28 * uv_len + 0.72);
+        vec2 mid = (screenSize.xy / length(screenSize.xy)) / 2.0;
+        uv = (vec2(uv_len * cos(new_pixel_angle) + mid.x, uv_len * sin(new_pixel_angle) + mid.y) - mid);
+
+        uv *= 22.0;
+        speed = uTime * spinSpeed + mouseInfluence * 2.0;
+
+        vec2 uv2 = vec2(uv.x + uv.y);
+        for(int i = 0; i < 4; i++) {
+          uv2 += sin(max(uv.x, uv.y)) + uv;
+          uv += 0.5 * vec2(cos(5.112 + 0.353 * uv2.y + speed * 0.13), sin(uv2.x - 0.113 * speed));
+          uv -= cos(uv.x + uv.y) - sin(uv.x * 0.711 - uv.y);
+        }
+
+        float contrast_mod = 2.1;
+        float paint_res = min(2.0, max(0.0, length(uv) * 0.038 * contrast_mod));
+        float c1p = max(0.0, 1.0 - contrast_mod * abs(1.0 - paint_res));
+        float c2p = max(0.0, 1.0 - contrast_mod * abs(paint_res));
+        float c3p = 1.0 - min(1.0, c1p + c2p);
+        float light = 0.35 * max(c1p * 4.5 - 3.5, 0.0) + 0.45 * max(c2p * 4.5 - 3.5, 0.0);
+
+        vec3 col1 = vec3(1.15, 0.03, 0.15); // Neon Blaster Red
+        vec3 col2 = vec3(0.55, 0.01, 0.06); // Dark Arterial Blood
+        vec3 col3 = vec3(0.02, 0.003, 0.008); // Obsidian Core
+
+        vec3 col = col1 * c1p + col2 * c2p + col3 * c3p + light;
+        fragColor = vec4(col, 1.0);
+      }`;
+
+      const program = createProgram(gl, vsSource, fsSource);
+      if (!program) return;
+      setupQuad(gl, program);
+
+      const uRes = gl.getUniformLocation(program, 'uResolution');
+      const uTime = gl.getUniformLocation(program, 'uTime');
+      const uMouse = gl.getUniformLocation(program, 'uMouse');
+
+      function resize() {
+        const scale = 0.5;
+        const width = Math.max(160, Math.round(window.innerWidth * scale));
+        const height = Math.max(160, Math.round(window.innerHeight * scale));
+        if (canvas.width !== width || canvas.height !== height) {
+          canvas.width = width;
+          canvas.height = height;
+          gl.viewport(0, 0, width, height);
+        }
+      }
+      window.addEventListener('resize', resize, { passive: true });
+      resize();
+
+      let startTime = performance.now();
+      renderers[7] = function renderBalatroFlow(now) {
+        gl.useProgram(program);
+        const elapsed = (now - startTime) * 0.001;
+        gl.uniform2f(uRes, canvas.width, canvas.height);
+        gl.uniform1f(uTime, elapsed);
+        gl.uniform2f(uMouse, mouseX, mouseY);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
       };
     })();
@@ -4628,15 +4905,18 @@ input, textarea, [contenteditable="true"] {
 
     function masterAnimLoop(now) {
       if (isPageVisible) {
-        const currentRenderer = renderers[activeIndex];
-        if (typeof currentRenderer === 'function') {
-          currentRenderer(now);
+        if (typeof renderers[activeIndex] === 'function') {
+          renderers[activeIndex](now);
+        }
+        if (now < transitionEndTime && prevIndex >= 0 && typeof renderers[prevIndex] === 'function') {
+          renderers[prevIndex](now);
         }
       }
       requestAnimationFrame(masterAnimLoop);
     }
     requestAnimationFrame(masterAnimLoop);
   }
+
 
 })();
 

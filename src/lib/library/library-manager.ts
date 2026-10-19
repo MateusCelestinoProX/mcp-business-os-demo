@@ -33,6 +33,8 @@ export interface LibraryItem {
   text_preview?: string;
   download_count: number;
   created_at: string;
+  file_id?: string;
+  thumbnail_url?: string;
 }
 
 const LIBRARIES_PATH = path.resolve(process.cwd(), 'src/data/libraries.json');

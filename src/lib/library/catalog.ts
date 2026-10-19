@@ -42,6 +42,7 @@ export interface LibraryResource {
   tags: string[];
   download_count: number;
   created_at: string;
+  url?: string;
 }
 
 // In-memory telemetry counter for downloads
@@ -211,6 +212,7 @@ export function getCatalogList(): LibraryResource[] {
       tags: Array.isArray(item.tags) ? item.tags : [ext.replace('.', '')],
       download_count: downloadCounters[id] || 0,
       created_at: item.created_at || '2026-10-14T00:00:00.000Z',
+      url: item.url,
     };
   });
 }

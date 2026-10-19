@@ -13,7 +13,9 @@
     "db:push": "drizzle-kit push",
     "db:generate": "drizzle-kit generate",
     "db:seed": "npx tsx src/lib/db/seed.ts",
-    "test": "NODE_ENV=test npx tsx --env-file-if-exists=.env.local --test tests/*.test.* tests/**/*.test.*"
+    "test": "NODE_ENV=test npx tsx --env-file-if-exists=.env.local --test tests/*.test.* tests/**/*.test.*",
+    "storage:migrate": "npx tsx --env-file-if-exists=.env.local scripts/migrate-to-imagekit.ts",
+    "storage:dry-run": "npx tsx --env-file-if-exists=.env.local scripts/migrate-to-imagekit.ts --dry-run"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.2.0",

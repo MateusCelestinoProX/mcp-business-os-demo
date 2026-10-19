@@ -266,14 +266,40 @@ def generate_html(tree):
     </style>
 </head>
 <body>
-    <!-- Dynamic 5-Background System (GhostFibers, AeroShards, Dither, GradientWaves, Grainient) -->
+    <!-- Dynamic 8-Shader Personal OS Suite -->
     <div id="dynamic-bg-container" class="dynamic-bg-container">
         <div class="bg-canvas-wrapper active" id="bg-wrapper-0"><canvas id="canvas-ghostfibers"></canvas></div>
-        <div class="bg-canvas-wrapper" id="bg-wrapper-1"><canvas id="canvas-aeroshards"></canvas></div>
-        <div class="bg-canvas-wrapper" id="bg-wrapper-2"><canvas id="canvas-dither"></canvas></div>
-        <div class="bg-canvas-wrapper" id="bg-wrapper-3"><canvas id="canvas-gradientwaves"></canvas></div>
-        <div class="bg-canvas-wrapper" id="bg-wrapper-4"><canvas id="canvas-grainient"></canvas></div>
+        <div class="bg-canvas-wrapper" id="bg-wrapper-1"><canvas id="canvas-gradientwaves"></canvas></div>
+        <div class="bg-canvas-wrapper" id="bg-wrapper-2"><canvas id="canvas-liquidchrome"></canvas></div>
+        <div class="bg-canvas-wrapper" id="bg-wrapper-3"><canvas id="canvas-aeroshards"></canvas></div>
+        <div class="bg-canvas-wrapper" id="bg-wrapper-4"><canvas id="canvas-galaxy"></canvas></div>
+        <div class="bg-canvas-wrapper" id="bg-wrapper-5"><canvas id="canvas-gridscan"></canvas></div>
+        <div class="bg-canvas-wrapper" id="bg-wrapper-6"><canvas id="canvas-lightning"></canvas></div>
+        <div class="bg-canvas-wrapper" id="bg-wrapper-7"><canvas id="canvas-balatro"></canvas></div>
         <div class="bg-blur-veil"></div>
+    </div>
+
+    <!-- Personal OS Floating Shader Control Dock -->
+    <div id="shader-control-dock" class="shader-control-dock" aria-label="Controle de Shaders Personal OS">
+        <div class="shader-dock-inner">
+            <div class="shader-dock-header">
+                <span class="shader-pulse-dot"></span>
+                <span class="shader-title" id="active-shader-name">✦ GhostFibers</span>
+                <button type="button" class="shader-auto-btn active" id="btn-shader-auto" title="Pausar / Retomar Rotação Automática">
+                    <span id="auto-cycle-icon">⏵</span> AUTO (8.5s)
+                </button>
+            </div>
+            <div class="shader-pills-row">
+                <button type="button" class="shader-pill active" data-shader="0" onclick="window.switchShader(0)">1. Fibers</button>
+                <button type="button" class="shader-pill" data-shader="1" onclick="window.switchShader(1)">2. Waves</button>
+                <button type="button" class="shader-pill" data-shader="2" onclick="window.switchShader(2)">3. Chrome</button>
+                <button type="button" class="shader-pill" data-shader="3" onclick="window.switchShader(3)">4. Shards</button>
+                <button type="button" class="shader-pill" data-shader="4" onclick="window.switchShader(4)">5. Galaxy</button>
+                <button type="button" class="shader-pill" data-shader="5" onclick="window.switchShader(5)">6. Grid</button>
+                <button type="button" class="shader-pill" data-shader="6" onclick="window.switchShader(6)">7. Plasma</button>
+                <button type="button" class="shader-pill" data-shader="7" onclick="window.switchShader(7)">8. Balatro</button>
+            </div>
+        </div>
     </div>
 
     <!-- Welcome Ceremony Popup -->

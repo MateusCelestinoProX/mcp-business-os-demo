@@ -264,9 +264,9 @@
     "semantic_hash": ""
   },
   "src/data/siteData.json": {
-    "mtime": 1792366356.3251815,
-    "seen": 1792366366.959132,
-    "ast_hash": "5de472a063ad79168457731b2657018c",
+    "mtime": 1792366566.8541157,
+    "seen": 1792366649.474137,
+    "ast_hash": "66914dd203d70690f9351269014693ef",
     "semantic_hash": ""
   },
   "tsconfig.json": {
@@ -1476,9 +1476,9 @@
     "semantic_hash": ""
   },
   "src/data/library_catalog_index.json": {
-    "mtime": 1792366274.5170984,
-    "seen": 1792366366.9591308,
-    "ast_hash": "46a63c5c0a158fac66db22dab0f73b32",
+    "mtime": 1792366582.1739569,
+    "seen": 1792366649.474136,
+    "ast_hash": "a3760edacaa85f7d3460a01e9fdb65f6",
     "semantic_hash": ""
   },
   "src/lib/auth/auth.ts": {
@@ -14766,8 +14766,8 @@
     "semantic_hash": ""
   },
   "src/data/libraries.json": {
-    "mtime": 1792365780.1487393,
-    "seen": 1792365847.616506,
+    "mtime": 1792366582.180514,
+    "seen": 1792366649.474135,
     "ast_hash": "3e79a0df86ee6f7eb3acd51fbf5fad31",
     "semantic_hash": ""
   },
@@ -15827,12 +15827,6 @@
     "ast_hash": "6b6036d2ab9b97b175d1243b24337338",
     "semantic_hash": ""
   },
-  "patch_shaders.py": {
-    "mtime": 1792366335.403206,
-    "seen": 1792366366.956266,
-    "ast_hash": "859eb7fc1b7f3bc2121756c6d89b1797",
-    "semantic_hash": ""
-  },
   "src/app/admin/shop/page.tsx": {
     "mtime": 1792365937.998132,
     "seen": 1792366366.956726,
@@ -15852,9 +15846,9 @@
     "semantic_hash": ""
   },
   "tests/admin_shop_cards.test.ts": {
-    "mtime": 1792366344.426317,
-    "seen": 1792366366.95958,
-    "ast_hash": "0c9f53e869184a1745d71dd68ca10312",
+    "mtime": 1792366408.4921987,
+    "seen": 1792366503.274718,
+    "ast_hash": "4568f53bf09e9d63a6ea59ce796df4b6",
     "semantic_hash": ""
   }
 }

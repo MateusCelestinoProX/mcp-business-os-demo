@@ -114,6 +114,11 @@ export async function GET(request: NextRequest) {
       });
     }
 
+    // Se o recurso está hospedado no ImageKit CDN, redireciona diretamente (Zero overhead de servidor)
+    if (resource.url && (resource.url.startsWith('https://ik.imagekit.io/') || resource.url.startsWith('http'))) {
+      return NextResponse.redirect(resource.url, 302);
+    }
+
     // Validação estrita de Path Traversal com bloqueio absoluto de escape (POSIX e Windows)
     const normalizedInput = resource.rel_path.replace(/\\/g, '/');
     const absoluteFilePath = path.resolve(SOURCE_LIBRARY_BASE, normalizedInput);

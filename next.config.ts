@@ -4,8 +4,11 @@ import path from "path";
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   transpilePackages: ["three", "@react-three/fiber", "@react-three/drei", "ogl"],
+  compress: true,
+  poweredByHeader: false,
   images: {
     remotePatterns: [
+      { protocol: "https", hostname: "ik.imagekit.io" },
       { protocol: "https", hostname: "images.unsplash.com" },
       { protocol: "https", hostname: "api.dicebear.com" },
       { protocol: "https", hostname: "lijrxbzotmoikyvjiipv.supabase.co" },

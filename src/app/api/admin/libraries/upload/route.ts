@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import fs from 'node:fs';
 import path from 'node:path';
 import { addItemToLibrary, determineFileType } from '@/lib/library/library-manager';
+import { uploadToImageKit, isImageKitConfigured, getCanonicalImageKitFolder } from '@/lib/storage/imagekit';
 
 export const dynamic = 'force-dynamic';
 
@@ -38,6 +39,7 @@ export async function POST(request: NextRequest) {
     }
 
     const uploadedItems = [];
+    const imageKitActive = isImageKitConfigured();
 
     for (const file of targetFiles) {
       const bytes = await file.arrayBuffer();
@@ -60,20 +62,50 @@ export async function POST(request: NextRequest) {
         } catch {}
       }
 
+      const fileType = determineFileType(rawName);
+      let fileUrl = `/uploads/library/${safeFilename}`;
+      let fileId: string | undefined = undefined;
+      let thumbnailUrl: string | undefined = undefined;
+      let storageSource: 'mac' | 'cloud' | 'core' = 'mac';
+
+      // Enviar para ImageKit se for imagem, vídeo ou PDF (ou qualquer arquivo suportado)
+      if (imageKitActive && ['image', 'video', 'pdf'].includes(fileType)) {
+        try {
+          const ikFolder = getCanonicalImageKitFolder(rawName);
+          const ikResult = await uploadToImageKit({
+            file: buffer,
+            fileName: `${baseName}${ext}`,
+            folder: ikFolder,
+            tags: ['plataforma-soberana', categorySlug, fileType],
+            useUniqueFileName: true,
+          });
+
+          fileUrl = ikResult.url;
+          fileId = ikResult.fileId;
+          thumbnailUrl = ikResult.thumbnailUrl;
+          storageSource = 'cloud';
+          console.log(`[ImageKit Storage] Arquivo ${rawName} enviado para ${fileUrl}`);
+        } catch (ikErr) {
+          console.error(`[ImageKit Storage] Erro ao enviar ${rawName} para ImageKit, usando fallback local:`, ikErr);
+        }
+      }
+
       const item = addItemToLibrary({
         file: rawName,
         rel_path: safeFilename,
-        url: `/uploads/library/${safeFilename}`,
+        url: fileUrl,
         category: categorySlug,
         category_group: categoryName,
         ext: ext,
-        type: determineFileType(rawName),
+        type: fileType,
         size: file.size,
-        source: 'mac',
+        source: storageSource,
         title: rawName.replace(/\.[^/.]+$/, '').replace(/[-_]+/g, ' '),
-        description: `Arquivo enviado do Mac (${file.type || ext}) em ${new Date().toLocaleDateString('pt-BR')}`,
+        description: `Arquivo enviado (${file.type || ext}) em ${new Date().toLocaleDateString('pt-BR')}${storageSource === 'cloud' ? ' • Hospedado em ImageKit CDN' : ''}`,
         text_preview: textPreview,
-        tags: ['mac-upload', ext.replace('.', ''), categorySlug].filter(Boolean),
+        tags: ['soberana-upload', ext.replace('.', ''), categorySlug, storageSource].filter(Boolean),
+        file_id: fileId,
+        thumbnail_url: thumbnailUrl,
       });
 
       uploadedItems.push(item);
