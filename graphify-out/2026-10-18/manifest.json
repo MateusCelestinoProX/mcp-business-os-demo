@@ -246,15 +246,15 @@
     "semantic_hash": ""
   },
   "next.config.ts": {
-    "mtime": 1792337877.418101,
-    "seen": 1792372147.248596,
-    "ast_hash": "469fd676348b98025b2094467e21a6e8",
+    "mtime": 1792373086.0943282,
+    "seen": 1792373127.799284,
+    "ast_hash": "9b253a91b0f1bdd84da7c7082cc596a9",
     "semantic_hash": ""
   },
   "package.json": {
-    "mtime": 1792361671.3542032,
-    "seen": 1792372147.248598,
-    "ast_hash": "56eb03ae1b6ce45bafbd438535a18735",
+    "mtime": 1792373086.094486,
+    "seen": 1792373127.799287,
+    "ast_hash": "f925f06262e08ce72299075bfd764600",
     "semantic_hash": ""
   },
   "postcss.config.mjs": {
@@ -1434,14 +1434,14 @@
     "semantic_hash": ""
   },
   "src/components/layout/Footer.tsx": {
-    "mtime": 1792372711.909537,
-    "seen": 1792373015.757389,
+    "mtime": 1792373086.5726843,
+    "seen": 1792373127.8009589,
     "ast_hash": "d0ea2bbd16ed88f9865464b86a9293ed",
     "semantic_hash": ""
   },
   "src/components/layout/Navbar.tsx": {
-    "mtime": 1792372758.1039143,
-    "seen": 1792373015.7573912,
+    "mtime": 1792373086.572933,
+    "seen": 1792373127.800961,
     "ast_hash": "078fb97b34da913826e45b70aa5d5fc3",
     "semantic_hash": ""
   },
@@ -1476,9 +1476,9 @@
     "semantic_hash": ""
   },
   "src/data/library_catalog_index.json": {
-    "mtime": 1792346524.7178452,
-    "seen": 1792372147.248715,
-    "ast_hash": "c53f941e6974b9c701da6b7f78db1ca8",
+    "mtime": 1792373086.1358395,
+    "seen": 1792373127.801962,
+    "ast_hash": "a3760edacaa85f7d3460a01e9fdb65f6",
     "semantic_hash": ""
   },
   "src/lib/auth/auth.ts": {
@@ -1596,9 +1596,9 @@
     "semantic_hash": ""
   },
   "src/app/api/library/download/route.ts": {
-    "mtime": 1792337879.2861407,
-    "seen": 1792372147.2486432,
-    "ast_hash": "50d4f0ae17b6573c4d7388c00eb3b1f9",
+    "mtime": 1792373086.1309774,
+    "seen": 1792373127.80022,
+    "ast_hash": "5755b063948ef7d410363bd4e339a45a",
     "semantic_hash": ""
   },
   "src/components/library/ResourceCard.tsx": {
@@ -1776,9 +1776,9 @@
     "semantic_hash": ""
   },
   "src/lib/library/catalog.ts": {
-    "mtime": 1792337879.3128552,
-    "seen": 1792372147.2487261,
-    "ast_hash": "4a4396a9b0ddf346c8f9713b81322af9",
+    "mtime": 1792373086.1363332,
+    "seen": 1792373127.8022232,
+    "ast_hash": "fa8f3ff769aaee996b0c4ed477a252da",
     "semantic_hash": ""
   },
   "src/components/comunidade/MemberCard.tsx": {
@@ -1932,8 +1932,8 @@
     "semantic_hash": ""
   },
   "src/app/artigos/page.tsx": {
-    "mtime": 1792372860.8906806,
-    "seen": 1792373015.7567759,
+    "mtime": 1792373086.5725548,
+    "seen": 1792373127.800371,
     "ast_hash": "cb9053b519a28a9a836a9781db69804a",
     "semantic_hash": ""
   },
@@ -2802,9 +2802,9 @@
     "semantic_hash": ""
   },
   "public/comunidade/index.html": {
-    "mtime": 1792361671.3561609,
-    "seen": 1792372147.2489212,
-    "ast_hash": "663ce1f5a419509f9d4848663ac5e093",
+    "mtime": 1792373086.1270268,
+    "seen": 1792373127.8075478,
+    "ast_hash": "ad5c77e31248b0c89a75767682053776",
     "semantic_hash": ""
   },
   "public/comunidade/effects/CREATIVE EFFECT's/ANCESTRAL HAND STATUE RENDER/ChatGPT_Image_17_de_jul._de_2025_15_25_13.webp": {
@@ -13686,9 +13686,9 @@
     "semantic_hash": ""
   },
   "src/components/portal/ShopSection.tsx": {
-    "mtime": 1792361671.3682783,
-    "seen": 1792372147.248694,
-    "ast_hash": "d19f3a071a9088eba83f19bc1871027b",
+    "mtime": 1792373086.132972,
+    "seen": 1792373127.8014321,
+    "ast_hash": "c736de339a5217a37d975a11bdf0b22b",
     "semantic_hash": ""
   },
   "src/components/portal/SobreSection.tsx": {
@@ -13716,15 +13716,15 @@
     "semantic_hash": ""
   },
   "tests/sovereign_stitch.test.mjs": {
-    "mtime": 1792337879.316919,
-    "seen": 1792372147.248752,
-    "ast_hash": "193e94ae13949f99e3dfd1cc5791f855",
+    "mtime": 1792373086.1374004,
+    "seen": 1792373127.802811,
+    "ast_hash": "54c497f6d949991a42b97b7fdfab049a",
     "semantic_hash": ""
   },
   "src/app/admin/page.tsx": {
-    "mtime": 1792372826.530803,
-    "seen": 1792373015.756086,
-    "ast_hash": "29bc8878bee4fd6f4a883e8f5cbcd70c",
+    "mtime": 1792373086.5723934,
+    "seen": 1792373127.799764,
+    "ast_hash": "e678408183bc4d78129c139533345d7c",
     "semantic_hash": ""
   },
   "src/lib/auth/unified-auth.ts": {
@@ -13734,9 +13734,9 @@
     "semantic_hash": ""
   },
   "src/components/portal/PortalNavbar.tsx": {
-    "mtime": 1792372897.7081714,
-    "seen": 1792373015.757859,
-    "ast_hash": "f7d494bc189e20a4ca9e9e96c1f006b7",
+    "mtime": 1792373086.5730839,
+    "seen": 1792373127.801431,
+    "ast_hash": "a1805a0b12059939a69a0d0b3ada12f7",
     "semantic_hash": ""
   },
   "src/components/shaders/LineWavesShader.tsx": {
@@ -14622,9 +14622,9 @@
     "semantic_hash": ""
   },
   "src/app/api/admin/shop-resources/route.ts": {
-    "mtime": 1792337879.2839525,
-    "seen": 1792372147.248632,
-    "ast_hash": "b8a7abda0a08f2be27d4787abcec8802",
+    "mtime": 1792373086.130562,
+    "seen": 1792373127.7999182,
+    "ast_hash": "f61d3bceaec44888453a4944b5242aef",
     "semantic_hash": ""
   },
   "src/app/api/articles/route.ts": {
@@ -14730,9 +14730,9 @@
     "semantic_hash": ""
   },
   "src/app/api/admin/libraries/upload/route.ts": {
-    "mtime": 1792337879.283737,
-    "seen": 1792372147.248631,
-    "ast_hash": "2cae53332c3cd3811dfe0a235a24bab2",
+    "mtime": 1792373086.1294684,
+    "seen": 1792373127.799917,
+    "ast_hash": "4caaa6b87f1fee6af0668f46070213a5",
     "semantic_hash": ""
   },
   "src/components/admin/LibraryControlSuite.tsx": {
@@ -14742,9 +14742,9 @@
     "semantic_hash": ""
   },
   "src/lib/library/library-manager.ts": {
-    "mtime": 1792337879.3131428,
-    "seen": 1792372147.2487261,
-    "ast_hash": "54742cff24d3ed6a12beda7646f0f13d",
+    "mtime": 1792373086.136948,
+    "seen": 1792373127.8022242,
+    "ast_hash": "25d694acbd5614d8d04b0207d5fa2693",
     "semantic_hash": ""
   },
   "tests/comunidade_tag_editor.test.mjs": {
@@ -14826,567 +14826,9 @@
     "semantic_hash": ""
   },
   "public/showcase/index.html": {
-    "mtime": 1792361671.3585835,
-    "seen": 1792372147.2489228,
-    "ast_hash": "25da119815b6340991b0d7b4e3cbc86f",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/business/10 passos para sair das dividas.pdf": {
-    "mtime": 1792337879.0127997,
-    "seen": 1792372147.2489228,
-    "ast_hash": "f22c44955a0c9866662687f7083992c0",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/business/150 scripts de videos de venda.pdf": {
-    "mtime": 1792337879.0146499,
-    "seen": 1792372147.248924,
-    "ast_hash": "0e807daf879629ecb1d1a68ba7a848fe",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/business/3 maneiras de vender mais para o mesmo cliente.pdf": {
-    "mtime": 1792337879.0153906,
-    "seen": 1792372147.248925,
-    "ast_hash": "3ebfc8704f6e5150131d38bc1d52cd14",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/business/acelerendo vendas como profissional autonomo.pdf": {
-    "mtime": 1792337879.0156183,
-    "seen": 1792372147.248926,
-    "ast_hash": "0ecbca9a3c5b81984951cd1cbe3955e5",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/business/comecando a investir.pdf": {
-    "mtime": 1792337879.0166821,
-    "seen": 1792372147.2489269,
-    "ast_hash": "55ee39aa1c1bc3f98197ea1216f5e066",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/business/conquistando clientes como freelancer.pdf": {
-    "mtime": 1792337879.0168703,
-    "seen": 1792372147.248928,
-    "ast_hash": "877a3f158dfc90af260b0ec152c92a70",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/business/da criacao ao rezistro.pdf": {
-    "mtime": 1792337879.01705,
-    "seen": 1792372147.248929,
-    "ast_hash": "c85f120e625174c96483d59af27978f2",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/business/de empregado a empreendedor.pdf": {
-    "mtime": 1792337879.0172203,
-    "seen": 1792372147.24893,
-    "ast_hash": "a1015b504c8a31e9970d8f226216f69d",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/business/de pf a pj.pdf": {
-    "mtime": 1792337879.0173848,
-    "seen": 1792372147.2489312,
-    "ast_hash": "6cf175d7818bd80e7c47f69755b19133",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/business/dominando o processo de venda.pdf": {
-    "mtime": 1792337879.0175571,
-    "seen": 1792372147.2489312,
-    "ast_hash": "88b054556c80c8c14e1eb699e66807d0",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/business/emprestimos e produtos bancarios.pdf": {
-    "mtime": 1792337879.0180328,
-    "seen": 1792372147.2489321,
-    "ast_hash": "1e4af5be9a80b7e1bfb6709fd64da14b",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/business/mudando de area profissional.pdf": {
-    "mtime": 1792337879.018247,
-    "seen": 1792372147.248933,
-    "ast_hash": "b0aab64fb6d1ccfb0309b86f8eb4ad98",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/business/organizacao financeira pessoal.pdf": {
-    "mtime": 1792337879.0184321,
-    "seen": 1792372147.2489338,
-    "ast_hash": "f7133c468d7e83dbd9b8afdedfdce09c",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/business/organiza\u00e7\u00e3o financeira pessoal.pdf": {
-    "mtime": 1792337879.0186124,
-    "seen": 1792372147.248936,
-    "ast_hash": "f7133c468d7e83dbd9b8afdedfdce09c",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/business/planejamento estrategico para negocios.pdf": {
-    "mtime": 1792337879.0187879,
-    "seen": 1792372147.248937,
-    "ast_hash": "12a1ad3190e83a367c6507667050ab8e",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/business/reserva de emergencia e metas financeiras.pdf": {
-    "mtime": 1792337879.018967,
-    "seen": 1792372147.248938,
-    "ast_hash": "69cb68e8c16fcda4255b57504afe1a95",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/business/seu negocio do zero.pdf": {
-    "mtime": 1792337879.019155,
-    "seen": 1792372147.248938,
-    "ast_hash": "426765f444170eb01c6c3ce3b5d744ad",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/business/seu neg\u00f3cio do zero.pdf": {
-    "mtime": 1792337879.0193396,
-    "seen": 1792372147.248939,
-    "ast_hash": "426765f444170eb01c6c3ce3b5d744ad",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/business/start financeiro.pdf": {
-    "mtime": 1792337879.019527,
-    "seen": 1792372147.24894,
-    "ast_hash": "cde733a84d0d28b5931b5b4e01a06270",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/business/treinamento caixa rapido.pdf": {
-    "mtime": 1792337879.0197027,
-    "seen": 1792372147.248941,
-    "ast_hash": "df4d0d4c03433c1f8d1fee5333530e3d",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/business/treinamento caixa r\u00e1pido.pdf": {
-    "mtime": 1792337879.0198612,
-    "seen": 1792372147.2489421,
-    "ast_hash": "df4d0d4c03433c1f8d1fee5333530e3d",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/business/vender mais em datas comemorativas.pdf": {
-    "mtime": 1792337879.0200157,
-    "seen": 1792372147.248943,
-    "ast_hash": "39bdfe9f44b9f3968755e7624b2e7fd8",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/copywriter/como escrever para vender.pdf": {
-    "mtime": 1792337879.0202136,
-    "seen": 1792372147.248944,
-    "ast_hash": "0a626e479460c496fe0a0c9881ec4724",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/copywriter/conquistando clientes de copy.pdf": {
-    "mtime": 1792337879.020351,
-    "seen": 1792372147.248944,
-    "ast_hash": "28fe856e4c41e4f9e99f5fdcb2bb274e",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/copywriter/copywriter express.pdf": {
-    "mtime": 1792337879.020515,
-    "seen": 1792372147.248945,
-    "ast_hash": "7b9f757bfe7183ddd47eecbaff3e1ff0",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/copywriter/fundamentos de um copywriter de sucesso.pdf": {
-    "mtime": 1792337879.020712,
-    "seen": 1792372147.248946,
-    "ast_hash": "ac923db3217b9e0fdb7bf50d55329be6",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/copywriter/o jogo e mental- como ser um copywriter de sucesso.pdf": {
-    "mtime": 1792337879.0208907,
-    "seen": 1792372147.248947,
-    "ast_hash": "ac0befe7f6cc02e4775de012d24c9a46",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/copywriter/o jogo \u00e9 mental- como ser um copywriter de sucesso.pdf": {
-    "mtime": 1792337879.021056,
-    "seen": 1792372147.2489479,
-    "ast_hash": "ac0befe7f6cc02e4775de012d24c9a46",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/copywriter/profissao copywriter.pdf": {
-    "mtime": 1792337879.0212173,
-    "seen": 1792372147.248949,
-    "ast_hash": "10f388352b1c97a3aa91bfe232500ba2",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/copywriter/profiss\u00e3o copywriter.pdf": {
-    "mtime": 1792337879.021376,
-    "seen": 1792372147.24895,
-    "ast_hash": "10f388352b1c97a3aa91bfe232500ba2",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/formacao/desenvolvimen to web.pdf": {
-    "mtime": 1792337879.0215573,
-    "seen": 1792372147.248951,
-    "ast_hash": "2296b106399498d4fb8e0ad6fd0c6ea6",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/formacao/gestor de trafego.pdf": {
-    "mtime": 1792337879.021772,
-    "seen": 1792372147.2489522,
-    "ast_hash": "37626a771bf54dd55b40bbbd4f810fe5",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/formacao/produtor de ebooks.pdf": {
-    "mtime": 1792337879.0220554,
-    "seen": 1792372147.2489522,
-    "ast_hash": "2dc1f4e3910434465857deb1994f19be",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/gradua\u00e7\u00e3o/diplomadigital.pdf": {
-    "mtime": 1792337879.044715,
-    "seen": 1792372147.248953,
-    "ast_hash": "a1d31391b7e243d697790371406edc44",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/it certifications/cyber attack/ethical hacking kali linux.pdf": {
-    "mtime": 1792337879.0484319,
-    "seen": 1792372147.248954,
-    "ast_hash": "8092af84fa058f30a15bf56ff146f972",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/it certifications/cyber attack/kali linux dos e ddos.pdf": {
-    "mtime": 1792337879.0501473,
-    "seen": 1792372147.2489548,
-    "ast_hash": "c04e398a65efaa59372db10f9a27cb19",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/it certifications/cyber attack/kali linux nmap.pdf": {
-    "mtime": 1792337879.0511675,
-    "seen": 1792372147.248956,
-    "ast_hash": "cc22964fe586dbe4425d849131aa22e7",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/it certifications/cyber attack/tecnicas de invasao em redes sem fio.pdf": {
-    "mtime": 1792337879.0526602,
-    "seen": 1792372147.248956,
-    "ast_hash": "de02ec9f0f09721239db86d7750fff9f",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/it certifications/cyber attack/webhacking.pdf": {
-    "mtime": 1792337879.0540936,
-    "seen": 1792372147.248957,
-    "ast_hash": "713459daedabecfdbb660a31867bbb37",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/it certifications/cyber defense/boas praticas em cyberecurity.pdf": {
-    "mtime": 1792337879.055373,
-    "seen": 1792372147.2489579,
-    "ast_hash": "6569f32735168a57465859b13b2dbc99",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/it certifications/cyber defense/boas pr\u00e1ticas em cyberecurity.pdf": {
-    "mtime": 1792337879.0560174,
-    "seen": 1792372147.248959,
-    "ast_hash": "6569f32735168a57465859b13b2dbc99",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/it certifications/cyber defense/fundamentos da criptografia.pdf": {
-    "mtime": 1792337879.057303,
-    "seen": 1792372147.24896,
-    "ast_hash": "76f5f3cd4ad2bc5763af18c90c9d2544",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/it certifications/cyber defense/fundamentos data center security.pdf": {
-    "mtime": 1792337879.0583496,
-    "seen": 1792372147.248961,
-    "ast_hash": "1882157e61d018c3397ebb77c1442466",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/it certifications/cyber defense/redes para seguranca da informacao.pdf": {
-    "mtime": 1792337879.0591745,
-    "seen": 1792372147.248961,
-    "ast_hash": "b79d818811de9ee8a82b15a9c2404b3f",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/it certifications/cyber defense/redes para seguran\u00e7a da informa\u00e7\u00e3o.pdf": {
-    "mtime": 1792337879.0598254,
-    "seen": 1792372147.2489622,
-    "ast_hash": "b79d818811de9ee8a82b15a9c2404b3f",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/it certifications/cyber defense/seguranca da informacao corporativa.pdf": {
-    "mtime": 1792337879.060835,
-    "seen": 1792372147.248963,
-    "ast_hash": "867029914e7bf77c7b5f55131621f07a",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/it certifications/cyber defense/seguranca da informacao e hacking.pdf": {
-    "mtime": 1792337879.062112,
-    "seen": 1792372147.248964,
-    "ast_hash": "cee2a0e2ff799358ddb2bf03147181d4",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/it certifications/cyber defense/seguranca da informacao_conceitos.pdf": {
-    "mtime": 1792337879.063819,
-    "seen": 1792372147.248965,
-    "ast_hash": "1ca7034c7a915a809c364093e29e85d3",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/it certifications/cyber defense/seguran\u00e7a da informa\u00e7\u00e3o corporativa.pdf": {
-    "mtime": 1792337879.0648034,
-    "seen": 1792372147.248966,
-    "ast_hash": "867029914e7bf77c7b5f55131621f07a",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/it certifications/cyber defense/seguran\u00e7a da informa\u00e7\u00e3o e hacking.pdf": {
-    "mtime": 1792337879.0654883,
-    "seen": 1792372147.248967,
-    "ast_hash": "cee2a0e2ff799358ddb2bf03147181d4",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/it certifications/cyber defense/seguran\u00e7a da informa\u00e7\u00e3o_conceitos.pdf": {
-    "mtime": 1792337879.0662796,
-    "seen": 1792372147.248968,
-    "ast_hash": "1ca7034c7a915a809c364093e29e85d3",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/it certifications/cyber defense/tecnicas hacker e redes wifi.pdf": {
-    "mtime": 1792337879.067165,
-    "seen": 1792372147.248969,
-    "ast_hash": "5b2af4f863a63f1e128211939e9d5911",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/linkedin/certificate-g4z3w6c6bdgm-1751350935 1.pdf": {
-    "mtime": 1792337879.0681927,
-    "seen": 1792372147.248969,
-    "ast_hash": "729c3f6a7cee3169ede5ca0bd73ce5c9",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/linkedin/certificate-jp5w5z4v2juf-1751349666.pdf": {
-    "mtime": 1792337879.0692477,
-    "seen": 1792372147.24897,
-    "ast_hash": "f7139865428aac64b4daa8a3c184cfb9",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/linkedin/certificate-zpgfg9cyi76g-1751347572.pdf": {
-    "mtime": 1792337879.0709205,
-    "seen": 1792372147.248971,
-    "ast_hash": "f5b0a88ddd0bc8c6d1d47f8e3f6b16f3",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/n8n/certificate_1urvj_1748844507094.pdf": {
-    "mtime": 1792337879.0758708,
-    "seen": 1792372147.248972,
-    "ast_hash": "aa305e3605d97bbe03b83c8c88eb3322",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/overall marketing digital_/a importancia das redes socais no marketing digital.pdf": {
-    "mtime": 1792337879.0766413,
-    "seen": 1792372147.2489731,
-    "ast_hash": "2ffd0d4c3a1d21d25ee5d937daa2d56e",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/overall marketing digital_/afiliado amazon.pdf": {
-    "mtime": 1792337879.0767984,
-    "seen": 1792372147.2489731,
-    "ast_hash": "b4f9fae530b963c55c2ca89d12961e3f",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/overall marketing digital_/afiliado com trafego pago.pdf": {
-    "mtime": 1792337879.0769534,
-    "seen": 1792372147.248974,
-    "ast_hash": "5c95935278ca1bc5bd3bd6e88c892032",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/overall marketing digital_/afiliado lucrativo.pdf": {
-    "mtime": 1792337879.077104,
-    "seen": 1792372147.248975,
-    "ast_hash": "3c621dd9aaf733f56e4b4f30a9cec643",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/overall marketing digital_/cyberclass certification_como criar um funil de vendas e gerar renda semiautomatica.pdf": {
-    "mtime": 1792337879.077274,
-    "seen": 1792372147.2489758,
-    "ast_hash": "cd57f716c1038c4cf4d816c797c31e5a",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/overall marketing digital_/cyberclass certification_como criar um funil de vendas e gerar renda semiautom\u00e1tica.pdf": {
-    "mtime": 1792337879.0774417,
-    "seen": 1792372147.248977,
-    "ast_hash": "cd57f716c1038c4cf4d816c797c31e5a",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/overall marketing digital_/desvendando lancamentos digitais.pdf": {
-    "mtime": 1792337879.077599,
-    "seen": 1792372147.248978,
-    "ast_hash": "410def1a2c1f680c95f2339bde137a87",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/overall marketing digital_/desvendando lan\u00e7amentos digitais.pdf": {
-    "mtime": 1792337879.0777795,
-    "seen": 1792372147.2489789,
-    "ast_hash": "410def1a2c1f680c95f2339bde137a87",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/overall marketing digital_/mundo 3k de oportunidades do marketing digital.pdf": {
-    "mtime": 1792337879.0779612,
-    "seen": 1792372147.24898,
-    "ast_hash": "fe2e55752d3a233fffc35168ea3d08fc",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/overall marketing digital_/o essencial do marketing digital.pdf": {
-    "mtime": 1792337879.0781028,
-    "seen": 1792372147.248981,
-    "ast_hash": "81f634eb1201b763b1f2a4d155c59c6e",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/overall marketing digital_/profissao co-produtor.pdf": {
-    "mtime": 1792337879.0782661,
-    "seen": 1792372147.248982,
-    "ast_hash": "736b242e9b9c62d152735dd2331dd557",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/overall marketing digital_/profissao lancador digital.pdf": {
-    "mtime": 1792337879.0784252,
-    "seen": 1792372147.2489831,
-    "ast_hash": "684052e8da395302cf704a57d603147c",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/overall marketing digital_/profiss\u00e3o co-produtor.pdf": {
-    "mtime": 1792337879.0785873,
-    "seen": 1792372147.248984,
-    "ast_hash": "736b242e9b9c62d152735dd2331dd557",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/overall marketing digital_/profiss\u00e3o lan\u00e7ador digital.pdf": {
-    "mtime": 1792337879.0787456,
-    "seen": 1792372147.248985,
-    "ast_hash": "684052e8da395302cf704a57d603147c",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/prog_dev/programacao para leigos.pdf": {
-    "mtime": 1792337879.080503,
-    "seen": 1792372147.248986,
-    "ast_hash": "dd134a7d3cf50ecec388d717bf0d0b1c",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/prog_dev/programa\u00e7\u00e3o para leigos.pdf": {
-    "mtime": 1792337879.081452,
-    "seen": 1792372147.248986,
-    "ast_hash": "dd134a7d3cf50ecec388d717bf0d0b1c",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/social media/camapanhas com reels.pdf": {
-    "mtime": 1792337879.0816698,
-    "seen": 1792372147.248987,
-    "ast_hash": "80f1dfad3c8997eb46cb0b979b7dd3ab",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/social media/como bombar no insta.pdf": {
-    "mtime": 1792337879.0820596,
-    "seen": 1792372147.248988,
-    "ast_hash": "3cb38715d282b8a52fb2c93805c9f805",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/social media/como bombar no tiktok.pdf": {
-    "mtime": 1792337879.0822597,
-    "seen": 1792372147.2489889,
-    "ast_hash": "be1792c065dec8a61ffbb50970f243c0",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/social media/como vender no instagram.pdf": {
-    "mtime": 1792337879.0824463,
-    "seen": 1792372147.2489889,
-    "ast_hash": "e7012cea7259d08db751be35c4696d87",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/social media/crossplataform.pdf": {
-    "mtime": 1792337879.0826159,
-    "seen": 1792372147.24899,
-    "ast_hash": "c139bfb6b851a819dca94d5352818eaa",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/social media/gestao de redes sociais para marcas.pdf": {
-    "mtime": 1792337879.0827668,
-    "seen": 1792372147.248991,
-    "ast_hash": "79d7c8a91c034dd3c4436b8211176b50",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/social media/jornada social media.pdf": {
-    "mtime": 1792337879.082933,
-    "seen": 1792372147.248992,
-    "ast_hash": "c273cbc58872cd14c1a64239b7cb3212",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/social media/social media para negocios locais.pdf": {
-    "mtime": 1792337879.0831096,
-    "seen": 1792372147.248992,
-    "ast_hash": "88544b6e26764bf9cf6ef3bdfe54ca65",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/social media/stories que vendem.pdf": {
-    "mtime": 1792337879.083278,
-    "seen": 1792372147.248993,
-    "ast_hash": "eac602907da608f7d97a1f44b59bc3ad",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/social media/trabalhando com reels.pdf": {
-    "mtime": 1792337879.0834155,
-    "seen": 1792372147.248994,
-    "ast_hash": "bc977e1e58f97699a400655ac47caad3",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/typebot/udemy typebot certification.pdf": {
-    "mtime": 1792337879.0850844,
-    "seen": 1792372147.248995,
-    "ast_hash": "40b581fc00db1c267a33e263288f701b",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/youtube/camera e timidez.pdf": {
-    "mtime": 1792337879.0853255,
-    "seen": 1792372147.248995,
-    "ast_hash": "c0b07ceccd80d99779f6806080bdfaca",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/youtube/como produzir podcast.pdf": {
-    "mtime": 1792337879.085503,
-    "seen": 1792372147.248996,
-    "ast_hash": "1a637c4b28a7c7fb450905fb40131f1c",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/youtube/gravacao profissional com celular.pdf": {
-    "mtime": 1792337879.0856936,
-    "seen": 1792372147.2489972,
-    "ast_hash": "4ce043aff583024cf4f66b59774fbebf",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/youtube/nicho perfeito.pdf": {
-    "mtime": 1792337879.0858793,
-    "seen": 1792372147.248998,
-    "ast_hash": "8cafbfd72ceba3215ea4461ab8a306cf",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/youtube/publicos e como usar.pdf": {
-    "mtime": 1792337879.0860362,
-    "seen": 1792372147.2489989,
-    "ast_hash": "ce3647ced887bf4f31ec35abd6a8a1d8",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/youtube/seo youtube.pdf": {
-    "mtime": 1792337879.0863833,
-    "seen": 1792372147.2489989,
-    "ast_hash": "fd6de787cb9f7dddf432d245f3a8cc42",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/youtube/titulos estrategicos para youtube.pdf": {
-    "mtime": 1792337879.086564,
-    "seen": 1792372147.2489998,
-    "ast_hash": "28fe021b58dc4fc0f35b9f91526f285a",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/youtube/youtube analise juridica.pdf": {
-    "mtime": 1792337879.0867555,
-    "seen": 1792372147.249001,
-    "ast_hash": "00c0b2e47b5bf115d316d6c5fa0bd477",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/youtube/youtube roteiro mangetico.pdf": {
-    "mtime": 1792337879.0869396,
-    "seen": 1792372147.249002,
-    "ast_hash": "959b915690f82bfffd9dd9c55dbd28ad",
-    "semantic_hash": ""
-  },
-  "public/showcase/certifications/youtube/youtuber gamer.pdf": {
-    "mtime": 1792337879.0871382,
-    "seen": 1792372147.249002,
-    "ast_hash": "6f349a89701a19fe4b2613100cb4dee8",
+    "mtime": 1792373086.1282387,
+    "seen": 1792373127.807573,
+    "ast_hash": "4ef59c11faedab3904ee7a3d02aa61ff",
     "semantic_hash": ""
   },
   "public/showcase/cv-itens/api1.webp": {
@@ -15545,70 +14987,10 @@
     "ast_hash": "65d6023b1f6e78fc4727d0780247bf83",
     "semantic_hash": ""
   },
-  "public/showcase/cv-itens/cyberclass.mp4": {
-    "mtime": 1792337879.0933118,
-    "seen": 1792372147.250714,
-    "ast_hash": "0e3b55c9c52f49be6d2073c6dddc2b87",
-    "semantic_hash": ""
-  },
-  "public/showcase/cv-itens/discord.mp4": {
-    "mtime": 1792337879.1091473,
-    "seen": 1792372147.2507148,
-    "ast_hash": "79020c0c0ca8728351589e9294782c68",
-    "semantic_hash": ""
-  },
-  "public/showcase/cv-itens/kiwify cursos.mov": {
-    "mtime": 1792337879.1194947,
-    "seen": 1792372147.2507148,
-    "ast_hash": "f0986c4646555b8556938e6d8705cb51",
-    "semantic_hash": ""
-  },
-  "public/showcase/cv-itens/omniroute_final.mp4": {
-    "mtime": 1792337879.150316,
-    "seen": 1792372147.250716,
-    "ast_hash": "a8bee898db498b34f67cb5c00bf482cf",
-    "semantic_hash": ""
-  },
-  "public/showcase/cv-itens/opencode_final.mp4": {
-    "mtime": 1792337879.1722975,
-    "seen": 1792372147.250717,
-    "ast_hash": "dc73bb4d2ac4df13cdc41cf8519d201f",
-    "semantic_hash": ""
-  },
-  "public/showcase/cv-itens/openwork_final.mp4": {
-    "mtime": 1792337879.1886165,
-    "seen": 1792372147.2507179,
-    "ast_hash": "7a99250a00d2f8ac80262cfbf02f39c1",
-    "semantic_hash": ""
-  },
-  "public/showcase/cv-itens/terminal1.mp4": {
-    "mtime": 1792337879.2017527,
-    "seen": 1792372147.2507179,
-    "ast_hash": "e2dcb4f4654f825e29726e59a7765be8",
-    "semantic_hash": ""
-  },
-  "public/showcase/notion_videos/notion1.mp4": {
-    "mtime": 1792337879.213953,
-    "seen": 1792372147.250719,
-    "ast_hash": "a3721acc74d24bf59d784627041cd2a3",
-    "semantic_hash": ""
-  },
-  "public/showcase/notion_videos/notion2.mp4": {
-    "mtime": 1792337879.2264166,
-    "seen": 1792372147.25072,
-    "ast_hash": "f499de1d61f531d99f7fcfebfcd8b34c",
-    "semantic_hash": ""
-  },
-  "public/showcase/notion_videos/notion3.mp4": {
-    "mtime": 1792337879.2496836,
-    "seen": 1792372147.250721,
-    "ast_hash": "155888c807aa098b0f0f7a2267fa90c4",
-    "semantic_hash": ""
-  },
   "src/app/shop/page.tsx": {
-    "mtime": 1792361671.3637946,
-    "seen": 1792372147.248665,
-    "ast_hash": "c2fe43833ce5f0de1f186931e94c9005",
+    "mtime": 1792373086.1314557,
+    "seen": 1792373127.800708,
+    "ast_hash": "7295f7785d320a806de15b30e6aa0169",
     "semantic_hash": ""
   },
   "src/app/showcase/route.ts": {
@@ -15780,8 +15162,8 @@
     "semantic_hash": ""
   },
   "src/components/layout/MobileBottomNav.tsx": {
-    "mtime": 1792372635.8643157,
-    "seen": 1792373015.75739,
+    "mtime": 1792373086.5728164,
+    "seen": 1792373127.80096,
     "ast_hash": "85dfb2591e39e5c0f1dcf24ea9eaa304",
     "semantic_hash": ""
   },
@@ -15804,9 +15186,63 @@
     "semantic_hash": ""
   },
   "tests/android_dock_and_admin_security.test.ts": {
-    "mtime": 1792372957.509046,
-    "seen": 1792373015.758878,
+    "mtime": 1792373086.573226,
+    "seen": 1792373127.802369,
     "ast_hash": "b7b7271a162c85f1960c17ace8017438",
+    "semantic_hash": ""
+  },
+  "scripts/migrate-to-imagekit.ts": {
+    "mtime": 1792373086.1283998,
+    "seen": 1792373127.799605,
+    "ast_hash": "058974a34eadd52acda436ae141ad467",
+    "semantic_hash": ""
+  },
+  "src/app/admin/shop/page.tsx": {
+    "mtime": 1792373086.129286,
+    "seen": 1792373127.799765,
+    "ast_hash": "47012a9991581e7f543adc966be9e929",
+    "semantic_hash": ""
+  },
+  "src/app/api/storage/imagekit/route.ts": {
+    "mtime": 1792373086.13115,
+    "seen": 1792373127.8003452,
+    "ast_hash": "6c475a27d650db79663f4b1b3048e0b9",
+    "semantic_hash": ""
+  },
+  "src/components/admin/ShopControlSuite.tsx": {
+    "mtime": 1792373086.1317663,
+    "seen": 1792373127.800867,
+    "ast_hash": "0d4d70c8ca520d5706c1ee1e7ccf6709",
+    "semantic_hash": ""
+  },
+  "src/data/imagekit_media_manifest.json": {
+    "mtime": 1792373086.1335838,
+    "seen": 1792373127.80194,
+    "ast_hash": "57c1813d15ea754b1678d2c23204c238",
+    "semantic_hash": ""
+  },
+  "src/lib/storage/imagekit.ts": {
+    "mtime": 1792373086.137096,
+    "seen": 1792373127.802289,
+    "ast_hash": "267bd3cdc93dfc8f3091d34a9118a419",
+    "semantic_hash": ""
+  },
+  "tests/admin_shop_cards.test.ts": {
+    "mtime": 1792373086.137188,
+    "seen": 1792373127.802368,
+    "ast_hash": "4568f53bf09e9d63a6ea59ce796df4b6",
+    "semantic_hash": ""
+  },
+  "tests/imagekit_storage.test.ts": {
+    "mtime": 1792373086.1372705,
+    "seen": 1792373127.802568,
+    "ast_hash": "6b6036d2ab9b97b175d1243b24337338",
+    "semantic_hash": ""
+  },
+  "vercel.json": {
+    "mtime": 1792373086.1374738,
+    "seen": 1792373127.80285,
+    "ast_hash": "0c6b11cb8589ce19dc42e539644f4a15",
     "semantic_hash": ""
   }
 }
