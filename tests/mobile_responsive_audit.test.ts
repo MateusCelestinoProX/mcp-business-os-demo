@@ -197,7 +197,7 @@ describe('Auditoria Completa de Responsividade Mobile, Touch Targets & Performan
   });
 
   describe('5. Preservação de Caminhos, Botões e Elementos do Desktop no Mobile', () => {
-    test('MobileBottomNav.tsx deve preservar todas as 8 rotas essenciais do sistema', () => {
+    test('MobileBottomNav.tsx deve preservar as 6 rotas do dock Android soberano e omitir rotas poluidoras', () => {
       const content = fs.readFileSync(mobileNavPath, 'utf-8');
 
       const rotasEssenciais = [
@@ -206,15 +206,16 @@ describe('Auditoria Completa de Responsividade Mobile, Touch Targets & Performan
         { path: '/shop', label: 'Shop' },
         { path: '/comunidade', label: 'Comunidade' },
         { path: '/biblioteca', label: 'Free Resources' },
-        { path: '/artigos', label: 'Artigos' },
         { path: '/admin', label: 'Admin' },
-        { path: '/contato', label: 'Contato' },
       ];
 
       for (const rota of rotasEssenciais) {
         assert.ok(content.includes(`href: "${rota.path}"`), `Rota ${rota.path} deve estar presente`);
         assert.ok(content.includes(`name: "${rota.label}"`), `Rótulo "${rota.label}" deve estar presente`);
       }
+
+      assert.ok(!content.includes('href: "/artigos"'), 'Artigos não deve poluir a barra dock mobile');
+      assert.ok(!content.includes('href: "/contato"'), 'Contato não deve poluir a barra dock mobile');
     });
 
     test('MobileBottomNav.tsx deve implementar exclusividade mobile (md:hidden) e safe area insets', () => {

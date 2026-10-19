@@ -20,9 +20,9 @@ describe('Suíte de Validação da Navegação e Otimização Mobile', () => {
     assert.ok(content.includes('/shop'), 'Deve conter link para /shop (Shop)');
     assert.ok(content.includes('/comunidade'), 'Deve conter link para /comunidade (Comunidade)');
     assert.ok(content.includes('/biblioteca'), 'Deve conter link para /biblioteca (Free Resources)');
-    assert.ok(content.includes('/artigos'), 'Deve conter link para /artigos (Artigos)');
+    assert.ok(!content.includes('href: "/artigos"'), 'Não deve conter link de artigos no dock móvel inferior');
+    assert.ok(!content.includes('href: "/contato"'), 'Não deve conter link de contato no dock móvel inferior');
     assert.ok(content.includes('/admin'), 'Deve conter link para /admin (Admin)');
-    assert.ok(content.includes('/contato'), 'Deve conter link para /contato (Contato)');
     assert.ok(content.includes('Free Resources'), 'Deve exibir label Free Resources do Header');
     assert.ok(content.includes('env(safe-area-inset-bottom'), 'Deve respeitar safe area no Android');
   });

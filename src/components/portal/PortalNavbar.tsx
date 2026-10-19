@@ -169,11 +169,12 @@ export function PortalNavbar({
           Alvos táteis ergonômicos e refinados.
           Exibido exclusivamente na Home (/), liberando a tela móvel para controles dedicados em páginas setoriais como /shop.
           ========================================================================= */}
-      {pathname === '/' && (
+      {/* Versão Mobile: Exibida de forma limpa e discreta somente ao rolar a página para não poluir o Hero */}
+      {isScrolled && pathname === '/' && (
         <aside
           id="portal-navigation-mobile-dock"
           aria-label="Dock Móvel de Navegação Tátil Mateus Celestino Pro X"
-          className="lg:hidden fixed top-16 inset-x-2 z-30 max-w-md mx-auto pointer-events-auto select-none touch-manipulation pt-1.5"
+          className="lg:hidden fixed top-16 inset-x-2 z-30 max-w-md mx-auto pointer-events-auto select-none touch-manipulation pt-1.5 animate-in fade-in slide-in-from-top-2 duration-300"
         >
           <div className="glass-crystal rounded-2xl p-1 shadow-[0_15px_40px_rgba(0,0,0,0.95),0_0_25px_rgba(255,7,58,0.25)] border border-white/20 flex items-center justify-between gap-1">
             {navItems.map((item) => {

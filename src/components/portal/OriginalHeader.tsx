@@ -71,17 +71,17 @@ export function OriginalHeader({ profile, onNavigate }: OriginalHeaderProps) {
           <AlternatingHeroShaders />
         </div>
 
-        {/* NÚCLEO CENTRAL DO HERO — PERFEITAMENTE CENTRALIZADO COM ESCALA IMPONENTE */}
-        <div className="relative z-10 max-w-5xl lg:max-w-6xl mx-auto flex flex-col items-center justify-center w-full">
+        {/* NÚCLEO CENTRAL DO HERO — MINIMALISTA, ESPAÇADO & CINEMATOGRÁFICO */}
+        <div className="relative z-10 max-w-4xl lg:max-w-5xl mx-auto flex flex-col items-center justify-center w-full px-2 sm:px-4">
           
           {/* TAGLINE SUPERIOR / EYEBROW */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1 rounded-full bg-red-950/70 border border-red-500/40 text-[10px] sm:text-xs font-mono text-red-400 font-bold tracking-widest uppercase mb-3 sm:mb-4 shadow-[0_0_25px_rgba(255,7,58,0.25)] touch-manipulation">
-            <span className="w-2 h-2 rounded-full bg-[#ff073a] animate-pulse shrink-0" />
-            <span className="truncate">Digital Marketing, Generative A.I, Sales.</span>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-950/60 border border-red-500/30 text-[10px] sm:text-xs font-mono text-red-400 font-semibold tracking-widest uppercase mb-5 sm:mb-7 shadow-[0_0_20px_rgba(255,7,58,0.2)] touch-manipulation">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#ff073a] animate-pulse shrink-0" />
+            <span className="truncate">Digital Marketing • Generative A.I. • Systems</span>
           </div>
 
           {/* Ícone de Vidro Lapidado Monumental com Halo Sangue Obscurecido */}
-          <div className="relative w-20 h-20 sm:w-26 sm:h-26 md:w-30 md:h-30 rounded-3xl p-1.5 sm:p-2 glass-crystal shadow-[0_20px_50px_rgba(0,0,0,0.98),0_0_35px_rgba(138,0,18,0.45)] shrink-0 group mb-3 sm:mb-4 transition-transform duration-500 hover:scale-105 active:scale-95 touch-manipulation">
+          <div className="relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-3xl p-1.5 sm:p-2 glass-crystal shadow-[0_20px_50px_rgba(0,0,0,0.98),0_0_35px_rgba(138,0,18,0.4)] shrink-0 group mb-5 sm:mb-7 transition-transform duration-500 hover:scale-105 active:scale-95 touch-manipulation">
             <div className="w-full h-full rounded-2xl overflow-hidden bg-black border border-white/20 flex items-center justify-center">
               <img
                 src={profile?.siteIcon || '/assets/site_icon.webp'}
@@ -93,57 +93,48 @@ export function OriginalHeader({ profile, onNavigate }: OriginalHeaderProps) {
           </div>
 
           {/* Título Monumental Soberano — Escala Cinematográfica Imponente */}
-          <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tight text-white leading-[1.08] drop-shadow-[0_25px_45px_rgba(0,0,0,0.95)] mb-2.5 sm:mb-3.5 max-w-full break-words">
+          <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-white leading-[1.08] drop-shadow-[0_25px_45px_rgba(0,0,0,0.95)] mb-4 sm:mb-6 max-w-full break-words">
             <span className="sr-only">MATEUS CELESTINO PRO X</span>
             <span className="inline-block">MATEUS CELESTINO</span>{' '}
             <span className="text-[#ff073a] inline-block">PRO X</span>
           </h1>
 
           {/* Subtítulo Especialista Organizado em Badges Líquidos e Responsivos */}
-          <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 text-[10px] sm:text-xs md:text-sm font-mono text-zinc-300 max-w-full mx-auto mb-3.5 sm:mb-4 px-1">
-            <span className="px-2.5 py-0.5 rounded-lg bg-black/50 border border-white/10 text-white font-semibold whitespace-nowrap">
+          <div className="flex flex-wrap items-center justify-center gap-2 text-xs sm:text-sm font-mono text-zinc-300 max-w-full mx-auto mb-5 sm:mb-7 px-1">
+            <span className="px-3 py-1 rounded-xl bg-black/60 border border-white/10 text-white font-medium whitespace-nowrap">
               A.I. Infrastructure
             </span>
             <span className="text-[#ff073a] hidden xs:inline">•</span>
-            <span className="px-2.5 py-0.5 rounded-lg bg-black/50 border border-white/10 text-zinc-200 font-medium whitespace-nowrap">
+            <span className="px-3 py-1 rounded-xl bg-black/60 border border-white/10 text-zinc-200 font-medium whitespace-nowrap">
               Agentic Workers
             </span>
             <span className="text-[#ff073a] hidden xs:inline">•</span>
-            <span className="px-2.5 py-0.5 rounded-lg bg-black/50 border border-white/10 text-zinc-300 font-medium whitespace-nowrap">
-              A.I. Systems
-            </span>
-            <span className="text-[#ff073a] hidden sm:inline">•</span>
-            <span className="px-3 py-0.5 rounded-lg bg-red-950/60 border border-red-500/30 text-red-300 font-semibold shadow-[0_0_15px_rgba(255,7,58,0.2)] text-center">
-              Sob Demanda • Smart Software Business
+            <span className="px-3 py-1 rounded-xl bg-red-950/60 border border-red-500/30 text-red-300 font-semibold shadow-[0_0_15px_rgba(255,7,58,0.2)] whitespace-nowrap">
+              Smart Software Business
             </span>
           </div>
 
-          {/* Descrição com Botão Sutil para o SiteMap Touch-Friendly */}
-          <div className="text-xs sm:text-sm md:text-base text-zinc-300 font-light leading-relaxed max-w-2xl sm:max-w-3xl mx-auto mb-4 sm:mb-6 space-y-0.5 sm:space-y-1 px-2">
-            <p>
-              Esse é Mateus Celestino PRO X, o portal de Inteligência Artificial aplicada a Business e Marketing digital de forma completa.
+          {/* Descrição Aesthetic e Minimalista com Espaçamento Amplo */}
+          <div className="max-w-2xl mx-auto mb-6 sm:mb-8 text-center space-y-3 px-4">
+            <p className="text-sm sm:text-base md:text-lg text-zinc-300 font-light leading-relaxed tracking-wide">
+              Ecossistema de Inteligência Artificial aplicada, engenharia de sistemas e esteiras de automação de alta escala para operações digitais de elite.
             </p>
-            <p className="hidden xs:block text-zinc-400">
-              Inteligência artificial aplicada, esteiras de automação e conteúdo de alto valor técnico você encontra exatamente aqui.
-            </p>
-            <div className="flex items-center justify-center flex-wrap gap-1 text-zinc-300 pt-0.5">
-              <span>Use o SiteMap (</span>
+            <div className="flex items-center justify-center pt-1">
               <button
                 type="button"
                 onClick={() => setIsSitemapOpen(true)}
-                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-red-950/80 border border-red-500/50 text-[#ff073a] hover:text-white hover:bg-[#ff073a]/30 font-mono font-bold text-xs transition-all duration-200 shadow-[0_0_12px_rgba(255,7,58,0.3)] hover:scale-105 active:scale-95 cursor-pointer touch-manipulation align-baseline mx-0.5 min-h-[32px]"
-                title="Abrir Fluxograma Visual do SiteMap"
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-red-500/40 text-[11px] sm:text-xs font-mono text-zinc-400 hover:text-white transition-all duration-300 cursor-pointer touch-manipulation active:scale-95"
+                title="Abrir Mapa Visual da Plataforma"
                 aria-label="Abrir SiteMap do Portal"
               >
                 <Compass className="w-3.5 h-3.5 text-[#ff073a]" />
-                <span>clicando aqui</span>
+                <span>Explorar Mapa da Plataforma</span>
               </button>
-              <span>) e navegue pelo portal de forma intuitiva.</span>
             </div>
           </div>
 
           {/* Ação Primária Soberana do Hero — CTA Único e Monumental */}
-          <div className="flex items-center justify-center w-full max-w-md mx-auto px-2">
+          <div className="flex items-center justify-center w-full max-w-md mx-auto mb-6 sm:mb-8 px-2">
             <a
               href={whatsappUrl}
               target="_blank"

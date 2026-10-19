@@ -9,9 +9,7 @@ import {
   ShoppingBag,
   Users,
   FolderGit2,
-  BookOpen,
   Crown,
-  Mail,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
@@ -35,9 +33,7 @@ export const mobileNavItems: MobileNavItem[] = [
   { name: "Shop", href: "/shop", icon: ShoppingBag },
   { name: "Comunidade", href: "/comunidade", icon: Users },
   { name: "Free Resources", href: "/biblioteca", icon: FolderGit2 },
-  { name: "Artigos", href: "/artigos", icon: BookOpen },
   { name: "Admin", href: "/admin", icon: Crown, adminOnly: true },
-  { name: "Contato", href: "/contato", icon: Mail },
 ];
 
 export function MobileBottomNav() {

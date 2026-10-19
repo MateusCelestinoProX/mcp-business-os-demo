@@ -1,7 +1,7 @@
 # Graph Report - mcp-business-os  (2026-10-18)
 
 ## Corpus Check
-- 246 files · ~8,551,823 words
+- 246 files · ~8,552,175 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `b7bd241e`
+- Built from commit: `93df8a62`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
