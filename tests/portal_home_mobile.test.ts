@@ -30,7 +30,7 @@ test("1. PortalNavbar deve ser proporcional e unificado no mobile sem colidir co
   assert.ok(code.includes("AUTOMATIZAR"), "Deve conter CTA de automação");
 });
 
-test("2. OriginalHeader deve conter avatar, título soberano e 3 botões de ação com touch target de 44px", () => {
+test("2. OriginalHeader deve conter avatar, título soberano e botão exclusivo de CTA VAMOS AUTOMATIZAR ?!", () => {
   const code = readFile("components/portal/OriginalHeader.tsx");
 
   // Título e identidade
@@ -40,13 +40,11 @@ test("2. OriginalHeader deve conter avatar, título soberano e 3 botões de aç�
   // Avatar e ícone oficial
   assert.ok(code.includes("siteIcon"), "Deve conter ícone oficial de perfil");
 
-  // 3 Botões de ação obrigatórios
-  assert.ok(code.includes("VAMOS AUTOMATIZAR ?!"), "Deve conter botão WhatsApp");
-  assert.ok(code.includes("EXPLORAR GUIAS TÉCNICOS (176)"), "Deve conter botão de acervo técnico");
-  assert.ok(code.includes("COMUNIDADE VIP"), "Deve conter botão da comunidade");
+  // Botão de ação exclusivo e soberano
+  assert.ok(code.includes("VAMOS AUTOMATIZAR ?!"), "Deve conter botão WhatsApp exclusivo");
 
   // Touch target mínimo de 44px
-  assert.ok(code.includes("min-h-[44px]"), "Botões de ação do Hero devem possuir touch target de 44px");
+  assert.ok(code.includes("min-h-[48px]"), "Botão de ação do Hero deve possuir touch target de 48px");
 });
 
 test("3. HeroSection deve ser responsivo e conter os botões de ação e autoridade", () => {

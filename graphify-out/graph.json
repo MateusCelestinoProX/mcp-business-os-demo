@@ -885,7 +885,7 @@
       "file_type": "code",
       "norm_label": "originalheaderprops",
       "source_file": "src/components/portal/OriginalHeader.tsx",
-      "source_location": "L34"
+      "source_location": "L31"
     },
     {
       "id": "src_components_portal_originalheader_profiledata",
@@ -898,7 +898,7 @@
       "file_type": "code",
       "norm_label": "profiledata",
       "source_file": "src/components/portal/OriginalHeader.tsx",
-      "source_location": "L16"
+      "source_location": "L13"
     },
     {
       "id": "src_components_portal_universalsitemapmodal_universalsitemapmodalprops",
@@ -7516,7 +7516,7 @@
       "file_type": "code",
       "norm_label": "originalheader()",
       "source_file": "src/components/portal/OriginalHeader.tsx",
-      "source_location": "L39"
+      "source_location": "L36"
     },
     {
       "id": "src_components_portal_universalsitemapmodal_universalsitemapmodal",
@@ -41130,7 +41130,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/portal/OriginalHeader.tsx",
-      "source_location": "L13",
+      "source_location": "L10",
       "weight": 1.0
     },
     {
@@ -41142,7 +41142,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/portal/OriginalHeader.tsx",
-      "source_location": "L14",
+      "source_location": "L11",
       "weight": 1.0
     },
     {
@@ -46848,7 +46848,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/portal/OriginalHeader.tsx",
-      "source_location": "L13",
+      "source_location": "L10",
       "weight": 1.0
     },
     {
@@ -46860,7 +46860,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/portal/OriginalHeader.tsx",
-      "source_location": "L14",
+      "source_location": "L11",
       "weight": 1.0
     },
     {
@@ -46884,7 +46884,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/portal/OriginalHeader.tsx",
-      "source_location": "L6",
+      "source_location": "L5",
       "weight": 1.0
     },
     {
@@ -60853,7 +60853,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/portal/OriginalHeader.tsx",
-      "source_location": "L16",
+      "source_location": "L13",
       "weight": 1.0
     },
     {
@@ -60864,7 +60864,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/portal/OriginalHeader.tsx",
-      "source_location": "L34",
+      "source_location": "L31",
       "weight": 1.0
     },
     {
@@ -60875,7 +60875,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/portal/OriginalHeader.tsx",
-      "source_location": "L39",
+      "source_location": "L36",
       "weight": 1.0
     },
     {

@@ -1,14 +1,11 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
 import {
   MessageSquare,
-  BookOpen,
   ArrowDown,
   Compass,
-  Sparkles,
 } from 'lucide-react';
 import AlternatingHeroShaders from './AlternatingHeroShaders';
 import UniversalSitemapModal from './UniversalSitemapModal';
@@ -145,37 +142,19 @@ export function OriginalHeader({ profile, onNavigate }: OriginalHeaderProps) {
             </div>
           </div>
 
-          {/* Ações Primárias do Hero Centralizadas — Mobile First (Fitts' Law: Target >= 44px) */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-3 w-full max-w-2xl mx-auto px-2">
+          {/* Ação Primária Soberana do Hero — CTA Único e Monumental */}
+          <div className="flex items-center justify-center w-full max-w-md mx-auto px-2">
             <a
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="glass-button-fired w-full sm:w-auto min-h-[44px] px-5 sm:px-6 py-3 sm:py-2.5 rounded-xl text-xs sm:text-xs font-mono font-bold tracking-wide text-white flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(255,7,58,0.45)] active:scale-95 transition-all touch-manipulation cursor-pointer"
+              className="glass-button-fired w-full sm:w-auto min-h-[48px] px-8 sm:px-10 py-3.5 sm:py-3 rounded-2xl text-xs sm:text-sm font-mono font-bold tracking-wider text-white flex items-center justify-center gap-2.5 shadow-[0_0_35px_rgba(255,7,58,0.55)] hover:shadow-[0_0_50px_rgba(255,7,58,0.75)] hover:scale-105 active:scale-95 transition-all touch-manipulation cursor-pointer"
               title="Abrir WhatsApp oficial"
               aria-label="VAMOS AUTOMATIZAR ?!"
             >
-              <MessageSquare className="w-4 h-4 fill-white/20 shrink-0" />
+              <MessageSquare className="w-4 h-4 sm:w-5 sm:h-5 fill-white/20 shrink-0" />
               <span>VAMOS AUTOMATIZAR ?!</span>
             </a>
-
-            <button
-              onClick={handleExplore}
-              className="glass-interactive w-full sm:w-auto min-h-[44px] px-4.5 sm:px-5 py-3 sm:py-2.5 rounded-xl text-xs sm:text-xs font-mono font-bold text-zinc-200 hover:text-white flex items-center justify-center gap-2 border border-white/15 hover:border-[#ff073a]/50 active:scale-95 transition-all touch-manipulation cursor-pointer"
-              aria-label="Explorar 176 Guias Técnicos"
-            >
-              <BookOpen className="w-4 h-4 text-[#ff073a] shrink-0" />
-              <span>EXPLORAR GUIAS TÉCNICOS (176)</span>
-            </button>
-
-            <Link
-              href="/comunidade"
-              className="glass-interactive w-full sm:w-auto min-h-[44px] px-4.5 sm:px-5 py-3 sm:py-2.5 rounded-xl text-xs sm:text-xs font-mono font-bold text-amber-300 hover:text-white flex items-center justify-center gap-2 border border-amber-500/20 hover:border-amber-500/50 active:scale-95 transition-all touch-manipulation cursor-pointer"
-              title="Acessar Área de Membros / Comunidade"
-            >
-              <Sparkles className="w-4 h-4 text-amber-400 shrink-0" />
-              <span>COMUNIDADE VIP</span>
-            </Link>
           </div>
 
           {/* Indicador de Navegação Inferior para o Acervo */}

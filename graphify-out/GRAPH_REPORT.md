@@ -1,7 +1,7 @@
-# Graph Report - plataforma-unificada-soberana  (2026-10-18)
+# Graph Report - mcp-business-os  (2026-10-18)
 
 ## Corpus Check
-- 246 files · ~8,552,318 words
+- 246 files · ~8,551,823 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
