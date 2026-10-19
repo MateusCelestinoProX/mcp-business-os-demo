@@ -150,12 +150,14 @@ export function Navbar() {
 
         {/* Lado Direito Desktop: Botões fiéis e refinados */}
         <div className="hidden lg:flex items-center gap-2.5">
-          <Link href="/admin">
-            <Button variant="secondary" size="sm" className="gap-1.5 text-[11px] border-white/10 hover:border-white/20">
-              <Crown className="w-3.5 h-3.5 text-red-400" />
-              <span>Painel Admin</span>
-            </Button>
-          </Link>
+          {isUserAdmin && (
+            <Link href="/admin">
+              <Button variant="secondary" size="sm" className="gap-1.5 text-[11px] border-amber-500/40 hover:border-amber-500/70 bg-amber-950/30 text-amber-300">
+                <Crown className="w-3.5 h-3.5 text-amber-400" />
+                <span>Painel Admin</span>
+              </Button>
+            </Link>
+          )}
 
           {currentUser.isLoggedIn ? (
             <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white/[0.04] border border-white/10 text-[11px]">
@@ -238,14 +240,16 @@ export function Navbar() {
             })}
 
             <div className="pt-3 border-t border-white/10 space-y-2.5">
-              <Link
-                href="/admin"
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-center gap-2 min-h-[48px] w-full px-4 py-3 rounded-xl text-sm font-bold text-red-400 bg-red-950/30 border border-red-500/30 shadow-lg active:scale-98 transition-all touch-manipulation"
-              >
-                <Crown className="w-4 h-4 text-red-400" />
-                <span>Acessar Painel Admin</span>
-              </Link>
+              {isUserAdmin && (
+                <Link
+                  href="/admin"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center justify-center gap-2 min-h-[48px] w-full px-4 py-3 rounded-xl text-sm font-bold text-amber-300 bg-amber-950/40 border border-amber-500/40 shadow-lg active:scale-98 transition-all touch-manipulation"
+                >
+                  <Crown className="w-4 h-4 text-amber-400" />
+                  <span>Acessar Painel Admin</span>
+                </Link>
+              )}
 
               {currentUser.isLoggedIn ? (
                 <button

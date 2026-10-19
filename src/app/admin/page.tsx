@@ -205,11 +205,11 @@ export default function AdminPanelPage() {
         if (res.ok) {
           const data = await res.json();
           const target = data.user || data.member;
-          if (data.authenticated && target && (target.role === 'admin' || target.role === 'moder')) {
+          if (data.authenticated && target && target.role === 'admin') {
             const user: UnifiedUser = {
               id: target.id,
               isLoggedIn: true,
-              role: target.role,
+              role: 'admin',
               name: target.name || "Mateus Celestino Pro X",
               email: target.email,
               avatar: "",
@@ -472,11 +472,11 @@ export default function AdminPanelPage() {
 
       const data = await res.json();
 
-      if (res.ok && data.success && (data.role === "admin" || data.user?.role === "admin" || data.role === "moder" || data.user?.role === "moder")) {
+      if (res.ok && data.success && (data.role === "admin" || data.user?.role === "admin")) {
         const authenticatedAdmin: UnifiedUser = {
           id: data.user?.id,
           isLoggedIn: true,
-          role: data.role || data.user?.role || "admin",
+          role: "admin",
           name: data.user?.name || "Mateus Celestino Pro X",
           email: data.user?.email || loginEmail.trim().toLowerCase(),
           avatar: "",
@@ -627,8 +627,8 @@ export default function AdminPanelPage() {
     );
   }
 
-  // GATEWAY DE SEGURANÇA EXECUTIVO (QUANDO NÃO AUTENTICADO)
-  if (!currentUser || !hasAdminOrModerAccess(currentUser)) {
+  // GATEWAY DE SEGURANÇA EXECUTIVO (QUANDO NÃO AUTENTICADO COMO ADMIN SOBERANO)
+  if (!currentUser || !hasAdminAccess(currentUser)) {
     return (
       <div className="relative min-h-[85vh] flex items-center justify-center px-4 py-12 overflow-hidden">
         {/* Background WebGL Shader Vermelho do Personal OS */}

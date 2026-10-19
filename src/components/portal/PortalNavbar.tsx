@@ -173,8 +173,7 @@ export function PortalNavbar({
         <aside
           id="portal-navigation-mobile-dock"
           aria-label="Dock Móvel de Navegação Tátil Mateus Celestino Pro X"
-          className="lg:hidden fixed bottom-3 sm:bottom-4 inset-x-3 sm:inset-x-6 z-40 max-w-md mx-auto pointer-events-auto select-none touch-manipulation"
-          style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}
+          className="lg:hidden fixed top-16 inset-x-2 z-30 max-w-md mx-auto pointer-events-auto select-none touch-manipulation pt-1.5"
         >
           <div className="glass-crystal rounded-2xl p-1 shadow-[0_15px_40px_rgba(0,0,0,0.95),0_0_25px_rgba(255,7,58,0.25)] border border-white/20 flex items-center justify-between gap-1">
             {navItems.map((item) => {

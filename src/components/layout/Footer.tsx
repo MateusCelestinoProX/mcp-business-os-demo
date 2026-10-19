@@ -1,15 +1,68 @@
 'use client';
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Shield, FileText, CheckCircle2 } from "lucide-react";
+import { usePathname } from "next/navigation";
+import {
+  Shield,
+  FileText,
+  CheckCircle2,
+  Sparkles,
+  ShoppingBag,
+  Users,
+  FolderGit2,
+  BookOpen,
+  Crown,
+  Mail,
+  ArrowUpRight,
+} from "lucide-react";
 import SilkShader from "@/components/shaders/SilkShader";
+import {
+  UnifiedUser,
+  DEFAULT_GUEST_USER,
+  getStoredUser,
+  hasAdminAccess,
+} from "@/lib/auth/unified-auth";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const pathname = usePathname();
+  const [currentUser, setCurrentUser] = useState<UnifiedUser>(DEFAULT_GUEST_USER);
+
+  useEffect(() => {
+    setCurrentUser(getStoredUser());
+
+    const handleAuthChange = (e: Event) => {
+      const customEvent = e as CustomEvent<UnifiedUser>;
+      if (customEvent.detail) {
+        setCurrentUser(customEvent.detail);
+      } else {
+        setCurrentUser(getStoredUser());
+      }
+    };
+
+    window.addEventListener("mcp_auth_changed", handleAuthChange);
+    window.addEventListener("storage", handleAuthChange);
+    return () => {
+      window.removeEventListener("mcp_auth_changed", handleAuthChange);
+      window.removeEventListener("storage", handleAuthChange);
+    };
+  }, []);
+
+  const isUserAdmin = hasAdminAccess(currentUser);
+
+  const headerNavButtons = [
+    { name: "Portal Institucional", href: "/", icon: Shield },
+    { name: "Showcase", href: "/showcase", icon: Sparkles },
+    { name: "Shop Oficial", href: "/shop", icon: ShoppingBag },
+    { name: "Comunidade VIP", href: "/comunidade", icon: Users },
+    { name: "Free Resources", href: "/biblioteca", icon: FolderGit2 },
+    { name: "Artigos Técnicos", href: "/artigos", icon: BookOpen },
+    { name: "Contato Direto", href: "/contato", icon: Mail },
+  ];
 
   return (
-    <footer className="relative z-20 mt-16 sm:mt-20 border-t border-red-500/30 bg-[#0c0003]/95 shadow-[0_-25px_60px_rgba(180,0,25,0.3)] overflow-hidden w-full pb-20 sm:pb-10">
+    <footer className="relative z-20 mt-16 sm:mt-24 border-t border-red-500/30 bg-[#0c0003]/95 shadow-[0_-25px_60px_rgba(180,0,25,0.3)] overflow-hidden w-full pb-32 sm:pb-16">
       {/* Shader WebGL do Rodapé: Silk Líquido Carmesim */}
       <SilkShader
         className="z-0 mix-blend-screen pointer-events-none"
@@ -25,9 +78,68 @@ export function Footer() {
       {/* Brilho fluido de energia vermelha na base do rodapé */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-red-950/40 via-red-900/10 to-transparent pointer-events-none" />
 
-      <div className="w-full px-4 sm:px-6 lg:px-10 xl:px-16 py-8 sm:py-10 relative z-10 flex flex-col items-center justify-center gap-5 sm:gap-6">
+      <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 relative z-10 flex flex-col items-center justify-center gap-8">
 
-        {/* Botões de Acesso Rápido a Privacidade e Termos */}
+        {/* =========================================================================
+            1. BOTÕES DA BARRA PRINCIPAL DO HEADER INCORPORADOS NO FOOTER
+            ========================================================================= */}
+        <div className="w-full flex flex-col items-center gap-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-950/60 border border-red-500/30 text-[10px] sm:text-xs font-mono text-red-400 uppercase tracking-widest">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#ff073a] animate-pulse" />
+            <span>Navegação Geral do Sistema</span>
+          </div>
+
+          <div className="w-full grid grid-cols-2 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2.5 sm:gap-3 max-w-4xl mx-auto">
+            {headerNavButtons.map((btn) => {
+              const Icon = btn.icon;
+              const isActive = btn.href === "/" ? pathname === "/" : pathname.startsWith(btn.href);
+
+              return (
+                <Link
+                  key={btn.href}
+                  href={btn.href}
+                  className={`flex items-center gap-2.5 min-h-[48px] px-3.5 py-2.5 rounded-xl border text-xs font-mono font-medium transition-all duration-200 active:scale-95 group touch-manipulation ${
+                    isActive
+                      ? "bg-red-950/60 border-red-500/60 text-white shadow-[0_0_15px_rgba(255,7,58,0.3)]"
+                      : "bg-white/[0.03] border-white/10 text-neutral-300 hover:text-white hover:bg-white/[0.08] hover:border-red-500/40"
+                  }`}
+                >
+                  <div
+                    className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
+                      isActive
+                        ? "bg-red-600/30 text-red-400"
+                        : "bg-white/5 text-neutral-400 group-hover:text-red-400"
+                    }`}
+                  >
+                    <Icon className="w-3.5 h-3.5" />
+                  </div>
+                  <span className="truncate">{btn.name}</span>
+                </Link>
+              );
+            })}
+
+            {/* Botão de Painel Admin Exclusivo: Renderizado SOMENTE quando logado como admin */}
+            {isUserAdmin && (
+              <Link
+                href="/admin"
+                className="flex items-center gap-2.5 min-h-[48px] px-3.5 py-2.5 rounded-xl border border-amber-500/50 bg-amber-950/40 text-amber-300 hover:bg-amber-900/50 hover:border-amber-400 shadow-[0_0_20px_rgba(255,215,0,0.25)] text-xs font-mono font-bold transition-all duration-200 active:scale-95 group touch-manipulation"
+              >
+                <div className="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-300 flex items-center justify-center shrink-0">
+                  <Crown className="w-3.5 h-3.5" />
+                </div>
+                <span className="truncate">Painel Admin</span>
+                <ArrowUpRight className="w-3 h-3 ml-auto opacity-70 group-hover:opacity-100" />
+              </Link>
+            )}
+          </div>
+        </div>
+
+        {/* Separador de Energia Carmesim */}
+        <div className="w-full max-w-2xl h-[1px] bg-gradient-to-r from-transparent via-red-500/30 to-transparent" />
+
+        {/* =========================================================================
+            2. BOTÕES DE ACESSO RÁPIDO A PRIVACIDADE E TERMOS
+            ========================================================================= */}
         <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6">
           <Link
             href="/privacidade"
@@ -47,9 +159,6 @@ export function Footer() {
             <span className="font-medium tracking-wide">Termos de Uso Soberanos</span>
           </Link>
         </div>
-
-        {/* Separador de Energia Carmesim */}
-        <div className="w-full max-w-xl h-[1px] bg-gradient-to-r from-transparent via-red-500/30 to-transparent" />
 
         {/* Identificação Oficial: Mateus Celestino Pro X */}
         <div className="text-center px-2">

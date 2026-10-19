@@ -132,31 +132,33 @@ export default function ArtigosPortalPage() {
       </section>
 
       {/* Categorias & Contadores com Scroll Horizontal Touch no Mobile */}
-      <section className="flex items-center sm:justify-center gap-2 sm:gap-3 overflow-x-auto sm:flex-wrap pb-2 pt-1 sm:pb-0 scrollbar-none overscroll-x-contain touch-pan-x [-webkit-overflow-scrolling:touch] -mx-1 px-1 sm:mx-0 sm:px-0">
-        {categories.map((cat) => {
-          const isActive = selectedCategory === cat.slug;
-          return (
-            <button
-              key={cat.slug}
-              onClick={() => handleCategoryChange(cat.slug)}
-              className={`min-h-[40px] flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer shrink-0 whitespace-nowrap touch-manipulation active:scale-95 ${
-                isActive
-                  ? "bg-red-600/30 text-white border border-red-500/60 shadow-[0_0_20px_rgba(255,7,58,0.35)]"
-                  : "glass-pill text-neutral-400 hover:text-white hover:border-white/20"
-              }`}
-            >
-              <span>{cat.name}</span>
-              <span
-                className={`text-[10px] px-1.5 py-0.5 rounded-full font-mono ${
-                  isActive ? "bg-red-500 text-white" : "bg-white/10 text-neutral-400"
+      <div className="relative max-w-full overflow-hidden">
+        <div className="flex items-center sm:justify-center gap-2 sm:gap-3 overflow-x-auto sm:flex-wrap pb-2 pt-1 sm:pb-0 no-scrollbar overscroll-x-contain touch-pan-x [-webkit-overflow-scrolling:touch] px-1 sm:px-0">
+          {categories.map((cat) => {
+            const isActive = selectedCategory === cat.slug;
+            return (
+              <button
+                key={cat.slug}
+                onClick={() => handleCategoryChange(cat.slug)}
+                className={`min-h-[44px] flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer shrink-0 whitespace-nowrap touch-manipulation active:scale-95 ${
+                  isActive
+                    ? "bg-red-600/30 text-white border border-red-500/60 shadow-[0_0_20px_rgba(255,7,58,0.35)]"
+                    : "glass-pill text-neutral-400 hover:text-white hover:border-white/20"
                 }`}
               >
-                {cat.count}
-              </span>
-            </button>
-          );
-        })}
-      </section>
+                <span>{cat.name}</span>
+                <span
+                  className={`text-[10px] px-1.5 py-0.5 rounded-full font-mono ${
+                    isActive ? "bg-red-500 text-white" : "bg-white/10 text-neutral-400"
+                  }`}
+                >
+                  {cat.count}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
 
       {/* Status da Filtragem */}
       <div className="flex items-center justify-between text-[11px] sm:text-xs text-neutral-400 px-1 sm:px-2 gap-2">
