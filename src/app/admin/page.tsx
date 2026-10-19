@@ -53,6 +53,7 @@ import { LibraryControlSuite } from "@/components/admin/LibraryControlSuite";
 import { ShopControlSuite } from "@/components/admin/ShopControlSuite";
 import AlternatingHeroBanner from "@/components/portal/AlternatingHeroBanner";
 import AdminRedShader from "@/components/admin/AdminRedShader";
+import siteData from "@/data/siteData.json";
 import {
   UnifiedUser,
   getStoredUser,
@@ -163,8 +164,8 @@ export default function AdminPanelPage() {
     artImage: '/assets/notion/shop/hero_art.png',
     artImages: ['/assets/notion/shop/hero_art.png']
   });
-  const [shopProducts, setShopProducts] = useState<ShopProductConfig[]>([]);
-  const [shopServices, setShopServices] = useState<ShopServiceConfig[]>([]);
+  const [shopProducts, setShopProducts] = useState<ShopProductConfig[]>(siteData.shop?.produtos as any || []);
+  const [shopServices, setShopServices] = useState<ShopServiceConfig[]>(siteData.shop?.servicos as any || []);
   const [newShopHeroImageUrl, setNewShopHeroImageUrl] = useState("");
 
   // Formulário de Login Seguro
@@ -330,15 +331,19 @@ export default function AdminPanelPage() {
               : [cfg.shopHero.artImage || '/assets/notion/shop/hero_art.png']
           });
         }
-        if (Array.isArray(cfg.shopProducts)) {
+        if (Array.isArray(cfg.shopProducts) && cfg.shopProducts.length > 0) {
           setShopProducts(cfg.shopProducts);
-        } else if (Array.isArray(cfg.shop?.produtos)) {
+        } else if (Array.isArray(cfg.shop?.produtos) && cfg.shop.produtos.length > 0) {
           setShopProducts(cfg.shop.produtos);
+        } else if (siteData.shop?.produtos && siteData.shop.produtos.length > 0) {
+          setShopProducts(siteData.shop.produtos as any);
         }
-        if (Array.isArray(cfg.shopServices)) {
+        if (Array.isArray(cfg.shopServices) && cfg.shopServices.length > 0) {
           setShopServices(cfg.shopServices);
-        } else if (Array.isArray(cfg.shop?.servicos)) {
+        } else if (Array.isArray(cfg.shop?.servicos) && cfg.shop.servicos.length > 0) {
           setShopServices(cfg.shop.servicos);
+        } else if (siteData.shop?.servicos && siteData.shop.servicos.length > 0) {
+          setShopServices(siteData.shop.servicos as any);
         }
       }
     } catch (err) {

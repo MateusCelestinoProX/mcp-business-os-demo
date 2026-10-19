@@ -139,11 +139,15 @@ export function ShopControlSuite({ onNotify }: ShopControlSuiteProps) {
             idealFor: sh.hero.idealFor || shopHero.idealFor,
           });
         }
-        if (Array.isArray(sh.produtos)) {
+        if (Array.isArray(sh.produtos) && sh.produtos.length > 0) {
           setProducts(sh.produtos);
+        } else if (siteData.shop?.produtos && siteData.shop.produtos.length > 0) {
+          setProducts(siteData.shop.produtos);
         }
-        if (Array.isArray(sh.servicos)) {
+        if (Array.isArray(sh.servicos) && sh.servicos.length > 0) {
           setServices(sh.servicos);
+        } else if (siteData.shop?.servicos && siteData.shop.servicos.length > 0) {
+          setServices(siteData.shop.servicos);
         }
         triggerToast('Dados do Shop sincronizados com sucesso.');
       }

@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { db, systemSettings } from '@/lib/db';
 import { eq } from 'drizzle-orm';
 import { verifyAdminRequest, unauthorizedResponse } from '@/lib/auth/admin-guard';
+import siteData from '@/data/siteData.json';
 
 export const dynamic = 'force-dynamic';
 
@@ -206,34 +207,61 @@ const DEFAULT_CONFIG = {
  * garantindo compatibilidade total com Portal, Loja, Recursos e Painel Administrativo.
  */
 function normalizeShopResourcesConfig(raw: any) {
+  const fallbackProds = (siteData.shop?.produtos && siteData.shop.produtos.length > 0)
+    ? siteData.shop.produtos
+    : DEFAULT_CONFIG.shop.produtos;
+
+  const fallbackServs = (siteData.shop?.servicos && siteData.shop.servicos.length > 0)
+    ? siteData.shop.servicos
+    : DEFAULT_CONFIG.shop.servicos;
+
   if (!raw || typeof raw !== 'object') {
     return {
       shopHero: DEFAULT_CONFIG.shop.hero,
-      shopProducts: DEFAULT_CONFIG.shop.produtos,
-      shopServices: DEFAULT_CONFIG.shop.servicos,
+      shopProducts: fallbackProds,
+      shopServices: fallbackServs,
       recursosHero: DEFAULT_CONFIG.recursos.hero,
       recursosItems: DEFAULT_CONFIG.recursos.packs,
-      shop: DEFAULT_CONFIG.shop,
+      shop: {
+        hero: DEFAULT_CONFIG.shop.hero,
+        produtos: fallbackProds,
+        servicos: fallbackServs,
+      },
       recursos: DEFAULT_CONFIG.recursos,
     };
   }
 
   const shopHero = raw.shopHero || raw.shop?.hero || DEFAULT_CONFIG.shop.hero;
-  const shopProducts = Array.isArray(raw.shopProducts)
+
+  const rawProducts = Array.isArray(raw.shopProducts)
     ? raw.shopProducts
     : Array.isArray(raw.shop?.produtos)
     ? raw.shop.produtos
-    : DEFAULT_CONFIG.shop.produtos;
-  const shopServices = Array.isArray(raw.shopServices)
+    : null;
+
+  // Se a lista de produtos no banco for nula ou vazia ([]), restaura os produtos oficiais
+  const shopProducts = (rawProducts && rawProducts.length > 0)
+    ? rawProducts
+    : fallbackProds;
+
+  const rawServices = Array.isArray(raw.shopServices)
     ? raw.shopServices
     : Array.isArray(raw.shop?.servicos)
     ? raw.shop.servicos
-    : DEFAULT_CONFIG.shop.servicos;
+    : null;
+
+  const shopServices = (rawServices && rawServices.length > 0)
+    ? rawServices
+    : fallbackServs;
+
   const recursosHero = raw.recursosHero || raw.recursos?.hero || DEFAULT_CONFIG.recursos.hero;
-  const recursosItems = Array.isArray(raw.recursosItems)
+  const rawRecursos = Array.isArray(raw.recursosItems)
     ? raw.recursosItems
     : Array.isArray(raw.recursos?.packs)
     ? raw.recursos.packs
+    : null;
+  const recursosItems = (rawRecursos && rawRecursos.length > 0)
+    ? rawRecursos
     : DEFAULT_CONFIG.recursos.packs;
 
   const resolvedArtImages = Array.isArray(shopHero.artImages) && shopHero.artImages.length > 0
@@ -275,6 +303,29 @@ export async function GET() {
 
     const raw = existing && existing.length > 0 && existing[0].value ? existing[0].value : DEFAULT_CONFIG;
     const normalized = normalizeShopResourcesConfig(raw);
+
+    // Auto-recuperação/auto-heal no Supabase se os produtos estiverem vazios no banco
+    if (existing && existing.length > 0 && existing[0].value) {
+      const dbVal = existing[0].value;
+      const isDbEmpty =
+        (!Array.isArray(dbVal.shopProducts) || dbVal.shopProducts.length === 0) ||
+        (!Array.isArray(dbVal.shop?.produtos) || dbVal.shop?.produtos.length === 0);
+
+      if (isDbEmpty) {
+        try {
+          await db
+            .update(systemSettings)
+            .set({
+              value: normalized,
+              updatedAt: new Date(),
+            })
+            .where(eq(systemSettings.key, SETTINGS_KEY));
+          console.log('✅ Auto-heal executado: catálogo de produtos do Shop restaurado com sucesso no Supabase.');
+        } catch (healErr) {
+          console.warn('Aviso no auto-heal de system_settings:', healErr);
+        }
+      }
+    }
 
     return NextResponse.json({
       success: true,

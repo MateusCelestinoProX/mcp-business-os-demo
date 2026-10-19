@@ -16,7 +16,16 @@ export default function ShopPage() {
       .then((res) => res.json())
       .then((data) => {
         if (isMounted && data.success && data.config?.shop) {
-          setShopData(data.config.shop);
+          const sh = data.config.shop;
+          setShopData({
+            ...sh,
+            produtos: Array.isArray(sh.produtos) && sh.produtos.length > 0
+              ? sh.produtos
+              : (siteData.shop?.produtos || []),
+            servicos: Array.isArray(sh.servicos) && sh.servicos.length > 0
+              ? sh.servicos
+              : (siteData.shop?.servicos || []),
+          });
         }
       })
       .catch((err) => {

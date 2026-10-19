@@ -1444,7 +1444,7 @@
       "file_type": "code",
       "norm_label": "mobilenavitem",
       "source_file": "src/components/layout/MobileBottomNav.tsx",
-      "source_location": "L24"
+      "source_location": "L22"
     },
     {
       "id": "src_components_layout_navbar_navlinkitem",
@@ -8188,7 +8188,7 @@
       "file_type": "code",
       "norm_label": "mobilebottomnav()",
       "source_file": "src/components/layout/MobileBottomNav.tsx",
-      "source_location": "L43"
+      "source_location": "L39"
     },
     {
       "id": "src_components_layout_navbar_navbar",
@@ -21779,7 +21779,7 @@
       "file_type": "code",
       "norm_label": "mobilenavitems",
       "source_file": "src/components/layout/MobileBottomNav.tsx",
-      "source_location": "L32"
+      "source_location": "L30"
     },
     {
       "id": "src_components_layout_navbar",
@@ -35134,7 +35134,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/layout/MobileBottomNav.tsx",
-      "source_location": "L137",
+      "source_location": "L133",
       "weight": 1.0
     },
     {
@@ -35146,7 +35146,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/layout/MobileBottomNav.tsx",
-      "source_location": "L50",
+      "source_location": "L46",
       "weight": 1.0
     },
     {
@@ -35158,7 +35158,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/layout/MobileBottomNav.tsx",
-      "source_location": "L69",
+      "source_location": "L65",
       "weight": 1.0
     },
     {
@@ -40518,7 +40518,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/layout/MobileBottomNav.tsx",
-      "source_location": "L16",
+      "source_location": "L14",
       "weight": 1.0
     },
     {
@@ -40530,7 +40530,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/layout/MobileBottomNav.tsx",
-      "source_location": "L17",
+      "source_location": "L15",
       "weight": 1.0
     },
     {
@@ -40542,7 +40542,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/layout/MobileBottomNav.tsx",
-      "source_location": "L17",
+      "source_location": "L15",
       "weight": 1.0
     },
     {
@@ -40554,7 +40554,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/layout/MobileBottomNav.tsx",
-      "source_location": "L17",
+      "source_location": "L15",
       "weight": 1.0
     },
     {
@@ -40566,7 +40566,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/layout/MobileBottomNav.tsx",
-      "source_location": "L17",
+      "source_location": "L15",
       "weight": 1.0
     },
     {
@@ -45840,7 +45840,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/layout/MobileBottomNav.tsx",
-      "source_location": "L16",
+      "source_location": "L14",
       "weight": 1.0
     },
     {
@@ -45852,7 +45852,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/layout/MobileBottomNav.tsx",
-      "source_location": "L17",
+      "source_location": "L15",
       "weight": 1.0
     },
     {
@@ -60248,7 +60248,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/layout/MobileBottomNav.tsx",
-      "source_location": "L24",
+      "source_location": "L22",
       "weight": 1.0
     },
     {
@@ -60259,7 +60259,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/layout/MobileBottomNav.tsx",
-      "source_location": "L32",
+      "source_location": "L30",
       "weight": 1.0
     },
     {
@@ -60270,7 +60270,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/layout/MobileBottomNav.tsx",
-      "source_location": "L43",
+      "source_location": "L39",
       "weight": 1.0
     },
     {
@@ -68854,5 +68854,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "b7bd241e71da4b0bc5e7d43332750beb40bfe52e"
+  "built_at_commit": "93df8a62d594a4a3de836eecfe54436f2d7ab98b"
 }

@@ -71,7 +71,7 @@ describe('Loja Virtual (Shop) & Painel Admin /admin/shop — Suite de Validaçã
     }
   });
 
-  it('6. A rota GET /api/admin/shop-resources deve retornar configurações normalizadas', async () => {
+  it('6. A rota GET /api/admin/shop-resources deve retornar configurações normalizadas com catálogo completo', async () => {
     const { GET } = await import('../src/app/api/admin/shop-resources/route');
 
     const res = await GET();
@@ -80,7 +80,15 @@ describe('Loja Virtual (Shop) & Painel Admin /admin/shop — Suite de Validaçã
     assert.strictEqual(data.success, true, 'Resposta deve indicar success: true');
     assert.ok(data.config.shop, 'Deve conter nó shop');
     assert.ok(Array.isArray(data.config.shop.produtos), 'Deve conter produtos em array');
+    assert.ok(data.config.shop.produtos.length >= 4, 'Deve conter pelo menos 4 produtos digitais oficiais');
     assert.ok(Array.isArray(data.config.shop.servicos), 'Deve conter servicos em array');
+    assert.ok(data.config.shop.servicos.length >= 2, 'Deve conter pelo menos 2 serviços sob medida oficiais');
     assert.ok(data.config.shop.hero, 'Deve conter hero configurado');
+  });
+
+  it('7. ShopControlSuite e rotas devem ser resilientes contra records vazios no banco', () => {
+    const suiteContent = fs.readFileSync(path.join(BASE_DIR, 'src/components/admin/ShopControlSuite.tsx'), 'utf8');
+    assert.ok(suiteContent.includes('sh.produtos.length > 0'), 'ShopControlSuite não deve limpar produtos se array vier vazio');
+    assert.ok(suiteContent.includes('siteData.shop.produtos'), 'ShopControlSuite deve usar siteData como fallback para produtos');
   });
 });
