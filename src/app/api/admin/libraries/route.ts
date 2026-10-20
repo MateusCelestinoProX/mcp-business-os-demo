@@ -7,11 +7,17 @@ import {
   loadAllItems,
   LibraryCategory,
 } from '@/lib/library/library-manager';
+import { verifyAdminRequest, unauthorizedResponse } from '@/lib/auth/admin-guard';
 
 export const dynamic = 'force-dynamic';
 
 export async function GET(request: NextRequest) {
   try {
+    const auth = await verifyAdminRequest(request);
+    if (!auth.authorized) {
+      return unauthorizedResponse(auth.error);
+    }
+
     const { searchParams } = new URL(request.url);
     const libraryId = searchParams.get('id');
     const libraries = loadAllLibraries();
@@ -62,6 +68,11 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
+    const auth = await verifyAdminRequest(request);
+    if (!auth.authorized) {
+      return unauthorizedResponse(auth.error);
+    }
+
     const body = await request.json();
     if (!body.name || !body.name.trim()) {
       return NextResponse.json({ success: false, error: 'Nome da biblioteca é obrigatório' }, { status: 400 });
@@ -88,6 +99,11 @@ export async function POST(request: NextRequest) {
 
 export async function PUT(request: NextRequest) {
   try {
+    const auth = await verifyAdminRequest(request);
+    if (!auth.authorized) {
+      return unauthorizedResponse(auth.error);
+    }
+
     const body = await request.json();
     if (!body.id) {
       return NextResponse.json({ success: false, error: 'ID da biblioteca é obrigatório' }, { status: 400 });
@@ -117,6 +133,11 @@ export async function PUT(request: NextRequest) {
 
 export async function DELETE(request: NextRequest) {
   try {
+    const auth = await verifyAdminRequest(request);
+    if (!auth.authorized) {
+      return unauthorizedResponse(auth.error);
+    }
+
     const { searchParams } = new URL(request.url);
     const id = searchParams.get('id');
 

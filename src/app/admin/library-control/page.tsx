@@ -1,16 +1,28 @@
 import React from 'react';
 import { Metadata } from 'next';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 import { ArrowLeft, Shield, Sparkles, BookOpen } from 'lucide-react';
 import { LibraryControlSuite } from '@/components/admin/LibraryControlSuite';
 import { AdminSidebar } from '@/components/admin/AdminSidebar';
+import { getSession } from '@/lib/auth/session';
 
 export const metadata: Metadata = {
   title: 'Library Control & Editor — Painel Admin | Mateus Celestino Pro X',
   description: 'Controle mestre de bibliotecas e editor de acervo intelectual com suporte a uploads do Mac e Nuvem.',
 };
 
-export default function AdminLibraryControlPage() {
+export default async function AdminLibraryControlPage() {
+  const session = await getSession();
+  const isAllowed = session && (
+    session.role === 'admin' ||
+    (session as any).role === 'moder' ||
+    (session as any).role === 'moderator'
+  );
+
+  if (!isAllowed) {
+    redirect('/comunidade/login?redirectUrl=/admin/library-control');
+  }
   return (
     <div className="relative min-h-screen bg-[#07070a] text-white pt-24 pb-24 px-3 sm:px-6 lg:px-8 selection:bg-purple-500 selection:text-white">
       {/* Luzes de Ambientação & Shaders */}

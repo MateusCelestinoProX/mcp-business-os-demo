@@ -42,9 +42,10 @@ describe('Suíte de Validação: Presença Universal da Barra Geral Soberana & O
     for (const hub of requiredHubs) {
       assert.ok(content.includes(`href="${hub.href}"`), `Biblioteca deve conter link ${hub.href} (${hub.label})`);
     }
-    // Proteção contra corte e docking de shaders
-    assert.ok(content.includes('id="btn-shader-min-toggle"'), 'Deve possuir botão de minimizar/expandir shaders');
-    assert.ok(content.includes('shader-control-dock.minimized'), 'Deve ter classe .minimized para shaders');
+    // Regra Soberana: Nenhuma interface, dock ou seletor de shaders deve existir em Free Resources
+    assert.ok(!content.includes('id="shader-control-dock"'), 'Nenhum dock de shader deve existir em Free Resources');
+    assert.ok(!content.includes('id="btn-shader-min-toggle"'), 'Nenhum botão de toggle de shader deve existir em Free Resources');
+    assert.ok(!content.includes('class="shader-pills-row"'), 'Nenhuma linha de seleção de shaders deve existir em Free Resources');
   });
 
   test('3. Comunidade (A.I Visuals) deve possuir a Barra Geral Soberana com item ativo correto', () => {

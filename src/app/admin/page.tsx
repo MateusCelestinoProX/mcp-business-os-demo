@@ -57,6 +57,7 @@ import AdminRedShader from "@/components/admin/AdminRedShader";
 import siteData from "@/data/siteData.json";
 import {
   UnifiedUser,
+  UserRole,
   getStoredUser,
   setStoredUser,
   hasAdminOrModerAccess,
@@ -487,22 +488,24 @@ export default function AdminPanelPage() {
 
       const data = await res.json();
 
-      if (res.ok && data.success && (data.role === "admin" || data.user?.role === "admin")) {
-        const authenticatedAdmin: UnifiedUser = {
+      const isRoleAllowed = (data.role === "admin" || data.role === "moder" || data.user?.role === "admin" || data.user?.role === "moder");
+      if (res.ok && data.success && (data.role === "admin" || isRoleAllowed)) {
+        const userRole: UserRole = (data.role === "admin" || data.user?.role === "admin") ? "admin" : "moder";
+        const authenticatedUser: UnifiedUser = {
           id: data.user?.id,
           isLoggedIn: true,
-          role: "admin",
-          name: data.user?.name || "Mateus Celestino Pro X",
+          role: userRole,
+          name: data.user?.name || (userRole === "admin" ? "Mateus Celestino Pro X" : "Moderador Oficial"),
           email: data.user?.email || loginEmail.trim().toLowerCase(),
           avatar: "",
-          tier: "max",
+          tier: userRole === "admin" ? "max" : "vip",
         };
         if (data.token && typeof window !== "undefined") {
           localStorage.setItem("mcp_auth_token", data.token);
         }
-        setStoredUser(authenticatedAdmin);
-        setCurrentUser(authenticatedAdmin);
-        showToast("Sessão autenticada como Administrador Soberano.");
+        setStoredUser(authenticatedUser);
+        setCurrentUser(authenticatedUser);
+        showToast(userRole === "admin" ? "Sessão autenticada como Administrador Soberano." : "Sessão autenticada como Moderador Oficial.");
       } else {
         setLoginError(data.error || "Credenciais inválidas. Verifique seu e-mail e senha de acesso.");
       }
@@ -642,8 +645,8 @@ export default function AdminPanelPage() {
     );
   }
 
-  // GATEWAY DE SEGURANÇA EXECUTIVO (QUANDO NÃO AUTENTICADO COMO ADMIN SOBERANO)
-  if (!currentUser || !hasAdminAccess(currentUser)) {
+  // GATEWAY DE SEGURANÇA EXECUTIVO (QUANDO NÃO AUTENTICADO COMO ADMIN SOBERANO OU MODERADOR)
+  if (!currentUser || (!hasAdminAccess(currentUser) && currentUser.role !== 'moder')) {
     return (
       <div className="relative min-h-[85vh] flex items-center justify-center px-4 py-12 overflow-hidden">
         {/* Background WebGL Shader Vermelho do Personal OS */}

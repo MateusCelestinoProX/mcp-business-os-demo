@@ -1,16 +1,28 @@
 import React from 'react';
 import { Metadata } from 'next';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 import { ArrowLeft, Shield, ShoppingBag, Sparkles } from 'lucide-react';
 import { ShopControlSuite } from '@/components/admin/ShopControlSuite';
 import { AdminSidebar } from '@/components/admin/AdminSidebar';
+import { getSession } from '@/lib/auth/session';
 
 export const metadata: Metadata = {
   title: 'Shop & Cards Manager — Painel Admin | Mateus Celestino Pro X',
   description: 'Gerenciador soberano da Loja Virtual, heros, banners alternados e criador de cards com Markdown e botão único Saiba mais.',
 };
 
-export default function AdminShopPage() {
+export default async function AdminShopPage() {
+  const session = await getSession();
+  const isAllowed = session && (
+    session.role === 'admin' ||
+    (session as any).role === 'moder' ||
+    (session as any).role === 'moderator'
+  );
+
+  if (!isAllowed) {
+    redirect('/comunidade/login?redirectUrl=/admin/shop');
+  }
   return (
     <div className="relative min-h-screen bg-[#07070a] text-white pt-24 pb-24 px-3 sm:px-6 lg:px-8 selection:bg-red-600 selection:text-white">
       {/* Luzes de Ambientação e Shaders */}

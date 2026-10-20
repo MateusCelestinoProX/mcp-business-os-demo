@@ -1,11 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
 import path from 'node:path';
 import { addItemToLibrary, determineFileType } from '@/lib/library/library-manager';
+import { verifyAdminRequest, unauthorizedResponse } from '@/lib/auth/admin-guard';
 
 export const dynamic = 'force-dynamic';
 
 export async function POST(request: NextRequest) {
   try {
+    const auth = await verifyAdminRequest(request);
+    if (!auth.authorized) {
+      return unauthorizedResponse(auth.error);
+    }
+
     const body = await request.json();
     const { url, title, description, categoryName, categorySlug, tags, customType } = body;
 
