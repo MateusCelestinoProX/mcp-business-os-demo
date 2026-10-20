@@ -104,15 +104,15 @@ export function MobileBottomNav() {
     <nav
       id="mobile-sovereign-bottom-bar"
       aria-label="Navegação Móvel Soberana — Android Docker Navbar"
-      className="md:hidden fixed bottom-3 inset-x-2 sm:inset-x-auto sm:left-1/2 sm:-translate-x-1/2 sm:w-auto sm:max-w-xl z-40 bg-[#060002]/92 backdrop-blur-2xl border border-red-950/70 rounded-2xl sm:rounded-3xl shadow-[0_12px_40px_rgba(0,0,0,0.95),0_0_22px_rgba(255,7,58,0.22)] pb-[max(0.35rem,env(safe-area-inset-bottom,0.35rem))] pt-1.5 px-1.5 transition-all"
+      className="md:hidden fixed bottom-3 inset-x-2 sm:inset-x-auto sm:left-1/2 sm:-translate-x-1/2 sm:w-auto sm:max-w-xl z-40 bg-[#0a0a0e]/90 backdrop-blur-2xl border border-white/10 border-t-white/15 rounded-2xl sm:rounded-3xl shadow-[0_16px_36px_rgba(0,0,0,0.8),0_0_1px_rgba(255,255,255,0.15)] pb-[max(0.35rem,env(safe-area-inset-bottom,0.35rem))] pt-1.5 px-1.5 transition-all"
     >
       {/* Máscaras sutis de Gradiente Esquerda/Direita para sinalizar scroll caso necessário */}
-      <div className="absolute left-1 top-1 bottom-1 w-3 bg-gradient-to-r from-[#060002]/90 to-transparent pointer-events-none z-10 rounded-l-xl" />
-      <div className="absolute right-1 top-1 bottom-1 w-3 bg-gradient-to-l from-[#060002]/90 to-transparent pointer-events-none z-10 rounded-r-xl" />
+      <div className="absolute left-1 top-1 bottom-1 w-3 bg-gradient-to-r from-[#0a0a0e]/95 to-transparent pointer-events-none z-10 rounded-l-xl" />
+      <div className="absolute right-1 top-1 bottom-1 w-3 bg-gradient-to-l from-[#0a0a0e]/95 to-transparent pointer-events-none z-10 rounded-r-xl" />
 
       <div
         ref={containerRef}
-        className="flex items-center justify-between sm:justify-center overflow-x-auto no-scrollbar h-13 max-w-full mx-auto gap-1 px-1 scroll-smooth touch-pan-x"
+        className="flex items-center justify-between sm:justify-center overflow-x-auto no-scrollbar h-12 max-w-full mx-auto gap-1 px-1 scroll-smooth touch-pan-x"
       >
         {visibleNavItems.map((item) => {
           const isActive =
@@ -131,25 +131,25 @@ export function MobileBottomNav() {
               onClick={handleTabClick}
               aria-current={isActive ? "page" : undefined}
               className={cn(
-                "relative flex flex-col items-center justify-center flex-shrink-0 min-w-[50px] xs:min-w-[54px] sm:min-w-[62px] min-h-[44px] h-12 py-1 px-1 rounded-xl transition-all duration-200 active:scale-95 group",
+                "relative flex flex-col items-center justify-center flex-shrink-0 min-w-[48px] xs:min-w-[52px] sm:min-w-[60px] min-h-[44px] h-11 py-1 px-1 rounded-xl transition-all duration-200 active:scale-95 group",
                 isActive
-                  ? "text-white font-bold"
+                  ? "text-white font-semibold"
                   : "text-neutral-400 hover:text-neutral-200"
               )}
             >
               {/* Active Indicator Carmesim Superior */}
               {isActive && (
-                <span className="absolute top-0.5 left-1/2 -translate-x-1/2 w-5 h-[2px] bg-gradient-to-r from-transparent via-[#ff073a] to-transparent shadow-[0_0_8px_#ff073a]" />
+                <span className="absolute top-0.5 left-1/2 -translate-x-1/2 w-4.5 h-[2px] bg-[#ff073a] shadow-[0_0_6px_#ff073a] rounded-full" />
               )}
 
-              {/* Ícone com cápsula e active glow carmesim */}
+              {/* Ícone com cápsula e active glow carmesim refinado */}
               <div
                 className={cn(
                   "relative flex items-center justify-center w-7 h-6 sm:w-8 sm:h-7 rounded-lg transition-all duration-300",
                   isActive
                     ? isAdminItem
-                      ? "bg-amber-950/80 text-amber-300 shadow-[0_0_18px_rgba(255,215,0,0.5)] border border-amber-500/60"
-                      : "bg-red-950/70 text-red-400 shadow-[0_0_18px_rgba(255,7,58,0.45)] border border-red-600/50"
+                      ? "bg-amber-950/60 text-amber-300 shadow-[0_0_14px_rgba(255,215,0,0.35)] border border-amber-500/50"
+                      : "bg-red-500/15 text-red-400 shadow-[0_0_14px_rgba(255,7,58,0.25)] border border-red-500/35"
                     : isAdminItem
                     ? "text-amber-400/80 group-hover:text-amber-300"
                     : "text-neutral-400 group-hover:text-neutral-200"
@@ -160,16 +160,16 @@ export function MobileBottomNav() {
                     "w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform duration-200",
                     isActive
                       ? isAdminItem
-                        ? "scale-110 text-amber-300"
-                        : "scale-110 text-red-400"
+                        ? "scale-105 text-amber-300"
+                        : "scale-105 text-red-400"
                       : "group-hover:scale-105"
                   )}
-                  strokeWidth={isActive ? 2.3 : 1.8}
+                  strokeWidth={isActive ? 2.2 : 1.8}
                 />
                 {isActive && (
                   <span
                     className={cn(
-                      "absolute -bottom-0.5 w-1.5 h-1.5 rounded-full shadow-[0_0_8px]",
+                      "absolute -bottom-0.5 w-1 h-1 rounded-full shadow-[0_0_6px]",
                       isAdminItem ? "bg-amber-400 shadow-amber-400" : "bg-[#ff073a] shadow-[#ff073a]"
                     )}
                   />
@@ -182,8 +182,8 @@ export function MobileBottomNav() {
                   "text-[8.5px] xs:text-[9px] tracking-tight mt-0.5 whitespace-nowrap leading-none transition-colors",
                   isActive
                     ? isAdminItem
-                      ? "text-amber-300 font-bold drop-shadow-[0_0_8px_rgba(255,215,0,0.4)]"
-                      : "text-red-400 font-bold drop-shadow-[0_0_8px_rgba(255,7,58,0.3)]"
+                      ? "text-amber-300 font-semibold"
+                      : "text-red-400 font-semibold"
                     : "text-neutral-400 group-hover:text-neutral-300"
                 )}
               >

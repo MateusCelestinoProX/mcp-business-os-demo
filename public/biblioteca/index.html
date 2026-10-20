@@ -1875,12 +1875,103 @@ input, textarea, [contenteditable="true"] {
   z-index: 1;
 }
 
+.hero-video-scrim {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 40%, rgba(2, 2, 5, 0.42) 0%, rgba(4, 3, 8, 0.76) 65%, #040306 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .hero-video-scrim {
+    background: radial-gradient(circle at 50% 36%, rgba(2, 2, 5, 0.58) 0%, rgba(4, 3, 8, 0.88) 68%, #040306 100%);
+  }
+}
+
 .hero-video {
   width: 100%;
   height: 100%;
   object-fit: cover;
   opacity: 0;
   will-change: opacity;
+}
+
+/* --- Ultra-Minimalist, Pleasant & Ergonomic Hero Elements --- */
+.hero-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 14px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  margin-bottom: 16px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.72rem;
+  color: #a1a1aa;
+  letter-spacing: 1.5px;
+  transition: all 0.25s ease;
+}
+.hero-badge-icon {
+  color: #ff073a;
+  font-size: 0.8rem;
+}
+.hero-badge-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #ff073a;
+  box-shadow: 0 0 6px #ff073a;
+}
+.hero-badge-brand {
+  font-weight: 600;
+  color: #e4e4e7;
+}
+
+.hero-center-desc {
+  max-width: 580px;
+  margin: 0 auto;
+  font-size: 0.96rem;
+  color: #cbd5e1;
+  line-height: 1.6;
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 400;
+}
+
+.hero-action-row {
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.hero-explore-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  background: rgba(255, 7, 58, 0.12);
+  border: 1px solid rgba(255, 7, 58, 0.35);
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+.hero-explore-btn:hover, .hero-explore-btn:active {
+  background: rgba(255, 7, 58, 0.25);
+  border-color: #ff073a;
+  transform: translateY(1px);
+  box-shadow: 0 0 16px rgba(255, 7, 58, 0.35);
 }
 
 .hero-overlay-content {
@@ -2112,23 +2203,74 @@ input, textarea, [contenteditable="true"] {
   z-index: 4;
 }
 
-/* Responsive Cinematic Hero */
+/* Responsive Cinematic Hero - Mobile First Minimalist Optimization */
 @media (max-width: 768px) {
   .nav-links {
     display: none; /* Hidden on mobile */
   }
-  .hero-center-title {
-    font-size: 3.2rem !important;
-    letter-spacing: 2px !important;
-    white-space: normal;
+  .cinematic-hero {
+    height: auto !important;
+    min-height: calc(100vh - 110px) !important;
+    max-height: 640px !important;
+    padding: calc(64px + env(safe-area-inset-top, 0px)) 16px 28px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
-  .hero-center-subtitle {
-    font-size: 0.76rem !important;
-    letter-spacing: 5px !important;
+  .hero-overlay-content {
+    padding-top: 0 !important;
+    height: auto !important;
+    justify-content: center !important;
+    align-items: center !important;
   }
   .hero-center-content {
-    transform: translateY(0);
-    padding: 0 16px;
+    background: rgba(8, 8, 12, 0.65) !important;
+    backdrop-filter: blur(24px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 22px !important;
+    padding: 22px 18px 20px !important;
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+    margin: 0 auto !important;
+    max-width: 380px !important;
+    width: 100% !important;
+    transform: translateY(0) !important;
+    text-align: center !important;
+  }
+  .hero-badge-pill {
+    padding: 3px 10px !important;
+    font-size: 0.64rem !important;
+    letter-spacing: 1px !important;
+    margin-bottom: 10px !important;
+  }
+  .hero-center-title {
+    font-size: 2.15rem !important;
+    letter-spacing: -0.01em !important;
+    line-height: 1.12 !important;
+    margin-bottom: 4px !important;
+    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.9) !important;
+    white-space: normal !important;
+  }
+  .hero-center-subtitle {
+    font-size: 0.62rem !important;
+    letter-spacing: 2px !important;
+    color: #9ca3af !important;
+    margin-top: 6px !important;
+    line-height: 1.35 !important;
+  }
+  .hero-center-desc {
+    font-size: 0.82rem !important;
+    line-height: 1.5 !important;
+    color: #cbd5e1 !important;
+    max-width: 310px !important;
+    margin: 8px auto 0 !important;
+  }
+  .hero-action-row {
+    margin-top: 14px !important;
+  }
+  .hero-explore-btn {
+    padding: 5px 14px !important;
+    font-size: 0.7rem !important;
   }
 }
 
@@ -2517,36 +2659,56 @@ input, textarea, [contenteditable="true"] {
 
 @media (max-width: 768px) {
   .shader-control-dock {
-    bottom: calc(76px + env(safe-area-inset-bottom, 12px)) !important;
+    bottom: calc(72px + env(safe-area-inset-bottom, 8px)) !important;
     right: 12px !important;
     left: 12px !important;
-    border-radius: 14px !important;
-    padding: 6px 10px !important;
+    border-radius: 16px !important;
+    padding: 8px 12px !important;
     z-index: 99990 !important;
-    transition: all 0.25s ease !important;
+    background: rgba(10, 10, 14, 0.9) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.85), 0 0 12px rgba(255, 7, 58, 0.15) !important;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
   }
   .shader-control-dock.minimized {
     left: auto !important;
     right: 12px !important;
     width: auto !important;
-    max-width: 82vw !important;
-    padding: 4px 10px !important;
+    max-width: 85vw !important;
+    padding: 5px 12px !important;
+    border-radius: 9999px !important;
+    background: rgba(12, 12, 18, 0.8) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6) !important;
+    cursor: pointer !important;
   }
   .shader-control-dock.minimized .shader-pills-row,
   .shader-control-dock.minimized .shader-auto-btn {
     display: none !important;
   }
+  .shader-control-dock.minimized .shader-dock-header {
+    border-bottom: none !important;
+    padding: 0 !important;
+    gap: 8px !important;
+  }
+  .shader-control-dock.minimized .shader-title {
+    font-size: 0.68rem !important;
+    letter-spacing: 1px !important;
+    color: #e4e4e7 !important;
+  }
   .shader-min-toggle {
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.15);
     color: #fff;
-    border-radius: 6px;
-    width: 22px;
-    height: 22px;
+    border-radius: 9999px;
+    width: 20px;
+    height: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 11px;
+    font-size: 10px;
     cursor: pointer;
     transition: all 0.2s ease;
   }
@@ -2559,13 +2721,19 @@ input, textarea, [contenteditable="true"] {
     flex-wrap: nowrap;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
+    padding-top: 4px;
     padding-bottom: 2px;
+    gap: 5px;
   }
   .shader-pills-row::-webkit-scrollbar {
     display: none;
   }
+  .shader-pill {
+    padding: 4px 10px !important;
+    font-size: 0.65rem !important;
+  }
   #main-footer {
-    padding-bottom: calc(140px + env(safe-area-inset-bottom, 20px)) !important;
+    padding-bottom: calc(120px + env(safe-area-inset-bottom, 20px)) !important;
   }
 }
 
@@ -2586,7 +2754,7 @@ input, textarea, [contenteditable="true"] {
     </div>
 
     <!-- Personal OS Floating Shader Control Dock -->
-    <div id="shader-control-dock" class="shader-control-dock" aria-label="Controle de Shaders Personal OS">
+    <div id="shader-control-dock" class="shader-control-dock minimized" aria-label="Controle de Shaders Personal OS">
         <div class="shader-dock-inner">
             <div class="shader-dock-header">
                 <span class="shader-pulse-dot"></span>
@@ -2595,7 +2763,7 @@ input, textarea, [contenteditable="true"] {
                     <button type="button" class="shader-auto-btn active" id="btn-shader-auto" title="Pausar / Retomar Rotação Automática">
                         <span id="auto-cycle-icon">⏵</span> AUTO (8.5s)
                     </button>
-                    <button type="button" class="shader-min-toggle" id="btn-shader-min-toggle" aria-label="Minimizar / Expandir seletor de shaders" title="Minimizar / Expandir shaders">▾</button>
+                    <button type="button" class="shader-min-toggle" id="btn-shader-min-toggle" aria-label="Minimizar / Expandir seletor de shaders" title="Minimizar / Expandir shaders">▴</button>
                 </div>
             </div>
             <div class="shader-pills-row">
@@ -2641,13 +2809,13 @@ input, textarea, [contenteditable="true"] {
         left: 0 !important;
         right: 0 !important;
         width: 100% !important;
-        height: 60px !important;
+        height: 56px !important;
         z-index: 999999 !important;
-        background: rgba(3, 3, 5, 0.94) !important;
-        backdrop-filter: blur(30px) saturate(200%) !important;
-        -webkit-backdrop-filter: blur(30px) saturate(200%) !important;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-        box-shadow: 0 10px 35px rgba(0, 0, 0, 0.85) !important;
+        background: rgba(8, 8, 12, 0.88) !important;
+        backdrop-filter: blur(24px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07) !important;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7) !important;
         font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif !important;
         box-sizing: border-box !important;
         margin: 0 !important;
@@ -2659,7 +2827,7 @@ input, textarea, [contenteditable="true"] {
       .msb-inner {
         width: 100% !important;
         height: 100% !important;
-        padding: 0 24px !important;
+        padding: 0 20px !important;
         display: flex !important;
         align-items: center !important;
         justify-content: space-between !important;
@@ -2668,7 +2836,7 @@ input, textarea, [contenteditable="true"] {
       .msb-brand {
         display: flex !important;
         align-items: center !important;
-        gap: 12px !important;
+        gap: 10px !important;
         text-decoration: none !important;
         transition: transform 0.2s ease !important;
         cursor: pointer !important;
@@ -2677,15 +2845,15 @@ input, textarea, [contenteditable="true"] {
         transform: scale(1.02) !important;
       }
       .msb-logo-badge {
-        width: 36px !important;
-        height: 36px !important;
-        border-radius: 11px !important;
-        background: linear-gradient(135deg, #dc2626, #991b1b, #000) !important;
+        width: 34px !important;
+        height: 34px !important;
+        border-radius: 10px !important;
+        background: linear-gradient(135deg, rgba(239, 68, 68, 0.85), rgba(153, 27, 27, 0.5), #000) !important;
         padding: 1px !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
-        box-shadow: 0 0 16px rgba(255, 7, 58, 0.45) !important;
+        box-shadow: 0 0 10px rgba(255, 7, 58, 0.25) !important;
       }
       .msb-logo-inner {
         width: 100% !important;
@@ -3014,20 +3182,21 @@ input, textarea, [contenteditable="true"] {
          ======================================================== */
       #mobile-sovereign-bottom-bar {
         position: fixed !important;
-        bottom: 12px !important;
+        bottom: 10px !important;
         left: 8px !important;
         right: 8px !important;
-        max-width: 580px !important;
+        max-width: 540px !important;
         margin-left: auto !important;
         margin-right: auto !important;
         z-index: 999998 !important;
-        background: rgba(6, 0, 2, 0.94) !important;
+        background: rgba(10, 10, 14, 0.9) !important;
         backdrop-filter: blur(24px) saturate(180%) !important;
         -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
-        border: 1px solid rgba(153, 27, 27, 0.7) !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.14) !important;
         border-radius: 20px !important;
-        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.95), 0 0 22px rgba(255, 7, 58, 0.22) !important;
-        padding: 6px 4px calc(6px + env(safe-area-inset-bottom, 0px)) 4px !important;
+        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.8), 0 0 1px rgba(255, 255, 255, 0.15) !important;
+        padding: 5px 4px calc(5px + env(safe-area-inset-bottom, 0px)) 4px !important;
         box-sizing: border-box !important;
         transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
       }
@@ -3042,7 +3211,7 @@ input, textarea, [contenteditable="true"] {
         top: 4px !important;
         bottom: 4px !important;
         width: 12px !important;
-        background: linear-gradient(to right, rgba(6, 0, 2, 0.95), transparent) !important;
+        background: linear-gradient(to right, rgba(10, 10, 14, 0.95), transparent) !important;
         pointer-events: none !important;
         z-index: 10 !important;
         border-top-left-radius: 16px !important;
@@ -3054,7 +3223,7 @@ input, textarea, [contenteditable="true"] {
         top: 4px !important;
         bottom: 4px !important;
         width: 12px !important;
-        background: linear-gradient(to left, rgba(6, 0, 2, 0.95), transparent) !important;
+        background: linear-gradient(to left, rgba(10, 10, 14, 0.95), transparent) !important;
         pointer-events: none !important;
         z-index: 10 !important;
         border-top-right-radius: 16px !important;
@@ -3067,9 +3236,9 @@ input, textarea, [contenteditable="true"] {
         overflow-x: auto !important;
         scrollbar-width: none !important;
         -webkit-overflow-scrolling: touch !important;
-        gap: 3px !important;
-        padding: 0 4px !important;
-        height: 50px !important;
+        gap: 2px !important;
+        padding: 0 3px !important;
+        height: 48px !important;
         touch-action: pan-x !important;
       }
       .msb-bottom-dock-container::-webkit-scrollbar {
@@ -3082,13 +3251,13 @@ input, textarea, [contenteditable="true"] {
         align-items: center !important;
         justify-content: center !important;
         flex-shrink: 0 !important;
-        min-width: 52px !important;
+        min-width: 48px !important;
         min-height: 44px !important;
-        height: 48px !important;
-        padding: 2px 4px !important;
+        height: 46px !important;
+        padding: 2px 3px !important;
         border-radius: 12px !important;
         text-decoration: none !important;
-        color: #a1a1aa !important;
+        color: #9ca3af !important;
         transition: all 0.2s ease !important;
         user-select: none !important;
         -webkit-tap-highlight-color: transparent !important;
@@ -3117,51 +3286,51 @@ input, textarea, [contenteditable="true"] {
         margin-top: 2px !important;
         white-space: nowrap !important;
         line-height: 1 !important;
-        color: #a1a1aa !important;
+        color: #9ca3af !important;
         transition: color 0.2s ease !important;
       }
       .msb-dock-item.active {
         color: #ffffff !important;
-        font-weight: 700 !important;
+        font-weight: 600 !important;
       }
       .msb-dock-item.active .msb-dock-icon-box {
-        background: rgba(127, 29, 29, 0.7) !important;
-        color: #f87171 !important;
-        border: 1px solid rgba(220, 38, 38, 0.5) !important;
-        box-shadow: 0 0 16px rgba(255, 7, 58, 0.45) !important;
+        background: rgba(255, 7, 58, 0.14) !important;
+        color: #ff3366 !important;
+        border: 1px solid rgba(255, 7, 58, 0.35) !important;
+        box-shadow: 0 0 14px rgba(255, 7, 58, 0.25) !important;
       }
       .msb-dock-item.active .msb-dock-icon {
-        transform: scale(1.1) !important;
-        color: #f87171 !important;
+        transform: scale(1.08) !important;
+        color: #ff3366 !important;
       }
       .msb-dock-item.active .msb-dock-label {
-        color: #f87171 !important;
-        font-weight: 700 !important;
-        text-shadow: 0 0 8px rgba(255, 7, 58, 0.35) !important;
+        color: #ff3366 !important;
+        font-weight: 600 !important;
+        text-shadow: none !important;
       }
       .msb-dock-indicator {
         position: absolute !important;
         top: 1px !important;
         left: 50% !important;
         transform: translateX(-50%) !important;
-        width: 20px !important;
+        width: 18px !important;
         height: 2px !important;
-        background: linear-gradient(90deg, transparent, #ff073a, transparent) !important;
-        box-shadow: 0 0 8px #ff073a !important;
-        border-radius: 2px !important;
+        background: #ff073a !important;
+        box-shadow: 0 0 6px #ff073a !important;
+        border-radius: 9999px !important;
       }
       .msb-dock-active-dot {
         position: absolute !important;
         bottom: -2px !important;
-        width: 5px !important;
-        height: 5px !important;
+        width: 4px !important;
+        height: 4px !important;
         border-radius: 50% !important;
         background: #ff073a !important;
-        box-shadow: 0 0 8px #ff073a !important;
+        box-shadow: 0 0 6px #ff073a !important;
       }
       .msb-dock-admin-box {
-        background: rgba(69, 26, 3, 0.5) !important;
-        border: 1px solid rgba(245, 158, 11, 0.4) !important;
+        background: rgba(69, 26, 3, 0.35) !important;
+        border: 1px solid rgba(245, 158, 11, 0.3) !important;
         color: #fcd34d !important;
       }
     </style>
@@ -3471,24 +3640,32 @@ input, textarea, [contenteditable="true"] {
                     <video id="hero-video" class="hero-video" muted playsinline loop>
                         <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_115001_bcdaa3b4-03de-47e7-ad63-ae3e392c32d4.mp4" type="video/mp4">
                     </video>
+                    <div class="hero-video-scrim"></div>
                 </div>
                 
                 <!-- Overlay Content -->
-                <div class="hero-overlay-content" style="justify-content: center; padding-top: 64px;">
+                <div class="hero-overlay-content">
                     <!-- Center Content -->
-                    <div class="hero-center-content" style="transform: translateY(0);">
-                        <div style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 9999px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); margin-bottom: 20px; font-family: var(--font-mono); font-size: 0.75rem; color: #a1a1aa; letter-spacing: 2px;">
-                            <span>✦ ACERVO EXCLUSIVO</span>
-                            <span style="color: #ff073a;">●</span>
-                            <span>MATEUS CELESTINO PRO X</span>
+                    <div class="hero-center-content">
+                        <div class="hero-badge-pill">
+                            <span class="hero-badge-icon">✦</span>
+                            <span class="hero-badge-text">ACERVO EXCLUSIVO</span>
+                            <span class="hero-badge-dot"></span>
+                            <span class="hero-badge-brand">MATEUS CELESTINO PRO X</span>
                         </div>
-                        <h1 class="hero-center-title" style="font-family: 'Instrument Serif', serif; font-size: 5rem; text-shadow: 0 0 60px rgba(255,255,255,0.4); margin-bottom: 20px;">
+                        <h1 class="hero-center-title">
                             FREE RESOURCES
-                            <span class="hero-center-subtitle" style="display: block; font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 8px; text-transform: uppercase; color: var(--divine-muted); margin-top: 18px;">KNOWLEDGE VAULT & RECURSOS LIVRES</span>
+                            <span class="hero-center-subtitle">KNOWLEDGE VAULT &amp; RECURSOS LIVRES</span>
                         </h1>
-                        <p style="max-width: 620px; margin: 0 auto; font-size: 1rem; color: rgba(255, 255, 255, 0.65); line-height: 1.6; font-family: 'Outfit', sans-serif;">
+                        <p class="hero-center-desc">
                             Repositório aberto com automações avançadas, modelos cognitivos, packs e blueprints selecionados para a nova era da IA.
                         </p>
+                        <div class="hero-action-row">
+                            <a href="#library-modules-section" class="hero-explore-btn" onclick="document.getElementById('library-modules-section')?.scrollIntoView({behavior: 'smooth'}); return false;">
+                                <span>Explorar Recursos</span>
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <!-- Smooth Cinematic Hero Bottom Fade -->
@@ -5970,11 +6147,26 @@ input, textarea, [contenteditable="true"] {
         var btnToggle = document.getElementById('btn-shader-min-toggle');
         var shaderDock = document.getElementById('shader-control-dock');
         if (btnToggle && shaderDock) {
+          // No mobile (< 768px), garante estado minimizado elegante e limpo por padrão
+          if (window.innerWidth <= 768) {
+            shaderDock.classList.add('minimized');
+            btnToggle.textContent = '▴';
+          }
           btnToggle.addEventListener('click', function(e) {
             e.stopPropagation();
             shaderDock.classList.toggle('minimized');
             btnToggle.textContent = shaderDock.classList.contains('minimized') ? '▴' : '▾';
           });
+          // Clique no cabeçalho também alterna quando minimizado no mobile
+          var dockHeader = shaderDock.querySelector('.shader-dock-header');
+          if (dockHeader) {
+            dockHeader.addEventListener('click', function(e) {
+              if (window.innerWidth <= 768 && !e.target.closest('#btn-shader-auto') && !e.target.closest('#btn-shader-min-toggle')) {
+                shaderDock.classList.toggle('minimized');
+                btnToggle.textContent = shaderDock.classList.contains('minimized') ? '▴' : '▾';
+              }
+            });
+          }
         }
       })();
     </script>

@@ -49,9 +49,10 @@ async function runSeoDeepAudit() {
   
   // 1.1 robots.txt validation
   const robots = robotsBuilder();
-  const hasGooglebot = robots.rules?.some((r) => r.userAgent === 'Googlebot');
-  const hasAiBots = robots.rules?.some((r) => Array.isArray(r.userAgent) && r.userAgent.includes('Google-Extended'));
-  const blocksAdmin = robots.rules?.every((r) => !Array.isArray(r.disallow) || r.disallow.includes('/admin/'));
+  const rules = (Array.isArray(robots.rules) ? robots.rules : [robots.rules].filter(Boolean)) as any[];
+  const hasGooglebot = rules.some((r: any) => r.userAgent === 'Googlebot');
+  const hasAiBots = rules.some((r: any) => Array.isArray(r.userAgent) && r.userAgent.includes('Google-Extended'));
+  const blocksAdmin = rules.every((r: any) => !Array.isArray(r.disallow) || r.disallow.includes('/admin/'));
   const referencesSitemap = robots.sitemap === `${SITE_URL}/sitemap.xml`;
 
   if (hasGooglebot && hasAiBots && blocksAdmin && referencesSitemap) {
@@ -405,7 +406,7 @@ async function runSeoDeepAudit() {
     ogType: 'article',
   });
   const hasOgImages = sampleMeta.openGraph?.images && (sampleMeta.openGraph.images as any[]).length > 0;
-  const hasTwitterCards = sampleMeta.twitter?.card === 'summary_large_image';
+  const hasTwitterCards = (sampleMeta.twitter as any)?.card === 'summary_large_image';
 
   checks.push({
     category: 'EEAT_AUTHORITY',
