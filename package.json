@@ -15,7 +15,8 @@
     "db:seed": "npx tsx src/lib/db/seed.ts",
     "test": "NODE_ENV=test npx tsx --env-file-if-exists=.env.local --test tests/*.test.* tests/**/*.test.*",
     "storage:migrate": "npx tsx --env-file-if-exists=.env.local scripts/migrate-to-imagekit.ts",
-    "storage:dry-run": "npx tsx --env-file-if-exists=.env.local scripts/migrate-to-imagekit.ts --dry-run"
+    "storage:dry-run": "npx tsx --env-file-if-exists=.env.local scripts/migrate-to-imagekit.ts --dry-run",
+    "seo:audit": "npx tsx scripts/seo-deep-audit.ts"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.2.0",
