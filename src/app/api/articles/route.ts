@@ -4,6 +4,7 @@ import { eq, desc, ilike, or } from 'drizzle-orm';
 import { parseNotionMarkdown, calculateReadingTime, extractExcerpt } from '@/lib/notion-diary-parser';
 import rawArticles from '@/data/articles-summary.json';
 import { verifyAdminRequest, unauthorizedResponse } from '@/lib/auth/admin-guard';
+import { memoryCache } from '@/lib/cache/memory-cache';
 
 export const dynamic = 'force-dynamic';
 
@@ -33,6 +34,20 @@ export async function GET(request: NextRequest) {
     const limit = Math.min(100, Math.max(1, parseInt(searchParams.get('limit') || '50', 10)));
     const page = Math.max(1, parseInt(searchParams.get('page') || '1', 10));
     const offset = (page - 1) * limit;
+
+    const cacheKey = `articles:list:${category}:${search}:${page}:${limit}`;
+    const cached = memoryCache.get<any>(cacheKey);
+    if (cached) {
+      return NextResponse.json(
+        { ...cached, source: 'memory_cache' },
+        {
+          headers: {
+            'Cache-Control': 'public, s-maxage=120, stale-while-revalidate=600, max-age=60',
+            'X-Cache': 'HIT',
+          },
+        }
+      );
+    }
 
     let dbArticles: any[] = [];
     try {
@@ -77,13 +92,21 @@ export async function GET(request: NextRequest) {
         );
       }
 
-      return NextResponse.json({
+      const supabasePayload = {
         success: true,
         source: 'supabase',
         articles: filtered,
         total: filtered.length,
         page,
         limit,
+      };
+      memoryCache.set(cacheKey, supabasePayload, 300);
+
+      return NextResponse.json(supabasePayload, {
+        headers: {
+          'Cache-Control': 'public, s-maxage=120, stale-while-revalidate=600, max-age=60',
+          'X-Cache': 'MISS',
+        },
       });
     }
 
@@ -104,13 +127,21 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    return NextResponse.json({
+    const localPayload = {
       success: true,
       source: 'local_archive',
       articles: staticList.slice(offset, offset + limit),
       total: staticList.length,
       page,
       limit,
+    };
+    memoryCache.set(cacheKey, localPayload, 300);
+
+    return NextResponse.json(localPayload, {
+      headers: {
+        'Cache-Control': 'public, s-maxage=120, stale-while-revalidate=600, max-age=60',
+        'X-Cache': 'MISS',
+      },
     });
   } catch (error: any) {
     return NextResponse.json(
@@ -169,6 +200,9 @@ export async function POST(request: NextRequest) {
         isPublished: publishedFlag,
       })
       .returning();
+
+    // Invalidação imediata do cache de artigos
+    memoryCache.invalidatePattern('articles:');
 
     return NextResponse.json({
       success: true,
@@ -239,6 +273,9 @@ export async function PUT(request: NextRequest) {
       );
     }
 
+    // Invalidação imediata do cache de artigos
+    memoryCache.invalidatePattern('articles:');
+
     return NextResponse.json({
       success: true,
       message: 'Artigo atualizado com sucesso!',
@@ -274,6 +311,9 @@ export async function DELETE(request: NextRequest) {
     } else if (slug) {
       await db.delete(articles).where(eq(articles.slug, slug));
     }
+
+    // Invalidação imediata do cache de artigos
+    memoryCache.invalidatePattern('articles:');
 
     return NextResponse.json({
       success: true,

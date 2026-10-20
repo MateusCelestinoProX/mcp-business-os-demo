@@ -22,6 +22,7 @@ import {
   ArrowRight
 } from 'lucide-react';
 import GridScanShader from '@/components/shaders/GridScanShader';
+import { getStoredUser, hasAdminAccess } from '@/lib/auth/unified-auth';
 
 export interface UniversalSitemapModalProps {
   isOpen: boolean;
@@ -36,6 +37,20 @@ export function UniversalSitemapModal({
 }: UniversalSitemapModalProps) {
   const [activeFilter, setActiveFilter] = useState<'all' | 'site' | 'artigos' | 'vault' | 'comunidade'>('all');
   const [searchTerm, setSearchTerm] = useState('');
+  const [isUserAdmin, setIsUserAdmin] = useState(false);
+
+  useEffect(() => {
+    setIsUserAdmin(hasAdminAccess(getStoredUser()));
+    const handleAuthChange = () => {
+      setIsUserAdmin(hasAdminAccess(getStoredUser()));
+    };
+    window.addEventListener('mcp_auth_changed', handleAuthChange);
+    window.addEventListener('storage', handleAuthChange);
+    return () => {
+      window.removeEventListener('mcp_auth_changed', handleAuthChange);
+      window.removeEventListener('storage', handleAuthChange);
+    };
+  }, []);
 
   // Trava scroll da página quando modal estiver aberto
   useEffect(() => {
@@ -480,9 +495,9 @@ export function UniversalSitemapModal({
             )}
 
             {/* ---------------------------------------------------------------------
-                PILAR 4: SAAS & FERRAMENTAS AVANÇADAS
+                PILAR 4: SAAS & FERRAMENTAS AVANÇADAS (EXCLUSIVO PARA ADMIN)
                 --------------------------------------------------------------------- */}
-            {(activeFilter === 'all' || activeFilter === 'site') && (
+            {isUserAdmin && (activeFilter === 'all' || activeFilter === 'site') && (
               <div className="rounded-2xl p-5 bg-[#09090f]/70 border border-white/[0.08] hover:border-purple-500/40 backdrop-blur-xl shadow-[0_15px_35px_rgba(0,0,0,0.6)] space-y-4 transition-all">
                 <div className="flex items-center justify-between border-b border-white/[0.08] pb-3">
                   <div className="flex items-center gap-2.5">

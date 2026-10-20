@@ -6,9 +6,26 @@ import { ShoppingBag, ArrowLeft, ShieldCheck, Sparkles } from 'lucide-react';
 import LiquidGlassBackground from '@/components/portal/LiquidGlassBackground';
 import ShopSection, { ShopData } from '@/components/portal/ShopSection';
 import siteData from '@/data/siteData.json';
+import { getStoredUser, hasAdminAccess } from '@/lib/auth/unified-auth';
 
 export default function ShopPage() {
   const [shopData, setShopData] = useState<ShopData>(siteData?.shop || {});
+  const [isUserAdmin, setIsUserAdmin] = useState(false);
+
+  useEffect(() => {
+    setIsUserAdmin(hasAdminAccess(getStoredUser()));
+
+    const handleAuthChange = () => {
+      setIsUserAdmin(hasAdminAccess(getStoredUser()));
+    };
+
+    window.addEventListener('mcp_auth_changed', handleAuthChange);
+    window.addEventListener('storage', handleAuthChange);
+    return () => {
+      window.removeEventListener('mcp_auth_changed', handleAuthChange);
+      window.removeEventListener('storage', handleAuthChange);
+    };
+  }, []);
 
   useEffect(() => {
     let isMounted = true;
@@ -74,14 +91,16 @@ export default function ShopPage() {
               <span className="hidden sm:inline">Atendimento Direto & Checkout Validado</span>
             </span>
 
-            <Link
-              href="/admin/shop"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full glass-pill text-[11px] font-mono font-semibold text-zinc-300 hover:text-white border border-white/10 hover:border-[#ff073a]/50 transition-colors"
-              title="Acessar Gerenciador do Shop no Painel Admin"
-            >
-              <Sparkles className="w-3.5 h-3.5 text-[#ff073a]" />
-              <span className="hidden sm:inline">Gerenciar Shop</span>
-            </Link>
+            {isUserAdmin && (
+              <Link
+                href="/admin/shop"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full glass-pill text-[11px] font-mono font-semibold text-zinc-300 hover:text-white border border-white/10 hover:border-[#ff073a]/50 transition-colors"
+                title="Acessar Gerenciador do Shop no Painel Admin"
+              >
+                <Sparkles className="w-3.5 h-3.5 text-[#ff073a]" />
+                <span className="hidden sm:inline">Gerenciar Shop</span>
+              </Link>
+            )}
           </div>
 
         </div>

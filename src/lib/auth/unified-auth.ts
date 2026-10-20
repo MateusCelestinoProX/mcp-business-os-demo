@@ -33,8 +33,8 @@ export function getStoredUser(): UnifiedUser {
 
     const parsed = JSON.parse(raw);
     if (parsed && typeof parsed === 'object') {
-      // Limpa dados de simulação legada (como 'Moderador Oficial')
-      if (parsed.name === 'Moderador Oficial' || !parsed.isLoggedIn) {
+      // Limpa dados sem login válido
+      if (!parsed.isLoggedIn) {
         localStorage.removeItem(AUTH_STORAGE_KEY);
         localStorage.removeItem('mcp_user_role');
         localStorage.removeItem('mcp_admin_auth');

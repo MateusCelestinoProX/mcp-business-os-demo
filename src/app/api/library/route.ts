@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { searchAndFilterResources, getAllResources, getResourceById } from '@/lib/library/catalog';
+import { memoryCache } from '@/lib/cache/memory-cache';
 
 export const dynamic = 'force-dynamic';
 
@@ -14,6 +15,20 @@ export async function GET(request: NextRequest) {
 
     // Se um ID específico for solicitado diretamente
     if (id) {
+      const cacheKey = `library:item:${id}`;
+      const cachedItem = memoryCache.get<any>(cacheKey);
+      if (cachedItem) {
+        return NextResponse.json(
+          { success: true, item: cachedItem, source: 'memory_cache' },
+          {
+            headers: {
+              'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=1800, max-age=60',
+              'X-Cache': 'HIT',
+            },
+          }
+        );
+      }
+
       const item = getResourceById(id);
       if (!item) {
         return NextResponse.json(
@@ -21,7 +36,30 @@ export async function GET(request: NextRequest) {
           { status: 404 }
         );
       }
-      return NextResponse.json({ success: true, item });
+      memoryCache.set(cacheKey, item, 600);
+      return NextResponse.json(
+        { success: true, item, source: 'catalog' },
+        {
+          headers: {
+            'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=1800, max-age=60',
+            'X-Cache': 'MISS',
+          },
+        }
+      );
+    }
+
+    const cacheKey = `library:list:${category}:${query}:${page}:${limit}`;
+    const cachedList = memoryCache.get<any>(cacheKey);
+    if (cachedList) {
+      return NextResponse.json(
+        { ...cachedList, source: 'memory_cache' },
+        {
+          headers: {
+            'Cache-Control': 'public, s-maxage=180, stale-while-revalidate=900, max-age=60',
+            'X-Cache': 'HIT',
+          },
+        }
+      );
     }
 
     const result = searchAndFilterResources({
@@ -31,11 +69,19 @@ export async function GET(request: NextRequest) {
       limit: isNaN(limit) ? 12 : limit,
     });
 
-    return NextResponse.json({
+    const payload = {
       success: true,
       query,
       category,
       ...result,
+    };
+    memoryCache.set(cacheKey, payload, 300);
+
+    return NextResponse.json(payload, {
+      headers: {
+        'Cache-Control': 'public, s-maxage=180, stale-while-revalidate=900, max-age=60',
+        'X-Cache': 'MISS',
+      },
     });
   } catch (error: any) {
     console.error('Erro na API de biblioteca:', error);

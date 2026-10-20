@@ -12,6 +12,7 @@ import {
   buildGraphSchema,
 } from "@/services/seo/structured-data";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { SmartCacheEngine } from "@/components/cache/SmartCacheEngine";
 
 export const viewport: Viewport = {
   themeColor: "#030305",
@@ -38,11 +39,24 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className="dark">
       <head>
+        {/* Preconnect & DNS-Prefetch Inteligente para Máxima Performance de Rede */}
+        <link rel="preconnect" href="https://ik.imagekit.io" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://ik.imagekit.io" />
+        <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://images.unsplash.com" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="https://api.dicebear.com" />
+
         {/* Schema.org Global: Organização, Especialista E-E-A-T & Google Sitelinks Searchbox */}
         <JsonLd data={globalSchema} id="global-sovereign-schema" />
         <link rel="alternate" type="application/rss+xml" title="Feed RSS Mateus Celestino Pro X" href="/feed.xml" />
       </head>
       <body className="bg-[#0c0003] text-[#f3f4f6] antialiased selection:bg-red-500/30 selection:text-white min-h-screen flex flex-col relative overflow-x-hidden">
+        {/* Motor de Cache Inteligente Soberano, Service Worker & Speculation Rules (Instant Load 0ms) */}
+        <SmartCacheEngine />
+
         {/* Fundo Global: Piscina de Energia Vermelha Massiva e Escurricredia */}
         <LiquidGlassBackground />
 

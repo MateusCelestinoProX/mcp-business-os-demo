@@ -16,7 +16,8 @@
     "test": "NODE_ENV=test npx tsx --env-file-if-exists=.env.local --test tests/*.test.* tests/**/*.test.*",
     "storage:migrate": "npx tsx --env-file-if-exists=.env.local scripts/migrate-to-imagekit.ts",
     "storage:dry-run": "npx tsx --env-file-if-exists=.env.local scripts/migrate-to-imagekit.ts --dry-run",
-    "seo:audit": "npx tsx scripts/seo-deep-audit.ts"
+    "seo:audit": "npx tsx scripts/seo-deep-audit.ts",
+    "cache:test": "npx tsx tests/smart_cache_suite.test.ts"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.2.0",

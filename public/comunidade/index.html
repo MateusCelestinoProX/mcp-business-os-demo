@@ -13,6 +13,37 @@
     <link rel="icon" type="image/png" sizes="256x256" href="/icon.png">
     <link rel="shortcut icon" href="/favicon.ico">
     
+    <!-- Preconnect & DNS-Prefetch Inteligente para CDNs e Assets -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
+    <link rel="dns-prefetch" href="https://unpkg.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://ik.imagekit.io" crossorigin>
+    <link rel="dns-prefetch" href="https://ik.imagekit.io">
+
+    <!-- Speculation Rules API Nativa -->
+    <script type="speculationrules">
+    {
+      "prerender": [
+        {
+          "source": "document",
+          "where": {
+            "and": [
+              { "href_matches": "/*" },
+              { "not": { "href_matches": "/admin/*" } },
+              { "not": { "href_matches": "/api/*" } }
+            ]
+          },
+          "eagerness": "moderate"
+        }
+      ]
+    }
+    </script>
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -1456,13 +1487,13 @@
           var mobileProfileBtn = document.getElementById('msb-mobile-profile-btn');
           var mobileLogoutBtn = document.getElementById('msb-mobile-logout-btn');
 
-          var isAdminOrModer = (u.role === 'admin' || u.role === 'moder');
+          var isAdmin = (u.role === 'admin');
           if (adminBtn) {
-            if (isAdminOrModer) adminBtn.classList.add('visible');
+            if (isAdmin) adminBtn.classList.add('visible');
             else adminBtn.classList.remove('visible');
           }
           if (mobileAdminBtn) {
-            mobileAdminBtn.style.display = isAdminOrModer ? 'flex' : 'none';
+            mobileAdminBtn.style.display = isAdmin ? 'flex' : 'none';
           }
 
           if (userName) userName.textContent = u.name;
@@ -3085,7 +3116,7 @@
           var userStr = localStorage.getItem('mcp_session_user');
           var user = userStr ? JSON.parse(userStr) : null;
           var role = user ? user.role : localStorage.getItem('mcp_user_role');
-          var isAdmin = role === 'admin' || role === 'moderador';
+          var isAdmin = role === 'admin';
           var adminLink = document.getElementById('msb-dock-admin-link');
           if (adminLink && isAdmin) {
             adminLink.style.display = 'flex';
@@ -3147,5 +3178,13 @@
     <script type="module" src="/comunidade/js/community-shaders.js"></script>
     <!-- App Logic (Supabase-integrated) -->
     <script src="/comunidade/app.js?v=12"></script>
+    <!-- Service Worker & Smart Cache Registrador Soberano -->
+    <script>
+      if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1')) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('/sw.js', { scope: '/' }).catch(function() {});
+        });
+      }
+    </script>
 </body>
 </html>

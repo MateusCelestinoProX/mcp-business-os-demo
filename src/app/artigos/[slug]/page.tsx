@@ -34,6 +34,9 @@ interface PageProps {
   }>;
 }
 
+// ISR Inteligente: Cache estático soberano regenerado a cada 24 horas no CDN Edge
+export const revalidate = 86400;
+
 export async function generateStaticParams() {
   const articles = getAllArticles();
   return articles.map((article) => ({

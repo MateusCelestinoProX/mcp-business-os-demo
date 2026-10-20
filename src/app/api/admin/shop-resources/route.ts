@@ -3,6 +3,7 @@ import { db, systemSettings } from '@/lib/db';
 import { eq } from 'drizzle-orm';
 import { verifyAdminRequest, unauthorizedResponse } from '@/lib/auth/admin-guard';
 import siteData from '@/data/siteData.json';
+import { memoryCache } from '@/lib/cache/memory-cache';
 
 export const dynamic = 'force-dynamic';
 
@@ -295,6 +296,25 @@ function normalizeShopResourcesConfig(raw: any) {
 
 export async function GET() {
   try {
+    const cacheKey = 'shop:resources:config';
+    const cached = memoryCache.get<any>(cacheKey);
+    if (cached) {
+      return NextResponse.json(
+        {
+          success: true,
+          source: 'memory_cache',
+          config: cached,
+          data: cached,
+        },
+        {
+          headers: {
+            'Cache-Control': 'public, s-maxage=60, stale-while-revalidate=300, max-age=30',
+            'X-Cache': 'HIT',
+          },
+        }
+      );
+    }
+
     const existing = await db
       .select()
       .from(systemSettings)
@@ -303,6 +323,9 @@ export async function GET() {
 
     const raw = existing && existing.length > 0 && existing[0].value ? existing[0].value : DEFAULT_CONFIG;
     const normalized = normalizeShopResourcesConfig(raw);
+
+    // Armazena no cache em memória inteligente por 300 segundos (5 min)
+    memoryCache.set(cacheKey, normalized, 300);
 
     // Auto-recuperação/auto-heal no Supabase se os produtos estiverem vazios no banco
     if (existing && existing.length > 0 && existing[0].value) {
@@ -327,21 +350,37 @@ export async function GET() {
       }
     }
 
-    return NextResponse.json({
-      success: true,
-      source: existing && existing.length > 0 ? 'supabase' : 'default_preset',
-      config: normalized,
-      data: normalized,
-    });
+    return NextResponse.json(
+      {
+        success: true,
+        source: existing && existing.length > 0 ? 'supabase' : 'default_preset',
+        config: normalized,
+        data: normalized,
+      },
+      {
+        headers: {
+          'Cache-Control': 'public, s-maxage=60, stale-while-revalidate=300, max-age=30',
+          'X-Cache': 'MISS',
+        },
+      }
+    );
   } catch (err: any) {
     const fallback = normalizeShopResourcesConfig(DEFAULT_CONFIG);
-    return NextResponse.json({
-      success: true,
-      source: 'fallback',
-      config: fallback,
-      data: fallback,
-      warning: err?.message,
-    });
+    return NextResponse.json(
+      {
+        success: true,
+        source: 'fallback',
+        config: fallback,
+        data: fallback,
+        warning: err?.message,
+      },
+      {
+        headers: {
+          'Cache-Control': 'public, s-maxage=30, stale-while-revalidate=120',
+          'X-Cache': 'BYPASS',
+        },
+      }
+    );
   }
 }
 
@@ -392,6 +431,9 @@ export async function POST(request: NextRequest) {
     } catch (fsErr) {
       console.warn('Aviso ao sincronizar siteData.json local:', fsErr);
     }
+
+    // Expurgo inteligente e imediato do cache em memória (Purge Cache)
+    memoryCache.invalidatePattern('shop:');
 
     return NextResponse.json({
       success: true,

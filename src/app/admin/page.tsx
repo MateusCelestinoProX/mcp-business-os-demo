@@ -214,15 +214,17 @@ export default function AdminPanelPage() {
         if (res.ok) {
           const data = await res.json();
           const target = data.user || data.member;
-          if (data.authenticated && target && target.role === 'admin') {
+          const isAllowedRole = target && (target.role === 'admin' || target.role === 'moder' || target.role === 'moderator');
+          if (data.authenticated && target && (target.role === 'admin' || isAllowedRole)) {
+            const role: UserRole = target.role === 'admin' ? 'admin' : 'moder';
             const user: UnifiedUser = {
               id: target.id,
               isLoggedIn: true,
-              role: 'admin',
-              name: target.name || "Mateus Celestino Pro X",
+              role: role,
+              name: target.name || (role === 'admin' ? "Mateus Celestino Pro X" : "Moderador Oficial"),
               email: target.email,
               avatar: "",
-              tier: "max",
+              tier: role === 'admin' ? "max" : "vip",
             };
             setCurrentUser(user);
             setStoredUser(user);
