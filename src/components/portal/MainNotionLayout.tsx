@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
+import Link from 'next/link';
 import { Search, Clock, ArrowUpRight, BookOpen, ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { ArticleData } from './ArticleModal';
 import RippleGridShader from '../shaders/RippleGridShader';
@@ -219,9 +220,21 @@ export function MainNotionLayout({
             {paginatedArticles.map((art) => (
               <article
                 key={art.id}
-                onClick={() => onSelectArticle(art)}
-                className="glass-card-luxury flex flex-col justify-between cursor-pointer group active:scale-[0.99] transition-transform touch-manipulation"
+                className="glass-card-luxury flex flex-col justify-between group active:scale-[0.99] transition-transform touch-manipulation relative"
               >
+                {/* Link Semântico Rastreável pelo Googlebot & Acessibilidade */}
+                <Link
+                  href={`/artigos/${art.slug}`}
+                  onClick={(e) => {
+                    if (!e.metaKey && !e.ctrlKey && !e.shiftKey) {
+                      e.preventDefault();
+                      onSelectArticle(art);
+                    }
+                  }}
+                  className="absolute inset-0 z-20 cursor-pointer"
+                  aria-label={`Ler guia completo: ${art.title}`}
+                />
+
                 {/* Top: Imagem de Capa Full Bleed com Fusão de Vidro */}
                 <div>
                   <div className="relative aspect-[16/10] w-full overflow-hidden bg-black rounded-t-2xl">

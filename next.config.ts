@@ -1,5 +1,4 @@
 import type { NextConfig } from "next";
-import path from "path";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
@@ -7,6 +6,7 @@ const nextConfig: NextConfig = {
   compress: true,
   poweredByHeader: false,
   images: {
+    formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       { protocol: "https", hostname: "ik.imagekit.io" },
       { protocol: "https", hostname: "images.unsplash.com" },
@@ -16,6 +16,20 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "**.supabase.co" },
       { protocol: "https", hostname: "d8j0ntlcm91z4.cloudfront.net" },
     ],
+  },
+  async redirects() {
+    return [
+      {
+        source: '/politica-de-privacidade',
+        destination: '/privacidade',
+        permanent: true,
+      },
+      {
+        source: '/termos-de-uso',
+        destination: '/termos',
+        permanent: true,
+      },
+    ];
   },
   async rewrites() {
     return [
@@ -30,6 +44,27 @@ const nextConfig: NextConfig = {
       {
         source: '/src/data/:path*',
         destination: '/comunidade/src/data/:path*',
+      },
+    ];
+  },
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin',
+          },
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=()',
+          },
+        ],
       },
     ];
   },

@@ -5627,15 +5627,17 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
     }
 
     if (toastIcon) toastIcon.textContent = icon;
-    toastMessage.textContent = msg.replace(/^[✅❌ℹ️👑🔑🛡️]\s*/, '');
+    toastMessage.textContent = msg.replace(/^[✅❌ℹ️👑🔑🛡️📋🔗🔖]\s*/, '');
     toast.style.borderColor = borderColor;
     toast.style.zIndex = '100001';
 
-    toast.classList.remove('translate-y-[200%]');
+    toast.classList.remove('opacity-0', 'pointer-events-none', 'scale-95', 'translate-y-4', 'translate-y-[200%]');
+    toast.classList.add('opacity-100', 'pointer-events-auto', 'scale-100', 'translate-y-0');
     if (toastTimer) clearTimeout(toastTimer);
     toastTimer = setTimeout(() => {
-      toast.classList.add('translate-y-[200%]');
-    }, 4000);
+      toast.classList.remove('opacity-100', 'pointer-events-auto', 'scale-100', 'translate-y-0');
+      toast.classList.add('opacity-0', 'pointer-events-none', 'scale-95', 'translate-y-4');
+    }, 2800);
   }
   window.appShowToast = showToast;
 

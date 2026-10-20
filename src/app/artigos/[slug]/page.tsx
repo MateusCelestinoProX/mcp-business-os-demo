@@ -23,6 +23,10 @@ import {
   getArticlesByCategory,
   Article,
 } from "@/lib/articles";
+import { constructMetadata } from "@/services/seo/metadata";
+import { buildArticleSchema, buildBreadcrumbSchema, buildGraphSchema } from "@/services/seo/structured-data";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 
 interface PageProps {
   params: Promise<{
@@ -42,30 +46,23 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const article = getArticleBySlug(resolvedParams.slug);
 
   if (!article) {
-    return {
-      title: "Artigo Não Encontrado — Mateus Celestino Pro",
-    };
+    return constructMetadata({
+      title: "Artigo Não Encontrado",
+      description: "O artigo solicitado não foi localizado no acervo técnico.",
+      noIndex: true,
+    });
   }
 
-  return {
-    title: `${article.title} — Mateus Celestino Pro`,
+  return constructMetadata({
+    title: article.title,
     description: article.excerpt,
-    openGraph: {
-      title: article.title,
-      description: article.excerpt,
-      images: [
-        {
-          url: article.coverImage || "/assets/hero_cover.webp",
-          width: 1200,
-          height: 630,
-          alt: article.title,
-        },
-      ],
-      type: "article",
-      publishedTime: article.createdAt,
-      authors: ["Mateus Celestino"],
-    },
-  };
+    path: `/artigos/${article.slug}`,
+    ogType: "article",
+    ogImage: article.coverImage || "/assets/hero_cover.webp",
+    publishedTime: article.createdAt,
+    section: article.category,
+    keywords: [article.category, "Artigo Técnico", "Guia Passo a Passo"],
+  });
 }
 
 export default async function ArtigoDetailPage({ params }: PageProps) {
@@ -85,22 +82,29 @@ export default async function ArtigoDetailPage({ params }: PageProps) {
   const isTool = article.category.toUpperCase().includes("FERRAMENTAS");
   const isLinux = article.category.toUpperCase().includes("LINUX");
 
+  const articleSchema = buildGraphSchema([
+    buildArticleSchema(article),
+    buildBreadcrumbSchema([
+      { name: "Artigos", url: "/artigos" },
+      { name: article.title, url: `/artigos/${article.slug}` },
+    ]),
+  ]);
+
   return (
     <article className="min-h-screen py-6 sm:py-10 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto space-y-8 sm:space-y-10 overflow-hidden">
-      {/* Barra de Navegação Superior & Breadcrumb */}
-      <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
-        <Link href="/artigos">
-          <Button
-            variant="ghost"
-            size="sm"
-            className="text-neutral-400 hover:text-white gap-1.5 flex items-center min-h-[44px] px-3 touch-manipulation active:scale-95"
-          >
-            <ArrowLeft className="w-4 h-4 text-red-500" />
-            <span>Voltar aos Artigos</span>
-          </Button>
-        </Link>
+      {/* Schema.org TechArticle & Breadcrumbs para o Googlebot */}
+      <JsonLd data={articleSchema} id="article-structured-data" />
 
-        <div className="flex items-center gap-2">
+      {/* Barra de Navegação Superior & Breadcrumb */}
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-2">
+        <Breadcrumbs
+          items={[
+            { name: "Artigos", url: "/artigos" },
+            { name: article.title, url: `/artigos/${article.slug}` },
+          ]}
+        />
+
+        <div className="flex items-center gap-2 shrink-0">
           <Badge
             variant={isAI ? "red" : isTool ? "gold" : isLinux ? "success" : "default"}
             dot

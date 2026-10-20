@@ -1484,10 +1484,10 @@
         </div>
     </div>
 
-    <!-- Toast Notification (Z-Index Máximo Universal - Acima do Dock no Mobile) -->
-    <div id="toast" class="fixed bottom-24 md:bottom-8 left-1/2 -translate-x-1/2 bg-black/90 border border-white/25 text-white px-6 py-3.5 rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.85)] backdrop-blur-2xl font-semibold text-sm transform translate-y-[200%] transition-transform duration-300 pointer-events-auto flex items-center space-x-3 z-[100001] max-w-[90vw]">
+    <!-- Toast Notification (Z-Index Máximo Universal - Acima do Dock no Mobile com Blindagem Oculta) -->
+    <div id="toast" class="fixed bottom-24 md:bottom-10 left-1/2 -translate-x-1/2 bg-black/95 border border-white/25 text-white px-5 py-3 rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.9)] backdrop-blur-2xl font-semibold text-xs sm:text-sm opacity-0 pointer-events-none scale-95 translate-y-4 transition-all duration-300 ease-out flex items-center space-x-2.5 z-[100001] max-w-[90vw]">
         <span id="toastIcon" class="text-base">✅</span>
-        <span id="toastMessage" class="tracking-wide">Prompt copiado com 1 clique!</span>
+        <span id="toastMessage" class="tracking-wide"></span>
     </div>
 
     <!-- AUTH MODAL (Login / Register com Z-Index Soberano e Feedback Visual) -->
