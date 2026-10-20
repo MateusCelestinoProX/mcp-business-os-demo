@@ -1,16 +1,16 @@
-# Graph Report - plataforma-unificada-soberana  (2026-10-20)
+# Graph Report - mcp-business-os  (2026-10-20)
 
 ## Corpus Check
-- 270 files · ~8,566,893 words
+- 270 files · ~8,567,557 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2144 nodes · 4270 edges · 152 communities (98 shown, 37 thin omitted)
+- 2146 nodes · 4278 edges · 151 communities (95 shown, 39 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 74 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `f2482b87`
+- Built from commit: `a65138e7`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -63,7 +63,7 @@
 - schema.ts
 - app.js
 - it
-- verifyAdminRequest
+- shop-resources/route.ts
 - BRIEFING — 2026-10-14T15:40:00Z
 - BRIEFING — 2026-10-14T15:54:00Z
 - BRIEFING — 2026-10-14T15:55:00Z
@@ -77,15 +77,15 @@
 - Relatório de Handoff — WebGL & Shaders Specialist (agent-shaders)
 - devDependencies
 - Relatório de Handoff — Members Area & Community Engineer (agent-members)
-- Badge.tsx
+- cn
 - Relatório de Handoff — Lead Frontend & Glassmorphism Architect (agent-foundations)
 - scripts
 - library.test.mjs
-- app/layout.tsx
+- Navbar.tsx
 - server-guardian.js
 - Relatório de Handoff — Database Architect & Drizzle Master (agent-database)
-- comunidade/auth.test.ts
-- cn
+- admin-guard.ts
+- CatalogGrid.tsx
 - structured-data.ts
 - Relatório de Handoff — Growth Engineer & Portal Institucional Specialist (agent-marketing)
 - auth_feedback_comunidade.test.mjs
@@ -102,32 +102,32 @@
 - biblioteca/route.ts
 - comunidade/route.ts
 - 🚀 Guia Oficial de Deploy na Vercel & Auditoria de Segurança — A.I VISUALS
-- sr
+- ke
 - tailwindcss
 - U
 - ar
-- articles/route.ts
+- .getRenderList
 - .z
-- memoryCache
+- l
 - gr
 - library-manager.ts
 - ks
 - le
 - V
-- react
+- lucide-react
 - script.js
 - vercel.json
 - MCP Business OS — Plataforma Unificada Soberana
 - q
 - en
-- libraries/route.ts
-- ke
+- SearchHeader.tsx
+- j
 - K
 - ShopControlSuite.tsx
 - ResourceCard.tsx
 - vercel.json
 - .x
-- addItemToLibrary
+- ResourceSearch.tsx
 - showcase/route.ts
 - .addAttribute
 - visual_stability.test.mjs
@@ -139,17 +139,16 @@
 - 5. Especificação das Rotas de API (REST / JSON)
 - 🚀 Os 6 Pilares do Sistema
 - 3. Acervos de Dados Embutidos & Ativos Intelectuais
-- admin/page.tsx
+- react
 - sw.js
 - admin_vertical_sidebar_layout.test.ts
 - auth.ts
-- zt
+- sr
 - portal_home_mobile.test.ts
 - Estabilidade Visual & Resolução de GPU Scroll — Incidente INC-2026-10-17-SCROLL
 - 🔬 Diagnóstico e Investigação das Causas Raízes
-- lucide-react
-- portal_restoration.test.ts
-- middleware.ts
+- PhotografyContactHub.tsx
+- db/index.ts
 
 ## God Nodes (most connected - your core abstractions)
 1. `_` - 208 edges
@@ -178,7 +177,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (152 total, 37 thin omitted)
+## Communities (151 total, 39 thin omitted)
 
 ### Community 0 - "Relatório de Survey Técnico — Explorer 2"
 Cohesion: 0.08
@@ -281,8 +280,8 @@ Cohesion: 0.29
 Nodes (6): 1. Observation (Observações Diretas), 2. Logic Chain (Cadeia de Raciocínio), 3. Caveats (Ressalvas e Limitações), 4. Conclusion (Conclusão), 5. Verification Method (Método de Verificação), Relatório de Handoff — Explorer 3 (Fase de Survey)
 
 ### Community 41 - "package.json"
-Cohesion: 0.08
-Nodes (22): description, name, private, version, clsx, drizzle-kit, framer-motion, jose (+14 more)
+Cohesion: 0.07
+Nodes (25): description, name, private, version, clsx, drizzle-kit, framer-motion, jose (+17 more)
 
 ### Community 42 - "dependencies"
 Cohesion: 0.11
@@ -293,12 +292,12 @@ Cohesion: 0.11
 Nodes (18): compilerOptions, allowJs, esModuleInterop, incremental, isolatedModules, jsx, lib, module (+10 more)
 
 ### Community 44 - "catalog.ts"
-Cohesion: 0.19
-Nodes (19): dynamic, GET(), getMimeType(), POST(), dynamic, GET(), BibliotecaItemPage(), generateMetadata() (+11 more)
+Cohesion: 0.17
+Nodes (21): dynamic, GET(), getMimeType(), POST(), dynamic, GET(), BibliotecaItemPage(), dynamicParams (+13 more)
 
 ### Community 45 - "schema.ts"
-Cohesion: 0.09
-Nodes (22): dynamic, dynamic, checkDatabaseHealth(), checkDbStatus, connectionString, isDbConfigured, AdminUser, adminUsers (+14 more)
+Cohesion: 0.13
+Nodes (18): checkDatabaseHealth(), AdminUser, adminUsers, Article, articles, AuthSession, authSessions, Lead (+10 more)
 
 ### Community 47 - "app.js"
 Cohesion: 0.07
@@ -306,11 +305,11 @@ Nodes (93): applyBgSettingsUI(), clearAuthAlert(), convertToEmbedUrl(), _depreca
 
 ### Community 48 - "it"
 Cohesion: 0.16
-Nodes (3): Ds(), it, rr
+Nodes (3): Ds(), it, St
 
-### Community 49 - "verifyAdminRequest"
-Cohesion: 0.16
-Nodes (14): DEFAULT_CONFIG, dynamic, GET(), normalizeShopResourcesConfig(), POST(), dynamic, POST(), dynamic (+6 more)
+### Community 49 - "shop-resources/route.ts"
+Cohesion: 0.20
+Nodes (6): DEFAULT_CONFIG, dynamic, GET(), normalizeShopResourcesConfig(), systemSettings, BASE_DIR
 
 ### Community 50 - "BRIEFING — 2026-10-14T15:40:00Z"
 Cohesion: 0.18
@@ -342,7 +341,7 @@ Nodes (4): GET(), POST(), resolveLeadSource(), runTests()
 
 ### Community 59 - "ShaderBackground.tsx"
 Cohesion: 0.06
-Nodes (65): initGalaxy(), initSingularity(), ogl, @react-three/drei, @react-three/fiber, three, SobreSectionProps, BalatroShader() (+57 more)
+Nodes (64): initGalaxy(), initSingularity(), ogl, three, AdminRedShader(), AdminRedShaderProps, BalatroShader(), BalatroShaderProps (+56 more)
 
 ### Community 60 - "Relatório de Handoff — WebGL & Shaders Specialist (agent-shaders)"
 Cohesion: 0.29
@@ -356,9 +355,9 @@ Nodes (13): devDependencies, drizzle-kit, postcss, tailwindcss, @tailwindcss/pos
 Cohesion: 0.29
 Nodes (6): 1. Observation (Observações Diretas), 2. Logic Chain (Cadeia de Raciocínio), 3. Caveats (Ressalvas e Limitações), 4. Conclusion (Conclusão), 5. Verification Method (Método de Verificação), Relatório de Handoff — Members Area & Community Engineer (agent-members)
 
-### Community 63 - "Badge.tsx"
+### Community 63 - "cn"
 Cohesion: 0.09
-Nodes (28): MEDIA_CATALOG, MediaItem, Section, SECTIONS, TERM_SECTIONS, TermSection, CheckoutModal(), CommunityFeed() (+20 more)
+Nodes (32): MEDIA_CATALOG, MediaItem, MidiasPage(), Section, SECTIONS, TERM_SECTIONS, TermSection, CheckoutModal() (+24 more)
 
 ### Community 64 - "Relatório de Handoff — Lead Frontend & Glassmorphism Architect (agent-foundations)"
 Cohesion: 0.29
@@ -372,9 +371,9 @@ Nodes (15): scripts, build, cache:test, db:generate, db:push, db:seed, dev, dev:
 Cohesion: 0.29
 Nodes (4): PROJECT_ROOT, PUBLIC_CATALOG_PATH, SOURCE_DIR, SRC_CATALOG_PATH
 
-### Community 67 - "app/layout.tsx"
-Cohesion: 0.12
-Nodes (26): AdminPanelPage(), verifyServerSession(), LoginPage(), metadata, viewport, ShopPage(), SmartCacheEngine(), SPECULATION_RULES (+18 more)
+### Community 67 - "Navbar.tsx"
+Cohesion: 0.15
+Nodes (22): AdminPanelPage(), verifyServerSession(), LoginPage(), ShopPage(), Footer(), MobileBottomNav(), MobileNavItem, mobileNavItems (+14 more)
 
 ### Community 68 - "server-guardian.js"
 Cohesion: 0.22
@@ -384,17 +383,17 @@ Nodes (16): checkHealthThreshold(), cleanNextCache(), freePort(), fs, gracefulSh
 Cohesion: 0.29
 Nodes (6): 1. Observation (Observações Diretas), 2. Logic Chain (Cadeia de Raciocínio), 3. Caveats (Ressalvas), 4. Conclusion (Conclusão), 5. Verification Method (Método de Verificação), Relatório de Handoff — Database Architect & Drizzle Master (agent-database)
 
-### Community 70 - "comunidade/auth.test.ts"
-Cohesion: 0.23
-Nodes (17): drizzle-orm, AdminLibraryControlPage(), AdminShopPage(), DELETE(), GET(), POST(), dynamic, GET() (+9 more)
+### Community 70 - "admin-guard.ts"
+Cohesion: 0.19
+Nodes (17): AdminLibraryControlPage(), AdminShopPage(), DELETE(), GET(), dynamic, GET(), getJwtSecret(), SessionPayload (+9 more)
 
-### Community 71 - "cn"
-Cohesion: 0.10
-Nodes (26): metadata, metadata, dynamicParams, PageProps, MidiasPage(), AdminSidebar(), AdminSidebarProps, LibraryControlSuite() (+18 more)
+### Community 71 - "CatalogGrid.tsx"
+Cohesion: 0.25
+Nodes (8): CatalogGrid(), CatalogGridProps, getExtensionBadge(), DownloadButton(), DownloadButtonProps, ResourceViewer(), ResourceViewerProps, LibraryResource
 
 ### Community 72 - "structured-data.ts"
-Cohesion: 0.06
-Nodes (79): nextConfig, next, AuditCheck, runSeoDeepAudit(), ArtigosLayout(), metadata, ArtigosPortalPage(), ArtigoDetailPage() (+71 more)
+Cohesion: 0.05
+Nodes (85): nextConfig, next, AuditCheck, runSeoDeepAudit(), ArtigosLayout(), metadata, ArtigosPortalPage(), ArtigoDetailPage() (+77 more)
 
 ### Community 73 - "Relatório de Handoff — Growth Engineer & Portal Institucional Specialist (agent-marketing)"
 Cohesion: 0.29
@@ -406,11 +405,11 @@ Nodes (28): asyncPool(), CATALOG_PATH, MANIFEST_PATH, ManifestEntry, PUBLIC_CATA
 
 ### Community 76 - ".copy"
 Cohesion: 0.13
-Nodes (7): dr(), he(), Lt, Ot, pr(), ri(), ur()
+Nodes (6): he(), Lt, Ot, ri(), ui(), ur()
 
 ### Community 77 - "tn"
-Cohesion: 0.14
-Nodes (7): fr(), A(), E(), m(), p(), ns(), tn
+Cohesion: 0.15
+Nodes (6): fr(), A(), E(), m(), ns(), tn
 
 ### Community 78 - "W"
 Cohesion: 0.06
@@ -424,6 +423,10 @@ Nodes (8): dynamic, EXTENDED_PLANS, POST(), GET(), POST(), CheckoutModalProps, C
 Cohesion: 0.09
 Nodes (24): author, dependencies, html-minifier, sharp, description, engines, node, name (+16 more)
 
+### Community 81 - ".update"
+Cohesion: 0.16
+Nodes (4): cs, is, rr, Ys()
+
 ### Community 82 - "community-shaders.js"
 Cohesion: 0.07
 Nodes (60): buildStrandsPalette(), easePower2InOut(), getOptimizedDPR(), hexToRgb(), hexToRgbArr(), initAntigravity(), initAurora(), initBalatro() (+52 more)
@@ -436,9 +439,9 @@ Nodes (52): _, ae(), As(), at, bs(), bt(), ce(), ct() (+44 more)
 Cohesion: 0.20
 Nodes (9): 📧 Autenticação e Domínio Próprio no Resend, 🌐 Configuração Global do Resend MCP (Antigravity), 🚀 Guia Oficial de Deploy na Vercel & Auditoria de Segurança — A.I VISUALS, Passo 1: Enviar o Código para o GitHub, Passo 2: Importar o Projeto na Vercel, Passo 3: Configurar Variáveis de Ambiente (Environment Variables), Passo 4: Concluir o Deploy, 📋 Passo a Passo para Deploy na Vercel (+1 more)
 
-### Community 90 - "sr"
-Cohesion: 0.08
-Nodes (12): cr, Ee(), ki(), sr(), C(), et(), L(), N() (+4 more)
+### Community 90 - "ke"
+Cohesion: 0.07
+Nodes (11): cr, dr(), Ee(), er, ke, ki(), pr(), ue() (+3 more)
 
 ### Community 92 - "U"
 Cohesion: 0.05
@@ -448,29 +451,25 @@ Nodes (19): ai(), ci(), di(), _e(), fi(), gi(), hi(), ii() (+11 more)
 Cohesion: 0.09
 Nodes (5): ar, kt(), mr, Ut(), yr
 
-### Community 96 - "articles/route.ts"
-Cohesion: 0.23
-Nodes (15): marked, GET(), dynamic, GET(), POST(), PUT(), slugify(), PostEditorModal() (+7 more)
-
 ### Community 97 - ".z"
 Cohesion: 0.08
 Nodes (4): Gs(), Hs(), qs(), Xs()
 
-### Community 98 - "memoryCache"
-Cohesion: 0.16
-Nodes (4): CacheEntry, CacheStats, globalForCache, memoryCache
+### Community 98 - "l"
+Cohesion: 0.31
+Nodes (5): be(), gt, l(), h(), l()
 
 ### Community 101 - "library-manager.ts"
-Cohesion: 0.17
-Nodes (23): dynamic, POST(), DELETE(), dynamic, GET(), PUT(), BIBLIOTECA_DIR, CATALOG_PATH (+15 more)
+Cohesion: 0.05
+Nodes (69): dynamic, POST(), dynamic, POST(), dynamic, POST(), DELETE(), dynamic (+61 more)
 
 ### Community 104 - "V"
-Cohesion: 0.07
-Nodes (5): De(), is, ji(), qi(), V
+Cohesion: 0.08
+Nodes (4): De(), ji(), qi(), V
 
-### Community 105 - "react"
-Cohesion: 0.09
-Nodes (21): react, ErrorProps, GlobalErrorProps, HOME_FAQS, HomePage(), AlternatingHeroShaders(), ArticleData, ArticleModal() (+13 more)
+### Community 105 - "lucide-react"
+Cohesion: 0.08
+Nodes (24): lucide-react, HOME_FAQS, HomePage(), AlternatingHeroShaders(), ArticleData, ArticleModal(), ArticleModalProps, ContatoSection() (+16 more)
 
 ### Community 106 - "script.js"
 Cohesion: 0.15
@@ -481,20 +480,20 @@ Cohesion: 0.20
 Nodes (7): 📚 Documentação Especializada, 🛠️ Instalação e Execução Local, MCP Business OS — Plataforma Unificada Soberana, Passo a Passo, Pré-requisitos, 🔒 Segurança e Governança, 🏛️ Visão Geral da Arquitetura
 
 ### Community 112 - "q"
-Cohesion: 0.24
-Nodes (3): q, ze, zi()
+Cohesion: 0.21
+Nodes (4): p(), q, ze, zi()
 
-### Community 116 - "libraries/route.ts"
-Cohesion: 0.35
-Nodes (10): DELETE(), dynamic, GET(), POST(), PUT(), createLibrary(), deleteLibrary(), loadAllLibraries() (+2 more)
+### Community 116 - "SearchHeader.tsx"
+Cohesion: 0.50
+Nodes (4): CATEGORY_ITEMS, SearchHeader(), SearchHeaderProps, QuickCategory
 
-### Community 117 - "ke"
-Cohesion: 0.09
-Nodes (10): er, v(), ke, j(), tr, R(), ue(), we() (+2 more)
+### Community 117 - "j"
+Cohesion: 0.33
+Nodes (4): v(), j(), tr, R()
 
 ### Community 118 - "K"
-Cohesion: 0.13
-Nodes (4): br, K, kr, nr
+Cohesion: 0.22
+Nodes (3): br, K, kr
 
 ### Community 119 - "ShopControlSuite.tsx"
 Cohesion: 0.19
@@ -507,10 +506,6 @@ Nodes (5): ResourceCardProps, ResourceDetailViewerProps, LibraryCategoryGroup, L
 ### Community 121 - "vercel.json"
 Cohesion: 0.29
 Nodes (6): buildCommand, cleanUrls, framework, headers, installCommand, $schema
-
-### Community 124 - "addItemToLibrary"
-Cohesion: 0.36
-Nodes (7): dynamic, POST(), dynamic, POST(), addItemToLibrary(), createNewDocumentInLibrary(), determineFileType()
 
 ### Community 127 - "visual_stability.test.mjs"
 Cohesion: 0.38
@@ -540,17 +535,17 @@ Nodes (7): 1. Portal Institucional (`/`), 2. Shop Oficial (`/shop`), 3. Comunida
 Cohesion: 0.50
 Nodes (4): 3.1. Acervo de 176 Artigos Técnicos, 3.2. Cofre com 406 Recursos Intelectuais, 3.3. Dados do Shop e Perfil Institucional, 3. Acervos de Dados Embutidos & Ativos Intelectuais
 
-### Community 137 - "admin/page.tsx"
-Cohesion: 0.15
-Nodes (14): ArticleItem, LeadItem, MemberItem, ShopHeroConfig, ShopProductConfig, ShopServiceConfig, TransactionItem, AdminRedShader() (+6 more)
+### Community 137 - "react"
+Cohesion: 0.11
+Nodes (17): react, metadata, ArticleItem, LeadItem, MemberItem, ShopHeroConfig, ShopProductConfig, ShopServiceConfig (+9 more)
 
 ### Community 140 - "auth.ts"
-Cohesion: 0.22
-Nodes (13): POST(), dynamic, escapeHtml(), POST(), authenticateAdmin(), authenticateMember(), verifyPassword(), signToken() (+5 more)
+Cohesion: 0.21
+Nodes (16): drizzle-orm, POST(), POST(), dynamic, escapeHtml(), POST(), authenticateAdmin(), authenticateMember() (+8 more)
 
-### Community 141 - "zt"
+### Community 141 - "sr"
 Cohesion: 0.11
-Nodes (11): be(), gt, Ie(), Ne(), nn(), or, l(), zr (+3 more)
+Nodes (12): Ie(), Ne(), nn(), or, sr(), C(), et(), L() (+4 more)
 
 ### Community 148 - "Estabilidade Visual & Resolução de GPU Scroll — Incidente INC-2026-10-17-SCROLL"
 Cohesion: 0.22
@@ -560,29 +555,21 @@ Nodes (9): 📜 As 13 Regras de Ouro de Estabilidade Visual e Performance, Crit�
 Cohesion: 0.25
 Nodes (8): 1. Causa Raiz Primária: `content-visibility: auto` com `contain-intrinsic-size` Fixo, 2. Causa Raiz Secundária: Sobrecarga de `backdrop-filter` sobre Fundo WebGL Animado, 3. Causa Raiz Terciária: Erro de Compilação no Fragment Shader `RippleGrid`, 4. Causa Raiz Quaternária: Colisão de Cache entre `next build` e `next dev`, 🔬 Diagnóstico e Investigação das Causas Raízes, O Mecanismo da Falha:, O Mecanismo da Falha:, O Problema dos 87 Filtros de Fundo:
 
-### Community 153 - "lucide-react"
-Cohesion: 0.12
-Nodes (8): lucide-react, ContatoSection(), ContatoSectionProps, LeadCaptureForm(), backgroundImages, PhotografyContactHubProps, PortalNavbar(), PortalNavbarProps
-
-### Community 154 - "portal_restoration.test.ts"
-Cohesion: 0.20
-Nodes (8): leads, articles, articlesPath, BASE_DIR, requiredComponents, siteData, siteDataPath, testContactApi()
-
-### Community 156 - "middleware.ts"
-Cohesion: 0.67
-Nodes (3): config, isRestrictedAdminRoute(), middleware()
+### Community 154 - "db/index.ts"
+Cohesion: 0.10
+Nodes (13): dynamic, GET(), dynamic, checkDbStatus, connectionString, db, articles, articlesPath (+5 more)
 
 ## Knowledge Gaps
 - **668 isolated node(s):** `nextConfig`, `name`, `version`, `private`, `description` (+663 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 943 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **37 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 944 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **39 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `_` connect `_` to `zt`, `it`, `.copy`, `tn`, `W`, `.update`, `community-shaders.js`, `sr`, `U`, `ar`, `.z`, `gr`, `ks`, `le`, `V`, `q`, `en`, `ke`, `K`, `.x`, `.addAttribute`?**
+- **Why does `_` connect `_` to `sr`, `it`, `.copy`, `tn`, `W`, `.update`, `community-shaders.js`, `ke`, `U`, `ar`, `.getRenderList`, `.z`, `l`, `gr`, `ks`, `le`, `V`, `q`, `en`, `j`, `K`, `.x`, `.addAttribute`?**
   _High betweenness centrality (0.282) - this node is a cross-community bridge._
-- **Why does `cn()` connect `cn` to `app/layout.tsx`, `admin/page.tsx`, `W`, `ShopControlSuite.tsx`, `ResourceCard.tsx`, `Badge.tsx`?**
+- **Why does `cn()` connect `cn` to `Navbar.tsx`, `CatalogGrid.tsx`, `react`, `W`, `SearchHeader.tsx`, `ShopControlSuite.tsx`, `ResourceCard.tsx`, `ResourceSearch.tsx`?**
   _High betweenness centrality (0.228) - this node is a cross-community bridge._
 - **Why does `on` connect `W` to `_`?**
   _High betweenness centrality (0.225) - this node is a cross-community bridge._

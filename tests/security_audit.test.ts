@@ -138,4 +138,126 @@ describe('🛡️ Plataforma Unificada Soberana — Suíte de Auditoria e Testes
     }
   });
 
+  test('9. Validação de Moderador: verifyAdminRequest autoriza role moderador para gestão', async () => {
+    process.env.JWT_SECRET = 'sovereign-production-master-secret-key-64-characters-minimum-secure-audit-jwt';
+    const moderToken = await signToken({
+      userId: 'moder_id',
+      email: 'moderador@mateuscelestinopro.com',
+      name: 'Moderador Oficial',
+      role: 'moder',
+    });
+
+    const authReq = new Request('http://localhost:3000/api/finance', {
+      headers: {
+        Authorization: `Bearer ${moderToken}`,
+      },
+    });
+
+    const prevEnv = process.env.NODE_ENV;
+    (process.env as any).NODE_ENV = 'production';
+    try {
+      const verification = await verifyAdminRequest(authReq);
+      assert.strictEqual(verification.authorized, true, 'Moderador com token válido deve ser autorizado');
+      assert.strictEqual(verification.session?.role, 'moder');
+    } finally {
+      (process.env as any).NODE_ENV = prevEnv;
+    }
+  });
+
+  test('10. Blindagem de Rotas de Bibliotecas: GET/POST/DELETE /api/admin/libraries exigem autenticação', async () => {
+    const { GET, POST, DELETE } = await import('../src/app/api/admin/libraries/route');
+    const prevEnv = process.env.NODE_ENV;
+    (process.env as any).NODE_ENV = 'production';
+    try {
+      const unauthGet = new NextRequest('http://localhost:3000/api/admin/libraries');
+      const resGet = await GET(unauthGet);
+      assert.strictEqual(resGet.status, 401, 'GET /api/admin/libraries não autenticado deve retornar 401');
+
+      const unauthPost = new NextRequest('http://localhost:3000/api/admin/libraries', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: 'Hacked Library' }),
+      });
+      const resPost = await POST(unauthPost);
+      assert.strictEqual(resPost.status, 401, 'POST /api/admin/libraries não autenticado deve retornar 401');
+
+      const unauthDelete = new NextRequest('http://localhost:3000/api/admin/libraries?id=123', {
+        method: 'DELETE',
+      });
+      const resDel = await DELETE(unauthDelete);
+      assert.strictEqual(resDel.status, 401, 'DELETE /api/admin/libraries não autenticado deve retornar 401');
+    } finally {
+      (process.env as any).NODE_ENV = prevEnv;
+    }
+  });
+
+  test('11. Blindagem de Edição e Exclusão de Artigos: PUT e DELETE /api/articles exigem autenticação', async () => {
+    const { PUT, DELETE } = await import('../src/app/api/articles/route');
+    const prevEnv = process.env.NODE_ENV;
+    (process.env as any).NODE_ENV = 'production';
+    try {
+      const unauthPut = new NextRequest('http://localhost:3000/api/articles', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: '123', title: 'Hacked Article' }),
+      });
+      const resPut = await PUT(unauthPut);
+      assert.strictEqual(resPut.status, 401, 'PUT /api/articles não autenticado deve retornar 401');
+
+      const unauthDel = new NextRequest('http://localhost:3000/api/articles?id=123', {
+        method: 'DELETE',
+      });
+      const resDel = await DELETE(unauthDel);
+      assert.strictEqual(resDel.status, 401, 'DELETE /api/articles não autenticado deve retornar 401');
+    } finally {
+      (process.env as any).NODE_ENV = prevEnv;
+    }
+  });
+
+  test('12. Botão Admin em Layouts: restrito estritamente a administradores', async () => {
+    const fs = await import('node:fs');
+    const path = await import('node:path');
+
+    // 1. Shop Page: botão Gerenciar Shop protegido por isUserAdmin
+    const shopContent = fs.readFileSync(path.resolve(__dirname, '../src/app/shop/page.tsx'), 'utf-8');
+    assert.ok(shopContent.includes('{isUserAdmin && ('), 'Botão Gerenciar Shop deve estar protegido por isUserAdmin');
+
+    // 2. Universal Sitemap: Pilar 4 protegido por isUserAdmin
+    const sitemapContent = fs.readFileSync(path.resolve(__dirname, '../src/components/portal/UniversalSitemapModal.tsx'), 'utf-8');
+    assert.ok(sitemapContent.includes('{isUserAdmin && (activeFilter ==='), 'Pilar 4 no sitemap deve estar protegido por isUserAdmin');
+
+    // 3. Navbar: Botões protegidos por isUserAdmin
+    const navbarContent = fs.readFileSync(path.resolve(__dirname, '../src/components/layout/Navbar.tsx'), 'utf-8');
+    assert.ok(navbarContent.includes('{isUserAdmin && ('), 'Navbar desktop deve condicionar botão admin a isUserAdmin');
+
+    // 4. MobileBottomNav: adminOnly filtrado por isUserAdmin
+    const mobileNavContent = fs.readFileSync(path.resolve(__dirname, '../src/components/layout/MobileBottomNav.tsx'), 'utf-8');
+    assert.ok(mobileNavContent.includes('!item.adminOnly || isUserAdmin'), 'MobileBottomNav deve condicionar botão admin a isUserAdmin');
+
+    // 5. Footer: protegido por isUserAdmin
+    const footerContent = fs.readFileSync(path.resolve(__dirname, '../src/components/layout/Footer.tsx'), 'utf-8');
+    assert.ok(footerContent.includes('{isUserAdmin && ('), 'Footer deve condicionar botão admin a isUserAdmin');
+  });
+
+  test('13. Permissões de Acesso ao Painel Admin: administradores e moderadores autorizados, outros bloqueados', async () => {
+    const { hasAdminAccess, hasAdminOrModerAccess } = await import('../src/lib/auth/unified-auth');
+
+    const adminUser = { id: '1', isLoggedIn: true, role: 'admin' as const, name: 'Admin', email: 'a@a.com', avatar: '' };
+    const moderUser = { id: '2', isLoggedIn: true, role: 'moder' as const, name: 'Moder', email: 'm@m.com', avatar: '' };
+    const memberUser = { id: '3', isLoggedIn: true, role: 'user' as const, name: 'User', email: 'u@u.com', avatar: '' };
+    const guestUser = { id: '4', isLoggedIn: false, role: 'visitante' as const, name: '', email: '', avatar: '' };
+
+    // Botão no layout: APENAS ADMIN
+    assert.strictEqual(hasAdminAccess(adminUser), true, 'Admin deve ter hasAdminAccess = true');
+    assert.strictEqual(hasAdminAccess(moderUser), false, 'Moderador NÃO deve ter hasAdminAccess = true (botão do layout exclusivo para admin)');
+    assert.strictEqual(hasAdminAccess(memberUser), false, 'Membro NÃO deve ter hasAdminAccess');
+    assert.strictEqual(hasAdminAccess(guestUser), false, 'Visitante NÃO deve ter hasAdminAccess');
+
+    // Acesso ao Painel: ADMIN E MODERADOR
+    assert.strictEqual(hasAdminOrModerAccess(adminUser), true, 'Admin deve ter acesso ao painel');
+    assert.strictEqual(hasAdminOrModerAccess(moderUser), true, 'Moderador deve ter acesso ao painel');
+    assert.strictEqual(hasAdminOrModerAccess(memberUser), false, 'Membro NÃO deve ter acesso ao painel');
+    assert.strictEqual(hasAdminOrModerAccess(guestUser), false, 'Visitante NÃO deve ter acesso ao painel');
+  });
+
 });
