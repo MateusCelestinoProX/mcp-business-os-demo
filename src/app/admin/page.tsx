@@ -51,6 +51,7 @@ import { cn } from "@/lib/utils";
 import { PostEditorModal, PostEditorData } from "@/components/admin/PostEditorModal";
 import { LibraryControlSuite } from "@/components/admin/LibraryControlSuite";
 import { ShopControlSuite } from "@/components/admin/ShopControlSuite";
+import { AdminSidebar, AdminTabId } from "@/components/admin/AdminSidebar";
 import AlternatingHeroBanner from "@/components/portal/AlternatingHeroBanner";
 import AdminRedShader from "@/components/admin/AdminRedShader";
 import siteData from "@/data/siteData.json";
@@ -143,9 +144,16 @@ interface ShopServiceConfig {
 export default function AdminPanelPage() {
   const [currentUser, setCurrentUser] = useState<UnifiedUser | null>(null);
   const [isClientReady, setIsClientReady] = useState(false);
-  const [activeTab, setActiveTab] = useState<
-    "overview" | "posts" | "library_control" | "shop_resources" | "leads" | "members" | "finance" | "infra"
-  >("overview");
+  const [activeTab, setActiveTab] = useState<AdminTabId>("overview");
+
+  const handleSelectTab = (tabId: AdminTabId) => {
+    setActiveTab(tabId);
+    if (typeof window !== "undefined") {
+      const url = new URL(window.location.href);
+      url.searchParams.set("tab", tabId);
+      window.history.replaceState({}, "", url.toString());
+    }
+  };
 
   // Estados de Artigos / Posts (Editor Diary Notion-Like)
   const [articlesList, setArticlesList] = useState<ArticleItem[]>([]);
@@ -735,12 +743,62 @@ export default function AdminPanelPage() {
 
   const isMaxAdmin = hasAdminAccess(currentUser);
   const totalLeadsCount = leadsList.length;
+
+  const pageMetaMap: Record<
+    AdminTabId,
+    { title: string; description: string; icon: React.ComponentType<{ className?: string }> }
+  > = {
+    overview: {
+      title: "Visão Geral do Sistema",
+      description: "Métricas executivas, volume de captação de leads, faturamento real e KPIs de conversão.",
+      icon: BarChart3,
+    },
+    posts: {
+      title: "Posts & Artigos (Notion Diary OS)",
+      description: "Editor de artigos livres, gestão editorial contínua e publicação soberana integrada.",
+      icon: FileText,
+    },
+    library_control: {
+      title: "Library Control (Cofre & Acervo)",
+      description: "Gestão do acervo de downloads, uploads para a nuvem e controle do cofre de conteúdos.",
+      icon: BookOpen,
+    },
+    shop_resources: {
+      title: "Loja Virtual & Cards Promocionais",
+      description: "Configuração do hero alternado, catálogo de produtos digitais e serviços sob medida.",
+      icon: ShoppingBag,
+    },
+    leads: {
+      title: "Leads & Tráfego UTM",
+      description: "Base oficial de contatos capturados via TikTok Ads, Meta Ads e tráfego orgânico com exportação CSV.",
+      icon: Users,
+    },
+    members: {
+      title: "Membros da Comunidade VIP",
+      description: "Assinantes, cargos executivos, níveis de acesso e histórico de membros cadastrados.",
+      icon: Shield,
+    },
+    finance: {
+      title: "Vendas & Transações Financeiras",
+      description: "Histórico completo de transações aprovadas, faturamento real e taxas de aprovação.",
+      icon: CreditCard,
+    },
+    infra: {
+      title: "Infraestrutura & Status do Sistema",
+      description: "Monitoramento de conexão Supabase, integridade de SSR, shaders WebGL e estatísticas do servidor.",
+      icon: Server,
+    },
+  };
+
+  const currentPageMeta = pageMetaMap[activeTab] || pageMetaMap.overview;
+  const CurrentIcon = currentPageMeta.icon;
+
   return (
     <div className="relative min-h-screen pb-16">
       {/* Background WebGL Shader Vermelho do Personal OS com SoftAurora e OGL */}
       <AdminRedShader opacity={0.88} speed={0.45} brightness={1.4} interactive={true} />
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+      <div className="relative z-10 w-full max-w-[1720px] mx-auto px-3 sm:px-6 lg:px-8 py-6 space-y-6">
         {/* Toast Notifier */}
         {toastMsg && (
           <div className="fixed bottom-6 right-6 z-50 bg-[#0d0709]/90 backdrop-blur-xl border border-red-500/50 px-4 py-3 rounded-xl text-xs font-medium text-neutral-200 shadow-[0_10px_30px_rgba(0,0,0,0.9)] flex items-center gap-2.5 animate-fadeIn">
@@ -749,98 +807,78 @@ export default function AdminPanelPage() {
           </div>
         )}
 
-        {/* Header Executivo Limpo com Vidro Mais Claro e Iluminação Especular */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 rounded-2xl bg-white/[0.06] backdrop-blur-3xl border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.4)]">
-          <div className="space-y-1.5">
-            <div className="flex items-center gap-2.5">
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-red-500/20 border border-red-500/40 text-red-300">
-                <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
-                SOVEREIGN ADMIN
-              </span>
-              <span className="text-[11px] font-mono text-neutral-300">
-                {currentUser?.email || "mcp6667@proton.me"}
-              </span>
-            </div>
-            <h1 className="text-2xl font-bold text-white tracking-tight flex items-center gap-2">
-              <span>Painel de Gestão</span>
-            </h1>
-            <p className="text-xs text-neutral-300 font-medium">
-              Controle de Leads, Artigos Notion, Shop, Membros e Infraestrutura Soberana.
-            </p>
-          </div>
+        {/* LAYOUT DE COLUNA VERTICAL ESQUERDA (PÁGINAS INTERNAS) + ÁREA DE CONTEÚDO */}
+        <div className="flex flex-col lg:flex-row gap-6 items-start">
+          {/* COLUNA VERTICAL NO CANTO ESQUERDO DA TELA: TODAS AS INTERNAL PAGES ESTÃO AQUI */}
+          <AdminSidebar
+            activeTab={activeTab}
+            onSelectTab={handleSelectTab}
+            articlesCount={articlesList.length}
+            leadsCount={totalLeadsCount}
+            membersCount={membersList.length}
+            transactionsCount={transactions.length}
+            userEmail={currentUser?.email}
+            onRefresh={fetchDashboardData}
+            isLoadingData={isLoadingData}
+            onLogout={handleLogout}
+          />
 
-          <div className="flex items-center gap-2.5">
-            <Button
-              variant="secondary"
-              size="sm"
-              onClick={fetchDashboardData}
-              disabled={isLoadingData}
-              className="gap-1.5 text-xs bg-white/[0.05] hover:bg-white/[0.1] border-white/20 hover:border-white/30 text-white backdrop-blur-md"
-            >
-              <RefreshCw className={cn("w-3.5 h-3.5", isLoadingData && "animate-spin text-red-400")} />
-              <span>Atualizar</span>
-            </Button>
-
-            <Link href="/">
-              <Button variant="secondary" size="sm" className="gap-1.5 text-xs bg-white/[0.05] hover:bg-white/[0.1] border-white/20 hover:border-white/30 text-white backdrop-blur-md">
-                <Globe className="w-3.5 h-3.5" />
-                <span>Ver Portal</span>
-              </Button>
-            </Link>
-
-            <Button
-              variant="secondary"
-              size="sm"
-              onClick={handleLogout}
-              className="gap-1.5 text-xs text-red-400 hover:text-red-300 bg-red-950/30 hover:bg-red-950/50 border-red-900/40 backdrop-blur-md"
-            >
-              <LogOut className="w-3.5 h-3.5" />
-              <span>Sair</span>
-            </Button>
-          </div>
-        </div>
-
-        {/* NAVEGAÇÃO POR ABAS EXECUTIVAS */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-1 border-b border-white/10 hide-scrollbar">
-          {[
-            { id: "overview", label: "Visão Geral", icon: BarChart3, count: null },
-            { id: "posts", label: "Posts & Artigos (Notion)", icon: FileText, count: articlesList.length },
-            { id: "library_control", label: "Library Control (Cofre)", icon: BookOpen, count: null },
-            { id: "shop_resources", label: "Loja Virtual (Shop)", icon: ShoppingBag, count: null },
-            { id: "leads", label: "Leads & Tráfego UTM", icon: Users, count: totalLeadsCount },
-            { id: "members", label: "Membros da Comunidade", icon: Shield, count: membersList.length },
-            { id: "finance", label: "Vendas & Transações", icon: CreditCard, count: transactions.length },
-            { id: "infra", label: "Infraestrutura & Supabase", icon: Server, count: null },
-          ].map((tab) => {
-            const Icon = tab.icon;
-            const isActive = activeTab === tab.id;
-            return (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id as any)}
-                className={cn(
-                  "flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-semibold transition-all whitespace-nowrap backdrop-blur-md",
-                  isActive
-                    ? "bg-white text-black shadow-[0_0_20px_rgba(255,255,255,0.45)] font-bold scale-[1.02]"
-                    : "bg-white/[0.04] text-neutral-300 hover:text-white hover:bg-white/[0.08] border border-white/10"
-                )}
-              >
-                <Icon className="w-3.5 h-3.5" />
-                <span>{tab.label}</span>
-                {tab.count !== null && (
-                  <span
-                    className={cn(
-                      "text-[10px] px-1.5 py-0.2 rounded-full font-mono",
-                      isActive ? "bg-black/15 text-black" : "bg-white/10 text-neutral-200"
-                    )}
-                  >
-                    {tab.count}
+          {/* ÁREA PRINCIPAL: CONTEÚDO DA PÁGINA INTERNA SELECIONADA */}
+          <main className="flex-1 min-w-0 w-full space-y-6">
+            {/* Header Executivo da Página Interna Ativa */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 rounded-2xl bg-white/[0.06] backdrop-blur-3xl border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.4)]">
+              <div className="space-y-1.5">
+                <div className="flex items-center gap-2.5">
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-red-500/20 border border-red-500/40 text-red-300">
+                    <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+                    SOVEREIGN ADMIN
                   </span>
-                )}
-              </button>
-            );
-          })}
-        </div>
+                  <span className="text-[11px] font-mono text-neutral-400">
+                    Página Interna:
+                  </span>
+                  <span className="text-[11px] font-mono text-white font-semibold">
+                    {currentPageMeta.title}
+                  </span>
+                </div>
+                <h1 className="text-2xl font-bold text-white tracking-tight flex items-center gap-2.5">
+                  <CurrentIcon className="w-6 h-6 text-red-500" />
+                  <span>{currentPageMeta.title}</span>
+                </h1>
+                <p className="text-xs text-neutral-300 font-medium">
+                  {currentPageMeta.description}
+                </p>
+              </div>
+
+              <div className="flex items-center gap-2.5 flex-wrap">
+                <Button
+                  variant="secondary"
+                  size="sm"
+                  onClick={fetchDashboardData}
+                  disabled={isLoadingData}
+                  className="gap-1.5 text-xs bg-white/[0.05] hover:bg-white/[0.1] border-white/20 hover:border-white/30 text-white backdrop-blur-md"
+                >
+                  <RefreshCw className={cn("w-3.5 h-3.5", isLoadingData && "animate-spin text-red-400")} />
+                  <span>Atualizar</span>
+                </Button>
+
+                <Link href="/" target="_blank">
+                  <Button variant="secondary" size="sm" className="gap-1.5 text-xs bg-white/[0.05] hover:bg-white/[0.1] border-white/20 hover:border-white/30 text-white backdrop-blur-md">
+                    <Globe className="w-3.5 h-3.5" />
+                    <span>Ver Portal</span>
+                  </Button>
+                </Link>
+
+                <Button
+                  variant="secondary"
+                  size="sm"
+                  onClick={handleLogout}
+                  className="gap-1.5 text-xs text-red-400 hover:text-red-300 bg-red-950/30 hover:bg-red-950/50 border-red-900/40 backdrop-blur-md"
+                >
+                  <LogOut className="w-3.5 h-3.5" />
+                  <span>Sair</span>
+                </Button>
+              </div>
+            </div>
 
       {/* ABA 1: VISÃO GERAL */}
       {activeTab === "overview" && (
@@ -1647,8 +1685,11 @@ export default function AdminPanelPage() {
         </GlassCard>
       )}
 
-      {/* MODAL DO EDITOR LIVRE INFINITO NOTION-LIKE (DIARY OS) */}
-      <PostEditorModal
+          </main>
+        </div>
+
+        {/* MODAL DO EDITOR LIVRE INFINITO NOTION-LIKE (DIARY OS) */}
+        <PostEditorModal
         isOpen={isPostEditorOpen}
         initialPost={selectedArticleToEdit}
         onClose={() => {
