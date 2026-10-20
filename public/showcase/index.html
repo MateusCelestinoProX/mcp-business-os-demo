@@ -340,10 +340,14 @@
         }
         body {
           padding-top: 108px !important;
-          padding-bottom: calc(72px + env(safe-area-inset-bottom)) !important;
+          padding-bottom: calc(96px + env(safe-area-inset-bottom, 12px)) !important;
         }
         .mobile-menu {
           top: 60px !important;
+        }
+        /* Oculta dock legado do showcase para dar lugar à Barra Geral Soberana */
+        .showcase-mobile-dock {
+          display: none !important;
         }
       }
       body {
@@ -351,6 +355,162 @@
       }
       .nav-main {
         top: 60px;
+      }
+
+      /* ========================================================
+         SOVEREIGN MOBILE BOTTOM BAR (BARRA GERAL SOBERANA)
+         ======================================================== */
+      #mobile-sovereign-bottom-bar {
+        position: fixed !important;
+        bottom: 12px !important;
+        left: 8px !important;
+        right: 8px !important;
+        max-width: 580px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        z-index: 999998 !important;
+        background: rgba(6, 0, 2, 0.94) !important;
+        backdrop-filter: blur(24px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+        border: 1px solid rgba(153, 27, 27, 0.7) !important;
+        border-radius: 20px !important;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.95), 0 0 22px rgba(255, 7, 58, 0.22) !important;
+        padding: 6px 4px calc(6px + env(safe-area-inset-bottom, 0px)) 4px !important;
+        box-sizing: border-box !important;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      }
+      @media (min-width: 901px) {
+        #mobile-sovereign-bottom-bar {
+          display: none !important;
+        }
+      }
+      .msb-bottom-dock-mask-left {
+        position: absolute !important;
+        left: 4px !important;
+        top: 4px !important;
+        bottom: 4px !important;
+        width: 12px !important;
+        background: linear-gradient(to right, rgba(6, 0, 2, 0.95), transparent) !important;
+        pointer-events: none !important;
+        z-index: 10 !important;
+        border-top-left-radius: 16px !important;
+        border-bottom-left-radius: 16px !important;
+      }
+      .msb-bottom-dock-mask-right {
+        position: absolute !important;
+        right: 4px !important;
+        top: 4px !important;
+        bottom: 4px !important;
+        width: 12px !important;
+        background: linear-gradient(to left, rgba(6, 0, 2, 0.95), transparent) !important;
+        pointer-events: none !important;
+        z-index: 10 !important;
+        border-top-right-radius: 16px !important;
+        border-bottom-right-radius: 16px !important;
+      }
+      .msb-bottom-dock-container {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        overflow-x: auto !important;
+        scrollbar-width: none !important;
+        -webkit-overflow-scrolling: touch !important;
+        gap: 3px !important;
+        padding: 0 4px !important;
+        height: 50px !important;
+        touch-action: pan-x !important;
+      }
+      .msb-bottom-dock-container::-webkit-scrollbar {
+        display: none !important;
+      }
+      .msb-dock-item {
+        position: relative !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        flex-shrink: 0 !important;
+        min-width: 52px !important;
+        min-height: 44px !important;
+        height: 48px !important;
+        padding: 2px 4px !important;
+        border-radius: 12px !important;
+        text-decoration: none !important;
+        color: #a1a1aa !important;
+        transition: all 0.2s ease !important;
+        user-select: none !important;
+        -webkit-tap-highlight-color: transparent !important;
+      }
+      .msb-dock-item:active {
+        transform: scale(0.94) !important;
+      }
+      .msb-dock-icon-box {
+        position: relative !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 28px !important;
+        height: 24px !important;
+        border-radius: 8px !important;
+        transition: all 0.25s ease !important;
+      }
+      .msb-dock-icon {
+        width: 15px !important;
+        height: 15px !important;
+        transition: transform 0.2s ease !important;
+      }
+      .msb-dock-label {
+        font-size: 8.5px !important;
+        letter-spacing: -0.2px !important;
+        margin-top: 2px !important;
+        white-space: nowrap !important;
+        line-height: 1 !important;
+        color: #a1a1aa !important;
+        transition: color 0.2s ease !important;
+      }
+      .msb-dock-item.active {
+        color: #ffffff !important;
+        font-weight: 700 !important;
+      }
+      .msb-dock-item.active .msb-dock-icon-box {
+        background: rgba(127, 29, 29, 0.7) !important;
+        color: #f87171 !important;
+        border: 1px solid rgba(220, 38, 38, 0.5) !important;
+        box-shadow: 0 0 16px rgba(255, 7, 58, 0.45) !important;
+      }
+      .msb-dock-item.active .msb-dock-icon {
+        transform: scale(1.1) !important;
+        color: #f87171 !important;
+      }
+      .msb-dock-item.active .msb-dock-label {
+        color: #f87171 !important;
+        font-weight: 700 !important;
+        text-shadow: 0 0 8px rgba(255, 7, 58, 0.35) !important;
+      }
+      .msb-dock-indicator {
+        position: absolute !important;
+        top: 1px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: 20px !important;
+        height: 2px !important;
+        background: linear-gradient(90deg, transparent, #ff073a, transparent) !important;
+        box-shadow: 0 0 8px #ff073a !important;
+        border-radius: 2px !important;
+      }
+      .msb-dock-active-dot {
+        position: absolute !important;
+        bottom: -2px !important;
+        width: 5px !important;
+        height: 5px !important;
+        border-radius: 50% !important;
+        background: #ff073a !important;
+        box-shadow: 0 0 8px #ff073a !important;
+      }
+      .msb-dock-admin-box {
+        background: rgba(69, 26, 3, 0.5) !important;
+        border: 1px solid rgba(245, 158, 11, 0.4) !important;
+        color: #fcd34d !important;
       }
     </style>
 
@@ -2168,33 +2328,95 @@
 
 
     <!-- ========================================================
-         SHOWCASE MOBILE DOCK (THUMB ZONE QUICK NAVIGATION BAR)
+         SOVEREIGN MOBILE BOTTOM BAR (BARRA GERAL SOBERANA)
          ======================================================== -->
-    <nav class="showcase-mobile-dock" id="mobile-dock" aria-label="Ações Rápidas Mobile">
-      <a href="#hero" class="dock-item active" id="dock-home" aria-label="Início / Topo">
-        <i data-lucide="home"></i>
-        <span>Início</span>
-      </a>
-      <a href="#opensource-projects" class="dock-item" id="dock-projects" aria-label="Projetos OpenSource">
-        <i data-lucide="code-2"></i>
-        <span>Projetos</span>
-      </a>
-      <a href="#certifications" class="dock-item" id="dock-certs" aria-label="70+ Certificações">
-        <div class="dock-badge-wrap">
-          <i data-lucide="award"></i>
-          <span class="dock-badge">70+</span>
-        </div>
-        <span>Certs</span>
-      </a>
-      <a href="https://api.whatsapp.com/send/?phone=553197724257&text=Ol%C3%A1+Mateus%2C+vi+seu+Showcase+e+quero+falar+sobre+projetos.&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="dock-item dock-item-highlight" id="dock-contact" aria-label="WhatsApp / Contato">
-        <i data-lucide="message-circle"></i>
-        <span>WhatsApp</span>
-      </a>
-      <button type="button" class="dock-item open-mobile-menu-trigger" id="dock-menu-btn" aria-label="Abrir Menu Completo de 15 Seções">
-        <i data-lucide="menu"></i>
-        <span>Menu ☰</span>
-      </button>
+    <nav
+      id="mobile-sovereign-bottom-bar"
+      aria-label="Navegação Móvel Soberana — Android Docker Navbar"
+    >
+      <div class="msb-bottom-dock-mask-left"></div>
+      <div class="msb-bottom-dock-mask-right"></div>
+      <div class="msb-bottom-dock-container" id="msb-bottom-dock-scroll">
+        <!-- 1. Portal -->
+        <a href="/" class="msb-dock-item" data-route="portal" aria-label="Portal Institucional">
+          <div class="msb-dock-icon-box">
+            <svg class="msb-dock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <span class="msb-dock-label">Portal</span>
+        </a>
+
+        <!-- 2. Showcase (Ativo no Showcase) -->
+        <a href="/showcase" class="msb-dock-item active" data-route="showcase" aria-current="page" aria-label="Showcase">
+          <span class="msb-dock-indicator"></span>
+          <div class="msb-dock-icon-box">
+            <svg class="msb-dock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
+            <span class="msb-dock-active-dot"></span>
+          </div>
+          <span class="msb-dock-label">Showcase</span>
+        </a>
+
+        <!-- 3. Shop -->
+        <a href="/shop" class="msb-dock-item" data-route="shop" aria-label="Shop">
+          <div class="msb-dock-icon-box">
+            <svg class="msb-dock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          </div>
+          <span class="msb-dock-label">Shop</span>
+        </a>
+
+        <!-- 4. Comunidade -->
+        <a href="/comunidade" class="msb-dock-item" data-route="comunidade" aria-label="Comunidade VIP">
+          <div class="msb-dock-icon-box">
+            <svg class="msb-dock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <span class="msb-dock-label">Comunidade</span>
+        </a>
+
+        <!-- 5. Free Resources -->
+        <a href="/biblioteca" class="msb-dock-item" data-route="biblioteca" aria-label="Free Resources">
+          <div class="msb-dock-icon-box">
+            <svg class="msb-dock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 20H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H20a2 2 0 0 1 2 2v2"/><circle cx="13" cy="12" r="2"/><path d="M18 19c-2.8 0-5-2.2-5-5v8"/><circle cx="20" cy="19" r="2"/></svg>
+          </div>
+          <span class="msb-dock-label">Free Resources</span>
+        </a>
+
+        <!-- 6. Admin (dinâmico) -->
+        <a href="/admin" id="msb-dock-admin-link" class="msb-dock-item" data-route="admin" aria-label="Painel Admin" style="display: none;">
+          <div class="msb-dock-icon-box msb-dock-admin-box">
+            <svg class="msb-dock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"/></svg>
+          </div>
+          <span class="msb-dock-label" style="color: #fcd34d;">Admin</span>
+        </a>
+      </div>
+      <!-- Elemento de compatibilidade de gatilho de menu -->
+      <button type="button" class="open-mobile-menu-trigger" id="dock-menu-btn" aria-label="Abrir Menu" style="display: none;"></button>
     </nav>
+
+    <script id="mobile-sovereign-dock-showcase-script">
+      (function() {
+        try {
+          var userStr = localStorage.getItem('mcp_session_user');
+          var user = userStr ? JSON.parse(userStr) : null;
+          var role = user ? user.role : localStorage.getItem('mcp_user_role');
+          var isAdmin = role === 'admin' || role === 'moderador';
+          var adminLink = document.getElementById('msb-dock-admin-link');
+          if (adminLink && isAdmin) {
+            adminLink.style.display = 'flex';
+          }
+        } catch(e) {}
+
+        // Auto-scroll suave para centralizar Showcase
+        var container = document.getElementById('msb-bottom-dock-scroll');
+        var activeItem = container ? container.querySelector('.msb-dock-item.active') : null;
+        if (container && activeItem) {
+          setTimeout(function() {
+            container.scrollTo({
+              left: activeItem.offsetLeft - (container.clientWidth / 2) + (activeItem.clientWidth / 2),
+              behavior: 'smooth'
+            });
+          }, 200);
+        }
+      })();
+    </script>
 
     <!-- ========== FLUIDIC BACK TO TOP BUTTON ========== -->
     <button id="back-to-top" class="back-to-top-btn" aria-label="Voltar ao Topo">

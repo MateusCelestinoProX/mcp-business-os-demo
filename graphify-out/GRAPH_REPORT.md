@@ -1,16 +1,16 @@
 # Graph Report - plataforma-unificada-soberana  (2026-10-19)
 
 ## Corpus Check
-- 261 files · ~8,556,412 words
+- 262 files · ~8,558,920 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2107 nodes · 4135 edges · 150 communities (94 shown, 40 thin omitted)
+- 2108 nodes · 4135 edges · 151 communities (94 shown, 40 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 74 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `7a285270`
+- Built from commit: `621bc56f`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -177,7 +177,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (150 total, 40 thin omitted)
+## Communities (151 total, 40 thin omitted)
 
 ### Community 0 - "Relatório de Survey Técnico — Explorer 2"
 Cohesion: 0.08
@@ -557,14 +557,14 @@ Nodes (8): 1. Causa Raiz Primária: `content-visibility: auto` com `contain-intr
 
 ## Knowledge Gaps
 - **657 isolated node(s):** `nextConfig`, `name`, `version`, `private`, `description` (+652 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 926 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 927 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **40 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `_` connect `_` to `.intersectMeshes`, `.copy`, `W`, `tn`, `pt`, `.update`, `community-shaders.js`, `sr`, `U`, `ar`, `.z`, `gr`, `ks`, `le`, `V`, `q`, `en`, `K`, `.x`, `.addAttribute`?**
-  _High betweenness centrality (0.275) - this node is a cross-community bridge._
+  _High betweenness centrality (0.274) - this node is a cross-community bridge._
 - **Why does `cn()` connect `cn` to `admin/page.tsx`, `lucide-react`, `shaders/index.ts`, `catalog.ts`, `W`, `ShopControlSuite.tsx`, `Badge.tsx`?**
   _High betweenness centrality (0.221) - this node is a cross-community bridge._
 - **Why does `on` connect `W` to `_`?**
