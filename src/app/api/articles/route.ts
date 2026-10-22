@@ -215,7 +215,7 @@ export async function POST(request: NextRequest) {
   } catch (error: any) {
     console.error('Erro ao criar artigo:', error);
     return NextResponse.json(
-      { success: false, error: error?.message || 'Falha ao salvar novo post no banco de dados.' },
+      { success: false, error: 'Falha ao salvar novo post no banco de dados.' },
       { status: 500 }
     );
   }
@@ -331,7 +331,7 @@ export async function DELETE(request: NextRequest) {
     });
   } catch (error: any) {
     return NextResponse.json(
-      { success: false, error: error?.message || 'Falha ao remover artigo.' },
+      { success: false, error: 'Falha ao remover artigo.' },
       { status: 500 }
     );
   }

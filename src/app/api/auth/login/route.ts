@@ -96,7 +96,7 @@ export async function POST(req: Request) {
   } catch (error: any) {
     console.error('❌ [Login] Erro interno:', error);
     return NextResponse.json(
-      { success: false, error: 'Erro ao processar login: ' + (error?.message || 'Inesperado') },
+      { success: false, error: 'Erro ao processar login. Verifique os dados fornecidos.' },
       { status: 500 }
     );
   }

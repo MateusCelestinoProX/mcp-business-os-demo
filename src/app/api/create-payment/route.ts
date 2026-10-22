@@ -2,12 +2,30 @@ import { NextResponse } from 'next/server';
 
 export const dynamic = 'force-dynamic';
 
-export async function OPTIONS() {
+export async function OPTIONS(req: Request) {
+  const origin = req.headers.get('origin') || '';
+  const allowed = [
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+    process.env.NEXT_PUBLIC_APP_URL,
+    process.env.NEXT_PUBLIC_SITE_URL,
+    'https://mateuscelestino.pro',
+    'https://www.mateuscelestino.pro',
+  ].filter(Boolean) as string[];
+
+  const isAllowed = allowed.some((a) => {
+    try {
+      return new URL(origin).host === new URL(a).host;
+    } catch {
+      return false;
+    }
+  });
+
   return new NextResponse(null, {
     status: 200,
     headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Headers': 'Content-Type',
+      'Access-Control-Allow-Origin': isAllowed ? origin : allowed[0] || 'http://localhost:3000',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
       'Access-Control-Allow-Methods': 'POST, OPTIONS',
     },
   });
@@ -91,19 +109,13 @@ export async function POST(req: Request) {
       });
     }
 
-    return NextResponse.json(
-      {
-        id: data.id,
-        init_point: data.init_point,
-        sandbox_init_point: data.sandbox_init_point,
-      },
-      {
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-        },
-      }
-    );
+    return NextResponse.json({
+      id: data.id,
+      init_point: data.init_point,
+      sandbox_init_point: data.sandbox_init_point,
+    });
   } catch (err: any) {
-    return NextResponse.json({ error: 'Network error: ' + err.message }, { status: 500 });
+    console.error('Erro em /api/create-payment:', err);
+    return NextResponse.json({ error: 'Falha ao processar pagamento' }, { status: 500 });
   }
 }

@@ -63,7 +63,7 @@ export async function GET(req: Request) {
       success: false,
       members: [],
       total: 0,
-      error: error?.message,
+      error: 'Falha ao consultar membros da base de dados.',
     }, { status: 500 });
   }
 }

@@ -86,7 +86,7 @@ export async function GET(request: NextRequest) {
   } catch (error: any) {
     console.error('Erro na API de biblioteca:', error);
     return NextResponse.json(
-      { success: false, error: error?.message || 'Falha ao consultar acervo' },
+      { success: false, error: 'Falha ao consultar acervo.' },
       { status: 500 }
     );
   }

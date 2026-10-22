@@ -151,7 +151,7 @@ export async function POST(req: Request) {
   } catch (error: any) {
     console.error('❌ [Register] Erro interno:', error);
     return NextResponse.json(
-      { success: false, error: 'Erro interno ao processar cadastro: ' + (error?.message || 'Inesperado') },
+      { success: false, error: 'Erro interno ao processar cadastro.' },
       { status: 500 }
     );
   }

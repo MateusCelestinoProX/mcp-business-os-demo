@@ -29,7 +29,7 @@ export async function GET(request: Request) {
       success: false,
       transactions: [],
       totalRevenue: 0.0,
-      error: error?.message,
+      error: 'Falha ao consultar dados financeiros.',
     });
   }
 }

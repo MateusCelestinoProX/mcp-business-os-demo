@@ -76,7 +76,7 @@ export async function GET(
     });
   } catch (error: any) {
     return NextResponse.json(
-      { success: false, error: error?.message || 'Erro ao carregar artigo.' },
+      { success: false, error: 'Erro ao carregar artigo do acervo.' },
       { status: 500 }
     );
   }

@@ -2,6 +2,9 @@ import { NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import { leads } from '@/lib/db/schema';
 import { randomUUID } from 'crypto';
+import { checkRateLimit } from '@/lib/auth/rate-limit';
+
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 /**
  * POST /api/contact
@@ -10,6 +13,21 @@ import { randomUUID } from 'crypto';
  */
 export async function POST(request: Request) {
   try {
+    // Proteção contra brute-force / spam de contatos por IP
+    const forwarded = request.headers.get('x-forwarded-for');
+    const ip = forwarded ? forwarded.split(',')[0].trim() : '127.0.0.1';
+    const rateCheck = checkRateLimit(`contact_${ip}`, 10, 15 * 60 * 1000);
+
+    if (!rateCheck.allowed) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: `Muitas mensagens enviadas consecutivamente. Aguarde ${rateCheck.resetInSeconds} segundos antes de tentar novamente.`,
+        },
+        { status: 429 }
+      );
+    }
+
     const body = await request.json().catch(() => null);
 
     if (!body || typeof body !== 'object') {
@@ -19,11 +37,11 @@ export async function POST(request: Request) {
       );
     }
 
-    const name = (body.nome || body.name || '').trim();
-    const email = (body.email || '').trim().toLowerCase();
-    const phone = (body.whatsapp || body.phone || '').trim();
-    const service = (body.servico || body.service || 'Geral').trim();
-    const message = (body.mensagem || body.message || '').trim();
+    const name = (body.nome || body.name || '').trim().slice(0, 150);
+    const email = (body.email || '').trim().toLowerCase().slice(0, 150);
+    const phone = (body.whatsapp || body.phone || '').trim().slice(0, 50);
+    const service = (body.servico || body.service || 'Geral').trim().slice(0, 100);
+    const message = (body.mensagem || body.message || '').trim().slice(0, 3000);
 
     if (!name || name.length < 2) {
       return NextResponse.json(
@@ -32,7 +50,7 @@ export async function POST(request: Request) {
       );
     }
 
-    if (!email || !email.includes('@')) {
+    if (!email || !EMAIL_REGEX.test(email)) {
       return NextResponse.json(
         { success: false, error: 'Por favor, forneça um endereço de e-mail válido.' },
         { status: 400 }

@@ -129,7 +129,7 @@ export async function DELETE() {
     );
   } catch (error: any) {
     return NextResponse.json(
-      { success: false, error: 'Falha ao encerrar sessão: ' + error.message },
+      { success: false, error: 'Falha ao encerrar sessão.' },
       { status: 500 }
     );
   }

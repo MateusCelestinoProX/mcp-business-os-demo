@@ -147,7 +147,7 @@ export async function POST(req: NextRequest) {
   } catch (error: any) {
     console.error('❌ [Checkout API] Erro ao processar:', error);
     return NextResponse.json(
-      { success: false, error: 'Falha interna ao inicializar checkout: ' + error.message },
+      { success: false, error: 'Falha interna ao inicializar checkout.' },
       { status: 500 }
     );
   }

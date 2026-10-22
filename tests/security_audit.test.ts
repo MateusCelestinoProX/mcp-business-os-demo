@@ -369,4 +369,67 @@ describe('🛡️ Plataforma Unificada Soberana — Suíte de Auditoria e Testes
     assert.strictEqual(resNoId.status, 400, 'Requisição sem ID deve retornar 400');
   });
 
+  test('19. Validação e Blindagem em /api/contact: rejeição de e-mail inválido e nome curto', async () => {
+    const { POST: postContact } = await import('../src/app/api/contact/route');
+
+    // Nome curto (< 2 chars)
+    const reqShortName = new Request('http://localhost:3000/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ nome: 'A', email: 'teste@example.com' }),
+    });
+    const resShort = await postContact(reqShortName);
+    assert.strictEqual(resShort.status, 400, 'Nome com menos de 2 caracteres deve retornar 400');
+
+    // Email inválido
+    const reqBadEmail = new Request('http://localhost:3000/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ nome: 'Mateus Teste', email: 'not-an-email' }),
+    });
+    const resBadEmail = await postContact(reqBadEmail);
+    assert.strictEqual(resBadEmail.status, 400, 'E-mail sem formato válido deve retornar 400');
+  });
+
+  test('20. Verificação de HMAC em Webhook: /api/checkout/mercadopago rejeita assinatura inválida', async () => {
+    const { POST: postMPCheckout } = await import('../src/app/api/checkout/mercadopago/route');
+    const prevSecret = process.env.MERCADOPAGO_WEBHOOK_SECRET;
+    process.env.MERCADOPAGO_WEBHOOK_SECRET = 'super-secret-hmac-webhook-key-2026';
+    try {
+      const fakeWebhookReq = new NextRequest('http://localhost:3000/api/checkout/mercadopago?type=webhook', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-signature': 'ts=1729550000,v1=fake_signature_hash_invalid',
+          'x-request-id': 'req_test_123',
+        },
+        body: JSON.stringify({ action: 'payment.created', data: { id: '999999' } }),
+      });
+
+      const res = await postMPCheckout(fakeWebhookReq);
+      assert.strictEqual(res.status, 403, 'Webhook com assinatura HMAC forjada deve ser rejeitado com 403');
+    } finally {
+      process.env.MERCADOPAGO_WEBHOOK_SECRET = prevSecret;
+    }
+  });
+
+  test('21. Blindagem Universal no Middleware: rotas /api/admin/* e purge de cache bloqueadas para anônimos', async () => {
+    const { middleware } = await import('../src/middleware');
+
+    // 1. Rota administrativa arbitrária em /api/admin/qualquer-coisa
+    const reqAdmin = new NextRequest('http://localhost:3000/api/admin/qualquer-modulo', {
+      method: 'GET',
+    });
+    const resAdmin = await middleware(reqAdmin);
+    assert.strictEqual(resAdmin.status, 401, 'Acesso anônimo a /api/admin/* deve receber 401');
+
+    // 2. Purge de cache POST /api/cache/status
+    const reqPurge = new NextRequest('http://localhost:3000/api/cache/status', {
+      method: 'POST',
+      body: JSON.stringify({ pattern: 'all' }),
+    });
+    const resPurge = await middleware(reqPurge);
+    assert.strictEqual(resPurge.status, 401, 'POST /api/cache/status anônimo deve receber 401');
+  });
+
 });

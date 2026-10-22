@@ -246,9 +246,9 @@
     "semantic_hash": ""
   },
   "next.config.ts": {
-    "mtime": 1792520359.5289633,
-    "seen": 1792521051.0912588,
-    "ast_hash": "bdfbbc3b37c9b171c6c9cf00bfd9776e",
+    "mtime": 1792635083.6864593,
+    "seen": 1792635431.777123,
+    "ast_hash": "e66ce5e106062dfabb9ae1c156981614",
     "semantic_hash": ""
   },
   "package.json": {
@@ -1476,8 +1476,8 @@
     "semantic_hash": ""
   },
   "src/data/library_catalog_index.json": {
-    "mtime": 1792633530.1324677,
-    "seen": 1792633968.5184882,
+    "mtime": 1792635387.8384295,
+    "seen": 1792635431.780428,
     "ast_hash": "a3760edacaa85f7d3460a01e9fdb65f6",
     "semantic_hash": ""
   },
@@ -1500,9 +1500,9 @@
     "semantic_hash": ""
   },
   "src/lib/db/index.ts": {
-    "mtime": 1792337879.3119323,
-    "seen": 1792521051.091398,
-    "ast_hash": "9ef289fab92c0a43f52ebe828062052d",
+    "mtime": 1792635327.2023542,
+    "seen": 1792635431.780695,
+    "ast_hash": "b62199fe1a7a7c4c6ab45e218e48707b",
     "semantic_hash": ""
   },
   "src/lib/db/schema.ts": {
@@ -1584,9 +1584,9 @@
     "semantic_hash": ""
   },
   "src/lib/db/seed.ts": {
-    "mtime": 1792337879.3122144,
-    "seen": 1792521051.091399,
-    "ast_hash": "e2f188b9a90541b27030fa8d374adc58",
+    "mtime": 1792635003.8654737,
+    "seen": 1792635431.7807202,
+    "ast_hash": "15da1d8b362347f457f09967156c2a7c",
     "semantic_hash": ""
   },
   "src/app/api/leads/route.ts": {
@@ -1596,9 +1596,9 @@
     "semantic_hash": ""
   },
   "src/app/api/library/download/route.ts": {
-    "mtime": 1792373086.1309774,
-    "seen": 1792521051.091309,
-    "ast_hash": "5755b063948ef7d410363bd4e339a45a",
+    "mtime": 1792635358.0174978,
+    "seen": 1792635431.77823,
+    "ast_hash": "72a32811ccb21188ee8f11e348d56ea8",
     "semantic_hash": ""
   },
   "src/components/library/ResourceCard.tsx": {
@@ -1620,9 +1620,9 @@
     "semantic_hash": ""
   },
   "src/app/api/auth/register/route.ts": {
-    "mtime": 1792337879.2848682,
-    "seen": 1792521051.0913,
-    "ast_hash": "899473d4c97910ea80bc05ac75e5692f",
+    "mtime": 1792635021.8253756,
+    "seen": 1792635431.778017,
+    "ast_hash": "7a9a454a085f9ba5971260b5ad2ad47a",
     "semantic_hash": ""
   },
   "src/components/library/ResourceSearch.tsx": {
@@ -1698,9 +1698,9 @@
     "semantic_hash": ""
   },
   "src/app/api/payment/webhook/route.ts": {
-    "mtime": 1792337879.2867916,
-    "seen": 1792521051.0913122,
-    "ast_hash": "d3419e09ea29af2e0da5958496ba9ae1",
+    "mtime": 1792635065.7880988,
+    "seen": 1792635431.778304,
+    "ast_hash": "482fba5e17062fcc6194eb07fbe5e158",
     "semantic_hash": ""
   },
   "src/components/comunidade/VideoPlayer.tsx": {
@@ -14604,9 +14604,9 @@
     "semantic_hash": ""
   },
   "src/app/api/articles/[id]/route.ts": {
-    "mtime": 1792361671.3610857,
-    "seen": 1792521051.091296,
-    "ast_hash": "7b8d6e99464d114558c3377300d76241",
+    "mtime": 1792635042.8331614,
+    "seen": 1792635431.7779388,
+    "ast_hash": "b6e906a5e4ffe71da3ab972149dc0110",
     "semantic_hash": ""
   },
   "src/app/not-found.tsx": {
@@ -14646,9 +14646,9 @@
     "semantic_hash": ""
   },
   "src/lib/notion-diary-parser.ts": {
-    "mtime": 1792337879.313385,
-    "seen": 1792521051.091402,
-    "ast_hash": "4f8c739219671db4ee7433218a314061",
+    "mtime": 1792635188.473787,
+    "seen": 1792635431.780769,
+    "ast_hash": "882d10fd411db93656f8dba08f3a1667",
     "semantic_hash": ""
   },
   "tests/notion_diary_and_shop.test.ts": {
@@ -14676,9 +14676,9 @@
     "semantic_hash": ""
   },
   "tests/security_audit.test.ts": {
-    "mtime": 1792520987.6056044,
-    "seen": 1792521051.09143,
-    "ast_hash": "8123a61c0eb92f01d618c4646c04b06b",
+    "mtime": 1792635377.3708768,
+    "seen": 1792635431.781462,
+    "ast_hash": "0f22ce6f06b477d58e97e1e4109bac97",
     "semantic_hash": ""
   },
   "tests/comunidade_tabs_navigation.test.mjs": {
@@ -14766,8 +14766,8 @@
     "semantic_hash": ""
   },
   "src/data/libraries.json": {
-    "mtime": 1792633530.1438692,
-    "seen": 1792633968.518486,
+    "mtime": 1792635387.8487897,
+    "seen": 1792635431.780427,
     "ast_hash": "3e79a0df86ee6f7eb3acd51fbf5fad31",
     "semantic_hash": ""
   },

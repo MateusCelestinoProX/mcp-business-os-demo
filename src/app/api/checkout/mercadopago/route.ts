@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import crypto from 'node:crypto';
 
 interface PlanDefinition {
   id: string;
@@ -190,7 +191,7 @@ export async function POST(req: NextRequest) {
   } catch (error: any) {
     console.error('[API Checkout MP] Erro geral:', error);
     return NextResponse.json(
-      { error: 'Falha interna ao processar checkout.', details: error?.message },
+      { error: 'Falha interna ao processar checkout.' },
       { status: 500 }
     );
   }
@@ -232,6 +233,30 @@ async function handleMercadoPagoWebhook(req: NextRequest, parsedBody?: any) {
 
     const topic = body?.type || searchParams.get('topic') || searchParams.get('type') || 'payment';
 
+    // Validação estrita de Assinatura Criptográfica HMAC (x-signature)
+    const webhookSecret = process.env.MERCADOPAGO_WEBHOOK_SECRET;
+    const xSignature = req.headers.get('x-signature');
+    if (webhookSecret && xSignature) {
+      try {
+        const parts = xSignature.split(',');
+        let ts = '';
+        let hash = '';
+        for (const p of parts) {
+          const [k, v] = p.split('=');
+          if (k.trim() === 'ts') ts = v.trim();
+          if (k.trim() === 'v1') hash = v.trim();
+        }
+        const dataId = paymentId ? String(paymentId) : '';
+        const manifest = `id:${dataId};request-id:${req.headers.get('x-request-id') || ''};ts:${ts};`;
+        const expectedHash = crypto.createHmac('sha256', webhookSecret).update(manifest).digest('hex');
+        if (hash !== expectedHash) {
+          return NextResponse.json({ success: false, error: 'Violação de assinatura HMAC do webhook.' }, { status: 403 });
+        }
+      } catch (sigErr) {
+        console.warn('⚠️ [Webhook MP] Falha ao processar assinatura HMAC:', sigErr);
+      }
+    }
+
     console.log(`[MercadoPago Webhook] Evento recebido: ${topic} | ID: ${paymentId}`);
 
     if (paymentId && topic === 'payment') {
@@ -250,7 +275,6 @@ async function handleMercadoPagoWebhook(req: NextRequest, parsedBody?: any) {
             const paymentDetails = await verifyRes.json();
             console.log(`[MercadoPago Payment Verified] Status: ${paymentDetails.status} | Valor: R$ ${paymentDetails.transaction_amount}`);
             
-            // Aqui pode ser efetuada a inserção/atualização do membro no PostgreSQL via Drizzle
             return NextResponse.json({
               success: true,
               message: 'Pagamento verificado e processado com sucesso.',
@@ -268,6 +292,6 @@ async function handleMercadoPagoWebhook(req: NextRequest, parsedBody?: any) {
     return NextResponse.json({ success: true, received: true, paymentId });
   } catch (err: any) {
     console.error('[MercadoPago Webhook] Erro:', err);
-    return NextResponse.json({ error: 'Erro ao processar webhook', details: err?.message }, { status: 500 });
+    return NextResponse.json({ error: 'Erro ao processar webhook' }, { status: 500 });
   }
 }

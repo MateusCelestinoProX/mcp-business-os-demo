@@ -10,12 +10,12 @@ import { verifyToken } from '@/lib/auth/jwt';
 
 // Rotas de API restritas a administradores e moderadores
 function isRestrictedAdminRoute(pathname: string, method?: string, searchParams?: URLSearchParams): boolean {
+  if (pathname.startsWith('/api/admin/')) return true;
   if (pathname.startsWith('/api/members')) return true;
   if (pathname.startsWith('/api/finance')) return true;
   if (pathname.startsWith('/api/leads') && method === 'GET') return true;
   if (pathname.startsWith('/api/articles') && method && method !== 'GET') return true;
-  if (pathname.startsWith('/api/admin/libraries')) return true;
-  if (pathname.startsWith('/api/admin/shop-resources') && method && method !== 'GET') return true;
+  if (pathname.startsWith('/api/cache/status') && method && method !== 'GET') return true;
   if (pathname.startsWith('/api/storage/imagekit')) {
     if (method && method !== 'GET') return true;
     const action = searchParams?.get('action');
