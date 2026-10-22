@@ -9,9 +9,13 @@
 
 const { Client } = require('pg');
 
-const DATABASE_URL = process.env.DATABASE_URL || "postgresql://postgres:MateusProX_2026_SupabaseDb!@db.lijrxbzotmoikyvjiipv.supabase.co:5432/postgres";
+const DATABASE_URL = process.env.DATABASE_URL;
 
 async function runSuperAudit() {
+  if (!DATABASE_URL) {
+    console.error('❌ ERRO: DATABASE_URL não configurada no ambiente (.env). Defina a variável para executar a auditoria.');
+    process.exit(1);
+  }
   console.log('='.repeat(80));
   console.log('🔍 INICIANDO SUPER AUDITORIA DE SEGURANÇA & PORTABILIDADE SUPABASE');
   console.log('Projeto Alvo: MATEUS CELESTINO PRO X (lijrxbzotmoikyvjiipv)');

@@ -3,6 +3,7 @@ import { db, articles } from '@/lib/db';
 import { eq, or } from 'drizzle-orm';
 import { getArticleBySlug } from '@/lib/articles';
 import { parseNotionMarkdown } from '@/lib/notion-diary-parser';
+import { verifyAdminRequest } from '@/lib/auth/admin-guard';
 
 export const dynamic = 'force-dynamic';
 
@@ -25,6 +26,17 @@ export async function GET(
 
       if (dbArticle && dbArticle.length > 0) {
         const item = dbArticle[0];
+
+        // Artigos não publicados só podem ser visualizados por administradores
+        if (!item.isPublished) {
+          const auth = await verifyAdminRequest(request);
+          if (!auth.authorized) {
+            return NextResponse.json(
+              { success: false, error: 'Artigo não encontrado no acervo soberano.' },
+              { status: 404 }
+            );
+          }
+        }
         return NextResponse.json({
           success: true,
           source: 'supabase',

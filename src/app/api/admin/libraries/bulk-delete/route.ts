@@ -1,10 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { deleteMultipleItems } from '@/lib/library/library-manager';
+import { verifyAdminRequest, unauthorizedResponse } from '@/lib/auth/admin-guard';
 
 export const dynamic = 'force-dynamic';
 
 export async function POST(request: NextRequest) {
   try {
+    const auth = await verifyAdminRequest(request);
+    if (!auth.authorized) {
+      return unauthorizedResponse(auth.error);
+    }
+
     const body = await request.json();
     const ids: string[] = body.ids;
 

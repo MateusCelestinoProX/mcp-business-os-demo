@@ -33,10 +33,10 @@ export interface ImageKitAuthParams {
 export const IMAGEKIT_PUBLIC_KEY =
   process.env.IMAGEKIT_PUBLIC_KEY ||
   process.env.NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY ||
-  'public_tk5YQVVARmsNo/V3ZYrr0UpgyGs=';
+  '';
 
 export const IMAGEKIT_PRIVATE_KEY =
-  process.env.IMAGEKIT_PRIVATE_KEY || 'private_3hfnNnkOAokeFvzZm8FsViiMZXI=';
+  process.env.IMAGEKIT_PRIVATE_KEY || '';
 
 export const IMAGEKIT_URL_ENDPOINT = (
   process.env.IMAGEKIT_URL_ENDPOINT ||

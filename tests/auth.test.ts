@@ -56,8 +56,10 @@ describe('Auth & Security Module Tests (bcryptjs + jose JWT)', () => {
 
   describe('Authentication Flow & Fallbacks', () => {
     test('authenticateAdmin deve autenticar com credenciais corretas', async () => {
+      process.env.ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'McpProX#2026_Sovereign@Admin!7Kz9Pq';
+      process.env.MEMBER_PASSWORD = process.env.MEMBER_PASSWORD || 'MembroProX@2026!';
       const adminEmail = process.env.ADMIN_EMAIL || 'mcp6667@proton.me';
-      const adminPass = process.env.ADMIN_PASSWORD || 'McpProX#2026_Sovereign@Admin!7Kz9Pq';
+      const adminPass = process.env.ADMIN_PASSWORD;
       const result = await authenticateAdmin(adminEmail, adminPass);
 
       assert.strictEqual(result.success, true, 'Deve autenticar com credenciais válidas');

@@ -6,6 +6,7 @@ import {
   saveFileContent,
   loadAllItems,
 } from '@/lib/library/library-manager';
+import { verifyAdminRequest, unauthorizedResponse } from '@/lib/auth/admin-guard';
 
 export const dynamic = 'force-dynamic';
 
@@ -14,6 +15,11 @@ export async function GET(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const auth = await verifyAdminRequest(request);
+    if (!auth.authorized) {
+      return unauthorizedResponse(auth.error);
+    }
+
     const { id } = await params;
     const items = loadAllItems();
     const item = items.find((it) => it.id === id || it.slug === id);
@@ -49,6 +55,11 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const auth = await verifyAdminRequest(request);
+    if (!auth.authorized) {
+      return unauthorizedResponse(auth.error);
+    }
+
     const { id } = await params;
     if (!id) {
       return NextResponse.json({ success: false, error: 'ID do item é obrigatório' }, { status: 400 });
@@ -71,6 +82,11 @@ export async function PUT(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const auth = await verifyAdminRequest(request);
+    if (!auth.authorized) {
+      return unauthorizedResponse(auth.error);
+    }
+
     const { id } = await params;
     const body = await request.json();
 

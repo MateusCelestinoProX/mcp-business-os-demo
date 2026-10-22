@@ -147,26 +147,48 @@ export async function runSeed() {
           CREATE INDEX IF NOT EXISTS idx_user_purchases_user_id ON public.user_purchases(user_id);
         `);
 
-        const commTables = [
-          'profiles',
-          'moderator_permissions',
-          'community_posts',
-          'community_comments',
-          'community_likes',
-          'servers',
-          'server_lessons',
-          'banners',
-          'user_purchases',
+        // Configuração de Políticas Fortificadas de Row Level Security (RLS)
+        const allTables = [
+          'profiles', 'moderator_permissions', 'community_posts',
+          'community_comments', 'community_likes', 'servers',
+          'server_lessons', 'banners', 'user_purchases',
         ];
-        for (const tb of commTables) {
+        for (const tb of allTables) {
           await client.query(`ALTER TABLE public.${tb} ENABLE ROW LEVEL SECURITY;`);
           await client.query(`DROP POLICY IF EXISTS "Public read ${tb}" ON public.${tb};`);
-          await client.query(`CREATE POLICY "Public read ${tb}" ON public.${tb} FOR SELECT USING (true);`);
           await client.query(`DROP POLICY IF EXISTS "Authenticated write ${tb}" ON public.${tb};`);
+          await client.query(`DROP POLICY IF EXISTS "Admin write ${tb}" ON public.${tb};`);
+          await client.query(`DROP POLICY IF EXISTS "Owner write ${tb}" ON public.${tb};`);
+          await client.query(`DROP POLICY IF EXISTS "Service role write ${tb}" ON public.${tb};`);
+        }
+
+        // 1. Leituras públicas de conteúdo
+        for (const tb of ['profiles', 'community_posts', 'community_comments', 'community_likes', 'servers', 'server_lessons', 'banners']) {
+          await client.query(`CREATE POLICY "Public read ${tb}" ON public.${tb} FOR SELECT USING (true);`);
+        }
+
+        // 2. Tabelas Administrativas: escrita exclusiva para service_role (backend/API)
+        for (const tb of ['moderator_permissions', 'servers', 'server_lessons', 'banners', 'user_purchases']) {
           await client.query(
-            `CREATE POLICY "Authenticated write ${tb}" ON public.${tb} FOR ALL TO authenticated, service_role USING (true) WITH CHECK (true);`
+            `CREATE POLICY "Service role write ${tb}" ON public.${tb} FOR ALL TO service_role USING (true) WITH CHECK (true);`
           );
         }
+
+        // 3. User Purchases: leitura permitida apenas ao dono da compra ou service_role
+        await client.query(`CREATE POLICY "Owner read user_purchases" ON public.user_purchases FOR SELECT TO authenticated USING (auth.uid() = user_id);`);
+
+        // 4. Profiles: usuário pode criar e editar estritamente seu próprio perfil
+        await client.query(`CREATE POLICY "Owner insert profiles" ON public.profiles FOR INSERT TO authenticated WITH CHECK (auth.uid() = id);`);
+        await client.query(`CREATE POLICY "Owner update profiles" ON public.profiles FOR UPDATE TO authenticated USING (auth.uid() = id) WITH CHECK (auth.uid() = id);`);
+        await client.query(`CREATE POLICY "Service role write profiles" ON public.profiles FOR ALL TO service_role USING (true) WITH CHECK (true);`);
+
+        // 5. Posts e Comentários: usuário pode criar e gerenciar estritamente os seus
+        await client.query(`CREATE POLICY "Owner write community_posts" ON public.community_posts FOR ALL TO authenticated USING (auth.uid() = user_id) WITH CHECK (auth.uid() = user_id);`);
+        await client.query(`CREATE POLICY "Service role write community_posts" ON public.community_posts FOR ALL TO service_role USING (true) WITH CHECK (true);`);
+        await client.query(`CREATE POLICY "Owner write community_comments" ON public.community_comments FOR ALL TO authenticated USING (auth.uid() = user_id) WITH CHECK (auth.uid() = user_id);`);
+        await client.query(`CREATE POLICY "Service role write community_comments" ON public.community_comments FOR ALL TO service_role USING (true) WITH CHECK (true);`);
+        await client.query(`CREATE POLICY "Owner write community_likes" ON public.community_likes FOR ALL TO authenticated USING (auth.uid() = user_id) WITH CHECK (auth.uid() = user_id);`);
+        await client.query(`CREATE POLICY "Service role write community_likes" ON public.community_likes FOR ALL TO service_role USING (true) WITH CHECK (true);`);
 
         // Provisionar contas reais em auth.users (via GoTrue Admin API), admin_users, members e profiles
         const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL;

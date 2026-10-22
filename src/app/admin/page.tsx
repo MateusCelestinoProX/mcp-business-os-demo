@@ -829,7 +829,7 @@ export default function AdminPanelPage() {
           />
 
           {/* ÁREA PRINCIPAL: CONTEÚDO DA PÁGINA INTERNA SELECIONADA */}
-          <main className="flex-1 min-w-0 w-full space-y-6">
+          <div className="flex-1 min-w-0 w-full space-y-6">
             {/* Header Executivo da Página Interna Ativa */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 rounded-2xl bg-white/[0.06] backdrop-blur-3xl border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.4)]">
               <div className="space-y-1.5">
@@ -1690,7 +1690,7 @@ export default function AdminPanelPage() {
         </GlassCard>
       )}
 
-          </main>
+          </div>
         </div>
 
         {/* MODAL DO EDITOR LIVRE INFINITO NOTION-LIKE (DIARY OS) */}

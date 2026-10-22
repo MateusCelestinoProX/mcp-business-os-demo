@@ -9,11 +9,28 @@ import type { SessionPayload } from '@/lib/auth/jwt';
 
 export async function POST(req: Request) {
   try {
-    // 0. Proteção CSRF via verificação de cabeçalho Origin
+    // 0. Proteção CSRF via verificação estrita de cabeçalho Origin
     const origin = req.headers.get('origin');
     if (origin) {
-      const allowed = ['http://localhost:3000', 'http://127.0.0.1:3000', process.env.NEXT_PUBLIC_APP_URL].filter(Boolean);
-      const isAllowed = allowed.some((a) => a && origin.startsWith(a)) || origin.endsWith('.vercel.app');
+      const allowedOrigins = [
+        'http://localhost:3000',
+        'http://127.0.0.1:3000',
+        process.env.NEXT_PUBLIC_APP_URL,
+        process.env.NEXT_PUBLIC_SITE_URL,
+        'https://mateuscelestino.pro',
+        'https://www.mateuscelestino.pro',
+      ].filter(Boolean) as string[];
+
+      const isAllowed = allowedOrigins.some((allowed) => {
+        try {
+          const originHost = new URL(origin).host;
+          const allowedHost = new URL(allowed).host;
+          return originHost === allowedHost;
+        } catch {
+          return false;
+        }
+      }) || Boolean(process.env.VERCEL_PROJECT_PRODUCTION_URL && origin.includes(process.env.VERCEL_PROJECT_PRODUCTION_URL));
+
       if (!isAllowed) {
         return NextResponse.json({ success: false, error: 'Violação de política CSRF: Origem não autorizada.' }, { status: 403 });
       }

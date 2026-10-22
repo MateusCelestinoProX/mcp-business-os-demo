@@ -3123,6 +3123,12 @@ input, textarea, [contenteditable="true"] {
         border: 1px solid rgba(245, 158, 11, 0.3) !important;
         color: #fcd34d !important;
       }
+      #msb-dock-admin-link {
+        display: none !important;
+      }
+      #msb-dock-admin-link.is-admin-active {
+        display: flex !important;
+      }
     </style>
 
     <header id="master-sovereign-bar" data-component="MasterSovereignBar">
@@ -3252,7 +3258,7 @@ input, textarea, [contenteditable="true"] {
             var raw = localStorage.getItem(STORAGE_KEY);
             if (raw) {
               var parsed = JSON.parse(raw);
-              if (parsed && parsed.role) return parsed;
+              if (parsed && parsed.isLoggedIn === true && parsed.role) return parsed;
             }
           } catch(e) {}
           return GUEST_USER;
@@ -3279,13 +3285,23 @@ input, textarea, [contenteditable="true"] {
           var mobileLoginLink = document.getElementById('msb-mobile-login-link');
           var mobileLogoutBtn = document.getElementById('msb-mobile-logout-btn');
 
-          var isAdmin = (u.role === 'admin');
+          var isAdmin = Boolean(u && u.isLoggedIn === true && u.role === 'admin');
           if (adminBtn) {
             if (isAdmin) adminBtn.classList.add('visible');
             else adminBtn.classList.remove('visible');
           }
           if (mobileAdminBtn) {
             mobileAdminBtn.style.display = isAdmin ? 'flex' : 'none';
+          }
+          var dockAdminLink = document.getElementById('msb-dock-admin-link');
+          if (dockAdminLink) {
+            if (isAdmin) {
+              dockAdminLink.classList.add('is-admin-active');
+              dockAdminLink.style.setProperty('display', 'flex', 'important');
+            } else {
+              dockAdminLink.classList.remove('is-admin-active');
+              dockAdminLink.style.setProperty('display', 'none', 'important');
+            }
           }
 
           if (userName) userName.textContent = u.name;
@@ -5899,7 +5915,7 @@ input, textarea, [contenteditable="true"] {
         </a>
 
         <!-- 6. Admin (dinâmico) -->
-        <a href="/admin" id="msb-dock-admin-link" class="msb-dock-item" data-route="admin" aria-label="Painel Admin" style="display: none;">
+        <a href="/admin" id="msb-dock-admin-link" class="msb-dock-item" data-route="admin" aria-label="Painel Admin" style="display: none !important;">
           <div class="msb-dock-icon-box msb-dock-admin-box">
             <svg class="msb-dock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"/></svg>
           </div>
@@ -5910,16 +5926,27 @@ input, textarea, [contenteditable="true"] {
 
     <script id="mobile-sovereign-dock-init-script">
       (function() {
-        try {
-          var userStr = localStorage.getItem('mcp_session_user');
-          var user = userStr ? JSON.parse(userStr) : null;
-          var role = user ? user.role : localStorage.getItem('mcp_user_role');
-          var isAdmin = role === 'admin';
-          var adminLink = document.getElementById('msb-dock-admin-link');
-          if (adminLink && isAdmin) {
-            adminLink.style.display = 'flex';
-          }
-        } catch(e) {}
+        function syncDockAdmin() {
+          try {
+            var userStr = localStorage.getItem('mcp_session_user');
+            var user = userStr ? JSON.parse(userStr) : null;
+            var isAdmin = Boolean(user && user.isLoggedIn === true && user.role === 'admin');
+            var adminLink = document.getElementById('msb-dock-admin-link');
+            if (adminLink) {
+              if (isAdmin) {
+                adminLink.classList.add('is-admin-active');
+                adminLink.style.setProperty('display', 'flex', 'important');
+              } else {
+                adminLink.classList.remove('is-admin-active');
+                adminLink.style.setProperty('display', 'none', 'important');
+              }
+            }
+          } catch(e) {}
+        }
+
+        syncDockAdmin();
+        window.addEventListener('storage', syncDockAdmin);
+        window.addEventListener('mcp_auth_changed', syncDockAdmin);
 
         // Auto-scroll suave para centralizar Free Resources
         var container = document.getElementById('msb-bottom-dock-scroll');

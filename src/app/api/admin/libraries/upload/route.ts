@@ -3,13 +3,28 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { addItemToLibrary, determineFileType } from '@/lib/library/library-manager';
 import { uploadToImageKit, isImageKitConfigured, getCanonicalImageKitFolder } from '@/lib/storage/imagekit';
+import { verifyAdminRequest, unauthorizedResponse } from '@/lib/auth/admin-guard';
 
 export const dynamic = 'force-dynamic';
 
 const UPLOAD_DIR = path.resolve(process.cwd(), 'public/uploads/library');
+const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50MB
+const ALLOWED_EXTENSIONS = new Set([
+  '.png', '.jpg', '.jpeg', '.webp', '.gif', '.avif', '.ico',
+  '.mp4', '.mov', '.webm', '.mkv', '.avi',
+  '.mp3', '.wav', '.ogg', '.m4a', '.flac',
+  '.pdf', '.docx', '.txt', '.md', '.markdown', '.json', '.csv',
+  '.zip', '.rar', '.7z', '.tar', '.gz', '.apk',
+  '.py', '.js', '.ts', '.css', '.sql'
+]);
 
 export async function POST(request: NextRequest) {
   try {
+    const auth = await verifyAdminRequest(request);
+    if (!auth.authorized) {
+      return unauthorizedResponse(auth.error);
+    }
+
     // Garantir que a pasta de uploads exista
     if (!fs.existsSync(UPLOAD_DIR)) {
       fs.mkdirSync(UPLOAD_DIR, { recursive: true });
@@ -36,6 +51,24 @@ export async function POST(request: NextRequest) {
         { success: false, error: 'Nenhum arquivo enviado para upload do Mac' },
         { status: 400 }
       );
+    }
+
+    // Validação preventiva de tamanho e extensão
+    for (const file of targetFiles) {
+      if (file.size > MAX_FILE_SIZE) {
+        return NextResponse.json(
+          { success: false, error: `Arquivo ${file.name} excede o limite máximo permitido de 50MB.` },
+          { status: 400 }
+        );
+      }
+
+      const ext = path.extname(file.name).toLowerCase();
+      if (!ALLOWED_EXTENSIONS.has(ext)) {
+        return NextResponse.json(
+          { success: false, error: `Extensão de arquivo '${ext}' não é permitida por motivos de segurança.` },
+          { status: 400 }
+        );
+      }
     }
 
     const uploadedItems = [];

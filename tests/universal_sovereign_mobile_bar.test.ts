@@ -89,4 +89,41 @@ describe('Suíte de Validação: Presença Universal da Barra Geral Soberana & O
     assert.ok(jsContent.includes("toast.style.pointerEvents = 'none'"), 'app.js deve blindar pointerEvents como none');
     assert.ok(!jsContent.includes("toast.classList.add('opacity-100', 'pointer-events-auto'"), 'app.js não deve adicionar pointer-events-auto');
   });
+
+  test('6. Blindagem de Acesso Admin: Widget Admin na barra móvel deve estar estritamente oculto por padrão (display: none !important) e condicionado a sessão admin', () => {
+    const htmlFiles = [showcaseHtmlPath, bibliotecaHtmlPath, comunidadeHtmlPath];
+
+    for (const filePath of htmlFiles) {
+      const content = fs.readFileSync(filePath, 'utf-8');
+
+      // 1. CSS deve esconder com !important por padrão
+      assert.ok(
+        content.includes('#msb-dock-admin-link {') && content.includes('display: none !important;'),
+        `${filePath} deve possuir regra CSS #msb-dock-admin-link { display: none !important; }`
+      );
+      assert.ok(
+        content.includes('#msb-dock-admin-link.is-admin-active {') && content.includes('display: flex !important;'),
+        `${filePath} deve possuir regra CSS #msb-dock-admin-link.is-admin-active { display: flex !important; }`
+      );
+
+      // 2. Tag HTML inline deve ter display: none !important
+      assert.ok(
+        content.includes('id="msb-dock-admin-link"') && content.includes('style="display: none !important;"'),
+        `${filePath} deve iniciar com style="display: none !important;" no elemento #msb-dock-admin-link`
+      );
+
+      // 3. Script deve verificar explicitamente isLoggedIn === true && role === 'admin'
+      assert.ok(
+        content.includes("u.isLoggedIn === true && u.role === 'admin'") ||
+        content.includes("user.isLoggedIn === true && user.role === 'admin'"),
+        `${filePath} deve validar explicitamente isLoggedIn === true && role === 'admin'`
+      );
+
+      // 4. renderMSB deve controlar dockAdminLink
+      assert.ok(
+        content.includes("dockAdminLink.classList.remove('is-admin-active')"),
+        `${filePath} renderMSB deve remover a classe is-admin-active quando não for admin`
+      );
+    }
+  });
 });

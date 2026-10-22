@@ -38,7 +38,7 @@ export default async function AdminShopPage() {
           <AdminSidebar activeTab="shop_resources" />
 
           {/* ÁREA PRINCIPAL DA PÁGINA INTERNA */}
-          <main className="flex-1 min-w-0 w-full space-y-6">
+          <div className="flex-1 min-w-0 w-full space-y-6">
             {/* Breadcrumb Soberano */}
             <div className="flex items-center justify-between text-xs font-mono text-neutral-400 flex-wrap gap-2 p-4 rounded-2xl bg-white/[0.04] border border-white/10 backdrop-blur-xl">
               <div className="flex items-center gap-2">
@@ -75,7 +75,7 @@ export default async function AdminShopPage() {
 
             {/* Suite Completa de Gestão da Loja Virtual e Cards */}
             <ShopControlSuite />
-          </main>
+          </div>
         </div>
       </div>
     </div>

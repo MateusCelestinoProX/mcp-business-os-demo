@@ -29,24 +29,23 @@ export async function verifyAdminRequest(
 
   // Se não foi encontrada sessão válida
   if (!session) {
-    // Em produção ou quando explicitamente exigido em dev: bloqueio estrito e absoluto
-    if (isProduction || options?.requireInDev) {
+    // Apenas concede bypass se explicitamente habilitado via variável de ambiente de desenvolvimento
+    if (process.env.ALLOW_DEV_ADMIN_BYPASS === 'true' && !isProduction && !options?.requireInDev) {
       return {
-        authorized: false,
-        session: null,
-        error: 'Autenticação obrigatória. Faça login como administrador para prosseguir.',
+        authorized: true,
+        session: {
+          userId: 'dev_admin_id',
+          email: 'mcp6667@proton.me',
+          name: 'Mateus Celestino (Dev Local)',
+          role: 'admin',
+        },
       };
     }
 
-    // Em ambiente de desenvolvimento local (Next dev / testes locais):
     return {
-      authorized: true,
-      session: {
-        userId: 'dev_admin_id',
-        email: 'mcp6667@proton.me',
-        name: 'Mateus Celestino (Dev Local)',
-        role: 'admin',
-      },
+      authorized: false,
+      session: null,
+      error: 'Autenticação obrigatória. Faça login como administrador para prosseguir.',
     };
   }
 

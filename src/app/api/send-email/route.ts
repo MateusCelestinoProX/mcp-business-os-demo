@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { checkRateLimit } from '@/lib/auth/rate-limit';
+import { verifyAdminRequest } from '@/lib/auth/admin-guard';
 
 export const dynamic = 'force-dynamic';
 
@@ -85,8 +86,16 @@ export async function POST(req: Request) {
         </div>
       `;
     } else {
-      subject = body.subject || 'Notificação A.I VISUALS';
-      htmlContent = body.html || `<p>${body.text || 'Notificação do sistema'}</p>`;
+      // O envio de e-mails customizados com assunto ou HTML livre exige estritamente autenticação de administrador
+      const auth = await verifyAdminRequest(req);
+      if (!auth.authorized) {
+        return NextResponse.json(
+          { error: 'Envio de e-mails customizados restrito a administradores autenticados.' },
+          { status: 401 }
+        );
+      }
+      subject = escapeHtml(body.subject || 'Notificação A.I VISUALS');
+      htmlContent = body.html || `<p>${escapeHtml(body.text || 'Notificação do sistema')}</p>`;
     }
 
     if (!RESEND_API_KEY) {

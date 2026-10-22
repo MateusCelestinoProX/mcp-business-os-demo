@@ -260,4 +260,101 @@ describe('🛡️ Plataforma Unificada Soberana — Suíte de Auditoria e Testes
     assert.strictEqual(hasAdminOrModerAccess(guestUser), false, 'Visitante NÃO deve ter acesso ao painel');
   });
 
+  test('14. Blindagem do Middleware: Rejeita Bearer token falso/inválido em rota restrita', async () => {
+    const { middleware } = await import('../src/middleware');
+    const fakeBearerReq = new NextRequest('http://localhost:3000/api/admin/libraries', {
+      headers: {
+        Authorization: 'Bearer invalid_forged_token_bypass',
+      },
+    });
+
+    const res = await middleware(fakeBearerReq);
+    assert.strictEqual(res.status, 401, 'Bearer token inválido no middleware deve retornar 401');
+  });
+
+  test('15. Proteção de Storage ImageKit: Ações restritas exigem autenticação admin', async () => {
+    const { GET, POST, DELETE } = await import('../src/app/api/storage/imagekit/route');
+    const prevEnv = process.env.NODE_ENV;
+    (process.env as any).NODE_ENV = 'production';
+    try {
+      // action=list sem auth
+      const reqList = new NextRequest('http://localhost:3000/api/storage/imagekit?action=list');
+      const resList = await GET(reqList);
+      assert.strictEqual(resList.status, 401, 'action=list não autenticado deve retornar 401');
+
+      // action=auth sem auth
+      const reqAuth = new NextRequest('http://localhost:3000/api/storage/imagekit?action=auth');
+      const resAuth = await GET(reqAuth);
+      assert.strictEqual(resAuth.status, 401, 'action=auth não autenticado deve retornar 401');
+
+      // POST sem auth
+      const reqPost = new NextRequest('http://localhost:3000/api/storage/imagekit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ file: 'test', fileName: 'test.png' }),
+      });
+      const resPost = await POST(reqPost);
+      assert.strictEqual(resPost.status, 401, 'POST /api/storage/imagekit não autenticado deve retornar 401');
+
+      // DELETE sem auth
+      const reqDel = new NextRequest('http://localhost:3000/api/storage/imagekit?fileId=123', {
+        method: 'DELETE',
+      });
+      const resDel = await DELETE(reqDel);
+      assert.strictEqual(resDel.status, 401, 'DELETE /api/storage/imagekit não autenticado deve retornar 401');
+    } finally {
+      (process.env as any).NODE_ENV = prevEnv;
+    }
+  });
+
+  test('16. Proteção de Itens da Biblioteca: GET/PUT/DELETE /api/admin/libraries/items/[id] exigem auth', async () => {
+    const { GET, PUT, DELETE } = await import('../src/app/api/admin/libraries/items/[id]/route');
+    const prevEnv = process.env.NODE_ENV;
+    (process.env as any).NODE_ENV = 'production';
+    try {
+      const dummyParams = { params: Promise.resolve({ id: 'res-test' }) };
+
+      const unauthGet = new NextRequest('http://localhost:3000/api/admin/libraries/items/res-test');
+      const resGet = await GET(unauthGet, dummyParams);
+      assert.strictEqual(resGet.status, 401, 'GET item não autenticado deve retornar 401');
+
+      const unauthPut = new NextRequest('http://localhost:3000/api/admin/libraries/items/res-test', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title: 'Hacked' }),
+      });
+      const resPut = await PUT(unauthPut, dummyParams);
+      assert.strictEqual(resPut.status, 401, 'PUT item não autenticado deve retornar 401');
+
+      const unauthDel = new NextRequest('http://localhost:3000/api/admin/libraries/items/res-test', {
+        method: 'DELETE',
+      });
+      const resDel = await DELETE(unauthDel, dummyParams);
+      assert.strictEqual(resDel.status, 401, 'DELETE item não autenticado deve retornar 401');
+    } finally {
+      (process.env as any).NODE_ENV = prevEnv;
+    }
+  });
+
+  test('17. Bloqueio de Open Email Relay: Envio de e-mail customizado exige auth de administrador', async () => {
+    const prevEnv = process.env.NODE_ENV;
+    (process.env as any).NODE_ENV = 'production';
+    try {
+      const customEmailReq = new Request('http://localhost:3000/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          to: 'victim@example.com',
+          subject: 'Phishing Attempt',
+          html: '<script>alert(1)</script>',
+        }),
+      });
+
+      const res = await postSendEmail(customEmailReq);
+      assert.strictEqual(res.status, 401, 'E-mail customizado não autenticado deve ser rejeitado com 401');
+    } finally {
+      (process.env as any).NODE_ENV = prevEnv;
+    }
+  });
+
 });

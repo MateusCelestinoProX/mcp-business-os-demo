@@ -1,4 +1,5 @@
 import bcrypt from 'bcryptjs';
+import crypto from 'node:crypto';
 import { eq } from 'drizzle-orm';
 import { db, isDbConfigured } from '@/lib/db';
 import { adminUsers, members } from '@/lib/db/schema';
@@ -12,6 +13,20 @@ import { createSession } from './session';
  */
 
 const SALT_ROUNDS = 10;
+
+/**
+ * Comparação em tempo constante contra ataques de timing
+ */
+function safeCompare(a: string, b: string): boolean {
+  if (typeof a !== 'string' || typeof b !== 'string') return false;
+  const bufA = Buffer.from(a);
+  const bufB = Buffer.from(b);
+  if (bufA.length !== bufB.length) {
+    crypto.timingSafeEqual(bufA, bufA);
+    return false;
+  }
+  return crypto.timingSafeEqual(bufA, bufB);
+}
 
 /**
  * Gera hash seguro de senha utilizando bcrypt
@@ -49,7 +64,7 @@ export async function authenticateAdmin(
   }
 
   const masterEmail = (process.env.ADMIN_EMAIL || 'mcp6667@proton.me').toLowerCase().trim();
-  const masterPassword = process.env.ADMIN_PASSWORD || 'McpProX#2026_Sovereign@Admin!7Kz9Pq';
+  const masterPassword = process.env.ADMIN_PASSWORD;
 
   // 1. Tentar validação prioritária no banco de dados via Drizzle / PostgreSQL
   if (isDbConfigured) {
@@ -140,8 +155,8 @@ export async function authenticateAdmin(
     }
   }
 
-  // 3. Contingência Soberana B: Chave de Acesso Mestre (.env)
-  if (cleanEmail === masterEmail && plainPassword === masterPassword) {
+  // 3. Contingência de Emergência: Chave de Acesso Mestre (.env)
+  if (masterPassword && cleanEmail === masterEmail && safeCompare(plainPassword, masterPassword)) {
     const payload: SessionPayload = {
       userId: 'ef593ee7-4ceb-43d0-90a2-fcfc71633ee1',
       email: masterEmail,
@@ -279,10 +294,12 @@ export async function authenticateMember(
     }
   }
 
-  // 3. Membro Demo / Fallback
+  // 3. Membro Demo / Fallback via MEMBER_PASSWORD configurado
+  const memberPassword = process.env.MEMBER_PASSWORD;
   if (
+    memberPassword &&
     cleanEmail === 'membro@mateuscelestinopro.com' &&
-    plainPassword === (process.env.MEMBER_PASSWORD || 'MembroProX@2026!')
+    safeCompare(plainPassword, memberPassword)
   ) {
     const payload: SessionPayload = {
       userId: 'b2503983-86b7-41e2-a7d5-b218c6037bb6',

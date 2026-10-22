@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import crypto from 'node:crypto';
 import { eq } from 'drizzle-orm';
 import { db, isDbConfigured } from '@/lib/db';
 import { members } from '@/lib/db/schema';
@@ -17,6 +18,30 @@ export async function POST(req: Request) {
       url.searchParams.get('data.id');
 
     const topic = body?.type || body?.topic || url.searchParams.get('topic') || 'payment';
+
+    // 0. Validação de Assinatura Criptográfica HMAC (x-signature) se configurado
+    const webhookSecret = process.env.MERCADOPAGO_WEBHOOK_SECRET;
+    const xSignature = req.headers.get('x-signature');
+    if (webhookSecret && xSignature) {
+      try {
+        const parts = xSignature.split(',');
+        let ts = '';
+        let hash = '';
+        for (const p of parts) {
+          const [k, v] = p.split('=');
+          if (k.trim() === 'ts') ts = v.trim();
+          if (k.trim() === 'v1') hash = v.trim();
+        }
+        const dataId = paymentId ? String(paymentId) : '';
+        const manifest = `id:${dataId};request-id:${req.headers.get('x-request-id') || ''};ts:${ts};`;
+        const expectedHash = crypto.createHmac('sha256', webhookSecret).update(manifest).digest('hex');
+        if (hash !== expectedHash) {
+          return NextResponse.json({ success: false, error: 'Violação de assinatura HMAC do webhook.' }, { status: 403 });
+        }
+      } catch (sigErr) {
+        console.warn('⚠️ [Webhook] Falha ao processar assinatura HMAC:', sigErr);
+      }
+    }
 
     // 1. Tratamento de simulação de sandbox ou ativação direta
     const targetEmail = body?.email || body?.memberEmail || url.searchParams.get('email');

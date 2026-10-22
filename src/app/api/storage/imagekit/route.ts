@@ -9,6 +9,7 @@ import {
   IMAGEKIT_PUBLIC_KEY,
   getCanonicalImageKitFolder,
 } from '@/lib/storage/imagekit';
+import { verifyAdminRequest, unauthorizedResponse } from '@/lib/auth/admin-guard';
 
 export const dynamic = 'force-dynamic';
 
@@ -18,6 +19,10 @@ export async function GET(request: NextRequest) {
     const action = searchParams.get('action') || 'status';
 
     if (action === 'auth') {
+      const authReq = await verifyAdminRequest(request);
+      if (!authReq.authorized) {
+        return unauthorizedResponse(authReq.error);
+      }
       const auth = getImageKitAuthParams();
       return NextResponse.json({ success: true, ...auth });
     }
@@ -26,7 +31,6 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({
         success: true,
         configured: isImageKitConfigured(),
-        account: 'mcp6667@proton.me',
         alias: 'smartflow',
         urlEndpoint: IMAGEKIT_URL_ENDPOINT,
         publicKey: IMAGEKIT_PUBLIC_KEY,
@@ -34,6 +38,10 @@ export async function GET(request: NextRequest) {
     }
 
     if (action === 'list') {
+      const authReq = await verifyAdminRequest(request);
+      if (!authReq.authorized) {
+        return unauthorizedResponse(authReq.error);
+      }
       const pathParam = searchParams.get('path') || undefined;
       const limit = Number(searchParams.get('limit')) || 50;
       const skip = Number(searchParams.get('skip')) || 0;
@@ -61,6 +69,11 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
+    const auth = await verifyAdminRequest(request);
+    if (!auth.authorized) {
+      return unauthorizedResponse(auth.error);
+    }
+
     const contentType = request.headers.get('content-type') || '';
 
     // Upload via FormData
@@ -136,6 +149,11 @@ export async function POST(request: NextRequest) {
 
 export async function DELETE(request: NextRequest) {
   try {
+    const auth = await verifyAdminRequest(request);
+    if (!auth.authorized) {
+      return unauthorizedResponse(auth.error);
+    }
+
     const { searchParams } = new URL(request.url);
     const fileId = searchParams.get('fileId');
 
