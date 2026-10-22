@@ -116,9 +116,17 @@ function createDrizzleClient() {
       .replace(/[?&]sslmode=[^&]+/g, '')
       .replace(/\?$/, '');
 
+    const allowInsecureSsl = process.env.PG_SSL_ALLOW_INSECURE === 'true';
+    const sslConfig = isSupabaseOrSsl
+      ? {
+          rejectUnauthorized: !allowInsecureSsl,
+          ...(process.env.PG_CA_CERT ? { ca: process.env.PG_CA_CERT } : {}),
+        }
+      : undefined;
+
     globalThis.__mcp_pg_pool = new Pool({
       connectionString: cleanConnStr,
-      ssl: isSupabaseOrSsl ? { rejectUnauthorized: false } : undefined,
+      ssl: sslConfig,
       max: process.env.NODE_ENV === 'production' ? 10 : 3,
       idleTimeoutMillis: 30000,
       connectionTimeoutMillis: 5000,

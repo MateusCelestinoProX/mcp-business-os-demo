@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
 import { getResourceById, recordDownload } from '@/lib/library/catalog';
+import { getSession } from '@/lib/auth/session';
+import { verifyToken, type SessionPayload } from '@/lib/auth/jwt';
 
 export const dynamic = 'force-dynamic';
 
@@ -102,6 +104,54 @@ export async function GET(request: NextRequest) {
       );
     }
 
+    // Validação de autorização para recursos premium/exclusivos
+    const isPremiumResource = Boolean(
+      (resource as any).is_premium ||
+      (resource as any).isPremium ||
+      resource.tags?.some((t: string) => ['premium', 'vip', 'master', 'pago'].includes(t.toLowerCase()))
+    );
+
+    if (isPremiumResource) {
+      let session: SessionPayload | null = await getSession();
+      if (!session) {
+        const authHeader = request.headers.get('authorization');
+        if (authHeader && authHeader.startsWith('Bearer ')) {
+          session = await verifyToken(authHeader.substring(7).trim());
+        }
+      }
+
+      if (!session) {
+        return NextResponse.json(
+          {
+            success: false,
+            error: 'Recurso exclusivo para assinantes. Faça login para realizar o download.',
+            code: 'AUTH_REQUIRED',
+          },
+          { status: 401 }
+        );
+      }
+
+      const role = session.role;
+      const tier = session.tier;
+      const hasPrivilege =
+        role === 'admin' ||
+        role === 'editor' ||
+        tier === 'vip' ||
+        tier === 'pro' ||
+        (tier as string) === 'master';
+
+      if (!hasPrivilege) {
+        return NextResponse.json(
+          {
+            success: false,
+            error: 'Acesso restrito: seu plano atual não permite o download deste ativo.',
+            code: 'TIER_UPGRADE_REQUIRED',
+          },
+          { status: 403 }
+        );
+      }
+    }
+
     // Registra o download na telemetria
     const { newCount } = recordDownload(resource.id);
 
@@ -114,17 +164,49 @@ export async function GET(request: NextRequest) {
       });
     }
 
-    // Se o recurso está hospedado no ImageKit CDN, redireciona diretamente (Zero overhead de servidor)
-    if (resource.url && (resource.url.startsWith('https://ik.imagekit.io/') || resource.url.startsWith('http'))) {
-      return NextResponse.redirect(resource.url, 302);
+    // Se o recurso está hospedado em CDN, valida contra Open Redirect
+    if (resource.url) {
+      try {
+        const parsedUrl = new URL(resource.url, process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000');
+        const allowedHosts = ['ik.imagekit.io'];
+        if (process.env.IMAGEKIT_URL_ENDPOINT) {
+          try {
+            allowedHosts.push(new URL(process.env.IMAGEKIT_URL_ENDPOINT).hostname);
+          } catch {}
+        }
+        if (process.env.NEXT_PUBLIC_APP_URL) {
+          try {
+            allowedHosts.push(new URL(process.env.NEXT_PUBLIC_APP_URL).hostname);
+          } catch {}
+        }
+
+        const isAllowed = allowedHosts.some(
+          (host) => parsedUrl.hostname === host || parsedUrl.hostname.endsWith(`.${host}`)
+        );
+
+        if (!isAllowed) {
+          return NextResponse.json(
+            { success: false, error: 'Acesso negado: URL de recurso não autorizada para redirecionamento' },
+            { status: 403 }
+          );
+        }
+
+        return NextResponse.redirect(parsedUrl.toString(), 302);
+      } catch {
+        return NextResponse.json(
+          { success: false, error: 'URL de recurso inválida' },
+          { status: 400 }
+        );
+      }
     }
 
     // Validação estrita de Path Traversal com bloqueio absoluto de escape (POSIX e Windows)
     const normalizedInput = resource.rel_path.replace(/\\/g, '/');
-    const absoluteFilePath = path.resolve(SOURCE_LIBRARY_BASE, normalizedInput);
+    const resolvedBase = path.resolve(SOURCE_LIBRARY_BASE);
+    const absoluteFilePath = path.resolve(resolvedBase, normalizedInput);
 
     // Garante que o caminho resolvido não escapou do diretório base
-    if (!absoluteFilePath.startsWith(SOURCE_LIBRARY_BASE)) {
+    if (!absoluteFilePath.startsWith(resolvedBase + path.sep) && absoluteFilePath !== resolvedBase) {
       return NextResponse.json(
         { success: false, error: 'Acesso negado: violação de segurança de sandbox de arquivo' },
         { status: 403 }

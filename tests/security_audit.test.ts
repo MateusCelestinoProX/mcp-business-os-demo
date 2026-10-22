@@ -357,4 +357,16 @@ describe('🛡️ Plataforma Unificada Soberana — Suíte de Auditoria e Testes
     }
   });
 
+  test('18. Proteção contra Open Redirect e Validação de Recursos no Download', async () => {
+    // 1. Tentar baixar recurso inexistente -> 404
+    const reqNotFound = new NextRequest('http://localhost:3000/api/library/download?id=recurso-inexistente-12345');
+    const resNotFound = await getDownload(reqNotFound);
+    assert.strictEqual(resNotFound.status, 404, 'Recurso inexistente deve retornar 404');
+
+    // 2. Tentar download sem parâmetro id -> 400
+    const reqNoId = new NextRequest('http://localhost:3000/api/library/download');
+    const resNoId = await getDownload(reqNoId);
+    assert.strictEqual(resNoId.status, 400, 'Requisição sem ID deve retornar 400');
+  });
+
 });

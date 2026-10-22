@@ -30,6 +30,24 @@ function escapeHtml(str: string): string {
 }
 
 /**
+ * Sanitiza HTML gerado eliminando scripts executáveis, handlers de eventos e vetores XSS
+ */
+function sanitizeDangerousHtml(html: string): string {
+  if (!html) return '';
+  return html
+    // Remove tags de script e seu conteúdo
+    .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+    // Remove inline event handlers (ex: onerror=, onclick=, onload=, onmouseover=)
+    .replace(/\s+on[a-z]+\s*=\s*(?:'[^']*'|"[^"]*"|[^\s>]+)/gi, '')
+    // Desarma esquemas de URL javascript: e vbscript:
+    .replace(/href\s*=\s*(?:'javascript:[^']*'|"javascript:[^"]*"|javascript:[^\s>]+)/gi, 'href="#"')
+    .replace(/src\s*=\s*(?:'javascript:[^']*'|"javascript:[^"]*"|javascript:[^\s>]+)/gi, 'src=""')
+    // Remove tags potencialmente maliciosas de formulários e objetos embutidos
+    .replace(/<(object|embed|applet|meta|base|form|input|button)\b[^>]*>/gi, '')
+    .replace(/<\/(object|embed|applet|meta|base|form|input|button)>/gi, '');
+}
+
+/**
  * Renderiza um vídeo ou mídia embedada de forma responsiva
  */
 function renderEmbedHtml(url: string): string {
@@ -257,7 +275,7 @@ export function parseNotionMarkdown(markdownContent: string): string {
     finalHtml = finalHtml.replace(regex, block);
   });
 
-  return finalHtml;
+  return sanitizeDangerousHtml(finalHtml);
 }
 
 /**
