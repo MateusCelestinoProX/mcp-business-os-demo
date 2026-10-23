@@ -432,4 +432,34 @@ describe('🛡️ Plataforma Unificada Soberana — Suíte de Auditoria e Testes
     assert.strictEqual(resPurge.status, 401, 'POST /api/cache/status anônimo deve receber 401');
   });
 
+  test('22. Sandbox Anti-Traversal: resolvePhysicalFilePath rejeita tentativas de escape', async () => {
+    const { resolvePhysicalFilePath } = await import('../src/lib/library/library-manager');
+    const maliciousItem: any = {
+      id: 'malicious_test',
+      file: '../../../../../../etc/passwd',
+      rel_path: '../../../../../../etc/shadow',
+    };
+    const resolved = resolvePhysicalFilePath(maliciousItem);
+    assert.strictEqual(resolved, null, 'Caminho que tenta escapar dos diretórios base deve retornar null');
+  });
+
+  test('23. Sanitização Rigorosa XSS: parseNotionMarkdown neutraliza iframes maliciosos e links javascript', async () => {
+    const { parseNotionMarkdown } = await import('../src/lib/notion-diary-parser');
+
+    // 1. Iframe malicioso arbitrário
+    const rawWithEvilIframe = 'Texto normal\n<iframe src="https://evil-attacker.com/malware.html"></iframe>';
+    const parsedIframe = parseNotionMarkdown(rawWithEvilIframe);
+    assert.ok(!parsedIframe.includes('evil-attacker.com'), 'Iframe de domínio não confiável deve ser removido');
+
+    // 2. Link com esquema javascript
+    const rawWithJsLink = '[Clique aqui](javascript:alert(document.cookie))';
+    const parsedJs = parseNotionMarkdown(rawWithJsLink);
+    assert.ok(!parsedJs.includes('javascript:alert'), 'Esquema javascript: deve ser desarmado');
+
+    // 3. Iframe legítimo do YouTube deve ser preservado
+    const ytEmbed = ':::embed https://www.youtube.com/watch?v=dQw4w9WgXcQ :::';
+    const parsedYt = parseNotionMarkdown(ytEmbed);
+    assert.ok(parsedYt.includes('youtube.com/embed/'), 'Embed legítimo do YouTube deve ser renderizado');
+  });
+
 });

@@ -1476,8 +1476,8 @@
     "semantic_hash": ""
   },
   "src/data/library_catalog_index.json": {
-    "mtime": 1792635387.8384295,
-    "seen": 1792635431.780428,
+    "mtime": 1792782913.7888114,
+    "seen": 1792782968.458435,
     "ast_hash": "a3760edacaa85f7d3460a01e9fdb65f6",
     "semantic_hash": ""
   },
@@ -14592,9 +14592,9 @@
     "semantic_hash": ""
   },
   "scripts/migrate_to_supabase.js": {
-    "mtime": 1792337879.280949,
-    "seen": 1792521051.091281,
-    "ast_hash": "20911390d25d5637678125d0bcca4e5f",
+    "mtime": 1792782655.2800148,
+    "seen": 1792782968.4552808,
+    "ast_hash": "7de9fc1f93360e61744fe9cdfca1df4b",
     "semantic_hash": ""
   },
   "scripts/supabase_deep_audit.js": {
@@ -14646,9 +14646,9 @@
     "semantic_hash": ""
   },
   "src/lib/notion-diary-parser.ts": {
-    "mtime": 1792635188.473787,
-    "seen": 1792635431.780769,
-    "ast_hash": "882d10fd411db93656f8dba08f3a1667",
+    "mtime": 1792782787.7226868,
+    "seen": 1792782968.458821,
+    "ast_hash": "89efc0cc9935808c90c3dbd1d9e8284b",
     "semantic_hash": ""
   },
   "tests/notion_diary_and_shop.test.ts": {
@@ -14658,9 +14658,9 @@
     "semantic_hash": ""
   },
   "scripts/set_sole_admin.mjs": {
-    "mtime": 1792337879.2813485,
-    "seen": 1792521051.091284,
-    "ast_hash": "04b32f40f6d56ea49205d25cfa693ca1",
+    "mtime": 1792782666.9063814,
+    "seen": 1792782968.455328,
+    "ast_hash": "e1a557c1226a10bfe9d054dd2f97902d",
     "semantic_hash": ""
   },
   "src/components/admin/AdminRedShader.tsx": {
@@ -14676,9 +14676,9 @@
     "semantic_hash": ""
   },
   "tests/security_audit.test.ts": {
-    "mtime": 1792636339.8400328,
-    "seen": 1792636374.875076,
-    "ast_hash": "451750c382b976be703022d8d0158a4a",
+    "mtime": 1792782937.889031,
+    "seen": 1792782968.4598012,
+    "ast_hash": "167e7ed82889b6f8885db3c7371cab03",
     "semantic_hash": ""
   },
   "tests/comunidade_tabs_navigation.test.mjs": {
@@ -14742,9 +14742,9 @@
     "semantic_hash": ""
   },
   "src/lib/library/library-manager.ts": {
-    "mtime": 1792373086.136948,
-    "seen": 1792521051.0914009,
-    "ast_hash": "25d694acbd5614d8d04b0207d5fa2693",
+    "mtime": 1792782893.8144944,
+    "seen": 1792782968.4588192,
+    "ast_hash": "6401014af79f7af8c14037550cbcf680",
     "semantic_hash": ""
   },
   "tests/comunidade_tag_editor.test.mjs": {
@@ -14766,8 +14766,8 @@
     "semantic_hash": ""
   },
   "src/data/libraries.json": {
-    "mtime": 1792635387.8487897,
-    "seen": 1792635431.780427,
+    "mtime": 1792782913.7982614,
+    "seen": 1792782968.458433,
     "ast_hash": "3e79a0df86ee6f7eb3acd51fbf5fad31",
     "semantic_hash": ""
   },
@@ -15126,9 +15126,9 @@
     "semantic_hash": ""
   },
   "scripts/server-guardian.js": {
-    "mtime": 1792361671.3609326,
-    "seen": 1792521051.0912828,
-    "ast_hash": "e18024a69b783c40101d40eaaa936fc5",
+    "mtime": 1792782681.074804,
+    "seen": 1792782968.4553258,
+    "ast_hash": "81c470f8613d5155e9f2244ec46f7b0b",
     "semantic_hash": ""
   },
   "src/app/api/health/route.ts": {

@@ -20,7 +20,8 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-const PORT = process.env.PORT || 3000;
+const rawPort = Number(process.env.PORT);
+const PORT = Number.isInteger(rawPort) && rawPort > 0 && rawPort <= 65535 ? rawPort : 3000;
 const ROOT_DIR = path.resolve(__dirname, '..');
 const NEXT_CACHE_DIR = path.join(ROOT_DIR, '.next');
 const LOG_FILE = path.join(ROOT_DIR, 'server.log');

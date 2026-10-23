@@ -407,18 +407,34 @@ export function addItemToLibrary(itemData: Partial<LibraryItem>): LibraryItem {
   return newItem;
 }
 
-// Resolver o caminho físico de um arquivo no disco
+// Resolver o caminho físico de um arquivo no disco com validação estrita de sandbox anti-traversal
 export function resolvePhysicalFilePath(item: LibraryItem): string | null {
+  const allowedBases = [
+    path.resolve(UPLOADS_DIR),
+    path.resolve(BIBLIOTECA_DIR),
+    path.resolve(SOURCE_FALLBACK_DIR),
+  ];
+
+  const rel = (item.rel_path || '').replace(/\\/g, '/');
+  const file = (item.file || '').replace(/\\/g, '/');
+
   const candidates = [
-    path.join(UPLOADS_DIR, item.rel_path),
-    path.join(UPLOADS_DIR, item.file),
-    path.join(BIBLIOTECA_DIR, item.rel_path),
-    path.join(BIBLIOTECA_DIR, item.file),
-    path.join(SOURCE_FALLBACK_DIR, item.rel_path),
-    path.join(SOURCE_FALLBACK_DIR, item.file),
+    path.resolve(UPLOADS_DIR, rel),
+    path.resolve(UPLOADS_DIR, file),
+    path.resolve(BIBLIOTECA_DIR, rel),
+    path.resolve(BIBLIOTECA_DIR, file),
+    path.resolve(SOURCE_FALLBACK_DIR, rel),
+    path.resolve(SOURCE_FALLBACK_DIR, file),
   ];
 
   for (const p of candidates) {
+    const isSandboxed = allowedBases.some(
+      (base) => p.startsWith(base + path.sep) || p === base
+    );
+    if (!isSandboxed) {
+      continue; // Bloqueia tentativa de escape de diretório base
+    }
+
     if (fs.existsSync(p) && fs.statSync(p).isFile()) {
       return p;
     }
@@ -471,9 +487,12 @@ export function saveFileContent(id: string, content: string): { success: boolean
       console.warn('Não foi possível gravar no arquivo físico existente, criando nos uploads:', e);
     }
   } else {
-    // Se não existia físico, cria no uploads
-    const safeName = item.file.replace(/[^a-zA-Z0-9._-]/g, '_');
-    const newPath = path.join(UPLOADS_DIR, safeName);
+    // Se não existia físico, cria no uploads de forma segura
+    const safeName = path.basename(item.file).replace(/[^a-zA-Z0-9._-]/g, '_');
+    const newPath = path.resolve(UPLOADS_DIR, safeName);
+    if (!newPath.startsWith(path.resolve(UPLOADS_DIR) + path.sep)) {
+      return { success: false, error: 'Violação de sandbox de caminho' };
+    }
     fs.writeFileSync(newPath, content, 'utf-8');
     item.rel_path = safeName;
     item.url = `/uploads/library/${safeName}`;
@@ -493,9 +512,10 @@ export function deleteItemFromLibrary(id: string): boolean {
   const item = items.find((it) => it.id === id || it.slug === id);
   if (!item) return false;
 
-  // Remover arquivo físico se estiver na pasta de uploads
+  // Remover arquivo físico se estiver restrito à pasta de uploads
   const physicalPath = resolvePhysicalFilePath(item);
-  if (physicalPath && physicalPath.includes('/uploads/library/')) {
+  const uploadsBase = path.resolve(UPLOADS_DIR);
+  if (physicalPath && (path.resolve(physicalPath).startsWith(uploadsBase + path.sep) || physicalPath.includes('/uploads/library/'))) {
     try {
       if (fs.existsSync(physicalPath)) {
         fs.unlinkSync(physicalPath);

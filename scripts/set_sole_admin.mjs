@@ -84,7 +84,8 @@ async function setSoleAdmin() {
 
   // 2. PostgreSQL
   const connStr = (process.env.DATABASE_URL || '').replace(/[?&]sslmode=[^&]+/g, '').replace(/\?$/, '');
-  const pool = new Pool({ connectionString: connStr, ssl: { rejectUnauthorized: false } });
+  const allowInsecureSsl = process.env.PG_SSL_ALLOW_INSECURE === 'true';
+  const pool = new Pool({ connectionString: connStr, ssl: { rejectUnauthorized: !allowInsecureSsl } });
   const client = await pool.connect();
 
   try {

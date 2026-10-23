@@ -6,15 +6,24 @@ const bcrypt = require('bcryptjs');
 async function migrate() {
   console.log('🚀 Iniciando Migração Completa para Supabase: MATEUS CELESTINO PRO X');
   
-  const pool = new Pool({
-    host: 'db.lijrxbzotmoikyvjiipv.supabase.co',
-    port: 5432,
-    user: 'postgres',
-    password: 'MateusProX_2026_SupabaseDb!',
-    database: 'postgres',
-    ssl: { rejectUnauthorized: false },
-    connectionTimeoutMillis: 10000,
-  });
+  const connectionString = process.env.DATABASE_URL || process.env.SUPABASE_DATABASE_URL;
+  const allowInsecureSsl = process.env.PG_SSL_ALLOW_INSECURE === 'true';
+
+  const pool = connectionString
+    ? new Pool({
+        connectionString,
+        ssl: { rejectUnauthorized: !allowInsecureSsl },
+        connectionTimeoutMillis: 10000,
+      })
+    : new Pool({
+        host: process.env.PGHOST || 'localhost',
+        port: Number(process.env.PGPORT) || 5432,
+        user: process.env.PGUSER || 'postgres',
+        password: process.env.PGPASSWORD,
+        database: process.env.PGDATABASE || 'postgres',
+        ssl: { rejectUnauthorized: !allowInsecureSsl },
+        connectionTimeoutMillis: 10000,
+      });
 
   const client = await pool.connect();
 
@@ -221,26 +230,28 @@ async function migrate() {
     console.log('5️⃣ Inserindo dados mestres iniciais...');
     
     // Admin com hash bcrypt seguro (12 rounds)
-    const adminEmail = '202405039459@alunos.estacio.br';
-    const adminPass = 'MateusProX@2026!';
-    const adminHash = await bcrypt.hash(adminPass, 12);
-
-    await client.query(`
-      INSERT INTO admin_users (name, email, password_hash, role)
-      VALUES ($1, $2, $3, 'admin')
-      ON CONFLICT (email) DO UPDATE SET password_hash = EXCLUDED.password_hash;
-    `, ['Mateus Celestino Pro', adminEmail, adminHash]);
+    const adminEmail = process.env.ADMIN_EMAIL || '202405039459@alunos.estacio.br';
+    const adminPass = process.env.ADMIN_PASSWORD;
+    if (adminPass) {
+      const adminHash = await bcrypt.hash(adminPass, 12);
+      await client.query(`
+        INSERT INTO admin_users (name, email, password_hash, role)
+        VALUES ($1, $2, $3, 'admin')
+        ON CONFLICT (email) DO UPDATE SET password_hash = EXCLUDED.password_hash;
+      `, ['Mateus Celestino Pro', adminEmail, adminHash]);
+    }
 
     // Membro Demo com hash bcrypt seguro
     const memberEmail = 'membro@mateuscelestinopro.com';
-    const memberPass = 'MembroProX@2026!';
-    const memberHash = await bcrypt.hash(memberPass, 12);
-
-    await client.query(`
-      INSERT INTO members (name, email, password_hash, status, tier)
-      VALUES ($1, $2, $3, 'active', 'vip')
-      ON CONFLICT (email) DO NOTHING;
-    `, ['Membro Fundador Pro', memberEmail, memberHash]);
+    const memberPass = process.env.MEMBER_PASSWORD;
+    if (memberPass) {
+      const memberHash = await bcrypt.hash(memberPass, 12);
+      await client.query(`
+        INSERT INTO members (name, email, password_hash, status, tier)
+        VALUES ($1, $2, $3, 'active', 'vip')
+        ON CONFLICT (email) DO NOTHING;
+      `, ['Membro Fundador Pro', memberEmail, memberHash]);
+    }
 
     // Formulário padrão
     await client.query(`

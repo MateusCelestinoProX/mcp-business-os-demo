@@ -39,10 +39,12 @@ function sanitizeDangerousHtml(html: string): string {
     .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
     // Remove inline event handlers (ex: onerror=, onclick=, onload=, onmouseover=)
     .replace(/\s+on[a-z]+\s*=\s*(?:'[^']*'|"[^"]*"|[^\s>]+)/gi, '')
-    // Desarma esquemas de URL javascript: e vbscript:
-    .replace(/href\s*=\s*(?:'javascript:[^']*'|"javascript:[^"]*"|javascript:[^\s>]+)/gi, 'href="#"')
-    .replace(/src\s*=\s*(?:'javascript:[^']*'|"javascript:[^"]*"|javascript:[^\s>]+)/gi, 'src=""')
-    // Remove tags potencialmente maliciosas de formulários e objetos embutidos
+    // Desarma esquemas perigosos de URL (javascript:, vbscript:, data:text/html, etc.)
+    .replace(/href\s*=\s*(?:'[\s]*(?:javascript|vbscript|data):[^']*'|"[\s]*(?:javascript|vbscript|data):[^"]*"|[\s]*(?:javascript|vbscript|data):[^\s>]+)/gi, 'href="#"')
+    .replace(/src\s*=\s*(?:'[\s]*(?:javascript|vbscript|data):[^']*'|"[\s]*(?:javascript|vbscript|data):[^"]*"|[\s]*(?:javascript|vbscript|data):[^\s>]+)/gi, 'src=""')
+    // Remove iframes que não sejam dos reprodutores confiáveis (YouTube e Vimeo)
+    .replace(/<iframe\b(?![^>]*src="https:\/\/(?:www\.youtube\.com\/embed\/|player\.vimeo\.com\/video\/))[^>]*>.*?<\/iframe>/gis, '')
+    // Remove tags potencialmente maliciosas de formulários, objetos e metadados
     .replace(/<(object|embed|applet|meta|base|form|input|button)\b[^>]*>/gi, '')
     .replace(/<\/(object|embed|applet|meta|base|form|input|button)>/gi, '');
 }
@@ -85,10 +87,11 @@ function renderEmbedHtml(url: string): string {
   }
 
   // Fallback para Link Interativo
+  const safeUrl = escapeHtml(cleanUrl);
   return `
     <div class="notion-embed my-4 p-4 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-[#ff073a]/40 transition-colors">
-      <a href="${cleanUrl}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between text-xs font-mono text-zinc-300 hover:text-white">
-        <span class="truncate max-w-[85%]">${cleanUrl}</span>
+      <a href="${safeUrl}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between text-xs font-mono text-zinc-300 hover:text-white">
+        <span class="truncate max-w-[85%]">${safeUrl}</span>
         <span class="text-[#ff073a] font-bold">Abrir Embed ↗</span>
       </a>
     </div>
@@ -100,12 +103,13 @@ function renderEmbedHtml(url: string): string {
  */
 function renderBookmarkHtml(url: string, title?: string, desc?: string): string {
   const cleanUrl = url.trim();
+  const safeUrl = escapeHtml(cleanUrl);
   const displayTitle = title ? title.trim() : cleanUrl;
   const displayDesc = desc ? desc.trim() : 'Recurso e referência externa.';
 
   return `
     <div class="notion-bookmark my-5 p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-white/[0.04] to-black/40 border border-white/10 hover:border-[#ff073a]/40 transition-all shadow-lg group">
-      <a href="${cleanUrl}" target="_blank" rel="noopener noreferrer" class="block space-y-1.5">
+      <a href="${safeUrl}" target="_blank" rel="noopener noreferrer" class="block space-y-1.5">
         <div class="flex items-center justify-between">
           <span class="text-sm font-bold text-white group-hover:text-[#ff073a] transition-colors flex items-center gap-2">
             <span>🔖</span>
@@ -114,7 +118,7 @@ function renderBookmarkHtml(url: string, title?: string, desc?: string): string 
           <span class="text-xs font-mono text-zinc-500 group-hover:text-zinc-300">↗</span>
         </div>
         <p class="text-xs text-zinc-400 font-light line-clamp-2">${escapeHtml(displayDesc)}</p>
-        <span class="text-[11px] font-mono text-[#ff073a]/80 block pt-1 truncate">${cleanUrl}</span>
+        <span class="text-[11px] font-mono text-[#ff073a]/80 block pt-1 truncate">${safeUrl}</span>
       </a>
     </div>
   `;
