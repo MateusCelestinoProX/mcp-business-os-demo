@@ -207,4 +207,15 @@ describe('🏛️ Suíte de Testes da Arquitetura de SEO Soberana (Google Focus)
     assert.ok(xmlText.includes('<item>'));
     assert.ok(xmlText.includes('<guid isPermaLink="true">'));
   });
+
+  test('13. Rota dinâmica de verificação Google (/google[code].html) deve validar arquivos HTML', async () => {
+    const { GET: getGoogleVerify } = await import('../src/app/google[code].html/route');
+    const res = await getGoogleVerify(
+      new Request('https://mcp-business-os.vercel.app/google999888.html'),
+      { params: Promise.resolve({ code: '999888' }) }
+    );
+    assert.strictEqual(res.status, 200);
+    const text = await res.text();
+    assert.strictEqual(text, 'google-site-verification: google999888.html');
+  });
 });
