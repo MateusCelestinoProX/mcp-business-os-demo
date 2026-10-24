@@ -70,9 +70,16 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Ignora extensões do Chrome, esquemas não-HTTP e requisições administrativas/sensíveis
+  // Ignora extensões do Chrome, esquemas não-HTTP e requisições administrativas/sensíveis e telemetria Umami
   if (!url.protocol.startsWith('http')) return;
-  if (url.pathname.startsWith('/admin') || url.pathname.startsWith('/api/auth') || url.pathname.startsWith('/api/payment') || url.pathname.startsWith('/api/checkout')) {
+  if (
+    url.pathname.startsWith('/admin') ||
+    url.pathname.startsWith('/api/auth') ||
+    url.pathname.startsWith('/api/payment') ||
+    url.pathname.startsWith('/api/checkout') ||
+    url.hostname.includes('umami') ||
+    url.pathname.includes('/api/send')
+  ) {
     return;
   }
 

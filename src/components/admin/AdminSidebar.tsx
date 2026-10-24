@@ -282,7 +282,8 @@ export function AdminSidebar({
         </div>
 
         {/* GRUPOS DE NAVEGAÇÃO EXECUTIVA */}
-        <div className="p-2.5 rounded-2xl bg-[#0c0507]/90 backdrop-blur-3xl border border-white/10 shadow-[0_12px_40px_rgba(0,0,0,0.7)] space-y-4">
+        <div className="p-2.5 rounded-2xl bg-[#0c0507]/90 backdrop-blur-3xl border border-white/10 shadow-[0_12px_40px_rgba(0,0,0,0.7)] space-y-4" aria-label="Páginas Internas">
+          <div className="sr-only">Páginas Internas</div>
           {navigationGroups.map((group, groupIdx) => (
             <div key={group.groupName} className="space-y-1">
               {/* Header do Grupo */}
@@ -448,7 +449,7 @@ export function AdminSidebar({
               className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-xl text-xs font-semibold text-white bg-white/[0.05] hover:bg-white/[0.1] border border-white/15 hover:border-white/25 transition-all cursor-pointer"
             >
               <RefreshCw className={cn("w-3.5 h-3.5", isLoadingData && "animate-spin text-red-400")} />
-              <span>{isLoadingData ? "Sincronizando..." : "Sincronizar Dados (R)"}</span>
+              <span>{isLoadingData ? "Sincronizando..." : "Atualizar Dados (R)"}</span>
             </button>
           )}
 

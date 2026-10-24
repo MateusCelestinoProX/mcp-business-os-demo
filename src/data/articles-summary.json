@@ -7,8 +7,11 @@
     "createdAt": "21 de maio de 2025 12:13",
     "isFeatured": true,
     "excerpt": "Se você administra projetos de larga escala em servidores dedicados — como os hospedados no Canadá ou em infraestrutura própria — o monitoramento eficiente do seu ambiente não é apenas recomendável: é indispensável. Dura...",
-    "readingTime": 5,
-    "coverImage": "/assets/covers/Como_Configurar_Monitoramento_de_Servidores_com_In.webp"
+    "summary": "Se você administra projetos de larga escala em servidores dedicados — como os hospedados no Canadá ou em infraestrutura própria — o monitoramento eficiente do seu ambiente não é apenas recomendável: é indispensável. Dura...",
+    "readingTime": "5 min",
+    "coverImage": "/assets/covers/Como_Configurar_Monitoramento_de_Servidores_com_In.webp",
+    "coverUrl": "/assets/covers/Como_Configurar_Monitoramento_de_Servidores_com_In.webp",
+    "isPublished": true
   },
   {
     "id": "art-5",
@@ -18,8 +21,11 @@
     "createdAt": "24 de maio de 2025 17:31",
     "isFeatured": true,
     "excerpt": "Mateus Celestino Pro A busca por produtividade, eficiência e controle operacional levou as empresas a uma nova fronteira: a automação de processos . Mais do que uma tendência tecnológica, ela se tornou um pilar estratégi...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/Como_Funciona_a_Automac_a_o_de_Processos_na_Pra_ti.webp"
+    "summary": "Mateus Celestino Pro A busca por produtividade, eficiência e controle operacional levou as empresas a uma nova fronteira: a automação de processos . Mais do que uma tendência tecnológica, ela se tornou um pilar estratégi...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/Como_Funciona_a_Automac_a_o_de_Processos_na_Pra_ti.webp",
+    "coverUrl": "/assets/covers/Como_Funciona_a_Automac_a_o_de_Processos_na_Pra_ti.webp",
+    "isPublished": true
   },
   {
     "id": "art-4",
@@ -29,8 +35,11 @@
     "createdAt": "31 de maio de 2025 22:31",
     "isFeatured": true,
     "excerpt": "A inteligência artificial, por décadas confinada ao imaginário da ficção científica ou aos laboratórios de elite, hoje assume um papel prático e acessível, transformando profundamente a operação de negócios em todos os s...",
-    "readingTime": 12,
-    "coverImage": "/assets/covers/Como_a_Intelige_ncia_Artificial_como_Servic_o_Esta.webp"
+    "summary": "A inteligência artificial, por décadas confinada ao imaginário da ficção científica ou aos laboratórios de elite, hoje assume um papel prático e acessível, transformando profundamente a operação de negócios em todos os s...",
+    "readingTime": "12 min",
+    "coverImage": "/assets/covers/Como_a_Intelige_ncia_Artificial_como_Servic_o_Esta.webp",
+    "coverUrl": "/assets/covers/Como_a_Intelige_ncia_Artificial_como_Servic_o_Esta.webp",
+    "isPublished": true
   },
   {
     "id": "art-6",
@@ -40,8 +49,11 @@
     "createdAt": "29 de maio de 2025 15:35",
     "isFeatured": true,
     "excerpt": "O malware, forma abreviada de malicious software , é o nome dado à classe de códigos projetados para causar dano, roubo, espionagem ou interrupção de sistemas computacionais. Desde os primórdios da internet, o malware te...",
-    "readingTime": 5,
-    "coverImage": "/assets/covers/Lic_o_es_em_Ciberseguranc_a_O_Que_os_Ataques_de_Ma.webp"
+    "summary": "O malware, forma abreviada de malicious software , é o nome dado à classe de códigos projetados para causar dano, roubo, espionagem ou interrupção de sistemas computacionais. Desde os primórdios da internet, o malware te...",
+    "readingTime": "5 min",
+    "coverImage": "/assets/covers/Lic_o_es_em_Ciberseguranc_a_O_Que_os_Ataques_de_Ma.webp",
+    "coverUrl": "/assets/covers/Lic_o_es_em_Ciberseguranc_a_O_Que_os_Ataques_de_Ma.webp",
+    "isPublished": true
   },
   {
     "id": "art-3",
@@ -51,8 +63,11 @@
     "createdAt": "31 de maio de 2025 22:36",
     "isFeatured": true,
     "excerpt": "COMO USAR O NOTION PARA TRANSFORMAR SEU PEQUENO NEGÓCIO EM UMA MÁQUINA EFICIENTE, INTELIGENTE E AUTOMATIZADA INTRODUÇÃO: O QUE A MAIORIA DAS PESSOAS NÃO ENTENDE SOBRE O NOTION Em 2025, ainda existe uma visão simplista de...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/O_NOTION_E__MUITO_MAIS_PODEROSO_DO_QUE_VOCE__PENSA.webp"
+    "summary": "COMO USAR O NOTION PARA TRANSFORMAR SEU PEQUENO NEGÓCIO EM UMA MÁQUINA EFICIENTE, INTELIGENTE E AUTOMATIZADA INTRODUÇÃO: O QUE A MAIORIA DAS PESSOAS NÃO ENTENDE SOBRE O NOTION Em 2025, ainda existe uma visão simplista de...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/O_NOTION_E__MUITO_MAIS_PODEROSO_DO_QUE_VOCE__PENSA.webp",
+    "coverUrl": "/assets/covers/O_NOTION_E__MUITO_MAIS_PODEROSO_DO_QUE_VOCE__PENSA.webp",
+    "isPublished": true
   },
   {
     "id": "art-2",
@@ -62,8 +77,11 @@
     "createdAt": "4 de maio de 2025 10:27",
     "isFeatured": true,
     "excerpt": "O que é o Notion e por que ele ganhou tanta popularidade? Nos últimos anos, o Notion se tornou um verdadeiro canivete suíço digital. Não é à toa que ele se tornou a ferramenta favorita entre freelancers, equipes enxutas...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/Vantagens_do_Notion_para_nego_cios_pequenos.webp"
+    "summary": "O que é o Notion e por que ele ganhou tanta popularidade? Nos últimos anos, o Notion se tornou um verdadeiro canivete suíço digital. Não é à toa que ele se tornou a ferramenta favorita entre freelancers, equipes enxutas...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/Vantagens_do_Notion_para_nego_cios_pequenos.webp",
+    "coverUrl": "/assets/covers/Vantagens_do_Notion_para_nego_cios_pequenos.webp",
+    "isPublished": true
   },
   {
     "id": "art-61",
@@ -73,8 +91,11 @@
     "createdAt": "31 de maio de 2025 22:32",
     "isFeatured": false,
     "excerpt": "A gestão de dados em projetos, tarefas e recursos sempre foi uma das tarefas mais essenciais e desafiadoras em qualquer organização. Durante décadas, planilhas tradicionais foram o padrão. No entanto, com a ascensão da d...",
-    "readingTime": 8,
-    "coverImage": "/assets/covers/5_Alternativas_Avanc_adas_ao_Smartsheet_O_Guia_Com.webp"
+    "summary": "A gestão de dados em projetos, tarefas e recursos sempre foi uma das tarefas mais essenciais e desafiadoras em qualquer organização. Durante décadas, planilhas tradicionais foram o padrão. No entanto, com a ascensão da d...",
+    "readingTime": "8 min",
+    "coverImage": "/assets/covers/5_Alternativas_Avanc_adas_ao_Smartsheet_O_Guia_Com.webp",
+    "coverUrl": "/assets/covers/5_Alternativas_Avanc_adas_ao_Smartsheet_O_Guia_Com.webp",
+    "isPublished": true
   },
   {
     "id": "art-118",
@@ -84,8 +105,11 @@
     "createdAt": "29 de maio de 2025 15:04",
     "isFeatured": false,
     "excerpt": "O FreshService, parte do ecossistema FreshWorks, é uma das soluções mais populares em ITSM (IT Service Management) para empresas modernas. Embora seja reconhecido pela robustez, automação inteligente e facilidade de impl...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/5_Melhores_Alternativas_ao_FreshService_em_2025_Co.webp"
+    "summary": "O FreshService, parte do ecossistema FreshWorks, é uma das soluções mais populares em ITSM (IT Service Management) para empresas modernas. Embora seja reconhecido pela robustez, automação inteligente e facilidade de impl...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/5_Melhores_Alternativas_ao_FreshService_em_2025_Co.webp",
+    "coverUrl": "/assets/covers/5_Melhores_Alternativas_ao_FreshService_em_2025_Co.webp",
+    "isPublished": true
   },
   {
     "id": "art-87",
@@ -95,8 +119,11 @@
     "createdAt": "21 de maio de 2025 11:35",
     "isFeatured": false,
     "excerpt": "O cenário de ITSM em 2025 e a busca por soluções superiores ao Ivanti Nos últimos anos, o Ivanti consolidou-se como uma das principais soluções para gestão de serviços de TI (ITSM), gerenciamento de ativos (ITAM), segura...",
-    "readingTime": 7,
-    "coverImage": "/assets/covers/5_Principais_Alternativas_ao_Ivanti_para_2025_O_Gu.webp"
+    "summary": "O cenário de ITSM em 2025 e a busca por soluções superiores ao Ivanti Nos últimos anos, o Ivanti consolidou-se como uma das principais soluções para gestão de serviços de TI (ITSM), gerenciamento de ativos (ITAM), segura...",
+    "readingTime": "7 min",
+    "coverImage": "/assets/covers/5_Principais_Alternativas_ao_Ivanti_para_2025_O_Gu.webp",
+    "coverUrl": "/assets/covers/5_Principais_Alternativas_ao_Ivanti_para_2025_O_Gu.webp",
+    "isPublished": true
   },
   {
     "id": "art-129",
@@ -106,8 +133,11 @@
     "createdAt": "29 de maio de 2025 15:36",
     "isFeatured": false,
     "excerpt": "ServiceNow é praticamente um sinônimo de IT Service Management (ITSM) moderno. Sua penetração e capilaridade em grandes operações globais são indiscutíveis. Entretanto, à medida que os processos de TI tornam-se cada vez...",
-    "readingTime": 8,
-    "coverImage": "/assets/covers/6_Alternativas_ao_ServiceNow_para_2025_Guia_Comple.webp"
+    "summary": "ServiceNow é praticamente um sinônimo de IT Service Management (ITSM) moderno. Sua penetração e capilaridade em grandes operações globais são indiscutíveis. Entretanto, à medida que os processos de TI tornam-se cada vez...",
+    "readingTime": "8 min",
+    "coverImage": "/assets/covers/6_Alternativas_ao_ServiceNow_para_2025_Guia_Comple.webp",
+    "coverUrl": "/assets/covers/6_Alternativas_ao_ServiceNow_para_2025_Guia_Comple.webp",
+    "isPublished": true
   },
   {
     "id": "art-97",
@@ -117,8 +147,11 @@
     "createdAt": "21 de maio de 2025 11:35",
     "isFeatured": false,
     "excerpt": "O novo paradigma da IA local: da pesquisa à automação empresarial soberana A corrida tecnológica dos últimos anos transformou radicalmente o acesso a modelos de linguagem de grande porte (LLMs). O que antes era exclusivo...",
-    "readingTime": 7,
-    "coverImage": "/assets/covers/6_LLMs_Self_Hosted_e_Locais_para_2025_Guia_Avanc_a.webp"
+    "summary": "O novo paradigma da IA local: da pesquisa à automação empresarial soberana A corrida tecnológica dos últimos anos transformou radicalmente o acesso a modelos de linguagem de grande porte (LLMs). O que antes era exclusivo...",
+    "readingTime": "7 min",
+    "coverImage": "/assets/covers/6_LLMs_Self_Hosted_e_Locais_para_2025_Guia_Avanc_a.webp",
+    "coverUrl": "/assets/covers/6_LLMs_Self_Hosted_e_Locais_para_2025_Guia_Avanc_a.webp",
+    "isPublished": true
   },
   {
     "id": "art-139",
@@ -128,8 +161,11 @@
     "createdAt": "29 de maio de 2025 15:04",
     "isFeatured": false,
     "excerpt": "Os agentes baseados em Inteligência Artificial (IA) são considerados por muitos como o próximo grande marco tecnológico. Sua capacidade de automatizar, decidir e realizar tarefas complexas de forma autônoma está transfor...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/6_Plataformas_Open_Source_para_Construc_a_o_de_Age.webp"
+    "summary": "Os agentes baseados em Inteligência Artificial (IA) são considerados por muitos como o próximo grande marco tecnológico. Sua capacidade de automatizar, decidir e realizar tarefas complexas de forma autônoma está transfor...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/6_Plataformas_Open_Source_para_Construc_a_o_de_Age.webp",
+    "coverUrl": "/assets/covers/6_Plataformas_Open_Source_para_Construc_a_o_de_Age.webp",
+    "isPublished": true
   },
   {
     "id": "art-144",
@@ -139,8 +175,11 @@
     "createdAt": "21 de maio de 2025 11:35",
     "isFeatured": false,
     "excerpt": "Uma jornada entre dados, algoritmos e o mais antigo dos mistérios humanos: o fim da vida. Desde os tempos antigos, a humanidade tem procurado respostas para uma das perguntas mais intrigantes e inevitáveis: “Quando vou m...",
-    "readingTime": 9,
-    "coverImage": "/assets/covers/A_Ascensa_o_da_Intelige_ncia_Artificial_na_Previsa.webp"
+    "summary": "Uma jornada entre dados, algoritmos e o mais antigo dos mistérios humanos: o fim da vida. Desde os tempos antigos, a humanidade tem procurado respostas para uma das perguntas mais intrigantes e inevitáveis: “Quando vou m...",
+    "readingTime": "9 min",
+    "coverImage": "/assets/covers/A_Ascensa_o_da_Intelige_ncia_Artificial_na_Previsa.webp",
+    "coverUrl": "/assets/covers/A_Ascensa_o_da_Intelige_ncia_Artificial_na_Previsa.webp",
+    "isPublished": true
   },
   {
     "id": "art-143",
@@ -150,8 +189,11 @@
     "createdAt": "29 de maio de 2025 15:17",
     "isFeatured": false,
     "excerpt": "A confirmação da integração oficial do ChatGPT aos dispositivos da Apple marca um ponto de inflexão histórico não apenas para o ecossistema da empresa, mas para o futuro da tecnologia como um todo. Durante o WWDC 2024 —...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/A_Chegada_do_ChatGPT_aos_iPhones_Uma_Nova_Era_na_I.webp"
+    "summary": "A confirmação da integração oficial do ChatGPT aos dispositivos da Apple marca um ponto de inflexão histórico não apenas para o ecossistema da empresa, mas para o futuro da tecnologia como um todo. Durante o WWDC 2024 —...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/A_Chegada_do_ChatGPT_aos_iPhones_Uma_Nova_Era_na_I.webp",
+    "coverUrl": "/assets/covers/A_Chegada_do_ChatGPT_aos_iPhones_Uma_Nova_Era_na_I.webp",
+    "isPublished": true
   },
   {
     "id": "art-160",
@@ -161,8 +203,11 @@
     "createdAt": "1 de junho de 2025 12:59",
     "isFeatured": false,
     "excerpt": "Nos bastidores do avanço exponencial da inteligência artificial, uma pergunta tem emergido com força: a engenharia de prompts perdeu seu lugar ou está simplesmente se reinventando? À medida que os modelos se tornam mais...",
-    "readingTime": 7,
-    "coverImage": "/assets/covers/A_Engenharia_de_Prompts_Esta__Morta_Ou_Esta__Evolu.webp"
+    "summary": "Nos bastidores do avanço exponencial da inteligência artificial, uma pergunta tem emergido com força: a engenharia de prompts perdeu seu lugar ou está simplesmente se reinventando? À medida que os modelos se tornam mais...",
+    "readingTime": "7 min",
+    "coverImage": "/assets/covers/A_Engenharia_de_Prompts_Esta__Morta_Ou_Esta__Evolu.webp",
+    "coverUrl": "/assets/covers/A_Engenharia_de_Prompts_Esta__Morta_Ou_Esta__Evolu.webp",
+    "isPublished": true
   },
   {
     "id": "art-25",
@@ -172,8 +217,11 @@
     "createdAt": "29 de maio de 2025 15:17",
     "isFeatured": false,
     "excerpt": "A história dos agentes de IA pode ser dividida em três grandes gerações, marcando uma jornada que vai da simples resposta automática até entidades digitais com capacidade de decisão autônoma e raciocínio lógico. 🔹 1. Age...",
-    "readingTime": 11,
-    "coverImage": "/assets/covers/A_Evoluc_a_o_dos_Agentes_de_IA.webp"
+    "summary": "A história dos agentes de IA pode ser dividida em três grandes gerações, marcando uma jornada que vai da simples resposta automática até entidades digitais com capacidade de decisão autônoma e raciocínio lógico. 🔹 1. Age...",
+    "readingTime": "11 min",
+    "coverImage": "/assets/covers/A_Evoluc_a_o_dos_Agentes_de_IA.webp",
+    "coverUrl": "/assets/covers/A_Evoluc_a_o_dos_Agentes_de_IA.webp",
+    "isPublished": true
   },
   {
     "id": "art-26",
@@ -183,8 +231,11 @@
     "createdAt": "5 de maio de 2025 18:55",
     "isFeatured": false,
     "excerpt": "Menos é Mais: O Poder de Dominar uma Única Habilidade no Digital Você já teve a sensação de que precisa dominar mil coisas ao mesmo tempo para ganhar dinheiro no marketing digital? É normal. O cenário está cada vez mais...",
-    "readingTime": 4,
-    "coverImage": "/assets/covers/A_Habilidade_U_nica_Que_Pode_Te_Fazer_Lucrar_R__20.webp"
+    "summary": "Menos é Mais: O Poder de Dominar uma Única Habilidade no Digital Você já teve a sensação de que precisa dominar mil coisas ao mesmo tempo para ganhar dinheiro no marketing digital? É normal. O cenário está cada vez mais...",
+    "readingTime": "4 min",
+    "coverImage": "/assets/covers/A_Habilidade_U_nica_Que_Pode_Te_Fazer_Lucrar_R__20.webp",
+    "coverUrl": "/assets/covers/A_Habilidade_U_nica_Que_Pode_Te_Fazer_Lucrar_R__20.webp",
+    "isPublished": true
   },
   {
     "id": "art-130",
@@ -194,8 +245,11 @@
     "createdAt": "24 de maio de 2025 17:31",
     "isFeatured": false,
     "excerpt": "Mateus Celestino Pro Num cenário onde a inovação digital define o ritmo da competitividade, a automação inteligente desponta como um divisor de águas para empresas que desejam acelerar sua operação, cortar custos e se ap...",
-    "readingTime": 5,
-    "coverImage": "/assets/covers/A_Nova_Era_da_Produtividade_Empresarial_O_Poder_Tr.webp"
+    "summary": "Mateus Celestino Pro Num cenário onde a inovação digital define o ritmo da competitividade, a automação inteligente desponta como um divisor de águas para empresas que desejam acelerar sua operação, cortar custos e se ap...",
+    "readingTime": "5 min",
+    "coverImage": "/assets/covers/A_Nova_Era_da_Produtividade_Empresarial_O_Poder_Tr.webp",
+    "coverUrl": "/assets/covers/A_Nova_Era_da_Produtividade_Empresarial_O_Poder_Tr.webp",
+    "isPublished": true
   },
   {
     "id": "art-134",
@@ -205,8 +259,11 @@
     "createdAt": "29 de maio de 2025 15:35",
     "isFeatured": false,
     "excerpt": "Por Mateus Celestino Pro No cenário hiperconectado e em constante mutação do mercado digital, uma revolução silenciosa está em curso — e ela atende pelo nome de chatbots com inteligência artificial . Esses agentes conver...",
-    "readingTime": 5,
-    "coverImage": "/assets/covers/A_Nova_Era_do_Atendimento_Como_os_Chatbots_com_IA_.webp"
+    "summary": "Por Mateus Celestino Pro No cenário hiperconectado e em constante mutação do mercado digital, uma revolução silenciosa está em curso — e ela atende pelo nome de chatbots com inteligência artificial . Esses agentes conver...",
+    "readingTime": "5 min",
+    "coverImage": "/assets/covers/A_Nova_Era_do_Atendimento_Como_os_Chatbots_com_IA_.webp",
+    "coverUrl": "/assets/covers/A_Nova_Era_do_Atendimento_Como_os_Chatbots_com_IA_.webp",
+    "isPublished": true
   },
   {
     "id": "art-17",
@@ -216,8 +273,11 @@
     "createdAt": "21 de maio de 2025 11:35",
     "isFeatured": false,
     "excerpt": "Estamos vivendo a maior transformação industrial desde a chegada da internet comercial. A Inteligência Artificial (IA) , que antes habitava os laboratórios e a ficção científica, agora é presença estratégica nas empresas...",
-    "readingTime": 7,
-    "coverImage": "/assets/covers/A_Revoluc_a_o_Invisi_vel_Como_a_Intelige_ncia_Arti.webp"
+    "summary": "Estamos vivendo a maior transformação industrial desde a chegada da internet comercial. A Inteligência Artificial (IA) , que antes habitava os laboratórios e a ficção científica, agora é presença estratégica nas empresas...",
+    "readingTime": "7 min",
+    "coverImage": "/assets/covers/A_Revoluc_a_o_Invisi_vel_Como_a_Intelige_ncia_Arti.webp",
+    "coverUrl": "/assets/covers/A_Revoluc_a_o_Invisi_vel_Como_a_Intelige_ncia_Arti.webp",
+    "isPublished": true
   },
   {
     "id": "art-165",
@@ -227,8 +287,11 @@
     "createdAt": "9 de maio de 2025 00:38",
     "isFeatured": false,
     "excerpt": "Por Mateus Celestino A inteligência artificial (IA) já não é mais uma especulação do futuro ou uma promessa distante. Ela está aqui, presente em nossas rotinas mais simples — e na educação, essa presença tem sido revoluc...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/A_Revoluc_a_o_Silenciosa_Como_a_Intelige_ncia_Arti.webp"
+    "summary": "Por Mateus Celestino A inteligência artificial (IA) já não é mais uma especulação do futuro ou uma promessa distante. Ela está aqui, presente em nossas rotinas mais simples — e na educação, essa presença tem sido revoluc...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/A_Revoluc_a_o_Silenciosa_Como_a_Intelige_ncia_Arti.webp",
+    "coverUrl": "/assets/covers/A_Revoluc_a_o_Silenciosa_Como_a_Intelige_ncia_Arti.webp",
+    "isPublished": true
   },
   {
     "id": "art-136",
@@ -238,8 +301,11 @@
     "createdAt": "29 de maio de 2025 15:24",
     "isFeatured": false,
     "excerpt": "A ascensão da inteligência artificial (IA) vem reconfigurando setores inteiros da economia digital, e o universo dos cassinos online está na vanguarda desse movimento de transformação. A adoção intensiva de IA por plataf...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/A_Revoluc_a_o_da_Intelige_ncia_Artificial_nos_Cass.webp"
+    "summary": "A ascensão da inteligência artificial (IA) vem reconfigurando setores inteiros da economia digital, e o universo dos cassinos online está na vanguarda desse movimento de transformação. A adoção intensiva de IA por plataf...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/A_Revoluc_a_o_da_Intelige_ncia_Artificial_nos_Cass.webp",
+    "coverUrl": "/assets/covers/A_Revoluc_a_o_da_Intelige_ncia_Artificial_nos_Cass.webp",
+    "isPublished": true
   },
   {
     "id": "art-22",
@@ -249,8 +315,11 @@
     "createdAt": "29 de maio de 2025 15:17",
     "isFeatured": false,
     "excerpt": "A inteligência artificial (IA) já está enraizada em nosso cotidiano, mas um novo conceito está começando a ocupar o centro das discussões: a Inteligência Artificial Geral, ou AGI. Este termo representa uma mudança de par...",
-    "readingTime": 7,
-    "coverImage": "/assets/covers/AGI_O_Significado_e_o_Futuro_da_Intelige_ncia_Arti.webp"
+    "summary": "A inteligência artificial (IA) já está enraizada em nosso cotidiano, mas um novo conceito está começando a ocupar o centro das discussões: a Inteligência Artificial Geral, ou AGI. Este termo representa uma mudança de par...",
+    "readingTime": "7 min",
+    "coverImage": "/assets/covers/AGI_O_Significado_e_o_Futuro_da_Intelige_ncia_Arti.webp",
+    "coverUrl": "/assets/covers/AGI_O_Significado_e_o_Futuro_da_Intelige_ncia_Arti.webp",
+    "isPublished": true
   },
   {
     "id": "art-152",
@@ -260,8 +329,11 @@
     "createdAt": "29 de maio de 2025 15:35",
     "isFeatured": false,
     "excerpt": "Por Mateus Celestino Pro Hoje, quase um terço de todo o conteúdo online passa pelo escrutínio de sistemas de inteligência artificial que avaliam originalidade e autenticidade. Essas tecnologias, conhecidas como AI Conten...",
-    "readingTime": 5,
-    "coverImage": "/assets/covers/AI_Content_Detectors_Como_Eles_Funcionam_e_Como_Pr.webp"
+    "summary": "Por Mateus Celestino Pro Hoje, quase um terço de todo o conteúdo online passa pelo escrutínio de sistemas de inteligência artificial que avaliam originalidade e autenticidade. Essas tecnologias, conhecidas como AI Conten...",
+    "readingTime": "5 min",
+    "coverImage": "/assets/covers/AI_Content_Detectors_Como_Eles_Funcionam_e_Como_Pr.webp",
+    "coverUrl": "/assets/covers/AI_Content_Detectors_Como_Eles_Funcionam_e_Como_Pr.webp",
+    "isPublished": true
   },
   {
     "id": "art-77",
@@ -271,8 +343,11 @@
     "createdAt": "21 de maio de 2025 11:35",
     "isFeatured": false,
     "excerpt": "À medida que a inteligência artificial ganha protagonismo no mundo dos negócios, muitas organizações enfrentam um grande desafio: como implantar soluções inteligentes rapidamente, com segurança, eficiência e sem incorrer...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/AI_Managed_Services_A_Forma_Mais_Inteligente_e_Efi.webp"
+    "summary": "À medida que a inteligência artificial ganha protagonismo no mundo dos negócios, muitas organizações enfrentam um grande desafio: como implantar soluções inteligentes rapidamente, com segurança, eficiência e sem incorrer...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/AI_Managed_Services_A_Forma_Mais_Inteligente_e_Efi.webp",
+    "coverUrl": "/assets/covers/AI_Managed_Services_A_Forma_Mais_Inteligente_e_Efi.webp",
+    "isPublished": true
   },
   {
     "id": "art-19",
@@ -282,8 +357,11 @@
     "createdAt": "21 de maio de 2025 11:35",
     "isFeatured": false,
     "excerpt": "O vínculo entre seres humanos e animais de estimação é milenar, enraizado no afeto, na convivência e na troca de emoções genuínas. Mas, com os avanços exponenciais da inteligência artificial, uma nova era de convivência...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/AI_Pets_A_Nova_Gerac_a_o_de_Companheiros_Inteligen.webp"
+    "summary": "O vínculo entre seres humanos e animais de estimação é milenar, enraizado no afeto, na convivência e na troca de emoções genuínas. Mas, com os avanços exponenciais da inteligência artificial, uma nova era de convivência...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/AI_Pets_A_Nova_Gerac_a_o_de_Companheiros_Inteligen.webp",
+    "coverUrl": "/assets/covers/AI_Pets_A_Nova_Gerac_a_o_de_Companheiros_Inteligen.webp",
+    "isPublished": true
   },
   {
     "id": "art-72",
@@ -293,8 +371,11 @@
     "createdAt": "31 de maio de 2025 22:32",
     "isFeatured": false,
     "excerpt": "O avanço da Inteligência Artificial inaugurou uma era de produtividade, automação e transformação digital sem precedentes. Mas esse poder, como toda tecnologia disruptiva, trouxe consigo um arsenal inédito de riscos e am...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/AMEAC_AS_DE_IA_NO_AMBIENTE_DIGITAL_MODERNO_COMO_HA.webp"
+    "summary": "O avanço da Inteligência Artificial inaugurou uma era de produtividade, automação e transformação digital sem precedentes. Mas esse poder, como toda tecnologia disruptiva, trouxe consigo um arsenal inédito de riscos e am...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/AMEAC_AS_DE_IA_NO_AMBIENTE_DIGITAL_MODERNO_COMO_HA.webp",
+    "coverUrl": "/assets/covers/AMEAC_AS_DE_IA_NO_AMBIENTE_DIGITAL_MODERNO_COMO_HA.webp",
+    "isPublished": true
   },
   {
     "id": "art-103",
@@ -304,8 +385,11 @@
     "createdAt": "9 de maio de 2025 00:38",
     "isFeatured": false,
     "excerpt": "📲 WhatsApp: O Canal Mais Subestimado da Automação Brasileira Se você ainda trata o WhatsApp como um simples aplicativo de mensagens, está operando em desvantagem. O WhatsApp se consolidou como a principal via de comunica...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/API_do_WhatsApp_Business_Diferenc_as_Cruciais_Entr.webp"
+    "summary": "📲 WhatsApp: O Canal Mais Subestimado da Automação Brasileira Se você ainda trata o WhatsApp como um simples aplicativo de mensagens, está operando em desvantagem. O WhatsApp se consolidou como a principal via de comunica...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/API_do_WhatsApp_Business_Diferenc_as_Cruciais_Entr.webp",
+    "coverUrl": "/assets/covers/API_do_WhatsApp_Business_Diferenc_as_Cruciais_Entr.webp",
+    "isPublished": true
   },
   {
     "id": "art-168",
@@ -315,8 +399,11 @@
     "createdAt": "29 de maio de 2025 15:17",
     "isFeatured": false,
     "excerpt": "A inteligência artificial está reformulando o universo do design digital — e o Adobe Illustrator se tornou um dos pilares dessa revolução. Com recursos potentes de geração automática de padrões, gráficos vetoriais e reco...",
-    "readingTime": 5,
-    "coverImage": "/assets/covers/Adobe_Illustrator_com_IA_Guia_Definitivo_para_Cria.webp"
+    "summary": "A inteligência artificial está reformulando o universo do design digital — e o Adobe Illustrator se tornou um dos pilares dessa revolução. Com recursos potentes de geração automática de padrões, gráficos vetoriais e reco...",
+    "readingTime": "5 min",
+    "coverImage": "/assets/covers/Adobe_Illustrator_com_IA_Guia_Definitivo_para_Cria.webp",
+    "coverUrl": "/assets/covers/Adobe_Illustrator_com_IA_Guia_Definitivo_para_Cria.webp",
+    "isPublished": true
   },
   {
     "id": "art-58",
@@ -326,8 +413,11 @@
     "createdAt": "16 de maio de 2025 13:26",
     "isFeatured": false,
     "excerpt": "Por Mateus Celestino Gestor de Automação IA | Fundador do projeto Mateus Celestino Pro Vivemos a era da automação conversacional. Mas não se trata mais de simples respostas programadas ou chatbots genéricos — o jogo viro...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/Agentes_de_IA_no_WhatsApp_A_Nova_Fronteira_da_Comu.webp"
+    "summary": "Por Mateus Celestino Gestor de Automação IA | Fundador do projeto Mateus Celestino Pro Vivemos a era da automação conversacional. Mas não se trata mais de simples respostas programadas ou chatbots genéricos — o jogo viro...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/Agentes_de_IA_no_WhatsApp_A_Nova_Fronteira_da_Comu.webp",
+    "coverUrl": "/assets/covers/Agentes_de_IA_no_WhatsApp_A_Nova_Fronteira_da_Comu.webp",
+    "isPublished": true
   },
   {
     "id": "art-89",
@@ -337,8 +427,11 @@
     "createdAt": "1 de junho de 2025 12:59",
     "isFeatured": false,
     "excerpt": "À medida que a engenharia de prompts amadurece e se afasta dos truques improvisados, surge um novo paradigma: estruturar os prompts como sistemas robustos e previsíveis , baseados em princípios claros e replicáveis. O Mo...",
-    "readingTime": 5,
-    "coverImage": "/assets/covers/Aprendizados_Fundamentais_do_Model_Spec_da_OpenAI_.webp"
+    "summary": "À medida que a engenharia de prompts amadurece e se afasta dos truques improvisados, surge um novo paradigma: estruturar os prompts como sistemas robustos e previsíveis , baseados em princípios claros e replicáveis. O Mo...",
+    "readingTime": "5 min",
+    "coverImage": "/assets/covers/Aprendizados_Fundamentais_do_Model_Spec_da_OpenAI_.webp",
+    "coverUrl": "/assets/covers/Aprendizados_Fundamentais_do_Model_Spec_da_OpenAI_.webp",
+    "isPublished": true
   },
   {
     "id": "art-91",
@@ -348,8 +441,11 @@
     "createdAt": "1 de junho de 2025 12:59",
     "isFeatured": false,
     "excerpt": "O mercado de inteligência artificial não é apenas uma revolução tecnológica — é uma reestruturação econômica. Startups que dominam essa nova linguagem algorítmica estão moldando o futuro com soluções que vão desde o diag...",
-    "readingTime": 7,
-    "coverImage": "/assets/covers/As_10_Startups_de_IA_Mais_Promissoras_para_Ficar_d.webp"
+    "summary": "O mercado de inteligência artificial não é apenas uma revolução tecnológica — é uma reestruturação econômica. Startups que dominam essa nova linguagem algorítmica estão moldando o futuro com soluções que vão desde o diag...",
+    "readingTime": "7 min",
+    "coverImage": "/assets/covers/As_10_Startups_de_IA_Mais_Promissoras_para_Ficar_d.webp",
+    "coverUrl": "/assets/covers/As_10_Startups_de_IA_Mais_Promissoras_para_Ficar_d.webp",
+    "isPublished": true
   },
   {
     "id": "art-105",
@@ -359,8 +455,11 @@
     "createdAt": "29 de maio de 2025 15:36",
     "isFeatured": false,
     "excerpt": "A transição energética mundial avança em velocidade recorde, e a inteligência artificial se consolida como o cérebro da nova era. Empresas visionárias já não são apenas produtoras ou distribuidoras de energia: são hubs t...",
-    "readingTime": 8,
-    "coverImage": "/assets/covers/As_20_Maiores_Empresas_de_Energia_com_IA_Como_a_In.webp"
+    "summary": "A transição energética mundial avança em velocidade recorde, e a inteligência artificial se consolida como o cérebro da nova era. Empresas visionárias já não são apenas produtoras ou distribuidoras de energia: são hubs t...",
+    "readingTime": "8 min",
+    "coverImage": "/assets/covers/As_20_Maiores_Empresas_de_Energia_com_IA_Como_a_In.webp",
+    "coverUrl": "/assets/covers/As_20_Maiores_Empresas_de_Energia_com_IA_Como_a_In.webp",
+    "isPublished": true
   },
   {
     "id": "art-132",
@@ -370,8 +469,11 @@
     "createdAt": "29 de maio de 2025 15:17",
     "isFeatured": false,
     "excerpt": "A inteligência artificial está redesenhando as fronteiras da tecnologia, impactando indústrias, acelerando soluções para desafios complexos e criando novas oportunidades econômicas. Em 2025, as startups de IA surgem como...",
-    "readingTime": 7,
-    "coverImage": "/assets/covers/As_24_Startups_de_IA_Mais_Influentes_do_Futuro_Ino.webp"
+    "summary": "A inteligência artificial está redesenhando as fronteiras da tecnologia, impactando indústrias, acelerando soluções para desafios complexos e criando novas oportunidades econômicas. Em 2025, as startups de IA surgem como...",
+    "readingTime": "7 min",
+    "coverImage": "/assets/covers/As_24_Startups_de_IA_Mais_Influentes_do_Futuro_Ino.webp",
+    "coverUrl": "/assets/covers/As_24_Startups_de_IA_Mais_Influentes_do_Futuro_Ino.webp",
+    "isPublished": true
   },
   {
     "id": "art-99",
@@ -381,8 +483,11 @@
     "createdAt": "24 de maio de 2025 17:31",
     "isFeatured": false,
     "excerpt": "No coração de uma operação inteligente, existe algo que raramente aparece nas vitrines, mas que define o sucesso silencioso dos negócios: a clareza de processos . Modelar processos não é uma tarefa burocrática. É, na ver...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/As_4_Etapas_Fundamentais_da_Modelagem_de_Processos.webp"
+    "summary": "No coração de uma operação inteligente, existe algo que raramente aparece nas vitrines, mas que define o sucesso silencioso dos negócios: a clareza de processos . Modelar processos não é uma tarefa burocrática. É, na ver...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/As_4_Etapas_Fundamentais_da_Modelagem_de_Processos.webp",
+    "coverUrl": "/assets/covers/As_4_Etapas_Fundamentais_da_Modelagem_de_Processos.webp",
+    "isPublished": true
   },
   {
     "id": "art-46",
@@ -392,8 +497,11 @@
     "createdAt": "29 de maio de 2025 15:36",
     "isFeatured": false,
     "excerpt": "Por Mateus Celestino Pro Automação de workflows nunca foi tão central para a produtividade e inovação nos negócios digitais. O Zapier, referência absoluta em integração SaaS, popularizou a automação visual e sem código p...",
-    "readingTime": 7,
-    "coverImage": "/assets/covers/As_5_Melhores_Alternativas_Open_Source_ao_Zapier_p.webp"
+    "summary": "Por Mateus Celestino Pro Automação de workflows nunca foi tão central para a produtividade e inovação nos negócios digitais. O Zapier, referência absoluta em integração SaaS, popularizou a automação visual e sem código p...",
+    "readingTime": "7 min",
+    "coverImage": "/assets/covers/As_5_Melhores_Alternativas_Open_Source_ao_Zapier_p.webp",
+    "coverUrl": "/assets/covers/As_5_Melhores_Alternativas_Open_Source_ao_Zapier_p.webp",
+    "isPublished": true
   },
   {
     "id": "art-36",
@@ -403,8 +511,11 @@
     "createdAt": "21 de maio de 2025 12:35",
     "isFeatured": false,
     "excerpt": "A gestão eficiente de ativos digitais — como imagens, vídeos, documentos e outros arquivos — é essencial para empresas que trabalham com grandes volumes de mídias. Porém, escolher a plataforma ideal não é tarefa simples:...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/As_5_Melhores_Ferramentas_Open_Source_para_Gesta_o.webp"
+    "summary": "A gestão eficiente de ativos digitais — como imagens, vídeos, documentos e outros arquivos — é essencial para empresas que trabalham com grandes volumes de mídias. Porém, escolher a plataforma ideal não é tarefa simples:...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/As_5_Melhores_Ferramentas_Open_Source_para_Gesta_o.webp",
+    "coverUrl": "/assets/covers/As_5_Melhores_Ferramentas_Open_Source_para_Gesta_o.webp",
+    "isPublished": true
   },
   {
     "id": "art-175",
@@ -414,8 +525,11 @@
     "createdAt": "29 de maio de 2025 15:17",
     "isFeatured": false,
     "excerpt": "A gestão de incidentes permanece como um dos maiores desafios para equipes de TI, não apenas pelo potencial de perdas financeiras, reputacionais e regulatórias, mas porque nenhuma operação, por mais robusta, está imune a...",
-    "readingTime": 7,
-    "coverImage": "/assets/covers/As_5_Melhores_Ferramentas_de_Gesta_o_de_Incidentes.webp"
+    "summary": "A gestão de incidentes permanece como um dos maiores desafios para equipes de TI, não apenas pelo potencial de perdas financeiras, reputacionais e regulatórias, mas porque nenhuma operação, por mais robusta, está imune a...",
+    "readingTime": "7 min",
+    "coverImage": "/assets/covers/As_5_Melhores_Ferramentas_de_Gesta_o_de_Incidentes.webp",
+    "coverUrl": "/assets/covers/As_5_Melhores_Ferramentas_de_Gesta_o_de_Incidentes.webp",
+    "isPublished": true
   },
   {
     "id": "art-114",
@@ -425,8 +539,11 @@
     "createdAt": "21 de maio de 2025 11:35",
     "isFeatured": false,
     "excerpt": "A gestão de problemas (problem management) é uma das disciplinas mais estratégicas do ITSM moderno, sendo essencial para organizações que desejam elevar a resiliência, confiabilidade e eficiência dos seus serviços digita...",
-    "readingTime": 7,
-    "coverImage": "/assets/covers/As_5_Melhores_Ferramentas_de_Problem_Management_pa.webp"
+    "summary": "A gestão de problemas (problem management) é uma das disciplinas mais estratégicas do ITSM moderno, sendo essencial para organizações que desejam elevar a resiliência, confiabilidade e eficiência dos seus serviços digita...",
+    "readingTime": "7 min",
+    "coverImage": "/assets/covers/As_5_Melhores_Ferramentas_de_Problem_Management_pa.webp",
+    "coverUrl": "/assets/covers/As_5_Melhores_Ferramentas_de_Problem_Management_pa.webp",
+    "isPublished": true
   },
   {
     "id": "art-13",
@@ -436,8 +553,11 @@
     "createdAt": "1 de junho de 2025 12:59",
     "isFeatured": false,
     "excerpt": "O versionamento de prompts é uma das engrenagens centrais da nova engenharia de IA. À medida que os modelos LLM se tornam parte crítica de sistemas de produção, cresce a necessidade de controlar, rastrear, testar e evolu...",
-    "readingTime": 5,
-    "coverImage": "/assets/covers/As_5_Melhores_Ferramentas_para_Versionamento_de_Pr.webp"
+    "summary": "O versionamento de prompts é uma das engrenagens centrais da nova engenharia de IA. À medida que os modelos LLM se tornam parte crítica de sistemas de produção, cresce a necessidade de controlar, rastrear, testar e evolu...",
+    "readingTime": "5 min",
+    "coverImage": "/assets/covers/As_5_Melhores_Ferramentas_para_Versionamento_de_Pr.webp",
+    "coverUrl": "/assets/covers/As_5_Melhores_Ferramentas_para_Versionamento_de_Pr.webp",
+    "isPublished": true
   },
   {
     "id": "art-113",
@@ -447,8 +567,11 @@
     "createdAt": "21 de maio de 2025 12:35",
     "isFeatured": false,
     "excerpt": "Empresas modernas precisam coletar dados diariamente — de clientes, colaboradores, parceiros, fornecedores e usuários externos. Para isso, ferramentas de pesquisa corporativa ( enterprise survey software ) tornam-se esse...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/As_6_Melhores_Ferramentas_de_Pesquisa_para_Empresa.webp"
+    "summary": "Empresas modernas precisam coletar dados diariamente — de clientes, colaboradores, parceiros, fornecedores e usuários externos. Para isso, ferramentas de pesquisa corporativa ( enterprise survey software ) tornam-se esse...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/As_6_Melhores_Ferramentas_de_Pesquisa_para_Empresa.webp",
+    "coverUrl": "/assets/covers/As_6_Melhores_Ferramentas_de_Pesquisa_para_Empresa.webp",
+    "isPublished": true
   },
   {
     "id": "art-34",
@@ -458,8 +581,11 @@
     "createdAt": "21 de maio de 2025 11:35",
     "isFeatured": false,
     "excerpt": "A Nova Era dos Agentes Autônomos e a Revolução das Plataformas Visuais No cenário atual da tecnologia, os agentes de IA despontam como o tema mais quente e disruptivo da automação inteligente. Empresas de todos os segmen...",
-    "readingTime": 8,
-    "coverImage": "/assets/covers/As_6_Melhores_Plataformas_Low_No_Code_para_Constru.webp"
+    "summary": "A Nova Era dos Agentes Autônomos e a Revolução das Plataformas Visuais No cenário atual da tecnologia, os agentes de IA despontam como o tema mais quente e disruptivo da automação inteligente. Empresas de todos os segmen...",
+    "readingTime": "8 min",
+    "coverImage": "/assets/covers/As_6_Melhores_Plataformas_Low_No_Code_para_Constru.webp",
+    "coverUrl": "/assets/covers/As_6_Melhores_Plataformas_Low_No_Code_para_Constru.webp",
+    "isPublished": true
   },
   {
     "id": "art-43",
@@ -469,8 +595,11 @@
     "createdAt": "29 de maio de 2025 15:22",
     "isFeatured": false,
     "excerpt": "O Airtable marcou uma era ao combinar a simplicidade das planilhas com o poder dos bancos de dados, interfaces, automações e integrações externas. Mas o cenário evoluiu rapidamente, novas demandas emergiram, e hoje as li...",
-    "readingTime": 8,
-    "coverImage": "/assets/covers/As_7_Melhores_Alternativas_ao_Airtable_em_2025_Gui.webp"
+    "summary": "O Airtable marcou uma era ao combinar a simplicidade das planilhas com o poder dos bancos de dados, interfaces, automações e integrações externas. Mas o cenário evoluiu rapidamente, novas demandas emergiram, e hoje as li...",
+    "readingTime": "8 min",
+    "coverImage": "/assets/covers/As_7_Melhores_Alternativas_ao_Airtable_em_2025_Gui.webp",
+    "coverUrl": "/assets/covers/As_7_Melhores_Alternativas_ao_Airtable_em_2025_Gui.webp",
+    "isPublished": true
   },
   {
     "id": "art-14",
@@ -480,8 +609,11 @@
     "createdAt": "9 de maio de 2025 00:53",
     "isFeatured": false,
     "excerpt": "Introdução: A Nova Era da Criatividade Visual Benefícios Reais no Dia a Dia Profissional Estamos vivendo uma nova era na criação de imagens: a era da criatividade aumentada por inteligência artificial . A edição visual,...",
-    "readingTime": 8,
-    "coverImage": "/assets/covers/As_Melhores_Ferramentas_de_Intelige_ncia_Artificia.webp"
+    "summary": "Introdução: A Nova Era da Criatividade Visual Benefícios Reais no Dia a Dia Profissional Estamos vivendo uma nova era na criação de imagens: a era da criatividade aumentada por inteligência artificial . A edição visual,...",
+    "readingTime": "8 min",
+    "coverImage": "/assets/covers/As_Melhores_Ferramentas_de_Intelige_ncia_Artificia.webp",
+    "coverUrl": "/assets/covers/As_Melhores_Ferramentas_de_Intelige_ncia_Artificia.webp",
+    "isPublished": true
   },
   {
     "id": "art-71",
@@ -491,8 +623,11 @@
     "createdAt": "24 de maio de 2025 18:08",
     "isFeatured": false,
     "excerpt": "A velocidade com que as empresas precisam responder ao mercado, aos clientes e às suas próprias ineficiências internas exige uma nova geração de soluções operacionais. Neste novo cenário, a automação tradicional já não é...",
-    "readingTime": 5,
-    "coverImage": "/assets/covers/Automac_a_o_Inteligente_de_Processos_A_Nova_Mente_.webp"
+    "summary": "A velocidade com que as empresas precisam responder ao mercado, aos clientes e às suas próprias ineficiências internas exige uma nova geração de soluções operacionais. Neste novo cenário, a automação tradicional já não é...",
+    "readingTime": "5 min",
+    "coverImage": "/assets/covers/Automac_a_o_Inteligente_de_Processos_A_Nova_Mente_.webp",
+    "coverUrl": "/assets/covers/Automac_a_o_Inteligente_de_Processos_A_Nova_Mente_.webp",
+    "isPublished": true
   },
   {
     "id": "art-73",
@@ -502,8 +637,11 @@
     "createdAt": "24 de maio de 2025 18:00",
     "isFeatured": false,
     "excerpt": "Mateus Celestino Pro Em um mercado cada vez mais veloz, competitivo e digital, a automação de processos deixou de ser um luxo futurista para se tornar uma alavanca essencial da eficiência empresarial. Ela é hoje um dos e...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/Automac_a_o_Inteligente_de_Processos_Como_Reduzir_.webp"
+    "summary": "Mateus Celestino Pro Em um mercado cada vez mais veloz, competitivo e digital, a automação de processos deixou de ser um luxo futurista para se tornar uma alavanca essencial da eficiência empresarial. Ela é hoje um dos e...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/Automac_a_o_Inteligente_de_Processos_Como_Reduzir_.webp",
+    "coverUrl": "/assets/covers/Automac_a_o_Inteligente_de_Processos_Como_Reduzir_.webp",
+    "isPublished": true
   },
   {
     "id": "art-115",
@@ -513,8 +651,11 @@
     "createdAt": "24 de maio de 2025 18:01",
     "isFeatured": false,
     "excerpt": "No novo cenário da economia digital, onde tempo é capital , decisões precisam ser instantâneas e clientes exigem excelência com velocidade , as empresas que ainda operam sob sistemas manuais estão fadadas à obsolescência...",
-    "readingTime": 5,
-    "coverImage": "/assets/covers/Automac_a_o_de_Processos_Os_5_Superpoderes_de_uma_.webp"
+    "summary": "No novo cenário da economia digital, onde tempo é capital , decisões precisam ser instantâneas e clientes exigem excelência com velocidade , as empresas que ainda operam sob sistemas manuais estão fadadas à obsolescência...",
+    "readingTime": "5 min",
+    "coverImage": "/assets/covers/Automac_a_o_de_Processos_Os_5_Superpoderes_de_uma_.webp",
+    "coverUrl": "/assets/covers/Automac_a_o_de_Processos_Os_5_Superpoderes_de_uma_.webp",
+    "isPublished": true
   },
   {
     "id": "art-62",
@@ -524,8 +665,11 @@
     "createdAt": "1 de maio de 2025 00:06",
     "isFeatured": false,
     "excerpt": "No universo de automação de processos e integrações, você tem duas grandes opções de implantação: Cloud (SaaS/PaaS) ou Self-Hosted (on-premise ou em VPS/servidor próprio) . A escolha impacta diretamente em custos, segura...",
-    "readingTime": 5,
-    "coverImage": "/assets/covers/Automac_a_o_em_Cloud_vs_Self_Hosted_Vantagens_e_De.webp"
+    "summary": "No universo de automação de processos e integrações, você tem duas grandes opções de implantação: Cloud (SaaS/PaaS) ou Self-Hosted (on-premise ou em VPS/servidor próprio) . A escolha impacta diretamente em custos, segura...",
+    "readingTime": "5 min",
+    "coverImage": "/assets/covers/Automac_a_o_em_Cloud_vs_Self_Hosted_Vantagens_e_De.webp",
+    "coverUrl": "/assets/covers/Automac_a_o_em_Cloud_vs_Self_Hosted_Vantagens_e_De.webp",
+    "isPublished": true
   },
   {
     "id": "art-81",
@@ -535,8 +679,11 @@
     "createdAt": "31 de maio de 2025 22:36",
     "isFeatured": false,
     "excerpt": "A BATALHA DOS BANCOS DE DADOS NO-CODE Em 2025, onde o ecossistema digital gira cada vez mais em torno de automações, inteligência artificial e plataformas no-code/low-code, uma questão essencial para qualquer negócio dig...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/BASEROW_VS_AIRTABLE_QUAL_E__O_MELHOR_PARA_VOCE__EM.webp"
+    "summary": "A BATALHA DOS BANCOS DE DADOS NO-CODE Em 2025, onde o ecossistema digital gira cada vez mais em torno de automações, inteligência artificial e plataformas no-code/low-code, uma questão essencial para qualquer negócio dig...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/BASEROW_VS_AIRTABLE_QUAL_E__O_MELHOR_PARA_VOCE__EM.webp",
+    "coverUrl": "/assets/covers/BASEROW_VS_AIRTABLE_QUAL_E__O_MELHOR_PARA_VOCE__EM.webp",
+    "isPublished": true
   },
   {
     "id": "art-75",
@@ -546,8 +693,11 @@
     "createdAt": "4 de maio de 2025 10:20",
     "isFeatured": false,
     "excerpt": "Introdução ao Universo Open Source para Automação de Negócios O cenário atual exige agilidade. Negócios locais e digitais enfrentam uma encruzilhada: ou automatizam e escalam, ou estagnam. Dentro desse contexto, ferramen...",
-    "readingTime": 5,
-    "coverImage": "/assets/covers/Baserow_ou_Supabase__qual_e__melhor_para_seu_nego_.webp"
+    "summary": "Introdução ao Universo Open Source para Automação de Negócios O cenário atual exige agilidade. Negócios locais e digitais enfrentam uma encruzilhada: ou automatizam e escalam, ou estagnam. Dentro desse contexto, ferramen...",
+    "readingTime": "5 min",
+    "coverImage": "/assets/covers/Baserow_ou_Supabase__qual_e__melhor_para_seu_nego_.webp",
+    "coverUrl": "/assets/covers/Baserow_ou_Supabase__qual_e__melhor_para_seu_nego_.webp",
+    "isPublished": true
   },
   {
     "id": "art-60",
@@ -557,8 +707,11 @@
     "createdAt": "5 de maio de 2025 19:13",
     "isFeatured": false,
     "excerpt": "1. Introdução No mundo atual da transformação digital, a necessidade por ferramentas flexíveis, colaborativas e fáceis de utilizar cresce exponencialmente. O gerenciamento de dados é uma área crítica tanto para empresas...",
-    "readingTime": 5,
-    "coverImage": "/assets/covers/Baserow_A_Revoluc_a_o_Open_Source_em_Bancos_de_Dad.webp"
+    "summary": "1. Introdução No mundo atual da transformação digital, a necessidade por ferramentas flexíveis, colaborativas e fáceis de utilizar cresce exponencialmente. O gerenciamento de dados é uma área crítica tanto para empresas...",
+    "readingTime": "5 min",
+    "coverImage": "/assets/covers/Baserow_A_Revoluc_a_o_Open_Source_em_Bancos_de_Dad.webp",
+    "coverUrl": "/assets/covers/Baserow_A_Revoluc_a_o_Open_Source_em_Bancos_de_Dad.webp",
+    "isPublished": true
   },
   {
     "id": "art-135",
@@ -568,8 +721,11 @@
     "createdAt": "1 de maio de 2025 00:08",
     "isFeatured": false,
     "excerpt": "A gestão de automação reúne ferramentas e processos que orquestram tarefas repetitivas e integrações entre sistemas. Quando bem aplicada, gera valor direto em várias frentes da operação. A seguir, os principais benefício...",
-    "readingTime": 4,
-    "coverImage": "/assets/covers/Benefi_cios_da_Gesta_o_de_Automac_a_o_para_o_Seu_N.webp"
+    "summary": "A gestão de automação reúne ferramentas e processos que orquestram tarefas repetitivas e integrações entre sistemas. Quando bem aplicada, gera valor direto em várias frentes da operação. A seguir, os principais benefício...",
+    "readingTime": "4 min",
+    "coverImage": "/assets/covers/Benefi_cios_da_Gesta_o_de_Automac_a_o_para_o_Seu_N.webp",
+    "coverUrl": "/assets/covers/Benefi_cios_da_Gesta_o_de_Automac_a_o_para_o_Seu_N.webp",
+    "isPublished": true
   },
   {
     "id": "art-156",
@@ -579,8 +735,11 @@
     "createdAt": "29 de maio de 2025 15:22",
     "isFeatured": false,
     "excerpt": "Vivemos uma era marcada pelo crescimento meteórico da inteligência artificial. Empresas, governos, investidores e profissionais apostam todas as fichas na revolução dos algoritmos. Mas será que estamos diante de uma nova...",
-    "readingTime": 8,
-    "coverImage": "/assets/covers/Bolha_da_IA_O_Colapso_e__Iminente_O_Que_Realmente_.webp"
+    "summary": "Vivemos uma era marcada pelo crescimento meteórico da inteligência artificial. Empresas, governos, investidores e profissionais apostam todas as fichas na revolução dos algoritmos. Mas será que estamos diante de uma nova...",
+    "readingTime": "8 min",
+    "coverImage": "/assets/covers/Bolha_da_IA_O_Colapso_e__Iminente_O_Que_Realmente_.webp",
+    "coverUrl": "/assets/covers/Bolha_da_IA_O_Colapso_e__Iminente_O_Que_Realmente_.webp",
+    "isPublished": true
   },
   {
     "id": "art-70",
@@ -590,8 +749,11 @@
     "createdAt": "31 de maio de 2025 22:36",
     "isFeatured": false,
     "excerpt": "O GUIA DEFINITIVO PARA LIBERTAR O PODER OCULTO DO NOTION EM 2025 O CENÁRIO: NOTION + AUTOMAÇÃO = TRANSFORMAÇÃO DIGITAL REAL Em 2025, o Notion deixou de ser apenas uma ferramenta de anotações e organização. Quando combina...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/COM_AUTOMAC_A_O__O_NOTION_PODE_SE_TRANSFORMAR_EM__.webp"
+    "summary": "O GUIA DEFINITIVO PARA LIBERTAR O PODER OCULTO DO NOTION EM 2025 O CENÁRIO: NOTION + AUTOMAÇÃO = TRANSFORMAÇÃO DIGITAL REAL Em 2025, o Notion deixou de ser apenas uma ferramenta de anotações e organização. Quando combina...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/COM_AUTOMAC_A_O__O_NOTION_PODE_SE_TRANSFORMAR_EM__.webp",
+    "coverUrl": "/assets/covers/COM_AUTOMAC_A_O__O_NOTION_PODE_SE_TRANSFORMAR_EM__.webp",
+    "isPublished": true
   },
   {
     "id": "art-110",
@@ -601,8 +763,11 @@
     "createdAt": "1 de maio de 2025 00:58",
     "isFeatured": false,
     "excerpt": "Como Criar uma Startup de Automação (Digital Agency) 1. Defina seu Nicho e Proposta de Valor Pesquisa de Mercado: identifique segmentos com alta demanda por automação—e-commerce, saúde, educação, fintechs. Proposta Única...",
-    "readingTime": 3,
-    "coverImage": "/assets/covers/COMO_CRIAR_UMA_STARTUP_DE_AUTOMAC_A_O__DIGITAL_AGE.webp"
+    "summary": "Como Criar uma Startup de Automação (Digital Agency) 1. Defina seu Nicho e Proposta de Valor Pesquisa de Mercado: identifique segmentos com alta demanda por automação—e-commerce, saúde, educação, fintechs. Proposta Única...",
+    "readingTime": "3 min",
+    "coverImage": "/assets/covers/COMO_CRIAR_UMA_STARTUP_DE_AUTOMAC_A_O__DIGITAL_AGE.webp",
+    "coverUrl": "/assets/covers/COMO_CRIAR_UMA_STARTUP_DE_AUTOMAC_A_O__DIGITAL_AGE.webp",
+    "isPublished": true
   },
   {
     "id": "art-159",
@@ -612,8 +777,11 @@
     "createdAt": "31 de maio de 2025 22:36",
     "isFeatured": false,
     "excerpt": "A ascensão dos detectores de textos gerados por inteligência artificial (IA) inaugurou uma nova fase na relação entre criatividade humana, tecnologia e autenticidade digital. Universidades, plataformas de conteúdo, siste...",
-    "readingTime": 8,
-    "coverImage": "/assets/covers/COMO_ENGANAR_DETECTORES_DE_IA_ESTRATE_GIAS__MECANI.webp"
+    "summary": "A ascensão dos detectores de textos gerados por inteligência artificial (IA) inaugurou uma nova fase na relação entre criatividade humana, tecnologia e autenticidade digital. Universidades, plataformas de conteúdo, siste...",
+    "readingTime": "8 min",
+    "coverImage": "/assets/covers/COMO_ENGANAR_DETECTORES_DE_IA_ESTRATE_GIAS__MECANI.webp",
+    "coverUrl": "/assets/covers/COMO_ENGANAR_DETECTORES_DE_IA_ESTRATE_GIAS__MECANI.webp",
+    "isPublished": true
   },
   {
     "id": "art-9",
@@ -623,8 +791,11 @@
     "createdAt": "21 de junho de 2025 00:52",
     "isFeatured": false,
     "excerpt": "É POIS É… nesse dia eu realmente dei muita sorte né ? o airtable custa 20 dólares por mês, então eu consegui economizar uma graninha boa né? para contextualizar: o que é o airtable ? O Airtable é uma plataforma no-code q...",
-    "readingTime": 4,
-    "coverImage": "/assets/covers/COMO_EU_CONSEGUI_2_ANOS_DE_AIRTABLE_PRO_DE_GRAC_A.webp"
+    "summary": "É POIS É… nesse dia eu realmente dei muita sorte né ? o airtable custa 20 dólares por mês, então eu consegui economizar uma graninha boa né? para contextualizar: o que é o airtable ? O Airtable é uma plataforma no-code q...",
+    "readingTime": "4 min",
+    "coverImage": "/assets/covers/COMO_EU_CONSEGUI_2_ANOS_DE_AIRTABLE_PRO_DE_GRAC_A.webp",
+    "coverUrl": "/assets/covers/COMO_EU_CONSEGUI_2_ANOS_DE_AIRTABLE_PRO_DE_GRAC_A.webp",
+    "isPublished": true
   },
   {
     "id": "art-127",
@@ -634,8 +805,11 @@
     "createdAt": "14 de maio de 2025 09:30",
     "isFeatured": false,
     "excerpt": "por Mateus Celestino Se você é dono de agência, gestor de projetos ou consultor de automação, já se deparou com essa dúvida inevitável: “Devo usar um único Mautic para todos os meus clientes ou configurar um Mautic separ...",
-    "readingTime": 10,
-    "coverImage": "/assets/covers/Centralizar_ou_Segmentar_A_Decisa_o_Estrate_gica_q.webp"
+    "summary": "por Mateus Celestino Se você é dono de agência, gestor de projetos ou consultor de automação, já se deparou com essa dúvida inevitável: “Devo usar um único Mautic para todos os meus clientes ou configurar um Mautic separ...",
+    "readingTime": "10 min",
+    "coverImage": "/assets/covers/Centralizar_ou_Segmentar_A_Decisa_o_Estrate_gica_q.webp",
+    "coverUrl": "/assets/covers/Centralizar_ou_Segmentar_A_Decisa_o_Estrate_gica_q.webp",
+    "isPublished": true
   },
   {
     "id": "art-149",
@@ -645,8 +819,11 @@
     "createdAt": "29 de maio de 2025 15:36",
     "isFeatured": false,
     "excerpt": "Panorama: O Mercado de Busca em Transformação Durante décadas, o ecossistema de buscas foi sinônimo de Google. Desde estudantes até grandes empresas, praticamente toda informação na web passava pelo filtro da gigante de...",
-    "readingTime": 7,
-    "coverImage": "/assets/covers/ChatGPT_Esta__Realmente_Tomando_Mercado_do_Google_.webp"
+    "summary": "Panorama: O Mercado de Busca em Transformação Durante décadas, o ecossistema de buscas foi sinônimo de Google. Desde estudantes até grandes empresas, praticamente toda informação na web passava pelo filtro da gigante de...",
+    "readingTime": "7 min",
+    "coverImage": "/assets/covers/ChatGPT_Esta__Realmente_Tomando_Mercado_do_Google_.webp",
+    "coverUrl": "/assets/covers/ChatGPT_Esta__Realmente_Tomando_Mercado_do_Google_.webp",
+    "isPublished": true
   },
   {
     "id": "art-161",
@@ -656,8 +833,11 @@
     "createdAt": "1 de junho de 2025 13:19",
     "isFeatured": false,
     "excerpt": "O mercado de inteligência artificial conversacional cresceu de forma exponencial desde 2022, revelando ferramentas cada vez mais poderosas, cada uma com seu foco técnico, arquiteturas distintas e propostas de valor bem e...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/ChatGPT_vs_Perplexity_AI_Qual_Ferramenta_Escolher_.webp"
+    "summary": "O mercado de inteligência artificial conversacional cresceu de forma exponencial desde 2022, revelando ferramentas cada vez mais poderosas, cada uma com seu foco técnico, arquiteturas distintas e propostas de valor bem e...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/ChatGPT_vs_Perplexity_AI_Qual_Ferramenta_Escolher_.webp",
+    "coverUrl": "/assets/covers/ChatGPT_vs_Perplexity_AI_Qual_Ferramenta_Escolher_.webp",
+    "isPublished": true
   },
   {
     "id": "art-150",
@@ -667,8 +847,11 @@
     "createdAt": "24 de maio de 2025 17:31",
     "isFeatured": false,
     "excerpt": "Mateus Celestino Pro A comunicação automatizada via WhatsApp já não é apenas um diferencial — é parte vital de uma operação inteligente, rápida e escalável. Para desenvolvedores e arquitetos de automações que desejam sob...",
-    "readingTime": 5,
-    "coverImage": "/assets/covers/Como_Automatizar_Mensagens_no_WhatsApp_com_Evoluti.webp"
+    "summary": "Mateus Celestino Pro A comunicação automatizada via WhatsApp já não é apenas um diferencial — é parte vital de uma operação inteligente, rápida e escalável. Para desenvolvedores e arquitetos de automações que desejam sob...",
+    "readingTime": "5 min",
+    "coverImage": "/assets/covers/Como_Automatizar_Mensagens_no_WhatsApp_com_Evoluti.webp",
+    "coverUrl": "/assets/covers/Como_Automatizar_Mensagens_no_WhatsApp_com_Evoluti.webp",
+    "isPublished": true
   },
   {
     "id": "art-116",
@@ -678,8 +861,11 @@
     "createdAt": "5 de maio de 2025 18:55",
     "isFeatured": false,
     "excerpt": "Por Que a Maioria Começa no Digital Pelo Caminho Errado Se você está entrando agora no mercado digital ou pensando em começar, o pior caminho possível é tentar ser estrategista, coprodutor, lançador ou afiliado logo de c...",
-    "readingTime": 4,
-    "coverImage": "/assets/covers/Como_Comec_ar_no_Digital_do_Jeito_Certo_A_Melhor_P.webp"
+    "summary": "Por Que a Maioria Começa no Digital Pelo Caminho Errado Se você está entrando agora no mercado digital ou pensando em começar, o pior caminho possível é tentar ser estrategista, coprodutor, lançador ou afiliado logo de c...",
+    "readingTime": "4 min",
+    "coverImage": "/assets/covers/Como_Comec_ar_no_Digital_do_Jeito_Certo_A_Melhor_P.webp",
+    "coverUrl": "/assets/covers/Como_Comec_ar_no_Digital_do_Jeito_Certo_A_Melhor_P.webp",
+    "isPublished": true
   },
   {
     "id": "art-170",
@@ -689,8 +875,11 @@
     "createdAt": "14 de maio de 2025 09:16",
     "isFeatured": false,
     "excerpt": "Introdução: Oportunidades Raras, Estratégias Reais Poucos conteúdos na internet realmente entregam o que prometem. Menos ainda oferecem um roteiro prático, de valor inegável, sobre como gerar faturamento real com automaç...",
-    "readingTime": 11,
-    "coverImage": "/assets/covers/Como_Conseguir_Clientes_Para_Projetos_de_Automac_a.webp"
+    "summary": "Introdução: Oportunidades Raras, Estratégias Reais Poucos conteúdos na internet realmente entregam o que prometem. Menos ainda oferecem um roteiro prático, de valor inegável, sobre como gerar faturamento real com automaç...",
+    "readingTime": "11 min",
+    "coverImage": "/assets/covers/Como_Conseguir_Clientes_Para_Projetos_de_Automac_a.webp",
+    "coverUrl": "/assets/covers/Como_Conseguir_Clientes_Para_Projetos_de_Automac_a.webp",
+    "isPublished": true
   },
   {
     "id": "art-50",
@@ -700,8 +889,11 @@
     "createdAt": "21 de maio de 2025 12:16",
     "isFeatured": false,
     "excerpt": "Os chatbots baseados em inteligência artificial representam hoje uma das aplicações mais revolucionárias da IA generativa. Com sua capacidade de simular interações humanas em tempo real, essas ferramentas têm transformad...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/Como_Criar_Seu_Pro_prio_Chatbot_com_a_API_do_ChatG.webp"
+    "summary": "Os chatbots baseados em inteligência artificial representam hoje uma das aplicações mais revolucionárias da IA generativa. Com sua capacidade de simular interações humanas em tempo real, essas ferramentas têm transformad...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/Como_Criar_Seu_Pro_prio_Chatbot_com_a_API_do_ChatG.webp",
+    "coverUrl": "/assets/covers/Como_Criar_Seu_Pro_prio_Chatbot_com_a_API_do_ChatG.webp",
+    "isPublished": true
   },
   {
     "id": "art-49",
@@ -711,8 +903,11 @@
     "createdAt": "24 de maio de 2025 17:31",
     "isFeatured": false,
     "excerpt": "A era da automação sob medida já começou — e quem domina a criação de componentes próprios em plataformas abertas como o N8N conquista um nível de controle e inteligência operacional muito superior. No universo Mateus Ce...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/Como_Criar_seus_Pro_prios_Nodes_Personalizados_no_.webp"
+    "summary": "A era da automação sob medida já começou — e quem domina a criação de componentes próprios em plataformas abertas como o N8N conquista um nível de controle e inteligência operacional muito superior. No universo Mateus Ce...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/Como_Criar_seus_Pro_prios_Nodes_Personalizados_no_.webp",
+    "coverUrl": "/assets/covers/Como_Criar_seus_Pro_prios_Nodes_Personalizados_no_.webp",
+    "isPublished": true
   },
   {
     "id": "art-109",
@@ -722,8 +917,11 @@
     "createdAt": "9 de maio de 2025 00:53",
     "isFeatured": false,
     "excerpt": "Publicado por Mateus Celestino – 08 de Maio de 2025 A inteligência artificial saiu dos laboratórios e se tornou uma ferramenta essencial para negócios de qualquer porte. Mas para que um agente de IA seja realmente útil —...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/Como_Criar_um_Agente_de_IA_Treinado_com_Seus_Pro_p.webp"
+    "summary": "Publicado por Mateus Celestino – 08 de Maio de 2025 A inteligência artificial saiu dos laboratórios e se tornou uma ferramenta essencial para negócios de qualquer porte. Mas para que um agente de IA seja realmente útil —...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/Como_Criar_um_Agente_de_IA_Treinado_com_Seus_Pro_p.webp",
+    "coverUrl": "/assets/covers/Como_Criar_um_Agente_de_IA_Treinado_com_Seus_Pro_p.webp",
+    "isPublished": true
   },
   {
     "id": "art-111",
@@ -733,8 +931,11 @@
     "createdAt": "21 de maio de 2025 12:34",
     "isFeatured": false,
     "excerpt": "Embora o Google Sheets seja uma solução extremamente popular e eficaz para colaboração em dados, existem limitações significativas ao gerenciar informações em grande escala ou proteger a integridade dos dados. Formulário...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/Como_Criar_um_Formula_rio_Profissional_para_Entrad.webp"
+    "summary": "Embora o Google Sheets seja uma solução extremamente popular e eficaz para colaboração em dados, existem limitações significativas ao gerenciar informações em grande escala ou proteger a integridade dos dados. Formulário...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/Como_Criar_um_Formula_rio_Profissional_para_Entrad.webp",
+    "coverUrl": "/assets/covers/Como_Criar_um_Formula_rio_Profissional_para_Entrad.webp",
+    "isPublished": true
   },
   {
     "id": "art-108",
@@ -744,8 +945,11 @@
     "createdAt": "29 de maio de 2025 15:15",
     "isFeatured": false,
     "excerpt": "Saber como criar um modelo de dados é um passo crucial na construção de aplicações eficazes. Afinal, seu modelo de dados é a base de toda a lógica, automação e interface da sua aplicação. Investir tempo nesse processo ga...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/Como_Criar_um_Modelo_de_Dados_Guia_Completo_em_9_P.webp"
+    "summary": "Saber como criar um modelo de dados é um passo crucial na construção de aplicações eficazes. Afinal, seu modelo de dados é a base de toda a lógica, automação e interface da sua aplicação. Investir tempo nesse processo ga...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/Como_Criar_um_Modelo_de_Dados_Guia_Completo_em_9_P.webp",
+    "coverUrl": "/assets/covers/Como_Criar_um_Modelo_de_Dados_Guia_Completo_em_9_P.webp",
+    "isPublished": true
   },
   {
     "id": "art-31",
@@ -755,8 +959,11 @@
     "createdAt": "16 de maio de 2025 13:26",
     "isFeatured": false,
     "excerpt": "Em um mundo digital acelerado, criar um site com inteligência artificial deixou de ser tendência e se tornou necessidade estratégica. Seja você um empreendedor digital, freelancer, gestor de tráfego ou desenvolvedor no-c...",
-    "readingTime": 7,
-    "coverImage": "/assets/covers/Como_Criar_um_Site_com_Intelige_ncia_Artificial_A_.webp"
+    "summary": "Em um mundo digital acelerado, criar um site com inteligência artificial deixou de ser tendência e se tornou necessidade estratégica. Seja você um empreendedor digital, freelancer, gestor de tráfego ou desenvolvedor no-c...",
+    "readingTime": "7 min",
+    "coverImage": "/assets/covers/Como_Criar_um_Site_com_Intelige_ncia_Artificial_A_.webp",
+    "coverUrl": "/assets/covers/Como_Criar_um_Site_com_Intelige_ncia_Artificial_A_.webp",
+    "isPublished": true
   },
   {
     "id": "art-84",
@@ -766,8 +973,11 @@
     "createdAt": "29 de maio de 2025 15:04",
     "isFeatured": false,
     "excerpt": "Desenvolver um aplicativo web nunca foi tão relevante quanto hoje. Empresas e profissionais buscam ferramentas cada vez mais específicas, personalizadas e rápidas. Felizmente, o desenvolvimento de aplicações web evoluiu...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/Como_Criar_um_Web_App_em_2025_Guia_Completo_e_Defi.webp"
+    "summary": "Desenvolver um aplicativo web nunca foi tão relevante quanto hoje. Empresas e profissionais buscam ferramentas cada vez mais específicas, personalizadas e rápidas. Felizmente, o desenvolvimento de aplicações web evoluiu...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/Como_Criar_um_Web_App_em_2025_Guia_Completo_e_Defi.webp",
+    "coverUrl": "/assets/covers/Como_Criar_um_Web_App_em_2025_Guia_Completo_e_Defi.webp",
+    "isPublished": true
   },
   {
     "id": "art-52",
@@ -777,8 +987,11 @@
     "createdAt": "24 de maio de 2025 17:31",
     "isFeatured": false,
     "excerpt": "Mateus Celestino Pro Se você trabalha com integração entre sistemas, automações, APIs públicas ou privadas, dominar requisições HTTP com cURL em PHP é uma habilidade indispensável. O cURL é uma poderosa biblioteca que pe...",
-    "readingTime": 5,
-    "coverImage": "/assets/covers/Como_Fazer_Requisic_o_es_cURL_com_PHP_para_APIs_RE.webp"
+    "summary": "Mateus Celestino Pro Se você trabalha com integração entre sistemas, automações, APIs públicas ou privadas, dominar requisições HTTP com cURL em PHP é uma habilidade indispensável. O cURL é uma poderosa biblioteca que pe...",
+    "readingTime": "5 min",
+    "coverImage": "/assets/covers/Como_Fazer_Requisic_o_es_cURL_com_PHP_para_APIs_RE.webp",
+    "coverUrl": "/assets/covers/Como_Fazer_Requisic_o_es_cURL_com_PHP_para_APIs_RE.webp",
+    "isPublished": true
   },
   {
     "id": "art-56",
@@ -788,8 +1001,11 @@
     "createdAt": "16 de maio de 2025 09:19",
     "isFeatured": false,
     "excerpt": "INTRODUÇÃO — A NOVA REALIDADE DAS VENDAS DE IA Vender deixou de ser persuasão. Hoje, especialmente no universo da Inteligência Artificial e automações, vender é consultar . Você não está tentando convencer alguém a compr...",
-    "readingTime": 13,
-    "coverImage": "/assets/covers/Como_Fechar_Servic_os_de_IA_com_Confianc_a_Inabala.webp"
+    "summary": "INTRODUÇÃO — A NOVA REALIDADE DAS VENDAS DE IA Vender deixou de ser persuasão. Hoje, especialmente no universo da Inteligência Artificial e automações, vender é consultar . Você não está tentando convencer alguém a compr...",
+    "readingTime": "13 min",
+    "coverImage": "/assets/covers/Como_Fechar_Servic_os_de_IA_com_Confianc_a_Inabala.webp",
+    "coverUrl": "/assets/covers/Como_Fechar_Servic_os_de_IA_com_Confianc_a_Inabala.webp",
+    "isPublished": true
   },
   {
     "id": "art-154",
@@ -799,8 +1015,11 @@
     "createdAt": "16 de maio de 2025 09:18",
     "isFeatured": false,
     "excerpt": "VEJA A HISTÓRIA E TRAJETÓRIA DE ALGUÉM QUE VAMOS CHAMAR DE ALEXANDER… Do zero ao primeiro cliente real: a história de uma virada com tecnologia e coragem Entrar no universo da automação com inteligência artificial pode p...",
-    "readingTime": 13,
-    "coverImage": "/assets/covers/Como_Fechei_Meu_Primeiro_Cliente_em_Automac_a_o_co.webp"
+    "summary": "VEJA A HISTÓRIA E TRAJETÓRIA DE ALGUÉM QUE VAMOS CHAMAR DE ALEXANDER… Do zero ao primeiro cliente real: a história de uma virada com tecnologia e coragem Entrar no universo da automação com inteligência artificial pode p...",
+    "readingTime": "13 min",
+    "coverImage": "/assets/covers/Como_Fechei_Meu_Primeiro_Cliente_em_Automac_a_o_co.webp",
+    "coverUrl": "/assets/covers/Como_Fechei_Meu_Primeiro_Cliente_em_Automac_a_o_co.webp",
+    "isPublished": true
   },
   {
     "id": "art-93",
@@ -810,8 +1029,11 @@
     "createdAt": "1 de junho de 2025 13:20",
     "isFeatured": false,
     "excerpt": "No novo paradigma da automação com inteligência artificial, prompt engineering deixou de ser uma técnica avançada e se tornou um requisito estratégico de performance . No centro dessa transformação estão as ferramentas d...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/Como_Ferramentas_de_Engenharia_de_Prompt_Aumentam_.webp"
+    "summary": "No novo paradigma da automação com inteligência artificial, prompt engineering deixou de ser uma técnica avançada e se tornou um requisito estratégico de performance . No centro dessa transformação estão as ferramentas d...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/Como_Ferramentas_de_Engenharia_de_Prompt_Aumentam_.webp",
+    "coverUrl": "/assets/covers/Como_Ferramentas_de_Engenharia_de_Prompt_Aumentam_.webp",
+    "isPublished": true
   },
   {
     "id": "art-172",
@@ -821,8 +1043,11 @@
     "createdAt": "1 de maio de 2025 00:11",
     "isFeatured": false,
     "excerpt": "1. Entenda Seu Mercado e Proposta de Valor Mapeie nichos emergentes: e-commerce, clínicas de estética, academias, agências de marketing digital e pequenas indústrias. Defina seu diferencial: automação de agendamento, nut...",
-    "readingTime": 3,
-    "coverImage": "/assets/covers/Como_Ganhar_Seus_Primeiros_Clientes_de_Automac_a_o.webp"
+    "summary": "1. Entenda Seu Mercado e Proposta de Valor Mapeie nichos emergentes: e-commerce, clínicas de estética, academias, agências de marketing digital e pequenas indústrias. Defina seu diferencial: automação de agendamento, nut...",
+    "readingTime": "3 min",
+    "coverImage": "/assets/covers/Como_Ganhar_Seus_Primeiros_Clientes_de_Automac_a_o.webp",
+    "coverUrl": "/assets/covers/Como_Ganhar_Seus_Primeiros_Clientes_de_Automac_a_o.webp",
+    "isPublished": true
   },
   {
     "id": "art-15",
@@ -832,8 +1057,11 @@
     "createdAt": "24 de maio de 2025 17:31",
     "isFeatured": false,
     "excerpt": "Mateus Celestino Pro A competitividade empresarial moderna exige mais do que velocidade. Exige inteligência operacional . Em um cenário onde o tempo é um dos recursos mais valiosos, compreender como implementar automação...",
-    "readingTime": 5,
-    "coverImage": "/assets/covers/Como_Implementar_Automac_a_o_Inteligente_de_Proces.webp"
+    "summary": "Mateus Celestino Pro A competitividade empresarial moderna exige mais do que velocidade. Exige inteligência operacional . Em um cenário onde o tempo é um dos recursos mais valiosos, compreender como implementar automação...",
+    "readingTime": "5 min",
+    "coverImage": "/assets/covers/Como_Implementar_Automac_a_o_Inteligente_de_Proces.webp",
+    "coverUrl": "/assets/covers/Como_Implementar_Automac_a_o_Inteligente_de_Proces.webp",
+    "isPublished": true
   },
   {
     "id": "art-123",
@@ -843,8 +1071,11 @@
     "createdAt": "9 de maio de 2025 00:52",
     "isFeatured": false,
     "excerpt": "No novo cenário das automações modernas, a API Oficial do WhatsApp se posiciona como uma das tecnologias mais estratégicas para empresas que desejam se comunicar em larga escala, com profissionalismo e eficiência. O What...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/Como_Integrar_a_API_Oficial_do_WhatsApp_ao_N8N_e_A.webp"
+    "summary": "No novo cenário das automações modernas, a API Oficial do WhatsApp se posiciona como uma das tecnologias mais estratégicas para empresas que desejam se comunicar em larga escala, com profissionalismo e eficiência. O What...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/Como_Integrar_a_API_Oficial_do_WhatsApp_ao_N8N_e_A.webp",
+    "coverUrl": "/assets/covers/Como_Integrar_a_API_Oficial_do_WhatsApp_ao_N8N_e_A.webp",
+    "isPublished": true
   },
   {
     "id": "art-140",
@@ -854,8 +1085,11 @@
     "createdAt": "24 de maio de 2025 17:31",
     "isFeatured": false,
     "excerpt": "Se você está desenvolvendo um sistema, uma automação de backend ou uma integração entre plataformas que utilizam o formato XML como padrão de resposta, dominar a leitura desse tipo de dado no PHP é essencial. Neste artig...",
-    "readingTime": 5,
-    "coverImage": "/assets/covers/Como_Ler_uma_URL_ou_Arquivo_XML_Usando_PHP_Guia_Pr.webp"
+    "summary": "Se você está desenvolvendo um sistema, uma automação de backend ou uma integração entre plataformas que utilizam o formato XML como padrão de resposta, dominar a leitura desse tipo de dado no PHP é essencial. Neste artig...",
+    "readingTime": "5 min",
+    "coverImage": "/assets/covers/Como_Ler_uma_URL_ou_Arquivo_XML_Usando_PHP_Guia_Pr.webp",
+    "coverUrl": "/assets/covers/Como_Ler_uma_URL_ou_Arquivo_XML_Usando_PHP_Guia_Pr.webp",
+    "isPublished": true
   },
   {
     "id": "art-121",
@@ -865,8 +1099,11 @@
     "createdAt": "16 de maio de 2025 13:24",
     "isFeatured": false,
     "excerpt": "Você já se sentiu sobrecarregado ao encarar um artigo de 15 páginas, uma ata de reunião extensa ou um e-mail corporativo quilométrico, sabendo que precisa extrair dali apenas o essencial? Eu também. E foi justamente essa...",
-    "readingTime": 7,
-    "coverImage": "/assets/covers/Como_Usar_IA_para_Resumir_Textos_Longos_e_Automati.webp"
+    "summary": "Você já se sentiu sobrecarregado ao encarar um artigo de 15 páginas, uma ata de reunião extensa ou um e-mail corporativo quilométrico, sabendo que precisa extrair dali apenas o essencial? Eu também. E foi justamente essa...",
+    "readingTime": "7 min",
+    "coverImage": "/assets/covers/Como_Usar_IA_para_Resumir_Textos_Longos_e_Automati.webp",
+    "coverUrl": "/assets/covers/Como_Usar_IA_para_Resumir_Textos_Longos_e_Automati.webp",
+    "isPublished": true
   },
   {
     "id": "art-67",
@@ -876,8 +1113,11 @@
     "createdAt": "9 de maio de 2025 00:53",
     "isFeatured": false,
     "excerpt": "A Nova Realidade do Atendimento: Inteligência Artificial na Linha de Frente O atendimento ao cliente está vivendo uma revolução silenciosa, mas profunda. A inteligência artificial (IA), que antes era associada apenas a l...",
-    "readingTime": 7,
-    "coverImage": "/assets/covers/Como_Usar_Intelige_ncia_Artificial_para_Atendiment.webp"
+    "summary": "A Nova Realidade do Atendimento: Inteligência Artificial na Linha de Frente O atendimento ao cliente está vivendo uma revolução silenciosa, mas profunda. A inteligência artificial (IA), que antes era associada apenas a l...",
+    "readingTime": "7 min",
+    "coverImage": "/assets/covers/Como_Usar_Intelige_ncia_Artificial_para_Atendiment.webp",
+    "coverUrl": "/assets/covers/Como_Usar_Intelige_ncia_Artificial_para_Atendiment.webp",
+    "isPublished": true
   },
   {
     "id": "art-112",
@@ -887,8 +1127,11 @@
     "createdAt": "24 de maio de 2025 17:31",
     "isFeatured": false,
     "excerpt": "Mateus Celestino Pro Em um ambiente empresarial que exige agilidade, precisão e inteligência na execução de tarefas, o uso de modeladores de processos se destaca como uma ferramenta essencial para alcançar excelência ope...",
-    "readingTime": 5,
-    "coverImage": "/assets/covers/Como_Usar_um_Modelador_de_Processos_para_Otimizar_.webp"
+    "summary": "Mateus Celestino Pro Em um ambiente empresarial que exige agilidade, precisão e inteligência na execução de tarefas, o uso de modeladores de processos se destaca como uma ferramenta essencial para alcançar excelência ope...",
+    "readingTime": "5 min",
+    "coverImage": "/assets/covers/Como_Usar_um_Modelador_de_Processos_para_Otimizar_.webp",
+    "coverUrl": "/assets/covers/Como_Usar_um_Modelador_de_Processos_para_Otimizar_.webp",
+    "isPublished": true
   },
   {
     "id": "art-125",
@@ -898,8 +1141,11 @@
     "createdAt": "29 de maio de 2025 15:24",
     "isFeatured": false,
     "excerpt": "No cenário digital contemporâneo, onde a concorrência é acirrada e o comportamento do usuário muda a cada segundo, os tradicionais anúncios de pesquisa — outrora dominados por ajustes manuais e intuição — estão sendo rap...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/Como_Utilizar_Anu_ncios_de_Pesquisa_com_IA_O_Futur.webp"
+    "summary": "No cenário digital contemporâneo, onde a concorrência é acirrada e o comportamento do usuário muda a cada segundo, os tradicionais anúncios de pesquisa — outrora dominados por ajustes manuais e intuição — estão sendo rap...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/Como_Utilizar_Anu_ncios_de_Pesquisa_com_IA_O_Futur.webp",
+    "coverUrl": "/assets/covers/Como_Utilizar_Anu_ncios_de_Pesquisa_com_IA_O_Futur.webp",
+    "isPublished": true
   },
   {
     "id": "art-145",
@@ -909,8 +1155,11 @@
     "createdAt": "9 de maio de 2025 00:52",
     "isFeatured": false,
     "excerpt": "Vivemos uma inflexão histórica profunda e irreversível. A inteligência artificial (IA), que durante décadas permaneceu restrita a laboratórios acadêmicos e centros de pesquisa corporativa, emergiu como a força-motriz da...",
-    "readingTime": 7,
-    "coverImage": "/assets/covers/Como_a_Intelige_ncia_Artificial_Esta__Remodelando_.webp"
+    "summary": "Vivemos uma inflexão histórica profunda e irreversível. A inteligência artificial (IA), que durante décadas permaneceu restrita a laboratórios acadêmicos e centros de pesquisa corporativa, emergiu como a força-motriz da...",
+    "readingTime": "7 min",
+    "coverImage": "/assets/covers/Como_a_Intelige_ncia_Artificial_Esta__Remodelando_.webp",
+    "coverUrl": "/assets/covers/Como_a_Intelige_ncia_Artificial_Esta__Remodelando_.webp",
+    "isPublished": true
   },
   {
     "id": "art-102",
@@ -920,8 +1169,11 @@
     "createdAt": "27 de maio de 2025 17:08",
     "isFeatured": false,
     "excerpt": "A inteligência artificial (IA) não é mais uma promessa futura — ela já está entre nós, redefinindo os limites da produtividade e remodelando profundamente os processos de trabalho em diversas indústrias. Seja no varejo,...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/Como_a_Intelige_ncia_Artificial_Esta__Revolucionan.webp"
+    "summary": "A inteligência artificial (IA) não é mais uma promessa futura — ela já está entre nós, redefinindo os limites da produtividade e remodelando profundamente os processos de trabalho em diversas indústrias. Seja no varejo,...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/Como_a_Intelige_ncia_Artificial_Esta__Revolucionan.webp",
+    "coverUrl": "/assets/covers/Como_a_Intelige_ncia_Artificial_Esta__Revolucionan.webp",
+    "isPublished": true
   },
   {
     "id": "art-11",
@@ -931,8 +1183,11 @@
     "createdAt": "4 de maio de 2025 10:30",
     "isFeatured": false,
     "excerpt": "A nova era do empreendedorismo digital: alto impacto, baixo custo Montar uma empresa sempre foi sinônimo de investimento, estrutura e complexidade. Mas com a revolução do software livre e da computação em nuvem, é possív...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/Como_montar_uma_empresa_com_20_do_lares_tecnologia.webp"
+    "summary": "A nova era do empreendedorismo digital: alto impacto, baixo custo Montar uma empresa sempre foi sinônimo de investimento, estrutura e complexidade. Mas com a revolução do software livre e da computação em nuvem, é possív...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/Como_montar_uma_empresa_com_20_do_lares_tecnologia.webp",
+    "coverUrl": "/assets/covers/Como_montar_uma_empresa_com_20_do_lares_tecnologia.webp",
+    "isPublished": true
   },
   {
     "id": "art-173",
@@ -942,8 +1197,11 @@
     "createdAt": "1 de maio de 2025 00:42",
     "isFeatured": false,
     "excerpt": "1. Produção de Conteúdo em Alta Velocidade Geração de artigos, posts e scripts : crie rascunhos completos e ajustáveis em segundos, reduzindo ciclos de planejamento de dias para minutos. Variedade de formatos : blog post...",
-    "readingTime": 3,
-    "coverImage": "/assets/covers/Como_o_ChatGPT_Esta__Revolucionando_o_Marketing_Di.webp"
+    "summary": "1. Produção de Conteúdo em Alta Velocidade Geração de artigos, posts e scripts : crie rascunhos completos e ajustáveis em segundos, reduzindo ciclos de planejamento de dias para minutos. Variedade de formatos : blog post...",
+    "readingTime": "3 min",
+    "coverImage": "/assets/covers/Como_o_ChatGPT_Esta__Revolucionando_o_Marketing_Di.webp",
+    "coverUrl": "/assets/covers/Como_o_ChatGPT_Esta__Revolucionando_o_Marketing_Di.webp",
+    "isPublished": true
   },
   {
     "id": "art-153",
@@ -953,8 +1211,11 @@
     "createdAt": "1 de maio de 2025 00:53",
     "isFeatured": false,
     "excerpt": "1. O que é um Gestor de Automação? O gestor de automação é o profissional responsável por planejar, implementar e otimizar fluxos de trabalho automatizados em uma organização. Seu propósito é eliminar tarefas manuais rep...",
-    "readingTime": 4,
-    "coverImage": "/assets/covers/Conhec_a_o_Gestor_de_Automac_a_o_A_Nova_Profissa_o.webp"
+    "summary": "1. O que é um Gestor de Automação? O gestor de automação é o profissional responsável por planejar, implementar e otimizar fluxos de trabalho automatizados em uma organização. Seu propósito é eliminar tarefas manuais rep...",
+    "readingTime": "4 min",
+    "coverImage": "/assets/covers/Conhec_a_o_Gestor_de_Automac_a_o_A_Nova_Profissa_o.webp",
+    "coverUrl": "/assets/covers/Conhec_a_o_Gestor_de_Automac_a_o_A_Nova_Profissa_o.webp",
+    "isPublished": true
   },
   {
     "id": "art-68",
@@ -964,8 +1225,11 @@
     "createdAt": "1 de junho de 2025 13:19",
     "isFeatured": false,
     "excerpt": "A era da automação por regras fixas está ficando para trás. Estamos avançando para uma nova fronteira: sistemas de IA capazes de tomar decisões, dividir tarefas, coordenar ações e controlar fluxos de trabalho de forma au...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/Construtores_de_Workflows_Agentivos_com_LLM_Os_Mel.webp"
+    "summary": "A era da automação por regras fixas está ficando para trás. Estamos avançando para uma nova fronteira: sistemas de IA capazes de tomar decisões, dividir tarefas, coordenar ações e controlar fluxos de trabalho de forma au...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/Construtores_de_Workflows_Agentivos_com_LLM_Os_Mel.webp",
+    "coverUrl": "/assets/covers/Construtores_de_Workflows_Agentivos_com_LLM_Os_Mel.webp",
+    "isPublished": true
   },
   {
     "id": "art-40",
@@ -975,8 +1239,11 @@
     "createdAt": "4 de maio de 2025 10:35",
     "isFeatured": false,
     "excerpt": "Introdução: o dilema dos servidores baratos No universo da automação digital e dos negócios online, encontrar infraestrutura potente por um preço acessível é um verdadeiro achado. É nesse contexto que a Contabo entra no...",
-    "readingTime": 4,
-    "coverImage": "/assets/covers/Contabo_os_servidores_VPS_mais_baratos_da_internet.webp"
+    "summary": "Introdução: o dilema dos servidores baratos No universo da automação digital e dos negócios online, encontrar infraestrutura potente por um preço acessível é um verdadeiro achado. É nesse contexto que a Contabo entra no...",
+    "readingTime": "4 min",
+    "coverImage": "/assets/covers/Contabo_os_servidores_VPS_mais_baratos_da_internet.webp",
+    "coverUrl": "/assets/covers/Contabo_os_servidores_VPS_mais_baratos_da_internet.webp",
+    "isPublished": true
   },
   {
     "id": "art-47",
@@ -986,8 +1253,11 @@
     "createdAt": "24 de maio de 2025 17:32",
     "isFeatured": false,
     "excerpt": "Mateus Celestino Pro A nova geração do ChatGPT vai muito além de simples interações de pergunta e resposta. Com a chegada do ChatGPT-4 com suporte à criação de apps personalizados , você tem em mãos uma plataforma podero...",
-    "readingTime": 5,
-    "coverImage": "/assets/covers/Criando_Aplicac_o_es_Personalizadas_com_ChatGPT_4_.webp"
+    "summary": "Mateus Celestino Pro A nova geração do ChatGPT vai muito além de simples interações de pergunta e resposta. Com a chegada do ChatGPT-4 com suporte à criação de apps personalizados , você tem em mãos uma plataforma podero...",
+    "readingTime": "5 min",
+    "coverImage": "/assets/covers/Criando_Aplicac_o_es_Personalizadas_com_ChatGPT_4_.webp",
+    "coverUrl": "/assets/covers/Criando_Aplicac_o_es_Personalizadas_com_ChatGPT_4_.webp",
+    "isPublished": true
   },
   {
     "id": "art-131",
@@ -997,8 +1267,11 @@
     "createdAt": "24 de maio de 2025 17:32",
     "isFeatured": false,
     "excerpt": "Mateus Celestino Pro O Google Sheets é uma ferramenta poderosa, mas muitos profissionais ainda o utilizam apenas com fórmulas básicas. A verdadeira revolução ocorre quando você aprende a criar funções personalizadas com...",
-    "readingTime": 4,
-    "coverImage": "/assets/covers/Criando_Func_o_es_Personalizadas_no_Google_Sheets_.webp"
+    "summary": "Mateus Celestino Pro O Google Sheets é uma ferramenta poderosa, mas muitos profissionais ainda o utilizam apenas com fórmulas básicas. A verdadeira revolução ocorre quando você aprende a criar funções personalizadas com...",
+    "readingTime": "4 min",
+    "coverImage": "/assets/covers/Criando_Func_o_es_Personalizadas_no_Google_Sheets_.webp",
+    "coverUrl": "/assets/covers/Criando_Func_o_es_Personalizadas_no_Google_Sheets_.webp",
+    "isPublished": true
   },
   {
     "id": "art-88",
@@ -1008,8 +1281,11 @@
     "createdAt": "24 de maio de 2025 18:11",
     "isFeatured": false,
     "excerpt": "A era dos apps construídos sobre inteligência artificial já começou, e o ChatGPT, com sua funcionalidade Explore GPTs , está no centro dessa transformação. Mais do que um chatbot, o ChatGPT agora funciona como uma plataf...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/Criac_a_o_de_Apps_com_IA_dentro_do_ChatGPT_Guia_Pr.webp"
+    "summary": "A era dos apps construídos sobre inteligência artificial já começou, e o ChatGPT, com sua funcionalidade Explore GPTs , está no centro dessa transformação. Mais do que um chatbot, o ChatGPT agora funciona como uma plataf...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/Criac_a_o_de_Apps_com_IA_dentro_do_ChatGPT_Guia_Pr.webp",
+    "coverUrl": "/assets/covers/Criac_a_o_de_Apps_com_IA_dentro_do_ChatGPT_Guia_Pr.webp",
+    "isPublished": true
   },
   {
     "id": "art-53",
@@ -1019,8 +1295,11 @@
     "createdAt": "4 de maio de 2025 11:26",
     "isFeatured": false,
     "excerpt": "O fascínio de ter seu próprio servidor Ter um servidor é quase um rito de passagem para quem entra no mundo da automação, do open source e da infraestrutura digital. A sensação de estar ali, de frente para o terminal, te...",
-    "readingTime": 4,
-    "coverImage": "/assets/covers/Cuidados_ao_construir_em_um_servidor_o_que_voce__p.webp"
+    "summary": "O fascínio de ter seu próprio servidor Ter um servidor é quase um rito de passagem para quem entra no mundo da automação, do open source e da infraestrutura digital. A sensação de estar ali, de frente para o terminal, te...",
+    "readingTime": "4 min",
+    "coverImage": "/assets/covers/Cuidados_ao_construir_em_um_servidor_o_que_voce__p.webp",
+    "coverUrl": "/assets/covers/Cuidados_ao_construir_em_um_servidor_o_que_voce__p.webp",
+    "isPublished": true
   },
   {
     "id": "art-66",
@@ -1030,8 +1309,11 @@
     "createdAt": "31 de maio de 2025 22:36",
     "isFeatured": false,
     "excerpt": "A revolução dos modelos de linguagem baseados em IA, como ChatGPT, Gemini, Perplexity, Claude e outros, transformou para sempre a criação de conteúdos textuais. O que antes era restrito à produção humana agora pode ser r...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/DETECC_A_O_DE_TEXTOS_GERADOS_POR_INTELIGE_NCIA_ART.webp"
+    "summary": "A revolução dos modelos de linguagem baseados em IA, como ChatGPT, Gemini, Perplexity, Claude e outros, transformou para sempre a criação de conteúdos textuais. O que antes era restrito à produção humana agora pode ser r...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/DETECC_A_O_DE_TEXTOS_GERADOS_POR_INTELIGE_NCIA_ART.webp",
+    "coverUrl": "/assets/covers/DETECC_A_O_DE_TEXTOS_GERADOS_POR_INTELIGE_NCIA_ART.webp",
+    "isPublished": true
   },
   {
     "id": "art-169",
@@ -1041,8 +1323,11 @@
     "createdAt": "9 de maio de 2025 00:38",
     "isFeatured": false,
     "excerpt": "O marketing digital não é apenas um conjunto de técnicas: é um campo estratégico, onde cada palavra tem peso, cada termo representa uma engrenagem crítica, e cada sigla pode ser a chave para resultados exponenciais. Se v...",
-    "readingTime": 11,
-    "coverImage": "/assets/covers/DICIONA_RIO_DE_MARKETING_DIGITAL.webp"
+    "summary": "O marketing digital não é apenas um conjunto de técnicas: é um campo estratégico, onde cada palavra tem peso, cada termo representa uma engrenagem crítica, e cada sigla pode ser a chave para resultados exponenciais. Se v...",
+    "readingTime": "11 min",
+    "coverImage": "/assets/covers/DICIONA_RIO_DE_MARKETING_DIGITAL.webp",
+    "coverUrl": "/assets/covers/DICIONA_RIO_DE_MARKETING_DIGITAL.webp",
+    "isPublished": true
   },
   {
     "id": "art-101",
@@ -1052,8 +1337,11 @@
     "createdAt": "7 de maio de 2025 10:15",
     "isFeatured": false,
     "excerpt": "📘 Sobre Docker: Entendendo Containers x Máquinas Virtuais de Forma Técnica e Profunda 🧠 Módulo 1: Fundamentos da Virtualização — Docker vs Máquinas Virtuais 🧱 1.1. Arquitetura Computacional: Recursos Fundamentais Antes d...",
-    "readingTime": 30,
-    "coverImage": "/assets/covers/DOCKER____SUPREME_GUIDE.webp"
+    "summary": "📘 Sobre Docker: Entendendo Containers x Máquinas Virtuais de Forma Técnica e Profunda 🧠 Módulo 1: Fundamentos da Virtualização — Docker vs Máquinas Virtuais 🧱 1.1. Arquitetura Computacional: Recursos Fundamentais Antes d...",
+    "readingTime": "30 min",
+    "coverImage": "/assets/covers/DOCKER____SUPREME_GUIDE.webp",
+    "coverUrl": "/assets/covers/DOCKER____SUPREME_GUIDE.webp",
+    "isPublished": true
   },
   {
     "id": "art-167",
@@ -1063,8 +1351,11 @@
     "createdAt": "21 de maio de 2025 11:35",
     "isFeatured": false,
     "excerpt": "Nos últimos anos, o conceito de &quot;Digital Workers&quot; tem ganhado grande destaque no contexto da automação empresarial e transformação digital. Originalmente limitados a tarefas repetitivas e simples, esses trabalh...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/Digital_Workers_Uma_Revoluc_a_o_na_Automac_a_o_Emp.webp"
+    "summary": "Nos últimos anos, o conceito de &quot;Digital Workers&quot; tem ganhado grande destaque no contexto da automação empresarial e transformação digital. Originalmente limitados a tarefas repetitivas e simples, esses trabalh...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/Digital_Workers_Uma_Revoluc_a_o_na_Automac_a_o_Emp.webp",
+    "coverUrl": "/assets/covers/Digital_Workers_Uma_Revoluc_a_o_na_Automac_a_o_Emp.webp",
+    "isPublished": true
   },
   {
     "id": "art-122",
@@ -1074,8 +1365,11 @@
     "createdAt": "4 de maio de 2025 10:31",
     "isFeatured": false,
     "excerpt": "O que é Docker Swarm? O Docker Swarm é uma ferramenta nativa do Docker que permite criar um cluster de contêineres distribuídos , funcionando como um orquestrador leve . Com ele, é possível transformar múltiplos servidor...",
-    "readingTime": 3,
-    "coverImage": "/assets/covers/Docker_Swarm_o_que_e__e_como_funciona_a_escala_de_.webp"
+    "summary": "O que é Docker Swarm? O Docker Swarm é uma ferramenta nativa do Docker que permite criar um cluster de contêineres distribuídos , funcionando como um orquestrador leve . Com ele, é possível transformar múltiplos servidor...",
+    "readingTime": "3 min",
+    "coverImage": "/assets/covers/Docker_Swarm_o_que_e__e_como_funciona_a_escala_de_.webp",
+    "coverUrl": "/assets/covers/Docker_Swarm_o_que_e__e_como_funciona_a_escala_de_.webp",
+    "isPublished": true
   },
   {
     "id": "art-42",
@@ -1085,8 +1379,11 @@
     "createdAt": "29 de maio de 2025 15:04",
     "isFeatured": false,
     "excerpt": "A arte gerada por inteligência artificial não é uma tendência passageira — é uma revolução silenciosa que está transformando completamente os fundamentos da criação artística. Através de modelos generativos alimentados p...",
-    "readingTime": 11,
-    "coverImage": "/assets/covers/Dominando_a_Gerac_a_o_de_Arte_com_Intelige_ncia_Ar.webp"
+    "summary": "A arte gerada por inteligência artificial não é uma tendência passageira — é uma revolução silenciosa que está transformando completamente os fundamentos da criação artística. Através de modelos generativos alimentados p...",
+    "readingTime": "11 min",
+    "coverImage": "/assets/covers/Dominando_a_Gerac_a_o_de_Arte_com_Intelige_ncia_Ar.webp",
+    "coverUrl": "/assets/covers/Dominando_a_Gerac_a_o_de_Arte_com_Intelige_ncia_Ar.webp",
+    "isPublished": true
   },
   {
     "id": "art-7",
@@ -1096,8 +1393,11 @@
     "createdAt": "16 de maio de 2025 09:19",
     "isFeatured": false,
     "excerpt": "O Guia Definitivo de Vendas Outbound e Execução Imediata com IA, Automação e Clareza Mental Por Mateus Celestino – Mateus Celestino Pro 1. Uma Jornada Real e Brutalmente Honesta A verdade precisa ser dita: o sucesso no d...",
-    "readingTime": 15,
-    "coverImage": "/assets/covers/Domine_a_Prospecc_a_o_Ativa_e_Supere_a_Procrastina.webp"
+    "summary": "O Guia Definitivo de Vendas Outbound e Execução Imediata com IA, Automação e Clareza Mental Por Mateus Celestino – Mateus Celestino Pro 1. Uma Jornada Real e Brutalmente Honesta A verdade precisa ser dita: o sucesso no d...",
+    "readingTime": "15 min",
+    "coverImage": "/assets/covers/Domine_a_Prospecc_a_o_Ativa_e_Supere_a_Procrastina.webp",
+    "coverUrl": "/assets/covers/Domine_a_Prospecc_a_o_Ativa_e_Supere_a_Procrastina.webp",
+    "isPublished": true
   },
   {
     "id": "art-90",
@@ -1107,8 +1407,11 @@
     "createdAt": "31 de maio de 2025 22:32",
     "isFeatured": false,
     "excerpt": "A tecnologia de drones evoluiu de brinquedo curioso para ferramenta essencial de múltiplos setores — e, no centro dessa revolução, está a inteligência artificial . Drones equipados com IA deixaram para trás os limites do...",
-    "readingTime": 7,
-    "coverImage": "/assets/covers/Drones_de_IA_Uma_Nova_Era_do_Voo_Inteligente.webp"
+    "summary": "A tecnologia de drones evoluiu de brinquedo curioso para ferramenta essencial de múltiplos setores — e, no centro dessa revolução, está a inteligência artificial . Drones equipados com IA deixaram para trás os limites do...",
+    "readingTime": "7 min",
+    "coverImage": "/assets/covers/Drones_de_IA_Uma_Nova_Era_do_Voo_Inteligente.webp",
+    "coverUrl": "/assets/covers/Drones_de_IA_Uma_Nova_Era_do_Voo_Inteligente.webp",
+    "isPublished": true
   },
   {
     "id": "art-30",
@@ -1118,8 +1421,11 @@
     "createdAt": "9 de maio de 2025 00:38",
     "isFeatured": false,
     "excerpt": "Email Marketing de Sucesso: Estratégias Reais Para Dominar Essa Máquina de Vendas – por Mateus Celestino Em um cenário onde a atenção virou uma moeda escassa e o excesso de informação domina todos os canais digitais, o e...",
-    "readingTime": 9,
-    "coverImage": "/assets/covers/Email_Marketing_de_Sucesso_Estrate_gias_Reais_Para.webp"
+    "summary": "Email Marketing de Sucesso: Estratégias Reais Para Dominar Essa Máquina de Vendas – por Mateus Celestino Em um cenário onde a atenção virou uma moeda escassa e o excesso de informação domina todos os canais digitais, o e...",
+    "readingTime": "9 min",
+    "coverImage": "/assets/covers/Email_Marketing_de_Sucesso_Estrate_gias_Reais_Para.webp",
+    "coverUrl": "/assets/covers/Email_Marketing_de_Sucesso_Estrate_gias_Reais_Para.webp",
+    "isPublished": true
   },
   {
     "id": "art-83",
@@ -1129,8 +1435,11 @@
     "createdAt": "24 de maio de 2025 18:08",
     "isFeatured": false,
     "excerpt": "A modelagem de processos é a espinha dorsal da maturidade operacional. Negócios que estruturam, padronizam e visualizam seus fluxos com precisão colhem frutos em forma de produtividade, escalabilidade e inteligência exec...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/Escolhendo_a_Ferramenta_Ideal_para_Modelagem_de_Pr.webp"
+    "summary": "A modelagem de processos é a espinha dorsal da maturidade operacional. Negócios que estruturam, padronizam e visualizam seus fluxos com precisão colhem frutos em forma de produtividade, escalabilidade e inteligência exec...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/Escolhendo_a_Ferramenta_Ideal_para_Modelagem_de_Pr.webp",
+    "coverUrl": "/assets/covers/Escolhendo_a_Ferramenta_Ideal_para_Modelagem_de_Pr.webp",
+    "isPublished": true
   },
   {
     "id": "art-74",
@@ -1140,8 +1449,11 @@
     "createdAt": "9 de maio de 2025 00:52",
     "isFeatured": false,
     "excerpt": "O FlutterFlow não é apenas uma ferramenta de criação de aplicativos. Ele é um framework visual completo de desenvolvimento que coloca o poder da construção de apps mobile, web e desktop com performance nativa nas mãos de...",
-    "readingTime": 5,
-    "coverImage": "/assets/covers/FlutterFlow_O_Que_e__Possi_vel_Criar_Um_Mapa_Compl.webp"
+    "summary": "O FlutterFlow não é apenas uma ferramenta de criação de aplicativos. Ele é um framework visual completo de desenvolvimento que coloca o poder da construção de apps mobile, web e desktop com performance nativa nas mãos de...",
+    "readingTime": "5 min",
+    "coverImage": "/assets/covers/FlutterFlow_O_Que_e__Possi_vel_Criar_Um_Mapa_Compl.webp",
+    "coverUrl": "/assets/covers/FlutterFlow_O_Que_e__Possi_vel_Criar_Um_Mapa_Compl.webp",
+    "isPublished": true
   },
   {
     "id": "art-148",
@@ -1151,8 +1463,11 @@
     "createdAt": "1 de junho de 2025 12:59",
     "isFeatured": false,
     "excerpt": "Os fluxos de trabalho baseados em agentes de inteligência artificial (AI agentic workflows) estão revolucionando o cenário da automação e da gestão operacional das empresas. Esta tecnologia, ainda em consolidação, promet...",
-    "readingTime": 7,
-    "coverImage": "/assets/covers/Fluxos_de_Trabalho_com_Agentes_de_IA_Guia_Definiti.webp"
+    "summary": "Os fluxos de trabalho baseados em agentes de inteligência artificial (AI agentic workflows) estão revolucionando o cenário da automação e da gestão operacional das empresas. Esta tecnologia, ainda em consolidação, promet...",
+    "readingTime": "7 min",
+    "coverImage": "/assets/covers/Fluxos_de_Trabalho_com_Agentes_de_IA_Guia_Definiti.webp",
+    "coverUrl": "/assets/covers/Fluxos_de_Trabalho_com_Agentes_de_IA_Guia_Definiti.webp",
+    "isPublished": true
   },
   {
     "id": "art-128",
@@ -1162,8 +1477,11 @@
     "createdAt": "24 de maio de 2025 17:58",
     "isFeatured": false,
     "excerpt": "Mateus Celestino Pro Em um mundo corporativo marcado por transformação digital acelerada, margens cada vez mais apertadas e necessidade constante de adaptação, empresas bem-sucedidas compartilham um elemento-chave: gestã...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/Gesta_o_de_Processos_O_Pilar_Estrate_gico_para_Org.webp"
+    "summary": "Mateus Celestino Pro Em um mundo corporativo marcado por transformação digital acelerada, margens cada vez mais apertadas e necessidade constante de adaptação, empresas bem-sucedidas compartilham um elemento-chave: gestã...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/Gesta_o_de_Processos_O_Pilar_Estrate_gico_para_Org.webp",
+    "coverUrl": "/assets/covers/Gesta_o_de_Processos_O_Pilar_Estrate_gico_para_Org.webp",
+    "isPublished": true
   },
   {
     "id": "art-80",
@@ -1173,8 +1491,11 @@
     "createdAt": "24 de maio de 2025 18:09",
     "isFeatured": false,
     "excerpt": "A busca por performance consistente, controle operacional e fluidez entre departamentos tem uma resposta direta: a gestão por processos em sua aplicação prática e estratégica . Mais do que um conceito abstrato, a gestão...",
-    "readingTime": 5,
-    "coverImage": "/assets/covers/Gesta_o_por_Processos_na_Pra_tica_Como_Funciona_e_.webp"
+    "summary": "A busca por performance consistente, controle operacional e fluidez entre departamentos tem uma resposta direta: a gestão por processos em sua aplicação prática e estratégica . Mais do que um conceito abstrato, a gestão...",
+    "readingTime": "5 min",
+    "coverImage": "/assets/covers/Gesta_o_por_Processos_na_Pra_tica_Como_Funciona_e_.webp",
+    "coverUrl": "/assets/covers/Gesta_o_por_Processos_na_Pra_tica_Como_Funciona_e_.webp",
+    "isPublished": true
   },
   {
     "id": "art-141",
@@ -1184,8 +1505,11 @@
     "createdAt": "24 de maio de 2025 18:09",
     "isFeatured": false,
     "excerpt": "Na era em que a complexidade dos negócios desafia a agilidade das decisões e a consistência das entregas, empresas que ainda operam com foco exclusivamente departamental vivem um paradoxo: funcionam, mas não performam ....",
-    "readingTime": 5,
-    "coverImage": "/assets/covers/Gesta_o_por_Processos_A_Arquitetura_Operacional_da.webp"
+    "summary": "Na era em que a complexidade dos negócios desafia a agilidade das decisões e a consistência das entregas, empresas que ainda operam com foco exclusivamente departamental vivem um paradoxo: funcionam, mas não performam ....",
+    "readingTime": "5 min",
+    "coverImage": "/assets/covers/Gesta_o_por_Processos_A_Arquitetura_Operacional_da.webp",
+    "coverUrl": "/assets/covers/Gesta_o_por_Processos_A_Arquitetura_Operacional_da.webp",
+    "isPublished": true
   },
   {
     "id": "art-28",
@@ -1195,8 +1519,11 @@
     "createdAt": "24 de maio de 2025 18:00",
     "isFeatured": false,
     "excerpt": "Mateus Celestino Pro Se você utiliza o N8N como orquestrador principal das suas automações e precisa lidar com valores que devem ser armazenados e recuperados entre execuções diferentes de um workflow , há uma solução po...",
-    "readingTime": 5,
-    "coverImage": "/assets/covers/Globals_Node_para_N8N_Como_Criar_Varia_veis_Globai.webp"
+    "summary": "Mateus Celestino Pro Se você utiliza o N8N como orquestrador principal das suas automações e precisa lidar com valores que devem ser armazenados e recuperados entre execuções diferentes de um workflow , há uma solução po...",
+    "readingTime": "5 min",
+    "coverImage": "/assets/covers/Globals_Node_para_N8N_Como_Criar_Varia_veis_Globai.webp",
+    "coverUrl": "/assets/covers/Globals_Node_para_N8N_Como_Criar_Varia_veis_Globai.webp",
+    "isPublished": true
   },
   {
     "id": "art-20",
@@ -1206,8 +1533,11 @@
     "createdAt": "24 de maio de 2025 17:58",
     "isFeatured": false,
     "excerpt": "Mateus Celestino Pro No universo corporativo moderno, onde decisões devem ser rápidas, responsáveis e sustentadas por uma visão estratégica de longo prazo, a governança corporativa emerge como uma das colunas centrais da...",
-    "readingTime": 7,
-    "coverImage": "/assets/covers/Governanc_a_Corporativa_A_Estrutura_Invisi_vel_que.webp"
+    "summary": "Mateus Celestino Pro No universo corporativo moderno, onde decisões devem ser rápidas, responsáveis e sustentadas por uma visão estratégica de longo prazo, a governança corporativa emerge como uma das colunas centrais da...",
+    "readingTime": "7 min",
+    "coverImage": "/assets/covers/Governanc_a_Corporativa_A_Estrutura_Invisi_vel_que.webp",
+    "coverUrl": "/assets/covers/Governanc_a_Corporativa_A_Estrutura_Invisi_vel_que.webp",
+    "isPublished": true
   },
   {
     "id": "art-69",
@@ -1217,8 +1547,11 @@
     "createdAt": "4 de maio de 2025 11:38",
     "isFeatured": false,
     "excerpt": "Gerenciar um servidor Linux é um privilégio poderoso — mas também uma enorme responsabilidade. Cada linha de comando pode abrir ou fechar portas (literalmente) para ataques, vazamentos e invasões. Este guia foi criado pa...",
-    "readingTime": 5,
-    "coverImage": "/assets/covers/Guia_Completo_de_Seguranc_a_em_Servidores_Linux_bl.webp"
+    "summary": "Gerenciar um servidor Linux é um privilégio poderoso — mas também uma enorme responsabilidade. Cada linha de comando pode abrir ou fechar portas (literalmente) para ataques, vazamentos e invasões. Este guia foi criado pa...",
+    "readingTime": "5 min",
+    "coverImage": "/assets/covers/Guia_Completo_de_Seguranc_a_em_Servidores_Linux_bl.webp",
+    "coverUrl": "/assets/covers/Guia_Completo_de_Seguranc_a_em_Servidores_Linux_bl.webp",
+    "isPublished": true
   },
   {
     "id": "art-27",
@@ -1228,8 +1561,11 @@
     "createdAt": "1 de junho de 2025 12:59",
     "isFeatured": false,
     "excerpt": "Vivemos em um ambiente onde a informação é excessiva — e saber resumir com precisão, clareza e inteligência virou uma competência essencial. Ferramentas como GPT-4, Claude e Gemini são excelentes em condensar textos. Mas...",
-    "readingTime": 5,
-    "coverImage": "/assets/covers/Guia_Definitivo_de_Prompts_para_Resumo_com_IA_Como.webp"
+    "summary": "Vivemos em um ambiente onde a informação é excessiva — e saber resumir com precisão, clareza e inteligência virou uma competência essencial. Ferramentas como GPT-4, Claude e Gemini são excelentes em condensar textos. Mas...",
+    "readingTime": "5 min",
+    "coverImage": "/assets/covers/Guia_Definitivo_de_Prompts_para_Resumo_com_IA_Como.webp",
+    "coverUrl": "/assets/covers/Guia_Definitivo_de_Prompts_para_Resumo_com_IA_Como.webp",
+    "isPublished": true
   },
   {
     "id": "art-95",
@@ -1239,8 +1575,11 @@
     "createdAt": "1 de junho de 2025 12:59",
     "isFeatured": false,
     "excerpt": "O domínio dos grandes modelos de linguagem depende, sobretudo, da arte de saber conduzi-los com precisão . Dentro desse cenário, o conceito de System Prompt torna-se o alicerce invisível, porém essencial, que define a qu...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/Guia_Definitivo_para_Criar_e_Dominar_Prompts_de_Si.webp"
+    "summary": "O domínio dos grandes modelos de linguagem depende, sobretudo, da arte de saber conduzi-los com precisão . Dentro desse cenário, o conceito de System Prompt torna-se o alicerce invisível, porém essencial, que define a qu...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/Guia_Definitivo_para_Criar_e_Dominar_Prompts_de_Si.webp",
+    "coverUrl": "/assets/covers/Guia_Definitivo_para_Criar_e_Dominar_Prompts_de_Si.webp",
+    "isPublished": true
   },
   {
     "id": "art-100",
@@ -1250,8 +1589,11 @@
     "createdAt": "21 de maio de 2025 11:35",
     "isFeatured": false,
     "excerpt": "Introdução: O papel crítico do Hardware Asset Management no ITSM moderno Gerenciar ativos de hardware é um dos fundamentos para o sucesso de qualquer estratégia de ITSM (IT Service Management). Não se trata apenas de dis...",
-    "readingTime": 8,
-    "coverImage": "/assets/covers/Hardware_Asset_Management__HAM__Conceito__Ciclo_de.webp"
+    "summary": "Introdução: O papel crítico do Hardware Asset Management no ITSM moderno Gerenciar ativos de hardware é um dos fundamentos para o sucesso de qualquer estratégia de ITSM (IT Service Management). Não se trata apenas de dis...",
+    "readingTime": "8 min",
+    "coverImage": "/assets/covers/Hardware_Asset_Management__HAM__Conceito__Ciclo_de.webp",
+    "coverUrl": "/assets/covers/Hardware_Asset_Management__HAM__Conceito__Ciclo_de.webp",
+    "isPublished": true
   },
   {
     "id": "art-163",
@@ -1261,8 +1603,11 @@
     "createdAt": "21 de maio de 2025 11:35",
     "isFeatured": false,
     "excerpt": "A hiperautomação não é apenas uma tendência. É uma inevitabilidade. Trata-se da fusão entre inteligência artificial (IA), aprendizado de máquina (ML), automação robótica de processos (RPA) e gerenciamento inteligente de...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/Hiperautomac_a_o_A_Nova_Espinha_Dorsal_das_Empresa.webp"
+    "summary": "A hiperautomação não é apenas uma tendência. É uma inevitabilidade. Trata-se da fusão entre inteligência artificial (IA), aprendizado de máquina (ML), automação robótica de processos (RPA) e gerenciamento inteligente de...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/Hiperautomac_a_o_A_Nova_Espinha_Dorsal_das_Empresa.webp",
+    "coverUrl": "/assets/covers/Hiperautomac_a_o_A_Nova_Espinha_Dorsal_das_Empresa.webp",
+    "isPublished": true
   },
   {
     "id": "art-23",
@@ -1272,8 +1617,11 @@
     "createdAt": "24 de maio de 2025 17:31",
     "isFeatured": false,
     "excerpt": "Mateus Celestino Pro Num mercado em que a velocidade operacional, precisão de execução e adaptação contínua definem os vencedores, a hiperautomação se consolida como o pilar de transformação mais poderoso da nova era dig...",
-    "readingTime": 5,
-    "coverImage": "/assets/covers/Hiperautomac_a_o_O_Futuro_da_Eficie_ncia_Empresari.webp"
+    "summary": "Mateus Celestino Pro Num mercado em que a velocidade operacional, precisão de execução e adaptação contínua definem os vencedores, a hiperautomação se consolida como o pilar de transformação mais poderoso da nova era dig...",
+    "readingTime": "5 min",
+    "coverImage": "/assets/covers/Hiperautomac_a_o_O_Futuro_da_Eficie_ncia_Empresari.webp",
+    "coverUrl": "/assets/covers/Hiperautomac_a_o_O_Futuro_da_Eficie_ncia_Empresari.webp",
+    "isPublished": true
   },
   {
     "id": "art-21",
@@ -1283,8 +1631,11 @@
     "createdAt": "24 de maio de 2025 17:31",
     "isFeatured": false,
     "excerpt": "No novo paradigma dos negócios digitais, quem não automatiza, estaciona. Mas quem hiperautomatiza, acelera exponencialmente. A hiperautomação não é mais tendência futura — é o presente ativo das operações mais rápidas, p...",
-    "readingTime": 5,
-    "coverImage": "/assets/covers/Hiperautomac_a_o_Os_4_Exemplos_Pra_ticos_que_Esta_.webp"
+    "summary": "No novo paradigma dos negócios digitais, quem não automatiza, estaciona. Mas quem hiperautomatiza, acelera exponencialmente. A hiperautomação não é mais tendência futura — é o presente ativo das operações mais rápidas, p...",
+    "readingTime": "5 min",
+    "coverImage": "/assets/covers/Hiperautomac_a_o_Os_4_Exemplos_Pra_ticos_que_Esta_.webp",
+    "coverUrl": "/assets/covers/Hiperautomac_a_o_Os_4_Exemplos_Pra_ticos_que_Esta_.webp",
+    "isPublished": true
   },
   {
     "id": "art-155",
@@ -1294,8 +1645,11 @@
     "createdAt": "29 de maio de 2025 15:37",
     "isFeatured": false,
     "excerpt": "A era da criação de conteúdo por IA avança em velocidade exponencial, e surge uma nova categoria de ferramentas especializadas: plataformas de “humanização” de texto. Humanize.io se posiciona como uma solução de última g...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/Humanize_io_O_Poder__o_Dilema_E_tico_e_o_Futuro_do.webp"
+    "summary": "A era da criação de conteúdo por IA avança em velocidade exponencial, e surge uma nova categoria de ferramentas especializadas: plataformas de “humanização” de texto. Humanize.io se posiciona como uma solução de última g...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/Humanize_io_O_Poder__o_Dilema_E_tico_e_o_Futuro_do.webp",
+    "coverUrl": "/assets/covers/Humanize_io_O_Poder__o_Dilema_E_tico_e_o_Futuro_do.webp",
+    "isPublished": true
   },
   {
     "id": "art-166",
@@ -1305,8 +1659,11 @@
     "createdAt": "29 de maio de 2025 15:37",
     "isFeatured": false,
     "excerpt": "A inteligência artificial generativa está redefinindo os paradigmas da indústria de games, indo muito além do hype e se consolidando como força propulsora da próxima geração de jogos digitais. Hoje, a IA generativa não a...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/IA_Generativa_no_Design_de_Jogos_Aplicac_o_es__Fut.webp"
+    "summary": "A inteligência artificial generativa está redefinindo os paradigmas da indústria de games, indo muito além do hype e se consolidando como força propulsora da próxima geração de jogos digitais. Hoje, a IA generativa não a...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/IA_Generativa_no_Design_de_Jogos_Aplicac_o_es__Fut.webp",
+    "coverUrl": "/assets/covers/IA_Generativa_no_Design_de_Jogos_Aplicac_o_es__Fut.webp",
+    "isPublished": true
   },
   {
     "id": "art-51",
@@ -1316,8 +1673,11 @@
     "createdAt": "29 de maio de 2025 15:36",
     "isFeatured": false,
     "excerpt": "Na era das máquinas que escrevem, compõem, desenham e até se aventuram a criar narrativas complexas, uma pergunta permanece incômoda e cada vez mais relevante: a inteligência artificial é capaz de replicar verdadeirament...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/IA_vs_Criatividade_Humana_A_Intelige_ncia_Artifici.webp"
+    "summary": "Na era das máquinas que escrevem, compõem, desenham e até se aventuram a criar narrativas complexas, uma pergunta permanece incômoda e cada vez mais relevante: a inteligência artificial é capaz de replicar verdadeirament...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/IA_vs_Criatividade_Humana_A_Intelige_ncia_Artifici.webp",
+    "coverUrl": "/assets/covers/IA_vs_Criatividade_Humana_A_Intelige_ncia_Artifici.webp",
+    "isPublished": true
   },
   {
     "id": "art-157",
@@ -1327,8 +1687,11 @@
     "createdAt": "31 de maio de 2025 22:36",
     "isFeatured": false,
     "excerpt": "O controle de qualidade é o pilar silencioso, porém fundamental, da manufatura moderna. Ele garante que cada produto entregue ao mercado seja fiel às especificações, aos padrões regulatórios e às expectativas do cliente....",
-    "readingTime": 8,
-    "coverImage": "/assets/covers/IMPLEMENTAC_A_O_DE_IA_NO_CONTROLE_DE_QUALIDADE_DA_.webp"
+    "summary": "O controle de qualidade é o pilar silencioso, porém fundamental, da manufatura moderna. Ele garante que cada produto entregue ao mercado seja fiel às especificações, aos padrões regulatórios e às expectativas do cliente....",
+    "readingTime": "8 min",
+    "coverImage": "/assets/covers/IMPLEMENTAC_A_O_DE_IA_NO_CONTROLE_DE_QUALIDADE_DA_.webp",
+    "coverUrl": "/assets/covers/IMPLEMENTAC_A_O_DE_IA_NO_CONTROLE_DE_QUALIDADE_DA_.webp",
+    "isPublished": true
   },
   {
     "id": "art-45",
@@ -1338,8 +1701,11 @@
     "createdAt": "29 de maio de 2025 15:36",
     "isFeatured": false,
     "excerpt": "No contexto empresarial moderno, onde a velocidade de adaptação e precisão operacional são requisitos básicos, as ferramentas de Inteligência Artificial (IA) tornaram-se protagonistas silenciosas de uma revolução produti...",
-    "readingTime": 4,
-    "coverImage": "/assets/covers/Impulsionando_a_Eficie_ncia_Os_Benefi_cios_Centrai.webp"
+    "summary": "No contexto empresarial moderno, onde a velocidade de adaptação e precisão operacional são requisitos básicos, as ferramentas de Inteligência Artificial (IA) tornaram-se protagonistas silenciosas de uma revolução produti...",
+    "readingTime": "4 min",
+    "coverImage": "/assets/covers/Impulsionando_a_Eficie_ncia_Os_Benefi_cios_Centrai.webp",
+    "coverUrl": "/assets/covers/Impulsionando_a_Eficie_ncia_Os_Benefi_cios_Centrai.webp",
+    "isPublished": true
   },
   {
     "id": "art-147",
@@ -1349,8 +1715,11 @@
     "createdAt": "29 de maio de 2025 15:35",
     "isFeatured": false,
     "excerpt": "Por Mateus Celestino Pro A saúde, como a conhecemos, está passando por um dos momentos mais transformadores de sua história. Tecnologias disruptivas, lideradas por inteligência artificial, biotecnologia e análise de dado...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/Inovac_o_es_em_Sau_de_Digital_Como_Startups_do_Rei.webp"
+    "summary": "Por Mateus Celestino Pro A saúde, como a conhecemos, está passando por um dos momentos mais transformadores de sua história. Tecnologias disruptivas, lideradas por inteligência artificial, biotecnologia e análise de dado...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/Inovac_o_es_em_Sau_de_Digital_Como_Startups_do_Rei.webp",
+    "coverUrl": "/assets/covers/Inovac_o_es_em_Sau_de_Digital_Como_Startups_do_Rei.webp",
+    "isPublished": true
   },
   {
     "id": "art-55",
@@ -1360,8 +1729,11 @@
     "createdAt": "29 de maio de 2025 15:04",
     "isFeatured": false,
     "excerpt": "A inteligência artificial generativa está deixando de ser uma promessa emergente para se tornar um pilar estrutural em diversas indústrias — e a indústria de jogos digitais é um dos terrenos mais férteis para sua aplicaç...",
-    "readingTime": 5,
-    "coverImage": "/assets/covers/Intelige_ncia_Artificial_Generativa_e_Design_de_Jo.webp"
+    "summary": "A inteligência artificial generativa está deixando de ser uma promessa emergente para se tornar um pilar estrutural em diversas indústrias — e a indústria de jogos digitais é um dos terrenos mais férteis para sua aplicaç...",
+    "readingTime": "5 min",
+    "coverImage": "/assets/covers/Intelige_ncia_Artificial_Generativa_e_Design_de_Jo.webp",
+    "coverUrl": "/assets/covers/Intelige_ncia_Artificial_Generativa_e_Design_de_Jo.webp",
+    "isPublished": true
   },
   {
     "id": "art-164",
@@ -1371,8 +1743,11 @@
     "createdAt": "29 de maio de 2025 15:35",
     "isFeatured": false,
     "excerpt": "Por Mateus Celestino Pro O avanço acelerado da tecnologia tem remodelado silenciosamente os pilares de praticamente todos os setores da sociedade. Entre os protagonistas dessa revolução, destacam-se dois titãs: a Intelig...",
-    "readingTime": 4,
-    "coverImage": "/assets/covers/Intelige_ncia_Artificial_e_Big_Data_Revelando_os_I.webp"
+    "summary": "Por Mateus Celestino Pro O avanço acelerado da tecnologia tem remodelado silenciosamente os pilares de praticamente todos os setores da sociedade. Entre os protagonistas dessa revolução, destacam-se dois titãs: a Intelig...",
+    "readingTime": "4 min",
+    "coverImage": "/assets/covers/Intelige_ncia_Artificial_e_Big_Data_Revelando_os_I.webp",
+    "coverUrl": "/assets/covers/Intelige_ncia_Artificial_e_Big_Data_Revelando_os_I.webp",
+    "isPublished": true
   },
   {
     "id": "art-133",
@@ -1382,8 +1757,11 @@
     "createdAt": "31 de maio de 2025 22:31",
     "isFeatured": false,
     "excerpt": "A evolução conjunta entre inteligência artificial (IA) e cognição humana está deixando de ser uma curiosidade teórica para se tornar uma realidade prática e promissora. Inicialmente desenvolvida para realizar tarefas com...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/Intelige_ncia_Artificial_e_Desenvolvimento_Cogniti.webp"
+    "summary": "A evolução conjunta entre inteligência artificial (IA) e cognição humana está deixando de ser uma curiosidade teórica para se tornar uma realidade prática e promissora. Inicialmente desenvolvida para realizar tarefas com...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/Intelige_ncia_Artificial_e_Desenvolvimento_Cogniti.webp",
+    "coverUrl": "/assets/covers/Intelige_ncia_Artificial_e_Desenvolvimento_Cogniti.webp",
+    "isPublished": true
   },
   {
     "id": "art-151",
@@ -1393,8 +1771,11 @@
     "createdAt": "21 de maio de 2025 11:35",
     "isFeatured": false,
     "excerpt": "A união entre algoritmos inteligentes e mercados de alta volatilidade pode ser a chave para o futuro do trading de precisão. No universo frenético das criptomoedas, onde cada segundo pode significar lucro ou prejuízo, os...",
-    "readingTime": 7,
-    "coverImage": "/assets/covers/Intelige_ncia_Artificial_no_Controle_de_Risco_em_C.webp"
+    "summary": "A união entre algoritmos inteligentes e mercados de alta volatilidade pode ser a chave para o futuro do trading de precisão. No universo frenético das criptomoedas, onde cada segundo pode significar lucro ou prejuízo, os...",
+    "readingTime": "7 min",
+    "coverImage": "/assets/covers/Intelige_ncia_Artificial_no_Controle_de_Risco_em_C.webp",
+    "coverUrl": "/assets/covers/Intelige_ncia_Artificial_no_Controle_de_Risco_em_C.webp",
+    "isPublished": true
   },
   {
     "id": "art-82",
@@ -1404,8 +1785,11 @@
     "createdAt": "29 de maio de 2025 15:35",
     "isFeatured": false,
     "excerpt": "Por Mateus Celestino Pro Se a inteligência artificial tivesse um slogan para o varejo, seria: “Em todos os lugares, ao mesmo tempo.” De assistentes virtuais a sistemas autônomos de análise de estoque, a IA está reconfigu...",
-    "readingTime": 5,
-    "coverImage": "/assets/covers/Intelige_ncia_Artificial_no_Varejo_A_Revoluc_a_o_S.webp"
+    "summary": "Por Mateus Celestino Pro Se a inteligência artificial tivesse um slogan para o varejo, seria: “Em todos os lugares, ao mesmo tempo.” De assistentes virtuais a sistemas autônomos de análise de estoque, a IA está reconfigu...",
+    "readingTime": "5 min",
+    "coverImage": "/assets/covers/Intelige_ncia_Artificial_no_Varejo_A_Revoluc_a_o_S.webp",
+    "coverUrl": "/assets/covers/Intelige_ncia_Artificial_no_Varejo_A_Revoluc_a_o_S.webp",
+    "isPublished": true
   },
   {
     "id": "art-24",
@@ -1415,8 +1799,11 @@
     "createdAt": "31 de maio de 2025 22:31",
     "isFeatured": false,
     "excerpt": "A ascensão vertiginosa da inteligência artificial (IA) entre 2023 e 2024 catapultou o mercado global para uma impressionante marca de US$ 184 bilhões , com projeções que apontam para US$ 826 bilhões até 2030 . Esse cresc...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/Intelige_ncia_Artificial_para_SEO_As_Melhores_Pra_.webp"
+    "summary": "A ascensão vertiginosa da inteligência artificial (IA) entre 2023 e 2024 catapultou o mercado global para uma impressionante marca de US$ 184 bilhões , com projeções que apontam para US$ 826 bilhões até 2030 . Esse cresc...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/Intelige_ncia_Artificial_para_SEO_As_Melhores_Pra_.webp",
+    "coverUrl": "/assets/covers/Intelige_ncia_Artificial_para_SEO_As_Melhores_Pra_.webp",
+    "isPublished": true
   },
   {
     "id": "art-162",
@@ -1426,8 +1813,11 @@
     "createdAt": "24 de maio de 2025 18:11",
     "isFeatured": false,
     "excerpt": "Em um ecossistema digital onde automações inteligentes estão se tornando padrão, enviar dados de formulários HTML diretamente para APIs, CRMs, automações como Make ou n8n, ou Webhooks externos é uma habilidade crítica pa...",
-    "readingTime": 4,
-    "coverImage": "/assets/covers/JavaScript_Profissional_Captura_e_Envio_Automa_tic.webp"
+    "summary": "Em um ecossistema digital onde automações inteligentes estão se tornando padrão, enviar dados de formulários HTML diretamente para APIs, CRMs, automações como Make ou n8n, ou Webhooks externos é uma habilidade crítica pa...",
+    "readingTime": "4 min",
+    "coverImage": "/assets/covers/JavaScript_Profissional_Captura_e_Envio_Automa_tic.webp",
+    "coverUrl": "/assets/covers/JavaScript_Profissional_Captura_e_Envio_Automa_tic.webp",
+    "isPublished": true
   },
   {
     "id": "art-119",
@@ -1437,8 +1827,11 @@
     "createdAt": "21 de maio de 2025 12:30",
     "isFeatured": false,
     "excerpt": "Quando pensamos em plataformas de gestão de serviços e atendimento ao cliente, duas marcas frequentemente se destacam no cenário corporativo global: Jira Service Management (JSM) , pertencente ao ecossistema Atlassian, e...",
-    "readingTime": 5,
-    "coverImage": "/assets/covers/Jira_Service_Management_vs_Zendesk_Uma_Comparac_a_.webp"
+    "summary": "Quando pensamos em plataformas de gestão de serviços e atendimento ao cliente, duas marcas frequentemente se destacam no cenário corporativo global: Jira Service Management (JSM) , pertencente ao ecossistema Atlassian, e...",
+    "readingTime": "5 min",
+    "coverImage": "/assets/covers/Jira_Service_Management_vs_Zendesk_Uma_Comparac_a_.webp",
+    "coverUrl": "/assets/covers/Jira_Service_Management_vs_Zendesk_Uma_Comparac_a_.webp",
+    "isPublished": true
   },
   {
     "id": "art-79",
@@ -1448,8 +1841,11 @@
     "createdAt": "7 de maio de 2025 11:26",
     "isFeatured": false,
     "excerpt": "A segurança de um servidor VPS (Virtual Private Server) é fundamental para proteger dados, aplicações e a integridade do sistema contra acessos não autorizados e ameaças potenciais. Sem medidas de segurança adequadas, se...",
-    "readingTime": 12,
-    "coverImage": "/assets/covers/LINUX_HARDENING___SUPREME_GUIDE.webp"
+    "summary": "A segurança de um servidor VPS (Virtual Private Server) é fundamental para proteger dados, aplicações e a integridade do sistema contra acessos não autorizados e ameaças potenciais. Sem medidas de segurança adequadas, se...",
+    "readingTime": "12 min",
+    "coverImage": "/assets/covers/LINUX_HARDENING___SUPREME_GUIDE.webp",
+    "coverUrl": "/assets/covers/LINUX_HARDENING___SUPREME_GUIDE.webp",
+    "isPublished": true
   },
   {
     "id": "art-107",
@@ -1459,8 +1855,11 @@
     "createdAt": "5 de maio de 2025 18:48",
     "isFeatured": false,
     "excerpt": "LinkedIn Não É Só Para Vagas: Ele É Um Campo de Caça Para Projetos de Alto Ticket Muitos ainda associam o LinkedIn apenas a um currículo online ou uma rede para buscar empregos. Mas na verdade, é uma das plataformas mais...",
-    "readingTime": 5,
-    "coverImage": "/assets/covers/LinkedIn_Para_Projetos_de_Automac_a_o_Guia_Intelig.webp"
+    "summary": "LinkedIn Não É Só Para Vagas: Ele É Um Campo de Caça Para Projetos de Alto Ticket Muitos ainda associam o LinkedIn apenas a um currículo online ou uma rede para buscar empregos. Mas na verdade, é uma das plataformas mais...",
+    "readingTime": "5 min",
+    "coverImage": "/assets/covers/LinkedIn_Para_Projetos_de_Automac_a_o_Guia_Intelig.webp",
+    "coverUrl": "/assets/covers/LinkedIn_Para_Projetos_de_Automac_a_o_Guia_Intelig.webp",
+    "isPublished": true
   },
   {
     "id": "art-106",
@@ -1470,8 +1869,11 @@
     "createdAt": "30 de abril de 2025 23:58",
     "isFeatured": false,
     "excerpt": "No cenário de marketing digital e atendimento ao cliente, chatbots avançados impulsionam engajamento e conversão. Typebot e ManyChat são duas soluções populares, porém com propostas distintas. Este comparativo prático re...",
-    "readingTime": 4,
-    "coverImage": "/assets/covers/MANYCHAT_VS_TYPEBOT__DESCUBRA_QUAL_O_MELHOR_PARA_2.webp"
+    "summary": "No cenário de marketing digital e atendimento ao cliente, chatbots avançados impulsionam engajamento e conversão. Typebot e ManyChat são duas soluções populares, porém com propostas distintas. Este comparativo prático re...",
+    "readingTime": "4 min",
+    "coverImage": "/assets/covers/MANYCHAT_VS_TYPEBOT__DESCUBRA_QUAL_O_MELHOR_PARA_2.webp",
+    "coverUrl": "/assets/covers/MANYCHAT_VS_TYPEBOT__DESCUBRA_QUAL_O_MELHOR_PARA_2.webp",
+    "isPublished": true
   },
   {
     "id": "art-117",
@@ -1481,8 +1883,11 @@
     "createdAt": "24 de maio de 2025 17:31",
     "isFeatured": false,
     "excerpt": "Quando você começa a dominar automações com o N8N, rapidamente percebe que um dos pontos mais recorrentes é a necessidade de tratar e transformar textos de forma dinâmica . Nomes, e-mails, frases, mensagens, formatos, ex...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/Manipulac_a_o_de_Texto_no_N8N_com_Node_Personaliza.webp"
+    "summary": "Quando você começa a dominar automações com o N8N, rapidamente percebe que um dos pontos mais recorrentes é a necessidade de tratar e transformar textos de forma dinâmica . Nomes, e-mails, frases, mensagens, formatos, ex...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/Manipulac_a_o_de_Texto_no_N8N_com_Node_Personaliza.webp",
+    "coverUrl": "/assets/covers/Manipulac_a_o_de_Texto_no_N8N_com_Node_Personaliza.webp",
+    "isPublished": true
   },
   {
     "id": "art-16",
@@ -1492,8 +1897,11 @@
     "createdAt": "16 de maio de 2025 13:26",
     "isFeatured": false,
     "excerpt": "Se você acompanha de perto o universo da inteligência artificial, automações e agentes digitais, já percebeu que estamos diante de uma nova revolução. E uma plataforma em específico está chamando atenção silenciosamente...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/Manus_Agentes_IA_Conhec_a_a_Plataforma_Auto_noma_q.webp"
+    "summary": "Se você acompanha de perto o universo da inteligência artificial, automações e agentes digitais, já percebeu que estamos diante de uma nova revolução. E uma plataforma em específico está chamando atenção silenciosamente...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/Manus_Agentes_IA_Conhec_a_a_Plataforma_Auto_noma_q.webp",
+    "coverUrl": "/assets/covers/Manus_Agentes_IA_Conhec_a_a_Plataforma_Auto_noma_q.webp",
+    "isPublished": true
   },
   {
     "id": "art-18",
@@ -1503,8 +1911,11 @@
     "createdAt": "24 de maio de 2025 18:01",
     "isFeatured": false,
     "excerpt": "Toda organização que deseja crescer de forma sólida, previsível e sustentável precisa dominar uma habilidade essencial: transformar sua operação em processos inteligentemente estruturados. É aí que entra a modelagem de p...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/Modelagem_de_Processos_Como_Mapear__Otimizar_e_Esc.webp"
+    "summary": "Toda organização que deseja crescer de forma sólida, previsível e sustentável precisa dominar uma habilidade essencial: transformar sua operação em processos inteligentemente estruturados. É aí que entra a modelagem de p...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/Modelagem_de_Processos_Como_Mapear__Otimizar_e_Esc.webp",
+    "coverUrl": "/assets/covers/Modelagem_de_Processos_Como_Mapear__Otimizar_e_Esc.webp",
+    "isPublished": true
   },
   {
     "id": "art-142",
@@ -1514,8 +1925,11 @@
     "createdAt": "24 de maio de 2025 17:31",
     "isFeatured": false,
     "excerpt": "No centro de toda empresa eficiente existe algo invisível, mas determinante: a organização dos fluxos de trabalho . Uma empresa pode ter talento, ferramentas e metas ousadas — mas, se seus processos não forem modelados d...",
-    "readingTime": 10,
-    "coverImage": "/assets/covers/Modelagem_de_Processos_O_Mapa_Estrate_gico_da_Alta.webp"
+    "summary": "No centro de toda empresa eficiente existe algo invisível, mas determinante: a organização dos fluxos de trabalho . Uma empresa pode ter talento, ferramentas e metas ousadas — mas, se seus processos não forem modelados d...",
+    "readingTime": "10 min",
+    "coverImage": "/assets/covers/Modelagem_de_Processos_O_Mapa_Estrate_gico_da_Alta.webp",
+    "coverUrl": "/assets/covers/Modelagem_de_Processos_O_Mapa_Estrate_gico_da_Alta.webp",
+    "isPublished": true
   },
   {
     "id": "art-29",
@@ -1525,8 +1939,11 @@
     "createdAt": "24 de maio de 2025 17:31",
     "isFeatured": false,
     "excerpt": "Mateus Celestino Pro Em um mercado onde a inovação se tornou um pré-requisito para a sobrevivência, muitas empresas ainda operam com tecnologias que pertencem ao passado. São os chamados sistemas legados : softwares anti...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/Modernizac_a_o_de_Sistemas_Legados_com_Low_Code_A_.webp"
+    "summary": "Mateus Celestino Pro Em um mercado onde a inovação se tornou um pré-requisito para a sobrevivência, muitas empresas ainda operam com tecnologias que pertencem ao passado. São os chamados sistemas legados : softwares anti...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/Modernizac_a_o_de_Sistemas_Legados_com_Low_Code_A_.webp",
+    "coverUrl": "/assets/covers/Modernizac_a_o_de_Sistemas_Legados_com_Low_Code_A_.webp",
+    "isPublished": true
   },
   {
     "id": "art-35",
@@ -1536,8 +1953,11 @@
     "createdAt": "30 de abril de 2025 23:51",
     "isFeatured": false,
     "excerpt": "Introdução No universo de marketing digital, orquestrar APIs e tarefas repetitivas tornou-se obrigatório. Duas plataformas se destacam: n8n , solução open-source, e Make (antigo Integromat), plataforma SaaS madura. Neste...",
-    "readingTime": 3,
-    "coverImage": "/assets/covers/N8N_VS_MAKE_COM_QUAL_O_MELHOR_PARA_O_SEU_NEGO_CIO_.webp"
+    "summary": "Introdução No universo de marketing digital, orquestrar APIs e tarefas repetitivas tornou-se obrigatório. Duas plataformas se destacam: n8n , solução open-source, e Make (antigo Integromat), plataforma SaaS madura. Neste...",
+    "readingTime": "3 min",
+    "coverImage": "/assets/covers/N8N_VS_MAKE_COM_QUAL_O_MELHOR_PARA_O_SEU_NEGO_CIO_.webp",
+    "coverUrl": "/assets/covers/N8N_VS_MAKE_COM_QUAL_O_MELHOR_PARA_O_SEU_NEGO_CIO_.webp",
+    "isPublished": true
   },
   {
     "id": "art-8",
@@ -1547,8 +1967,11 @@
     "createdAt": "24 de maio de 2025 17:31",
     "isFeatured": false,
     "excerpt": "A revolução digital está em pleno curso. Mas, diferente das ondas anteriores, onde a transformação era um privilégio de desenvolvedores e engenheiros, hoje o jogo mudou — e o protagonismo está nas mãos de quem consegue c...",
-    "readingTime": 9,
-    "coverImage": "/assets/covers/No_Code_O_Novo_Alicerce_da_Era_Digital_para_Nego_c.webp"
+    "summary": "A revolução digital está em pleno curso. Mas, diferente das ondas anteriores, onde a transformação era um privilégio de desenvolvedores e engenheiros, hoje o jogo mudou — e o protagonismo está nas mãos de quem consegue c...",
+    "readingTime": "9 min",
+    "coverImage": "/assets/covers/No_Code_O_Novo_Alicerce_da_Era_Digital_para_Nego_c.webp",
+    "coverUrl": "/assets/covers/No_Code_O_Novo_Alicerce_da_Era_Digital_para_Nego_c.webp",
+    "isPublished": true
   },
   {
     "id": "art-94",
@@ -1558,8 +1981,11 @@
     "createdAt": "4 de maio de 2025 10:35",
     "isFeatured": false,
     "excerpt": "Por que o Notion se tornou indispensável no ecossistema digital Vivemos uma era em que agilidade, clareza e centralização são essenciais. Equipes remotas, pequenos negócios, freelancers e startups precisam de ferramentas...",
-    "readingTime": 4,
-    "coverImage": "/assets/covers/Notion_a_ferramenta_definitiva_para_gerenciamento_.webp"
+    "summary": "Por que o Notion se tornou indispensável no ecossistema digital Vivemos uma era em que agilidade, clareza e centralização são essenciais. Equipes remotas, pequenos negócios, freelancers e startups precisam de ferramentas...",
+    "readingTime": "4 min",
+    "coverImage": "/assets/covers/Notion_a_ferramenta_definitiva_para_gerenciamento_.webp",
+    "coverUrl": "/assets/covers/Notion_a_ferramenta_definitiva_para_gerenciamento_.webp",
+    "isPublished": true
   },
   {
     "id": "art-171",
@@ -1569,8 +1995,11 @@
     "createdAt": "21 de maio de 2025 11:35",
     "isFeatured": false,
     "excerpt": "No cenário atual da tecnologia, onde gigantes da indústria disputam o domínio absoluto da inteligência artificial, o lançamento do GPT-4o marca um novo divisor de águas. Mais do que apenas uma evolução técnica, o GPT-4o...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/O_GPT_4o_Esta__Redefinindo_o_Futuro_Implicac_o_es_.webp"
+    "summary": "No cenário atual da tecnologia, onde gigantes da indústria disputam o domínio absoluto da inteligência artificial, o lançamento do GPT-4o marca um novo divisor de águas. Mais do que apenas uma evolução técnica, o GPT-4o...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/O_GPT_4o_Esta__Redefinindo_o_Futuro_Implicac_o_es_.webp",
+    "coverUrl": "/assets/covers/O_GPT_4o_Esta__Redefinindo_o_Futuro_Implicac_o_es_.webp",
+    "isPublished": true
   },
   {
     "id": "art-38",
@@ -1580,8 +2009,11 @@
     "createdAt": "16 de maio de 2025 09:19",
     "isFeatured": false,
     "excerpt": "Como Viver de Projetos de Inteligência Artificial e Construir um Negócio Rentável, Ético e Sustentável do Zero Por Mateus Celestino – Mateus Celestino Pro 1. Introdução: A Nova Era do Freelancer de IA A Inteligência Arti...",
-    "readingTime": 18,
-    "coverImage": "/assets/covers/O_Guia_Definitivo_do_Freelancer_de_IA_em_2025.webp"
+    "summary": "Como Viver de Projetos de Inteligência Artificial e Construir um Negócio Rentável, Ético e Sustentável do Zero Por Mateus Celestino – Mateus Celestino Pro 1. Introdução: A Nova Era do Freelancer de IA A Inteligência Arti...",
+    "readingTime": "18 min",
+    "coverImage": "/assets/covers/O_Guia_Definitivo_do_Freelancer_de_IA_em_2025.webp",
+    "coverUrl": "/assets/covers/O_Guia_Definitivo_do_Freelancer_de_IA_em_2025.webp",
+    "isPublished": true
   },
   {
     "id": "art-78",
@@ -1591,8 +2023,11 @@
     "createdAt": "29 de maio de 2025 15:36",
     "isFeatured": false,
     "excerpt": "Panorama Atual: Por Que os LLMs Estão Transformando a Matemática? A inteligência artificial baseada em modelos de linguagem de grande escala (LLMs – Large Language Models) está redefinindo como matemáticos, engenheiros,...",
-    "readingTime": 8,
-    "coverImage": "/assets/covers/O_Melhor_LLM_para_Soluc_a_o_de_Problemas_Matema_ti.webp"
+    "summary": "Panorama Atual: Por Que os LLMs Estão Transformando a Matemática? A inteligência artificial baseada em modelos de linguagem de grande escala (LLMs – Large Language Models) está redefinindo como matemáticos, engenheiros,...",
+    "readingTime": "8 min",
+    "coverImage": "/assets/covers/O_Melhor_LLM_para_Soluc_a_o_de_Problemas_Matema_ti.webp",
+    "coverUrl": "/assets/covers/O_Melhor_LLM_para_Soluc_a_o_de_Problemas_Matema_ti.webp",
+    "isPublished": true
   },
   {
     "id": "art-174",
@@ -1602,8 +2037,11 @@
     "createdAt": "14 de maio de 2025 09:16",
     "isFeatured": false,
     "excerpt": "Você é vendedor, gestora comercial, empreendedora ou parte de uma equipe que depende diretamente de prospecção para gerar receita? Se sim, este artigo é para você. Vamos apresentar uma das ferramentas mais simples, práti...",
-    "readingTime": 8,
-    "coverImage": "/assets/covers/O_Quadrante_da_Prospecc_a_o_O_Me_todo_Inteligente_.webp"
+    "summary": "Você é vendedor, gestora comercial, empreendedora ou parte de uma equipe que depende diretamente de prospecção para gerar receita? Se sim, este artigo é para você. Vamos apresentar uma das ferramentas mais simples, práti...",
+    "readingTime": "8 min",
+    "coverImage": "/assets/covers/O_Quadrante_da_Prospecc_a_o_O_Me_todo_Inteligente_.webp",
+    "coverUrl": "/assets/covers/O_Quadrante_da_Prospecc_a_o_O_Me_todo_Inteligente_.webp",
+    "isPublished": true
   },
   {
     "id": "art-85",
@@ -1613,8 +2051,11 @@
     "createdAt": "9 de maio de 2025 00:52",
     "isFeatured": false,
     "excerpt": "No universo em rápida transformação da tecnologia, a capacidade de transformar ideias em produtos digitais reais, escaláveis e bonitos nunca foi tão acessível . E uma das ferramentas que estão liderando essa revolução é...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/O_Que_Da__Para_Criar_com_FlutterFlow_Explorando_as.webp"
+    "summary": "No universo em rápida transformação da tecnologia, a capacidade de transformar ideias em produtos digitais reais, escaláveis e bonitos nunca foi tão acessível . E uma das ferramentas que estão liderando essa revolução é...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/O_Que_Da__Para_Criar_com_FlutterFlow_Explorando_as.webp",
+    "coverUrl": "/assets/covers/O_Que_Da__Para_Criar_com_FlutterFlow_Explorando_as.webp",
+    "isPublished": true
   },
   {
     "id": "art-120",
@@ -1624,8 +2065,11 @@
     "createdAt": "16 de maio de 2025 13:26",
     "isFeatured": false,
     "excerpt": "Você já imaginou ter um agente de IA treinado com os dados específicos do seu negócio — suas planilhas, documentos, PDFs e anotações — capaz de responder a qualquer pergunta sobre seus processos internos com precisão cir...",
-    "readingTime": 7,
-    "coverImage": "/assets/covers/O_Que_E__RAG_e_Por_Que_Ele_Vai_Transformar_a_Intel.webp"
+    "summary": "Você já imaginou ter um agente de IA treinado com os dados específicos do seu negócio — suas planilhas, documentos, PDFs e anotações — capaz de responder a qualquer pergunta sobre seus processos internos com precisão cir...",
+    "readingTime": "7 min",
+    "coverImage": "/assets/covers/O_Que_E__RAG_e_Por_Que_Ele_Vai_Transformar_a_Intel.webp",
+    "coverUrl": "/assets/covers/O_Que_E__RAG_e_Por_Que_Ele_Vai_Transformar_a_Intel.webp",
+    "isPublished": true
   },
   {
     "id": "art-54",
@@ -1635,8 +2079,11 @@
     "createdAt": "9 de maio de 2025 00:52",
     "isFeatured": false,
     "excerpt": "Durante décadas, a automação de marketing foi reduzida a uma fórmula repetida como mantra em cada lançamento de ferramenta: “Entregar o conteúdo certo, para a pessoa certa, na hora certa.” Essa promessa sedutora moldou u...",
-    "readingTime": 5,
-    "coverImage": "/assets/covers/O_Verdadeiro_Recurso_Mais_Poderoso_da_Automac_a_o_.webp"
+    "summary": "Durante décadas, a automação de marketing foi reduzida a uma fórmula repetida como mantra em cada lançamento de ferramenta: “Entregar o conteúdo certo, para a pessoa certa, na hora certa.” Essa promessa sedutora moldou u...",
+    "readingTime": "5 min",
+    "coverImage": "/assets/covers/O_Verdadeiro_Recurso_Mais_Poderoso_da_Automac_a_o_.webp",
+    "coverUrl": "/assets/covers/O_Verdadeiro_Recurso_Mais_Poderoso_da_Automac_a_o_.webp",
+    "isPublished": true
   },
   {
     "id": "art-98",
@@ -1646,8 +2093,11 @@
     "createdAt": "14 de maio de 2025 09:29",
     "isFeatured": false,
     "excerpt": "por Mateus Celestino Você envia e-mails todos os dias. Seja uma confirmação de compra, uma mensagem de boas-vindas ou uma newsletter estratégica, o que importa é que o e-mail chega — rápido, direto e (espera-se) na caixa...",
-    "readingTime": 11,
-    "coverImage": "/assets/covers/O_que_e__SMTP_e_por_que_ele_e__a_espinha_dorsal_da.webp"
+    "summary": "por Mateus Celestino Você envia e-mails todos os dias. Seja uma confirmação de compra, uma mensagem de boas-vindas ou uma newsletter estratégica, o que importa é que o e-mail chega — rápido, direto e (espera-se) na caixa...",
+    "readingTime": "11 min",
+    "coverImage": "/assets/covers/O_que_e__SMTP_e_por_que_ele_e__a_espinha_dorsal_da.webp",
+    "coverUrl": "/assets/covers/O_que_e__SMTP_e_por_que_ele_e__a_espinha_dorsal_da.webp",
+    "isPublished": true
   },
   {
     "id": "art-86",
@@ -1657,8 +2107,11 @@
     "createdAt": "21 de maio de 2025 12:18",
     "isFeatured": false,
     "excerpt": "Imagine gerar padrões visuais impressionantes, exclusivos e de alta qualidade em apenas alguns segundos — sem depender de softwares complexos ou habilidades avançadas em design. Com os geradores de padrões baseados em IA...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/Os_10_Melhores_Geradores_de_Padro_es_com_IA_em_202.webp"
+    "summary": "Imagine gerar padrões visuais impressionantes, exclusivos e de alta qualidade em apenas alguns segundos — sem depender de softwares complexos ou habilidades avançadas em design. Com os geradores de padrões baseados em IA...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/Os_10_Melhores_Geradores_de_Padro_es_com_IA_em_202.webp",
+    "coverUrl": "/assets/covers/Os_10_Melhores_Geradores_de_Padro_es_com_IA_em_202.webp",
+    "isPublished": true
   },
   {
     "id": "art-124",
@@ -1668,8 +2121,11 @@
     "createdAt": "24 de maio de 2025 18:11",
     "isFeatured": false,
     "excerpt": "Você quer escrever artigos de blog que atraem leitores, posicionam sua marca e geram resultados reais? O primeiro passo para isso é dominar o poder da formulação de prompts — e isso começa pelo título. A inteligência art...",
-    "readingTime": 5,
-    "coverImage": "/assets/covers/Os_10_Melhores_Prompts_de_Ti_tulo_para_Criar_Artig.webp"
+    "summary": "Você quer escrever artigos de blog que atraem leitores, posicionam sua marca e geram resultados reais? O primeiro passo para isso é dominar o poder da formulação de prompts — e isso começa pelo título. A inteligência art...",
+    "readingTime": "5 min",
+    "coverImage": "/assets/covers/Os_10_Melhores_Prompts_de_Ti_tulo_para_Criar_Artig.webp",
+    "coverUrl": "/assets/covers/Os_10_Melhores_Prompts_de_Ti_tulo_para_Criar_Artig.webp",
+    "isPublished": true
   },
   {
     "id": "art-76",
@@ -1679,8 +2135,11 @@
     "createdAt": "31 de maio de 2025 22:32",
     "isFeatured": false,
     "excerpt": "Desde o lançamento do ChatGPT em 2022, a inteligência artificial (IA) tornou-se não apenas o tema central do universo tech, mas também um dos vetores mais promissores de crescimento econômico global, com projeções que ul...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/Os_11_Melhores_ETFs_de_Intelige_ncia_Artificial_de.webp"
+    "summary": "Desde o lançamento do ChatGPT em 2022, a inteligência artificial (IA) tornou-se não apenas o tema central do universo tech, mas também um dos vetores mais promissores de crescimento econômico global, com projeções que ul...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/Os_11_Melhores_ETFs_de_Intelige_ncia_Artificial_de.webp",
+    "coverUrl": "/assets/covers/Os_11_Melhores_ETFs_de_Intelige_ncia_Artificial_de.webp",
+    "isPublished": true
   },
   {
     "id": "art-104",
@@ -1690,8 +2149,11 @@
     "createdAt": "31 de maio de 2025 22:32",
     "isFeatured": false,
     "excerpt": "No universo de TI, informação de qualidade não é apenas um diferencial — é um fator decisivo para sobrevivência, liderança e inovação. Com equipes de TI enfrentando cargas de trabalho intensas e múltiplas prioridades diá...",
-    "readingTime": 7,
-    "coverImage": "/assets/covers/Os_16_Melhores_Newsletters_de_TI_para_2025_O_Guia_.webp"
+    "summary": "No universo de TI, informação de qualidade não é apenas um diferencial — é um fator decisivo para sobrevivência, liderança e inovação. Com equipes de TI enfrentando cargas de trabalho intensas e múltiplas prioridades diá...",
+    "readingTime": "7 min",
+    "coverImage": "/assets/covers/Os_16_Melhores_Newsletters_de_TI_para_2025_O_Guia_.webp",
+    "coverUrl": "/assets/covers/Os_16_Melhores_Newsletters_de_TI_para_2025_O_Guia_.webp",
+    "isPublished": true
   },
   {
     "id": "art-57",
@@ -1701,8 +2163,11 @@
     "createdAt": "21 de maio de 2025 11:35",
     "isFeatured": false,
     "excerpt": "A governança de dados tornou-se um tema crucial para empresas que desejam maximizar o valor dos seus ativos digitais, assegurando simultaneamente segurança, conformidade e eficiência operacional. Ferramentas open-source...",
-    "readingTime": 4,
-    "coverImage": "/assets/covers/Os_5_Melhores_Ferramentas_Open_Source_para_Governa.webp"
+    "summary": "A governança de dados tornou-se um tema crucial para empresas que desejam maximizar o valor dos seus ativos digitais, assegurando simultaneamente segurança, conformidade e eficiência operacional. Ferramentas open-source...",
+    "readingTime": "4 min",
+    "coverImage": "/assets/covers/Os_5_Melhores_Ferramentas_Open_Source_para_Governa.webp",
+    "coverUrl": "/assets/covers/Os_5_Melhores_Ferramentas_Open_Source_para_Governa.webp",
+    "isPublished": true
   },
   {
     "id": "art-59",
@@ -1712,8 +2177,11 @@
     "createdAt": "29 de maio de 2025 15:17",
     "isFeatured": false,
     "excerpt": "universo do fitness nunca foi tão acessível, personalizado e eficiente. Com o avanço da inteligência artificial, a era dos treinos genéricos ficou para trás: agora, cada usuário pode contar com orientações sob medida, mo...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/Os_Melhores_Apps_de_Fitness_com_IA_para_Alcanc_ar_.webp"
+    "summary": "universo do fitness nunca foi tão acessível, personalizado e eficiente. Com o avanço da inteligência artificial, a era dos treinos genéricos ficou para trás: agora, cada usuário pode contar com orientações sob medida, mo...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/Os_Melhores_Apps_de_Fitness_com_IA_para_Alcanc_ar_.webp",
+    "coverUrl": "/assets/covers/Os_Melhores_Apps_de_Fitness_com_IA_para_Alcanc_ar_.webp",
+    "isPublished": true
   },
   {
     "id": "art-37",
@@ -1723,8 +2191,11 @@
     "createdAt": "29 de maio de 2025 15:36",
     "isFeatured": false,
     "excerpt": "Nos bastidores da revolução da inteligência artificial, existe uma força silenciosa mas absolutamente vital: os chips de IA. Esses componentes, muitas vezes ofuscados pelo glamour dos softwares generativos e dos modelos...",
-    "readingTime": 12,
-    "coverImage": "/assets/covers/Os_Tita_s_da_Nova_Era_Como_os_Fabricantes_de_Chips.webp"
+    "summary": "Nos bastidores da revolução da inteligência artificial, existe uma força silenciosa mas absolutamente vital: os chips de IA. Esses componentes, muitas vezes ofuscados pelo glamour dos softwares generativos e dos modelos...",
+    "readingTime": "12 min",
+    "coverImage": "/assets/covers/Os_Tita_s_da_Nova_Era_Como_os_Fabricantes_de_Chips.webp",
+    "coverUrl": "/assets/covers/Os_Tita_s_da_Nova_Era_Como_os_Fabricantes_de_Chips.webp",
+    "isPublished": true
   },
   {
     "id": "art-32",
@@ -1734,8 +2205,11 @@
     "createdAt": "24 de maio de 2025 17:31",
     "isFeatured": false,
     "excerpt": "Na jornada de evolução de qualquer negócio moderno, poucas práticas se mostram tão poderosas, escaláveis e transformadoras quanto a otimização de processos . Mesmo que o termo possa soar técnico à primeira vista, seu imp...",
-    "readingTime": 8,
-    "coverImage": "/assets/covers/Otimizac_a_o_de_Processos_A_Chave_Estrate_gica_par.webp"
+    "summary": "Na jornada de evolução de qualquer negócio moderno, poucas práticas se mostram tão poderosas, escaláveis e transformadoras quanto a otimização de processos . Mesmo que o termo possa soar técnico à primeira vista, seu imp...",
+    "readingTime": "8 min",
+    "coverImage": "/assets/covers/Otimizac_a_o_de_Processos_A_Chave_Estrate_gica_par.webp",
+    "coverUrl": "/assets/covers/Otimizac_a_o_de_Processos_A_Chave_Estrate_gica_par.webp",
+    "isPublished": true
   },
   {
     "id": "art-138",
@@ -1745,8 +2219,11 @@
     "createdAt": "24 de maio de 2025 18:00",
     "isFeatured": false,
     "excerpt": "Mateus Celestino Pro Na era digital, onde a sobrevivência e o crescimento das empresas dependem diretamente da capacidade de adaptação, inovação e agilidade, a otimização de processos deixou de ser um diferencial para se...",
-    "readingTime": 5,
-    "coverImage": "/assets/covers/Otimizac_a_o_de_Processos_Como_Transformar_sua_Emp.webp"
+    "summary": "Mateus Celestino Pro Na era digital, onde a sobrevivência e o crescimento das empresas dependem diretamente da capacidade de adaptação, inovação e agilidade, a otimização de processos deixou de ser um diferencial para se...",
+    "readingTime": "5 min",
+    "coverImage": "/assets/covers/Otimizac_a_o_de_Processos_Como_Transformar_sua_Emp.webp",
+    "coverUrl": "/assets/covers/Otimizac_a_o_de_Processos_Como_Transformar_sua_Emp.webp",
+    "isPublished": true
   },
   {
     "id": "art-126",
@@ -1756,8 +2233,11 @@
     "createdAt": "14 de maio de 2025 09:29",
     "isFeatured": false,
     "excerpt": "Em um cenário onde pequenas empresas lutam para se destacar em um mercado cada vez mais competitivo, a automação de marketing deixou de ser um luxo para grandes corporações e se tornou uma necessidade básica para a sobre...",
-    "readingTime": 8,
-    "coverImage": "/assets/covers/Pequenas_Empresas__Grandes_Resultados_O_Poder_do_M.webp"
+    "summary": "Em um cenário onde pequenas empresas lutam para se destacar em um mercado cada vez mais competitivo, a automação de marketing deixou de ser um luxo para grandes corporações e se tornou uma necessidade básica para a sobre...",
+    "readingTime": "8 min",
+    "coverImage": "/assets/covers/Pequenas_Empresas__Grandes_Resultados_O_Poder_do_M.webp",
+    "coverUrl": "/assets/covers/Pequenas_Empresas__Grandes_Resultados_O_Poder_do_M.webp",
+    "isPublished": true
   },
   {
     "id": "art-64",
@@ -1767,8 +2247,11 @@
     "createdAt": "24 de maio de 2025 18:00",
     "isFeatured": false,
     "excerpt": "Mateus Celestino Pro Durante o desenvolvimento de sites, aplicações, documentos ou sistemas de e-commerce, é comum deparar-se com a seguinte necessidade: reservar espaços visuais para imagens que ainda não estão prontas...",
-    "readingTime": 5,
-    "coverImage": "/assets/covers/Placeholder_com_Como_Criar_Imagens_de_Espac_o_Rese.webp"
+    "summary": "Mateus Celestino Pro Durante o desenvolvimento de sites, aplicações, documentos ou sistemas de e-commerce, é comum deparar-se com a seguinte necessidade: reservar espaços visuais para imagens que ainda não estão prontas...",
+    "readingTime": "5 min",
+    "coverImage": "/assets/covers/Placeholder_com_Como_Criar_Imagens_de_Espac_o_Rese.webp",
+    "coverUrl": "/assets/covers/Placeholder_com_Como_Criar_Imagens_de_Espac_o_Rese.webp",
+    "isPublished": true
   },
   {
     "id": "art-48",
@@ -1778,8 +2261,11 @@
     "createdAt": "16 de maio de 2025 09:18",
     "isFeatured": false,
     "excerpt": "Introdução: A Transição Inteligente e o Cálculo da Sobrevivência Empreender no universo das agências de Inteligência Artificial e automações pode parecer promissor, mas poucos falam sobre o que realmente acontece nos bas...",
-    "readingTime": 16,
-    "coverImage": "/assets/covers/Precificac_a_o_Estrate_gica_em_Projetos_de_Automac.webp"
+    "summary": "Introdução: A Transição Inteligente e o Cálculo da Sobrevivência Empreender no universo das agências de Inteligência Artificial e automações pode parecer promissor, mas poucos falam sobre o que realmente acontece nos bas...",
+    "readingTime": "16 min",
+    "coverImage": "/assets/covers/Precificac_a_o_Estrate_gica_em_Projetos_de_Automac.webp",
+    "coverUrl": "/assets/covers/Precificac_a_o_Estrate_gica_em_Projetos_de_Automac.webp",
+    "isPublished": true
   },
   {
     "id": "art-137",
@@ -1789,8 +2275,11 @@
     "createdAt": "24 de maio de 2025 18:01",
     "isFeatured": false,
     "excerpt": "Mateus Celestino Pro A criação de conteúdos de alta qualidade exige tempo, clareza de estrutura, domínio de linguagem e pesquisa consistente. Mas com o avanço das ferramentas de inteligência artificial — como ChatGPT e S...",
-    "readingTime": 5,
-    "coverImage": "/assets/covers/Prompt_Inteligente_para_Criac_a_o_de_Artigos_com_I.webp"
+    "summary": "Mateus Celestino Pro A criação de conteúdos de alta qualidade exige tempo, clareza de estrutura, domínio de linguagem e pesquisa consistente. Mas com o avanço das ferramentas de inteligência artificial — como ChatGPT e S...",
+    "readingTime": "5 min",
+    "coverImage": "/assets/covers/Prompt_Inteligente_para_Criac_a_o_de_Artigos_com_I.webp",
+    "coverUrl": "/assets/covers/Prompt_Inteligente_para_Criac_a_o_de_Artigos_com_I.webp",
+    "isPublished": true
   },
   {
     "id": "art-41",
@@ -1800,8 +2289,11 @@
     "createdAt": "24 de maio de 2025 18:00",
     "isFeatured": false,
     "excerpt": "Mateus Celestino Pro Se você atua com marketing digital, produção de conteúdo, SEO, tráfego pago ou redes sociais , já percebeu que o ChatGPT se tornou uma ferramenta indispensável para otimizar tempo, melhorar performan...",
-    "readingTime": 5,
-    "coverImage": "/assets/covers/Prompts_Profissionais_para_ChatGPT_O_Guia_Essencia.webp"
+    "summary": "Mateus Celestino Pro Se você atua com marketing digital, produção de conteúdo, SEO, tráfego pago ou redes sociais , já percebeu que o ChatGPT se tornou uma ferramenta indispensável para otimizar tempo, melhorar performan...",
+    "readingTime": "5 min",
+    "coverImage": "/assets/covers/Prompts_Profissionais_para_ChatGPT_O_Guia_Essencia.webp",
+    "coverUrl": "/assets/covers/Prompts_Profissionais_para_ChatGPT_O_Guia_Essencia.webp",
+    "isPublished": true
   },
   {
     "id": "art-33",
@@ -1811,8 +2303,11 @@
     "createdAt": "14 de maio de 2025 09:29",
     "isFeatured": false,
     "excerpt": "Se tem uma coisa que todo negócio online precisa — desde o freelancer iniciante até grandes players digitais — é lead qualificado . E quando o assunto é atrair leads de forma previsível, escalável e com investimento inte...",
-    "readingTime": 10,
-    "coverImage": "/assets/covers/SEO_para_Captac_a_o_de_Leads_Como_Transformar_Busc.webp"
+    "summary": "Se tem uma coisa que todo negócio online precisa — desde o freelancer iniciante até grandes players digitais — é lead qualificado . E quando o assunto é atrair leads de forma previsível, escalável e com investimento inte...",
+    "readingTime": "10 min",
+    "coverImage": "/assets/covers/SEO_para_Captac_a_o_de_Leads_Como_Transformar_Busc.webp",
+    "coverUrl": "/assets/covers/SEO_para_Captac_a_o_de_Leads_Como_Transformar_Busc.webp",
+    "isPublished": true
   },
   {
     "id": "art-12",
@@ -1822,8 +2317,11 @@
     "createdAt": "29 de maio de 2025 15:36",
     "isFeatured": false,
     "excerpt": "Por que Prompt Engineering é a Profissão do Momento na Era da Inteligência Artificial A ascensão da inteligência artificial generativa transformou radicalmente o cenário do trabalho digital. Empresas que lideram o desenv...",
-    "readingTime": 8,
-    "coverImage": "/assets/covers/Sala_rio_do_Prompt_Engineer_de_IA_Panorama_Atual__.webp"
+    "summary": "Por que Prompt Engineering é a Profissão do Momento na Era da Inteligência Artificial A ascensão da inteligência artificial generativa transformou radicalmente o cenário do trabalho digital. Empresas que lideram o desenv...",
+    "readingTime": "8 min",
+    "coverImage": "/assets/covers/Sala_rio_do_Prompt_Engineer_de_IA_Panorama_Atual__.webp",
+    "coverUrl": "/assets/covers/Sala_rio_do_Prompt_Engineer_de_IA_Panorama_Atual__.webp",
+    "isPublished": true
   },
   {
     "id": "art-39",
@@ -1833,8 +2331,11 @@
     "createdAt": "29 de maio de 2025 15:37",
     "isFeatured": false,
     "excerpt": "A era da busca na internet mudou radicalmente. O tradicional modelo de busca baseada em palavras-chave, popularizado pelo Google, enfrenta hoje o avanço de ferramentas baseadas em IA, capazes de compreender linguagem nat...",
-    "readingTime": 7,
-    "coverImage": "/assets/covers/SearchGPT__Perplexity_e_Google_Qual_e__a_Melhor_Fe.webp"
+    "summary": "A era da busca na internet mudou radicalmente. O tradicional modelo de busca baseada em palavras-chave, popularizado pelo Google, enfrenta hoje o avanço de ferramentas baseadas em IA, capazes de compreender linguagem nat...",
+    "readingTime": "7 min",
+    "coverImage": "/assets/covers/SearchGPT__Perplexity_e_Google_Qual_e__a_Melhor_Fe.webp",
+    "coverUrl": "/assets/covers/SearchGPT__Perplexity_e_Google_Qual_e__a_Melhor_Fe.webp",
+    "isPublished": true
   },
   {
     "id": "art-96",
@@ -1844,8 +2345,11 @@
     "createdAt": "18 de agosto de 2025 17:49",
     "isFeatured": false,
     "excerpt": "Autor do artigo Sou formado em Marketing Digital por uma das principais faculdades do Brasil, com carreira construída unindo tecnologia, automação e estratégia digital . Apaixonado por inovação, me especializei em T.I. e...",
-    "readingTime": 1,
-    "coverImage": "/assets/covers/Sem_ti_tulo.webp"
+    "summary": "Autor do artigo Sou formado em Marketing Digital por uma das principais faculdades do Brasil, com carreira construída unindo tecnologia, automação e estratégia digital . Apaixonado por inovação, me especializei em T.I. e...",
+    "readingTime": "1 min",
+    "coverImage": "/assets/covers/Sem_ti_tulo.webp",
+    "coverUrl": "/assets/covers/Sem_ti_tulo.webp",
+    "isPublished": true
   },
   {
     "id": "art-158",
@@ -1855,8 +2359,11 @@
     "createdAt": "29 de maio de 2025 15:36",
     "isFeatured": false,
     "excerpt": "O fenômeno conhecido como Shadow IT — uso de aplicativos, dispositivos e serviços de tecnologia fora dos canais oficiais da TI — não é novidade nas organizações modernas. A cada avanço na transformação digital, surgem no...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/Shadow_IT_Como_Enxergar__Gerenciar_e_Transformar_a.webp"
+    "summary": "O fenômeno conhecido como Shadow IT — uso de aplicativos, dispositivos e serviços de tecnologia fora dos canais oficiais da TI — não é novidade nas organizações modernas. A cada avanço na transformação digital, surgem no...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/Shadow_IT_Como_Enxergar__Gerenciar_e_Transformar_a.webp",
+    "coverUrl": "/assets/covers/Shadow_IT_Como_Enxergar__Gerenciar_e_Transformar_a.webp",
+    "isPublished": true
   },
   {
     "id": "art-44",
@@ -1866,8 +2373,11 @@
     "createdAt": "24 de maio de 2025 18:01",
     "isFeatured": false,
     "excerpt": "A eficiência de uma empresa não é mais medida apenas pela sua estrutura ou capacidade de entrega. No contexto atual, onde o consumidor exige agilidade, fluidez e uma experiência impecável, a sobrevivência organizacional...",
-    "readingTime": 5,
-    "coverImage": "/assets/covers/Simplificac_a_o_de_Processos_Como_Transformar_Comp.webp"
+    "summary": "A eficiência de uma empresa não é mais medida apenas pela sua estrutura ou capacidade de entrega. No contexto atual, onde o consumidor exige agilidade, fluidez e uma experiência impecável, a sobrevivência organizacional...",
+    "readingTime": "5 min",
+    "coverImage": "/assets/covers/Simplificac_a_o_de_Processos_Como_Transformar_Comp.webp",
+    "coverUrl": "/assets/covers/Simplificac_a_o_de_Processos_Como_Transformar_Comp.webp",
+    "isPublished": true
   },
   {
     "id": "art-92",
@@ -1877,8 +2387,11 @@
     "createdAt": "4 de maio de 2025 10:33",
     "isFeatured": false,
     "excerpt": "Por que o open source está vencendo? O mundo da tecnologia passou décadas dominado por soluções fechadas, caras e limitadas. Mas esse cenário mudou. Hoje, cada vez mais empresas — das startups às gigantes — estão adotand...",
-    "readingTime": 5,
-    "coverImage": "/assets/covers/Tecnologias_open_source_que_dominam_suas_a_reas_co.webp"
+    "summary": "Por que o open source está vencendo? O mundo da tecnologia passou décadas dominado por soluções fechadas, caras e limitadas. Mas esse cenário mudou. Hoje, cada vez mais empresas — das startups às gigantes — estão adotand...",
+    "readingTime": "5 min",
+    "coverImage": "/assets/covers/Tecnologias_open_source_que_dominam_suas_a_reas_co.webp",
+    "coverUrl": "/assets/covers/Tecnologias_open_source_que_dominam_suas_a_reas_co.webp",
+    "isPublished": true
   },
   {
     "id": "art-146",
@@ -1888,8 +2401,11 @@
     "createdAt": "5 de maio de 2025 19:16",
     "isFeatured": false,
     "excerpt": "1. Introdução No mundo digital atual, a experiência do usuário é cada vez mais determinada por agilidade, personalização e interatividade. Ferramentas de automação de conversas vêm se destacando nesse cenário, sendo os c...",
-    "readingTime": 6,
-    "coverImage": "/assets/covers/Typebot_Transforme_Conversas_em_Resultados_com_Cha.webp"
+    "summary": "1. Introdução No mundo digital atual, a experiência do usuário é cada vez mais determinada por agilidade, personalização e interatividade. Ferramentas de automação de conversas vêm se destacando nesse cenário, sendo os c...",
+    "readingTime": "6 min",
+    "coverImage": "/assets/covers/Typebot_Transforme_Conversas_em_Resultados_com_Cha.webp",
+    "coverUrl": "/assets/covers/Typebot_Transforme_Conversas_em_Resultados_com_Cha.webp",
+    "isPublished": true
   },
   {
     "id": "art-65",
@@ -1899,8 +2415,11 @@
     "createdAt": "9 de maio de 2025 00:52",
     "isFeatured": false,
     "excerpt": "A programação, por muitos anos, foi vista como uma habilidade reservada a uma elite técnica — uma linguagem quase secreta, acessível apenas a quem dominava estruturas, sintaxes e paradigmas de software. Mas essa realidad...",
-    "readingTime": 7,
-    "coverImage": "/assets/covers/Vibe_Coding_Como_a_IA_Esta__Redefinindo_a_Programa.webp"
+    "summary": "A programação, por muitos anos, foi vista como uma habilidade reservada a uma elite técnica — uma linguagem quase secreta, acessível apenas a quem dominava estruturas, sintaxes e paradigmas de software. Mas essa realidad...",
+    "readingTime": "7 min",
+    "coverImage": "/assets/covers/Vibe_Coding_Como_a_IA_Esta__Redefinindo_a_Programa.webp",
+    "coverUrl": "/assets/covers/Vibe_Coding_Como_a_IA_Esta__Redefinindo_a_Programa.webp",
+    "isPublished": true
   },
   {
     "id": "art-176",
@@ -1910,8 +2429,11 @@
     "createdAt": "7 de maio de 2025 11:17",
     "isFeatured": false,
     "excerpt": "Este artigo é uma extensão do guia de fortalecimento de VPS e apresenta um método para conceder acesso condicional a serviços web em um VPS sem abrir novas portas no firewall. Introdução Utilizaremos o cloudflared , uma...",
-    "readingTime": 10,
-    "coverImage": "/assets/covers/WEB_APPLICATION_DEFENSE___SUPREME_GUIDE.webp"
+    "summary": "Este artigo é uma extensão do guia de fortalecimento de VPS e apresenta um método para conceder acesso condicional a serviços web em um VPS sem abrir novas portas no firewall. Introdução Utilizaremos o cloudflared , uma...",
+    "readingTime": "10 min",
+    "coverImage": "/assets/covers/WEB_APPLICATION_DEFENSE___SUPREME_GUIDE.webp",
+    "coverUrl": "/assets/covers/WEB_APPLICATION_DEFENSE___SUPREME_GUIDE.webp",
+    "isPublished": true
   },
   {
     "id": "art-10",
@@ -1921,8 +2443,11 @@
     "createdAt": "1 de junho de 2025 12:59",
     "isFeatured": false,
     "excerpt": "A automação de processos não é mais sobre “se isso, então aquilo”. Na era das IAs generativas e agentes inteligentes, as plataformas precisam orquestrar lógica, dados e modelos de linguagem de forma coesa, escalável e co...",
-    "readingTime": 5,
-    "coverImage": "/assets/covers/n8n_vs_Zapier_Dois_Mundos_na_Automac_a_o_com_Intel.webp"
+    "summary": "A automação de processos não é mais sobre “se isso, então aquilo”. Na era das IAs generativas e agentes inteligentes, as plataformas precisam orquestrar lógica, dados e modelos de linguagem de forma coesa, escalável e co...",
+    "readingTime": "5 min",
+    "coverImage": "/assets/covers/n8n_vs_Zapier_Dois_Mundos_na_Automac_a_o_com_Intel.webp",
+    "coverUrl": "/assets/covers/n8n_vs_Zapier_Dois_Mundos_na_Automac_a_o_com_Intel.webp",
+    "isPublished": true
   },
   {
     "id": "art-63",
@@ -1932,7 +2457,10 @@
     "createdAt": "1 de junho de 2025 12:59",
     "isFeatured": false,
     "excerpt": "À primeira vista, pode parecer que “raciocinar” é apenas mais uma função que um modelo executa — como se o pensamento fosse apenas uma etapa a mais no pipeline de prompts . Mas o avanço dos modelos como o O1 da OpenAI e...",
-    "readingTime": 5,
-    "coverImage": "/assets/covers/_Racioci_nio__em_IA_Uma_Chamada_de_API_ou_o_Ini_ci.webp"
+    "summary": "À primeira vista, pode parecer que “raciocinar” é apenas mais uma função que um modelo executa — como se o pensamento fosse apenas uma etapa a mais no pipeline de prompts . Mas o avanço dos modelos como o O1 da OpenAI e...",
+    "readingTime": "5 min",
+    "coverImage": "/assets/covers/_Racioci_nio__em_IA_Uma_Chamada_de_API_ou_o_Ini_ci.webp",
+    "coverUrl": "/assets/covers/_Racioci_nio__em_IA_Uma_Chamada_de_API_ou_o_Ini_ci.webp",
+    "isPublished": true
   }
 ]

@@ -13,6 +13,7 @@ import {
 } from "@/services/seo/structured-data";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { SmartCacheEngine } from "@/components/cache/SmartCacheEngine";
+import { UmamiAnalytics } from "@/components/analytics/UmamiAnalytics";
 
 export const viewport: Viewport = {
   themeColor: "#030305",
@@ -48,12 +49,17 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link rel="dns-prefetch" href="https://api.dicebear.com" />
+        <link rel="preconnect" href="https://umami-chi-topaz.vercel.app" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://umami-chi-topaz.vercel.app" />
 
         {/* Schema.org Global: Organização, Especialista E-E-A-T & Google Sitelinks Searchbox */}
         <JsonLd data={globalSchema} id="global-sovereign-schema" />
         <link rel="alternate" type="application/rss+xml" title="Feed RSS Mateus Celestino Pro X" href="/feed.xml" />
       </head>
       <body className="bg-[#0c0003] text-[#f3f4f6] antialiased selection:bg-red-500/30 selection:text-white min-h-screen flex flex-col relative overflow-x-hidden">
+        {/* Telemetria Umami Analytics Soberana em Tempo Real */}
+        <UmamiAnalytics />
+
         {/* Motor de Cache Inteligente Soberano, Service Worker & Speculation Rules (Instant Load 0ms) */}
         <SmartCacheEngine />
 

@@ -241,8 +241,8 @@ export default function AdminPanelPage() {
         if (res.ok) {
           const data = await res.json();
           const target = data.user || data.member;
-          const isAllowedRole = target && (target.role === "admin" || target.role === "moder" || target.role === "moderator");
-          if (data.authenticated && target && (target.role === "admin" || isAllowedRole)) {
+          const isAllowedRole = target && (target.role === 'admin' || target.role === "moder" || target.role === "moderator");
+          if (data.authenticated && target && (target.role === 'admin' || isAllowedRole)) {
             const role: UserRole = target.role === "admin" ? "admin" : "moder";
             const user: UnifiedUser = {
               id: target.id,

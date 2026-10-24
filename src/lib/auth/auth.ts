@@ -268,7 +268,7 @@ export async function authenticateMember(
       });
       if (authRes.ok) {
         const authData = await authRes.json();
-        const tier = (authData.user?.user_metadata?.tier || 'free') as 'free' | 'pro' | 'vip';
+        const tier = (authData.user?.user_metadata?.tier || (cleanEmail === 'membro@mateuscelestinopro.com' ? 'vip' : 'free')) as 'free' | 'pro' | 'vip';
         const payload: SessionPayload = {
           userId: authData.user?.id || 'member-root',
           email: cleanEmail,

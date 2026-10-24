@@ -2,6 +2,7 @@ import assert from 'node:assert';
 import fs from 'node:fs';
 import path from 'node:path';
 import { POST, GET } from '../src/app/api/leads/route';
+import { signToken } from '../src/lib/auth/jwt';
 
 async function runTests() {
   console.log('🚀 Iniciando Suíte de Testes: Portal Institucional & Tráfego de Alta Conversão\n');
@@ -136,8 +137,17 @@ async function runTests() {
   // TESTE 6: Rota GET /api/leads (Consulta Paginada)
   // ============================================================
   console.log('🧪 Teste 6: Validando GET /api/leads com paginação...');
+  const adminToken = await signToken({
+    userId: 'admin-test',
+    email: 'mcp6667@proton.me',
+    name: 'Mateus Celestino',
+    role: 'admin',
+  });
   const reqGet = new Request('http://localhost:3000/api/leads?page=1&limit=10', {
-    method: 'GET'
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${adminToken}`,
+    },
   });
   const resGet = await GET(reqGet);
   assert.strictEqual(resGet.status, 200, `Esperado HTTP 200 no GET /api/leads, recebido ${resGet.status}`);

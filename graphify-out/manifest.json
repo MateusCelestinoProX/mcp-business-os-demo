@@ -1428,9 +1428,9 @@
     "semantic_hash": ""
   },
   "src/app/layout.tsx": {
-    "mtime": 1792520359.5307307,
-    "seen": 1792521051.091327,
-    "ast_hash": "c4590bc4d7d18a4d5d70a6104339488c",
+    "mtime": 1792876956.5660977,
+    "seen": 1792877137.614861,
+    "ast_hash": "116bd51f35110feca22cbdb2831d9f94",
     "semantic_hash": ""
   },
   "src/components/layout/Footer.tsx": {
@@ -1476,15 +1476,15 @@
     "semantic_hash": ""
   },
   "src/data/library_catalog_index.json": {
-    "mtime": 1792782913.7888114,
-    "seen": 1792782968.458435,
+    "mtime": 1792877073.6923292,
+    "seen": 1792877137.61674,
     "ast_hash": "a3760edacaa85f7d3460a01e9fdb65f6",
     "semantic_hash": ""
   },
   "src/lib/auth/auth.ts": {
-    "mtime": 1792634927.3347933,
-    "seen": 1792635002.468419,
-    "ast_hash": "003ee2bd549ca01f1e5254c05cf057c4",
+    "mtime": 1792876829.4980047,
+    "seen": 1792877137.6168299,
+    "ast_hash": "ccf34008fd8d3ea9e1444a4826e77c2e",
     "semantic_hash": ""
   },
   "src/lib/auth/jwt.ts": {
@@ -1890,9 +1890,9 @@
     "semantic_hash": ""
   },
   "tests/portal_marketing.test.ts": {
-    "mtime": 1792337879.316225,
-    "seen": 1792521051.0914292,
-    "ast_hash": "576a51542ce33b271f13d00ead5ac209",
+    "mtime": 1792876893.154997,
+    "seen": 1792877137.617741,
+    "ast_hash": "1b530bfc2fc4036584ed345181f8832e",
     "semantic_hash": ""
   },
   "tests/comunidade/adversarial.test.ts": {
@@ -13722,9 +13722,9 @@
     "semantic_hash": ""
   },
   "src/app/admin/page.tsx": {
-    "mtime": 1792873538.5197685,
-    "seen": 1792873583.002774,
-    "ast_hash": "355445d3c42ce18cd99306cec66579a3",
+    "mtime": 1792876823.1271133,
+    "seen": 1792877137.613766,
+    "ast_hash": "0b84faecd6dc2cf20d423cb7dab95d9c",
     "semantic_hash": ""
   },
   "src/lib/auth/unified-auth.ts": {
@@ -14616,9 +14616,9 @@
     "semantic_hash": ""
   },
   "src/data/articles-summary.json": {
-    "mtime": 1792337879.301151,
-    "seen": 1792521051.0913868,
-    "ast_hash": "23b7964a62b5db74e643ff6f2c48376a",
+    "mtime": 1792877099.067797,
+    "seen": 1792877137.616714,
+    "ast_hash": "d4b31b2d5933023bec83e4e00ec6f78e",
     "semantic_hash": ""
   },
   "src/app/api/admin/shop-resources/route.ts": {
@@ -14766,8 +14766,8 @@
     "semantic_hash": ""
   },
   "src/data/libraries.json": {
-    "mtime": 1792782913.7982614,
-    "seen": 1792782968.458433,
+    "mtime": 1792877073.7061622,
+    "seen": 1792877137.616739,
     "ast_hash": "3e79a0df86ee6f7eb3acd51fbf5fad31",
     "semantic_hash": ""
   },
@@ -15348,9 +15348,9 @@
     "semantic_hash": ""
   },
   "src/components/admin/AdminSidebar.tsx": {
-    "mtime": 1792873369.4994326,
-    "seen": 1792873583.004181,
-    "ast_hash": "7a8ac10b544773fdd5969937e12e2a6c",
+    "mtime": 1792876883.4558141,
+    "seen": 1792877137.615198,
+    "ast_hash": "922892da12d145303b9622f4c579c5aa",
     "semantic_hash": ""
   },
   "tests/admin_vertical_sidebar_layout.test.ts": {
@@ -15360,9 +15360,9 @@
     "semantic_hash": ""
   },
   "public/sw.js": {
-    "mtime": 1792520236.8548045,
-    "seen": 1792521051.091278,
-    "ast_hash": "815722c3acb97446bf6ff556c15213fd",
+    "mtime": 1792876967.5107272,
+    "seen": 1792877137.613569,
+    "ast_hash": "b2e26db8538d1631bacd56f9d22abdb2",
     "semantic_hash": ""
   },
   "src/app/api/cache/status/route.ts": {
@@ -15387,6 +15387,30 @@
     "mtime": 1792520426.6821795,
     "seen": 1792521051.091434,
     "ast_hash": "3134243d5d1bd131796c75645a8b87fd",
+    "semantic_hash": ""
+  },
+  "scripts/sync_articles_supabase.js": {
+    "mtime": 1792877063.4585204,
+    "seen": 1792877137.613735,
+    "ast_hash": "c8b2d56849afdc5ee10c60884f017003",
+    "semantic_hash": ""
+  },
+  "src/components/analytics/UmamiAnalytics.tsx": {
+    "mtime": 1792876934.2085483,
+    "seen": 1792877137.615296,
+    "ast_hash": "782c2417ceda20432d646679e70ec9e1",
+    "semantic_hash": ""
+  },
+  "src/lib/analytics/umami.ts": {
+    "mtime": 1792876917.2226973,
+    "seen": 1792877137.6167831,
+    "ast_hash": "d55f9427b30f07719bdb30e4e3513ba1",
+    "semantic_hash": ""
+  },
+  "tests/umami_analytics.test.ts": {
+    "mtime": 1792877054.7534866,
+    "seen": 1792877137.6178958,
+    "ast_hash": "f7a8ec284b0377deef58dfc5cf435f68",
     "semantic_hash": ""
   }
 }
