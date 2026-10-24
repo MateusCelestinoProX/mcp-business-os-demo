@@ -37,6 +37,12 @@ export async function GET(
             );
           }
         }
+        const cover = item.coverUrl || '/assets/hero_cover.webp';
+        const summary = item.summary || '';
+        const readingTime = typeof item.readingTime === 'number' ? `${item.readingTime} min` : String(item.readingTime || '5 min');
+        const content = item.content || '';
+        const contentHtml = content.startsWith('<') ? content : parseNotionMarkdown(content);
+
         return NextResponse.json({
           success: true,
           source: 'supabase',
@@ -47,11 +53,14 @@ export async function GET(
             category: item.category,
             createdAt: item.createdAt ? new Date(item.createdAt).toLocaleDateString('pt-BR') : '2026',
             isFeatured: false,
-            excerpt: item.summary,
-            readingTime: item.readingTime || '5 min',
-            coverImage: item.coverUrl || '/assets/hero_cover.webp',
-            contentHtml: parseNotionMarkdown(item.content),
-            rawContent: item.content,
+            summary: summary,
+            excerpt: summary,
+            readingTime: readingTime,
+            coverUrl: cover,
+            coverImage: cover,
+            content: content,
+            rawContent: content,
+            contentHtml: contentHtml,
             isPublished: item.isPublished,
           },
         });
@@ -69,10 +78,24 @@ export async function GET(
       );
     }
 
+    const cover = (staticArticle as any).coverUrl || staticArticle.coverImage || '/assets/hero_cover.webp';
+    const summary = (staticArticle as any).summary || staticArticle.excerpt || '';
+    const readingTime = typeof staticArticle.readingTime === 'number' ? `${staticArticle.readingTime} min` : String(staticArticle.readingTime || '5 min');
+    const content = (staticArticle as any).content || staticArticle.contentHtml || '';
+
     return NextResponse.json({
       success: true,
       source: 'local_archive',
-      article: staticArticle,
+      article: {
+        ...staticArticle,
+        summary: summary,
+        excerpt: summary,
+        coverUrl: cover,
+        coverImage: cover,
+        readingTime: readingTime,
+        content: content,
+        rawContent: content,
+      },
     });
   } catch (error: any) {
     return NextResponse.json(

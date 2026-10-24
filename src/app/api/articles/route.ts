@@ -65,20 +65,31 @@ export async function GET(request: NextRequest) {
 
     if (dbArticles.length > 0) {
       // Normaliza retorno para o formato padrão do portal
-      const normalized = dbArticles.map((a) => ({
-        id: a.id,
-        slug: a.slug,
-        title: a.title,
-        category: a.category,
-        createdAt: a.createdAt ? new Date(a.createdAt).toISOString() : new Date().toISOString(),
-        isFeatured: false,
-        excerpt: a.summary,
-        readingTime: a.readingTime || '5 min',
-        coverImage: a.coverUrl || '/assets/hero_cover.webp',
-        contentHtml: parseNotionMarkdown(a.content),
-        rawContent: a.content,
-        isPublished: a.isPublished,
-      }));
+      const normalized = dbArticles.map((a) => {
+        const cover = a.coverUrl || '/assets/hero_cover.webp';
+        const summary = a.summary || '';
+        const readingTime = typeof a.readingTime === 'number' ? `${a.readingTime} min` : String(a.readingTime || '5 min');
+        const content = a.content || '';
+        const contentHtml = content.startsWith('<') ? content : parseNotionMarkdown(content);
+
+        return {
+          id: a.id,
+          slug: a.slug,
+          title: a.title,
+          category: a.category,
+          createdAt: a.createdAt ? new Date(a.createdAt).toISOString() : new Date().toISOString(),
+          isFeatured: false,
+          summary: summary,
+          excerpt: summary,
+          readingTime: readingTime,
+          coverUrl: cover,
+          coverImage: cover,
+          content: content,
+          rawContent: content,
+          contentHtml: contentHtml,
+          isPublished: a.isPublished,
+        };
+      });
 
       // Aplica filtros se houver
       let filtered = normalized;
@@ -111,11 +122,26 @@ export async function GET(request: NextRequest) {
     }
 
     // Fallback gracioso para arquivo JSON local
-    let staticList = (rawArticles as any[]).map((a) => ({
-      ...a,
-      rawContent: a.contentHtml || a.excerpt,
-      isPublished: true,
-    }));
+    let staticList = (rawArticles as any[]).map((a) => {
+      const cover = a.coverUrl || a.coverImage || '/assets/hero_cover.webp';
+      const summary = a.summary || a.excerpt || '';
+      const readingTime = typeof a.readingTime === 'number' ? `${a.readingTime} min` : String(a.readingTime || '5 min');
+      const content = a.content || a.contentHtml || a.excerpt || '';
+      const contentHtml = a.contentHtml || (content.startsWith('<') ? content : parseNotionMarkdown(content));
+
+      return {
+        ...a,
+        summary: summary,
+        excerpt: summary,
+        coverUrl: cover,
+        coverImage: cover,
+        readingTime: readingTime,
+        content: content,
+        rawContent: content,
+        contentHtml: contentHtml,
+        isPublished: a.isPublished !== undefined ? a.isPublished : true,
+      };
+    });
 
     if (category && category !== 'TODOS' && category !== 'all') {
       staticList = staticList.filter((a) => a.category.toLowerCase().includes(category.toLowerCase()));

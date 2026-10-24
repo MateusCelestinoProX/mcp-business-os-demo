@@ -394,7 +394,7 @@ export default function AdminPanelPage() {
   const fetchArticles = async () => {
     setIsLoadingArticles(true);
     try {
-      const res = await fetch("/api/articles?limit=100");
+      const res = await fetch("/api/articles?limit=300");
       const data = await res.json();
       if (data.success && Array.isArray(data.articles)) {
         setArticlesList(data.articles);
@@ -818,11 +818,11 @@ export default function AdminPanelPage() {
   const totalLeadsCount = leadsList.length;
 
   return (
-    <div className="relative min-h-screen pb-16">
+    <div className="relative min-h-screen pb-16 pt-24 sm:pt-28">
       {/* Background WebGL Shader Vermelho */}
       <AdminRedShader opacity={0.88} speed={0.45} brightness={1.4} interactive={true} />
 
-      <div className="relative z-10 w-full max-w-[1720px] mx-auto px-3 sm:px-6 lg:px-8 py-6 space-y-6">
+      <div className="relative z-10 w-full max-w-[1720px] mx-auto px-3 sm:px-6 lg:px-8 space-y-6">
         {/* Toast Notifier */}
         {toastMsg && (
           <div className="fixed bottom-6 right-6 z-50 bg-[#0d0709]/95 backdrop-blur-xl border border-red-500/50 px-4 py-3 rounded-xl text-xs font-medium text-neutral-200 shadow-[0_10px_30px_rgba(0,0,0,0.9)] flex items-center gap-2.5 animate-fadeIn">
@@ -1945,93 +1945,108 @@ export default function AdminPanelPage() {
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-white/5">
-                        {filteredArticles.map((art) => (
-                          <tr key={art.id} className="hover:bg-white/[0.02] transition-colors group">
-                            <td className="py-3 px-3">
-                              <div className="w-14 h-10 rounded-lg overflow-hidden bg-black/60 border border-white/10 flex items-center justify-center">
-                                {art.coverUrl ? (
-                                  <img src={art.coverUrl} alt={art.title} className="w-full h-full object-cover" />
-                                ) : (
-                                  <FileText className="w-4 h-4 text-neutral-600" />
-                                )}
-                              </div>
-                            </td>
-                            <td className="py-3 px-3 max-w-md">
-                              <div className="font-bold text-white group-hover:text-red-400 transition-colors line-clamp-1">
-                                {art.title}
-                              </div>
-                              <div className="text-[11px] text-neutral-400 line-clamp-1 mt-0.5">
-                                {art.summary || "Sem resumo definido."}
-                              </div>
-                              <div className="text-[10px] font-mono text-neutral-500 mt-0.5">
-                                /artigos/{art.slug}
-                              </div>
-                            </td>
-                            <td className="py-3 px-3">
-                              <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-white/5 text-neutral-300 border border-white/10">
-                                {art.category || "Geral"}
-                              </span>
-                            </td>
-                            <td className="py-3 px-3 text-neutral-400 font-mono text-[11px]">
-                              {art.readingTime || "3 min"}
-                            </td>
-                            <td className="py-3 px-3">
-                              <span
-                                className={cn(
-                                  "px-2 py-0.5 rounded text-[10px] font-bold uppercase",
-                                  art.isPublished
-                                    ? "bg-emerald-950/40 text-emerald-400 border border-emerald-800/40"
-                                    : "bg-amber-950/40 text-amber-400 border border-amber-800/40"
-                                )}
-                              >
-                                {art.isPublished ? "Publicado" : "Rascunho"}
-                              </span>
-                            </td>
-                            <td className="py-3 px-3 text-right">
-                              <div className="flex items-center justify-end gap-1.5">
-                                <button
-                                  type="button"
-                                  onClick={() => {
-                                    setSelectedArticleToEdit({
-                                      id: art.id,
-                                      title: art.title,
-                                      slug: art.slug,
-                                      category: art.category,
-                                      summary: art.summary,
-                                      content: art.content,
-                                      coverUrl: art.coverUrl,
-                                      readingTime: art.readingTime,
-                                      isPublished: art.isPublished,
-                                    });
-                                    setIsPostEditorOpen(true);
-                                  }}
-                                  title="Editar Artigo (Notion)"
-                                  className="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-neutral-300 hover:text-white transition-colors cursor-pointer"
-                                >
-                                  <Edit3 className="w-3.5 h-3.5" />
-                                </button>
+                        {filteredArticles.map((art) => {
+                          const cover = art.coverUrl || (art as any).coverImage || "/assets/recursos_cover.webp";
+                          const summaryText = art.summary || (art as any).excerpt || "Sem resumo definido.";
+                          const readingTimeText = typeof art.readingTime === "number"
+                            ? `${art.readingTime} min`
+                            : (art.readingTime && String(art.readingTime).includes("min") ? art.readingTime : `${art.readingTime || 5} min`);
 
-                                <Link
-                                  href={`/artigos/${art.slug}`}
-                                  target="_blank"
-                                  title="Visualizar Artigo no Portal"
-                                  className="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-neutral-300 hover:text-white transition-colors"
+                          return (
+                            <tr key={art.id} className="hover:bg-white/[0.02] transition-colors group">
+                              <td className="py-3 px-3">
+                                <div className="w-14 h-10 rounded-lg overflow-hidden bg-black/60 border border-white/10 flex items-center justify-center shrink-0">
+                                  {cover ? (
+                                    <img
+                                      src={cover}
+                                      alt={art.title}
+                                      className="w-full h-full object-cover"
+                                      onError={(e) => {
+                                        (e.currentTarget as HTMLImageElement).src = "/assets/recursos_cover.webp";
+                                      }}
+                                    />
+                                  ) : (
+                                    <FileText className="w-4 h-4 text-neutral-600" />
+                                  )}
+                                </div>
+                              </td>
+                              <td className="py-3 px-3 max-w-md">
+                                <div className="font-bold text-white group-hover:text-red-400 transition-colors line-clamp-1">
+                                  {art.title}
+                                </div>
+                                <div className="text-[11px] text-neutral-400 line-clamp-1 mt-0.5">
+                                  {summaryText}
+                                </div>
+                                <div className="text-[10px] font-mono text-neutral-500 mt-0.5">
+                                  /artigos/{art.slug}
+                                </div>
+                              </td>
+                              <td className="py-3 px-3">
+                                <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-white/5 text-neutral-300 border border-white/10">
+                                  {art.category || "Geral"}
+                                </span>
+                              </td>
+                              <td className="py-3 px-3 text-neutral-400 font-mono text-[11px]">
+                                {readingTimeText}
+                              </td>
+                              <td className="py-3 px-3">
+                                <span
+                                  className={cn(
+                                    "px-2 py-0.5 rounded text-[10px] font-bold uppercase",
+                                    art.isPublished
+                                      ? "bg-emerald-950/40 text-emerald-400 border border-emerald-800/40"
+                                      : "bg-amber-950/40 text-amber-400 border border-amber-800/40"
+                                  )}
                                 >
-                                  <ExternalLink className="w-3.5 h-3.5" />
-                                </Link>
+                                  {art.isPublished ? "Publicado" : "Rascunho"}
+                                </span>
+                              </td>
+                              <td className="py-3 px-3 text-right">
+                                <div className="flex items-center justify-end gap-1.5">
+                                  <button
+                                    type="button"
+                                    onClick={() => {
+                                      setSelectedArticleToEdit({
+                                        id: art.id,
+                                        title: art.title,
+                                        slug: art.slug,
+                                        category: art.category || "INTELIGÊNCIA ARTIFICIAL",
+                                        summary: summaryText,
+                                        content: art.content || (art as any).contentHtml || (art as any).rawContent || "",
+                                        coverUrl: cover,
+                                        readingTime: readingTimeText,
+                                        isPublished: art.isPublished !== undefined ? art.isPublished : true,
+                                      });
+                                      setIsPostEditorOpen(true);
+                                    }}
+                                    title="Editar Artigo (Notion)"
+                                    className="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-neutral-300 hover:text-white transition-colors cursor-pointer"
+                                  >
+                                    <Edit3 className="w-3.5 h-3.5" />
+                                  </button>
 
-                                <button
-                                  type="button"
-                                  onClick={() => handleDeleteArticle(art.id, art.title)}
-                                  title="Excluir Artigo"
-                                  className="p-1.5 rounded-lg bg-red-950/30 hover:bg-red-950/60 text-red-400 hover:text-red-300 border border-red-900/30 transition-colors cursor-pointer"
-                                >
-                                  <Trash2 className="w-3.5 h-3.5" />
-                                </button>
-                              </div>
-                            </td>
-                          </tr>
-                        ))}
+                                  <Link
+                                    href={`/artigos/${art.slug}`}
+                                    target="_blank"
+                                    title="Visualizar Artigo no Portal"
+                                    className="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-neutral-300 hover:text-white transition-colors"
+                                  >
+                                    <ExternalLink className="w-3.5 h-3.5" />
+                                  </Link>
+
+                                  <button
+                                    type="button"
+                                    onClick={() => handleDeleteArticle(art.id, art.title)}
+                                    title="Excluir Artigo"
+                                    className="p-1.5 rounded-lg bg-red-950/30 hover:bg-red-950/60 text-red-400 hover:text-red-300 border border-red-900/30 transition-colors cursor-pointer"
+                                  >
+                                    <Trash2 className="w-3.5 h-3.5" />
+                                  </button>
+                                </div>
+                              </td>
+                            </tr>
+                          );
+                        })}
                       </tbody>
                     </table>
                   </div>
