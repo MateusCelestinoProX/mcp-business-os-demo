@@ -15330,9 +15330,9 @@
     "semantic_hash": ""
   },
   "tests/seo_architecture.test.ts": {
-    "mtime": 1792878142.7753308,
-    "seen": 1792878202.045351,
-    "ast_hash": "a9ee5c966697a2bed45ce9c8b7665f4d",
+    "mtime": 1792878365.1622415,
+    "seen": 1792878385.521216,
+    "ast_hash": "1668794fddba8e658e1be94fb6ca0526",
     "semantic_hash": ""
   },
   "tests/universal_sovereign_mobile_bar.test.ts": {
@@ -15411,12 +15411,6 @@
     "mtime": 1792877054.7534866,
     "seen": 1792877137.6178958,
     "ast_hash": "f7a8ec284b0377deef58dfc5cf435f68",
-    "semantic_hash": ""
-  },
-  "src/app/google[code].html/route.ts": {
-    "mtime": 1792878086.4296515,
-    "seen": 1792878202.0409331,
-    "ast_hash": "9068bcb2804fc322b98d972b4b2c17ca",
     "semantic_hash": ""
   }
 }
