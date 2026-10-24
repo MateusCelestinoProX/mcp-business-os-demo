@@ -175,8 +175,9 @@ export default function AdminRedShader({
     const container = containerRef.current;
     if (!container) return;
 
-    // Resolução calibrada para performance suave a 60 FPS
-    const dpr = Math.min(window.devicePixelRatio || 1, 1.25);
+    // Resolução calibrada para performance extrema e 120 FPS no mobile
+    const isMobile = typeof window !== "undefined" && (window.innerWidth < 768 || /Android|iPhone|iPad/i.test(navigator.userAgent));
+    const dpr = isMobile ? 0.65 : Math.min(window.devicePixelRatio || 1, 1.25);
     let renderer: Renderer;
     try {
       renderer = new Renderer({
@@ -240,11 +241,14 @@ export default function AdminRedShader({
 
     const mesh = new Mesh(gl, { geometry, program });
 
+    let cachedWidth = typeof window !== "undefined" ? window.innerWidth : 1;
+    let cachedHeight = typeof window !== "undefined" ? window.innerHeight : 1;
+
     const handleResize = () => {
       if (!container) return;
-      const w = container.clientWidth || window.innerWidth || 1;
-      const h = container.clientHeight || window.innerHeight || 1;
-      renderer.setSize(w, h);
+      cachedWidth = container.clientWidth || window.innerWidth || 1;
+      cachedHeight = container.clientHeight || window.innerHeight || 1;
+      renderer.setSize(cachedWidth, cachedHeight);
       program.uniforms.uResolution.value = [
         gl.canvas.width,
         gl.canvas.height,
@@ -256,46 +260,62 @@ export default function AdminRedShader({
     resizeObserver.observe(container);
     handleResize();
 
+    // Elimina completamente getBoundingClientRect() e reflows durante o touchmove
     const handlePointer = (clientX: number, clientY: number) => {
-      const rect = canvas.getBoundingClientRect();
-      if (!rect.width || !rect.height) return;
       targetMouse = [
-        (clientX - rect.left) / rect.width,
-        1.0 - (clientY - rect.top) / rect.height,
+        clientX / cachedWidth,
+        1.0 - (clientY / cachedHeight),
       ];
     };
 
     const onMouseMove = (e: MouseEvent) => handlePointer(e.clientX, e.clientY);
-    const onTouchMove = (e: TouchEvent) => {
-      if (e.touches.length > 0) {
-        handlePointer(e.touches[0].clientX, e.touches[0].clientY);
-      }
-    };
     const onMouseLeave = () => {
       targetMouse = [0.5, 0.5];
     };
 
-    if (interactive) {
+    // No mobile, desativa touchmove no background para garantir 100% da fluidez de scroll nativo
+    if (interactive && !isMobile) {
       window.addEventListener("mousemove", onMouseMove, { passive: true });
-      window.addEventListener("touchmove", onTouchMove, { passive: true });
       window.addEventListener("mouseleave", onMouseLeave, { passive: true });
     }
 
     let animationFrameId: number;
     let isVisible = true;
+    let isScrolling = false;
+    let scrollTimeout: ReturnType<typeof setTimeout>;
+
+    const onScroll = () => {
+      isScrolling = true;
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        isScrolling = false;
+      }, 100);
+    };
+
+    if (isMobile) {
+      window.addEventListener("scroll", onScroll, { passive: true });
+    }
 
     const onVisibilityChange = () => {
       isVisible = !document.hidden;
     };
     document.addEventListener("visibilitychange", onVisibilityChange, { passive: true });
 
+    let lastRenderTime = 0;
     const animate = (time: number) => {
       animationFrameId = requestAnimationFrame(animate);
       if (!isVisible) return;
 
+      // Durante scroll rápido no mobile, suspende o render do shader para priorizar 120 FPS no compositor
+      if (isScrolling && isMobile) return;
+
+      // Limita taxa do shader no mobile para evitar sobrecarga de GPU
+      if (isMobile && time - lastRenderTime < 20) return;
+      lastRenderTime = time;
+
       program.uniforms.uTime.value = time * 0.001;
 
-      if (interactive) {
+      if (interactive && !isMobile) {
         currentMouse[0] += 0.04 * (targetMouse[0] - currentMouse[0]);
         currentMouse[1] += 0.04 * (targetMouse[1] - currentMouse[1]);
         program.uniforms.uMouse.value[0] = currentMouse[0];
@@ -310,9 +330,12 @@ export default function AdminRedShader({
     return () => {
       cancelAnimationFrame(animationFrameId);
       document.removeEventListener("visibilitychange", onVisibilityChange);
-      if (interactive) {
+      if (isMobile) {
+        window.removeEventListener("scroll", onScroll);
+        clearTimeout(scrollTimeout);
+      }
+      if (interactive && !isMobile) {
         window.removeEventListener("mousemove", onMouseMove);
-        window.removeEventListener("touchmove", onTouchMove);
         window.removeEventListener("mouseleave", onMouseLeave);
       }
       resizeObserver.disconnect();
@@ -334,10 +357,25 @@ export default function AdminRedShader({
       {/* 1. Camada de Fundo Preto Vanta Profundo com transição para permitir que o shader brilhe */}
       <div className="absolute inset-0 bg-[#040407]" />
 
-      {/* 2. Glows Ambientais Carmesim Subjacentes para profundidade de campo */}
-      <div className="absolute -top-32 left-1/4 w-[700px] h-[700px] bg-[#ff073a]/15 rounded-full blur-[140px] pointer-events-none animate-pulse duration-1000" />
-      <div className="absolute top-1/3 -right-32 w-[600px] h-[600px] bg-[#8a0012]/25 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute -bottom-24 left-1/3 w-[650px] h-[650px] bg-[#52000a]/20 rounded-full blur-[160px] pointer-events-none" />
+      {/* 2. Glows Ambientais Carmesim Subjacentes via Radial Gradients puros (zero overhead de blur filter na GPU) */}
+      <div
+        className="absolute -top-32 left-1/4 w-[700px] h-[700px] pointer-events-none"
+        style={{
+          background: "radial-gradient(circle, rgba(255, 7, 58, 0.14) 0%, transparent 68%)",
+        }}
+      />
+      <div
+        className="absolute top-1/3 -right-32 w-[600px] h-[600px] pointer-events-none"
+        style={{
+          background: "radial-gradient(circle, rgba(138, 0, 18, 0.20) 0%, transparent 70%)",
+        }}
+      />
+      <div
+        className="absolute -bottom-24 left-1/3 w-[650px] h-[650px] pointer-events-none"
+        style={{
+          background: "radial-gradient(circle, rgba(82, 0, 10, 0.16) 0%, transparent 72%)",
+        }}
+      />
 
       {/* 3. Grid Holográfico Sutil de Precisão */}
       <div
