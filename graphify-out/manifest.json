@@ -13722,9 +13722,9 @@
     "semantic_hash": ""
   },
   "src/app/admin/page.tsx": {
-    "mtime": 1792634924.5224426,
-    "seen": 1792635002.465683,
-    "ast_hash": "affedaf8089d244cbed406c809666325",
+    "mtime": 1792873538.5197685,
+    "seen": 1792873583.002774,
+    "ast_hash": "355445d3c42ce18cd99306cec66579a3",
     "semantic_hash": ""
   },
   "src/lib/auth/unified-auth.ts": {
@@ -15348,9 +15348,9 @@
     "semantic_hash": ""
   },
   "src/components/admin/AdminSidebar.tsx": {
-    "mtime": 1792520350.5605125,
-    "seen": 1792521051.09134,
-    "ast_hash": "cf6e19a2ae0d0fd20d9e60e998320275",
+    "mtime": 1792873369.4994326,
+    "seen": 1792873583.004181,
+    "ast_hash": "7a8ac10b544773fdd5969937e12e2a6c",
     "semantic_hash": ""
   },
   "tests/admin_vertical_sidebar_layout.test.ts": {

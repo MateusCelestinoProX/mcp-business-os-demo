@@ -38,3 +38,4 @@ graphify-out/cache/
 
 # Agent team metadata exceptions (keep teamwork tracking)
 # .agents/teamwork is preserved for collaboration
+graphify-out/[0-9]*/
