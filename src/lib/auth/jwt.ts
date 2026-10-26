@@ -23,7 +23,7 @@ export interface SessionPayload extends JWTPayload {
   userId: string;
   email: string;
   name: string;
-  role: 'admin' | 'editor' | 'member' | 'moder';
+  role: 'admin' | 'moder' | 'moderator' | 'editor' | 'member';
   tier?: 'free' | 'pro' | 'vip';
 }
 
