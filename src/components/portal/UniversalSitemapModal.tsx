@@ -35,7 +35,7 @@ export function UniversalSitemapModal({
   onClose,
   onNavigateSection,
 }: UniversalSitemapModalProps) {
-  const [activeFilter, setActiveFilter] = useState<'all' | 'site' | 'artigos' | 'vault' | 'comunidade'>('all');
+  const [activeFilter, setActiveFilter] = useState<'all' | 'site' | 'vault' | 'comunidade'>('all');
   const [searchTerm, setSearchTerm] = useState('');
   const [isUserAdmin, setIsUserAdmin] = useState(false);
 
@@ -84,13 +84,6 @@ export function UniversalSitemapModal({
       window.location.href = target;
     }
   };
-
-  const articleCategories = [
-    { name: 'Inteligência Artificial', short: 'IA', count: 68, slug: 'ia', icon: Cpu },
-    { name: 'Ferramentas & Stacks', short: 'Ferramentas', count: 48, slug: 'ferramentas', icon: Terminal },
-    { name: 'Business & Vendas', short: 'Business', count: 45, slug: 'business', icon: ShoppingBag },
-    { name: 'Linux & Infraestrutura', short: 'Linux', count: 5, slug: 'linux', icon: Database },
-  ];
 
   const vaultCategories = [
     'The Skeleton Method',
@@ -176,7 +169,6 @@ export function UniversalSitemapModal({
               {[
                 { id: 'all', label: 'Tudo' },
                 { id: 'site', label: 'Site' },
-                { id: 'artigos', label: 'Artigos' },
                 { id: 'vault', label: 'Vault' },
                 { id: 'comunidade', label: 'VIP' },
               ].map((tab) => (
@@ -271,7 +263,7 @@ export function UniversalSitemapModal({
             {/* ---------------------------------------------------------------------
                 PILAR 1: PORTAL INSTITUCIONAL (SITE /)
                 --------------------------------------------------------------------- */}
-            {(activeFilter === 'all' || activeFilter === 'site' || activeFilter === 'artigos') && (
+            {(activeFilter === 'all' || activeFilter === 'site') && (
               <div className="rounded-2xl p-5 bg-[#09090f]/70 border border-white/[0.08] hover:border-red-500/40 backdrop-blur-xl shadow-[0_15px_35px_rgba(0,0,0,0.6)] space-y-4 transition-all">
                 <div className="flex items-center justify-between border-b border-white/[0.08] pb-3">
                   <div className="flex items-center gap-2.5">
@@ -285,7 +277,7 @@ export function UniversalSitemapModal({
                           /
                         </span>
                       </h4>
-                      <p className="text-[11px] text-zinc-400">Página inicial, vitrine tecnológica e acervo de 176 guias</p>
+                      <p className="text-[11px] text-zinc-400">Página inicial, vitrine tecnológica e ecossistema de automação</p>
                     </div>
                   </div>
 
@@ -298,51 +290,8 @@ export function UniversalSitemapModal({
                   </button>
                 </div>
 
-                {/* Submódulo: Artigos com 4 Categorias Oficiais */}
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-mono font-bold text-zinc-200 flex items-center gap-1.5">
-                      <BookOpen className="w-3.5 h-3.5 text-[#ff073a]" />
-                      <span>Artigos & Acervo Técnico</span>
-                      <span className="text-[10px] text-[#ff073a] font-mono">(176)</span>
-                    </span>
-                    <button
-                      onClick={() => handleAction('scroll', 'publicacoes')}
-                      className="text-[10px] font-mono text-zinc-400 hover:text-[#ff073a] flex items-center gap-0.5 cursor-pointer"
-                    >
-                      <span>Ver todos</span>
-                      <ChevronRight className="w-3 h-3" />
-                    </button>
-                  </div>
-
-                  {/* 4 Pílulas Visuais das Categorias */}
-                  <div className="grid grid-cols-2 gap-2">
-                    {articleCategories.map((cat) => {
-                      const Icon = cat.icon;
-                      if (!matchesSearch(cat.name) && !matchesSearch(cat.short)) return null;
-                      return (
-                        <button
-                          key={cat.slug}
-                          onClick={() => handleAction('scroll', 'publicacoes')}
-                          className="flex items-center justify-between p-2.5 rounded-xl bg-white/[0.02] hover:bg-red-950/40 border border-white/[0.06] hover:border-red-500/40 transition-all cursor-pointer group/cat text-left"
-                        >
-                          <div className="flex items-center gap-2">
-                            <Icon className="w-3.5 h-3.5 text-zinc-400 group-hover/cat:text-[#ff073a] transition-colors" />
-                            <span className="text-xs font-semibold text-zinc-300 group-hover/cat:text-white">
-                              {cat.short}
-                            </span>
-                          </div>
-                          <span className="text-[10px] font-mono font-bold text-[#ff073a] px-1.5 py-0.2 rounded bg-red-950/70 border border-red-500/30">
-                            {cat.count}
-                          </span>
-                        </button>
-                      );
-                    })}
-                  </div>
-                </div>
-
                 {/* Submódulo: Páginas e Acesso Rápido */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-1 border-t border-white/[0.06]">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-1">
                   {[
                     { id: 'shop', label: 'Shop', desc: '800+ Flows & Make', icon: ShoppingBag, color: 'text-amber-400', action: 'route' as const, target: '/shop' },
                     { id: 'sobre', label: 'Sobre', desc: 'Bio & Formação', icon: User, color: 'text-purple-400', action: 'scroll' as const, target: 'sobre' },

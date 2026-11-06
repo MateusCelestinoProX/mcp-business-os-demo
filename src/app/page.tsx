@@ -1,19 +1,16 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import LiquidGlassBackground from '@/components/portal/LiquidGlassBackground';
 import OriginalHeader from '@/components/portal/OriginalHeader';
 import MetricsBanner from '@/components/portal/MetricsBanner';
-import MainNotionLayout from '@/components/portal/MainNotionLayout';
 import SobreSection from '@/components/portal/SobreSection';
 import ContatoSection from '@/components/portal/ContatoSection';
-import ArticleModal, { ArticleData } from '@/components/portal/ArticleModal';
 import LegalModal from '@/components/portal/LegalModal';
 import ShaderTransitionZone from '@/components/shaders/ShaderTransitionZone';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { buildFaqSchema } from '@/services/seo/structured-data';
 
-import rawArticles from '@/data/articles-summary.json';
 import siteData from '@/data/siteData.json';
 
 const HOME_FAQS = [
@@ -36,26 +33,7 @@ const HOME_FAQS = [
 ];
 
 export default function HomePage() {
-  const articles = rawArticles as ArticleData[];
-  const [selectedArticle, setSelectedArticle] = useState<ArticleData | null>(null);
   const [legalModalType, setLegalModalType] = useState<'privacidade' | 'termos' | null>(null);
-  const searchInputRef = useRef<HTMLInputElement>(null);
-
-  // Atalho global Cmd+K / Ctrl+K para busca instantânea de artigos
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
-        e.preventDefault();
-        const el = document.getElementById('publicacoes');
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-        setTimeout(() => {
-          if (searchInputRef.current) searchInputRef.current.focus();
-        }, 250);
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
 
   const handleNavigate = (tabId: string) => {
     if (tabId === 'home') {
@@ -92,30 +70,15 @@ export default function HomePage() {
             ========================================================================= */}
         <MetricsBanner />
 
-
-
-        {/* =========================================================================
-            2. ACERVO HISTÓRICO & TÉCNICO (176 ARTIGOS)
-            ========================================================================= */}
-        <div>
-          <MainNotionLayout
-            articles={articles}
-            categories={siteData?.categories || []}
-            profile={siteData?.profile || {}}
-            onSelectArticle={(art) => setSelectedArticle(art)}
-            searchInputRef={searchInputRef}
-          />
-        </div>
-
-        {/* ZONA DE TRANSIÇÃO 02 -> 03: Acervo -> Sobre */}
+        {/* ZONA DE TRANSIÇÃO 01 -> 02: Ecossistema -> Sobre */}
         <ShaderTransitionZone
-          from="ACERVO TÉCNICO"
+          from="ECOSSISTEMA SOBERANO"
           to="SOBRE O AUTOR"
-          index="02 // 03"
+          index="01 // 02"
         />
 
         {/* =========================================================================
-            3. SOBRE MATEUS CELESTINO PRO X
+            2. SOBRE MATEUS CELESTINO PRO X
             ========================================================================= */}
         <div>
           <SobreSection
@@ -123,16 +86,15 @@ export default function HomePage() {
           />
         </div>
 
-        {/* ZONA DE TRANSIÇÃO 03 -> END: Sobre -> Contato */}
+        {/* ZONA DE TRANSIÇÃO 02 -> END: Sobre -> Contato */}
         <ShaderTransitionZone
           from="SOBRE O AUTOR"
           to="CANAL DIRETO"
-          index="03 // END"
+          index="02 // END"
         />
 
-
         {/* =========================================================================
-            8. CANAL DIRETO & FORMULÁRIO DE CAPTURA DE LEADS DE ALTA CONVERSÃO
+            3. CANAL DIRETO & FORMULÁRIO DE CAPTURA DE LEADS DE ALTA CONVERSÃO
             ========================================================================= */}
         <div>
           <ContatoSection
@@ -140,24 +102,7 @@ export default function HomePage() {
           />
         </div>
 
-
       </div>
-
-      {/* =========================================================================
-          MODAL EDITORIAL DE LEITURA INTEGRAL DE ARTIGO (176 ARTIGOS)
-          ========================================================================= */}
-      {selectedArticle && (
-        <ArticleModal
-          article={selectedArticle}
-          allArticles={articles}
-          onClose={() => setSelectedArticle(null)}
-          onSelectArticle={(art) => setSelectedArticle(art)}
-          onOpenContact={() => {
-            setSelectedArticle(null);
-            handleNavigate('contato');
-          }}
-        />
-      )}
 
       {/* =========================================================================
           MODAIS LEGAIS (PRIVACIDADE & TERMOS)

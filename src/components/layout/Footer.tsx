@@ -11,7 +11,6 @@ import {
   ShoppingBag,
   Users,
   FolderGit2,
-  BookOpen,
   Crown,
   Mail,
   ArrowUpRight,
@@ -57,7 +56,6 @@ export function Footer() {
     { name: "Shop Oficial", href: "/shop", icon: ShoppingBag },
     { name: "Comunidade VIP", href: "/comunidade", icon: Users },
     { name: "Free Resources", href: "/biblioteca", icon: FolderGit2 },
-    { name: "Artigos Técnicos", href: "/artigos", icon: BookOpen },
     { name: "Contato Direto", href: "/contato", icon: Mail },
   ];
 

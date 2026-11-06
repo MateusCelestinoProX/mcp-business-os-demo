@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import {
   Flame,
-  BookOpen,
   User,
   Mail,
   MessageSquare,
@@ -38,7 +37,7 @@ export function PortalNavbar({
       const scrollY = window.scrollY;
       setIsScrolled(scrollY > 80);
 
-      const sections = ['contato', 'sobre', 'publicacoes'];
+      const sections = ['contato', 'sobre'];
       let detected = 'home';
 
       for (const sectionId of sections) {
@@ -71,7 +70,6 @@ export function PortalNavbar({
 
   const navItems = [
     { id: 'home', label: 'Início', shortLabel: 'Início', icon: Flame },
-    { id: 'publicacoes', label: 'Artigos (176)', shortLabel: 'Artigos', icon: BookOpen },
     { id: 'sobre', label: 'Sobre', shortLabel: 'Sobre', icon: User },
     { id: 'contato', label: 'Contato', shortLabel: 'Contato', icon: Mail },
   ];

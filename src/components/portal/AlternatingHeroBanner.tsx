@@ -23,7 +23,7 @@ export interface AlternatingHeroBannerProps {
 }
 
 const DEFAULT_BANNER_METRICS: BannerMetricItem[] = [
-  { value: "176+", label: "Artigos" },
+  { value: "24/7", label: "Agentes IA" },
   { value: "406+", label: "Recursos" },
   { value: "4 em 1", label: "Sistemas" },
   { value: "60 FPS", label: "Shaders" },

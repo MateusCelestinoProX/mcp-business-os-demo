@@ -38,9 +38,9 @@ export function OriginalHeader({ profile, onNavigate }: OriginalHeaderProps) {
 
   const handleExplore = () => {
     if (onNavigate) {
-      onNavigate('publicacoes');
+      onNavigate('sobre');
     } else {
-      const el = document.getElementById('publicacoes');
+      const el = document.getElementById('sobre');
       if (el) el.scrollIntoView({ behavior: 'smooth' });
     }
   };
@@ -148,15 +148,15 @@ export function OriginalHeader({ profile, onNavigate }: OriginalHeaderProps) {
             </a>
           </div>
 
-          {/* Indicador de Navegação Inferior para o Acervo */}
+          {/* Indicador de Navegação Inferior para Sobre */}
           <button
             onClick={handleExplore}
             className="mt-5 sm:mt-7 inline-flex flex-col items-center justify-center gap-1 text-zinc-400 hover:text-white transition-colors cursor-pointer group touch-manipulation"
-            title="Rolar para os artigos"
-            aria-label="Rolar para o acervo de publicações"
+            title="Rolar para sobre o autor"
+            aria-label="Rolar para sobre o autor"
           >
             <span className="text-[9px] sm:text-[10px] font-mono tracking-widest uppercase text-zinc-400 group-hover:text-[#ff073a] transition-colors">
-              ACERVO SOBERANO
+              SOBRE O AUTOR
             </span>
             <ArrowDown className="w-3.5 h-3.5 text-[#ff073a] animate-bounce" />
           </button>

@@ -16,10 +16,10 @@ interface MetricItem {
 
 const metrics: MetricItem[] = [
   {
-    id: "articles",
-    label: "Acervo Técnico Especializado",
-    value: "176",
-    subtext: "Artigos, guias práticos e arquiteturas",
+    id: "agents",
+    label: "Agentes Autônomos de IA",
+    value: "24/7",
+    subtext: "Esteiras inteligentes, SDRs e automações",
     icon: Terminal,
     badge: "PRO X",
   },
