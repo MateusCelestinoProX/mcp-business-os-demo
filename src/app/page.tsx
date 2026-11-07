@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import LiquidGlassBackground from '@/components/portal/LiquidGlassBackground';
 import OriginalHeader from '@/components/portal/OriginalHeader';
-import MetricsBanner from '@/components/portal/MetricsBanner';
 import SobreSection from '@/components/portal/SobreSection';
 import ContatoSection from '@/components/portal/ContatoSection';
 import LegalModal from '@/components/portal/LegalModal';
@@ -66,18 +65,6 @@ export default function HomePage() {
         />
 
         {/* =========================================================================
-            MÉTRICAS DO ECOSSISTEMA SOBERANO (2 COLUNAS NO MOBILE)
-            ========================================================================= */}
-        <MetricsBanner />
-
-        {/* ZONA DE TRANSIÇÃO 01 -> 02: Ecossistema -> Sobre */}
-        <ShaderTransitionZone
-          from="ECOSSISTEMA SOBERANO"
-          to="SOBRE O AUTOR"
-          index="01 // 02"
-        />
-
-        {/* =========================================================================
             2. SOBRE MATEUS CELESTINO PRO X
             ========================================================================= */}
         <div>
@@ -86,11 +73,11 @@ export default function HomePage() {
           />
         </div>
 
-        {/* ZONA DE TRANSIÇÃO 02 -> END: Sobre -> Contato */}
+        {/* ZONA DE TRANSIÇÃO 01 -> END: Sobre -> Contato */}
         <ShaderTransitionZone
           from="SOBRE O AUTOR"
           to="CANAL DIRETO"
-          index="02 // END"
+          index="01 // END"
         />
 
         {/* =========================================================================

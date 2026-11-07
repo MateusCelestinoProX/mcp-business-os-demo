@@ -152,13 +152,12 @@
   "150": "mobile_navigation.test.ts",
   "151": "instrumentation.ts",
   "152": "server_guardian.test.ts",
-  "153": "contato/layout.tsx",
+  "153": "[slug]/page.tsx",
   "154": "contact/route.ts",
   "155": "constants/seo.ts",
   "156": "structured-data.ts",
-  "157": "[slug]/page.tsx",
+  "157": "PhotografyContactHub.tsx",
   "158": "app/layout.tsx",
   "159": ".getRenderList",
-  "160": "privacidade/layout.tsx",
-  "161": "termos/layout.tsx"
+  "160": "next"
 }

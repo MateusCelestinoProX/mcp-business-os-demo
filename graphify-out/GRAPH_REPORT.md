@@ -1,16 +1,16 @@
 # Graph Report - mcp-business-os  (2026-11-06)
 
 ## Corpus Check
-- 274 files · ~9,519,499 words
+- 274 files · ~9,519,320 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2169 nodes · 4368 edges · 162 communities (105 shown, 40 thin omitted)
+- 2169 nodes · 4366 edges · 161 communities (105 shown, 39 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 74 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `33b81593`
+- Built from commit: `ed6c0b52`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -151,15 +151,14 @@
 - UmamiAnalytics.tsx
 - Estabilidade Visual & Resolução de GPU Scroll — Incidente INC-2026-10-17-SCROLL
 - 🔬 Diagnóstico e Investigação das Causas Raízes
-- contato/layout.tsx
+- [slug]/page.tsx
 - contact/route.ts
 - constants/seo.ts
 - structured-data.ts
-- [slug]/page.tsx
+- PhotografyContactHub.tsx
 - app/layout.tsx
 - .getRenderList
-- privacidade/layout.tsx
-- termos/layout.tsx
+- next
 
 ## God Nodes (most connected - your core abstractions)
 1. `_` - 208 edges
@@ -188,7 +187,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (162 total, 40 thin omitted)
+## Communities (161 total, 39 thin omitted)
 
 ### Community 0 - "Relatório de Survey Técnico — Explorer 2"
 Cohesion: 0.08
@@ -367,8 +366,8 @@ Cohesion: 0.29
 Nodes (6): 1. Observation (Observações Diretas), 2. Logic Chain (Cadeia de Raciocínio), 3. Caveats (Ressalvas e Limitações), 4. Conclusion (Conclusão), 5. Verification Method (Método de Verificação), Relatório de Handoff — Members Area & Community Engineer (agent-members)
 
 ### Community 63 - "Badge.tsx"
-Cohesion: 0.10
-Nodes (24): Section, SECTIONS, TERM_SECTIONS, TermSection, CheckoutModal(), MemberCard(), MemberCardProps, MemberProfile (+16 more)
+Cohesion: 0.09
+Nodes (28): LoginPage(), Section, SECTIONS, TERM_SECTIONS, TermSection, CheckoutModal(), CommunityFeed(), CommunityPost (+20 more)
 
 ### Community 64 - "Relatório de Handoff — Lead Frontend & Glassmorphism Architect (agent-foundations)"
 Cohesion: 0.29
@@ -383,8 +382,8 @@ Cohesion: 0.29
 Nodes (4): PROJECT_ROOT, PUBLIC_CATALOG_PATH, SOURCE_DIR, SRC_CATALOG_PATH
 
 ### Community 67 - "Navbar.tsx"
-Cohesion: 0.12
-Nodes (27): AdminPanelPage(), verifyServerSession(), LoginPage(), ShopPage(), Footer(), MobileBottomNav(), MobileNavItem, mobileNavItems (+19 more)
+Cohesion: 0.13
+Nodes (24): AdminPanelPage(), verifyServerSession(), ShopPage(), Footer(), MobileBottomNav(), MobileNavItem, mobileNavItems, MasterSovereignBar (+16 more)
 
 ### Community 68 - "server-guardian.js"
 Cohesion: 0.20
@@ -399,12 +398,12 @@ Cohesion: 0.18
 Nodes (17): AdminLibraryControlPage(), AdminShopPage(), DELETE(), GET(), dynamic, GET(), getMimeType(), dynamic (+9 more)
 
 ### Community 71 - "cn"
-Cohesion: 0.11
-Nodes (24): MEDIA_CATALOG, MediaItem, MidiasPage(), CommunityFeed(), CommunityPost, INITIAL_POSTS, PostComment, VideoPlayer() (+16 more)
+Cohesion: 0.12
+Nodes (20): MEDIA_CATALOG, MediaItem, MidiasPage(), VideoPlayer(), VideoPlayerProps, CatalogGrid(), CatalogGridProps, getExtensionBadge() (+12 more)
 
 ### Community 72 - "seo-deep-audit.ts"
-Cohesion: 0.21
-Nodes (17): nextConfig, next, AuditCheck, runSeoDeepAudit(), generateStaticParams(), GET(), manifest(), robots() (+9 more)
+Cohesion: 0.23
+Nodes (14): AuditCheck, runSeoDeepAudit(), ArtigosPortalPage(), GET(), manifest(), robots(), sitemap(), AUTHOR_NAME (+6 more)
 
 ### Community 73 - "Relatório de Handoff — Growth Engineer & Portal Institucional Specialist (agent-marketing)"
 Cohesion: 0.29
@@ -483,8 +482,8 @@ Cohesion: 0.08
 Nodes (4): De(), ji(), qi(), V
 
 ### Community 105 - "app/page.tsx"
-Cohesion: 0.27
-Nodes (7): HOME_FAQS, HomePage(), LegalModal(), LegalModalProps, LiquidGlassBackground(), MetricsBanner(), buildFaqSchema()
+Cohesion: 0.31
+Nodes (6): HOME_FAQS, HomePage(), LegalModal(), LegalModalProps, LiquidGlassBackground(), buildFaqSchema()
 
 ### Community 106 - "script.js"
 Cohesion: 0.15
@@ -511,8 +510,8 @@ Cohesion: 0.22
 Nodes (3): br, K, kr
 
 ### Community 119 - "ShopControlSuite.tsx"
-Cohesion: 0.21
-Nodes (12): PRESET_COVERS, ShopControlSuiteProps, AlternatingHeroBanner(), AlternatingHeroBannerProps, BannerMetricItem, DEFAULT_BANNER_METRICS, ShopData, ShopFeature (+4 more)
+Cohesion: 0.19
+Nodes (13): PRESET_COVERS, ShopControlSuiteProps, AlternatingHeroBanner(), AlternatingHeroBannerProps, BannerMetricItem, DEFAULT_BANNER_METRICS, ShopData, ShopFeature (+5 more)
 
 ### Community 120 - "ResourceCard.tsx"
 Cohesion: 0.29
@@ -555,8 +554,8 @@ Cohesion: 0.50
 Nodes (4): 3.1. Acervo de 176 Artigos Técnicos, 3.2. Cofre com 406 Recursos Intelectuais, 3.3. Dados do Shop e Perfil Institucional, 3. Acervos de Dados Embutidos & Ativos Intelectuais
 
 ### Community 137 - "react"
-Cohesion: 0.09
-Nodes (23): react, metadata, ArticleItem, EndpointLatency, LeadItem, MemberItem, ShopHeroConfig, ShopProductConfig (+15 more)
+Cohesion: 0.08
+Nodes (24): react, metadata, ArticleItem, EndpointLatency, LeadItem, MemberItem, ShopHeroConfig, ShopProductConfig (+16 more)
 
 ### Community 140 - "auth.ts"
 Cohesion: 0.33
@@ -567,8 +566,8 @@ Cohesion: 0.11
 Nodes (12): Ie(), Ne(), nn(), or, sr(), C(), et(), L() (+4 more)
 
 ### Community 143 - "lucide-react"
-Cohesion: 0.11
-Nodes (10): lucide-react, ArticleData, ArticleModalProps, ContatoSection(), ContatoSectionProps, LeadCaptureForm(), CategoryItem, MainNotionLayoutProps (+2 more)
+Cohesion: 0.14
+Nodes (9): lucide-react, ArticleData, ArticleModalProps, ContatoSection(), ContatoSectionProps, CapturedUTMs, LeadCaptureForm(), CategoryItem (+1 more)
 
 ### Community 146 - "shop-resources/route.ts"
 Cohesion: 0.20
@@ -586,34 +585,34 @@ Nodes (9): 📜 As 13 Regras de Ouro de Estabilidade Visual e Performance, Crit�
 Cohesion: 0.25
 Nodes (8): 1. Causa Raiz Primária: `content-visibility: auto` com `contain-intrinsic-size` Fixo, 2. Causa Raiz Secundária: Sobrecarga de `backdrop-filter` sobre Fundo WebGL Animado, 3. Causa Raiz Terciária: Erro de Compilação no Fragment Shader `RippleGrid`, 4. Causa Raiz Quaternária: Colisão de Cache entre `next build` e `next dev`, 🔬 Diagnóstico e Investigação das Causas Raízes, O Mecanismo da Falha:, O Mecanismo da Falha:, O Problema dos 87 Filtros de Fundo:
 
-### Community 153 - "contato/layout.tsx"
-Cohesion: 0.24
-Nodes (15): ArtigosLayout(), metadata, ContatoLayout(), metadata, metadata, ShopLayout(), JsonLd(), JsonLdProps (+7 more)
+### Community 153 - "[slug]/page.tsx"
+Cohesion: 0.18
+Nodes (20): ArtigosLayout(), metadata, ArtigoDetailPage(), generateMetadata(), generateStaticParams(), PageProps, revalidate, ContatoLayout() (+12 more)
 
 ### Community 154 - "contact/route.ts"
 Cohesion: 0.18
 Nodes (11): POST(), attemptsMap, checkRateLimit(), RateLimitRecord, articles, articlesPath, BASE_DIR, requiredComponents (+3 more)
 
 ### Community 155 - "constants/seo.ts"
-Cohesion: 0.18
-Nodes (17): AUTHOR_GITHUB, AUTHOR_PHONE, AUTHOR_WHATSAPP, DEFAULT_OG_IMAGE, DEFAULT_OG_IMAGE_ALT, GEO_PLACENAME, GEO_POSITION, GEO_REGION (+9 more)
+Cohesion: 0.20
+Nodes (16): DEFAULT_OG_IMAGE, DEFAULT_OG_IMAGE_ALT, GEO_PLACENAME, GEO_POSITION, GEO_REGION, GOOGLE_SITE_VERIFICATION, ICBM, OG_IMAGE_HEIGHT (+8 more)
 
 ### Community 156 - "structured-data.ts"
-Cohesion: 0.17
-Nodes (13): Breadcrumbs(), BreadcrumbsProps, AUTHOR_INSTAGRAM, AUTHOR_LINKEDIN, AUTHOR_TITLE, SITE_LANG, ProductSchemaInput, BaseJsonLd (+5 more)
-
-### Community 157 - "[slug]/page.tsx"
-Cohesion: 0.20
-Nodes (11): ArtigosPortalPage(), ArtigoDetailPage(), generateMetadata(), PageProps, revalidate, Article, articlesList, getArticleBySlug() (+3 more)
+Cohesion: 0.13
+Nodes (21): metadata, BreadcrumbsProps, JsonLd(), JsonLdProps, AUTHOR_EMAIL, AUTHOR_GITHUB, AUTHOR_INSTAGRAM, AUTHOR_LINKEDIN (+13 more)
 
 ### Community 158 - "app/layout.tsx"
 Cohesion: 0.23
 Nodes (9): metadata, RootLayout(), viewport, SmartCacheEngine(), SPECULATION_RULES, PortalNavbar(), PortalNavbarProps, buildOrganizationAndPersonSchema() (+1 more)
 
+### Community 160 - "next"
+Cohesion: 0.22
+Nodes (4): nextConfig, next, metadata, metadata
+
 ## Knowledge Gaps
 - **678 isolated node(s):** `nextConfig`, `name`, `version`, `private`, `description` (+673 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 956 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **40 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 957 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **39 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
