@@ -1434,9 +1434,9 @@
     "semantic_hash": ""
   },
   "src/components/layout/Footer.tsx": {
-    "mtime": 1793983612.1353667,
-    "seen": 1793983806.026398,
-    "ast_hash": "c3b18da06fe8972675a298a783e46092",
+    "mtime": 1794020809.697183,
+    "seen": 1794020893.563013,
+    "ast_hash": "f139de4d6e20335140f23e9a292d1024",
     "semantic_hash": ""
   },
   "src/components/layout/Navbar.tsx": {
@@ -1476,8 +1476,8 @@
     "semantic_hash": ""
   },
   "src/data/library_catalog_index.json": {
-    "mtime": 1793983171.9542203,
-    "seen": 1793983194.05905,
+    "mtime": 1794020870.9148736,
+    "seen": 1794020893.564045,
     "ast_hash": "a3760edacaa85f7d3460a01e9fdb65f6",
     "semantic_hash": ""
   },
@@ -14766,8 +14766,8 @@
     "semantic_hash": ""
   },
   "src/data/libraries.json": {
-    "mtime": 1793983171.953016,
-    "seen": 1793983194.059049,
+    "mtime": 1794020870.9216394,
+    "seen": 1794020893.564044,
     "ast_hash": "3e79a0df86ee6f7eb3acd51fbf5fad31",
     "semantic_hash": ""
   },

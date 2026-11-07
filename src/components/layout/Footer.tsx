@@ -87,7 +87,7 @@ export function Footer() {
             <span>Navegação Geral do Sistema</span>
           </div>
 
-          <div className="w-full grid grid-cols-2 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2.5 sm:gap-3 max-w-4xl mx-auto">
+          <div className="w-full grid grid-cols-2 sm:grid-cols-3 lg:flex lg:flex-row lg:flex-wrap lg:items-center lg:justify-center gap-2 sm:gap-2.5 lg:gap-2 xl:gap-3 max-w-6xl mx-auto">
             {headerNavButtons.map((btn) => {
               const Icon = btn.icon;
               const isActive = btn.href === "/" ? pathname === "/" : pathname.startsWith(btn.href);
@@ -96,7 +96,7 @@ export function Footer() {
                 <Link
                   key={btn.href}
                   href={btn.href}
-                  className={`flex items-center gap-2.5 min-h-[48px] px-3.5 py-2.5 rounded-xl border text-xs font-mono font-medium transition-all duration-200 active:scale-95 group touch-manipulation ${
+                  className={`flex items-center gap-2 sm:gap-2.5 min-h-[44px] sm:min-h-[48px] px-3 sm:px-3.5 py-2 sm:py-2.5 rounded-xl border text-xs font-mono font-medium transition-all duration-200 active:scale-95 group touch-manipulation whitespace-nowrap shrink-0 lg:w-auto ${
                     isActive
                       ? "bg-red-950/60 border-red-500/60 text-white shadow-[0_0_15px_rgba(255,7,58,0.3)]"
                       : "bg-white/[0.03] border-white/10 text-neutral-300 hover:text-white hover:bg-white/[0.08] hover:border-red-500/40"
@@ -111,7 +111,7 @@ export function Footer() {
                   >
                     <Icon className="w-3.5 h-3.5" />
                   </div>
-                  <span className="truncate">{btn.name}</span>
+                  <span className="truncate whitespace-nowrap">{btn.name}</span>
                 </Link>
               );
             })}
@@ -120,13 +120,13 @@ export function Footer() {
             {isUserAdmin && (
               <Link
                 href="/admin"
-                className="flex items-center gap-2.5 min-h-[48px] px-3.5 py-2.5 rounded-xl border border-amber-500/50 bg-amber-950/40 text-amber-300 hover:bg-amber-900/50 hover:border-amber-400 shadow-[0_0_20px_rgba(255,215,0,0.25)] text-xs font-mono font-bold transition-all duration-200 active:scale-95 group touch-manipulation"
+                className="col-span-2 sm:col-span-3 lg:col-span-auto lg:w-auto shrink-0 flex items-center justify-center sm:justify-start gap-2 sm:gap-2.5 min-h-[44px] sm:min-h-[48px] px-3 sm:px-3.5 py-2 sm:py-2.5 rounded-xl border border-amber-500/50 bg-amber-950/40 text-amber-300 hover:bg-amber-900/50 hover:border-amber-400 shadow-[0_0_20px_rgba(255,215,0,0.25)] text-xs font-mono font-bold transition-all duration-200 active:scale-95 group touch-manipulation whitespace-nowrap"
               >
                 <div className="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-300 flex items-center justify-center shrink-0">
                   <Crown className="w-3.5 h-3.5" />
                 </div>
-                <span className="truncate">Painel Admin</span>
-                <ArrowUpRight className="w-3 h-3 ml-auto opacity-70 group-hover:opacity-100" />
+                <span className="truncate whitespace-nowrap">Painel Admin</span>
+                <ArrowUpRight className="w-3 h-3 ml-auto lg:ml-1 opacity-70 group-hover:opacity-100 shrink-0" />
               </Link>
             )}
           </div>
