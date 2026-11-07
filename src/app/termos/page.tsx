@@ -153,7 +153,7 @@ export default function TermosDeUsoPage() {
           </p>
           <div className="flex items-center gap-2 text-xs font-mono text-neutral-300">
             <Mail className="w-4 h-4 text-red-500" />
-            <span>202405039459@alunos.estacio.br</span>
+            <span>mcp6667@proton.me</span>
           </div>
         </section>
       </article>

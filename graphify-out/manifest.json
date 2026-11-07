@@ -1476,8 +1476,8 @@
     "semantic_hash": ""
   },
   "src/data/library_catalog_index.json": {
-    "mtime": 1794020870.9148736,
-    "seen": 1794072097.8853881,
+    "mtime": 1794072131.1478302,
+    "seen": 1794072305.305965,
     "ast_hash": "a3760edacaa85f7d3460a01e9fdb65f6",
     "semantic_hash": ""
   },
@@ -14766,8 +14766,8 @@
     "semantic_hash": ""
   },
   "src/data/libraries.json": {
-    "mtime": 1794020870.9216394,
-    "seen": 1794072097.885385,
+    "mtime": 1794072131.192631,
+    "seen": 1794072305.305963,
     "ast_hash": "3e79a0df86ee6f7eb3acd51fbf5fad31",
     "semantic_hash": ""
   },
@@ -15084,9 +15084,9 @@
     "semantic_hash": ""
   },
   "src/app/privacidade/page.tsx": {
-    "mtime": 1794021809.7562342,
-    "seen": 1794072097.88516,
-    "ast_hash": "f08c38807ea228a75cd5640723db5edc",
+    "mtime": 1794072204.3854256,
+    "seen": 1794072305.3032541,
+    "ast_hash": "1f3f133fc4f602708379ed0b5128ab9d",
     "semantic_hash": ""
   },
   "src/app/termos-de-uso/page.tsx": {
@@ -15102,9 +15102,9 @@
     "semantic_hash": ""
   },
   "src/app/termos/page.tsx": {
-    "mtime": 1794021894.634652,
-    "seen": 1794072097.885184,
-    "ast_hash": "be272524ab7d221ea30157212ced7dcc",
+    "mtime": 1794072240.279122,
+    "seen": 1794072305.303498,
+    "ast_hash": "eeddfb1f0916ead884504c421cb10897",
     "semantic_hash": ""
   },
   "tests/visual_stability.test.mjs": {
