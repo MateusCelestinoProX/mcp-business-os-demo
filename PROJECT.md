@@ -30,7 +30,7 @@ A Plataforma Unificada Soberana consolida os 4 ecossistemas independentes de sof
 | 3 | Camada de Dados Drizzle ORM | Schema consolidado em PostgreSQL (leads, members, forms, library, auth) | M3 (Database) | Todos os 4 projetos |
 | 4 | Autenticação Unificada | Sessões seguras, JWT via jose, hash bcrypt e middleware | M3 (Database) | visuals-app-saas |
 | 5 | Portal Institucional & Tráfego | Landing page de alta conversão, vitrine e prova social | M4 (Marketing) | mateus-celestino-pro-x |
-| 6 | Acervo de 176 Artigos | Catálogo dinâmico de 176 guias com busca instantânea e capas WebP | M4 (Marketing) | mateus-celestino-pro-x |
+| 6 | Transição Direta de Autoridade | Conexão fluida do Hero cinematográfico à biografia de Mateus Celestino | M4 (Marketing) | mateus-celestino-pro-x |
 | 7 | Captura de Leads Tráfego Pago | Rota /api/leads com parâmetros UTM (TikTok Ads e Meta Ads) | M4 (Marketing) | mateus-celestino-pro-x |
 | 8 | Área de Membros & Comunidade | Dashboard restrito, feed comunitário e comunicados | M5 (Members) | visuals-app-saas |
 | 9 | Catálogo de Mídias & Vídeos | Player de alta definição cinemático em /comunidade/midias | M5 (Members) | visuals-app-saas |
@@ -52,7 +52,7 @@ A Plataforma Unificada Soberana consolida os 4 ecossistemas independentes de sof
 | M1 | Foundations & Shell Soberano | Next.js 15, package.json, Tailwind, Shell, Navbar, UI base | agent-foundations (`f29aeb8e`) | **DONE** |
 | M2 | WebGL & Shaders Engine | CinematicCanvas, Galaxy, Beams, ColorBends, Background | agent-shaders (`a711df2f`) | **DONE** |
 | M3 | Drizzle ORM & Auth Layer | Schema consolidado PostgreSQL, conexão resiliente, JWT | agent-database (`a60e82ea`) | **DONE** |
-| M4 | Portal Institucional & Leads | Landing Page, 176 Artigos, formulário UTM TikTok/Meta | agent-marketing (`cf9148ba`) | **DONE** |
+| M4 | Portal Institucional & Leads | Landing Page, Bio Autor, formulário UTM TikTok/Meta | agent-marketing (`cf9148ba`) | **DONE** |
 | M5 | Área de Membros & Comunidade | Dashboard, Feed, Vídeos, Checkout Mercado Pago | agent-members (`9f936e71`) | **DONE** |
 | M6 | Form Builder Cinemático | Construtor, Live Preview, submissão, Resend/Notion | agent-builder (`f64d22d7`) | **DONE** |
 | M7 | Biblioteca Oculta de Recursos | Catálogo 406 itens, busca instantânea, downloads | agent-library (`7af0bb02`) | **DONE** |

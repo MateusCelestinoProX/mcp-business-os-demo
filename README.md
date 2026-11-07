@@ -44,10 +44,9 @@ O **MCP Business OS** consolida os pilares de produto, marketing, vendas, comuni
 ## 🚀 Os 6 Pilares do Sistema
 
 ### 1. Portal Institucional (`/`)
-- **Acervo Editorial Técnico**: 176 artigos e guias especializados em Inteligência Artificial, Ferramentas No-Code/Code, Business e Linux com filtros por categoria e busca instantânea via atalho global `⌘K` / `Ctrl+K`.
 - **Hero Cinemático**: Alternância dinâmica de shaders WebGL carmesim a cada 3 segundos, capa animada e tipografia editorial de alto impacto.
 - **Zonas de Transição de Shaders**: Passagem fluida entre seções através de gradientes de dispersão e blur atmosférico.
-- **Prova Social & Métricas**: Vitrine de ecossistema, casos de sucesso auditados e telemetria de eficiência operacional.
+- **Prova Social & Autor**: Apresentação direta de Mateus Celestino, autoridade técnica, ecossistema e casos de sucesso auditados.
 
 ### 2. Shop Oficial (`/shop`)
 - **Produtos Validados**:
