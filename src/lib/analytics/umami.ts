@@ -11,6 +11,8 @@
  * =========================================================================
  */
 
+import { getCookieConsent } from "../cookies";
+
 export const UMAMI_CONFIG = {
   websiteId:
     process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID ||
@@ -21,7 +23,8 @@ export const UMAMI_CONFIG = {
   scriptUrl:
     process.env.NEXT_PUBLIC_UMAMI_SCRIPT_URL ||
     'https://umami-chi-topaz.vercel.app/script.js',
-  domains: 'mcp-business-os.vercel.app,localhost',
+  domains:
+    'mcp-business-os.vercel.app,mcp-business-os-mcp-team.vercel.app,localhost',
 } as const;
 
 declare global {
@@ -43,6 +46,11 @@ declare global {
  */
 export function trackEvent(eventName: string, eventData?: Record<string, any>): void {
   if (typeof window === 'undefined') return;
+
+  // Respeita opt-out de cookies e telemetria
+  if (getCookieConsent() === 'essential') {
+    return;
+  }
 
   try {
     if (window.umami && typeof window.umami.track === 'function') {
@@ -67,6 +75,11 @@ export function trackEvent(eventName: string, eventData?: Record<string, any>): 
  */
 export function trackPageView(url?: string, title?: string): void {
   if (typeof window === 'undefined') return;
+
+  // Respeita opt-out de cookies e telemetria
+  if (getCookieConsent() === 'essential') {
+    return;
+  }
 
   try {
     if (window.umami && typeof window.umami.track === 'function') {

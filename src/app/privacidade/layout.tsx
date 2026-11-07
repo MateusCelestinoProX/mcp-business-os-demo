@@ -2,16 +2,17 @@ import type { Metadata } from "next";
 import { constructMetadata } from "@/services/seo/metadata";
 
 export const metadata: Metadata = constructMetadata({
-  title: "Política de Privacidade Blindada",
+  title: "Política de Privacidade",
   description:
-    "Diretrizes de privacidade soberana, conformidade estrita com a LGPD (Lei nº 13.709/2018), criptografia de dados ponta a ponta e governança transparente da plataforma Mateus Celestino Pro X.",
+    "Política de privacidade, proteção de dados e transparência no uso de cookies e telemetria anônima em conformidade com a LGPD (Lei nº 13.709/2018).",
   path: "/privacidade",
   keywords: [
     "Política de Privacidade",
     "LGPD",
-    "Privacidade Blindada",
-    "Soberania de Dados",
-    "Segurança da Informação",
+    "Proteção de Dados",
+    "Cookies",
+    "Privacidade",
+    "Umami Analytics",
   ],
 });
 

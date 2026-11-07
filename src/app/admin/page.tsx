@@ -59,6 +59,7 @@ import { cn } from "@/lib/utils";
 import { PostEditorModal, PostEditorData } from "@/components/admin/PostEditorModal";
 import { LibraryControlSuite } from "@/components/admin/LibraryControlSuite";
 import { ShopControlSuite } from "@/components/admin/ShopControlSuite";
+import { BannersControlSuite } from "@/components/admin/BannersControlSuite";
 import { AdminSidebar, AdminTabId } from "@/components/admin/AdminSidebar";
 import AlternatingHeroBanner from "@/components/portal/AlternatingHeroBanner";
 import AdminRedShader from "@/components/admin/AdminRedShader";
@@ -692,6 +693,12 @@ export default function AdminPanelPage() {
       subtitle: "Catálogo de Produtos, Serviços & Hero Banners",
       description: "Configuração do hero alternado da loja, catálogo de produtos digitais e serviços profissionais sob medida.",
       icon: ShoppingBag,
+    },
+    banners: {
+      title: "Banners Inteligentes & Exit-Intent",
+      subtitle: "Gatilhos de Retenção, Modais de Saída & Boas-Vindas",
+      description: "Gerenciamento soberano de popups de saída (Exit-Intent), guias de onboarding e banners estratégicos por rota.",
+      icon: Flame,
     },
     infra: {
       title: "Infraestrutura & Status do Sistema",
@@ -2063,6 +2070,11 @@ export default function AdminPanelPage() {
             {/* ABA 7: LOJA VIRTUAL (SHOP)                              */}
             {/* ======================================================== */}
             {activeTab === "shop_resources" && <ShopControlSuite onNotify={showToast} />}
+
+            {/* ======================================================== */}
+            {/* ABA 8: BANNERS INTELIGENTES & EXIT-INTENT                */}
+            {/* ======================================================== */}
+            {activeTab === "banners" && <BannersControlSuite onNotify={showToast} />}
 
             {/* ======================================================== */}
             {/* ABA 8: INFRAESTRUTURA & STATUS DO SISTEMA               */}

@@ -24,6 +24,7 @@ import {
   Compass,
   Zap,
   CheckCircle2,
+  Flame,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -35,6 +36,7 @@ export type AdminTabId =
   | "posts"
   | "library_control"
   | "shop_resources"
+  | "banners"
   | "infra";
 
 export interface AdminSidebarProps {
@@ -159,6 +161,16 @@ export function AdminSidebar({
           href: "/admin?tab=shop_resources",
           hotkey: "7",
         },
+        {
+          id: "banners",
+          label: "Banners & Exit-Intent",
+          sublabel: "Retenção & Onboarding",
+          icon: Flame,
+          count: null,
+          tag: "Smart",
+          href: "/admin/banners",
+          hotkey: "8",
+        },
       ],
     },
     {
@@ -172,7 +184,7 @@ export function AdminSidebar({
           count: null,
           tag: "Online",
           href: "/admin?tab=infra",
-          hotkey: "8",
+          hotkey: "9",
         },
       ],
     },

@@ -2,16 +2,16 @@ import type { Metadata } from "next";
 import { constructMetadata } from "@/services/seo/metadata";
 
 export const metadata: Metadata = constructMetadata({
-  title: "Termos de Uso Soberanos",
+  title: "Termos de Uso",
   description:
-    "Condições gerais de uso, licenciamento de código-fonte de alta performance, regras de acesso à comunidade restrita, proteção de propriedade intelectual e governança técnica da plataforma Mateus Celestino Pro X.",
+    "Termos e condições gerais de uso, navegação, propriedade intelectual e conduta na plataforma Mateus Celestino Pro X.",
   path: "/termos",
   keywords: [
     "Termos de Uso",
-    "Termos de Uso Soberanos",
-    "Licenciamento de Ativos",
+    "Condições Gerais",
     "Propriedade Intelectual",
-    "Regras da Comunidade",
+    "Licenciamento",
+    "Diretrizes de Uso",
   ],
 });
 

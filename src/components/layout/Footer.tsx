@@ -14,8 +14,10 @@ import {
   Crown,
   Mail,
   ArrowUpRight,
+  Cookie,
 } from "lucide-react";
 import SilkShader from "@/components/shaders/SilkShader";
+import { openCookiePreferences } from "@/lib/cookies";
 import {
   UnifiedUser,
   DEFAULT_GUEST_USER,
@@ -136,7 +138,7 @@ export function Footer() {
         <div className="w-full max-w-2xl h-[1px] bg-gradient-to-r from-transparent via-red-500/30 to-transparent" />
 
         {/* =========================================================================
-            2. BOTÕES DE ACESSO RÁPIDO A PRIVACIDADE E TERMOS
+            2. ACESSO A PRIVACIDADE, TERMOS E PREFERÊNCIAS DE COOKIES
             ========================================================================= */}
         <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6">
           <Link
@@ -144,7 +146,7 @@ export function Footer() {
             className="inline-flex items-center gap-2 min-h-[44px] px-4 sm:px-5 py-2.5 rounded-2xl glass-crystal text-xs font-mono text-neutral-200 hover:text-white border border-white/10 hover:border-red-500/60 hover:shadow-[0_0_25px_rgba(255,7,58,0.35)] transition-all duration-300 group cursor-pointer touch-manipulation active:scale-95"
           >
             <Shield className="w-4 h-4 text-red-500 group-hover:scale-110 transition-transform shrink-0" />
-            <span className="font-medium tracking-wide">Privacidade Blindada</span>
+            <span className="font-medium tracking-wide">Política de Privacidade</span>
           </Link>
 
           <span className="w-1.5 h-1.5 rounded-full bg-red-500/50 hidden sm:block" />
@@ -154,8 +156,19 @@ export function Footer() {
             className="inline-flex items-center gap-2 min-h-[44px] px-4 sm:px-5 py-2.5 rounded-2xl glass-crystal text-xs font-mono text-neutral-200 hover:text-white border border-white/10 hover:border-red-500/60 hover:shadow-[0_0_25px_rgba(255,7,58,0.35)] transition-all duration-300 group cursor-pointer touch-manipulation active:scale-95"
           >
             <FileText className="w-4 h-4 text-red-500 group-hover:scale-110 transition-transform shrink-0" />
-            <span className="font-medium tracking-wide">Termos de Uso Soberanos</span>
+            <span className="font-medium tracking-wide">Termos de Uso</span>
           </Link>
+
+          <span className="w-1.5 h-1.5 rounded-full bg-red-500/50 hidden sm:block" />
+
+          <button
+            type="button"
+            onClick={openCookiePreferences}
+            className="inline-flex items-center gap-2 min-h-[44px] px-4 sm:px-5 py-2.5 rounded-2xl glass-crystal text-xs font-mono text-neutral-200 hover:text-white border border-white/10 hover:border-red-500/60 hover:shadow-[0_0_25px_rgba(255,7,58,0.35)] transition-all duration-300 group cursor-pointer touch-manipulation active:scale-95"
+          >
+            <Cookie className="w-4 h-4 text-red-500 group-hover:scale-110 transition-transform shrink-0" />
+            <span className="font-medium tracking-wide">Preferências de Cookies</span>
+          </button>
         </div>
 
         {/* Identificação Oficial: Mateus Celestino Pro X */}

@@ -14,6 +14,8 @@ import {
 import { JsonLd } from "@/components/seo/JsonLd";
 import { SmartCacheEngine } from "@/components/cache/SmartCacheEngine";
 import { UmamiAnalytics } from "@/components/analytics/UmamiAnalytics";
+import { CookieBanner } from "@/components/cookies/CookieBanner";
+import { SmartBannerSystem } from "@/components/banners/SmartBannerSystem";
 
 export const viewport: Viewport = {
   themeColor: "#030305",
@@ -59,6 +61,12 @@ export default function RootLayout({
       <body className="bg-[#0c0003] text-[#f3f4f6] antialiased selection:bg-red-500/30 selection:text-white min-h-screen flex flex-col relative overflow-x-hidden">
         {/* Telemetria Umami Analytics Soberana em Tempo Real */}
         <UmamiAnalytics />
+
+        {/* Aviso de Cookies & Consentimento LGPD */}
+        <CookieBanner />
+
+        {/* Sistema Inteligente de Banners, Exit-Intent & Onboarding */}
+        <SmartBannerSystem />
 
         {/* Motor de Cache Inteligente Soberano, Service Worker & Speculation Rules (Instant Load 0ms) */}
         <SmartCacheEngine />
