@@ -73,15 +73,8 @@ export default function HomePage() {
           />
         </div>
 
-        {/* ZONA DE TRANSIÇÃO 01 -> END: Sobre -> Contato */}
-        <ShaderTransitionZone
-          from="SOBRE O AUTOR"
-          to="CANAL DIRETO"
-          index="01 // END"
-        />
-
         {/* =========================================================================
-            3. CANAL DIRETO & FORMULÁRIO DE CAPTURA DE LEADS DE ALTA CONVERSÃO
+            3. CANAL DIRETO (SLOT DE CONTATO COM TRANSIÇÃO BLACK SUAVE)
             ========================================================================= */}
         <div>
           <ContatoSection
