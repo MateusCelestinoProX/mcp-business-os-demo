@@ -83,12 +83,7 @@ export function Footer() {
         {/* =========================================================================
             1. BOTÕES DA BARRA PRINCIPAL DO HEADER INCORPORADOS NO FOOTER
             ========================================================================= */}
-        <div className="w-full flex flex-col items-center gap-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-950/60 border border-red-500/30 text-[10px] sm:text-xs font-mono text-red-400 uppercase tracking-widest">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#ff073a] animate-pulse" />
-            <span>Navegação Geral do Sistema</span>
-          </div>
-
+        <div className="w-full flex flex-col items-center">
           <div className="w-full grid grid-cols-2 sm:grid-cols-3 lg:flex lg:flex-row lg:flex-wrap lg:items-center lg:justify-center gap-2 sm:gap-2.5 lg:gap-2 xl:gap-3 max-w-6xl mx-auto">
             {headerNavButtons.map((btn) => {
               const Icon = btn.icon;
