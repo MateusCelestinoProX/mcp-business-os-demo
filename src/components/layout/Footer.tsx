@@ -62,7 +62,7 @@ export function Footer() {
   ];
 
   return (
-    <footer className="relative z-20 mt-16 sm:mt-24 border-t border-red-500/30 bg-[#0c0003]/95 shadow-[0_-25px_60px_rgba(180,0,25,0.3)] overflow-hidden w-full pb-32 sm:pb-16">
+    <footer className="relative z-20 mt-0 border-t border-red-500/30 bg-[#0c0003]/95 shadow-[0_-25px_60px_rgba(180,0,25,0.3)] overflow-hidden w-full pb-32 sm:pb-16">
       {/* Shader WebGL do Rodapé: Silk Líquido Carmesim */}
       <SilkShader
         className="z-0 mix-blend-screen pointer-events-none"
@@ -73,7 +73,7 @@ export function Footer() {
 
       {/* Linha superior de iluminação especular do vidro com halo carmesim */}
       <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-red-500/70 to-transparent pointer-events-none" />
-      <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[700px] h-32 bg-red-600/30 blur-[90px] pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-24 bg-red-600/20 blur-[90px] pointer-events-none" />
 
       {/* Brilho fluido de energia vermelha na base do rodapé */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-red-950/40 via-red-900/10 to-transparent pointer-events-none" />

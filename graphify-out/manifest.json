@@ -1434,9 +1434,9 @@
     "semantic_hash": ""
   },
   "src/components/layout/Footer.tsx": {
-    "mtime": 1794072645.4144804,
-    "seen": 1794072683.909139,
-    "ast_hash": "595a1087e7e4cb6f4df01edf6b6249e6",
+    "mtime": 1794086674.0505044,
+    "seen": 1794086981.639818,
+    "ast_hash": "31cfe827582e95e397ddc3526e347a0d",
     "semantic_hash": ""
   },
   "src/components/layout/Navbar.tsx": {
@@ -1866,9 +1866,9 @@
     "semantic_hash": ""
   },
   "src/app/page.tsx": {
-    "mtime": 1794072231.4723208,
-    "seen": 1794072420.1952279,
-    "ast_hash": "4e69c0337ac25558a34aa7a12dee99f2",
+    "mtime": 1794086641.8472779,
+    "seen": 1794086981.637621,
+    "ast_hash": "383dc096af07108e58c085269e88de93",
     "semantic_hash": ""
   },
   ".agents/teamwork/worker_shaders/handoff.md": {
@@ -13668,9 +13668,9 @@
     "semantic_hash": ""
   },
   "src/components/portal/ContatoSection.tsx": {
-    "mtime": 1794071532.7150328,
-    "seen": 1794072420.19541,
-    "ast_hash": "7f970d33170a53d618b7f73eaea3ec43",
+    "mtime": 1794086611.2406836,
+    "seen": 1794086981.640883,
+    "ast_hash": "e0eb6d5e4bbeea0f5c0093f5fe5bfa21",
     "semantic_hash": ""
   },
   "src/components/portal/LegalModal.tsx": {
