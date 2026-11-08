@@ -83,11 +83,11 @@ export default function HomePage() {
         {/* =========================================================================
             3. CANAL DIRETO (SLOT DE CONTATO NA PROPORÇÃO ORIGINAL NO BLACKOUT)
             ========================================================================= */}
-        <div id="contato" className="relative z-20 w-full bg-[#000000] flex flex-col items-center justify-center">
+        <section id="contato" className="relative z-20 w-full bg-[#000000] flex flex-col items-center justify-center">
           <ContatoSection
             profile={siteData?.profile || {}}
           />
-        </div>
+        </section>
 
         {/* =========================================================================
             TRANSIÇÃO CINEMÁTICA DE SAÍDA: DO BLACKOUT PARA O RODAPÉ
