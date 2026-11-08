@@ -12,6 +12,7 @@ import {
   Users,
   FolderGit2,
   Crown,
+  Layers,
   Mail,
   ArrowUpRight,
   Cookie,
@@ -55,6 +56,7 @@ export function Footer() {
   const headerNavButtons = [
     { name: "Home Page", href: "/", icon: Shield },
     { name: "Showcase", href: "/showcase", icon: Sparkles },
+    { name: "Stack & Squad", href: "/stack-squad", icon: Layers },
     { name: "Shop Oficial", href: "/shop", icon: ShoppingBag },
     { name: "Comunidade VIP", href: "/comunidade", icon: Users },
     { name: "Free Resources", href: "/biblioteca", icon: FolderGit2 },
