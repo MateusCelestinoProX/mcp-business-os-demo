@@ -272,7 +272,7 @@ export function UniversalSitemapModal({
                     </div>
                     <div>
                       <h4 className="font-extrabold text-sm text-white flex items-center gap-2">
-                        <span>1. Portal Institucional (Site)</span>
+                        <span>1. Home Page (Site)</span>
                         <span className="text-[10px] px-2 py-0.2 rounded-full bg-red-950/60 text-red-300 font-mono border border-red-500/30">
                           /
                         </span>

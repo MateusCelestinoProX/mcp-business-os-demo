@@ -26,10 +26,10 @@ export default function ContatoPage() {
             <Link
               href="/"
               className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl glass-crystal text-xs font-mono text-zinc-300 hover:text-white hover:border-[#ff073a]/50 transition-all cursor-pointer group min-h-[44px]"
-              title="Voltar ao Portal Institucional"
+              title="Voltar para a Home Page"
             >
               <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform text-[#ff073a]" />
-              <span>Portal Institucional</span>
+              <span>Home Page</span>
             </Link>
             <span className="text-zinc-600 font-mono hidden sm:inline">/</span>
             <div className="flex items-center gap-2 text-xs font-mono font-bold text-white px-2 py-1">

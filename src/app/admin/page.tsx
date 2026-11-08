@@ -814,7 +814,7 @@ export default function AdminPanelPage() {
               href="/"
               className="text-xs text-neutral-300 hover:text-white transition-colors inline-flex items-center gap-1.5"
             >
-              <span>← Voltar ao Portal Institucional</span>
+              <span>← Voltar para a Home Page</span>
             </Link>
           </div>
         </div>
@@ -1328,7 +1328,7 @@ export default function AdminPanelPage() {
                     <div className="p-4 rounded-xl bg-white/[0.03] hover:bg-white/[0.06] border border-white/10 hover:border-red-500/40 backdrop-blur-md shadow-sm space-y-2 transition-all group">
                       <div className="flex items-center justify-between">
                         <span className="text-xs font-bold text-white group-hover:text-red-300 transition-colors">
-                          Portal Institucional
+                          Home Page
                         </span>
                         <Badge variant="success" dot className="text-[9px]">
                           ONLINE
@@ -1342,7 +1342,7 @@ export default function AdminPanelPage() {
                         target="_blank"
                         className="text-[11px] text-red-400 hover:text-red-300 inline-flex items-center gap-1 font-medium pt-1"
                       >
-                        <span>Acessar Portal</span>
+                        <span>Acessar Home</span>
                         <ExternalLink className="w-3 h-3" />
                       </Link>
                     </div>

@@ -34,7 +34,7 @@ export interface NavLinkItem {
 }
 
 export const navLinks: NavLinkItem[] = [
-  { name: "Portal Institucional", href: "/", icon: Shield },
+  { name: "Home Page", href: "/", icon: Shield },
   { name: "Showcase", href: "/showcase", icon: Sparkles },
   { name: "Shop", href: "/shop", icon: ShoppingBag },
   { name: "Comunidade", href: "/comunidade", icon: Users },
@@ -82,7 +82,7 @@ export function Navbar() {
         {/* Logo & Marca com Shrink-safe para mobile */}
         <Link
           href="/"
-          title="Ir para o Portal Institucional"
+          title="Ir para a Home Page"
           className="flex items-center gap-2 sm:gap-3 group transition-transform duration-200 active:scale-95 shrink"
         >
           <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-red-600 via-red-800 to-black p-[1px] flex items-center justify-center shadow-[0_0_15px_rgba(255,7,58,0.4)] group-hover:shadow-[0_0_25px_rgba(255,7,58,0.7)] transition-all overflow-hidden shrink-0">

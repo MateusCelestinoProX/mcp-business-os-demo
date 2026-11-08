@@ -70,11 +70,11 @@ export default function ShopPage() {
             <Link
               href="/"
               className="inline-flex items-center gap-2 px-3 py-2 sm:py-1.5 rounded-xl glass-crystal text-xs font-mono text-zinc-300 hover:text-white active:scale-95 transition-all cursor-pointer group min-h-[44px] sm:min-h-[36px] border border-white/10 hover:border-[#ff073a]/50 touch-manipulation"
-              title="Voltar ao Portal Institucional"
-              aria-label="Voltar ao Portal Institucional"
+              title="Voltar para a Home Page"
+              aria-label="Voltar para a Home Page"
             >
               <ArrowLeft className="w-4 h-4 sm:w-3.5 sm:h-3.5 group-hover:-translate-x-1 group-active:-translate-x-1 transition-transform text-[#ff073a] shrink-0" />
-              <span className="font-medium">Portal</span>
+              <span className="font-medium">Home</span>
             </Link>
             <span className="text-zinc-600 font-mono text-xs">/</span>
             <div className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-mono font-bold text-white tracking-wide">

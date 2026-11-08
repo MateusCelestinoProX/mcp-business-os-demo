@@ -165,7 +165,7 @@ export default function LoginPage() {
                 href="/"
                 className="inline-block py-1.5 text-xs text-neutral-500 hover:text-white transition-colors touch-manipulation"
               >
-                ← Voltar ao Portal Institucional
+                ← Voltar para a Home Page
               </Link>
             </div>
           </div>

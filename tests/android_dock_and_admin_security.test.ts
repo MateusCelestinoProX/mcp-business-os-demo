@@ -28,7 +28,7 @@ describe('Suíte de Validação: Android Docker Navbar, Footer Navigation & Blin
     const content = fs.readFileSync(footerPath, 'utf-8');
 
     assert.ok(!content.includes('Navegação Geral do Sistema'), 'Texto redundante de navegação geral não deve estar presente');
-    assert.ok(content.includes('Portal Institucional'), 'Deve conter Portal Institucional');
+    assert.ok(content.includes('Home Page'), 'Deve conter Home Page');
     assert.ok(content.includes('Showcase'), 'Deve conter Showcase');
     assert.ok(content.includes('Shop Oficial'), 'Deve conter Shop Oficial');
     assert.ok(content.includes('Comunidade VIP'), 'Deve conter Comunidade VIP');

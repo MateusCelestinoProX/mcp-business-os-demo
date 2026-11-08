@@ -194,7 +194,7 @@ export function AdminSidebar({
   const activePageItem = allItems.find((p) => p.id === activeTab) || allItems[0];
 
   const externalPortals = [
-    { label: "Portal Institucional", href: "/", icon: Globe },
+    { label: "Home Page", href: "/", icon: Globe },
     { label: "Loja Pública (/shop)", href: "/shop", icon: ShoppingBag },
     { label: "Hidden Library (/biblioteca)", href: "/biblioteca", icon: BookOpen },
     { label: "Comunidade VIP (/comunidade)", href: "/comunidade", icon: Sparkles },

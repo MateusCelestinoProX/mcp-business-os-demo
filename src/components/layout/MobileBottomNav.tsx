@@ -28,7 +28,7 @@ export interface MobileNavItem {
 }
 
 export const mobileNavItems: MobileNavItem[] = [
-  { name: "Portal", href: "/", icon: Shield },
+  { name: "Home Page", href: "/", icon: Shield },
   { name: "Showcase", href: "/showcase", icon: Sparkles },
   { name: "Shop", href: "/shop", icon: ShoppingBag },
   { name: "Comunidade", href: "/comunidade", icon: Users },

@@ -53,7 +53,7 @@ export function Footer() {
   const isUserAdmin = hasAdminAccess(currentUser);
 
   const headerNavButtons = [
-    { name: "Portal Institucional", href: "/", icon: Shield },
+    { name: "Home Page", href: "/", icon: Shield },
     { name: "Showcase", href: "/showcase", icon: Sparkles },
     { name: "Shop Oficial", href: "/shop", icon: ShoppingBag },
     { name: "Comunidade VIP", href: "/comunidade", icon: Users },
