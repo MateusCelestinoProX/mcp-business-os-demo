@@ -3,13 +3,13 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 
-describe('Suíte de Validação: Page Stack & Squad no Header e Plataforma Unificada', () => {
+describe('Suíte de Validação: Page Stack & Squad no Header e SmartFlow Injetada', () => {
   const baseDir = path.resolve(__dirname, '..');
   const navbarPath = path.join(baseDir, 'src/components/layout/Navbar.tsx');
   const mobileNavPath = path.join(baseDir, 'src/components/layout/MobileBottomNav.tsx');
   const footerPath = path.join(baseDir, 'src/components/layout/Footer.tsx');
-  const pagePath = path.join(baseDir, 'src/app/stack-squad/page.tsx');
-  const viewPath = path.join(baseDir, 'src/components/stack-squad/StackSquadView.tsx');
+  const routePath = path.join(baseDir, 'src/app/stack-squad/route.ts');
+  const smartflowHtmlPath = path.join(baseDir, 'public/smartflow/index.html');
   const sitemapPath = path.join(baseDir, 'src/app/sitemap.ts');
   const comunidadeHtmlPath = path.join(baseDir, 'public/comunidade/index.html');
   const showcaseHtmlPath = path.join(baseDir, 'public/showcase/index.html');
@@ -22,7 +22,6 @@ describe('Suíte de Validação: Page Stack & Squad no Header e Plataforma Unifi
     assert.ok(content.includes('Stack & Squad'), 'Deve conter o label Stack & Squad');
     assert.ok(content.includes('/stack-squad'), 'Deve conter a rota /stack-squad');
 
-    // Validar posição: Showcase deve vir imediatamente antes de Stack & Squad
     const showcaseIndex = content.indexOf('{ name: "Showcase"');
     const stackSquadIndex = content.indexOf('{ name: "Stack & Squad"');
     const shopIndex = content.indexOf('{ name: "Shop"');
@@ -52,23 +51,38 @@ describe('Suíte de Validação: Page Stack & Squad no Header e Plataforma Unifi
     assert.ok(content.includes('/stack-squad'), 'Footer deve conter rota /stack-squad');
   });
 
-  test('4. A página src/app/stack-squad/page.tsx e sua view devem existir e ser válidas', () => {
-    assert.ok(fs.existsSync(pagePath), 'src/app/stack-squad/page.tsx deve existir');
-    assert.ok(fs.existsSync(viewPath), 'src/components/stack-squad/StackSquadView.tsx deve existir');
+  test('4. A rota src/app/stack-squad/route.ts deve servir a interface SmartFlow', () => {
+    assert.ok(fs.existsSync(routePath), 'src/app/stack-squad/route.ts deve existir');
+    assert.ok(fs.existsSync(smartflowHtmlPath), 'public/smartflow/index.html deve existir');
 
-    const pageContent = fs.readFileSync(pagePath, 'utf-8');
-    assert.ok(pageContent.includes('constructMetadata'), 'Página deve configurar metadados SEO');
-    assert.ok(pageContent.includes('/stack-squad'), 'Metadata deve referenciar /stack-squad');
-    assert.ok(pageContent.includes('StackSquadView'), 'Página deve renderizar StackSquadView');
+    const routeContent = fs.readFileSync(routePath, 'utf-8');
+    assert.ok(routeContent.includes('smartflow'), 'Route deve referenciar o diretório smartflow');
+    assert.ok(routeContent.includes('NextResponse'), 'Route deve usar NextResponse');
 
-    const viewContent = fs.readFileSync(viewPath, 'utf-8');
-    assert.ok(viewContent.includes('n8n Enterprise Automation'), 'View deve exibir stack de automação');
-    assert.ok(viewContent.includes('Typebot Pro Conversational'), 'View deve exibir Typebot');
-    assert.ok(viewContent.includes('PostgreSQL & Drizzle ORM'), 'View deve exibir PostgreSQL e Drizzle');
-    assert.ok(viewContent.includes('Next.js 15 App Router & React 19'), 'View deve exibir Next.js');
-    assert.ok(viewContent.includes('SDR & Qualificador Conversacional 24/7'), 'View deve listar Agente SDR');
-    assert.ok(viewContent.includes('Orquestrador de Fluxos & Eventos'), 'View deve listar Agente Orquestrador');
-    assert.ok(viewContent.includes('Guardião de Dados & Inteligência CRM'), 'View deve listar Agente de Dados');
+    const htmlContent = fs.readFileSync(smartflowHtmlPath, 'utf-8');
+    // Validar presença de SmartFlow
+    assert.ok(htmlContent.includes('SmartFlow'), 'HTML deve conter a marca SmartFlow');
+    assert.ok(htmlContent.includes('Estratégia de quem'), 'HTML deve conter o catchphrase oficial');
+    assert.ok(htmlContent.includes('Mateus Celestino'), 'HTML deve conter Mateus Celestino no Squad');
+    assert.ok(htmlContent.includes('Odilon'), 'HTML deve conter Odilon no Squad');
+    assert.ok(htmlContent.includes('/smartflow/mateus.png'), 'HTML deve carregar foto de Mateus');
+    assert.ok(htmlContent.includes('/smartflow/odilon.png'), 'HTML deve carregar foto de Odilon');
+    assert.ok(htmlContent.includes('/smartflow/vid1.mp4'), 'HTML deve carregar vídeo de fundo vid1');
+    assert.ok(htmlContent.includes('calendar.google.com/calendar/appointments'), 'HTML deve conter iframe do Google Calendar');
+
+    // Validar presença e estado ativo da Master Sovereign Bar
+    assert.ok(htmlContent.includes('id="master-sovereign-bar"'), 'HTML deve possuir Master Sovereign Bar');
+    assert.match(
+      htmlContent,
+      /<a href="\/stack-squad"[^>]*class="[^"]*active[^"]*"[^>]*title="Stack & Squad"/,
+      'Link Stack & Squad deve estar ativo na Master Sovereign Bar'
+    );
+    assert.ok(htmlContent.includes('id="mobile-sovereign-bottom-bar"'), 'HTML deve possuir dock móvel');
+    assert.match(
+      htmlContent,
+      /<a href="\/stack-squad"[^>]*class="[^"]*active[^"]*"/,
+      'Item Stack & Squad deve estar ativo no dock móvel'
+    );
   });
 
   test('5. sitemap.ts deve indexar a rota /stack-squad', () => {

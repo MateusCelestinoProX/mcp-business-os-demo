@@ -1,0 +1,1783 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartFlow | Inteligência Artificial & Software House</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        vantablack: '#000000',
+                        sanguine: {
+                            DEFAULT: '#cc0000',
+                            glow: '#ff0033',
+                            deep: '#2a0003',
+                            dark: '#0d0001'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        tech: ['Space Grotesk', 'sans-serif']
+                    },
+                    boxShadow: {
+                        'neon-red': '0 0 25px rgba(255, 0, 51, 0.45)',
+                        'neon-red-strong': '0 0 45px rgba(255, 0, 51, 0.85)',
+                        'cyber-card': '0 10px 40px rgba(0, 0, 0, 0.9)'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        ::selection {
+            background: #cc0000;
+            color: #ffffff;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #000000;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cc0000;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ff0033;
+        }
+
+        /* Video Background Cover */
+        .video-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+
+        /* Ultra Glassmorphism Tokens */
+        .ultra-glass {
+            background: rgba(2, 2, 2, 0.45);
+            backdrop-filter: blur(25px) saturate(180%);
+            -webkit-backdrop-filter: blur(25px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+        }
+
+        .ultra-glass-red {
+            background: rgba(13, 0, 1, 0.5);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 0, 51, 0.15);
+        }
+
+        /* Scroll Reveal and Tab Transition Effects */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px) scale(0.96);
+            transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* SPA transitions */
+        .view-section {
+            transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+        }
+        
+        .fade-in-section {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="relative min-h-screen bg-black" style="padding-top: 60px;">
+
+<style id="master-sovereign-bar-styles">
+      #master-sovereign-bar {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        height: 60px !important;
+        z-index: 99999 !important;
+        background: rgba(3, 3, 5, 0.94) !important;
+        backdrop-filter: blur(30px) saturate(200%) !important;
+        -webkit-backdrop-filter: blur(30px) saturate(200%) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+        box-shadow: 0 10px 35px rgba(0, 0, 0, 0.85) !important;
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif !important;
+        box-sizing: border-box !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      #master-sovereign-bar * {
+        box-sizing: border-box !important;
+      }
+      .msb-inner {
+        width: 100% !important;
+        height: 100% !important;
+        padding: 0 24px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        position: relative !important;
+      }
+      .msb-brand {
+        display: flex !important;
+        align-items: center !important;
+        gap: 12px !important;
+        text-decoration: none !important;
+        transition: transform 0.2s ease !important;
+        cursor: pointer !important;
+      }
+      .msb-brand:hover {
+        transform: scale(1.02) !important;
+      }
+      .msb-logo-badge {
+        width: 36px !important;
+        height: 36px !important;
+        border-radius: 11px !important;
+        background: linear-gradient(135deg, #dc2626, #991b1b, #000) !important;
+        padding: 1px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        box-shadow: 0 0 16px rgba(255, 7, 58, 0.45) !important;
+      }
+      .msb-logo-inner {
+        width: 100% !important;
+        height: 100% !important;
+        background: #030305 !important;
+        border-radius: 10px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+      .msb-brand-info {
+        display: flex !important;
+        flex-direction: column !important;
+      }
+      .msb-brand-name-row {
+        display: flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+      }
+      .msb-brand-name {
+        font-weight: 700 !important;
+        font-size: 13px !important;
+        letter-spacing: 0.5px !important;
+        color: #fff !important;
+        white-space: nowrap !important;
+      }
+      .msb-links-desktop {
+        display: flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+        background: rgba(0, 0, 0, 0.45) !important;
+        padding: 4px !important;
+        border-radius: 12px !important;
+        border: 1px solid rgba(255, 255, 255, 0.06) !important;
+      }
+      .msb-link {
+        display: flex !important;
+        align-items: center !important;
+        gap: 7px !important;
+        padding: 6px 12px !important;
+        border-radius: 8px !important;
+        font-size: 12px !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.2px !important;
+        color: #a3a3a3 !important;
+        text-decoration: none !important;
+        position: relative !important;
+        transition: all 0.2s ease !important;
+        white-space: nowrap !important;
+      }
+      .msb-link:hover {
+        color: #fff !important;
+        background: rgba(255, 255, 255, 0.05) !important;
+      }
+      .msb-link.active {
+        color: #fff !important;
+        background: rgba(255, 255, 255, 0.12) !important;
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.25) !important;
+      }
+      .msb-link.active .msb-link-icon {
+        color: #f87171 !important;
+      }
+      .msb-link-icon {
+        width: 14px !important;
+        height: 14px !important;
+        color: #9ca3af !important;
+        transition: color 0.2s ease !important;
+      }
+      .msb-link:hover .msb-link-icon {
+        color: #f87171 !important;
+      }
+      .msb-link-indicator {
+        position: absolute !important;
+        bottom: -1px !important;
+        left: 10px !important;
+        right: 10px !important;
+        height: 2px !important;
+        background: linear-gradient(90deg, transparent, #ef4444, transparent) !important;
+      }
+      .msb-actions-desktop {
+        display: flex !important;
+        align-items: center !important;
+        gap: 12px !important;
+      }
+      .msb-btn-admin {
+        display: none;
+        align-items: center !important;
+        gap: 6px !important;
+        padding: 6px 13px !important;
+        border-radius: 10px !important;
+        font-size: 12px !important;
+        font-weight: 700 !important;
+        color: #fcd34d !important;
+        background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(180, 83, 9, 0.3)) !important;
+        border: 1px solid rgba(245, 158, 11, 0.4) !important;
+        box-shadow: 0 0 15px rgba(245, 158, 11, 0.25) !important;
+        text-decoration: none !important;
+        transition: all 0.2s ease !important;
+        white-space: nowrap !important;
+      }
+      .msb-btn-admin.visible {
+        display: inline-flex !important;
+      }
+      .msb-btn-admin:hover {
+        background: linear-gradient(135deg, rgba(245, 158, 11, 0.35), rgba(180, 83, 9, 0.45)) !important;
+        box-shadow: 0 0 20px rgba(245, 158, 11, 0.4) !important;
+        transform: translateY(-1px) !important;
+      }
+      .msb-user-pill {
+        position: relative !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        padding: 4px 10px !important;
+        border-radius: 12px !important;
+        background: rgba(255, 255, 255, 0.06) !important;
+        border: 1px solid rgba(255, 255, 255, 0.12) !important;
+        cursor: pointer !important;
+        transition: all 0.2s ease !important;
+      }
+      .msb-user-pill:hover {
+        background: rgba(255, 255, 255, 0.12) !important;
+      }
+      .msb-user-avatar {
+        width: 24px !important;
+        height: 24px !important;
+        border-radius: 50% !important;
+        border: 1px solid rgba(255, 255, 255, 0.25) !important;
+      }
+      .msb-user-info {
+        display: flex !important;
+        flex-direction: column !important;
+        text-align: left !important;
+      }
+      .msb-user-name {
+        font-size: 11px !important;
+        font-weight: 700 !important;
+        color: #fff !important;
+        line-height: 1.1 !important;
+        max-width: 110px !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+      }
+      .msb-user-role-badge {
+        font-size: 8px !important;
+        font-weight: 800 !important;
+        text-transform: uppercase !important;
+        font-family: ui-monospace, monospace !important;
+        letter-spacing: 0.5px !important;
+      }
+      .msb-role-admin { color: #f87171 !important; }
+      .msb-role-moder { color: #fbbf24 !important; }
+      .msb-role-user { color: #60a5fa !important; }
+      .msb-role-visitante { color: #9ca3af !important; }
+      .msb-user-dropdown {
+        display: none;
+        position: absolute !important;
+        top: calc(100% + 8px) !important;
+        right: 0 !important;
+        width: 220px !important;
+        background: rgba(14, 14, 20, 0.98) !important;
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        border-radius: 14px !important;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8) !important;
+        padding: 8px !important;
+        z-index: 9999999 !important;
+        backdrop-filter: blur(25px) !important;
+        -webkit-backdrop-filter: blur(25px) !important;
+      }
+      .msb-user-dropdown.open {
+        display: block !important;
+      }
+      .msb-dropdown-title {
+        font-size: 9px !important;
+        text-transform: uppercase !important;
+        letter-spacing: 1px !important;
+        color: #9ca3af !important;
+        padding: 4px 8px !important;
+        display: block !important;
+      }
+      .msb-dropdown-item {
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        padding: 7px 10px !important;
+        font-size: 11px !important;
+        font-weight: 600 !important;
+        color: #e5e5e5 !important;
+        border-radius: 8px !important;
+        background: transparent !important;
+        border: none !important;
+        width: 100% !important;
+        text-align: left !important;
+        cursor: pointer !important;
+        transition: all 0.15s ease !important;
+      }
+      .msb-dropdown-item:hover {
+        background: rgba(255, 255, 255, 0.08) !important;
+        color: #fff !important;
+      }
+      .msb-menu-toggle {
+        display: none;
+        background: rgba(255, 255, 255, 0.06) !important;
+        border: 1px solid rgba(255, 255, 255, 0.12) !important;
+        border-radius: 10px !important;
+        padding: 6px !important;
+        color: #d1d5db !important;
+        cursor: pointer !important;
+      }
+      .msb-mobile-drawer {
+        display: none;
+        position: fixed !important;
+        top: 60px !important;
+        left: 0 !important;
+        right: 0 !important;
+        background: rgba(10, 10, 14, 0.98) !important;
+        backdrop-filter: blur(30px) !important;
+        -webkit-backdrop-filter: blur(30px) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
+        padding: 14px 20px !important;
+        flex-direction: column !important;
+        gap: 6px !important;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9) !important;
+        z-index: 999998 !important;
+      }
+      .msb-mobile-drawer.open {
+        display: flex !important;
+      }
+      @media (max-width: 900px) {
+        .msb-links-desktop, .msb-actions-desktop {
+          display: none !important;
+        }
+        .msb-menu-toggle {
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+        }
+        body {
+          padding-top: 108px !important;
+          padding-bottom: calc(96px + env(safe-area-inset-bottom, 12px)) !important;
+        }
+        .mobile-menu {
+          top: 60px !important;
+        }
+        /* Oculta dock legado do showcase para dar lugar à Barra Geral Soberana */
+        .showcase-mobile-dock {
+          display: none !important;
+        }
+      }
+      body {
+        padding-top: 60px;
+      }
+      .nav-main {
+        top: 60px;
+      }
+
+      /* ========================================================
+         SOVEREIGN MOBILE BOTTOM BAR (BARRA GERAL SOBERANA)
+         ======================================================== */
+      #mobile-sovereign-bottom-bar {
+        position: fixed !important;
+        bottom: 12px !important;
+        left: 8px !important;
+        right: 8px !important;
+        max-width: 580px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        z-index: 999998 !important;
+        background: rgba(6, 0, 2, 0.94) !important;
+        backdrop-filter: blur(24px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+        border: 1px solid rgba(153, 27, 27, 0.7) !important;
+        border-radius: 20px !important;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.95), 0 0 22px rgba(255, 7, 58, 0.22) !important;
+        padding: 6px 4px calc(6px + env(safe-area-inset-bottom, 0px)) 4px !important;
+        box-sizing: border-box !important;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      }
+      @media (min-width: 901px) {
+        #mobile-sovereign-bottom-bar {
+          display: none !important;
+        }
+      }
+      .msb-bottom-dock-mask-left {
+        position: absolute !important;
+        left: 4px !important;
+        top: 4px !important;
+        bottom: 4px !important;
+        width: 12px !important;
+        background: linear-gradient(to right, rgba(6, 0, 2, 0.95), transparent) !important;
+        pointer-events: none !important;
+        z-index: 10 !important;
+        border-top-left-radius: 16px !important;
+        border-bottom-left-radius: 16px !important;
+      }
+      .msb-bottom-dock-mask-right {
+        position: absolute !important;
+        right: 4px !important;
+        top: 4px !important;
+        bottom: 4px !important;
+        width: 12px !important;
+        background: linear-gradient(to left, rgba(6, 0, 2, 0.95), transparent) !important;
+        pointer-events: none !important;
+        z-index: 10 !important;
+        border-top-right-radius: 16px !important;
+        border-bottom-right-radius: 16px !important;
+      }
+      .msb-bottom-dock-container {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        overflow-x: auto !important;
+        scrollbar-width: none !important;
+        -webkit-overflow-scrolling: touch !important;
+        gap: 3px !important;
+        padding: 0 4px !important;
+        height: 50px !important;
+        touch-action: pan-x !important;
+      }
+      .msb-bottom-dock-container::-webkit-scrollbar {
+        display: none !important;
+      }
+      .msb-dock-item {
+        position: relative !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        flex-shrink: 0 !important;
+        min-width: 52px !important;
+        min-height: 44px !important;
+        height: 48px !important;
+        padding: 2px 4px !important;
+        border-radius: 12px !important;
+        text-decoration: none !important;
+        color: #a1a1aa !important;
+        transition: all 0.2s ease !important;
+        user-select: none !important;
+        -webkit-tap-highlight-color: transparent !important;
+      }
+      .msb-dock-item:active {
+        transform: scale(0.94) !important;
+      }
+      .msb-dock-icon-box {
+        position: relative !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 28px !important;
+        height: 24px !important;
+        border-radius: 8px !important;
+        transition: all 0.25s ease !important;
+      }
+      .msb-dock-icon {
+        width: 15px !important;
+        height: 15px !important;
+        transition: transform 0.2s ease !important;
+      }
+      .msb-dock-label {
+        font-size: 8.5px !important;
+        letter-spacing: -0.2px !important;
+        margin-top: 2px !important;
+        white-space: nowrap !important;
+        line-height: 1 !important;
+        color: #a1a1aa !important;
+        transition: color 0.2s ease !important;
+      }
+      .msb-dock-item.active {
+        color: #ffffff !important;
+        font-weight: 700 !important;
+      }
+      .msb-dock-item.active .msb-dock-icon-box {
+        background: rgba(127, 29, 29, 0.7) !important;
+        color: #f87171 !important;
+        border: 1px solid rgba(220, 38, 38, 0.5) !important;
+        box-shadow: 0 0 16px rgba(255, 7, 58, 0.45) !important;
+      }
+      .msb-dock-item.active .msb-dock-icon {
+        transform: scale(1.1) !important;
+        color: #f87171 !important;
+      }
+      .msb-dock-item.active .msb-dock-label {
+        color: #f87171 !important;
+        font-weight: 700 !important;
+        text-shadow: 0 0 8px rgba(255, 7, 58, 0.35) !important;
+      }
+      .msb-dock-indicator {
+        position: absolute !important;
+        top: 1px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: 20px !important;
+        height: 2px !important;
+        background: linear-gradient(90deg, transparent, #ff073a, transparent) !important;
+        box-shadow: 0 0 8px #ff073a !important;
+        border-radius: 2px !important;
+      }
+      .msb-dock-active-dot {
+        position: absolute !important;
+        bottom: -2px !important;
+        width: 5px !important;
+        height: 5px !important;
+        border-radius: 50% !important;
+        background: #ff073a !important;
+        box-shadow: 0 0 8px #ff073a !important;
+      }
+      .msb-dock-admin-box {
+        background: rgba(69, 26, 3, 0.5) !important;
+        border: 1px solid rgba(245, 158, 11, 0.4) !important;
+        color: #fcd34d !important;
+      }
+      #msb-dock-admin-link {
+        display: none !important;
+      }
+      #msb-dock-admin-link.is-admin-active {
+        display: flex !important;
+      }
+    </style>
+
+    <header id="master-sovereign-bar" data-component="MasterSovereignBar">
+      <div class="msb-inner">
+        <!-- Marca & Logo Soberano -->
+        <a href="/" target="_top" class="msb-brand" title="Ir para a Home Page">
+          <div class="msb-logo-badge" style="overflow: hidden; padding: 1px; border-radius: 12px;">
+            <div class="msb-logo-inner" style="overflow: hidden; display: flex; align-items: center; justify-content: center; border-radius: 10px;">
+              <img src="/assets/site_icon.webp" alt="Mateus Celestino Pro X Logo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;" />
+            </div>
+          </div>
+          <div class="msb-brand-info">
+            <div class="msb-brand-name-row">
+              <span class="msb-brand-name">MATEUS CELESTINO <span style="color: #ff073a; font-weight: 800;">PRO X</span></span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Links Principais Centrais -->
+        <div class="msb-links-desktop">
+          <a href="/" target="_top" class="msb-link" title="Home Page">
+            <svg class="msb-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>Home Page</span>
+          </a>
+          <a href="/showcase" target="_top" class="msb-link" title="Showcase">
+            <svg class="msb-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
+            <span>Showcase</span>
+          </a>
+          <a href="/stack-squad" target="_top" class="msb-link active" title="Stack & Squad">
+            <svg class="msb-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.9a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg>
+            <span>Stack & Squad</span>
+            <span class="msb-link-indicator"></span>
+          </a>
+          <a href="/shop" target="_top" class="msb-link" title="Shop">
+            <svg class="msb-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            <span>Shop</span>
+          </a>
+          <a href="/comunidade" target="_top" class="msb-link" title="Comunidade">
+            <svg class="msb-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <span>Comunidade</span>
+          </a>
+          <a href="/biblioteca" target="_top" class="msb-link" title="Free Resources">
+            <svg class="msb-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 20H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H20a2 2 0 0 1 2 2v2"/><circle cx="13" cy="12" r="2"/><path d="M18 19c-2.8 0-5-2.2-5-5v8"/><circle cx="20" cy="19" r="2"/></svg>
+            <span>Free Resources</span>
+          </a>
+        </div>
+
+        <!-- Status, Painel Admin (apenas moder/admin) & Role Pill -->
+        <div class="msb-actions-desktop">
+          <a href="/admin" target="_top" id="msb-admin-btn" class="msb-btn-admin" title="Painel de Gestão e Form Builder">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"/></svg>
+            <span>👑 Painel Admin</span>
+          </a>
+
+          <div class="msb-user-pill" id="msb-user-pill" title="Clique para alternar sessão / login">
+            <img id="msb-user-avatar" class="msb-user-avatar" src="https://api.dicebear.com/7.x/bottts/svg?seed=GuestVisitor" alt="Avatar">
+            <div class="msb-user-info">
+              <span id="msb-user-name" class="msb-user-name">Visitante</span>
+              <span id="msb-user-role-badge" class="msb-user-role-badge msb-role-visitante">⚪ VISITANTE</span>
+            </div>
+
+            <div class="msb-user-dropdown" id="msb-user-dropdown">
+              <span class="msb-dropdown-title">Sessão da Plataforma</span>
+              <a href="/comunidade/login" id="msb-login-link" class="msb-dropdown-item" style="text-decoration: none;">
+                <span>🔑</span><span>Fazer Login / Identificar</span>
+              </a>
+              <button class="msb-dropdown-item" id="msb-profile-btn" type="button" style="display: none;">
+                <span>👤</span><span>Meu Perfil</span>
+              </button>
+              <button class="msb-dropdown-item" id="msb-logout-btn" type="button" style="display: none;">
+                <span>🚪</span><span>Encerrar Sessão</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Botão Menu Mobile -->
+        <button id="msb-mobile-toggle" class="msb-menu-toggle" aria-label="Abrir menu de navegação soberana">
+          <svg id="msb-icon-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+          <svg id="msb-icon-close" style="display:none;" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Drawer Mobile -->
+      <div id="msb-mobile-drawer" class="msb-mobile-drawer">
+        <a href="/" target="_top" class="msb-link">
+          <svg class="msb-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span>Home Page</span>
+        </a>
+        <a href="/showcase" target="_top" class="msb-link">
+          <svg class="msb-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
+          <span>Showcase</span>
+        </a>
+        <a href="/stack-squad" target="_top" class="msb-link active">
+          <svg class="msb-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.9a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg>
+          <span>Stack & Squad</span>
+          <span class="msb-link-indicator"></span>
+        </a>
+        <a href="/shop" target="_top" class="msb-link">
+          <svg class="msb-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span>Shop</span>
+        </a>
+        <a href="/comunidade" target="_top" class="msb-link">
+          <svg class="msb-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span>Comunidade</span>
+        </a>
+        <a href="/biblioteca" target="_top" class="msb-link">
+          <svg class="msb-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 20H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H20a2 2 0 0 1 2 2v2"/><circle cx="13" cy="12" r="2"/><path d="M18 19c-2.8 0-5-2.2-5-5v8"/><circle cx="20" cy="19" r="2"/></svg>
+          <span>Free Resources</span>
+        </a>
+        <a href="/admin" target="_top" id="msb-mobile-admin-btn" class="msb-btn-admin" style="margin-top: 6px; justify-content: center;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"/></svg>
+          <span>👑 Painel Admin</span>
+        </a>
+        <a href="/comunidade/login" target="_top" id="msb-mobile-login-link" class="msb-link" style="margin-top: 6px;">
+          <span>🔑 Entrar / Login</span>
+        </a>
+        <button id="msb-mobile-logout-btn" type="button" class="msb-link" style="display:none; color:#f87171; width:100%; text-align:left; background:none; border:none; cursor:pointer;">
+          <span>🚪 Encerrar Sessão</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- ========================================================
+         SHOWCASE MOBILE QUICK NAV (CHIPS HORIZONTAIS TÁTEIS)
+         ======================================================== -->
+    <nav class="showcase-mobile-chips-bar" id="mobile-chips-bar" aria-label="Navegação Rápida Showcase">
+      <div class="showcase-chips-scroll">
+        <button type="button" class="chip-link chip-menu-trigger open-mobile-menu-trigger" id="chips-menu-btn" aria-label="Abrir Menu Completo de Seções"><i data-lucide="menu"></i><span>Menu ☰</span></button>
+        <a href="#about" class="chip-link active"><i data-lucide="user"></i><span>Sobre</span></a>
+        <a href="#skills" class="chip-link"><i data-lucide="zap"></i><span>Habilidades</span></a>
+        <a href="#spotlight-section" class="chip-link"><i data-lucide="trending-up"></i><span>Resultados</span></a>
+        <a href="#vps" class="chip-link"><i data-lucide="server"></i><span>VPS & Linux</span></a>
+        <a href="#discord" class="chip-link"><i data-lucide="message-square"></i><span>Comunidades</span></a>
+        <a href="#products-digital" class="chip-link"><i data-lucide="package"></i><span>Produtos</span></a>
+        <a href="#cyberclass-kiwify" class="chip-link"><i data-lucide="award"></i><span>CyberClass</span></a>
+        <a href="#mac" class="chip-link"><i data-lucide="laptop"></i><span>macOS & CLI</span></a>
+        <a href="#opensource-projects" class="chip-link"><i data-lucide="code-2"></i><span>OpenSource</span></a>
+        <a href="#webdesign" class="chip-link"><i data-lucide="globe"></i><span>Web Design</span></a>
+        <a href="#apps-series" class="chip-link"><i data-lucide="smartphone"></i><span>Apps</span></a>
+        <a href="#notion-master" class="chip-link"><i data-lucide="layout"></i><span>Notion</span></a>
+        <a href="#experience" class="chip-link"><i data-lucide="briefcase"></i><span>Trajetória</span></a>
+        <a href="#certifications" class="chip-link"><i data-lucide="file-badge"></i><span>Certificados (70+)</span></a>
+        <a href="#contact" class="chip-link"><i data-lucide="send"></i><span>Conexão</span></a>
+      </div>
+    </nav>
+
+    <!-- Sub-Header Universal do Sistema (Portal Navbar) -->
+    <nav id="portal-navigation-map" aria-label="Mapa de Navegação Setorial Mateus Celestino Pro X" style="position: fixed; top: 64px; left: 0; right: 0; z-index: 45; padding: 10px 24px; pointer-events: none; transition: all 0.3s ease;">
+      <div style="max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; pointer-events: auto;">
+        <!-- Links Centrais -->
+        <div style="display: flex; align-items: center; gap: 6px; background: rgba(18, 18, 24, 0.75); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 9999px; padding: 6px 14px; box-shadow: 0 20px 45px rgba(0,0,0,0.9);">
+          <a href="/" target="_top" style="display: flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 9999px; font-size: 12px; font-family: monospace; color: #a1a1aa; text-decoration: none; transition: all 0.2s;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ff073a" stroke-width="2"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+            <span style="color: #fff; font-weight: 700;">Início</span>
+          </a>
+          <a href="/#sobre" target="_top" style="display: flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 9999px; font-size: 12px; font-family: monospace; color: #a1a1aa; text-decoration: none; transition: all 0.2s;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span>Sobre</span>
+          </a>
+          <a href="/#contato" target="_top" style="display: flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 9999px; font-size: 12px; font-family: monospace; color: #a1a1aa; text-decoration: none; transition: all 0.2s;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            <span>Contato</span>
+          </a>
+        </div>
+
+        <!-- Ações Rápidas Direita: CTA WhatsApp -->
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <a href="https://api.whatsapp.com/send/?phone=553197724257&text=QUERO+AUTOMATIZAR+TUDO.&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #a80018 0%, #ff073a 100%); color: #fff; font-size: 12px; font-family: monospace; font-weight: 700; letter-spacing: 0.05em; padding: 6px 14px; border-radius: 12px; text-decoration: none; box-shadow: 0 0 25px rgba(255, 7, 58, 0.4); transition: transform 0.2s;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span>QUERO AUTOMATIZAR TUDO</span>
+          </a>
+            <span>QUERO AUTOMATIZAR TUDO</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <script id="master-sovereign-bar-script">
+      (function() {
+        var STORAGE_KEY = 'mcp_session_user';
+        var GUEST_USER = {
+          isLoggedIn: false,
+          role: 'visitante',
+          name: 'Visitante',
+          email: '',
+          avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=GuestVisitor'
+        };
+
+        function getSession() {
+          try {
+            var raw = localStorage.getItem(STORAGE_KEY);
+            if (raw) {
+              var parsed = JSON.parse(raw);
+              if (parsed && parsed.isLoggedIn === true && parsed.role) return parsed;
+            }
+          } catch(e) {}
+          return GUEST_USER;
+        }
+
+        function setSession(u) {
+          try {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(u));
+            localStorage.setItem('mcp_user_role', u.role);
+            localStorage.setItem('mcp_admin_auth', (u.role === 'admin' || u.role === 'moder') ? 'true' : 'false');
+            window.dispatchEvent(new CustomEvent('mcp_auth_changed', { detail: u }));
+          } catch(e) {}
+        }
+
+        function renderMSB() {
+          var u = getSession();
+          var adminBtn = document.getElementById('msb-admin-btn');
+          var mobileAdminBtn = document.getElementById('msb-mobile-admin-btn');
+          var userName = document.getElementById('msb-user-name');
+          var userAvatar = document.getElementById('msb-user-avatar');
+          var userRoleBadge = document.getElementById('msb-user-role-badge');
+          var loginLink = document.getElementById('msb-login-link');
+          var profileBtn = document.getElementById('msb-profile-btn');
+          var logoutBtn = document.getElementById('msb-logout-btn');
+          var mobileLoginLink = document.getElementById('msb-mobile-login-link');
+          var mobileProfileBtn = document.getElementById('msb-mobile-profile-btn');
+          var mobileLogoutBtn = document.getElementById('msb-mobile-logout-btn');
+
+          var isAdmin = Boolean(u && u.isLoggedIn === true && u.role === 'admin');
+          if (adminBtn) {
+            if (isAdmin) adminBtn.classList.add('visible');
+            else adminBtn.classList.remove('visible');
+          }
+          if (mobileAdminBtn) {
+            mobileAdminBtn.style.display = isAdmin ? 'flex' : 'none';
+          }
+          var dockAdminLink = document.getElementById('msb-dock-admin-link');
+          if (dockAdminLink) {
+            if (isAdmin) {
+              dockAdminLink.classList.add('is-admin-active');
+              dockAdminLink.style.setProperty('display', 'flex', 'important');
+            } else {
+              dockAdminLink.classList.remove('is-admin-active');
+              dockAdminLink.style.setProperty('display', 'none', 'important');
+            }
+          }
+
+          if (userName) userName.textContent = u.name;
+          if (userAvatar) userAvatar.src = u.avatar;
+          if (userRoleBadge) {
+            userRoleBadge.className = 'msb-user-role-badge msb-role-' + u.role;
+            var roleText = '⚪ VISITANTE';
+            if (u.role === 'admin') roleText = '👑 ADMIN';
+            else if (u.role === 'moder') roleText = '🛡️ MODER';
+            else if (u.role === 'user') roleText = '🔵 MEMBRO';
+            userRoleBadge.textContent = roleText;
+          }
+
+          if (u.isLoggedIn) {
+            if (loginLink) loginLink.style.display = 'none';
+            if (profileBtn) profileBtn.style.display = 'flex';
+            if (logoutBtn) logoutBtn.style.display = 'flex';
+            if (mobileLoginLink) mobileLoginLink.style.display = 'none';
+            if (mobileProfileBtn) mobileProfileBtn.style.display = 'flex';
+            if (mobileLogoutBtn) mobileLogoutBtn.style.display = 'flex';
+          } else {
+            if (loginLink) loginLink.style.display = 'flex';
+            if (profileBtn) profileBtn.style.display = 'none';
+            if (logoutBtn) logoutBtn.style.display = 'none';
+            if (mobileLoginLink) mobileLoginLink.style.display = 'flex';
+            if (mobileProfileBtn) mobileProfileBtn.style.display = 'none';
+            if (mobileLogoutBtn) mobileLogoutBtn.style.display = 'none';
+          }
+        }
+
+        window.addEventListener('DOMContentLoaded', renderMSB);
+        window.addEventListener('storage', renderMSB);
+        window.addEventListener('mcp_auth_changed', renderMSB);
+        setTimeout(renderMSB, 50);
+
+        var userPill = document.getElementById('msb-user-pill');
+        var userDropdown = document.getElementById('msb-user-dropdown');
+        if (userPill && userDropdown) {
+          userPill.addEventListener('click', function(e) {
+            e.stopPropagation();
+            userDropdown.classList.toggle('open');
+          });
+          document.addEventListener('click', function() {
+            userDropdown.classList.remove('open');
+          });
+        }
+
+        var profileBtn = document.getElementById('msb-profile-btn');
+        if (profileBtn) {
+          profileBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            if (userDropdown) userDropdown.classList.remove('open');
+            window.location.href = '/comunidade#profile';
+          });
+        }
+
+        var logoutBtn = document.getElementById('msb-logout-btn');
+        if (logoutBtn) {
+          logoutBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            localStorage.removeItem('mcp_auth_token');
+            setSession(GUEST_USER);
+            renderMSB();
+            if (userDropdown) userDropdown.classList.remove('open');
+            fetch('/api/auth/me', { method: 'DELETE' }).catch(function() {});
+          });
+        }
+
+        var mobileLogoutBtn = document.getElementById('msb-mobile-logout-btn');
+        if (mobileLogoutBtn) {
+          mobileLogoutBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            var drawer = document.getElementById('msb-mobile-drawer');
+            localStorage.removeItem('mcp_auth_token');
+            setSession(GUEST_USER);
+            renderMSB();
+            if (drawer) drawer.classList.remove('open');
+            fetch('/api/auth/me', { method: 'DELETE' }).catch(function() {});
+          });
+        }
+
+        var toggleBtn = document.getElementById('msb-mobile-toggle');
+        var drawer = document.getElementById('msb-mobile-drawer');
+        var iconOpen = document.getElementById('msb-icon-open');
+        var iconClose = document.getElementById('msb-icon-close');
+        if (toggleBtn && drawer) {
+          toggleBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            var isOpen = drawer.classList.toggle('open');
+            if (iconOpen && iconClose) {
+              iconOpen.style.display = isOpen ? 'none' : 'block';
+              iconClose.style.display = isOpen ? 'block' : 'none';
+            }
+          });
+          document.addEventListener('click', function(e) {
+            if (!drawer.contains(e.target) && !toggleBtn.contains(e.target)) {
+              drawer.classList.remove('open');
+              if (iconOpen && iconClose) {
+                iconOpen.style.display = 'block';
+                iconClose.style.display = 'none';
+              }
+            }
+          });
+        }
+      })();
+    </script>
+
+
+    <nav class="sticky top-[60px] z-40 bg-black/80 backdrop-blur-xl border-b border-white/10 px-6 py-3.5 shadow-md">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <!-- Brand Logo -->
+            <button onclick="switchView('home')" class="flex items-center space-x-3 focus:outline-none">
+                <div class="relative w-10 h-10 flex items-center justify-center bg-black border border-sanguine rounded-lg shadow-neon-red">
+                    <span class="text-sanguine-glow font-black text-xl font-tech">S</span>
+                    <div class="absolute inset-0 border border-sanguine-glow opacity-30 animate-ping rounded-lg"></div>
+                </div>
+                <span class="text-white font-tech font-bold text-2xl tracking-widest uppercase">Smart<span class="text-sanguine-glow">Flow</span></span>
+            </button>
+            
+            <!-- Core Navigation (Minimalist & Clean) -->
+            <div class="flex items-center space-x-6">
+                <button onclick="switchView('squad')" class="text-xs font-semibold uppercase tracking-widest text-gray-300 hover:text-sanguine-glow transition duration-300 px-3 py-2" id="nav-squad">Squad</button>
+                
+                <!-- Sanguine Neon Blaster Pulsing Glassmorphic Button -->
+                <button onclick="switchView('agendar')" id="nav-agendar" class="relative group overflow-hidden px-6 py-2.5 rounded-xl border border-red-500/30 bg-black/40 backdrop-blur-md transition-all duration-300 shadow-[0_0_15px_rgba(255,0,51,0.15)] hover:shadow-[0_0_25px_rgba(255,0,51,0.4)] flex items-center gap-2">
+                    <!-- Sanguine Core Light pulsing -->
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sanguine opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-sanguine-glow shadow-[0_0_10px_#ff0033]"></span>
+                    </span>
+                    <span class="text-white font-tech font-bold text-xs uppercase tracking-widest">Agendar</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Glassmorphic WhatsApp Sticky Button -->
+    <a href="https://wa.me/5531997724257" target="_blank" aria-label="Fale Conosco no WhatsApp" class="fixed bottom-6 right-6 z-50 w-16 h-16 rounded-full flex items-center justify-center ultra-glass border border-emerald-500/30 hover:border-emerald-400 hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] transition-all duration-300 group">
+        <i class="fa-brands fa-whatsapp text-3xl text-emerald-400 group-hover:scale-110 group-hover:text-emerald-300 transition-all duration-300"></i>
+    </a>
+
+    <!-- MAIN HOME VIEWPORT -->
+    <div id="view-home" class="view-section">
+        
+        <section class="relative min-h-[90vh] flex items-center justify-center px-6 pt-12 pb-20 overflow-hidden">
+            <!-- Background Video vid1.mp4 -->
+            <div class="absolute inset-0 z-0 overflow-hidden bg-black">
+                <video autoplay loop muted playsinline class="video-bg opacity-55 filter brightness-90">
+                    <source src="/smartflow/vid1.mp4" type="video/mp4">
+                </video>
+                <!-- Centralized subtle overlay to focus light -->
+                <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/40 to-black"></div>
+            </div>
+
+            <div class="max-w-6xl mx-auto text-center relative z-10">
+                <!-- Ultimate High-Tech Catchphrase -->
+                <h1 class="text-5xl md:text-8xl font-black tracking-tight mb-8 font-tech text-white leading-tight">
+                    Estratégia de quem <span class="text-sanguine-glow drop-shadow-[0_0_15px_rgba(255,0,51,0.6)]">vende</span><br class="hidden md:inline">
+                    + Execução de quem <span class="underline decoration-sanguine">programa</span>.
+                </h1>
+
+                <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto font-light leading-relaxed mb-12">
+                    A <span class="text-white font-semibold">SmartFlow</span> projeta, estrutura e codifica sistemas autônomos de Inteligência Artificial e Engenharia Web que vendem, integram operações e escalam sua empresa sem amarras.
+                </p>
+
+                <!-- Hero Action Buttons with Ultra Glassmorphism -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+                    <button onclick="switchView('agendar')" class="w-full sm:w-auto px-8 py-4 bg-sanguine hover:bg-sanguine-glow text-white font-extrabold text-lg rounded-xl border border-red-500 shadow-neon-red hover:shadow-neon-red-strong transition-all duration-300 tracking-wider uppercase">
+                        Quero Escalar Meu Negócio
+                    </button>
+                    <button onclick="switchView('squad')" class="w-full sm:w-auto px-8 py-4 ultra-glass hover:bg-white/10 text-white font-bold text-lg rounded-xl transition-all duration-300 tracking-wider uppercase">
+                        Conhecer o Squad
+                    </button>
+                </div>
+
+                <!-- Tech Badge Counters -->
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-6 mt-20 max-w-4xl mx-auto border-t border-sanguine-deep pt-12">
+                    <div class="text-center">
+                        <div class="text-3xl md:text-4xl font-extrabold text-white font-tech">75+</div>
+                        <div class="text-xs text-gray-400 uppercase tracking-widest mt-1">Sistemas de IA</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl md:text-4xl font-extrabold text-white font-tech">55+</div>
+                        <div class="text-xs text-gray-400 uppercase tracking-widest mt-1">Ferramentas Tech</div>
+                    </div>
+                    <div class="text-center col-span-2 md:col-span-1">
+                        <div class="text-3xl md:text-4xl font-extrabold text-white font-tech">46+</div>
+                        <div class="text-xs text-gray-400 uppercase tracking-widest mt-1">Soluções Business</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="relative py-24 px-6 bg-[#030303] border-y border-sanguine-deep/30">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-xs font-mono tracking-widest uppercase text-sanguine-glow mb-4">Filosofia de Operação</h2>
+                    <h3 class="text-4xl md:text-5xl font-black font-tech text-white">Por que a SmartFlow Existe?</h3>
+                    <div class="w-24 h-1 bg-sanguine mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <div class="grid lg:grid-cols-12 gap-8 items-stretch">
+                    <!-- Column Left: Interactive Concept Cards (Ultra Glassmorphism applied) -->
+                    <div class="lg:col-span-7 flex flex-col justify-between space-y-6">
+                        <div class="ultra-glass p-8 rounded-2xl reveal relative overflow-hidden group hover:border-sanguine transition-all duration-300">
+                            <div class="flex items-start gap-4">
+                                <div class="text-sanguine-glow text-3xl p-3 bg-sanguine-dark rounded-xl">
+                                    <i class="fa-solid fa-bolt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold font-tech text-white mb-2">Eliminação da Rotina Repetitiva</h4>
+                                    <p class="text-gray-400 text-sm leading-relaxed">
+                                        Vivemos a dor do comercial no dia a dia. CRMs mal alimentados, leads esfriando sem resposta rápida, follow-ups perdidos e planilhas confusas. Nossos sistemas automatizam cada etapa burocrática para blindar o seu tempo de execução.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ultra-glass p-8 rounded-2xl reveal relative overflow-hidden group hover:border-sanguine transition-all duration-300">
+                            <div class="flex items-start gap-4">
+                                <div class="text-sanguine-glow text-3xl p-3 bg-sanguine-dark rounded-xl">
+                                    <i class="fa-solid fa-code-branch"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold font-tech text-white mb-2">A Solução Sem Amarras</h4>
+                                    <p class="text-gray-400 text-sm leading-relaxed">
+                                        Quando a automação e a programação se unem verdadeiramente, o gargalo operacional desaparece. Criamos fluxos inteligentes e códigos estáveis de alta performance que garantem escala real.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Column Right: Core Values & Commitments -->
+                    <div class="lg:col-span-5 bg-black border border-sanguine-deep p-8 rounded-2xl shadow-cyber-card reveal relative flex flex-col justify-between">
+                        <div class="absolute -top-10 -right-10 w-40 h-40 bg-sanguine/10 rounded-full blur-3xl"></div>
+                        
+                        <div>
+                            <h4 class="text-xl font-bold font-tech mb-6 text-white border-b border-gray-800 pb-4">Nossa Filosofia Operacional</h4>
+                            
+                            <div class="space-y-6">
+                                <!-- Belief Item -->
+                                <div class="flex gap-4">
+                                    <div class="text-sanguine-glow text-lg mt-1">
+                                        <i class="fa-solid fa-circle-check"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-bold text-white text-md">No que acreditamos</h5>
+                                        <p class="text-xs text-gray-400 mt-1 leading-relaxed">
+                                            Vendedor foi feito para vender. O lead precisa de precisão, velocidade e inteligência. Toda automação deve proteger a operação humana de tarefas mundanas.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <!-- Deliver Item -->
+                                <div class="flex gap-4">
+                                    <div class="text-sanguine-glow text-lg mt-1">
+                                        <i class="fa-solid fa-diagram-project"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-bold text-white text-md">O que entregamos de verdade</h5>
+                                        <p class="text-xs text-gray-400 mt-1 leading-relaxed">
+                                            Planejamento estruturado e desenvolvimento sob medida. Código seguro com dashboards integrados e suporte técnico ágil.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 pt-6 border-t border-gray-950">
+                            <p class="text-sanguine-glow font-bold text-sm font-tech uppercase tracking-wider">
+                                Inteligência aplicada à escala corporativa.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="relative py-24 overflow-hidden bg-black">
+            <!-- Background Video vid2.mp4 -->
+            <div class="absolute inset-0 z-0 overflow-hidden bg-black">
+                <video autoplay loop muted playsinline class="video-bg opacity-45 filter brightness-85">
+                    <source src="/smartflow/vid2.mp4" type="video/mp4">
+                </video>
+                <div class="absolute inset-0 bg-gradient-to-b from-black via-black/80 to-black"></div>
+            </div>
+
+            <section class="relative z-10 px-6 max-w-7xl mx-auto pb-24">
+                <div class="text-center mb-16">
+                    <h2 class="text-xs font-mono tracking-widest uppercase text-sanguine-glow mb-4">Soluções Avançadas</h2>
+                    <h3 class="text-4xl md:text-5xl font-black font-tech text-white">Serviços Oferecidos</h3>
+                    <p class="text-gray-400 max-w-2xl mx-auto mt-4">Projetamos e executamos as melhores estratégias e soluções técnicas para o seu negócio.</p>
+                </div>
+
+                <!-- Services Grid -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Service 1: Custom Software (Highlighted) -->
+                    <div class="ultra-glass border-sanguine-glow/60 p-8 rounded-2xl reveal hover:border-sanguine transition-all duration-300 shadow-cyber-card relative">
+                        <div class="absolute top-4 right-4 bg-sanguine text-white text-[9px] font-mono px-2 py-0.5 rounded-full uppercase">Especialidade</div>
+                        <div class="text-sanguine-glow text-4xl mb-6"><i class="fa-solid fa-laptop-code"></i></div>
+                        <h4 class="text-xl font-extrabold text-white mb-3 font-tech underline decoration-sanguine decoration-2">Criação de Software Sob Medida</h4>
+                        <p class="text-sm text-gray-400 leading-relaxed">
+                            Desenvolvimento completo de sistemas, plataformas web customizadas e portais corporativos que resolvem gargalos de forma elegante e ultra-rápida.
+                        </p>
+                    </div>
+
+                    <!-- Service 2: AI Chatbots -->
+                    <div class="ultra-glass p-8 rounded-2xl reveal hover:border-sanguine transition-all duration-300 shadow-cyber-card">
+                        <div class="text-sanguine-glow text-4xl mb-6"><i class="fa-solid fa-robot"></i></div>
+                        <h4 class="text-xl font-extrabold text-white mb-3 font-tech">AI Chatbots Inteligentes</h4>
+                        <p class="text-sm text-gray-400 leading-relaxed">
+                            Robôs treinados com a inteligência do seu produto que entendem as dúvidas do cliente, qualificam e conduzem até a reunião com seu time de vendas.
+                        </p>
+                    </div>
+
+                    <!-- Service 3: Qualificação -->
+                    <div class="ultra-glass p-8 rounded-2xl reveal hover:border-sanguine transition-all duration-300 shadow-cyber-card">
+                        <div class="text-sanguine-glow text-4xl mb-6"><i class="fa-solid fa-filter"></i></div>
+                        <h4 class="text-xl font-extrabold text-white mb-3 font-tech">Qualificação de Leads</h4>
+                        <p class="text-sm text-gray-400 leading-relaxed">
+                            Identificação e triagem instantânea do fit de cada cliente em segundos no seu banco de dados, disparando alertas apenas para leads quentes.
+                        </p>
+                    </div>
+
+                    <!-- Service 4: Prospecção -->
+                    <div class="ultra-glass p-8 rounded-2xl reveal hover:border-sanguine transition-all duration-300 shadow-cyber-card">
+                        <div class="text-sanguine-glow text-4xl mb-6"><i class="fa-solid fa-bullseye"></i></div>
+                        <h4 class="text-xl font-extrabold text-white mb-3 font-tech">Prospecção Ativa Automatizada</h4>
+                        <p class="text-sm text-gray-400 leading-relaxed">
+                            Equipe virtual de outbound configurada para buscar, filtrar e abordar os tomadores de decisão ideais com copys ultra-personalizados.
+                        </p>
+                    </div>
+
+                    <!-- Service 5: Treinamento -->
+                    <div class="ultra-glass p-8 rounded-2xl reveal hover:border-sanguine transition-all duration-300 shadow-cyber-card">
+                        <div class="text-sanguine-glow text-4xl mb-6"><i class="fa-solid fa-graduation-cap"></i></div>
+                        <h4 class="text-xl font-extrabold text-white mb-3 font-tech">Sistemas de Treinamento</h4>
+                        <p class="text-sm text-gray-400 leading-relaxed">
+                            Análise automática de calls com feedbacks em tempo real de pontos de conversão, tratamento de objeções e insights do time comercial.
+                        </p>
+                    </div>
+
+                    <!-- Service 6: Inteligência -->
+                    <div class="ultra-glass p-8 rounded-2xl reveal hover:border-sanguine transition-all duration-300 shadow-cyber-card">
+                        <div class="text-sanguine-glow text-4xl mb-6"><i class="fa-solid fa-chart-line"></i></div>
+                        <h4 class="text-xl font-extrabold text-white mb-3 font-tech">Inteligência de Mercado</h4>
+                        <p class="text-sm text-gray-400 leading-relaxed">
+                            Varreduras constantes do mercado e concorrência para monitorar preços, mudanças de posições de produtos de forma autônoma.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="relative z-10 px-6 max-w-7xl mx-auto border-t border-sanguine-deep/40 pt-24 min-h-[600px]">
+                <!-- Stacks Background Canvas -->
+                <canvas id="stacks-canvas" class="absolute inset-0 w-full h-full pointer-events-none opacity-80"></canvas>
+                
+                <div class="text-center mb-16 relative z-10">
+                    <h2 class="text-xs font-mono tracking-widest uppercase text-sanguine-glow mb-4">Nossa Tecnologia</h2>
+                    <h3 class="text-4xl md:text-5xl font-black font-tech text-white">Nossas Stacks Digitais</h3>
+                    <p class="text-gray-400 max-w-xl mx-auto mt-4">Empregamos as tecnologias mais velozes e estáveis para desenvolver e integrar a sua infraestrutura.</p>
+                </div>
+
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4 relative z-10">
+                    <!-- React -->
+                    <div class="ultra-glass hover:border-sanguine-glow p-4 rounded-xl text-center reveal transition-all duration-300">
+                        <i class="fa-brands fa-react text-sanguine-glow text-3xl mb-2"></i>
+                        <h5 class="text-xs font-bold text-white uppercase">React</h5>
+                    </div>
+                    <!-- Node.js -->
+                    <div class="ultra-glass hover:border-sanguine-glow p-4 rounded-xl text-center reveal transition-all duration-300">
+                        <i class="fa-brands fa-node-js text-sanguine-glow text-3xl mb-2"></i>
+                        <h5 class="text-xs font-bold text-white uppercase">Node.js</h5>
+                    </div>
+                    <!-- Node (Hexagon nodes) -->
+                    <div class="ultra-glass hover:border-sanguine-glow p-4 rounded-xl text-center reveal transition-all duration-300">
+                        <i class="fa-solid fa-hexagon-nodes text-sanguine-glow text-3xl mb-2"></i>
+                        <h5 class="text-xs font-bold text-white uppercase">Node</h5>
+                    </div>
+                    <!-- Firebase -->
+                    <div class="ultra-glass hover:border-sanguine-glow p-4 rounded-xl text-center reveal transition-all duration-300">
+                        <i class="fa-solid fa-fire text-sanguine-glow text-3xl mb-2"></i>
+                        <h5 class="text-xs font-bold text-white uppercase">Firebase</h5>
+                    </div>
+                    <!-- Supabase -->
+                    <div class="ultra-glass hover:border-sanguine-glow p-4 rounded-xl text-center reveal transition-all duration-300">
+                        <i class="fa-solid fa-database text-sanguine-glow text-3xl mb-2"></i>
+                        <h5 class="text-xs font-bold text-white uppercase">Supabase</h5>
+                    </div>
+                    <!-- n8n -->
+                    <div class="ultra-glass hover:border-sanguine-glow p-4 rounded-xl text-center reveal transition-all duration-300">
+                        <i class="fa-solid fa-diagram-project text-sanguine-glow text-3xl mb-2"></i>
+                        <h5 class="text-xs font-bold text-white uppercase">n8n</h5>
+                    </div>
+                    <!-- Airtable -->
+                    <div class="ultra-glass hover:border-sanguine-glow p-4 rounded-xl text-center reveal transition-all duration-300">
+                        <i class="fa-solid fa-table-list text-sanguine-glow text-3xl mb-2"></i>
+                        <h5 class="text-xs font-bold text-white uppercase">Airtable</h5>
+                    </div>
+                    <!-- Notion -->
+                    <div class="ultra-glass hover:border-sanguine-glow p-4 rounded-xl text-center reveal transition-all duration-300">
+                        <i class="fa-solid fa-file-pen text-sanguine-glow text-3xl mb-2"></i>
+                        <h5 class="text-xs font-bold text-white uppercase">Notion</h5>
+                    </div>
+                    <!-- WhatsApp API -->
+                    <div class="ultra-glass hover:border-sanguine-glow p-4 rounded-xl text-center reveal transition-all duration-300">
+                        <i class="fa-brands fa-whatsapp text-sanguine-glow text-3xl mb-2"></i>
+                        <h5 class="text-xs font-bold text-white uppercase">WhatsApp API</h5>
+                    </div>
+                    <!-- Email Marketing AI -->
+                    <div class="ultra-glass hover:border-sanguine-glow p-4 rounded-xl text-center reveal transition-all duration-300">
+                        <i class="fa-solid fa-envelope-open-text text-sanguine-glow text-3xl mb-2"></i>
+                        <h5 class="text-xs font-bold text-white uppercase">Email AI</h5>
+                    </div>
+                    <!-- Linux Server -->
+                    <div class="ultra-glass hover:border-sanguine-glow p-4 rounded-xl text-center reveal transition-all duration-300">
+                        <i class="fa-brands fa-linux text-sanguine-glow text-3xl mb-2"></i>
+                        <h5 class="text-xs font-bold text-white uppercase">Linux</h5>
+                    </div>
+                    <!-- Docker -->
+                    <div class="ultra-glass hover:border-sanguine-glow p-4 rounded-xl text-center reveal transition-all duration-300">
+                        <i class="fa-brands fa-docker text-sanguine-glow text-3xl mb-2"></i>
+                        <h5 class="text-xs font-bold text-white uppercase">Docker</h5>
+                    </div>
+                    <!-- CRM -->
+                    <div class="ultra-glass hover:border-sanguine-glow p-4 rounded-xl text-center reveal transition-all duration-300">
+                        <i class="fa-solid fa-chart-bar text-sanguine-glow text-3xl mb-2"></i>
+                        <h5 class="text-xs font-bold text-white uppercase">CRM</h5>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </div>
+
+    <!-- SQUAD DEDICATED VIEWPORT -->
+    <div id="view-squad" class="view-section hidden fade-in-section">
+        
+        <section class="relative py-24 px-6 bg-[#020202] min-h-[85vh] flex flex-col justify-center">
+            <!-- Sanguine Ambient Shadows for Cinematic Vibe -->
+            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-sanguine/5 rounded-full blur-[140px] pointer-events-none"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-sanguine/5 rounded-full blur-[140px] pointer-events-none"></div>
+
+            <div class="max-w-6xl mx-auto w-full relative z-10">
+                <div class="text-center mb-16">
+                    <h2 class="text-xs font-mono tracking-widest uppercase text-sanguine-glow mb-4">Engenharia e Estratégia</h2>
+                    <h3 class="text-4xl md:text-6xl font-black font-tech text-white">Squad</h3>
+                    <p class="text-gray-400 max-w-2xl mx-auto mt-4">Unindo alta estratégia comercial ao mais puro desenvolvimento fullstack.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+                    <!-- Mateus Celestino Card (With corrected details, website and social) -->
+                    <div class="ultra-glass rounded-2xl p-8 relative overflow-hidden group hover:border-sanguine transition-all duration-300 flex flex-col justify-between shadow-cyber-card">
+                        <div class="absolute -top-20 -right-20 w-48 h-48 bg-sanguine/10 rounded-full blur-3xl group-hover:bg-sanguine/20 transition-all"></div>
+                        
+                        <div>
+                            <!-- High Tech Slot Photo Placeholder -->
+                            <div class="relative w-full h-80 bg-[#060606] border border-sanguine-deep/30 rounded-xl overflow-hidden mb-6">
+                                <img src="/smartflow/mateus.png" alt="Mateus Celestino" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" onerror="this.onerror=null; this.src='https://placehold.co/400x500/000/ff0033?text=Mateus+Celestino';">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent z-10"></div>
+                                <span class="absolute bottom-4 left-4 z-20 font-tech font-bold text-white text-lg tracking-wider uppercase">MATEUS CELESTINO PRO</span>
+                                <div class="absolute top-4 right-4 bg-sanguine text-white text-[10px] font-mono px-3 py-1 rounded-full border border-red-500 uppercase tracking-widest z-20">FOUNDER</div>
+                            </div>
+
+                            <h4 class="text-2xl font-black font-tech text-white mb-2">Mateus Celestino</h4>
+                            <div class="flex flex-col mb-4">
+                                <span class="text-sanguine-glow font-mono text-xs uppercase tracking-wider font-semibold">Professional Marketer</span>
+                                <span class="text-gray-300 font-mono text-xs uppercase tracking-wider">Sales & Automation Manager</span>
+                            </div>
+                            
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Formado em Marketing Digital por uma das principais faculdades do Brasil, com carreira construída unindo tecnologia, automação e estratégia digital de vendas. Especialista certificado em Typebot, N8N, Mautic, Baserow e outras ferramentas open-source altamente robustas.
+                            </p>
+                        </div>
+
+                        <div class="border-t border-gray-900 pt-6 mt-8 flex justify-between items-center">
+                            <a href="https://mateus-celestino-pro.bullet.site/" target="_blank" class="text-xs text-sanguine-glow hover:text-white transition font-mono flex items-center gap-2">
+                                <i class="fa-solid fa-globe"></i> Website Oficial
+                            </a>
+                            <div class="flex space-x-3">
+                                <a href="https://www.linkedin.com/in/mateus-celestino/" target="_blank" class="text-gray-400 hover:text-sanguine-glow transition"><i class="fa-brands fa-linkedin text-xl"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Odilon Card (With corrected details) -->
+                    <div class="ultra-glass rounded-2xl p-8 relative overflow-hidden group hover:border-sanguine transition-all duration-300 flex flex-col justify-between shadow-cyber-card">
+                        <div class="absolute -top-20 -right-20 w-48 h-48 bg-sanguine/10 rounded-full blur-3xl group-hover:bg-sanguine/20 transition-all"></div>
+                        
+                        <div>
+                            <!-- High Tech Slot Photo Placeholder -->
+                            <div class="relative w-full h-80 bg-[#060606] border border-sanguine-deep/30 rounded-xl overflow-hidden mb-6">
+                                <img src="/smartflow/odilon.png" alt="Odilon" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" onerror="this.onerror=null; this.src='https://placehold.co/400x500/000/ff0033?text=Odilon';">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent z-10"></div>
+                                <span class="absolute bottom-4 left-4 z-20 font-tech font-bold text-white text-lg tracking-wider uppercase">ODILON DEV</span>
+                                <div class="absolute top-4 right-4 bg-sanguine text-white text-[10px] font-mono px-3 py-1 rounded-full border border-red-500 uppercase tracking-widest z-20">ENGINEER</div>
+                            </div>
+
+                            <h4 class="text-2xl font-black font-tech text-white mb-2">Odilon</h4>
+                            <div class="flex flex-col mb-4">
+                                <span class="text-sanguine-glow font-mono text-xs uppercase tracking-wider font-semibold">Front End & Backend Dev</span>
+                            </div>
+                            
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Desenvolvedor Fullstack com anos de estrada em linguagens de alta performance e frameworks modernos. Especialista em empilhar backends eficientes, gerenciar microsserviços e criar interfaces web elegantes com foco total em usabilidade do usuário.
+                            </p>
+                        </div>
+
+                        <div class="border-t border-gray-900 pt-6 mt-8 flex justify-between items-center">
+                            <span class="text-xs text-gray-500 font-mono">Disponível para Projetos</span>
+                            <div class="flex space-x-3">
+                                <a href="https://www.linkedin.com/in/odilon-dev/" target="_blank" class="text-gray-400 hover:text-sanguine-glow transition"><i class="fa-brands fa-linkedin text-xl"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Back button to return home -->
+                <div class="text-center mt-12">
+                    <button onclick="switchView('home')" class="text-xs text-gray-500 hover:text-sanguine-glow font-mono uppercase tracking-widest transition-all">
+                        <i class="fa-solid fa-arrow-left mr-2"></i> Voltar para Início
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- GOOGLE APPOINTMENT SCHEDULING DEDICATED VIEWPORT -->
+    <div id="view-agendar" class="view-section hidden fade-in-section">
+        
+        <section class="relative py-24 px-6 bg-[#000] min-h-[85vh] flex flex-col justify-center">
+            <div class="max-w-5xl mx-auto w-full">
+                <div class="text-center mb-12">
+                    <h2 class="text-xs font-mono tracking-widest uppercase text-sanguine-glow mb-4">Sessão Estratégica</h2>
+                    <h3 class="text-3xl md:text-5xl font-black font-tech text-white">Agende seu Diagnóstico Técnico</h3>
+                    <p class="text-gray-400 mt-4 max-w-2xl mx-auto">Consulte os horários disponíveis em tempo real e agende a reunião de estratégia da sua empresa de forma direta e sem burocracias.</p>
+                </div>
+
+                <!-- Google Calendar Appointment Scheduling Widget Frame -->
+                <div class="bg-black/80 border border-white/10 rounded-3xl p-2 md:p-6 shadow-cyber-card overflow-hidden backdrop-blur-2xl">
+                    <!-- Google Calendar Appointment Scheduling begin -->
+                    <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ25zm5ulupePb8PJ1sgr3c0R-P9uMPnv33OE3fiAjBhKQGkLmp2OAmlWmVgmplAOx8d0DKVsRi6?gv=true" style="border: 0" width="100%" height="600" frameborder="0"></iframe>
+                    <!-- end Google Calendar Appointment Scheduling -->
+                </div>
+
+                <!-- Back button to return home -->
+                <div class="text-center mt-12">
+                    <button onclick="switchView('home')" class="text-xs text-gray-500 hover:text-sanguine-glow font-mono uppercase tracking-widest transition-all">
+                        <i class="fa-solid fa-arrow-left mr-2"></i> Voltar para Início
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer class="relative bg-black border-t border-white/10 py-16 px-6 z-10 overflow-hidden">
+        <!-- Footer light background glow -->
+        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80%] h-32 bg-sanguine-deep/10 rounded-full blur-[120px]"></div>
+
+        <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-12 border-b border-gray-900 pb-12 mb-12">
+            <!-- Brand Column -->
+            <div class="md:col-span-2">
+                <div class="flex items-center space-x-3 mb-6">
+                    <div class="w-10 h-10 flex items-center justify-center bg-black border border-sanguine rounded-lg shadow-neon-red">
+                        <span class="text-sanguine-glow font-black text-xl">S</span>
+                    </div>
+                    <span class="text-white font-tech font-bold text-2xl tracking-widest uppercase">Smart<span class="text-sanguine-glow">Flow</span></span>
+                </div>
+                <p class="text-gray-400 text-sm max-w-sm leading-relaxed mb-6">
+                    Sistemas autônomos de alta performance de nível enterprise. Automatizando processos de marketing, vendas e gestão sob medida.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="https://www.linkedin.com/in/mateus-celestino/" target="_blank" class="text-gray-500 hover:text-white transition"><i class="fa-brands fa-linkedin-in text-lg"></i></a>
+                    <a href="https://instagram.com/CELESTINOAUTOMACAO" target="_blank" class="text-gray-500 hover:text-white transition"><i class="fa-brands fa-instagram text-lg"></i></a>
+                </div>
+            </div>
+
+            <!-- Links Column -->
+            <div>
+                <h5 class="text-xs font-mono uppercase text-sanguine-glow tracking-widest mb-6">Navegação</h5>
+                <ul class="space-y-3 text-sm text-gray-400">
+                    <li><button onclick="switchView('home')" class="hover:text-white transition">Início</button></li>
+                    <li><button onclick="switchView('squad')" class="hover:text-white transition">Squad</button></li>
+                    <li><button onclick="switchView('agendar')" class="hover:text-white transition">Agendar</button></li>
+                </ul>
+            </div>
+
+            <!-- Contatos Column with Glassmorphic WA Button -->
+            <div>
+                <h5 class="text-xs font-mono uppercase text-sanguine-glow tracking-widest mb-6">Fale Conosco</h5>
+                <ul class="space-y-4 text-sm text-gray-400">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-sanguine-glow"></i> Sete Lagoas, MG</li>
+                    <li class="flex items-center gap-2"><i class="fa-brands fa-instagram text-sanguine-glow"></i> @CELESTINOAUTOMACAO</li>
+                    
+                    <!-- Frosted Glass WhatsApp Button -->
+                    <li class="pt-2">
+                        <a href="https://wa.me/5531997724257" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white font-semibold text-xs uppercase tracking-wider hover:bg-white/15 transition-all duration-300">
+                            <i class="fa-brands fa-whatsapp text-lg text-emerald-500"></i>
+                            Conversar WhatsApp
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center text-xs text-gray-500 gap-4">
+            <p>© 2026 SmartFlow Platform. Todos os direitos reservados. Conduzido por Mateus Celestino Pro.</p>
+            <div class="flex space-x-6">
+                <a href="#" class="hover:text-white transition">Termos de Uso</a>
+                <a href="#" class="hover:text-white transition">Política de Privacidade</a>
+                <a href="https://mateus-celestino-pro.bullet.site/" target="_blank" class="hover:text-white transition">Sobre Mateus</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Custom Audio Feedback using Web Audio API
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        
+        function playTickSound(frequency = 600, duration = 0.05, type = 'sine') {
+            try {
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = type;
+                osc.frequency.setValueAtTime(frequency, audioCtx.currentTime);
+                gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + duration);
+            } catch(e) {
+                // Audio context block handling
+            }
+        }
+
+        // Connect hover and click sounds for immersive tech feeling
+        document.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('mouseenter', () => playTickSound(850, 0.015, 'sine'));
+            el.addEventListener('click', () => playTickSound(450, 0.08, 'triangle'));
+        });
+
+        // SPA View Switching Logic
+        function switchView(viewName) {
+            document.querySelectorAll('.view-section').forEach(view => {
+                view.classList.add('hidden');
+            });
+            document.querySelectorAll('#nav-squad, #nav-agendar').forEach(link => {
+                link.classList.remove('text-sanguine-glow');
+            });
+
+            if (viewName === 'home') {
+                document.getElementById('view-home').classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else if (viewName === 'squad') {
+                document.getElementById('view-squad').classList.remove('hidden');
+                document.getElementById('nav-squad').classList.add('text-sanguine-glow');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else if (viewName === 'agendar') {
+                document.getElementById('view-agendar').classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+            playTickSound(650, 0.1, 'sawtooth');
+            
+            // Re-trigger scroll reveal elements in current active screen
+            setTimeout(handleScrollReveal, 150);
+        }
+
+        const handleScrollReveal = () => {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(el => {
+                const windowHeight = window.innerHeight;
+                const elementTop = el.getBoundingClientRect().top;
+                const elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    el.classList.add('active');
+                } else {
+                    el.classList.remove('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', handleScrollReveal);
+        document.addEventListener("DOMContentLoaded", () => {
+            switchView('home');
+        });
+    </script>
+
+    <script>
+        window.addEventListener('load', () => {
+            const CANVAS = document.getElementById("stacks-canvas");
+            const CTX = CANVAS.getContext("2d");
+            const CHARS = [];
+            const MAX_CHARS = 180;
+            const SEPARATION = 1.2;
+            
+            let ww, wh, camera;
+
+            class Vector {
+                constructor(x, y, z) {
+                    this.x = x;
+                    this.y = y;
+                    this.z = z;
+                }
+
+                rotate(dir, ang) {
+                    const X = this.x;
+                    const Y = this.y;
+                    const Z = this.z;
+
+                    const SIN = Math.sin(ang);
+                    const COS = Math.cos(ang);
+
+                    if (dir === "x") {
+                        this.y = Y * COS - Z * SIN;
+                        this.z = Y * SIN + Z * COS;
+                    } else if (dir === "y") {
+                        this.x = X * COS - Z * SIN;
+                        this.z = X * SIN + Z * COS;
+                    }
+                }
+
+                project() {
+                    const ZP = this.z + camera.z;
+                    const DIV = ZP / wh;
+                    const XP = (this.x + camera.x) / DIV;
+                    const YP = (this.y + camera.y) / DIV;
+                    const CENTER = getCenter();
+                    return [XP + CENTER[0], YP + CENTER[1], ZP];
+                }
+            }
+
+            class Char {
+                constructor(letter, pos) {
+                    this.letter = letter;
+                    this.pos = pos;
+                }
+
+                rotate(dir, ang) {
+                    this.pos.rotate(dir, ang);
+                }
+
+                render() {
+                    const PIXEL = this.pos.project();
+                    const XP = PIXEL[0];
+                    const YP = PIXEL[1];
+                    const MAX_SIZE = 40;
+                    const SIZE = Math.max(8, (1 / PIXEL[2] * MAX_SIZE) | 0);
+                    const BRIGHTNESS = SIZE / MAX_SIZE;
+                    // Adapted red glow palette for branding
+                    const COL = `rgba(204, 0, 0, ${BRIGHTNESS * 0.75})`;
+                    
+                    CTX.beginPath();
+                    CTX.fillStyle = COL;
+                    CTX.font = "bold " + SIZE + "px monospace";
+                    CTX.fillText(this.letter, XP, YP);
+                    CTX.fill();
+                    CTX.closePath();
+                }
+            }
+
+            function getCenter() {
+                return [ww / 2, wh / 2];
+            }
+
+            function signedRandom() {
+                return Math.random() - Math.random();
+            }
+
+            function render() {
+                for (let i = 0; i < CHARS.length; i++) {
+                    CHARS[i].render();
+                }
+            }
+            
+            let time = 0;
+            function update() {
+                CTX.clearRect(0, 0, ww, wh);
+                for (let i = 0; i < CHARS.length; i++) {
+                    const DX = 0.003 * Math.sin(time * 0.0005);
+                    const DY = 0.003 * Math.cos(time * 0.0005);
+                    CHARS[i].rotate("x", DX);
+                    CHARS[i].rotate("y", DY);
+                }
+                ++time;
+            }
+
+            function loop() {
+                window.requestAnimationFrame(loop);
+                update();
+                render();
+            }
+
+            function createChars() {
+                const charactersList = "01010101SMARTFLOWINTELLIGENCECODELIMITLESS".split("");
+                for (let i = 0; i < MAX_CHARS; i++) {
+                    const CHARACTER = charactersList[Math.floor(Math.random() * charactersList.length)];
+                    const X = signedRandom() * SEPARATION;
+                    const Y = signedRandom() * SEPARATION;
+                    const Z = signedRandom() * SEPARATION;
+                    const POS = new Vector(X, Y, Z);
+                    const CHAR = new Char(CHARACTER, POS);
+                    CHARS.push(CHAR);
+                }
+            }
+
+            function setDim() {
+                const parent = CANVAS.parentElement;
+                ww = parent.clientWidth;
+                wh = parent.clientHeight || 500;
+                CANVAS.width = ww;
+                CANVAS.height = wh;
+            }
+
+            function initCamera() {
+                camera = new Vector(0, 0, SEPARATION + 1);
+            }
+
+            window.addEventListener('resize', setDim);
+
+            (() => {
+                setDim();
+                initCamera();
+                createChars();
+                loop();
+            })();
+        });
+    </script>
+<!-- ========================================================
+         SOVEREIGN MOBILE BOTTOM BAR (BARRA GERAL SOBERANA)
+         ======================================================== -->
+    <nav
+      id="mobile-sovereign-bottom-bar"
+      aria-label="Navegação Móvel Soberana — Android Docker Navbar"
+    >
+      <div class="msb-bottom-dock-mask-left"></div>
+      <div class="msb-bottom-dock-mask-right"></div>
+      <div class="msb-bottom-dock-container" id="msb-bottom-dock-scroll">
+        <!-- 1. Portal -->
+        <a href="/" class="msb-dock-item" data-route="portal" aria-label="Home Page">
+          <div class="msb-dock-icon-box">
+            <svg class="msb-dock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <span class="msb-dock-label">Home</span>
+        </a>
+
+        <!-- 2. Showcase (Ativo no Showcase) -->
+        <a href="/showcase" class="msb-dock-item" data-route="showcase" aria-label="Showcase">
+          <div class="msb-dock-icon-box">
+            <svg class="msb-dock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
+          </div>
+          <span class="msb-dock-label">Showcase</span>
+        </a>
+
+        <!-- 2.1 Stack & Squad -->
+        <a href="/stack-squad" class="msb-dock-item active" data-route="stack-squad" aria-current="page" aria-label="Stack & Squad">
+          <span class="msb-dock-indicator"></span>
+          <div class="msb-dock-icon-box">
+            <svg class="msb-dock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.9a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg>
+            <span class="msb-dock-active-dot"></span>
+          </div>
+          <span class="msb-dock-label">Stack & Squad</span>
+        </a>
+
+        <!-- 3. Shop -->
+        <a href="/shop" class="msb-dock-item" data-route="shop" aria-label="Shop">
+          <div class="msb-dock-icon-box">
+            <svg class="msb-dock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          </div>
+          <span class="msb-dock-label">Shop</span>
+        </a>
+
+        <!-- 4. Comunidade -->
+        <a href="/comunidade" class="msb-dock-item" data-route="comunidade" aria-label="Comunidade VIP">
+          <div class="msb-dock-icon-box">
+            <svg class="msb-dock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <span class="msb-dock-label">Comunidade</span>
+        </a>
+
+        <!-- 5. Free Resources -->
+        <a href="/biblioteca" class="msb-dock-item" data-route="biblioteca" aria-label="Free Resources">
+          <div class="msb-dock-icon-box">
+            <svg class="msb-dock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 20H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H20a2 2 0 0 1 2 2v2"/><circle cx="13" cy="12" r="2"/><path d="M18 19c-2.8 0-5-2.2-5-5v8"/><circle cx="20" cy="19" r="2"/></svg>
+          </div>
+          <span class="msb-dock-label">Free Resources</span>
+        </a>
+
+        <!-- 6. Admin (dinâmico) -->
+        <a href="/admin" id="msb-dock-admin-link" class="msb-dock-item" data-route="admin" aria-label="Painel Admin" style="display: none !important;">
+          <div class="msb-dock-icon-box msb-dock-admin-box">
+            <svg class="msb-dock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"/></svg>
+          </div>
+          <span class="msb-dock-label" style="color: #fcd34d;">Admin</span>
+        </a>
+      </div>
+      <!-- Elemento de compatibilidade de gatilho de menu -->
+      <button type="button" class="open-mobile-menu-trigger" id="dock-menu-btn" aria-label="Abrir Menu" style="display: none;"></button>
+    </nav>
+
+    <script id="mobile-sovereign-dock-showcase-script">
+      (function() {
+        function syncDockAdmin() {
+          try {
+            var userStr = localStorage.getItem('mcp_session_user');
+            var user = userStr ? JSON.parse(userStr) : null;
+            var isAdmin = Boolean(user && user.isLoggedIn === true && user.role === 'admin');
+            var adminLink = document.getElementById('msb-dock-admin-link');
+            if (adminLink) {
+              if (isAdmin) {
+                adminLink.classList.add('is-admin-active');
+                adminLink.style.setProperty('display', 'flex', 'important');
+              } else {
+                adminLink.classList.remove('is-admin-active');
+                adminLink.style.setProperty('display', 'none', 'important');
+              }
+            }
+          } catch(e) {}
+        }
+
+        syncDockAdmin();
+        window.addEventListener('storage', syncDockAdmin);
+        window.addEventListener('mcp_auth_changed', syncDockAdmin);
+
+        // Auto-scroll suave para centralizar Showcase
+        var container = document.getElementById('msb-bottom-dock-scroll');
+        var activeItem = container ? container.querySelector('.msb-dock-item.active') : null;
+        if (container && activeItem) {
+          setTimeout(function() {
+            container.scrollTo({
+              left: activeItem.offsetLeft - (container.clientWidth / 2) + (activeItem.clientWidth / 2),
+              behavior: 'smooth'
+            });
+          }, 200);
+        }
+      })();
+    </script>
+</body>
+</html>
