@@ -1476,8 +1476,8 @@
     "semantic_hash": ""
   },
   "src/data/library_catalog_index.json": {
-    "mtime": 1794098114.988169,
-    "seen": 1794099300.233786,
+    "mtime": 1794176179.9974897,
+    "seen": 1794176206.312669,
     "ast_hash": "a3760edacaa85f7d3460a01e9fdb65f6",
     "semantic_hash": ""
   },
@@ -1866,9 +1866,9 @@
     "semantic_hash": ""
   },
   "src/app/page.tsx": {
-    "mtime": 1794099209.302981,
-    "seen": 1794099300.233719,
-    "ast_hash": "383dc096af07108e58c085269e88de93",
+    "mtime": 1794099360.978836,
+    "seen": 1794175993.915993,
+    "ast_hash": "01867a2a2dad439eda919e8a672bdd74",
     "semantic_hash": ""
   },
   ".agents/teamwork/worker_shaders/handoff.md": {
@@ -14766,8 +14766,8 @@
     "semantic_hash": ""
   },
   "src/data/libraries.json": {
-    "mtime": 1794098114.9984915,
-    "seen": 1794099300.2337852,
+    "mtime": 1794176180.0094733,
+    "seen": 1794176206.312667,
     "ast_hash": "3e79a0df86ee6f7eb3acd51fbf5fad31",
     "semantic_hash": ""
   },
@@ -17604,15 +17604,15 @@
     "semantic_hash": ""
   },
   "src/app/api/admin/banners/route.ts": {
-    "mtime": 1794021185.0221505,
-    "seen": 1794099300.233674,
-    "ast_hash": "6581e797db805357ccc23be08c29dab1",
+    "mtime": 1794176381.6408255,
+    "seen": 1794176446.49901,
+    "ast_hash": "544e6f3472513e75907214ec76d93881",
     "semantic_hash": ""
   },
   "src/app/api/banners/route.ts": {
-    "mtime": 1794021014.2264533,
-    "seen": 1794099300.233688,
-    "ast_hash": "6af5f35ed1af284854a3e55d60e0859c",
+    "mtime": 1794176332.2090285,
+    "seen": 1794176446.499328,
+    "ast_hash": "8b0c9493eb80781f5b6921ed01c8d82a",
     "semantic_hash": ""
   },
   "src/components/admin/BannersControlSuite.tsx": {
@@ -17634,9 +17634,9 @@
     "semantic_hash": ""
   },
   "src/data/banners.json": {
-    "mtime": 1794020982.1678858,
-    "seen": 1794099300.233783,
-    "ast_hash": "66248f0686716d4b3d6499bfc36fd292",
+    "mtime": 1794176314.435265,
+    "seen": 1794176446.50152,
+    "ast_hash": "6f7c6e16be3c2ba9ae75c352d64d7028",
     "semantic_hash": ""
   },
   "src/lib/cookies.ts": {
@@ -17652,9 +17652,9 @@
     "semantic_hash": ""
   },
   "tests/banners_system.test.ts": {
-    "mtime": 1794022197.2676792,
-    "seen": 1794099300.233815,
-    "ast_hash": "9501f057cf5fa28fd044b7a41bf73ea5",
+    "mtime": 1794176399.5862238,
+    "seen": 1794176446.502302,
+    "ast_hash": "ec83108d9429e9e3b0b0affd103b3486",
     "semantic_hash": ""
   },
   "tests/legal_and_cookies_minimalist.test.ts": {

@@ -12,6 +12,12 @@ const SETTINGS_KEY = 'smart_banners_config';
 const PUBLIC_CACHE_KEY = 'banners:public:config';
 const ADMIN_CACHE_KEY = 'banners:admin:config';
 
+const LEGACY_MOCK_BANNER_IDS = new Set([
+  'banner-exit-intent-global',
+  'banner-onboarding-home',
+  'banner-onboarding-shop',
+]);
+
 export async function GET(req: NextRequest) {
   const auth = await verifyAdminRequest(req);
   if (!auth.authorized) {
@@ -31,10 +37,13 @@ export async function GET(req: NextRequest) {
       if (records && records.length > 0 && records[0].value) {
         const val = records[0].value as any;
         if (Array.isArray(val.banners)) {
+          const sanitizedBanners = val.banners.filter(
+            (b: any) => b && b.id && !LEGACY_MOCK_BANNER_IDS.has(b.id)
+          );
           config = {
             globalEnabled: typeof val.globalEnabled === 'boolean' ? val.globalEnabled : true,
             exitIntentSensitivity: val.exitIntentSensitivity || 'medium',
-            banners: val.banners,
+            banners: sanitizedBanners,
           };
         }
       }
@@ -108,10 +117,13 @@ export async function POST(req: NextRequest) {
         if (records && records.length > 0 && records[0].value) {
           const val = records[0].value as any;
           if (Array.isArray(val.banners)) {
+            const sanitized = val.banners.filter(
+              (b: any) => b && b.id && !LEGACY_MOCK_BANNER_IDS.has(b.id)
+            );
             currentConfig = {
               globalEnabled: typeof val.globalEnabled === 'boolean' ? val.globalEnabled : true,
               exitIntentSensitivity: val.exitIntentSensitivity || 'medium',
-              banners: val.banners,
+              banners: sanitized,
             };
           }
         }
@@ -230,10 +242,13 @@ export async function DELETE(req: NextRequest) {
       if (records && records.length > 0 && records[0].value) {
         const val = records[0].value as any;
         if (Array.isArray(val.banners)) {
+          const sanitized = val.banners.filter(
+            (b: any) => b && b.id && !LEGACY_MOCK_BANNER_IDS.has(b.id)
+          );
           currentConfig = {
             globalEnabled: typeof val.globalEnabled === 'boolean' ? val.globalEnabled : true,
             exitIntentSensitivity: val.exitIntentSensitivity || 'medium',
-            banners: val.banners,
+            banners: sanitized,
           };
         }
       }

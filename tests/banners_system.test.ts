@@ -11,21 +11,18 @@ import {
 import { NextRequest } from 'next/server';
 
 describe('Sistema Inteligente de Banners & Exit-Intent — Validação Soberana', () => {
-  test('1. Deve existir o arquivo de dados padrão src/data/banners.json com estrutura válida', () => {
+  test('1. Deve existir o arquivo de dados padrão src/data/banners.json com estrutura válida e lista vazia', () => {
     const bannersPath = path.join(process.cwd(), 'src/data/banners.json');
     assert.ok(fs.existsSync(bannersPath), 'src/data/banners.json deve existir');
 
     const content = JSON.parse(fs.readFileSync(bannersPath, 'utf8'));
     assert.ok(Array.isArray(content.banners), 'banners deve ser um array');
-    assert.ok(content.banners.length >= 2, 'deve possuir ao menos 2 banners padrão');
-
-    const exitBanner = content.banners.find((b: any) => b.type === 'exit_intent');
-    assert.ok(exitBanner, 'deve possuir banner de exit_intent');
-    assert.ok(exitBanner.title, 'banner de exit deve ter título');
-    assert.ok(exitBanner.ctaText, 'banner de exit deve ter ctaText');
-
-    const onboardingBanner = content.banners.find((b: any) => b.type === 'onboarding');
-    assert.ok(onboardingBanner, 'deve possuir banner de onboarding');
+    assert.strictEqual(
+      content.banners.length,
+      0,
+      'banners deve iniciar vazio até que o administrador crie e publique banners'
+    );
+    assert.strictEqual(typeof content.globalEnabled, 'boolean', 'globalEnabled deve ser booleano');
   });
 
   test('2. Deve existir a página dedicada src/app/admin/banners/page.tsx', () => {
@@ -48,7 +45,7 @@ describe('Sistema Inteligente de Banners & Exit-Intent — Validação Soberana'
     assert.ok(code.includes('handleDeleteBanner'), 'deve permitir excluir banners');
   });
 
-  test('4. Deve existir o componente cliente src/components/banners/SmartBannerSystem.tsx', () => {
+  test('4. Deve existir o componente cliente src/components/banners/SmartBannerSystem.tsx com suporte a exit_intent e onboarding', () => {
     const bannerSystemPath = path.join(process.cwd(), 'src/components/banners/SmartBannerSystem.tsx');
     assert.ok(fs.existsSync(bannerSystemPath), 'SmartBannerSystem.tsx deve existir');
 
@@ -66,14 +63,18 @@ describe('Sistema Inteligente de Banners & Exit-Intent — Validação Soberana'
     assert.ok(code.includes('/admin/banners'), 'AdminSidebar deve ter link para /admin/banners');
   });
 
-  test('6. A rota pública GET /api/banners deve retornar com status 200 e banners ativos', async () => {
+  test('6. A rota pública GET /api/banners deve retornar com status 200 e lista limpa sem banners mock', async () => {
     const response = await getPublicBanners();
     assert.strictEqual(response.status, 200);
 
     const json = await response.json();
     assert.strictEqual(json.success, true);
     assert.ok(Array.isArray(json.data.banners), 'data.banners deve ser array');
-    assert.ok(json.data.banners.length > 0, 'deve retornar banners ativos');
+    assert.strictEqual(
+      json.data.banners.length,
+      0,
+      'nenhum banner mock deve ser retornado se o admin não cadastrou banners'
+    );
   });
 
   test('7. As rotas /api/admin/banners devem exigir autenticação de administrador (401 sem token)', async () => {
