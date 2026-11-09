@@ -14,7 +14,6 @@ import {
   ShoppingBag,
   Sparkles,
   FolderGit2,
-  Layers,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/Badge";
@@ -37,7 +36,6 @@ export interface NavLinkItem {
 export const navLinks: NavLinkItem[] = [
   { name: "Home Page", href: "/", icon: Shield },
   { name: "Showcase", href: "/showcase", icon: Sparkles },
-  { name: "Stack & Squad", href: "/stack-squad", icon: Layers },
   { name: "Shop", href: "/shop", icon: ShoppingBag },
   { name: "Comunidade", href: "/comunidade", icon: Users },
   { name: "Free Resources", href: "/biblioteca", icon: FolderGit2 },

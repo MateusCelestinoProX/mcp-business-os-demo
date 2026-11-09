@@ -10,7 +10,6 @@ import {
   Users,
   FolderGit2,
   Crown,
-  Layers,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
@@ -31,7 +30,6 @@ export interface MobileNavItem {
 export const mobileNavItems: MobileNavItem[] = [
   { name: "Home Page", href: "/", icon: Shield },
   { name: "Showcase", href: "/showcase", icon: Sparkles },
-  { name: "Stack & Squad", href: "/stack-squad", icon: Layers },
   { name: "Shop", href: "/shop", icon: ShoppingBag },
   { name: "Comunidade", href: "/comunidade", icon: Users },
   { name: "Free Resources", href: "/biblioteca", icon: FolderGit2 },

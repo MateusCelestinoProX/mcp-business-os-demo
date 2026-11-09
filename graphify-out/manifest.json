@@ -1434,15 +1434,15 @@
     "semantic_hash": ""
   },
   "src/components/layout/Footer.tsx": {
-    "mtime": 1794176654.0777571,
-    "seen": 1794177143.5464709,
-    "ast_hash": "8286749eedb97305900234302a294a0f",
+    "mtime": 1794185264.8009608,
+    "seen": 1794186504.511136,
+    "ast_hash": "21f37c871f8f5850af5e606c04de03a8",
     "semantic_hash": ""
   },
   "src/components/layout/Navbar.tsx": {
-    "mtime": 1794176601.7648818,
-    "seen": 1794177143.546473,
-    "ast_hash": "9c34a4b8f5d1c10107771d7d6f7de2c7",
+    "mtime": 1794185160.6474822,
+    "seen": 1794186504.5111392,
+    "ast_hash": "46799e114f78fb7e9cf55d6967fc3a6d",
     "semantic_hash": ""
   },
   "src/components/shaders/ColorBends.tsx": {
@@ -2802,9 +2802,9 @@
     "semantic_hash": ""
   },
   "public/comunidade/index.html": {
-    "mtime": 1794176735.2682223,
-    "seen": 1794177143.552758,
-    "ast_hash": "f0dd6fc0687c58015e88f00d03ee0e28",
+    "mtime": 1794185957.517016,
+    "seen": 1794186504.517344,
+    "ast_hash": "bb327100681f25d05f07f16fd050f021",
     "semantic_hash": ""
   },
   "public/comunidade/effects/CREATIVE EFFECT's/ANCESTRAL HAND STATUE RENDER/ChatGPT_Image_17_de_jul._de_2025_15_25_13.webp": {
@@ -14826,9 +14826,9 @@
     "semantic_hash": ""
   },
   "public/showcase/index.html": {
-    "mtime": 1794176846.217444,
-    "seen": 1794177143.552781,
-    "ast_hash": "8d726920ab06dbde90ad09532feb3350",
+    "mtime": 1794186422.3896222,
+    "seen": 1794186504.517366,
+    "ast_hash": "29e44e2ad44e12c6e5cd9e6b14747e3e",
     "semantic_hash": ""
   },
   "public/showcase/cv-itens/api1.webp": {
@@ -15162,9 +15162,9 @@
     "semantic_hash": ""
   },
   "src/components/layout/MobileBottomNav.tsx": {
-    "mtime": 1794176627.684364,
-    "seen": 1794177143.5464718,
-    "ast_hash": "de4dce5bc546e7a663b6d9a872c7ca26",
+    "mtime": 1794185207.8277419,
+    "seen": 1794186504.511138,
+    "ast_hash": "c244f412b65952c9f97f6f1075ed191d",
     "semantic_hash": ""
   },
   "tests/mobile_navigation.test.ts": {
@@ -15282,9 +15282,9 @@
     "semantic_hash": ""
   },
   "src/app/sitemap.ts": {
-    "mtime": 1794176670.5335681,
-    "seen": 1794177143.546135,
-    "ast_hash": "182a2301e9f9ae16f815999290164e80",
+    "mtime": 1794185744.6305916,
+    "seen": 1794186504.510798,
+    "ast_hash": "7acefdd6af994022f83a5a4d2812d5f2",
     "semantic_hash": ""
   },
   "src/components/seo/Breadcrumbs.tsx": {
@@ -17663,34 +17663,10 @@
     "ast_hash": "77a04643a487c7938e99d2384ebbef3e",
     "semantic_hash": ""
   },
-  "src/components/stack-squad/StackSquadView.tsx": {
-    "mtime": 1794177069.0369692,
-    "seen": 1794177143.5473,
-    "ast_hash": "67eac21aeb067aa658ae153f28339631",
-    "semantic_hash": ""
-  },
   "tests/stack_squad_navigation.test.ts": {
-    "mtime": 1794177668.0861554,
-    "seen": 1794177735.957916,
-    "ast_hash": "af75a41832045649a78a419581a33b65",
-    "semantic_hash": ""
-  },
-  "src/app/smartflow/route.ts": {
-    "mtime": 1794177649.2760696,
-    "seen": 1794177735.955359,
-    "ast_hash": "773177bef47a6c8e75c6b33cf3568f93",
-    "semantic_hash": ""
-  },
-  "src/app/stack-squad/route.ts": {
-    "mtime": 1794177639.0771356,
-    "seen": 1794177735.9553611,
-    "ast_hash": "5587de455ce7c824ac3bf9415bf2bac5",
-    "semantic_hash": ""
-  },
-  "public/smartflow/index.html": {
-    "mtime": 1794177606.9058266,
-    "seen": 1794177735.962143,
-    "ast_hash": "11eab0b8629d649a9bb2d56e78b700a9",
+    "mtime": 1794186437.8686752,
+    "seen": 1794186504.513206,
+    "ast_hash": "197ee62b1f751e2460f7acb9b51fc820",
     "semantic_hash": ""
   },
   "public/smartflow/mateus.png": {
