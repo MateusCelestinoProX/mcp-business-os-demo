@@ -3207,9 +3207,16 @@
     <!-- Service Worker & Smart Cache Registrador Soberano -->
     <script>
       if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1')) {
-        window.addEventListener('load', function() {
-          navigator.serviceWorker.register('/sw.js', { scope: '/' }).catch(function() {});
-        });
+        var registerComunidadeSW = function() {
+          navigator.serviceWorker.register('/sw.js', { scope: '/', updateViaCache: 'none' }).then(function(reg) {
+            reg.update().catch(function() {});
+          }).catch(function() {});
+        };
+        if (document.readyState === 'complete') {
+          registerComunidadeSW();
+        } else {
+          window.addEventListener('load', registerComunidadeSW, { once: true });
+        }
       }
     </script>
 </body>

@@ -51,12 +51,30 @@ export function SmartCacheEngine() {
   const router = useRouter();
 
   useEffect(() => {
+    let cleanupSW: (() => void) | undefined;
+
     // 1. Registro do Service Worker Soberano
     if (typeof window !== 'undefined' && 'serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
-      window.addEventListener('load', () => {
+      const hadController = Boolean(navigator.serviceWorker.controller);
+      let refreshing = false;
+
+      const onControllerChange = () => {
+        if (!hadController || refreshing) return;
+        try {
+          if (sessionStorage.getItem('mcp_sw_reloaded') === '1') return;
+          sessionStorage.setItem('mcp_sw_reloaded', '1');
+        } catch (err) {}
+        refreshing = true;
+        window.location.reload();
+      };
+
+      navigator.serviceWorker.addEventListener('controllerchange', onControllerChange);
+
+      const registerServiceWorker = () => {
         navigator.serviceWorker
-          .register('/sw.js', { scope: '/' })
+          .register('/sw.js', { scope: '/', updateViaCache: 'none' })
           .then((registration) => {
+            registration.update().catch(() => {});
             // Verifica atualizações silenciosamente
             registration.onupdatefound = () => {
               const installingWorker = registration.installing;
@@ -72,7 +90,18 @@ export function SmartCacheEngine() {
           .catch((err) => {
             console.warn('⚠️ [SmartCache] Falha ao registrar Service Worker:', err);
           });
-      });
+      };
+
+      if (document.readyState === 'complete') {
+        registerServiceWorker();
+      } else {
+        window.addEventListener('load', registerServiceWorker, { once: true });
+      }
+
+      cleanupSW = () => {
+        navigator.serviceWorker.removeEventListener('controllerchange', onControllerChange);
+        window.removeEventListener('load', registerServiceWorker);
+      };
     }
 
     // 2. Prefetcher especulativo universal para links visíveis e hover (suporte total a Safari / Firefox)
@@ -102,6 +131,7 @@ export function SmartCacheEngine() {
     document.addEventListener('touchstart', handlePointerOver, { passive: true });
 
     return () => {
+      if (cleanupSW) cleanupSW();
       document.removeEventListener('mouseover', handlePointerOver);
       document.removeEventListener('touchstart', handlePointerOver);
     };

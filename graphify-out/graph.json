@@ -16803,7 +16803,7 @@
       "file_type": "code",
       "norm_label": "precache_assets",
       "source_file": "public/sw.js",
-      "source_location": "L22"
+      "source_location": "L23"
     },
     {
       "id": "tests_admin_vertical_sidebar_layout_test",
@@ -65165,7 +65165,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "public/sw.js",
-      "source_location": "L22",
+      "source_location": "L23",
       "weight": 1.0
     },
     {
@@ -77599,5 +77599,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "b155298df583b61ecf3b530cddc8d8e61fee4174"
+  "built_at_commit": "2afe64b36fb6995a0be0b7c777e9af4667ec4698"
 }

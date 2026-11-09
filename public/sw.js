@@ -5,15 +5,16 @@
  * Plataforma Unificada Soberana — Mateus Celestino Pro X
  *
  * Estratégias Avançadas de Caching:
- * 1. Cache-First: Assets imutáveis, fontes, imagens, WebGL shaders, chunks JS/CSS
- * 2. Stale-While-Revalidate: Páginas HTML e navegação de rotas (0ms de latência)
- * 3. Network-First com Fallback: APIs públicas de leitura (/api/articles, /api/library)
- * 4. Bypass Seguro: Rotas administrativas, autenticação e checkout/pagamentos
- * 5. Auto-Purge: Limpeza automática de caches defasados na ativação de novas versões
+ * 1. Network-First com Fallback: Documentos/Páginas HTML (sempre reflete último deploy Vercel)
+ * 2. Stale-While-Revalidate: Assets mutáveis dos hubs (/showcase, /comunidade, /biblioteca)
+ * 3. Cache-First: Assets imutáveis (/\_next/static, imagens, fontes, shaders WebGL)
+ * 4. Network-First com Fallback: APIs públicas de leitura (/api/articles, /api/library)
+ * 5. Bypass Seguro: Rotas administrativas, autenticação e checkout/pagamentos
+ * 6. Auto-Purge: Limpeza automática de caches defasados na ativação de novas versões
  * =========================================================================
  */
 
-const CACHE_VERSION = 'mcp-business-os-v1.0.0';
+const CACHE_VERSION = 'mcp-business-os-v1.0.1';
 const STATIC_CACHE = `mcp-static-${CACHE_VERSION}`;
 const PAGES_CACHE = `mcp-pages-${CACHE_VERSION}`;
 const API_CACHE = `mcp-api-${CACHE_VERSION}`;
@@ -83,7 +84,36 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // 1. ESTRATÉGIA CACHE-FIRST: Assets estáticos, fontes, imagens, áudio, vídeos e shaders WebGL
+  // 1. ESTRATÉGIA STALE-WHILE-REVALIDATE: CSS/JS não-hasheados dos Hubs Estáticos
+  const isMutableHubAsset =
+    (url.pathname.startsWith('/showcase/') ||
+      url.pathname.startsWith('/comunidade/') ||
+      url.pathname.startsWith('/biblioteca/') ||
+      url.pathname.startsWith('/smartflow/')) &&
+    /\.(css|js)$/i.test(url.pathname);
+
+  if (isMutableHubAsset) {
+    event.respondWith(
+      caches.match(request).then((cachedResponse) => {
+        const fetchPromise = fetch(request)
+          .then((networkResponse) => {
+            if (networkResponse && networkResponse.status === 200 && networkResponse.type !== 'opaque') {
+              const responseToCache = networkResponse.clone();
+              caches.open(STATIC_CACHE).then((cache) => {
+                cache.put(request, responseToCache);
+              });
+            }
+            return networkResponse;
+          })
+          .catch(() => cachedResponse);
+
+        return cachedResponse || fetchPromise;
+      })
+    );
+    return;
+  }
+
+  // 2. ESTRATÉGIA CACHE-FIRST: Assets imutáveis, fontes, imagens, áudio, vídeos e shaders WebGL
   const isStaticAsset =
     url.pathname.startsWith('/_next/static/') ||
     url.pathname.startsWith('/assets/') ||
@@ -122,30 +152,35 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // 2. ESTRATÉGIA STALE-WHILE-REVALIDATE: Documentos e Páginas HTML (Navegação Instantânea)
+  // 3. ESTRATÉGIA NETWORK-FIRST COM FALLBACK OFFLINE: Documentos e Páginas HTML
+  // Garante que novos deploys na Vercel apareçam imediatamente sem HTML obsoleto preso no SW.
   const isNavigation = request.mode === 'navigate' || request.destination === 'document';
   if (isNavigation) {
     event.respondWith(
-      caches.match(request).then((cachedResponse) => {
-        const fetchPromise = fetch(request)
-          .then((networkResponse) => {
-            if (networkResponse && networkResponse.status === 200) {
+      fetch(request)
+        .then((networkResponse) => {
+          if (networkResponse && networkResponse.status === 200) {
+            const cacheControl = networkResponse.headers.get('cache-control') || '';
+            if (!cacheControl.includes('no-store')) {
               const responseToCache = networkResponse.clone();
               caches.open(PAGES_CACHE).then((cache) => {
                 cache.put(request, responseToCache);
               });
             }
-            return networkResponse;
-          })
-          .catch((err) => {
+          } else if (networkResponse && networkResponse.status >= 400) {
+            caches.open(PAGES_CACHE).then((cache) => {
+              cache.delete(request);
+            });
+          }
+          return networkResponse;
+        })
+        .catch(() => {
+          return caches.match(request).then((cachedResponse) => {
             if (cachedResponse) return cachedResponse;
             // Se não houver nada no cache, tenta a rota raiz
             return caches.match('/');
           });
-
-        // Se já possuímos a página em cache, devolvemos imediatamente em 0ms!
-        return cachedResponse || fetchPromise;
-      })
+        })
     );
     return;
   }
