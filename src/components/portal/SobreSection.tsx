@@ -15,7 +15,7 @@ export interface SobreSectionProps {
 
 export function SobreSection({ profile }: SobreSectionProps) {
   return (
-    <section id="sobre" className="pt-8 pb-6 sm:pt-12 sm:pb-8 relative overflow-hidden w-full">
+    <section id="sobre" className="pt-10 pb-16 sm:pt-14 sm:pb-20 relative overflow-hidden w-full">
       {/* 0. Shader WebGL Dedicado da Sessão Sobre: GridScan Holográfico Encorpado */}
       <GridScanShader
         className="z-0 mix-blend-screen pointer-events-none"
@@ -28,9 +28,9 @@ export function SobreSection({ profile }: SobreSectionProps) {
         opacity={0.65}
       />
 
-      {/* Zonas de Transição Internas com Blur Óptico e Sombras Volumétricas Suaves */}
-      <div className="absolute top-0 left-0 right-0 h-20 sm:h-24 bg-gradient-to-b from-[#030305] via-[#030305]/80 to-transparent pointer-events-none z-1" />
-      <div className="absolute bottom-0 left-0 right-0 h-20 sm:h-24 bg-gradient-to-t from-[#000000] via-[#000000]/80 to-transparent pointer-events-none z-1" />
+      {/* Zonas de Transição Internas Estritamente Abaixo/Acima do Conteúdo (Cards Nunca Invadem o Fade) */}
+      <div className="absolute top-0 left-0 right-0 h-10 sm:h-14 bg-gradient-to-b from-[#030305] via-[#030305]/80 to-transparent pointer-events-none z-[1]" />
+      <div className="absolute bottom-0 left-0 right-0 h-12 sm:h-14 bg-gradient-to-t from-[#000000] via-[#000000]/85 to-transparent pointer-events-none z-[1]" />
 
       {/* Halo óptico difuso central suave com blur cinematográfico */}
       <div
@@ -59,17 +59,17 @@ export function SobreSection({ profile }: SobreSectionProps) {
           </p>
         </div>
 
-        {/* Grid Responsiva: 1 Coluna no Mobile / 12 Colunas no Desktop */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+        {/* Grid Responsiva Simétrica: 1 Coluna no Mobile / 12 Colunas Alinhadas no Desktop */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
           
           {/* Coluna Esquerda: Fotografia & Destaque em Vidro */}
-          <div className="lg:col-span-5 w-full space-y-6">
-            <div className="relative rounded-3xl overflow-hidden glass-crystal p-2.5 sm:p-3 max-w-sm sm:max-w-md mx-auto lg:max-w-none group shadow-2xl">
-              <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-black border border-white/10 shadow-2xl">
+          <div className="lg:col-span-5 w-full flex flex-col">
+            <div className="relative rounded-3xl overflow-hidden glass-crystal p-2.5 sm:p-3 max-w-sm sm:max-w-md mx-auto lg:max-w-none w-full h-full flex flex-col group shadow-2xl">
+              <div className="relative aspect-[4/5] lg:aspect-auto lg:flex-1 lg:min-h-[420px] rounded-2xl overflow-hidden bg-black border border-white/10 shadow-2xl">
                 <img
                   src="/assets/sobre_mateus_photo.webp"
                   alt="Mateus Celestino"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
@@ -81,9 +81,9 @@ export function SobreSection({ profile }: SobreSectionProps) {
             </div>
           </div>
 
-          {/* Coluna Direita: Narrativa & Pilares em Vidro */}
-          <div className="lg:col-span-7 space-y-6 sm:space-y-8">
-            <div className="glass-crystal p-5 sm:p-8 lg:p-9 rounded-2xl sm:rounded-3xl border border-white/10 shadow-xl">
+          {/* Coluna Direita: Narrativa Alinhada em Altura com a Fotografia */}
+          <div className="lg:col-span-7 flex flex-col">
+            <div className="glass-crystal p-5 sm:p-8 lg:p-9 rounded-2xl sm:rounded-3xl border border-white/10 shadow-xl h-full flex flex-col justify-center">
               <h3 className="text-lg sm:text-2xl font-black text-white mb-4 sm:mb-6 tracking-tight leading-snug">
                 A Intersecção Entre Tecnologia, Estratégia & Automação com IA
               </h3>
@@ -103,52 +103,51 @@ export function SobreSection({ profile }: SobreSectionProps) {
                 </p>
               </div>
             </div>
-
-            {/* 4 Pilares de Competência em Cartões de Vidro (Mobile-First 1 ou 2 colunas) */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
-              <div className="glass-crystal glass-interactive p-4 sm:p-5 rounded-2xl border border-white/10 touch-manipulation">
-                <div className="w-8 h-8 rounded-xl glass-pill-red flex items-center justify-center text-[#ff073a] mb-2.5">
-                  <Award className="w-4 h-4" />
-                </div>
-                <h4 className="text-sm font-bold text-white leading-snug">Marketing digital && Automação trabalhando em sincronia.</h4>
-                <p className="mt-1 text-xs text-zinc-400 leading-relaxed font-light">
-                  Estratégias orientadas à conversão, retenção e funis de captação de clientes automatizados operando em perfeita sincronia.
-                </p>
-              </div>
-
-              <div className="glass-crystal glass-interactive p-4 sm:p-5 rounded-2xl border border-white/10 touch-manipulation">
-                <div className="w-8 h-8 rounded-xl glass-pill-red flex items-center justify-center text-[#ff073a] mb-2.5">
-                  <Cpu className="w-4 h-4" />
-                </div>
-                <h4 className="text-sm font-bold text-white leading-snug">Automação multi sistema.</h4>
-                <p className="mt-1 text-xs text-zinc-400 leading-relaxed font-light">
-                  Conexão de ponta a ponta com Webhooks, bancos relacionais, CRMs e ecossistemas inteligentes autônomos.
-                </p>
-              </div>
-
-              <div className="glass-crystal glass-interactive p-4 sm:p-5 rounded-2xl border border-white/10 touch-manipulation">
-                <div className="w-8 h-8 rounded-xl glass-pill-red flex items-center justify-center text-[#ff073a] mb-2.5">
-                  <User className="w-4 h-4" />
-                </div>
-                <h4 className="text-sm font-bold text-white leading-snug">Atendimento autônomo multi canal.</h4>
-                <p className="mt-1 text-xs text-zinc-400 leading-relaxed font-light">
-                  Chatbots e agentes inteligentes treinados com dados da empresa atendendo 24/7 em WhatsApp, Web e redes.
-                </p>
-              </div>
-
-              <div className="glass-crystal glass-interactive p-4 sm:p-5 rounded-2xl border border-white/10 touch-manipulation">
-                <div className="w-8 h-8 rounded-xl glass-pill-red flex items-center justify-center text-[#ff073a] mb-2.5">
-                  <Shield className="w-4 h-4" />
-                </div>
-                <h4 className="text-sm font-bold text-white leading-snug">Monitoramento real, resultado real, solução real.</h4>
-                <p className="mt-1 text-xs text-zinc-400 leading-relaxed font-light">
-                  Servidores blindados, Docker Swarm, telemetria contínua, alta estabilidade e resolução prática de gargalos.
-                </p>
-              </div>
-            </div>
-
           </div>
 
+        </div>
+
+        {/* 4 Pilares de Competência em Linha Simétrica Full-Width (Sempre Acima da Zona de Transição) */}
+        <div className="mt-6 sm:mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4">
+          <div className="glass-crystal glass-interactive p-4 sm:p-5 rounded-2xl border border-white/10 touch-manipulation flex flex-col">
+            <div className="w-8 h-8 rounded-xl glass-pill-red flex items-center justify-center text-[#ff073a] mb-2.5 shrink-0">
+              <Award className="w-4 h-4" />
+            </div>
+            <h4 className="text-sm font-bold text-white leading-snug">Marketing digital && Automação trabalhando em sincronia.</h4>
+            <p className="mt-1.5 text-xs text-zinc-400 leading-relaxed font-light">
+              Estratégias orientadas à conversão, retenção e funis de captação de clientes automatizados operando em perfeita sincronia.
+            </p>
+          </div>
+
+          <div className="glass-crystal glass-interactive p-4 sm:p-5 rounded-2xl border border-white/10 touch-manipulation flex flex-col">
+            <div className="w-8 h-8 rounded-xl glass-pill-red flex items-center justify-center text-[#ff073a] mb-2.5 shrink-0">
+              <Cpu className="w-4 h-4" />
+            </div>
+            <h4 className="text-sm font-bold text-white leading-snug">Automação multi sistema.</h4>
+            <p className="mt-1.5 text-xs text-zinc-400 leading-relaxed font-light">
+              Conexão de ponta a ponta com Webhooks, bancos relacionais, CRMs e ecossistemas inteligentes autônomos.
+            </p>
+          </div>
+
+          <div className="glass-crystal glass-interactive p-4 sm:p-5 rounded-2xl border border-white/10 touch-manipulation flex flex-col">
+            <div className="w-8 h-8 rounded-xl glass-pill-red flex items-center justify-center text-[#ff073a] mb-2.5 shrink-0">
+              <User className="w-4 h-4" />
+            </div>
+            <h4 className="text-sm font-bold text-white leading-snug">Atendimento autônomo multi canal.</h4>
+            <p className="mt-1.5 text-xs text-zinc-400 leading-relaxed font-light">
+              Chatbots e agentes inteligentes treinados com dados da empresa atendendo 24/7 em WhatsApp, Web e redes.
+            </p>
+          </div>
+
+          <div className="glass-crystal glass-interactive p-4 sm:p-5 rounded-2xl border border-white/10 touch-manipulation flex flex-col">
+            <div className="w-8 h-8 rounded-xl glass-pill-red flex items-center justify-center text-[#ff073a] mb-2.5 shrink-0">
+              <Shield className="w-4 h-4" />
+            </div>
+            <h4 className="text-sm font-bold text-white leading-snug">Monitoramento real, resultado real, solução real.</h4>
+            <p className="mt-1.5 text-xs text-zinc-400 leading-relaxed font-light">
+              Servidores blindados, Docker Swarm, telemetria contínua, alta estabilidade e resolução prática de gargalos.
+            </p>
+          </div>
         </div>
 
       </div>

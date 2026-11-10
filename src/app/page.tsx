@@ -74,6 +74,18 @@ export default function HomePage() {
         </div>
 
         {/* =========================================================================
+            INTERFACE DE RESPIRO & SEPARAÇÃO REFRATIVA ENTRE SOBRE E CONTATO
+            ========================================================================= */}
+        <div
+          aria-hidden="true"
+          className="relative z-20 w-full h-7 sm:h-9 bg-[#000000] flex items-center justify-center pointer-events-none"
+        >
+          <div className="w-full max-w-6xl mx-auto px-6">
+            <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-[#ff073a]/30 to-transparent" />
+          </div>
+        </div>
+
+        {/* =========================================================================
             3. CANAL DIRETO (SLOT DE CONTATO CONECTADO DIRETAMENTE AO BLACKOUT)
             ========================================================================= */}
         <section id="contato" className="relative z-20 w-full bg-[#000000] flex flex-col items-center justify-center">

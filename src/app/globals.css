@@ -644,15 +644,15 @@ body {
 
 @media (min-width: 640px) {
   .contato-hub-frame {
-    height: 520px;
-    min-height: 520px;
+    height: 490px;
+    min-height: 490px;
   }
 }
 
 @media (min-width: 1024px) {
   .contato-hub-frame {
-    height: 560px;
-    min-height: 560px;
+    height: 520px;
+    min-height: 520px;
   }
 }
 

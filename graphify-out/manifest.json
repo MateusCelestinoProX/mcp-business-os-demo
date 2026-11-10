@@ -1476,8 +1476,8 @@
     "semantic_hash": ""
   },
   "src/data/library_catalog_index.json": {
-    "mtime": 1794176485.9008515,
-    "seen": 1794177143.547449,
+    "mtime": 1794353593.5389926,
+    "seen": 1794353969.10671,
     "ast_hash": "a3760edacaa85f7d3460a01e9fdb65f6",
     "semantic_hash": ""
   },
@@ -1866,9 +1866,9 @@
     "semantic_hash": ""
   },
   "src/app/page.tsx": {
-    "mtime": 1794348491.9152193,
-    "seen": 1794348869.215189,
-    "ast_hash": "ee8c2981edcc8997ddb1385fb025145f",
+    "mtime": 1794353949.78714,
+    "seen": 1794353969.102827,
+    "ast_hash": "2611166f15ad162add5fa5a622137dc1",
     "semantic_hash": ""
   },
   ".agents/teamwork/worker_shaders/handoff.md": {
@@ -13692,9 +13692,9 @@
     "semantic_hash": ""
   },
   "src/components/portal/SobreSection.tsx": {
-    "mtime": 1794348491.8984907,
-    "seen": 1794348869.2161431,
-    "ast_hash": "ebf1b21fa4e8a95f168539574abc41b6",
+    "mtime": 1794353949.7792053,
+    "seen": 1794353969.105655,
+    "ast_hash": "5f68bb5b93b3f0ef6e02c5705c602f97",
     "semantic_hash": ""
   },
   "public/comunidade/music.mp3": {
@@ -14766,8 +14766,8 @@
     "semantic_hash": ""
   },
   "src/data/libraries.json": {
-    "mtime": 1794176485.9142349,
-    "seen": 1794177143.5474482,
+    "mtime": 1794353593.5495126,
+    "seen": 1794353969.106705,
     "ast_hash": "3e79a0df86ee6f7eb3acd51fbf5fad31",
     "semantic_hash": ""
   },
