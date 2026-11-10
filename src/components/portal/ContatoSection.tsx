@@ -13,15 +13,15 @@ export interface ContatoSectionProps {
 
 /**
  * ContatoSection
- * Injeta a page base de contato (photografy-fotografia-contato) exatamente como ela é,
- * em sua proporção original absoluta (100dvh), sem adaptação de tamanho ou distorções,
- * envolvida pelo ambiente de blackout total da Plataforma Unificada.
+ * Injeta a page base de contato (photografy-fotografia-contato) com proporção
+ * vertical otimizada (sem lacunas excessivas entre sessões), envolvida pelo
+ * ambiente de blackout total da Plataforma Unificada.
  */
 export function ContatoSection({ profile }: ContatoSectionProps) {
   return (
     <section
       id="contato-hub"
-      className="relative w-full h-[100dvh] min-h-[100dvh] bg-[#000000] flex items-center justify-center overflow-hidden select-none"
+      className="relative w-full h-[460px] sm:h-[520px] lg:h-[560px] min-h-[440px] bg-[#000000] flex items-center justify-center overflow-hidden select-none"
     >
       <iframe
         src="https://photografy-fotografia-contato.vercel.app/"

@@ -57,7 +57,7 @@ export function OriginalHeader({ profile, onNavigate }: OriginalHeaderProps) {
       {/* =========================================================================
           CINEMATIC FULL-WIDTH COVER HERO — ESCALA MONUMENTAL & ENQUADRAMENTO CINEMÁTICO 100VH
           ========================================================================= */}
-      <div className="relative w-full min-h-[calc(100vh-5rem)] lg:min-h-[calc(100vh-5rem)] flex flex-col justify-center items-center text-center pt-2 sm:pt-4 md:pt-6 lg:pt-8 pb-10 sm:pb-14 md:pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <div className="relative w-full min-h-[calc(100vh-5rem)] lg:min-h-[calc(100vh-5rem)] flex flex-col justify-center items-center text-center pt-2 sm:pt-4 md:pt-6 lg:pt-8 pb-8 sm:pb-10 md:pb-12 px-4 sm:px-6 lg:px-8 overflow-hidden">
         
         {/* Imagem de Fundo Full-Width + SHADER DINÂMICO ESTÁVEL DE ALTA PERFORMANCE */}
         <div className="absolute inset-0 z-0">
@@ -173,7 +173,7 @@ export function OriginalHeader({ profile, onNavigate }: OriginalHeaderProps) {
       />
 
       {/* ZONA DE TRANSIÇÃO CINEMÁTICA MULTICAMADAS COM BLUR & SHADOWS NA BASE DO HERO */}
-      <div className="absolute bottom-0 left-0 right-0 h-44 sm:h-64 lg:h-80 pointer-events-none z-10 flex flex-col justify-end">
+      <div className="absolute bottom-0 left-0 right-0 h-28 sm:h-36 lg:h-44 pointer-events-none z-10 flex flex-col justify-end">
         {/* 1. Halo Óptico Difuso de Luz Carmesim com Blur Suave */}
         <div
           className="absolute inset-x-0 bottom-0 h-36 sm:h-48 mx-auto max-w-4xl opacity-25"

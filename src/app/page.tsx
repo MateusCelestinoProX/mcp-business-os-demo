@@ -74,14 +74,7 @@ export default function HomePage() {
         </div>
 
         {/* =========================================================================
-            TRANSIÇÃO CINEMÁTICA PARA PRETO: DA INTERFACE ORIGINAL PARA O CONTATO
-            O layout original da Plataforma Unificada escurece suavemente para preto
-            absoluto (#000000) criando a atmosfera cinematográfica perfeita.
-            ========================================================================= */}
-        <div className="relative z-20 w-full h-48 sm:h-72 lg:h-96 pointer-events-none bg-gradient-to-b from-transparent via-[#000000]/80 via-[#000000]/95 to-[#000000]" />
-
-        {/* =========================================================================
-            3. CANAL DIRETO (SLOT DE CONTATO NA PROPORÇÃO ORIGINAL NO BLACKOUT)
+            3. CANAL DIRETO (SLOT DE CONTATO CONECTADO DIRETAMENTE AO BLACKOUT)
             ========================================================================= */}
         <section id="contato" className="relative z-20 w-full bg-[#000000] flex flex-col items-center justify-center">
           <ContatoSection
@@ -92,7 +85,7 @@ export default function HomePage() {
         {/* =========================================================================
             TRANSIÇÃO CINEMÁTICA DE SAÍDA: DO BLACKOUT PARA O RODAPÉ
             ========================================================================= */}
-        <div className="relative z-20 w-full h-32 sm:h-48 pointer-events-none bg-gradient-to-b from-[#000000] to-transparent" />
+        <div className="relative z-20 w-full h-8 sm:h-10 pointer-events-none bg-gradient-to-b from-[#000000] to-transparent" />
 
       </div>
 

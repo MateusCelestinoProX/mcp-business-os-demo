@@ -15,7 +15,7 @@ export interface SobreSectionProps {
 
 export function SobreSection({ profile }: SobreSectionProps) {
   return (
-    <section id="sobre" className="py-16 sm:py-24 relative overflow-hidden w-full">
+    <section id="sobre" className="pt-8 pb-6 sm:pt-12 sm:pb-8 relative overflow-hidden w-full">
       {/* 0. Shader WebGL Dedicado da Sessão Sobre: GridScan Holográfico Encorpado */}
       <GridScanShader
         className="z-0 mix-blend-screen pointer-events-none"
@@ -29,8 +29,8 @@ export function SobreSection({ profile }: SobreSectionProps) {
       />
 
       {/* Zonas de Transição Internas com Blur Óptico e Sombras Volumétricas Suaves */}
-      <div className="absolute top-0 left-0 right-0 h-32 sm:h-44 bg-gradient-to-b from-[#030305] via-[#030305]/80 to-transparent pointer-events-none z-1" />
-      <div className="absolute bottom-0 left-0 right-0 h-32 sm:h-44 bg-gradient-to-t from-[#030305] via-[#030305]/80 to-transparent pointer-events-none z-1" />
+      <div className="absolute top-0 left-0 right-0 h-20 sm:h-24 bg-gradient-to-b from-[#030305] via-[#030305]/80 to-transparent pointer-events-none z-1" />
+      <div className="absolute bottom-0 left-0 right-0 h-20 sm:h-24 bg-gradient-to-t from-[#000000] via-[#000000]/80 to-transparent pointer-events-none z-1" />
 
       {/* Halo óptico difuso central suave com blur cinematográfico */}
       <div
@@ -44,7 +44,7 @@ export function SobreSection({ profile }: SobreSectionProps) {
       <div className="w-full px-3.5 sm:px-6 lg:px-10 xl:px-16 relative z-10">
 
         {/* Header em Vidro Adaptado para Mobile */}
-        <div className="glass-crystal p-5 sm:p-8 lg:p-10 rounded-2xl sm:rounded-3xl mb-8 sm:mb-12 border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.85)]">
+        <div className="glass-crystal p-5 sm:p-8 lg:p-10 rounded-2xl sm:rounded-3xl mb-6 sm:mb-8 border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.85)]">
           <div className="flex flex-wrap items-center justify-between gap-2.5 mb-3">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-pill-red text-[11px] sm:text-xs font-mono text-[#ff073a] uppercase tracking-wider font-bold">
               <User className="w-3.5 h-3.5" />
