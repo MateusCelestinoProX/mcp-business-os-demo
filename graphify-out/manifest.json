@@ -13668,9 +13668,9 @@
     "semantic_hash": ""
   },
   "src/components/portal/ContatoSection.tsx": {
-    "mtime": 1794348491.9076755,
-    "seen": 1794348869.215949,
-    "ast_hash": "a36065ffb3c8ee2a62ef5afa500d0617",
+    "mtime": 1794353166.6482298,
+    "seen": 1794353180.026297,
+    "ast_hash": "ec1e5f43764200f6e1b5841787197729",
     "semantic_hash": ""
   },
   "src/components/portal/LegalModal.tsx": {
@@ -15240,9 +15240,9 @@
     "semantic_hash": ""
   },
   "vercel.json": {
-    "mtime": 1793983171.9636862,
-    "seen": 1794099300.233839,
-    "ast_hash": "0c6b11cb8589ce19dc42e539644f4a15",
+    "mtime": 1794353369.7294466,
+    "seen": 1794353384.788495,
+    "ast_hash": "c879d048a129fbff85a77daf5004ca3d",
     "semantic_hash": ""
   },
   "src/app/artigos/layout.tsx": {

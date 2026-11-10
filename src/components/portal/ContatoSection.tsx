@@ -21,12 +21,14 @@ export function ContatoSection({ profile }: ContatoSectionProps) {
   return (
     <section
       id="contato-hub"
-      className="relative w-full h-[460px] sm:h-[520px] lg:h-[560px] min-h-[440px] bg-[#000000] flex items-center justify-center overflow-hidden select-none"
+      className="contato-hub-frame relative w-full bg-[#000000] flex items-center justify-center overflow-hidden select-none"
+      style={{ minHeight: '460px' }}
     >
       <iframe
         src="https://photografy-fotografia-contato.vercel.app/"
         title="Mateus Celestino — Digital Hub Contato"
         className="w-full h-full border-0 select-none block bg-black"
+        style={{ width: '100%', height: '100%', minHeight: '460px' }}
         allow="autoplay; clipboard-write"
       />
     </section>
