@@ -45,8 +45,8 @@ test('proibido <main> aninhado: layout.tsx já provê <main>', () => {
   assert.deepEqual(bad, []);
 });
 
-test('ids de âncora (publicacoes/sobre/contato) únicos: apenas nas <section>', () => {
-  const bad = offenders(/<div id="(publicacoes|sobre|contato)"/);
+test('ids de âncora (publicacoes/sobre/servicos/stacks/squad/contato) únicos: apenas nas <section>', () => {
+  const bad = offenders(/<div id="(publicacoes|sobre|servicos|stacks|squad|contato)"/);
   assert.deepEqual(bad, []);
 });
 
@@ -74,6 +74,9 @@ test('componentes sempre visíveis da home não usam backdrop-blur-* (Tailwind)'
     'components/layout/Footer.tsx',
     'components/portal/MainNotionLayout.tsx',
     'components/portal/SobreSection.tsx',
+    'components/portal/ServicosSection.tsx',
+    'components/portal/StacksSection.tsx',
+    'components/portal/SquadSection.tsx',
     'components/portal/ContatoSection.tsx',
     'components/portal/PortalNavbar.tsx',
     'components/portal/AlternatingHeroShaders.tsx',

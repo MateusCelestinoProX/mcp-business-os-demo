@@ -825,7 +825,7 @@ export default function AdminPanelPage() {
   const totalLeadsCount = leadsList.length;
 
   return (
-    <div className="relative min-h-screen pb-16 pt-24 sm:pt-28">
+    <div className="relative min-h-screen pb-16 pt-4">
       {/* Background WebGL Shader Vermelho */}
       <AdminRedShader opacity={0.88} speed={0.45} brightness={1.4} interactive={true} />
 

@@ -4,6 +4,9 @@ import React, { useState } from 'react';
 import LiquidGlassBackground from '@/components/portal/LiquidGlassBackground';
 import OriginalHeader from '@/components/portal/OriginalHeader';
 import SobreSection from '@/components/portal/SobreSection';
+import ServicosSection from '@/components/portal/ServicosSection';
+import StacksSection from '@/components/portal/StacksSection';
+import SquadSection from '@/components/portal/SquadSection';
 import ContatoSection from '@/components/portal/ContatoSection';
 import LegalModal from '@/components/portal/LegalModal';
 import ShaderTransitionZone from '@/components/shaders/ShaderTransitionZone';
@@ -50,7 +53,7 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-transparent text-[#ececec] flex flex-col selection:bg-[#ff073a] selection:text-white relative overflow-x-hidden">
+    <div className="min-h-screen bg-transparent text-[#ececec] flex flex-col selection:bg-[#ff073a] selection:text-white relative overflow-x-hidden lg:pt-12">
       {/* Schema.org FAQPage para Rich Results nos SERPs do Google */}
       <JsonLd data={buildFaqSchema(HOME_FAQS)} id="homepage-faq-schema" />
 
@@ -74,7 +77,52 @@ export default function HomePage() {
         </div>
 
         {/* =========================================================================
-            INTERFACE DE RESPIRO & SEPARAÇÃO REFRATIVA ENTRE SOBRE E CONTATO
+            INTERFACE DE RESPIRO & SEPARAÇÃO REFRATIVA ENTRE SOBRE E SERVIÇOS
+            ========================================================================= */}
+        <div
+          aria-hidden="true"
+          className="relative z-20 w-full h-5 sm:h-6 bg-[#000000] flex items-center justify-center pointer-events-none"
+        >
+          <div className="w-full max-w-6xl mx-auto px-6">
+            <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-[#ff073a]/30 to-transparent" />
+          </div>
+        </div>
+
+        {/* =========================================================================
+            3. SERVIÇOS OFERECIDOS
+            ========================================================================= */}
+        <ServicosSection />
+
+        <div
+          aria-hidden="true"
+          className="relative z-20 w-full h-5 sm:h-6 bg-[#030305]/85 flex items-center justify-center pointer-events-none"
+        >
+          <div className="w-full max-w-6xl mx-auto px-6">
+            <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-[#ff073a]/25 to-transparent" />
+          </div>
+        </div>
+
+        {/* =========================================================================
+            4. NOSSAS STACKS DIGITAIS
+            ========================================================================= */}
+        <StacksSection />
+
+        <div
+          aria-hidden="true"
+          className="relative z-20 w-full h-5 sm:h-6 bg-[#030305]/85 flex items-center justify-center pointer-events-none"
+        >
+          <div className="w-full max-w-6xl mx-auto px-6">
+            <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-[#ff073a]/25 to-transparent" />
+          </div>
+        </div>
+
+        {/* =========================================================================
+            5. SQUAD (ENGENHARIA E ESTRATÉGIA)
+            ========================================================================= */}
+        <SquadSection />
+
+        {/* =========================================================================
+            INTERFACE DE RESPIRO & SEPARAÇÃO REFRATIVA ENTRE SQUAD E CONTATO
             ========================================================================= */}
         <div
           aria-hidden="true"
@@ -86,7 +134,7 @@ export default function HomePage() {
         </div>
 
         {/* =========================================================================
-            3. CANAL DIRETO (SLOT DE CONTATO CONECTADO DIRETAMENTE AO BLACKOUT)
+            6. CANAL DIRETO (SLOT DE CONTATO CONECTADO DIRETAMENTE AO BLACKOUT)
             ========================================================================= */}
         <section id="contato" className="relative z-20 w-full bg-[#000000] flex flex-col items-center justify-center">
           <ContatoSection

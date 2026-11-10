@@ -5,6 +5,9 @@ import { usePathname } from 'next/navigation';
 import {
   Flame,
   User,
+  Layers,
+  Cpu,
+  Users,
   Mail,
   MessageSquare,
 } from 'lucide-react';
@@ -37,7 +40,7 @@ export function PortalNavbar({
       const scrollY = window.scrollY;
       setIsScrolled(scrollY > 80);
 
-      const sections = ['contato', 'sobre'];
+      const sections = ['contato', 'squad', 'stacks', 'servicos', 'sobre'];
       let detected = 'home';
 
       for (const sectionId of sections) {
@@ -71,6 +74,9 @@ export function PortalNavbar({
   const navItems = [
     { id: 'home', label: 'Início', shortLabel: 'Início', icon: Flame },
     { id: 'sobre', label: 'Sobre', shortLabel: 'Sobre', icon: User },
+    { id: 'servicos', label: 'Serviços', shortLabel: 'Serviços', icon: Layers },
+    { id: 'stacks', label: 'Stacks', shortLabel: 'Stacks', icon: Cpu },
+    { id: 'squad', label: 'Squad', shortLabel: 'Squad', icon: Users },
     { id: 'contato', label: 'Contato', shortLabel: 'Contato', icon: Mail },
   ];
 
@@ -175,33 +181,35 @@ export function PortalNavbar({
           className="lg:hidden fixed top-16 inset-x-2 z-30 max-w-md mx-auto pointer-events-auto select-none touch-manipulation pt-1.5 animate-in fade-in slide-in-from-top-2 duration-300"
         >
           <div className="glass-crystal rounded-2xl p-1 shadow-[0_15px_40px_rgba(0,0,0,0.95),0_0_25px_rgba(255,7,58,0.25)] border border-white/20 flex items-center justify-between gap-1">
-            {navItems.map((item) => {
-              const Icon = item.icon;
-              const isActive = currentSection === item.id;
-              return (
-                <button
-                  key={item.id}
-                  onClick={() => handleTabClick(item.id)}
-                  className={`flex-1 min-h-[36px] sm:min-h-[48px] py-1 px-1.5 rounded-xl flex flex-col items-center justify-center gap-0.5 transition-all duration-200 active:scale-95 relative cursor-pointer touch-manipulation ${
-                    isActive
-                      ? 'text-white glass-pill-red shadow-[0_0_15px_rgba(255,7,58,0.4)] font-bold'
-                      : 'text-zinc-400 hover:text-zinc-200 active:bg-white/5'
-                  }`}
-                >
-                  <Icon
-                    className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                      isActive ? 'text-white scale-110 drop-shadow-[0_0_8px_#ff073a]' : 'text-zinc-400'
+            <div className="flex items-center gap-1 flex-1 min-w-0 overflow-x-auto no-scrollbar touch-pan-x">
+              {navItems.map((item) => {
+                const Icon = item.icon;
+                const isActive = currentSection === item.id;
+                return (
+                  <button
+                    key={item.id}
+                    onClick={() => handleTabClick(item.id)}
+                    className={`shrink-0 min-w-[52px] flex-1 min-h-[36px] sm:min-h-[48px] py-1 px-1.5 rounded-xl flex flex-col items-center justify-center gap-0.5 transition-all duration-200 active:scale-95 relative cursor-pointer touch-manipulation ${
+                      isActive
+                        ? 'text-white glass-pill-red shadow-[0_0_15px_rgba(255,7,58,0.4)] font-bold'
+                        : 'text-zinc-400 hover:text-zinc-200 active:bg-white/5'
                     }`}
-                  />
-                  <span className="text-[9px] font-mono leading-none tracking-tight">
-                    {item.shortLabel}
-                  </span>
-                  {isActive && (
-                    <span className="absolute -top-1 w-2 h-1 bg-[#ff073a] rounded-full shadow-[0_0_6px_#ff073a]" />
-                  )}
-                </button>
-              );
-            })}
+                  >
+                    <Icon
+                      className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                        isActive ? 'text-white scale-110 drop-shadow-[0_0_8px_#ff073a]' : 'text-zinc-400'
+                      }`}
+                    />
+                    <span className="text-[9px] font-mono leading-none tracking-tight whitespace-nowrap">
+                      {item.shortLabel}
+                    </span>
+                    {isActive && (
+                      <span className="absolute -top-1 w-2 h-1 bg-[#ff073a] rounded-full shadow-[0_0_6px_#ff073a]" />
+                    )}
+                  </button>
+                );
+              })}
+            </div>
 
             {/* Botão de Ação Rápida WhatsApp no Thumb Dock (Min 48px hit target / min-h-[36px] touch) */}
             <a

@@ -80,8 +80,8 @@ export default function RootLayout({
         {/* Sub-Header de Navegação do Sistema Universal */}
         <PortalNavbar />
 
-        {/* Conteúdo Principal com espaço inteligente: mobile-first enxuto e desktop com espaço para as duas barras fixas */}
-        <main className="flex-1 pt-16 sm:pt-20 lg:pt-32 pb-20 md:pb-0 relative z-10 flex flex-col min-h-screen">
+        {/* Conteúdo Principal com espaço inteligente para a barra superior fixa (Navbar) */}
+        <main className="flex-1 pt-16 sm:pt-20 pb-20 md:pb-0 relative z-10 flex flex-col min-h-screen">
           {children}
         </main>
 

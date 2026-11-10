@@ -3,12 +3,19 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 
-describe('Suíte de Validação: Remoção Completa de Stack & Squad do Header e Injeção SmartFlow no Showcase', () => {
+describe('Suíte de Validação: Migração das 3 Seções (Serviços, Stacks, Squad) do Showcase para a Home Page', () => {
   const baseDir = path.resolve(__dirname, '..');
   const navbarPath = path.join(baseDir, 'src/components/layout/Navbar.tsx');
   const mobileNavPath = path.join(baseDir, 'src/components/layout/MobileBottomNav.tsx');
   const footerPath = path.join(baseDir, 'src/components/layout/Footer.tsx');
   const sitemapPath = path.join(baseDir, 'src/app/sitemap.ts');
+
+  const homePagePath = path.join(baseDir, 'src/app/page.tsx');
+  const servicosSectionPath = path.join(baseDir, 'src/components/portal/ServicosSection.tsx');
+  const stacksSectionPath = path.join(baseDir, 'src/components/portal/StacksSection.tsx');
+  const squadSectionPath = path.join(baseDir, 'src/components/portal/SquadSection.tsx');
+  const portalNavbarPath = path.join(baseDir, 'src/components/portal/PortalNavbar.tsx');
+  const sitemapModalPath = path.join(baseDir, 'src/components/portal/UniversalSitemapModal.tsx');
 
   const comunidadeHtmlPath = path.join(baseDir, 'public/comunidade/index.html');
   const showcaseHtmlPath = path.join(baseDir, 'public/showcase/index.html');
@@ -46,24 +53,66 @@ describe('Suíte de Validação: Remoção Completa de Stack & Squad do Header e
     }
   });
 
-  test('4. Showcase deve conter as 3 seções SmartFlow injetadas ao final (Serviços Oferecidos, Nossas Stacks Digitais e Squad)', () => {
+  test('4. Showcase não deve mais conter as 3 seções SmartFlow movidas para a Home Page', () => {
     const html = fs.readFileSync(showcaseHtmlPath, 'utf-8');
 
-    // Ordem correta no final da página: #certifications -> #servicos -> #stacks -> #squad -> #contact
     const certIdx = html.indexOf('id="certifications"');
-    const bundleIdx = html.indexOf('id="smartflow-showcase-bundle"');
-    const servicesIdx = html.indexOf('id="servicos"');
-    const stacksIdx = html.indexOf('id="stacks"');
-    const squadIdx = html.indexOf('id="squad"');
     const contactIdx = html.indexOf('id="contact"');
+    assert.ok(certIdx !== -1 && contactIdx > certIdx, 'Showcase deve conectar #certifications diretamente antes de #contact');
 
-    assert.ok(certIdx !== -1, 'Seção #certifications deve existir');
-    assert.ok(bundleIdx > certIdx, 'Bundle SmartFlow deve vir após #certifications');
-    assert.ok(servicesIdx > bundleIdx && stacksIdx > servicesIdx && squadIdx > stacksIdx, 'Ordem deve ser Serviços -> Stacks -> Squad');
-    assert.ok(contactIdx > squadIdx, 'Seções SmartFlow devem preceder o bloco final de Contato/Footer (#contact)');
+    for (const removedToken of [
+      'id="smartflow-showcase-bundle"',
+      'id="smartflow-showcase-styles"',
+      'id="smartflow-stacks-canvas-script"',
+      'id="servicos"',
+      'id="stacks"',
+      'id="squad"',
+      'id="stacks-canvas"',
+      'href="#servicos"',
+      'href="#stacks"',
+      'href="#squad"',
+      'fa-hexagon-nodes',
+    ]) {
+      assert.ok(!html.includes(removedToken), `Showcase não deve mais conter ${removedToken}`);
+    }
+  });
+
+  test('5. Home Page deve renderizar Serviços, Stacks e Squad traduzidos ao layout glassmorphism carmesim', () => {
+    const home = fs.readFileSync(homePagePath, 'utf-8');
+    const servicosCode = fs.readFileSync(servicosSectionPath, 'utf-8');
+    const stacksCode = fs.readFileSync(stacksSectionPath, 'utf-8');
+    const squadCode = fs.readFileSync(squadSectionPath, 'utf-8');
+    const portalNavCode = fs.readFileSync(portalNavbarPath, 'utf-8');
+    const sitemapModalCode = fs.readFileSync(sitemapModalPath, 'utf-8');
+
+    // Ordem na Home Page: Sobre -> Serviços -> Stacks -> Squad -> Contato
+    const sobreIdx = home.indexOf('<SobreSection');
+    const servicosIdx = home.indexOf('<ServicosSection');
+    const stacksIdx = home.indexOf('<StacksSection');
+    const squadIdx = home.indexOf('<SquadSection');
+    const contatoIdx = home.indexOf('id="contato"');
+
+    assert.ok(sobreIdx !== -1, 'SobreSection deve estar na Home');
+    assert.ok(servicosIdx > sobreIdx, 'ServicosSection deve vir após SobreSection');
+    assert.ok(stacksIdx > servicosIdx, 'StacksSection deve vir após ServicosSection');
+    assert.ok(squadIdx > stacksIdx, 'SquadSection deve vir após StacksSection');
+    assert.ok(contatoIdx > squadIdx, 'Contato deve vir após SquadSection');
+
+    // Regras de Estabilidade Visual (sem backdrop-blur nem classes sf-ultra-glass legadas)
+    for (const [label, code] of [
+      ['ServicosSection', servicosCode],
+      ['StacksSection', stacksCode],
+      ['SquadSection', squadCode],
+    ]) {
+      assert.ok(!code.includes('backdrop-blur'), `${label} não deve usar backdrop-blur`);
+      assert.ok(!code.includes('sf-ultra-glass'), `${label} não deve usar sf-ultra-glass legado`);
+      assert.ok(code.includes('glass-crystal'), `${label} deve adotar design system .glass-crystal`);
+    }
 
     // Seção 1: Serviços Oferecidos
+    assert.ok(servicosCode.includes('id="servicos"'), 'ServicosSection deve definir id="servicos"');
     for (const expected of [
+      'SOLUÇÕES AVANÇADAS',
       'Serviços Oferecidos',
       'Especialidade',
       'Criação de Software Sob Medida',
@@ -73,41 +122,47 @@ describe('Suíte de Validação: Remoção Completa de Stack & Squad do Header e
       'Sistemas de Treinamento',
       'Inteligência de Mercado',
     ]) {
-      assert.ok(html.includes(expected), `Showcase deve conter "${expected}"`);
+      assert.ok(servicosCode.includes(expected), `ServicosSection deve conter "${expected}"`);
     }
 
-    // Seção 2: Nossas Stacks Digitais + canvas + FA 6.7.2
-    assert.ok(html.includes('Nossas Stacks Digitais'), 'Deve conter Nossas Stacks Digitais');
-    assert.ok(html.includes('id="stacks-canvas"'), 'Deve conter canvas #stacks-canvas');
-    assert.ok(html.includes('01010101SMARTFLOWINTELLIGENCECODELIMITLESS'), 'Deve conter motor ASCII 3D de #stacks-canvas');
-    assert.ok(html.includes('font-awesome/6.7.2/css/all.min.css'), 'Deve carregar FontAwesome 6.7.2 para fa-hexagon-nodes');
-    assert.ok(html.includes('fa-hexagon-nodes'), 'Deve conter ícone Node (fa-hexagon-nodes)');
+    // Seção 2: Nossas Stacks Digitais
+    assert.ok(stacksCode.includes('id="stacks"'), 'StacksSection deve definir id="stacks"');
+    assert.ok(stacksCode.includes('id="stacks-canvas"'), 'StacksSection deve conter canvas #stacks-canvas');
+    assert.ok(stacksCode.includes('IntersectionObserver'), 'StacksSection deve pausar canvas via IntersectionObserver');
+    assert.ok(stacksCode.includes('getAdaptiveDPR'), 'StacksSection deve usar DPR adaptativo');
+    assert.ok(stacksCode.includes('01010101SMARTFLOWINTELLIGENCECODELIMITLESS'), 'Deve conter motor ASCII 3D de #stacks-canvas');
     for (const tech of ['React', 'Node.js', 'Node', 'Firebase', 'Supabase', 'n8n', 'Airtable', 'Notion', 'WhatsApp API', 'Email AI', 'Linux', 'Docker', 'CRM']) {
-      assert.ok(html.includes(`>${tech}<`), `Stacks deve exibir tecnologia "${tech}"`);
+      assert.ok(stacksCode.includes(`'${tech}'`), `StacksSection deve conter tecnologia "${tech}"`);
     }
 
     // Seção 3: Squad
+    assert.ok(squadCode.includes('id="squad"'), 'SquadSection deve definir id="squad"');
     for (const squadToken of [
-      'Engenharia e Estratégia',
+      'ENGENHARIA E ESTRATÉGIA',
       'Mateus Celestino',
       'MATEUS CELESTINO PRO',
       'FOUNDER',
-      '/smartflow/mateus.png',
+      '/assets/squad_mateus.webp',
       'https://mateus-celestino-pro.bullet.site/',
       'https://www.linkedin.com/in/mateus-celestino/',
       'Odilon',
       'ODILON DEV',
       'ENGINEER',
-      '/smartflow/odilon.png',
+      '/assets/squad_odilon.webp',
+      'Disponível para Projetos',
       'https://www.linkedin.com/in/odilon-dev/',
-      '/smartflow/vid2.mp4',
     ]) {
-      assert.ok(html.includes(squadToken), `Squad deve conter "${squadToken}"`);
+      assert.ok(squadCode.includes(squadToken), `SquadSection deve conter "${squadToken}"`);
     }
 
-    // Verificar existência física dos assets referenciados
-    for (const asset of ['public/smartflow/mateus.png', 'public/smartflow/odilon.png', 'public/smartflow/vid2.mp4']) {
-      assert.ok(fs.existsSync(path.join(baseDir, asset)), `Asset obrigatório ${asset} deve existir`);
+    for (const asset of ['public/assets/squad_mateus.webp', 'public/assets/squad_odilon.webp']) {
+      assert.ok(fs.existsSync(path.join(baseDir, asset)), `Asset otimizado ${asset} deve existir`);
+    }
+
+    // Navegação da Home Page (PortalNavbar + UniversalSitemapModal)
+    for (const sectionId of ['servicos', 'stacks', 'squad']) {
+      assert.ok(portalNavCode.includes(`'${sectionId}'`), `PortalNavbar deve incluir âncora #${sectionId}`);
+      assert.ok(sitemapModalCode.includes(`target: '${sectionId}'`), `UniversalSitemapModal deve incluir âncora #${sectionId}`);
     }
   });
 });

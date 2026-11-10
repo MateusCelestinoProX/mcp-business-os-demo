@@ -14,7 +14,7 @@
  * =========================================================================
  */
 
-const CACHE_VERSION = 'mcp-business-os-v1.0.1';
+const CACHE_VERSION = 'mcp-business-os-v1.0.2';
 const STATIC_CACHE = `mcp-static-${CACHE_VERSION}`;
 const PAGES_CACHE = `mcp-pages-${CACHE_VERSION}`;
 const API_CACHE = `mcp-api-${CACHE_VERSION}`;

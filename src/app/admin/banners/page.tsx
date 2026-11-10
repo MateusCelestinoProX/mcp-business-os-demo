@@ -25,7 +25,7 @@ export default async function AdminBannersPage() {
   }
 
   return (
-    <div className="relative min-h-screen bg-[#07070a] text-white pt-24 pb-24 px-3 sm:px-6 lg:px-8 selection:bg-red-600 selection:text-white">
+    <div className="relative min-h-screen bg-[#07070a] text-white pt-4 pb-24 px-3 sm:px-6 lg:px-8 selection:bg-red-600 selection:text-white">
       {/* Luzes de Ambientação e Shaders */}
       <div className="pointer-events-none fixed inset-0 overflow-hidden z-0">
         <div className="absolute -top-40 left-1/4 w-[700px] h-[600px] bg-red-600/10 blur-[180px] rounded-full" />

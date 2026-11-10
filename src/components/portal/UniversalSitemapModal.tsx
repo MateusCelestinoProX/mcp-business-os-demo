@@ -291,10 +291,13 @@ export function UniversalSitemapModal({
                 </div>
 
                 {/* Submódulo: Páginas e Acesso Rápido */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-1">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 pt-1">
                   {[
-                    { id: 'shop', label: 'Shop', desc: '800+ Flows & Make', icon: ShoppingBag, color: 'text-amber-400', action: 'route' as const, target: '/shop' },
                     { id: 'sobre', label: 'Sobre', desc: 'Bio & Formação', icon: User, color: 'text-purple-400', action: 'scroll' as const, target: 'sobre' },
+                    { id: 'servicos', label: 'Serviços', desc: 'Software & Agentes IA', icon: Layers, color: 'text-[#ff073a]', action: 'scroll' as const, target: 'servicos' },
+                    { id: 'stacks', label: 'Stacks', desc: '13 Tecnologias Core', icon: Cpu, color: 'text-red-400', action: 'scroll' as const, target: 'stacks' },
+                    { id: 'squad', label: 'Squad', desc: 'Engenharia & Growth', icon: Users, color: 'text-rose-400', action: 'scroll' as const, target: 'squad' },
+                    { id: 'shop', label: 'Shop', desc: '800+ Flows & Make', icon: ShoppingBag, color: 'text-amber-400', action: 'route' as const, target: '/shop' },
                     { id: 'contato', label: 'Contato', desc: 'WhatsApp & Email', icon: Mail, color: 'text-emerald-400', action: 'scroll' as const, target: 'contato' },
                   ].map((p) => {
                     const Icon = p.icon;

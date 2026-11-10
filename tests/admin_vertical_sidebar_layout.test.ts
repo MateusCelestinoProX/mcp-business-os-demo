@@ -70,4 +70,28 @@ describe('Painel Admin — Layout com Coluna Vertical à Esquerda (Internal Page
     assert.ok(content.includes('<AdminSidebar activeTab="library_control"'), 'Deve renderizar AdminSidebar com tab library_control ativa');
     assert.ok(content.includes('flex flex-col lg:flex-row'), 'Deve manter estrutura de duas colunas');
   });
+
+  it('5. As rotas /admin não devem empilhar padding-top redundante (pt-24/pt-28/lg:pt-32) abaixo da Navbar', () => {
+    const rootLayout = fs.readFileSync(path.join(BASE_DIR, 'src/app/layout.tsx'), 'utf8');
+    const bannersAdmin = fs.readFileSync(path.join(BASE_DIR, 'src/app/admin/banners/page.tsx'), 'utf8');
+
+    assert.ok(
+      !rootLayout.includes('lg:pt-32'),
+      'layout.tsx não deve aplicar lg:pt-32 globalmente pois PortalNavbar existe apenas na Home (/)'
+    );
+
+    const adminPages = [
+      { name: 'admin/page.tsx', content: fs.readFileSync(adminPagePath, 'utf8') },
+      { name: 'admin/shop/page.tsx', content: fs.readFileSync(shopAdminPath, 'utf8') },
+      { name: 'admin/library-control/page.tsx', content: fs.readFileSync(libraryAdminPath, 'utf8') },
+      { name: 'admin/banners/page.tsx', content: bannersAdmin },
+    ];
+
+    for (const page of adminPages) {
+      assert.ok(
+        !/\b(?:sm:|lg:)?pt-(?:24|28|32)\b/.test(page.content),
+        `${page.name} não deve aplicar pt-24/pt-28/pt-32 redundante sobre o <main> do layout global`
+      );
+    }
+  });
 });
