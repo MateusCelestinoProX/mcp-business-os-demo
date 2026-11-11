@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import {
   Lock,
@@ -21,27 +21,30 @@ import { Badge } from '@/components/ui/Badge';
 import { setStoredUser, UnifiedUser } from '@/lib/auth/unified-auth';
 
 export default function LoginPage() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('admin@demo.local');
+  const [password, setPassword] = useState('demo-admin-access-2026');
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
+  const [autoLoginProgress, setAutoLoginProgress] = useState(0);
+  const [isAutoLoggingIn, setIsAutoLoggingIn] = useState(true);
+  const autoLoginTriggeredRef = useRef(false);
 
   const executeLoginSuccess = (userPayload: UnifiedUser, redirectUrl: string) => {
     setStoredUser(userPayload);
-    // Dispara evento global
     if (typeof window !== 'undefined') {
       window.dispatchEvent(new CustomEvent('mcp_auth_changed', { detail: userPayload }));
     }
-    setSuccessMessage(`Bem-vindo, ${userPayload.name}! Redirecionando...`);
+    setSuccessMessage(`Acesso concedido com sucesso: ${userPayload.name}! Redirecionando...`);
     setTimeout(() => {
       window.location.href = redirectUrl;
     }, 600);
   };
 
-  const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleLogin = async (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
     setIsLoading(true);
+    setIsAutoLoggingIn(false);
     setErrorMessage('');
     setSuccessMessage('');
 
@@ -60,12 +63,12 @@ export default function LoginPage() {
 
       const role = data.role || (data.user?.role === 'admin' ? 'admin' : 'user');
       const userPayload: UnifiedUser = {
-        id: data.user?.id,
+        id: data.user?.id || 'demo-admin-01',
         isLoggedIn: true,
         role: role,
-        name: data.user?.name || (role === 'admin' ? 'Mateus Celestino Pro X' : 'Membro Pro'),
+        name: data.user?.name || (role === 'admin' ? 'Administrador Demo' : 'Membro Demo'),
         email: data.user?.email || email.trim(),
-        avatar: '',
+        avatar: '/assets/site_icon.webp',
         tier: role === 'admin' ? 'max' : (data.user?.tier || 'vip'),
       };
 
@@ -78,11 +81,7 @@ export default function LoginPage() {
         const searchParams = new URLSearchParams(window.location.search);
         const requested = searchParams.get('redirectUrl') || data.redirectUrl;
         if (requested && requested.startsWith('/') && !requested.startsWith('//') && !requested.startsWith('/\\')) {
-          if (requested.startsWith('/admin') && role !== 'admin') {
-            safeRedirect = '/comunidade';
-          } else {
-            safeRedirect = requested;
-          }
+          safeRedirect = requested;
         }
       }
 
@@ -92,6 +91,24 @@ export default function LoginPage() {
       setIsLoading(false);
     }
   };
+
+  // Efeito de contagem e auto-login suave para experiência de Demonstração
+  useEffect(() => {
+    let current = 0;
+    const interval = setInterval(() => {
+      current += 10;
+      setAutoLoginProgress((prev) => Math.min(prev + 10, 100));
+      if (current >= 100) {
+        clearInterval(interval);
+        if (!autoLoginTriggeredRef.current) {
+          autoLoginTriggeredRef.current = true;
+          handleLogin();
+        }
+      }
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="relative min-h-[calc(100vh-80px)] flex items-center justify-center px-3 sm:px-4 py-8 sm:py-12">
@@ -103,16 +120,38 @@ export default function LoginPage() {
         <GlassCard variant="luxury" className="p-5 sm:p-8 border-white/15 shadow-2xl rounded-2xl sm:rounded-3xl">
           {/* Top Brand & Badge */}
           <div className="text-center space-y-2 mb-6">
-            <Badge variant="red" dot className="mx-auto text-[0.65rem] px-2 py-0.5">
-              Área Restrita Soberana
+            <Badge variant="red" dot className="mx-auto text-[0.65rem] px-2.5 py-0.5 font-mono uppercase tracking-wider">
+              DEMO INSTANCE // LIVE PREVIEW
             </Badge>
             <h1 className="text-xl sm:text-2xl md:text-3xl font-black text-white tracking-tight leading-snug">
-              Acesso Unificado
+              Acesso de Administrador
             </h1>
             <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed max-w-xs mx-auto">
-              Entre com suas credenciais de Administrador ou Membro Soberano.
+              Credenciais administrativas pré-carregadas para demonstração completa do sistema.
             </p>
           </div>
+
+          {/* Banner de Demonstração com Barra de Auto-Login */}
+          {isAutoLoggingIn && !errorMessage && !successMessage && (
+            <div className="mb-5 rounded-2xl border border-red-500/40 bg-red-950/40 p-3.5 space-y-2">
+              <div className="flex items-center justify-between text-[11px] font-mono">
+                <span className="text-red-300 font-bold flex items-center gap-1.5">
+                  <Crown className="w-3.5 h-3.5 text-amber-400" />
+                  Auto-Login Demo em Andamento
+                </span>
+                <span className="text-red-400 font-bold">{autoLoginProgress}%</span>
+              </div>
+              <div className="w-full h-1.5 bg-black/60 rounded-full overflow-hidden border border-red-500/30">
+                <div
+                  className="h-full bg-gradient-to-r from-red-600 to-amber-500 transition-all duration-100 ease-out shadow-[0_0_8px_rgba(255,7,58,0.8)]"
+                  style={{ width: `${autoLoginProgress}%` }}
+                />
+              </div>
+              <p className="text-[10px] text-neutral-400 font-sans">
+                Entrando automaticamente como Administrador Demo...
+              </p>
+            </div>
+          )}
 
           {errorMessage && (
             <div className="mb-5 flex items-start sm:items-center gap-2 rounded-xl border border-red-500/30 bg-red-950/40 p-3 sm:p-3.5 text-xs text-red-300">
@@ -131,10 +170,10 @@ export default function LoginPage() {
           {/* Form */}
           <form onSubmit={handleLogin} className="space-y-4">
             <Input
-              label="E-mail de Acesso"
+              label="E-mail de Administrador"
               type="email"
               icon={<Mail className="h-4 w-4" />}
-              placeholder="seuemail@exemplo.com"
+              placeholder="admin@demo.local"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -155,9 +194,9 @@ export default function LoginPage() {
               variant="fired"
               size="lg"
               isLoading={isLoading}
-              className="w-full gap-2 uppercase tracking-wider text-xs sm:text-sm font-bold mt-2 shadow-xl min-h-[48px] h-12 touch-manipulation"
+              className="w-full gap-2 uppercase tracking-wider text-xs sm:text-sm font-bold mt-2 shadow-xl min-h-[48px] h-12 touch-manipulation cursor-pointer"
             >
-              <span>Entrar no Sistema</span>
+              <span>Entrar como Administrador Agora</span>
               <ArrowRight className="h-4 w-4" />
             </Button>
           </form>
@@ -166,10 +205,10 @@ export default function LoginPage() {
           <div className="mt-6 border-t border-white/5 pt-4 text-center space-y-2">
             <div>
               <Link
-                href="/comunidade/cadastro"
-                className="inline-block py-1.5 text-xs text-neutral-300 hover:text-white font-semibold transition-colors touch-manipulation"
+                href="/admin"
+                className="inline-block py-1.5 text-xs text-amber-400 hover:text-amber-300 font-semibold transition-colors touch-manipulation"
               >
-                Não possui conta? Cadastre-se na Comunidade →
+                Pular tela e ir direto ao Painel Admin →
               </Link>
             </div>
             <div>

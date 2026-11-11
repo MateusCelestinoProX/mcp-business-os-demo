@@ -25,12 +25,12 @@ export const SITE_LANG = 'pt-BR';
 
 export const AUTHOR_NAME = 'Mateus Celestino';
 export const AUTHOR_TITLE = 'Especialista em Automação Digital & Arquiteto de Agentes IA';
-export const AUTHOR_EMAIL = 'mcp6667@proton.me';
-export const AUTHOR_PHONE = '+55 31 9772-4257';
+export const AUTHOR_EMAIL = 'contato@business-os.demo';
+export const AUTHOR_PHONE = '+55 11 99999-0000';
 export const AUTHOR_GITHUB = 'https://github.com/MateusCelestinoProX';
-export const AUTHOR_LINKEDIN = 'https://www.linkedin.com/in/mateus-celestino-0ba50626a/';
-export const AUTHOR_INSTAGRAM = 'https://www.instagram.com/celestinoautomacao/';
-export const AUTHOR_WHATSAPP = 'https://api.whatsapp.com/send/?phone=553197724257&text=QUERO+AUTOMATIZAR+TUDO.&type=phone_number&app_absent=0';
+export const AUTHOR_LINKEDIN = 'https://linkedin.com';
+export const AUTHOR_INSTAGRAM = 'https://instagram.com';
+export const AUTHOR_WHATSAPP = 'https://api.whatsapp.com/send/?phone=5511999990000&text=QUERO+CONHECER+A+DEMO.&type=phone_number&app_absent=0';
 
 export const DEFAULT_OG_IMAGE = `${SITE_URL}/assets/hero_cover.webp`;
 export const DEFAULT_OG_IMAGE_ALT = 'Mateus Celestino Pro X — Plataforma Unificada';

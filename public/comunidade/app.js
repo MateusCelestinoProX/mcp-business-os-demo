@@ -724,7 +724,7 @@ document.addEventListener('DOMContentLoaded', () => {
       isUserLogged = true;
       user = {
         id: 'user_sovereign',
-        name: roleStored === 'admin' ? 'Mateus Celestino Pro X' : 'Membro Pro',
+        name: roleStored === 'admin' ? 'Administrador Demo' : 'Membro Demo',
         role: roleStored,
         isLoggedIn: true
       };
@@ -733,7 +733,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (isUserLogged && user) {
       isLoggedIn = true;
       currentUserId = user.id || null;
-      currentUserNameStr = user.name || (user.role === 'admin' ? 'Mateus Celestino Pro X' : 'Membro Pro');
+      currentUserNameStr = user.name || (user.role === 'admin' ? 'Administrador Demo' : 'Membro Demo');
       currentUserAvatarUrl = user.avatar || (user.role === 'admin' ? USER_ROLES.admin.avatar : (user.role === 'moder' || user.role === 'moderator' ? USER_ROLES.moderator.avatar : USER_ROLES.free.avatar));
 
       if (user.role === 'admin') {
@@ -792,7 +792,7 @@ document.addEventListener('DOMContentLoaded', () => {
           id: u.id,
           isLoggedIn: true,
           role: role,
-          name: u.name || (role === 'admin' ? 'Mateus Celestino Pro X' : 'Membro Pro'),
+          name: u.name || (role === 'admin' ? 'Administrador Demo' : 'Membro Demo'),
           email: u.email,
           avatar: existingAvatar || (role === 'admin' ? USER_ROLES.admin.avatar : USER_ROLES.free.avatar),
           tier: u.tier || (role === 'admin' ? 'max' : 'vip')
@@ -1097,6 +1097,54 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch(e) {}
 
     communityPosts = [...localCustomPosts];
+    if (communityPosts.length === 0) {
+      communityPosts = [
+        {
+          id: 'post_demo_welcome',
+          user_id: 'user_admin_demo',
+          user_name: 'Administrador Demo',
+          user_avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=Admin',
+          user_role: 'admin',
+          title: '📌 Boas-vindas à Comunidade Demo do Business OS',
+          content: 'Este é o espaço demonstrativo para troca de experiências, discussões sobre arquiteturas de automação, pipelines de dados e agentes autônomos de IA. Sinta-se livre para explorar os canais e testar publicações.',
+          link_url: '',
+          link_title: '',
+          images: [],
+          is_pinned: true,
+          likes: 24,
+          likedBy: [],
+          created_at: new Date(Date.now() - 3600000 * 4).toISOString(),
+          comments: [
+            {
+              id: 'comment_demo_1',
+              user_id: 'user_demo_1',
+              user_name: 'Carlos Tech Lead',
+              user_avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=Carlos',
+              user_role: 'moderator',
+              content: 'Excelente arquitetura e fluidez! O ecossistema modular está impressionante.',
+              created_at: new Date(Date.now() - 3600000 * 2).toISOString()
+            }
+          ]
+        },
+        {
+          id: 'post_demo_workflows',
+          user_id: 'user_demo_2',
+          user_name: 'Mariana Dev Senior',
+          user_avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=Mariana',
+          user_role: 'full',
+          title: '⚡ Novo pipeline de automação assíncrona',
+          content: 'Acabei de validar uma esteira integrando webhooks corporativos com filas de mensagens e processamento em lote. A latência caiu mais de 65% em produção.',
+          link_url: '',
+          link_title: '',
+          images: [],
+          is_pinned: false,
+          likes: 18,
+          likedBy: [],
+          created_at: new Date(Date.now() - 3600000 * 8).toISOString(),
+          comments: []
+        }
+      ];
+    }
   }
 
   // ──────────────────────────────────────────────────────────────────────────
@@ -2174,7 +2222,7 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
               id: data.user.id,
               isLoggedIn: true,
               role: role,
-              name: data.user.name || (role === 'admin' ? 'Mateus Celestino Pro X' : 'Membro Pro'),
+              name: data.user.name || (role === 'admin' ? 'Administrador Demo' : 'Membro Demo'),
               email: data.user.email || email,
               avatar: data.user.avatar || (role === 'admin' ? USER_ROLES.admin.avatar : (role === 'moder' ? USER_ROLES.moderator.avatar : USER_ROLES.free.avatar)),
               tier: role === 'admin' ? 'max' : (data.user.tier || 'vip')
@@ -6432,7 +6480,7 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
 
       if (profiles.length === 0 && isLoggedIn && currentUserId) {
         profiles = [
-          { id: currentUserId, name: currentUserNameStr || 'Mateus Celestino Pro', email: currentUserEmailStr || 'mateus@mateuscelestinopro.com', role: currentUserRole || 'admin', created_at: new Date().toISOString() }
+          { id: currentUserId, name: currentUserNameStr || 'Administrador Demo', email: currentUserEmailStr || 'admin@demo.local', role: currentUserRole || 'admin', created_at: new Date().toISOString() }
         ];
       }
 

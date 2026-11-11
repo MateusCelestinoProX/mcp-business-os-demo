@@ -1,7 +1,27 @@
-# MCP Business OS — Plataforma Unificada Soberana
+# MCP Business OS — [DEMO SHOWCASE & PORTFÓLIO]
 
-> **Sistema Operacional de Negócios Digitais, Hiperautomação, Agentes Autônomos de IA e Cofre Intelectual de Alta Performance.**  
-> Criado e mantido oficialmente por **Mateus Celestino Pro X**.
+> **Instância Interativa de Portfólio e Demonstração do Sistema Operacional de Negócios Digitais, Hiperautomação, Agentes Autônomos de IA e Cofre Intelectual.**  
+> Criado por **Mateus Celestino Pro X**.
+
+---
+
+## 🌟 Recursos Exclusivos da Versão Demo
+
+Esta edição foi concebida para demonstração pública, testes interativos e exibição técnica de portfólio de engenharia de software de altíssimo nível:
+
+1. **🎬 Intro Suave & Revelação Cinematográfica (`DemoExperienceWrapper`)**:
+   - Tela base escura com inicialização procedural e barra de progresso suave de telemetria (0-100%).
+   - Transição fluida e animada que revela a interface completa do sistema sem quebras visuais.
+   - Pílula flutuante de controle de demonstração para acesso rápido aos módulos.
+
+2. **🛡️ Acesso de Administrador por Padrão & Auto-Login**:
+   - O visitante é reconhecido imediatamente com perfil de privilégio elevado (`Administrador Demo`, `role: 'admin'`).
+   - A tela de autenticação (`/comunidade/login` e `/admin`) já carrega com as credenciais preenchidas e executa o login automaticamente com barra de progresso visual de 1 segundo.
+   - Acesso irrestrito a todas as áreas administrativas sem necessidade de banco de dados externo ou chaves sensíveis.
+
+3. **🧼 Dados Higienizados e Proteção de Privacidade**:
+   - Dados proprietários, números de telefone pessoais e e-mails foram 100% substituídos por mocks e fallbacks dinâmicos.
+   - Catálogo de produtos e serviços da loja e comunidade padronizados com referências genéricas (*"Seu produto aqui"*, *"Sua descrição aqui"*).
 
 ---
 
@@ -49,15 +69,15 @@ O **MCP Business OS** consolida os pilares de produto, marketing, vendas, comuni
 - **Prova Social & Autor**: Apresentação direta de Mateus Celestino, autoridade técnica, ecossistema e casos de sucesso auditados.
 
 ### 2. Shop Oficial (`/shop`)
-- **Produtos Validados**:
-  - *Pack de Fluxos Typebot*: Estruturas validadas de captação e qualificação de leads.
-  - *Pack de Automação n8n*: 800+ workflows empresariais para orquestração autônoma.
-  - *Make Pro Scale*: Automações avançadas para operações digitais escaláveis.
-  - *Curso I.A Pro*: Treinamento imersivo de automação inteligente e agentes autônomos.
-- **Serviços Especializados**:
-  - *Desenvolvimento de Agentes de IA*: Arquitetura de trabalhadores autônomos para vendas, suporte e backoffice.
-  - *Sistemas Sob Demanda & Smart Software*: Plataformas exclusivas de alta escala e governança de dados.
-- **Checkout Direto & Modais**: Integração direta via WhatsApp com mensagens pré-configuradas e modais detalhados de escopo.
+- **Produtos Demonstrativos**:
+  - *Seu Produto Aqui #1*: Template de alta conversão para vendas de ativos digitais.
+  - *Seu Produto Aqui #2*: Pacote de fluxos e automações empresariais escaláveis.
+  - *Seu Produto Aqui #3*: Sistema inteligente de captação e nutrição de leads.
+  - *Seu Produto Aqui #4*: Treinamento imersivo e framework de agentes autônomos.
+- **Serviços Demonstrativos**:
+  - *Seu Serviço Aqui #1*: Consultoria e arquitetura de sistemas corporativos de IA.
+  - *Seu Serviço Aqui #2*: Engenharia de software e plataformas customizadas de alta escala.
+- **Checkout Direto & Modais**: Simulação interativa via canal oficial sanitizado.
 
 ### 3. Comunidade Privada VIP (`/comunidade`)
 - **Área Restrita de Membros**: Acesso autenticado com feed de discussões, publicações técnicas e novidades exclusivas.
@@ -93,8 +113,8 @@ O **MCP Business OS** consolida os pilares de produto, marketing, vendas, comuni
 
 1. **Clonar o Repositório:**
    ```bash
-   git clone https://github.com/MateusCelestinoProX/mcp-business-os.git
-   cd mcp-business-os
+   git clone https://github.com/MateusCelestinoProX/mcp-business-os-demo.git
+   cd mcp-business-os-demo
    ```
 
 2. **Instalar Dependências:**

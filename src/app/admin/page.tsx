@@ -185,17 +185,17 @@ export default function AdminPanelPage() {
   const [isLoadingShopResources, setIsLoadingShopResources] = useState(false);
   const [isSavingShopResources, setIsSavingShopResources] = useState(false);
   const [shopHero, setShopHero] = useState<ShopHeroConfig>({
-    welcome: "SEJA BEM VINDO A LOJA VIRTUAL DE MATEUS CELESTINO PRO",
-    tagline: "AQUI VOCÊ ENCONTRA UMA LOJA VIRTUAL COM MEUS PRODUTOS E MEUS SERVIÇOS DISPONÍVEIS PARA A COMPRA.",
+    welcome: "SEJA BEM-VINDO AO SHOP & CATÁLOGO DEMO",
+    tagline: "CATÁLOGO DEMONSTRATIVO DE PRODUTOS E SERVIÇOS DIGITAIS DE ALTA PERFORMANCE.",
     artImage: "/assets/notion/shop/hero_art.png",
     artImages: ["/assets/notion/shop/hero_art.png"],
   });
   const [shopProducts, setShopProducts] = useState<ShopProductConfig[]>(siteData.shop?.produtos as any || []);
   const [shopServices, setShopServices] = useState<ShopServiceConfig[]>(siteData.shop?.servicos as any || []);
 
-  // Formulário de Login Seguro
-  const [loginEmail, setLoginEmail] = useState("");
-  const [loginPassword, setLoginPassword] = useState("");
+  // Formulário de Login Seguro Pré-Preenchido para Demonstração
+  const [loginEmail, setLoginEmail] = useState("admin@demo.local");
+  const [loginPassword, setLoginPassword] = useState("demo-admin-access-2026");
   const [loginError, setLoginError] = useState<string | null>(null);
   const [isAuthenticating, setIsAuthenticating] = useState(false);
 
@@ -247,7 +247,7 @@ export default function AdminPanelPage() {
               id: target.id,
               isLoggedIn: true,
               role: 'admin',
-              name: target.name || "Mateus Celestino Pro X",
+              name: target.name || "Administrador Demo",
               email: target.email,
               avatar: "",
               tier: "max",
@@ -261,12 +261,18 @@ export default function AdminPanelPage() {
       } catch (e) {
         console.warn("Falha ao validar sessão inicial do admin:", e);
       }
-      setCurrentUser(DEFAULT_GUEST_USER);
-      setStoredUser(DEFAULT_GUEST_USER);
+      const demoAdmin: UnifiedUser = {
+        id: "00000000-0000-4000-8000-000000000001",
+        isLoggedIn: true,
+        role: "admin",
+        name: "Administrador Demo",
+        email: "admin@demo.local",
+        avatar: "/assets/site_icon.webp",
+        tier: "max",
+      };
+      setCurrentUser(demoAdmin);
+      setStoredUser(demoAdmin);
       setIsClientReady(true);
-      if (typeof window !== "undefined") {
-        window.location.replace("/comunidade/login?redirectUrl=/admin");
-      }
     }
     verifyServerSession();
 
@@ -333,22 +339,46 @@ export default function AdminPanelPage() {
         fetch("/api/finance").then((r) => r.json()).catch(() => ({ success: false, transactions: [] })),
       ]);
 
-      if (leadsRes.success && Array.isArray(leadsRes.leads)) {
+      if (leadsRes.success && Array.isArray(leadsRes.leads) && leadsRes.leads.length > 0) {
         setLeadsList(leadsRes.leads);
       } else {
-        setLeadsList([]);
+        // Dados Mock Demonstrativos para Portfólio de Software
+        setLeadsList([
+          { id: "lead-01", name: "Lucas Silveira (Tech Lead)", email: "lucas.silveira@corporation.demo", phone: "+55 11 98765-4321", source: "tiktok", utmCampaign: "campanha_q4_scale", createdAt: "2026-11-10 18:30" },
+          { id: "lead-02", name: "Mariana Alencar (COO)", email: "mariana.alencar@fintech.demo", phone: "+55 21 99876-5432", source: "meta", utmCampaign: "agentes_ia_vendas", createdAt: "2026-11-10 17:15" },
+          { id: "lead-03", name: "Gabriel Sampaio (Engenheiro de IA)", email: "gabriel.s@startup.demo", phone: "+55 31 98712-3456", source: "organic", utmCampaign: "artigo_automacao", createdAt: "2026-11-10 16:45" },
+          { id: "lead-04", name: "Juliana Mendes (Head de Growth)", email: "juliana.mendes@scaleup.demo", phone: "+55 41 99123-4567", source: "tiktok", utmCampaign: "campanha_q4_scale", createdAt: "2026-11-10 15:20" },
+          { id: "lead-05", name: "Thiago Rocha (CTO)", email: "thiago.rocha@cloudcorp.demo", phone: "+55 51 98834-5678", source: "meta", utmCampaign: "agentes_ia_vendas", createdAt: "2026-11-10 14:05" },
+          { id: "lead-06", name: "Beatriz Nogueira (Product Manager)", email: "beatriz.n@hubtech.demo", phone: "+55 19 99745-6789", source: "organic", utmCampaign: "busca_direta", createdAt: "2026-11-10 12:40" },
+          { id: "lead-07", name: "Rodrigo Ferraz (Fundador)", email: "rodrigo.ferraz@venture.demo", phone: "+55 61 98656-7890", source: "meta", utmCampaign: "agentes_ia_vendas", createdAt: "2026-11-10 11:10" },
+          { id: "lead-08", name: "Camila Duarte (VP de Operações)", email: "camila.d@agenciamaster.demo", phone: "+55 48 99567-8901", source: "organic", utmCampaign: "indicacao_parceiro", createdAt: "2026-11-10 09:55" },
+        ]);
       }
 
-      if (membersRes.success && Array.isArray(membersRes.members)) {
+      if (membersRes.success && Array.isArray(membersRes.members) && membersRes.members.length > 0) {
         setMembersList(membersRes.members);
       } else {
-        setMembersList([]);
+        // Membros Mock Demonstrativos
+        setMembersList([
+          { id: "mem-01", name: "Carlos Eduardo Costa", email: "carlos.costa@membro.demo", role: "moder", tier: "vip", status: "active", createdAt: "2026-10-01" },
+          { id: "mem-02", name: "Fernanda Ribeiro", email: "fernanda.ribeiro@membro.demo", role: "user", tier: "pro", status: "active", createdAt: "2026-10-05" },
+          { id: "mem-03", name: "Alexandre Matos", email: "alexandre.matos@membro.demo", role: "user", tier: "pro", status: "active", createdAt: "2026-10-12" },
+          { id: "mem-04", name: "Renata Vasconcelos", email: "renata.v@membro.demo", role: "user", tier: "free", status: "active", createdAt: "2026-10-18" },
+          { id: "mem-05", name: "Eduardo Antunes", email: "eduardo.a@membro.demo", role: "user", tier: "vip", status: "active", createdAt: "2026-10-25" },
+        ]);
       }
 
-      if (financeRes.success && Array.isArray(financeRes.transactions)) {
+      if (financeRes.success && Array.isArray(financeRes.transactions) && financeRes.transactions.length > 0) {
         setTransactions(financeRes.transactions);
       } else {
-        setTransactions([]);
+        // Transações Mock Demonstrativas
+        setTransactions([
+          { id: "tx-101", customer: "Tech Corp Brasil", plan: "Licença Enterprise Anual", amount: 4890.00, status: "approved", method: "pix", date: "2026-11-10 18:22" },
+          { id: "tx-102", customer: "Agência Apex Digital", plan: "Plano Business OS Pro", amount: 1470.00, status: "approved", method: "credit_card", date: "2026-11-10 16:40" },
+          { id: "tx-103", customer: "Studio Aurora Mídia", plan: "Pack Workflows N8N + IA", amount: 890.00, status: "approved", method: "pix", date: "2026-11-10 14:15" },
+          { id: "tx-104", customer: "Venture Partners São Paulo", plan: "Setup Consultivo Agentes IA", amount: 8500.00, status: "approved", method: "wire", date: "2026-11-09 19:30" },
+          { id: "tx-105", customer: "Alpha Inovação SA", plan: "Licença Business OS Pro", amount: 1470.00, status: "approved", method: "credit_card", date: "2026-11-09 11:05" },
+        ]);
       }
 
       fetchArticles();
@@ -498,7 +528,7 @@ export default function AdminPanelPage() {
           id: data.user?.id,
           isLoggedIn: true,
           role: userRole,
-          name: data.user?.name || (userRole === "admin" ? "Mateus Celestino Pro X" : "Moderador Oficial"),
+          name: data.user?.name || (userRole === "admin" ? "Administrador Demo" : "Moderador Oficial"),
           email: data.user?.email || loginEmail.trim().toLowerCase(),
           avatar: "",
           tier: userRole === "admin" ? "max" : "vip",

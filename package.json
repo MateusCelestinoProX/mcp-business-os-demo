@@ -1,8 +1,8 @@
 {
-  "name": "plataforma-unificada-soberana",
+  "name": "mcp-business-os-demo",
   "version": "1.0.0",
   "private": true,
-  "description": "Plataforma Unificada Soberana de Mateus Celestino Pro — Branding, Comunidade, Construtor e Biblioteca",
+  "description": "MCP Business OS [DEMO INSTANCE] — Plataforma Unificada de Negócios Digitais e Agentes de IA",
   "scripts": {
     "dev": "node scripts/server-guardian.js",
     "dev:raw": "next dev",

@@ -12,8 +12,8 @@ const SETTINGS_KEY = 'shop_and_resources_config';
 const DEFAULT_CONFIG = {
   shop: {
     hero: {
-      welcome: 'SEJA BEM VINDO A LOJA VIRTUAL DE MATEUS CELESTINO PRO',
-      tagline: 'AQUI VOCÊ ENCONTRA UMA LOJA VIRTUAL COM MEUS PRODUTOS E MEUS SERVIÇOS DISPONÍVEIS PARA A COMPRA.',
+      welcome: 'SEJA BEM-VINDO AO SHOP & CATÁLOGO DEMO',
+      tagline: 'SEU CATÁLOGO PROFISSIONAL DE PRODUTOS E SERVIÇOS DIGITAIS DE ALTA PERFORMANCE.',
       artImages: [
         '/assets/notion/shop/hero_art.png',
         '/assets/hero_cover.webp',
@@ -157,8 +157,8 @@ const DEFAULT_CONFIG = {
   },
   recursos: {
     hero: {
-      title: 'SEJA BEM VINDO A SESSÃO DE RECURSOS DE MATEUS CELESTINO PRO',
-      description: 'AQUI VOCÊ ENCONTRARÁ TODOS OS PRODUTOS E RECURSOS QUE EU TENHO DISPONÍVEIS. Materiais coletados, desenvolvidos e validados na prática para você estudar, vender e implementar sem restrições.',
+      title: 'SEJA BEM-VINDO À CENTRAL DE RECURSOS DEMO',
+      description: 'AQUI VOCÊ ENCONTRARÁ PRODUTOS E RECURSOS DIGITAIS DISPONÍVEIS NA PLATAFORMA. Materiais coletados, desenvolvidos e validados na prática para você estudar e implementar sem restrições.',
       artImages: [
         '/assets/recursos_cover.webp',
         '/assets/hero_cover.webp',

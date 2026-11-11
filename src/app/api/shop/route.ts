@@ -52,8 +52,8 @@ export async function GET() {
       configData = {
         shop: {
           hero: {
-            welcome: 'SEJA BEM VINDO A LOJA VIRTUAL DE MATEUS CELESTINO PRO',
-            tagline: 'AQUI VOCÊ ENCONTRA UMA LOJA VIRTUAL COM MEUS PRODUTOS E MEUS SERVIÇOS DISPONÍVEIS PARA A COMPRA.',
+            welcome: 'SEJA BEM-VINDO AO SHOP & CATÁLOGO DEMO',
+            tagline: 'SEU CATÁLOGO PROFISSIONAL DE PRODUTOS E SERVIÇOS DIGITAIS DE ALTA PERFORMANCE.',
             artImages: [
               '/assets/notion/shop/hero_art.png',
               '/assets/hero_cover.webp',

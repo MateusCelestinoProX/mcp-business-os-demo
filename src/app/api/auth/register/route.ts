@@ -61,7 +61,7 @@ export async function POST(req: Request) {
     }
 
     // 2. Proteção de reserva: impede cadastro de membro com o e-mail do administrador soberano
-    const masterEmail = (process.env.ADMIN_EMAIL || 'mcp6667@proton.me').toLowerCase().trim();
+    const masterEmail = (process.env.ADMIN_EMAIL || 'admin@demo.local').toLowerCase().trim();
     if (cleanEmail === masterEmail) {
       return NextResponse.json(
         { success: false, error: 'Este e-mail é reservado pelo sistema.' },

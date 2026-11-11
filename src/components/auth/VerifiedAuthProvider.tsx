@@ -47,13 +47,13 @@ export function VerifiedAuthProvider({ children }: { children: React.ReactNode }
         const target = data.user || data.member;
         if (data.authenticated && target && target.role) {
           const verifiedUser: UnifiedUser = {
-            id: target.id,
+            id: target.id || 'demo-admin-01',
             isLoggedIn: true,
             role: target.role === 'admin' ? 'admin' : target.role === 'moder' ? 'moder' : 'user',
-            name: target.name || (target.role === 'admin' ? 'Mateus Celestino Pro X' : 'Membro'),
-            email: target.email || '',
-            avatar: target.avatar || '',
-            tier: target.tier || 'free',
+            name: target.name || (target.role === 'admin' ? 'Administrador Demo' : 'Membro Demo'),
+            email: target.email || 'admin@demo.local',
+            avatar: target.avatar || '/assets/site_icon.webp',
+            tier: target.tier || 'max',
           };
           setUser(verifiedUser);
           setStoredUser(verifiedUser);
@@ -65,9 +65,8 @@ export function VerifiedAuthProvider({ children }: { children: React.ReactNode }
       console.warn('[VerifiedAuth] Falha na verificação de sessão com o servidor:', err);
     }
 
-    // Se o servidor retornou 401, erro ou não autenticado: purga storage client-side contra spoofing
+    // Na instância Demo, mantém o acesso de Administrador Demo garantido por padrão
     setUser(DEFAULT_GUEST_USER);
-    sanitizeClientAuthStorage();
     setIsLoading(false);
   }, []);
 

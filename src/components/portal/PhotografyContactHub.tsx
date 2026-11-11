@@ -44,10 +44,10 @@ const backgroundImages = [
 export function PhotografyContactHub({
   className = '',
   isEmbedded = false,
-  whatsappUrl = 'https://api.whatsapp.com/send/?phone=553197724257&text=QUERO+AUTOMATIZAR+TUDO.&type=phone_number&app_absent=0',
-  email = 'mcp6667@proton.me',
-  linkedinUrl = 'https://www.linkedin.com/in/mateus-celestino-0ba50626a/',
-  instagramUrl = 'https://www.instagram.com/celestinoautomacao/',
+  whatsappUrl = 'https://api.whatsapp.com/send/?phone=5511999990000&text=QUERO+CONHECER+A+DEMO.&type=phone_number&app_absent=0',
+  email = 'contato@business-os.demo',
+  linkedinUrl = 'https://linkedin.com',
+  instagramUrl = 'https://instagram.com',
   photoPortfolioUrl = 'https://photografy-home.vercel.app/',
 }: PhotografyContactHubProps) {
   const [currentSlide, setCurrentSlide] = useState(0);

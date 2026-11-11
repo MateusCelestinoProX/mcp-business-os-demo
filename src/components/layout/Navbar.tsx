@@ -67,9 +67,14 @@ export function Navbar() {
             </div>
           </div>
           <div className="flex flex-col justify-center min-w-0">
-            <span className="font-extrabold text-xs sm:text-sm tracking-tight sm:tracking-wide text-white uppercase group-hover:text-red-300 transition-colors truncate">
-              MATEUS CELESTINO <span className="text-red-500 font-black">PRO X</span>
-            </span>
+            <div className="flex items-center gap-1.5">
+              <span className="font-extrabold text-xs sm:text-sm tracking-tight sm:tracking-wide text-white uppercase group-hover:text-red-300 transition-colors truncate">
+                MCP BUSINESS <span className="text-red-500 font-black">OS</span>
+              </span>
+              <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-red-950/80 border border-red-500/40 text-red-300 font-bold uppercase tracking-wider">
+                DEMO
+              </span>
+            </div>
           </div>
         </Link>
 
@@ -133,7 +138,7 @@ export function Navbar() {
 
           {currentUser.isLoggedIn ? (
             <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white/[0.04] border border-white/10 text-[11px]">
-              <span className="font-semibold text-white">{currentUser.name || "Mateus Celestino Pro X"}</span>
+              <span className="font-semibold text-white">{currentUser.name || "Administrador Demo"}</span>
               <button
                 onClick={handleLogout}
                 title="Encerrar sessão"
@@ -145,10 +150,10 @@ export function Navbar() {
           ) : (
             <Link
               href="/comunidade/login"
-              title="Acessar sessão / Login"
+              title="Acessar sessão / Login Demo"
               className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white/[0.04] border border-white/10 text-[11px] hover:border-white/20 transition-colors group cursor-pointer"
             >
-              <span className="font-semibold text-white">Mateus Celestino Pro X</span>
+              <span className="font-semibold text-white">Login Demo</span>
               <LogIn className="w-3.5 h-3.5 text-neutral-400 group-hover:text-red-400 transition-colors" />
             </Link>
           )}
@@ -232,7 +237,7 @@ export function Navbar() {
                   className="w-full flex items-center justify-center gap-2 min-h-[44px] py-2.5 text-xs text-neutral-400 hover:text-red-400 transition-colors touch-manipulation cursor-pointer"
                 >
                   <LogOut className="w-3.5 h-3.5" />
-                  <span>Encerrar Sessão ({currentUser.name || "Admin"})</span>
+                  <span>Encerrar Sessão ({currentUser.name || "Admin Demo"})</span>
                 </button>
               ) : (
                 <Link

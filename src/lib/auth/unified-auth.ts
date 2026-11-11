@@ -11,36 +11,31 @@ export interface UnifiedUser {
 }
 
 /**
- * Padrão Soberano Universal: Todo usuário é VISITANTE não-autenticado por padrão.
- * Apenas quem realiza login explícito com credenciais válidas se torna membro ou admin.
+ * Padrão Demonstração: O usuário possui acesso de Administrador por padrão
+ * para livre experimentação de todos os módulos e dashboards.
  */
-export const DEFAULT_GUEST_USER: UnifiedUser = {
-  isLoggedIn: false,
-  role: 'visitante',
-  name: '',
-  email: '',
-  avatar: '',
-  tier: 'free',
+export const DEFAULT_DEMO_ADMIN_USER: UnifiedUser = {
+  id: '00000000-0000-4000-8000-000000000001',
+  isLoggedIn: true,
+  role: 'admin',
+  name: 'Administrador Demo',
+  email: 'admin@demo.local',
+  avatar: '/assets/site_icon.webp',
+  tier: 'max',
 };
+
+export const DEFAULT_GUEST_USER: UnifiedUser = DEFAULT_DEMO_ADMIN_USER;
 
 export const AUTH_STORAGE_KEY = 'mcp_session_user';
 
 export function getStoredUser(): UnifiedUser {
-  if (typeof window === 'undefined') return DEFAULT_GUEST_USER;
+  if (typeof window === 'undefined') return DEFAULT_DEMO_ADMIN_USER;
   try {
     const raw = localStorage.getItem(AUTH_STORAGE_KEY);
-    if (!raw) return DEFAULT_GUEST_USER;
+    if (!raw) return DEFAULT_DEMO_ADMIN_USER;
 
     const parsed = JSON.parse(raw);
     if (parsed && typeof parsed === 'object') {
-      // Limpa dados sem login válido
-      if (!parsed.isLoggedIn) {
-        localStorage.removeItem(AUTH_STORAGE_KEY);
-        localStorage.removeItem('mcp_user_role');
-        localStorage.removeItem('mcp_admin_auth');
-        return DEFAULT_GUEST_USER;
-      }
-
       if (parsed.isLoggedIn && parsed.role) {
         return parsed as UnifiedUser;
       }
@@ -48,7 +43,7 @@ export function getStoredUser(): UnifiedUser {
   } catch (err) {
     console.warn('[UnifiedAuth] Erro ao recuperar sessão:', err);
   }
-  return DEFAULT_GUEST_USER;
+  return DEFAULT_DEMO_ADMIN_USER;
 }
 
 export function setStoredUser(user: UnifiedUser): void {

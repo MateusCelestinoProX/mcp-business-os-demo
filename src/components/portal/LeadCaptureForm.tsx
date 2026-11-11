@@ -240,16 +240,16 @@ export function LeadCaptureForm() {
                   </span>
                 </div>
                 <div className="text-base font-bold text-white group-hover:text-[#ff073a] transition-colors">
-                  +55 (31) 9772-4257
+                  +55 (11) 99999-0000
                 </div>
                 <p className="text-xs text-neutral-300 truncate">
-                  Atendimento direto e prioritário com Mateus Pro
+                  Atendimento comercial Business OS Demo
                 </p>
               </div>
             </a>
 
             <a
-              href="mailto:contato@mateuscelestinopro.com"
+              href="mailto:contato@business-os.demo"
               className="glass-crystal glass-interactive p-4 sm:p-5 rounded-2xl flex items-center gap-4 group transition-all border border-white/10 hover:border-white/20 min-h-[72px]"
             >
               <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-neutral-300 group-hover:text-[#ff073a] transition-colors shrink-0">

@@ -203,8 +203,8 @@ export async function runSeed() {
 
         const officialAdmins = [
           {
-            email: (process.env.ADMIN_EMAIL || 'mcp6667@proton.me').toLowerCase().trim(),
-            name: 'Mateus Celestino Pro X',
+            email: (process.env.ADMIN_EMAIL || 'admin@demo.local').toLowerCase().trim(),
+            name: 'Administrador Demo',
             password: adminPass,
             hash: adminPasswordHash,
             isAdmin: true,

@@ -131,8 +131,8 @@ export function ShopSection({ shopData, onOpenContact }: ShopSectionProps) {
   };
 
   const defaultHero: ShopHero = {
-    welcome: 'SEJA BEM VINDO A LOJA VIRTUAL DE MATEUS CELESTINO PRO',
-    tagline: 'AQUI VOCÊ ENCONTRA UMA LOJA VIRTUAL COM MEUS PRODUTOS E MEUS SERVIÇOS DISPONÍVEIS PARA A COMPRA.',
+    welcome: 'SEJA BEM-VINDO AO SHOP & CATÁLOGO DEMO',
+    tagline: 'SEU CATÁLOGO PROFISSIONAL DE PRODUTOS E SERVIÇOS DIGITAIS DE ALTA PERFORMANCE.',
     artImage: '/assets/notion/shop/hero_art.png',
     features: [
       {
@@ -162,149 +162,149 @@ export function ShopSection({ shopData, onOpenContact }: ShopSectionProps) {
 
   const defaultProdutos: ShopProductItem[] = [
     {
-      id: 'prod-typebot',
-      title: 'ULTIMATE TYPEBOT PACK',
-      tag: 'MAIS DE 800 FLOWS',
+      id: 'prod-demo-1',
+      title: 'SEU PRODUTO AQUI #1',
+      tag: 'PACOTE DIGITAL // DEMO',
       badge: 'PRODUTO DIGITAL',
       price: 'Entrega Imediata',
       cover: '/assets/notion/shop/products/typebot/ChatGPT_Image_9_de_jun._de_2025_13_14_33.png',
-      headline: 'PARE DE PERDER HORAS DESENHANDO FLUXOS DO ZERO',
-      description: 'O acervo definitivo com mais de 800 fluxos prontos de Typebot para substituir landing pages tradicionais e atendimento humano por conversações interativas que convertem leads 24 horas por dia.',
+      headline: 'SUA HEADLINE DE IMPACTO AQUI',
+      description: 'Sua descrição detalhada aqui. Insira os benefícios do seu pacote digital, produto de dados ou tecnologia proprietária.',
       highlights: [
-        'Mais de 800 flows prontos, validados e categorizados',
-        'Substitui landing page tradicional e suporte manual ao cliente',
-        'Lógica condicional avançada, variáveis dinâmicas e chamadas HTTP',
-        'Pronto para plugar em WhatsApp, websites e funis de venda',
-        'Engenharia reversa de elite para estudar e implementar imediatamente'
+        'Seu benefício demonstrativo número 1',
+        'Seu benefício demonstrativo número 2',
+        'Seu benefício demonstrativo número 3',
+        'Pronto para plugar em websites e funis de conversão',
+        'Estrutura modular para implementar imediatamente'
       ],
       details: {
         entrega: 'Acesso imediato enviado para armazenamento em nuvem segura.',
         segurança: 'Checkout blindado com criptografia e suporte direto.',
-        ideal: 'Profissionais que buscam escalar conversão sem depender de atendentes humanos.'
+        ideal: 'Profissionais que buscam escalar conversão e autoridade online.'
       },
-      cta: 'OBTER TYPEBOT PACK',
-      whatsappMessage: 'Oi Mateus, tenho interesse no ULTIMATE TYPEBOT PACK com mais de 800 flows!'
+      cta: 'SEU PRODUTO AQUI',
+      whatsappMessage: 'Olá, tenho interesse neste produto demonstrativo!'
     },
     {
-      id: 'prod-n8n',
-      title: 'ULTIMATE N8N PACK',
-      tag: 'WORKFLOWS MESTRES',
+      id: 'prod-demo-2',
+      title: 'SEU PRODUTO AQUI #2',
+      tag: 'WORKFLOWS MESTRES // DEMO',
       badge: 'NODEMATION MESTRE',
       price: 'Entrega Imediata',
       cover: '/assets/notion/shop/products/n8n/Robo_Central_em_Sala_Futurista.png',
-      headline: 'PULANDO DIRETO PARA A PARTE QUE IMPORTA: USAR, APLICAR E FATURAR',
-      description: 'Acervo valioso de workflows do n8n prontos, testados e otimizados ao longo de meses de operação real. Nutrição de leads, disparo omni-channel, integração com bancos relacionais e webhooks.',
+      headline: 'SUA AUTOMAÇÃO COMPLETA E VALIDADA',
+      description: 'Sua descrição de automação aqui. Acervo valioso de fluxos testados e otimizados para operações digitais.',
       highlights: [
-        'Acervo completo de workflows prontos e testados para produção',
-        'Nutrição e qualificação de leads sem esforço manual',
-        'Automações para tarefas urgentes e rotinas críticas de suporte',
-        'Integração pronta com Baserow, Supabase, CRM e bancos SQL',
-        'Economia massiva de tempo com arquitetura robusta de nós'
+        'Acervo completo de rotinas prontas para produção',
+        'Nutrição e qualificação de contatos sem esforço manual',
+        'Automações para tarefas urgentes e rotinas críticas',
+        'Integração pronta com bancos SQL e webhooks',
+        'Economia massiva de tempo com arquitetura robusta'
       ],
       details: {
-        entrega: 'Download dos JSONs organizados por categoria de negócio.',
-        segurança: 'Código 100% seu, livre de mensalidades de plataformas proprietárias.',
+        entrega: 'Download dos artefatos organizados por categoria.',
+        segurança: 'Código 100% seu, livre de mensalidades proprietárias.',
         ideal: 'Gestores de tráfego, agências e desenvolvedores de automação.'
       },
-      cta: 'OBTER N8N PACK',
-      whatsappMessage: 'Oi Mateus, tenho interesse no ULTIMATE N8N PACK!'
+      cta: 'SEU PRODUTO AQUI',
+      whatsappMessage: 'Olá, tenho interesse neste pacote demonstrativo!'
     },
     {
-      id: 'prod-make',
-      title: 'ULTIMATE MAKE PACK',
-      tag: 'MAKE / INTEGROMAT',
+      id: 'prod-demo-3',
+      title: 'SEU PRODUTO AQUI #3',
+      tag: 'INTEGRAÇÕES // DEMO',
       badge: 'FLUXOS TESTADOS',
       price: 'Entrega Imediata',
       cover: '/assets/notion/shop/products/make/ChatGPT_Image_9_de_jun._de_2025_20_18_41.png',
-      headline: 'BLUEPRINTS COMPLETOS E CONEXÕES ROBUSTAS NO MAKE.COM',
-      description: 'Coleção de cenários testados no Make/Integromat para quem precisa de integrações rápidas e eficientes entre e-commerces, CRMs, ferramentas de disparo e inteligências artificiais.',
+      headline: 'SUA SOLUÇÃO CONECTADA EM MINUTOS',
+      description: 'Sua descrição de integrações aqui. Coleção de cenários testados para conexões rápidas entre CRMs e serviços de IA.',
       highlights: [
         'Blueprints prontos para importação em 1 clique',
-        'Estruturação otimizada para baixo consumo de operações',
-        'Integração com gateways de pagamento, Google Sheets e WhatsApp',
+        'Estruturação otimizada para baixo consumo',
+        'Integração com gateways de pagamento e mensageria',
         'Filtros avançados e tratamento nativo de rotas de erro',
-        'Economize neurônios e lance suas integrações no mesmo dia'
+        'Implementação ágil no mesmo dia'
       ],
       details: {
         entrega: 'Acesso imediato aos blueprints de alta performance.',
         segurança: 'Arquiteturas validadas em operações ativas de mercado.',
-        ideal: 'Empresários e freelancers que operam ecossistemas no Make.'
+        ideal: 'Empresários e freelancers que operam ecossistemas integrados.'
       },
-      cta: 'OBTER MAKE PACK',
-      whatsappMessage: 'Oi Mateus, tenho interesse no ULTIMATE MAKE PACK!'
+      cta: 'SEU PRODUTO AQUI',
+      whatsappMessage: 'Olá, tenho interesse nesta solução demonstrativa!'
     },
     {
-      id: 'prod-curso-iapro',
-      title: 'I.A PRO (CURSO)',
-      tag: 'FORMAÇÃO COMPLETA',
+      id: 'prod-demo-4',
+      title: 'SEU CURSO OU FORMAÇÃO AQUI',
+      tag: 'FORMAÇÃO COMPLETA // DEMO',
       badge: 'CERTIFICADO OFICIAL',
       price: 'Vagas Limitadas',
       cover: '/assets/notion/shop/products/curso_iapro/I.A_PRO.png',
-      headline: 'UM CURSO COMPLETO COM MATERIAIS EXCLUSIVOS PARA VOCÊ DOMINAR AUTOMAÇÃO',
-      description: 'Aprenda os fundamentos de n8n, APIs e crie sua própria A.I Automation Agency (AAA). Inclui como bônus oficial acesso integral ao Ultimate n8n Pack, comunidade exclusiva e certificado emitido por Mateus Celestino Pro.',
+      headline: 'SUA FORMAÇÃO PROFISSIONAL COMPLETA',
+      description: 'Sua descrição do programa educacional aqui. Domine os conceitos de agentes autônomos, integrações e modelos de linguagem.',
       highlights: [
-        'Aprenda n8n do zero aos nós mais avançados sem precisar saber programar',
-        'BÔNUS EXCLUSIVO: Acesso completo ao Ultimate n8n Pack incluso no curso',
-        'Módulo completo sobre Como Criar sua A.I Automation Agency e Vender',
-        'Comunidade exclusiva em Web-App para networking e dúvidas',
-        'Certificado oficial de conclusão emitido por Mateus Celestino Pro'
+        'Módulos práticos do básico ao avançado',
+        'Projetos reais e desafios de implementação',
+        'Como criar e vender soluções de automação',
+        'Comunidade exclusiva em Web-App para networking',
+        'Certificado oficial de conclusão do treinamento'
       ],
       details: {
         entrega: 'Acesso imediato à área de membros exclusiva.',
         segurança: 'Conteúdo constantemente atualizado com o mercado.',
-        ideal: 'Profissionais que desejam surfar a maior oportunidade de faturamento da história.'
+        ideal: 'Profissionais que desejam expandir seu repertório técnico.'
       },
-      cta: 'GARANTIR VAGA NO I.A PRO',
-      whatsappMessage: 'Oi Mateus, quero garantir minha vaga na formação I.A PRO!'
+      cta: 'SEU PRODUTO AQUI',
+      whatsappMessage: 'Olá, quero garantir minha vaga na formação!'
     }
   ];
 
   const defaultServicos: ShopServiceItem[] = [
     {
-      id: 'serv-ai-agents',
-      title: 'A.I AGENTS',
+      id: 'serv-demo-1',
+      title: 'SEU SERVIÇO AQUI #1',
       tag: 'ATENDIMENTO & VENDAS 24/7',
       badge: 'SOLUÇÃO SOB MEDIDA',
       cover: '/assets/notion/shop/services/ai_agents/Robo_Elegante_em_Neon_Vermelho.png',
-      headline: 'UM TIME VIRTUAL DE AGENTES VENDENDO PARA VOCÊ 24 HORAS POR DIA',
-      description: 'Implementação de robôs digitais dotados de conhecimento profundo do seu negócio. Não precisam descansar, não tiram férias, não possuem mau humor e eliminam a sobrecarga da equipe humana.',
+      headline: 'SEU SERVIÇO DE AGENTES INTELIGENTES AQUI',
+      description: 'Sua descrição do serviço de ponta a ponta aqui. Robôs digitais dotados de conhecimento do seu negócio operando 24 horas por dia.',
       highlights: [
-        'Time de Atendimento e Suporte 24/7 sem fila de espera',
-        'Agente SDR inteligente de prospecção e qualificação de clientes',
-        'Agente Agendador integrado diretamente à sua agenda Google/Cal',
-        'Base de conhecimento customizada conectada a banco de dados do seu negócio',
-        'Operação no WhatsApp com linguagem humanizada e respostas contextuais'
+        'Time de atendimento e suporte 24/7 sem fila de espera',
+        'Qualificação contextual de novos leads',
+        'Agendamento automático com integração a calendários',
+        'Base de conhecimento customizada conectada a banco de dados',
+        'Operação com respostas contextuais e linguagem humanizada'
       ],
       details: {
         implementacao: 'Projeto consultivo feito sob medida para seu nicho.',
-        tecnologia: 'OpenAI ChatGPT + n8n/Typebot em servidores dedicados autônomos.',
+        tecnologia: 'Modelos avançados de IA em servidores dedicados autônomos.',
         resultado: 'Aumento imediato de velocidade de resposta e taxa de conversão.'
       },
-      cta: 'CONTRATAR A.I AGENTS',
-      whatsappMessage: 'Oi Mateus, quero contratar a implementação de A.I AGENTS para a minha empresa!'
+      cta: 'SEU SERVIÇO AQUI',
+      whatsappMessage: 'Olá, quero solicitar uma proposta para este serviço demonstrativo!'
     },
     {
-      id: 'serv-link-tree',
-      title: 'PÁGINA DE LINKS (SUPERIOR)',
+      id: 'serv-demo-2',
+      title: 'SEU SERVIÇO AQUI #2',
       tag: 'WEB DESIGN & AUTORIDADE',
       badge: 'PAGAMENTO ÚNICO',
       cover: '/assets/notion/shop/services/link_tree/Acordo_Futurista_na_Cidade_Neon.png',
-      headline: 'UMA PÁGINA SUPERIOR, COM DESIGN SUPERIOR, PARA UM NEGÓCIO SUPERIOR',
-      description: 'Árvore de links ultra-profissional com design cinematográfico e sofisticado. Esqueça soluções prontas genéricas e caras como Linktree: pague uma única vez e tenha uma página sua para sempre, sem mensalidades.',
+      headline: 'SUA APLICAÇÃO WEB DE ALTA PERFORMANCE',
+      description: 'Sua descrição de design e desenvolvimento web aqui. Interfaces elegantes, responsivas e construídas para máxima autoridade.',
       highlights: [
-        'Design elegante, limpo e customizado para sua identidade visual',
+        'Design elegante, limpo e customizado para sua identidade',
         '100% responsiva com tempo de carregamento ultrarrápido',
-        'Sem mensalidades, sem taxas recorrentes: pague apenas uma vez',
-        'Linktrack ativado para acompanhar cliques, origem e conversão',
-        'Integração total com WhatsApp, redes sociais, produtos e formulários'
+        'Sem mensalidades ou dependências proprietárias',
+        'Telemetria ativada para acompanhar conversões',
+        'Integração total com WhatsApp, redes e formulários'
       ],
       details: {
         implementacao: 'Entrega rápida com domínio personalizado ou subdomínio.',
-        personalizacao: 'Total liberdade para adicionar botões, banners e destaques a qualquer momento.',
-        resultado: 'Transmissão imediata de sofisticação, profissionalismo e autoridade.'
+        personalizacao: 'Total liberdade para adicionar novos módulos a qualquer momento.',
+        resultado: 'Transmissão imediata de sofisticação, autoridade e solidez.'
       },
-      cta: 'SOLICITAR PÁGINA SUPERIOR',
-      whatsappMessage: 'Oi Mateus, quero criar minha PÁGINA DE LINKS SUPERIOR sem mensalidades!'
+      cta: 'SEU SERVIÇO AQUI',
+      whatsappMessage: 'Olá, quero solicitar o desenvolvimento da minha aplicação!'
     }
   ];
 
@@ -342,7 +342,7 @@ export function ShopSection({ shopData, onOpenContact }: ShopSectionProps) {
               {/* Badge da Loja */}
               <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full glass-pill-red text-[10px] sm:text-xs font-mono text-[#ff073a] font-bold uppercase tracking-wider">
                 <ShoppingBag className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
-                <span className="truncate">LOJA VIRTUAL OFICIAL DE MATEUS CELESTINO PRO</span>
+                <span className="truncate">LOJA VIRTUAL // CATÁLOGO DEMO</span>
               </div>
 
               {/* Título Principal */}
@@ -753,13 +753,13 @@ export function ShopSection({ shopData, onOpenContact }: ShopSectionProps) {
                 </a>
               )}
               <a
-                href={`https://api.whatsapp.com/send/?phone=553197724257&text=${encodeURIComponent(selectedProduct.whatsappMessage || `Oi Mateus, tenho interesse no produto ${selectedProduct.title}`)}&type=phone_number&app_absent=0`}
+                href={`https://api.whatsapp.com/send/?phone=5511999990000&text=${encodeURIComponent(selectedProduct.whatsappMessage || `Olá, tenho interesse no item demonstrativo ${selectedProduct.title}`)}&type=phone_number&app_absent=0`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="glass-button-fired min-h-[48px] px-6 py-2.5 rounded-xl text-xs font-mono font-bold text-white shadow-xl flex items-center justify-center gap-2 active:scale-95 cursor-pointer"
               >
                 <MessageSquare className="w-4 h-4" />
-                <span>{selectedProduct.cta || 'OBTER AGORA'}</span>
+                <span>{selectedProduct.cta || 'SEU PRODUTO AQUI'}</span>
               </a>
             </div>
           </div>
@@ -878,13 +878,13 @@ export function ShopSection({ shopData, onOpenContact }: ShopSectionProps) {
                 </a>
               )}
               <a
-                href={`https://api.whatsapp.com/send/?phone=553197724257&text=${encodeURIComponent(selectedService.whatsappMessage || `Oi Mateus, tenho interesse no serviço ${selectedService.title}`)}&type=phone_number&app_absent=0`}
+                href={`https://api.whatsapp.com/send/?phone=5511999990000&text=${encodeURIComponent(selectedService.whatsappMessage || `Olá, tenho interesse no serviço ${selectedService.title}`)}&type=phone_number&app_absent=0`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="glass-button-fired min-h-[48px] px-6 py-2.5 rounded-xl text-xs font-mono font-bold text-white shadow-xl flex items-center justify-center gap-2 active:scale-95 cursor-pointer"
               >
                 <MessageSquare className="w-4 h-4" />
-                <span>{selectedService.cta || 'CONTRATAR AGORA'}</span>
+                <span>{selectedService.cta || 'SEU SERVIÇO AQUI'}</span>
               </a>
             </div>
           </div>
@@ -939,7 +939,7 @@ export function ShopSection({ shopData, onOpenContact }: ShopSectionProps) {
 
             {/* Botão de Contato Instantâneo via WhatsApp */}
             <a
-              href="https://api.whatsapp.com/send/?phone=553197724257&text=Oi%20Mateus,%20quero%20atendimento%20direto%20sobre%20a%20loja%20e%20servi%C3%A7os!&type=phone_number&app_absent=0"
+              href="https://api.whatsapp.com/send/?phone=5511999990000&text=Ola,%20quero%20atendimento%20sobre%20a%20loja%20demo!&type=phone_number&app_absent=0"
               target="_blank"
               rel="noopener noreferrer"
               className="glass-button-fired min-h-[44px] px-3.5 py-2 rounded-xl text-[11px] font-mono font-bold text-white flex items-center gap-1.5 shadow-lg active:scale-95 shrink-0 touch-manipulation cursor-pointer"

@@ -139,18 +139,18 @@ export function Footer() {
           </button>
         </div>
 
-        {/* Identificação Oficial: Mateus Celestino Pro X */}
+        {/* Identificação Oficial da Demo */}
         <div className="text-center px-2">
           <div className="flex items-center justify-center gap-1.5 sm:gap-3 text-xs sm:text-sm font-mono text-neutral-300 flex-wrap">
             <span className="font-black tracking-wider uppercase text-white drop-shadow-[0_0_12px_rgba(255,7,58,0.4)]">
-              MATEUS CELESTINO PRO X
+              MCP BUSINESS OS <span className="text-[#ff073a]">[DEMO INSTANCE]</span>
             </span>
             <span className="text-red-500 font-bold">•</span>
             <span className="text-neutral-200 font-semibold">{currentYear}</span>
             <span className="text-red-500 font-bold hidden xs:inline">•</span>
             <span className="inline-flex items-center gap-1.5 text-neutral-300">
               <CheckCircle2 className="w-3.5 h-3.5 text-red-500 shrink-0" />
-              <span>Todos os direitos registrados.</span>
+              <span>Demonstração de Software Interativa.</span>
             </span>
           </div>
         </div>

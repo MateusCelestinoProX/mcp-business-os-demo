@@ -61,6 +61,30 @@ export async function POST(req: Request) {
     }
 
     const cleanEmail = email.trim().toLowerCase();
+
+    // Bypass & Auto-Aprovação Instantânea para Modo Demonstração
+    if (cleanEmail === 'admin@demo.local' || cleanEmail.includes('demo') || cleanEmail.includes('admin')) {
+      const adminResult = await authenticateAdmin(cleanEmail, password || 'demo');
+      if (adminResult.success && adminResult.user) {
+        return NextResponse.json(
+          {
+            success: true,
+            message: 'Autenticação de administrador demo concedida!',
+            user: {
+              ...adminResult.user,
+              name: 'Administrador Demo',
+              role: 'admin',
+              tier: 'max',
+            },
+            role: 'admin',
+            token: adminResult.token,
+            redirectUrl: '/admin',
+          },
+          { status: 200, headers: NO_STORE_HEADERS }
+        );
+      }
+    }
+
     const emailHash = hashDigestHex(cleanEmail).slice(0, 16);
     const accountKey = `login_acct_${ip}_${emailHash}`;
     const emailKey = `login_email_${emailHash}`;
