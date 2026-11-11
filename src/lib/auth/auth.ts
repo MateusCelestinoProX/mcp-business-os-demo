@@ -162,7 +162,7 @@ export async function authenticateAdmin(
           const payload: SessionPayload = {
             userId: authData.user?.id || 'admin-root',
             email: cleanEmail,
-            name: authData.user?.user_metadata?.name || 'Mateus Celestino Pro X',
+            name: authData.user?.user_metadata?.name || 'Administrador Demo',
             role,
           };
           const token = await createSession(payload);
@@ -303,7 +303,7 @@ export async function authenticateMember(
         const tier: 'free' | 'pro' | 'vip' =
           rawTier === 'vip' || rawTier === 'pro' || rawTier === 'free'
             ? rawTier
-            : cleanEmail === 'membro@mateuscelestinopro.com'
+            : cleanEmail === 'membro@demo.local'
               ? 'vip'
               : 'free';
         const payload: SessionPayload = {
@@ -331,13 +331,12 @@ export async function authenticateMember(
     }
   }
 
-  // 3. Membro Demo / Fallback via MEMBER_PASSWORD configurado
+  // 3. Membro Demo / Fallback
   const memberPassword =
-    process.env.MEMBER_PASSWORD ||
-    (process.env.NODE_ENV !== 'production' ? 'MembroProX@2026!' : undefined);
+    process.env.MEMBER_PASSWORD || 'demo-member-access-2026';
   if (
     memberPassword &&
-    cleanEmail === 'membro@mateuscelestinopro.com' &&
+    cleanEmail === 'membro@demo.local' &&
     safeCompare(plainPassword, memberPassword)
   ) {
     const payload: SessionPayload = {

@@ -160,9 +160,7 @@ export async function assertSafeExternalUrl(
  */
 export function getTrustedOrigins(): Set<string> {
   const origins = new Set<string>([
-    'https://mateuscelestinopro.com',
-    'https://www.mateuscelestinopro.com',
-    'https://ai-visuals.vercel.app',
+    'https://mcp-business-os-demo.vercel.app',
   ]);
 
   const envUrls = [
@@ -205,10 +203,11 @@ export function isTrustedOrigin(originHeader: string | null): boolean {
     const trusted = getTrustedOrigins();
     if (trusted.has(parsed.origin)) return true;
 
-    // Permite previews oficiais do projeto na Vercel em HTTPS
+    // Permite previews oficiais do projeto e subdomínios vercel.app da demo em HTTPS
     if (
       parsed.protocol === 'https:' &&
-      /^mcp-business-os(?:-[a-z0-9-]+)?\.vercel\.app$/i.test(parsed.hostname)
+      (/^mcp-business(?:-[a-z0-9-]+)?\.vercel\.app$/i.test(parsed.hostname) ||
+        parsed.hostname.endsWith('-mcp-team.vercel.app'))
     ) {
       return true;
     }
@@ -257,5 +256,5 @@ export function getTrustedSiteUrl(req?: Request): string {
     return 'http://localhost:3000';
   }
 
-  return 'https://mateuscelestinopro.com';
+  return 'https://mcp-business-os-demo.vercel.app';
 }

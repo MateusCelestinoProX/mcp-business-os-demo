@@ -13,19 +13,11 @@ import { isTokenRevoked } from './token-revocation';
 
 export const JWT_ISSUER = 'mcp-business-os';
 export const JWT_AUDIENCE = 'mcp-platform';
-const DEV_FALLBACK_SECRET = 'mcp-soberana-dev-secret-minimum-64-characters-random-key-2026-prod-guard';
+const DEV_FALLBACK_SECRET = 'mcp-business-os-demo-public-showcase-jwt-secret-key-2026-hmac-sha256';
 
 function getJwtSecret(): Uint8Array {
   const secret = process.env.JWT_SECRET;
-  const isProdOrVercel =
-    process.env.NODE_ENV === 'production' ||
-    Boolean(process.env.VERCEL) ||
-    Boolean(process.env.NEXT_PUBLIC_VERCEL_ENV === 'production');
-
   if (!secret) {
-    if (isProdOrVercel) {
-      throw new Error('FATAL: JWT_SECRET não configurado nas variáveis de ambiente em produção!');
-    }
     return new TextEncoder().encode(DEV_FALLBACK_SECRET);
   }
   return new TextEncoder().encode(secret);

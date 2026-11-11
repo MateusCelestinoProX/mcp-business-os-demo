@@ -781,7 +781,7 @@
       "file_type": "code",
       "norm_label": "sessionpayload",
       "source_file": "src/lib/auth/jwt.ts",
-      "source_location": "L34"
+      "source_location": "L26"
     },
     {
       "id": "src_lib_auth_token_revocation_revocationentry",
@@ -4189,7 +4189,7 @@
       "file_type": "code",
       "norm_label": "signtoken()",
       "source_file": "src/lib/auth/jwt.ts",
-      "source_location": "L45"
+      "source_location": "L37"
     },
     {
       "id": "src_lib_auth_session_createsession",
@@ -4981,7 +4981,7 @@
       "file_type": "code",
       "norm_label": "verifytoken()",
       "source_file": "src/lib/auth/jwt.ts",
-      "source_location": "L71"
+      "source_location": "L63"
     },
     {
       "id": "src_lib_auth_session_destroysession",
@@ -9613,7 +9613,7 @@
       "file_type": "code",
       "norm_label": "istrustedorigin()",
       "source_file": "src/lib/security/url-guard.ts",
-      "source_location": "L199"
+      "source_location": "L197"
     },
     {
       "id": "tests_portal_marketing_test_runtests",
@@ -10201,7 +10201,7 @@
       "file_type": "code",
       "norm_label": "extractuserroleandtier()",
       "source_file": "src/lib/auth/auth.ts",
-      "source_location": "L371"
+      "source_location": "L370"
     },
     {
       "id": "src_lib_notion_diary_parser_calculatereadingtime",
@@ -11089,7 +11089,7 @@
       "file_type": "code",
       "norm_label": "gettrustedsiteurl()",
       "source_file": "src/lib/security/url-guard.ts",
-      "source_location": "L225"
+      "source_location": "L224"
     },
     {
       "id": "scripts_super_compress_formatbytes",
@@ -40549,7 +40549,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/lib/auth/auth.ts",
-      "source_location": "L341",
+      "source_location": "L340",
       "weight": 1.0
     },
     {
@@ -40561,19 +40561,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/lib/auth/jwt.ts",
-      "source_location": "L62",
-      "weight": 1.0
-    },
-    {
-      "source": "src_lib_auth_jwt_verifytoken",
-      "target": "src_lib_auth_token_revocation_istokenrevoked",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "src/lib/auth/jwt.ts",
-      "source_location": "L107",
+      "source_location": "L54",
       "weight": 1.0
     },
     {
@@ -40585,7 +40573,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/lib/auth/jwt.ts",
-      "source_location": "L81",
+      "source_location": "L73",
+      "weight": 1.0
+    },
+    {
+      "source": "src_lib_auth_jwt_verifytoken",
+      "target": "src_lib_auth_token_revocation_istokenrevoked",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/lib/auth/jwt.ts",
+      "source_location": "L99",
       "weight": 1.0
     },
     {
@@ -41461,7 +41461,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/lib/security/url-guard.ts",
-      "source_location": "L205",
+      "source_location": "L203",
       "weight": 1.0
     },
     {
@@ -74138,7 +74138,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/lib/auth/auth.ts",
-      "source_location": "L371",
+      "source_location": "L370",
       "weight": 1.0
     },
     {
@@ -74204,7 +74204,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/lib/auth/jwt.ts",
-      "source_location": "L34",
+      "source_location": "L26",
       "weight": 1.0
     },
     {
@@ -74215,7 +74215,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/lib/auth/jwt.ts",
-      "source_location": "L45",
+      "source_location": "L37",
       "weight": 1.0
     },
     {
@@ -74226,7 +74226,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/lib/auth/jwt.ts",
-      "source_location": "L71",
+      "source_location": "L63",
       "weight": 1.0
     },
     {
@@ -75722,7 +75722,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/lib/security/url-guard.ts",
-      "source_location": "L199",
+      "source_location": "L197",
       "weight": 1.0
     },
     {
@@ -75733,7 +75733,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/lib/security/url-guard.ts",
-      "source_location": "L225",
+      "source_location": "L224",
       "weight": 1.0
     },
     {
@@ -82227,5 +82227,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "dba31b151cafd38b6606aa9f702291358655bc1c"
+  "built_at_commit": "aef28c37b3b9034a9c68fff153233a3b189ca959"
 }
