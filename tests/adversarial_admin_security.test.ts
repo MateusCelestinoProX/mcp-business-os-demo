@@ -40,7 +40,7 @@ describe('🛡️ Testes Adversariais de Segurança — Blindagem Total do Paine
 
   test('2. Vetor Revogação de Token: Tokens revogados/logout devem ser barrados imediatamente', async () => {
     const adminToken = await signToken({
-      id: 'admin-master-id',
+      userId: 'admin-master-id',
       email: 'mateus@mateuscelestinopro.com',
       role: 'admin',
       name: 'Mateus Celestino Pro X'
@@ -62,9 +62,9 @@ describe('🛡️ Testes Adversariais de Segurança — Blindagem Total do Paine
 
   test('3. Vetor Elevação de Privilégios (Member -> Admin): Usuário membro comum tentando rota admin deve receber 403', async () => {
     const memberToken = await signToken({
-      id: 'member-legit-id',
+      userId: 'member-legit-id',
       email: 'membro@exemplo.com',
-      role: 'user',
+      role: 'member',
       name: 'Membro Normal'
     });
 
@@ -77,7 +77,7 @@ describe('🛡️ Testes Adversariais de Segurança — Blindagem Total do Paine
     const result = await verifyAdminRequest(req, { requireInDev: true });
     assert.equal(result.authorized, false, 'Membro comum não deve ter acesso de administrador');
     assert.equal(result.statusCode, 403, 'Tentativa de elevação deve resultar em 403 Forbidden');
-    assert.equal(result.session?.role, 'user', 'Role deve ser reconhecido como user');
+    assert.equal(result.session?.role, 'member', 'Role deve ser reconhecido como member');
   });
 
   test('4. Vetor CSRF Cross-Origin: Requisições de origens não autorizadas em mutações administrativas devem ser bloqueadas', () => {

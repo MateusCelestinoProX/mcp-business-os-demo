@@ -695,21 +695,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   ];
 
-  const DEFAULT_SOVEREIGN_POSTS = [
-    {
-      id: 'post_welcome_admin',
-      user_id: 'admin_official',
-      user_name: 'Mateus Celestino',
-      user_avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=AdminBoss',
-      role: 'admin',
-      title: 'Boas-vindas ao Hub da Comunidade A.I Visuals!',
-      content: 'Espaço soberano dedicado ao compartilhamento de prompts de alta fidelidade e networking criativo.',
-      likes: 42,
-      tag: 'official',
-      created_at: new Date().toISOString()
-    }
-  ];
-
   // ──────────────────────────────────────────────────────────────────────────
   // 6. SOVEREIGN SESSION SYNCHRONIZER (Bi-direcional e Resiliente)
   // ──────────────────────────────────────────────────────────────────────────
@@ -3540,9 +3525,6 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
     if (communityActiveTab === 'prompts') {
       return renderCommunityPromptsTab();
     }
-    if (communityActiveTab === 'ranking') {
-      return renderCommunityRankingTab();
-    }
     if (communityActiveTab === 'challenges') {
       return renderCommunityChallengesTab();
     }
@@ -4019,26 +4001,6 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
             </div>
           </div>
 
-          <!-- Top Criadores da Semana (Leaderboard) -->
-          <div class="glass-card rounded-3xl p-5 border border-white/10">
-            <div class="flex items-center justify-between mb-3">
-              <h3 class="text-sm font-bold text-white flex items-center space-x-2">
-                <span>🏆</span><span>Top Criadores da Semana</span>
-              </h3>
-              <button onclick="window.appSwitchCommunityTab('ranking')" class="text-[10px] font-mono text-red-300 hover:underline">Ver Todos →</button>
-            </div>
-            <div class="space-y-2 text-xs">
-              <div class="flex items-center justify-between p-2 rounded-xl bg-white/5">
-                <div class="flex items-center space-x-2 min-w-0">
-                  <span class="font-bold text-amber-400">1º</span>
-                  <img src="https://api.dicebear.com/7.x/bottts/svg?seed=AdminBoss" class="w-6 h-6 rounded-full border border-white/20">
-                  <span class="text-white truncate font-medium">Mateus Celestino</span>
-                </div>
-                <span class="font-mono text-amber-400 font-bold">3.450 XP</span>
-              </div>
-            </div>
-          </div>
-
           <!-- 5. Salas Rápidas -->
           <div class="glass-card rounded-3xl p-5 border border-white/10">
             <h3 class="text-sm font-bold text-white mb-2.5 flex items-center space-x-2">
@@ -4352,127 +4314,6 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
             `).join('')}
           </div>
         `}
-      </div>`;
-  }
-
-  function renderCommunityRankingTab() {
-    return `
-      <div class="space-y-8 anim-element anim-fade-up">
-        <!-- Header -->
-        <div class="p-6 rounded-3xl glass-card-community border border-red-500/20 shadow-2xl flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div>
-            <div class="flex items-center space-x-2 mb-1">
-              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30 uppercase">Gamificação & Reputação</span>
-              <span class="text-[10px] text-gray-400 font-mono">Temporada 2026</span>
-            </div>
-            <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Hall da Fama & Ranking VIP</h2>
-            <p class="text-xs text-gray-300 mt-1 max-w-xl">Suba de nível compartilhando prompts de alta qualidade, auxiliando outros membros e vencendo os desafios semanais.</p>
-          </div>
-          <div class="p-3 bg-amber-500/10 border border-amber-500/30 rounded-2xl text-center self-start md:self-auto font-mono">
-            <span class="text-[10px] text-amber-300 uppercase block">Seu Nível Atual</span>
-            <span class="text-lg font-black text-white">Nível 10 • 9.450 XP</span>
-          </div>
-        </div>
-
-        <!-- 3D Podium for Top 3 Creators -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6">
-          <!-- 2nd Place -->
-          <div class="order-2 md:order-1 glass-card-community rounded-3xl p-6 border border-gray-400/30 shadow-xl text-center flex flex-col items-center justify-between relative overflow-hidden">
-            <div class="absolute top-3 right-3 text-2xl">🥈</div>
-            <div class="space-y-3">
-              <div class="relative inline-block">
-                <img src="https://api.dicebear.com/7.x/bottts/svg?seed=MemberProX" class="w-20 h-20 rounded-full border-4 border-gray-400/50 shadow-[0_0_20px_rgba(156,163,175,0.4)]">
-                <span class="absolute -bottom-2 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-black bg-gray-400 text-black">#2 LUGAR</span>
-              </div>
-              <h3 class="text-base font-extrabold text-white mt-2">Lucas Rocha</h3>
-              <p class="text-xs text-gray-400 font-mono">Mestre Generativo • 42 Prompts</p>
-            </div>
-            <div class="w-full pt-4 mt-4 border-t border-white/10">
-              <span class="text-xl font-black text-gray-200 font-mono">2.980 XP</span>
-            </div>
-          </div>
-
-          <!-- 1st Place (Champion) -->
-          <div class="order-1 md:order-2 glass-card-community rounded-3xl p-8 border-2 border-amber-500/60 shadow-[0_20px_60px_rgba(245,158,11,0.25)] text-center flex flex-col items-center justify-between relative overflow-hidden scale-105 bg-gradient-to-b from-amber-500/10 to-transparent">
-            <div class="absolute -top-12 left-1/2 -translate-x-1/2 w-48 h-48 bg-amber-500/15 rounded-full blur-3xl pointer-events-none"></div>
-            <div class="text-3xl mb-1">👑</div>
-            <div class="space-y-3 relative z-10">
-              <div class="relative inline-block">
-                <img src="https://api.dicebear.com/7.x/bottts/svg?seed=AdminBoss" class="w-24 h-24 rounded-full border-4 border-amber-400 shadow-[0_0_30px_rgba(245,158,11,0.6)]">
-                <span class="absolute -bottom-2.5 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full text-[10px] font-mono font-black bg-amber-400 text-black uppercase tracking-wider">#1 SUPREMO</span>
-              </div>
-              <h3 class="text-lg font-black text-white mt-2">Mateus Celestino Pro X</h3>
-              <p class="text-xs text-amber-300 font-mono">Visionário Supremo • 86 Prompts</p>
-            </div>
-            <div class="w-full pt-4 mt-4 border-t border-amber-500/20 relative z-10">
-              <span class="text-2xl font-black text-amber-400 font-mono">3.450 XP</span>
-              <span class="block text-[10px] text-gray-400 font-mono mt-0.5">Top 1 da Plataforma Soberana</span>
-            </div>
-          </div>
-
-          <!-- 3rd Place -->
-          <div class="order-3 md:order-3 glass-card-community rounded-3xl p-6 border border-amber-700/40 shadow-xl text-center flex flex-col items-center justify-between relative overflow-hidden">
-            <div class="absolute top-3 right-3 text-2xl">🥉</div>
-            <div class="space-y-3">
-              <div class="relative inline-block">
-                <img src="https://api.dicebear.com/7.x/bottts/svg?seed=ElenaArt" class="w-20 h-20 rounded-full border-4 border-amber-700/60 shadow-[0_0_20px_rgba(180,83,9,0.4)]">
-                <span class="absolute -bottom-2 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-black bg-amber-700 text-white">#3 LUGAR</span>
-              </div>
-              <h3 class="text-base font-extrabold text-white mt-2">Elena Digital Art</h3>
-              <p class="text-xs text-gray-400 font-mono">AI Artist VIP • 38 Prompts</p>
-            </div>
-            <div class="w-full pt-4 mt-4 border-t border-white/10">
-              <span class="text-xl font-black text-amber-600 font-mono">2.420 XP</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- XP Mastery Rules & Quest Card -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="glass-card-community rounded-3xl p-6 border border-white/15 space-y-3">
-            <h3 class="text-sm font-bold text-white flex items-center space-x-2">
-              <span>⚡</span><span>Como Subir de Nível e Ganhar XP</span>
-            </h3>
-            <ul class="space-y-2.5 text-xs text-gray-300 font-mono">
-              <li class="flex items-center justify-between p-2 rounded-xl bg-white/5 border border-white/5">
-                <span>✍️ Publicar um Prompt VIP completo</span>
-                <span class="text-red-400 font-bold">+50 XP</span>
-              </li>
-              <li class="flex items-center justify-between p-2 rounded-xl bg-white/5 border border-white/5">
-                <span>💬 Responder a dúvida de um criador</span>
-                <span class="text-red-400 font-bold">+15 XP</span>
-              </li>
-              <li class="flex items-center justify-between p-2 rounded-xl bg-white/5 border border-white/5">
-                <span>❤️ Receber 10 curtidas na publicação</span>
-                <span class="text-red-400 font-bold">+30 XP</span>
-              </li>
-              <li class="flex items-center justify-between p-2 rounded-xl bg-white/5 border border-white/5">
-                <span>🏆 Vencer o Desafio Semanal</span>
-                <span class="text-amber-400 font-bold">+500 XP</span>
-              </li>
-            </ul>
-          </div>
-
-          <div class="glass-card-community rounded-3xl p-6 border border-white/15 space-y-3">
-            <h3 class="text-sm font-bold text-white flex items-center space-x-2">
-              <span>👑</span><span>Recompensas Exclusivas por Patamar</span>
-            </h3>
-            <div class="space-y-2 text-xs text-gray-300">
-              <div class="p-2.5 rounded-xl bg-white/5 border border-white/5">
-                <span class="font-bold text-white">Nível 1 a 3 (Aprendiz):</span>
-                <p class="text-[11px] text-gray-400">Acesso ao Feed completo, reações e comentários em tempo real.</p>
-              </div>
-              <div class="p-2.5 rounded-xl bg-white/5 border border-white/5">
-                <span class="font-bold text-white">Nível 4 a 7 (Especialista):</span>
-                <p class="text-[11px] text-gray-400">Acesso ao Prompt Vault secreto e direito de voto nos desafios.</p>
-              </div>
-              <div class="p-2.5 rounded-xl bg-white/5 border border-white/5">
-                <span class="font-bold text-red-300">Nível 8 a 10 (Visionário Supremo):</span>
-                <p class="text-[11px] text-gray-400">Badge exclusivo dourado, destaque no topo e acesso prioritário aos Servidores de Treinamento.</p>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>`;
   }
 

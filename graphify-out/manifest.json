@@ -1476,8 +1476,8 @@
     "semantic_hash": ""
   },
   "src/data/library_catalog_index.json": {
-    "mtime": 1794357077.043618,
-    "seen": 1794357117.6221702,
+    "mtime": 1794358040.3778143,
+    "seen": 1794358091.278356,
     "ast_hash": "a3760edacaa85f7d3460a01e9fdb65f6",
     "semantic_hash": ""
   },
@@ -1938,9 +1938,9 @@
     "semantic_hash": ""
   },
   "public/comunidade/app.js": {
-    "mtime": 1794357641.9254594,
-    "seen": 1794357781.947098,
-    "ast_hash": "655d6220d85e6a8dacc7a318925cef03",
+    "mtime": 1794358019.3698726,
+    "seen": 1794358091.2751958,
+    "ast_hash": "c9ae86f0814dd46e6a6bc808d37ba712",
     "semantic_hash": ""
   },
   "src/app/api/checkout/route.ts": {
@@ -13680,9 +13680,9 @@
     "semantic_hash": ""
   },
   "tests/sovereign_stitch.test.mjs": {
-    "mtime": 1793983171.9630318,
-    "seen": 1794099300.233835,
-    "ast_hash": "54c497f6d949991a42b97b7fdfab049a",
+    "mtime": 1794358006.952315,
+    "seen": 1794358091.2795892,
+    "ast_hash": "1d9d3080d03a13c1d66b48add05b19d6",
     "semantic_hash": ""
   },
   "src/app/admin/page.tsx": {
@@ -14730,8 +14730,8 @@
     "semantic_hash": ""
   },
   "src/data/libraries.json": {
-    "mtime": 1794357077.054045,
-    "seen": 1794357117.622169,
+    "mtime": 1794358040.3906896,
+    "seen": 1794358091.278355,
     "ast_hash": "3e79a0df86ee6f7eb3acd51fbf5fad31",
     "semantic_hash": ""
   },
@@ -17706,9 +17706,9 @@
     "semantic_hash": ""
   },
   "src/lib/security/sanitize.ts": {
-    "mtime": 1794356005.9925308,
-    "seen": 1794356160.729876,
-    "ast_hash": "33edc66b92bde5c1ae8d166e6cd5107a",
+    "mtime": 1794357786.2429407,
+    "seen": 1794358091.27878,
+    "ast_hash": "ba2902ecc75d66d7ff7c849e0d67a8f2",
     "semantic_hash": ""
   },
   "src/lib/security/url-guard.ts": {
@@ -17742,15 +17742,15 @@
     "semantic_hash": ""
   },
   "tests/adversarial_admin_security.test.ts": {
-    "mtime": 1794357581.281385,
-    "seen": 1794357781.953185,
-    "ast_hash": "cd593d7c9a2027afac38d1dd19457943",
+    "mtime": 1794357866.5269225,
+    "seen": 1794358091.279039,
+    "ast_hash": "4cb7402eacb68d0d980bc3feb4bbfa27",
     "semantic_hash": ""
   },
   "tests/mantis_security_hardening.test.ts": {
-    "mtime": 1794357568.4858956,
-    "seen": 1794357781.953494,
-    "ast_hash": "3734ff24f84939ea88fa938f3a08a985",
+    "mtime": 1794357928.70386,
+    "seen": 1794358091.279319,
+    "ast_hash": "8f8edc72429d31bc6c569d78cbce314e",
     "semantic_hash": ""
   }
 }
