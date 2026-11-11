@@ -13680,9 +13680,9 @@
     "semantic_hash": ""
   },
   "tests/sovereign_stitch.test.mjs": {
-    "mtime": 1794358006.952315,
-    "seen": 1794358091.2795892,
-    "ast_hash": "1d9d3080d03a13c1d66b48add05b19d6",
+    "mtime": 1794358106.815693,
+    "seen": 1794358265.33417,
+    "ast_hash": "61f69e39e5446656cc36a5c06a44b2d8",
     "semantic_hash": ""
   },
   "src/app/admin/page.tsx": {
@@ -15282,9 +15282,9 @@
     "semantic_hash": ""
   },
   "src/services/seo/structured-data.ts": {
-    "mtime": 1794356533.4955888,
-    "seen": 1794356800.252506,
-    "ast_hash": "a321c2e496049a69ded94ba7f3124471",
+    "mtime": 1794358185.9263892,
+    "seen": 1794358265.333571,
+    "ast_hash": "f3cb59b662a11aea63aaf8320e884c1f",
     "semantic_hash": ""
   },
   "src/types/seo.ts": {

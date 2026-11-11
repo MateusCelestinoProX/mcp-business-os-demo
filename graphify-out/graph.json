@@ -885,7 +885,7 @@
       "file_type": "code",
       "norm_label": "productschemainput",
       "source_file": "src/services/seo/structured-data.ts",
-      "source_location": "L205"
+      "source_location": "L204"
     },
     {
       "id": "src_types_seo_basejsonld",
@@ -5148,7 +5148,7 @@
       "file_type": "code",
       "norm_label": "buildfaqschema()",
       "source_file": "src/services/seo/structured-data.ts",
-      "source_location": "L251"
+      "source_location": "L250"
     },
     {
       "id": "src_services_seo_structured_data_sanitizejsonld",
@@ -5652,7 +5652,7 @@
       "file_type": "code",
       "norm_label": "buildarticleschema()",
       "source_file": "src/services/seo/structured-data.ts",
-      "source_location": "L140"
+      "source_location": "L139"
     },
     {
       "id": "src_components_portal_alternatingheroshaders_alternatingheroshaders",
@@ -5796,7 +5796,7 @@
       "file_type": "code",
       "norm_label": "buildorganizationandpersonschema()",
       "source_file": "src/services/seo/structured-data.ts",
-      "source_location": "L49"
+      "source_location": "L48"
     },
     {
       "id": "src_services_seo_structured_data_buildwebsiteschema",
@@ -5808,7 +5808,7 @@
       "file_type": "code",
       "norm_label": "buildwebsiteschema()",
       "source_file": "src/services/seo/structured-data.ts",
-      "source_location": "L114"
+      "source_location": "L113"
     },
     {
       "id": "tests_portal_home_mobile_test_readfile",
@@ -6252,7 +6252,7 @@
       "file_type": "code",
       "norm_label": "buildbreadcrumbschema()",
       "source_file": "src/services/seo/structured-data.ts",
-      "source_location": "L189"
+      "source_location": "L188"
     },
     {
       "id": "src_services_seo_structured_data_buildgraphschema",
@@ -6264,7 +6264,7 @@
       "file_type": "code",
       "norm_label": "buildgraphschema()",
       "source_file": "src/services/seo/structured-data.ts",
-      "source_location": "L287"
+      "source_location": "L286"
     },
     {
       "id": "src_services_seo_structured_data_builditemlistschema",
@@ -6276,7 +6276,7 @@
       "file_type": "code",
       "norm_label": "builditemlistschema()",
       "source_file": "src/services/seo/structured-data.ts",
-      "source_location": "L269"
+      "source_location": "L268"
     },
     {
       "id": "src_services_seo_structured_data_buildproductschema",
@@ -6288,7 +6288,7 @@
       "file_type": "code",
       "norm_label": "buildproductschema()",
       "source_file": "src/services/seo/structured-data.ts",
-      "source_location": "L216"
+      "source_location": "L215"
     },
     {
       "id": "src_services_seo_structured_data_canonicalurl",
@@ -6300,7 +6300,7 @@
       "file_type": "code",
       "norm_label": "canonicalurl()",
       "source_file": "src/services/seo/structured-data.ts",
-      "source_location": "L39"
+      "source_location": "L38"
     },
     {
       "id": "src_app_privacidade_layout_privacidadelayout",
@@ -41499,7 +41499,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/seo/structured-data.ts",
-      "source_location": "L141",
+      "source_location": "L140",
       "weight": 1.0
     },
     {
@@ -41511,7 +41511,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/seo/structured-data.ts",
-      "source_location": "L197",
+      "source_location": "L196",
       "weight": 1.0
     },
     {
@@ -41523,7 +41523,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/seo/structured-data.ts",
-      "source_location": "L278",
+      "source_location": "L277",
       "weight": 1.0
     },
     {
@@ -41535,7 +41535,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/seo/structured-data.ts",
-      "source_location": "L217",
+      "source_location": "L216",
       "weight": 1.0
     },
     {
@@ -75956,7 +75956,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/services/seo/structured-data.ts",
-      "source_location": "L114",
+      "source_location": "L113",
       "weight": 1.0
     },
     {
@@ -75967,7 +75967,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/services/seo/structured-data.ts",
-      "source_location": "L140",
+      "source_location": "L139",
       "weight": 1.0
     },
     {
@@ -75978,7 +75978,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/services/seo/structured-data.ts",
-      "source_location": "L189",
+      "source_location": "L188",
       "weight": 1.0
     },
     {
@@ -75989,7 +75989,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/services/seo/structured-data.ts",
-      "source_location": "L205",
+      "source_location": "L204",
       "weight": 1.0
     },
     {
@@ -76000,7 +76000,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/services/seo/structured-data.ts",
-      "source_location": "L216",
+      "source_location": "L215",
       "weight": 1.0
     },
     {
@@ -76022,7 +76022,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/services/seo/structured-data.ts",
-      "source_location": "L251",
+      "source_location": "L250",
       "weight": 1.0
     },
     {
@@ -76033,7 +76033,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/services/seo/structured-data.ts",
-      "source_location": "L269",
+      "source_location": "L268",
       "weight": 1.0
     },
     {
@@ -76044,7 +76044,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/services/seo/structured-data.ts",
-      "source_location": "L287",
+      "source_location": "L286",
       "weight": 1.0
     },
     {
@@ -76055,7 +76055,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/services/seo/structured-data.ts",
-      "source_location": "L39",
+      "source_location": "L38",
       "weight": 1.0
     },
     {
@@ -76066,7 +76066,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/services/seo/structured-data.ts",
-      "source_location": "L49",
+      "source_location": "L48",
       "weight": 1.0
     },
     {
@@ -82054,5 +82054,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "2039cae604b52d9b0954f59ab03d9e83562cc4d7"
+  "built_at_commit": "e37347e4ab2beb150a820fb68191f6dae8242c3c"
 }
