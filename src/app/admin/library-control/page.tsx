@@ -7,6 +7,9 @@ import { LibraryControlSuite } from '@/components/admin/LibraryControlSuite';
 import { AdminSidebar } from '@/components/admin/AdminSidebar';
 import { getSession } from '@/lib/auth/session';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export const metadata: Metadata = {
   title: 'Library Control & Editor — Painel Admin | Mateus Celestino Pro X',
   description: 'Controle mestre de bibliotecas e editor de acervo intelectual com suporte a uploads do Mac e Nuvem.',
@@ -14,11 +17,7 @@ export const metadata: Metadata = {
 
 export default async function AdminLibraryControlPage() {
   const session = await getSession();
-  const isAllowed = session && (
-    session.role === 'admin' ||
-    (session as any).role === 'moder' ||
-    (session as any).role === 'moderator'
-  );
+  const isAllowed = Boolean(session && session.role === 'admin');
 
   if (!isAllowed) {
     redirect('/comunidade/login?redirectUrl=/admin/library-control');

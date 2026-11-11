@@ -659,114 +659,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   ];
 
-  const DEFAULT_SOVEREIGN_POSTS = [
-    {
-      id: 'post_welcome_admin',
-      user_id: 'admin_official',
-      user_name: 'Mateus Celestino',
-      user_avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=AdminBoss',
-      user_role: 'admin',
-      category: 'official',
-      title: '✨ Bem-vindos à Comunidade A.I Visuals!',
-      content: 'Espaço exclusivo para membros e criadores de elite compartilharem seus prompts, novos estilos e masterclasses generativas. Sintam-se à vontade para postar suas dúvidas, prompts favoritos e feedbacks! Todos os shaders WebGL de fundo foram calibrados em vermelho cinemático com brilho suave para foco máximo.',
-      link_url: '',
-      link_title: '',
-      images: ['./public/assets/images/opt_0008_img_exact_87ca3.webp'],
-      is_pinned: true,
-      likes: 48,
-      likedBy: [],
-      created_at: new Date(Date.now() - 3600000 * 4).toISOString(),
-      comments: [
-        {
-          id: 'com_1',
-          user_id: 'member_demo',
-          user_name: 'Lucas Rocha (Aluno VIP)',
-          user_avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=MemberProX',
-          user_role: 'full',
-          content: 'Sensacional a plataforma! Os shaders vermelhos e a nova organização da comunidade ficaram com uma atmosfera inacreditável.',
-          created_at: new Date(Date.now() - 3600000 * 2).toISOString()
-        }
-      ]
-    },
-    {
-      id: 'post_flux_crimson',
-      user_id: 'admin_official',
-      user_name: 'Mateus Celestino Pro X',
-      user_avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=AdminBoss',
-      user_role: 'admin',
-      category: 'prompts',
-      title: '⚡ [PROMPT EXCLUSIVO] Retrato Cyberpunk Carmesim Volumétrico',
-      content: 'Compartilhando com vocês a fórmula exata para iluminação volumétrica com dispersão sub-superficial em tons rubros e carmesim escuros. Podem copiar o bloco de prompt abaixo e executar diretamente no Midjourney v6.1 ou Flux.1 Dev.',
-      ai_model: 'Flux.1 Dev / Midjourney v6.1',
-      ai_prompt: 'ultra-cinematic hyperrealistic portrait of an android empress, intricate crimson biomechanical circuitry, subsurface scattering, ruby neon backlight, moody dark atmosphere, 8k resolution, photorealistic, cinematic shot by Denis Villeneuve',
-      ai_params: '--ar 16:9 --v 6.1 --stylize 350 --seed 892014',
-      link_url: '',
-      link_title: '',
-      images: ['./public/assets/images/opt_0375_img_exact_604f4.webp'],
-      is_pinned: false,
-      likes: 74,
-      likedBy: [],
-      created_at: new Date(Date.now() - 3600000 * 1).toISOString(),
-      comments: [
-        {
-          id: 'com_flux_1',
-          user_id: 'member_art',
-          user_name: 'Elena Digital Art',
-          user_avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=ElenaArt',
-          user_role: 'full',
-          content: 'Esse prompt com iluminação de luz de contorno vermelha funcionou perfeitamente aqui! Render ultra-nítido.',
-          created_at: new Date(Date.now() - 3600000 * 0.5).toISOString()
-        }
-      ]
-    },
-    {
-      id: 'post_effects_style',
-      user_id: 'moderator_official',
-      user_name: 'Moderador Oficial',
-      user_avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=ModeratorShield',
-      user_role: 'moderator',
-      category: 'tips',
-      title: '🚀 Dica da Semana: Como obter reflexos líquidos ultra-nítidos',
-      content: 'Ao utilizar o acervo A.I Effects, combinem termos como "hyper-glossy liquid glass reflections with sub-surface scattering, octane render 8k" para obter o autêntico acabamento Apple Liquid Glass.',
-      link_url: '',
-      link_title: '',
-      images: ['./public/assets/images/opt_0740_img_exact_666ee.webp'],
-      is_pinned: false,
-      likes: 29,
-      likedBy: [],
-      created_at: new Date(Date.now() - 3600000 * 12).toISOString(),
-      comments: []
-    },
-    {
-      id: 'post_desafio_semanal',
-      user_id: 'moderator_official',
-      user_name: 'Comunidade VIP Curadoria',
-      user_avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=ModeratorShield',
-      user_role: 'moderator',
-      category: 'showcase',
-      title: '🏆 Desafio Semanal #04: Crie a Melhor Render em Vermelho & Obsidiana',
-      content: 'Valendo badge exclusiva de Top Creator no perfil + destaque na aba VIP! Regras: utilize qualquer motor de IA generativa (Flux, Midjourney, SD3) focando na estética Red Dark Luxury. Publiquem suas criações aqui com a tag #DesafioVermelho!',
-      link_url: '',
-      link_title: '',
-      images: ['./public/assets/images/opt_0149_img_exact_5486a.webp'],
-      is_pinned: true,
-      likes: 62,
-      likedBy: [],
-      created_at: new Date(Date.now() - 3600000 * 8).toISOString(),
-      comments: [
-        {
-          id: 'com_desafio_1',
-          user_id: 'member_vfx',
-          user_name: 'Victor VFX',
-          user_avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=VictorVFX',
-          user_role: 'full',
-          content: 'Já estou renderizando o meu aqui! Amanhã posto o workflow completo com LoRA de vidro carmesim.',
-          created_at: new Date(Date.now() - 3600000 * 5).toISOString()
-        }
-      ]
-    }
-  ];
-
   // ──────────────────────────────────────────────────────────────────────────
   // 6. SOVEREIGN SESSION SYNCHRONIZER (Bi-direcional e Resiliente)
   // ──────────────────────────────────────────────────────────────────────────
@@ -908,7 +800,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (rawHash === 'community' || rawHash.startsWith('community/')) {
       const parts = rawHash.split('/');
       const subTab = parts[1];
-      if (['feed', 'prompts', 'ranking', 'challenges', 'saved', 'tag-editor', 'tags'].includes(subTab)) {
+      if (['feed', 'prompts', 'challenges', 'saved', 'tag-editor', 'tags'].includes(subTab)) {
         communityActiveTab = (subTab === 'tags') ? 'tag-editor' : subTab;
       } else {
         communityActiveTab = 'feed';
@@ -1151,14 +1043,41 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // 2. Fallback de Contingência Local Soberana
+    // 2. Fallback de Contingência Local Soberana (Posts Reais do Usuário / LocalStorage)
     var localCustomPosts = [];
     try {
       var raw = localStorage.getItem('mcp_local_community_posts');
-      if (raw) localCustomPosts = JSON.parse(raw);
+      if (raw) {
+        var parsed = JSON.parse(raw);
+        if (Array.isArray(parsed)) {
+          var legacyMockIds = new Set(['post_welcome_admin', 'post_flux_crimson', 'post_effects_style', 'post_desafio_semanal']);
+          localCustomPosts = parsed.filter(function(p) { return p && p.id && !legacyMockIds.has(p.id); });
+        }
+      }
     } catch(e) {}
 
-    communityPosts = [...localCustomPosts, ...DEFAULT_SOVEREIGN_POSTS];
+    communityPosts = [...localCustomPosts];
+  }
+
+  // ──────────────────────────────────────────────────────────────────────────
+  // CARREGADOR DE ESTATÍSTICAS REAIS DA COMUNIDADE (Zero Mockups)
+  // ──────────────────────────────────────────────────────────────────────────
+  let communityStats = { members: 0, prompts: 0, posts: 0, comments: 0 };
+  async function loadCommunityStats() {
+    try {
+      const res = await fetch('/api/community/stats');
+      if (res.ok) {
+        const data = await res.json();
+        if (data && data.success) {
+          communityStats = {
+            members: data.members || 0,
+            prompts: data.prompts || 0,
+            posts: data.posts || 0,
+            comments: data.comments || 0
+          };
+        }
+      }
+    } catch(e) {}
   }
 
   async function loadServersData() {
@@ -2758,6 +2677,7 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
       try { history.pushState(null, '', targetHash); } catch(e) {}
     }
     await loadCommunityPosts();
+    await loadCommunityStats();
     renderCurrentView();
   }
 
@@ -2915,9 +2835,9 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
       const tabNames = {
         feed: 'Feed & Discussões',
         prompts: 'Acervo de Prompts VIP',
-        ranking: 'Ranking & Gamificação',
         challenges: 'Desafios Semanais',
-        saved: 'Meus Salvos'
+        saved: 'Meus Salvos',
+        'tag-editor': 'Tag Editor & Taxonomia'
       };
       if (communityActiveTab && communityActiveTab !== 'feed') {
         add('Comunidade', false, () => {
@@ -3099,9 +3019,30 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
   }
 
   function updateNavState() {
-    document.querySelectorAll('.nav-item').forEach(item =>
-      item.classList.toggle('text-white', item.getAttribute('data-view')===currentView)
-    );
+    const isHome = (currentView === 'home' || currentView === 'product' || currentView === 'category' || currentView === 'search');
+    const isCommunity = (currentView === 'community');
+    const isServers = (currentView === 'servers' || currentView === 'server_detail');
+
+    document.querySelectorAll('.nav-item').forEach(item => {
+      const v = item.getAttribute('data-view');
+      const isActive = (v === 'home' && isHome) ||
+                       (v === 'community' && isCommunity) ||
+                       (v === 'servers' && isServers) ||
+                       (v === currentView);
+
+      item.classList.toggle('active', isActive);
+
+      // Liquid Glass Bubble dinâmico de destaque
+      item.classList.toggle('bg-white/10', isActive);
+      item.classList.toggle('border-white/20', isActive);
+      item.classList.toggle('text-white', isActive);
+      item.classList.toggle('backdrop-blur-md', isActive);
+      item.classList.toggle('shadow-sm', isActive);
+
+      item.classList.toggle('border-transparent', !isActive);
+      item.classList.toggle('text-graphite', !isActive);
+    });
+
     // Sincroniza Bottom Dock Mobile
     document.querySelectorAll('.mobile-dock-btn').forEach(btn => {
       const v = btn.getAttribute('data-view');
@@ -3541,9 +3482,6 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
     if (communityActiveTab === 'prompts') {
       return renderCommunityPromptsTab();
     }
-    if (communityActiveTab === 'ranking') {
-      return renderCommunityRankingTab();
-    }
     if (communityActiveTab === 'challenges') {
       return renderCommunityChallengesTab();
     }
@@ -3558,6 +3496,28 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
     const currentShaderId = localStorage.getItem('mcp_community_active_shader') || 'strands';
     const isRotative = localStorage.getItem('mcp_community_rotative') === 'true';
     const tags = getCommunityTags();
+
+    const displayMembers = (communityStats.members > 0 ? communityStats.members : (isLoggedIn ? 1 : 0));
+    const displayPrompts = (communityStats.prompts > 0 ? communityStats.prompts : communityPosts.filter(p => p.ai_prompt || p.tag === 'prompts').length);
+    const displayPosts = communityPosts.length;
+    const displayComments = communityPosts.reduce((a,p)=>a+(p.comments?.length||0),0);
+
+    const trendingTags = (function() {
+      const counts = {};
+      communityPosts.forEach(p => {
+        const text = `${p.title || ''} ${p.content || ''}`;
+        const matches = text.match(/#[A-Za-z0-9_]+/g) || [];
+        matches.forEach(t => { counts[t] = (counts[t] || 0) + 1; });
+        if (p.tag) {
+          const t = '#' + p.tag.replace(/^#/, '');
+          counts[t] = (counts[t] || 0) + 1;
+        }
+      });
+      return Object.entries(counts)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 3)
+        .map(([tag, count]) => ({ tag, count }));
+    })();
 
     return `
       <!-- FILTROS DE TAGS DINÂMICAS & BUSCA INTEGRADA COMPACTA -->
@@ -3704,7 +3664,7 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
             </button>
           </div>
 
-          <!-- 2. Estatísticas & Métricas da Comunidade -->
+          <!-- 2. Estatísticas & Métricas da Comunidade (Dinâmicas & Reais) -->
           <div class="glass-card rounded-3xl p-5 border border-white/10">
             <h3 class="text-sm font-bold text-white mb-3 flex items-center justify-between">
               <span>📊 Estatísticas</span>
@@ -3712,19 +3672,19 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
             </h3>
             <div class="grid grid-cols-2 gap-2.5">
               <div class="bg-white/5 rounded-xl p-2.5 text-center border border-white/10">
-                <p class="text-lg font-extrabold text-white">1.842</p>
+                <p class="text-lg font-extrabold text-white">${displayMembers}</p>
                 <p class="text-[10px] text-gray-400">Membros VIP Ativos</p>
               </div>
               <div class="bg-white/5 rounded-xl p-2.5 text-center border border-white/10">
-                <p class="text-lg font-extrabold text-white">14.280</p>
+                <p class="text-lg font-extrabold text-white">${displayPrompts}</p>
                 <p class="text-[10px] text-gray-400">Prompts & Workflows</p>
               </div>
               <div class="bg-white/5 rounded-xl p-2.5 text-center border border-white/10">
-                <p class="text-lg font-extrabold text-white">${communityPosts.length}</p>
+                <p class="text-lg font-extrabold text-white">${displayPosts}</p>
                 <p class="text-[10px] text-gray-400">Posts no Feed</p>
               </div>
               <div class="bg-white/5 rounded-xl p-2.5 text-center border border-white/10">
-                <p class="text-lg font-extrabold text-white">${communityPosts.reduce((a,p)=>a+(p.comments?.length||0),0)}</p>
+                <p class="text-lg font-extrabold text-white">${displayComments}</p>
                 <p class="text-[10px] text-gray-400">Respostas</p>
               </div>
             </div>
@@ -3757,54 +3717,24 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
             </div>
           </div>
 
-          <!-- 4. Trending Prompts -->
+          <!-- 4. Trending Prompts (Dinâmico com base em posts reais) -->
           <div class="glass-card rounded-3xl p-5 border border-white/10">
             <h3 class="text-sm font-bold text-white mb-3 flex items-center space-x-2">
               <span>🔥</span><span>Trending Prompts</span>
             </h3>
             <div class="space-y-2 text-xs">
-              <div onclick="window.appSearchCommunity('#FluxReduxStyle')" class="flex items-center justify-between p-2 rounded-xl bg-white/5 hover:bg-white/10 transition-all cursor-pointer">
-                <span class="font-mono text-red-300 font-bold">#FluxReduxStyle</span>
-                <span class="text-[10px] text-gray-400">342 posts</span>
-              </div>
-              <div onclick="window.appSearchCommunity('#CyberpunkRuby')" class="flex items-center justify-between p-2 rounded-xl bg-white/5 hover:bg-white/10 transition-all cursor-pointer">
-                <span class="font-mono text-red-300 font-bold">#CyberpunkRuby</span>
-                <span class="text-[10px] text-gray-400">280 posts</span>
-              </div>
-              <div onclick="window.appSearchCommunity('#MidjourneyV7')" class="flex items-center justify-between p-2 rounded-xl bg-white/5 hover:bg-white/10 transition-all cursor-pointer">
-                <span class="font-mono text-red-300 font-bold">#MidjourneyV7</span>
-                <span class="text-[10px] text-gray-400">215 posts</span>
-              </div>
+              ${trendingTags.length === 0 ? `
+                <p class="text-[11px] text-gray-400 italic py-1">Nenhuma hashtag em alta no momento.</p>
+              ` : trendingTags.map(t => `
+                <div onclick="window.appSearchCommunity('${escapeJs(t.tag)}')" class="flex items-center justify-between p-2 rounded-xl bg-white/5 hover:bg-white/10 transition-all cursor-pointer">
+                  <span class="font-mono text-red-300 font-bold">${escapeHtml(t.tag)}</span>
+                  <span class="text-[10px] text-gray-400">${t.count} ${t.count === 1 ? 'post' : 'posts'}</span>
+                </div>
+              `).join('')}
             </div>
           </div>
 
-          <!-- 5. Top Criadores da Semana -->
-          <div class="glass-card rounded-3xl p-5 border border-white/10">
-            <div class="flex items-center justify-between mb-3">
-              <h3 class="text-sm font-bold text-white flex items-center space-x-2">
-                <span>🏆</span><span>Top Criadores da Semana</span>
-              </h3>
-              <button onclick="window.appSwitchCommunityTab('ranking')" class="text-[10px] font-mono text-red-300 hover:underline">Ver Todos →</button>
-            </div>
-            <div class="space-y-2 text-xs">
-              <div class="flex items-center justify-between p-2 rounded-xl bg-white/5">
-                <div class="flex items-center space-x-2 min-w-0">
-                  <span class="font-bold text-amber-400">1º</span>
-                  <p class="font-bold text-white truncate">Mateus Celestino Pro X</p>
-                </div>
-                <span class="font-mono font-bold text-amber-400">3.450 XP</span>
-              </div>
-              <div class="flex items-center justify-between p-2 rounded-xl bg-white/5">
-                <div class="flex items-center space-x-2 min-w-0">
-                  <span class="font-bold text-gray-400">2º</span>
-                  <p class="font-bold text-white truncate">Lucas Rocha</p>
-                </div>
-                <span class="font-mono font-bold text-gray-300">2.190 XP</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- 6. Salas Rápidas -->
+          <!-- 5. Salas Rápidas -->
           <div class="glass-card rounded-3xl p-5 border border-white/10">
             <h3 class="text-sm font-bold text-white mb-2.5 flex items-center space-x-2">
               <span>💬</span><span>Salas Rápidas</span>
@@ -3818,9 +3748,13 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
                 <span># acervo-prompts</span>
                 <span class="text-[10px] text-red-400">Vault</span>
               </button>
-              <button onclick="window.appSwitchCommunityTab('ranking')" class="w-full flex items-center justify-between p-1.5 rounded-lg hover:bg-white/5 text-gray-300 hover:text-white transition-all text-left">
-                <span># hall-da-fama</span>
-                <span class="text-[10px] text-amber-400">XP</span>
+              <button onclick="window.appSwitchCommunityTab('challenges')" class="w-full flex items-center justify-between p-1.5 rounded-lg hover:bg-white/5 text-gray-300 hover:text-white transition-all text-left">
+                <span># desafios-semanais</span>
+                <span class="text-[10px] text-amber-400">Desafios</span>
+              </button>
+              <button onclick="window.appSwitchCommunityTab('saved')" class="w-full flex items-center justify-between p-1.5 rounded-lg hover:bg-white/5 text-gray-300 hover:text-white transition-all text-left">
+                <span># salvos-favoritos</span>
+                <span class="text-[10px] text-cyan-400">Salvos</span>
               </button>
             </div>
           </div>

@@ -1,14 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { memoryCache } from '@/lib/cache/memory-cache';
-import { verifyAdminRequest, unauthorizedResponse } from '@/lib/auth/admin-guard';
+import { verifyAdminRequest, denyAdminRequest } from '@/lib/auth/admin-guard';
 
 export const dynamic = 'force-dynamic';
 
 /**
  * GET /api/cache/status
- * Retorna estatísticas de performance do cache em memória e configurações de cache ativas
+ * Retorna estatísticas de performance do cache em memória e configurações de cache ativas (restrito a admin)
  */
-export async function GET() {
+export async function GET(request: NextRequest) {
+  const auth = await verifyAdminRequest(request);
+  if (!auth.authorized) {
+    return denyAdminRequest(auth);
+  }
+
   const stats = memoryCache.getStats();
 
   return NextResponse.json(
@@ -41,7 +46,7 @@ export async function POST(request: NextRequest) {
   try {
     const auth = await verifyAdminRequest(request);
     if (!auth.authorized) {
-      return unauthorizedResponse(auth.error);
+      return denyAdminRequest(auth);
     }
 
     const body = await request.json().catch(() => ({}));
@@ -66,7 +71,7 @@ export async function POST(request: NextRequest) {
     });
   } catch (error: any) {
     return NextResponse.json(
-      { success: false, error: error?.message || 'Falha ao executar expurgo de cache.' },
+      { success: false, error: 'Falha ao executar expurgo de cache.' },
       { status: 500 }
     );
   }

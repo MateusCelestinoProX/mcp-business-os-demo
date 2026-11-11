@@ -142,6 +142,27 @@
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
         }
 
+        /* APPLE LIQUID GLASS BUBBLE TABS */
+        .nav-item {
+            position: relative;
+            outline: none !important;
+            user-select: none;
+            -webkit-user-select: none;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .nav-item:focus, .nav-item:focus-visible {
+            outline: none !important;
+            box-shadow: none !important;
+        }
+        .nav-item.active {
+            background-color: rgba(255, 255, 255, 0.12) !important;
+            border-color: rgba(255, 255, 255, 0.22) !important;
+            color: #ffffff !important;
+            backdrop-filter: blur(16px) !important;
+            -webkit-backdrop-filter: blur(16px) !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25), 0 0 15px rgba(255, 255, 255, 0.08) !important;
+        }
+
         /* IMAGE HOVER & REVEALS */
         .img-wrapper {
             overflow: hidden;
@@ -1651,10 +1672,10 @@
                     <span class="text-[0.65rem] bg-white/10 text-white/80 px-3 py-1 rounded-full border border-white/15 font-bold uppercase tracking-wider backdrop-blur-md">MEMBERS AREA</span>
                 </a>
                 
-                <div class="hidden md:flex items-center space-x-8">
-                    <button class="nav-item text-sm font-semibold text-white hover:text-white/70 transition-colors" data-view="home">Início</button>
-                    <button class="nav-item text-sm font-medium text-graphite hover:text-white transition-colors" data-view="community">Comunidade</button>
-                    <button class="nav-item text-xs font-bold px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white hover:bg-white/20 hover:scale-105 transition-all backdrop-blur-md" data-view="servers">SERVERS</button>
+                <div class="hidden md:flex items-center space-x-3">
+                    <button class="nav-item active text-sm font-semibold px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white backdrop-blur-md shadow-sm hover:bg-white/20 hover:scale-105 transition-all focus:outline-none" data-view="home">Início</button>
+                    <button class="nav-item text-sm font-medium px-4 py-2 rounded-full border border-transparent text-graphite hover:text-white hover:bg-white/10 hover:scale-105 transition-all focus:outline-none" data-view="community">Comunidade</button>
+                    <button class="nav-item text-xs font-bold uppercase tracking-wider px-4 py-2 rounded-full border border-transparent text-graphite hover:text-white hover:bg-white/10 hover:scale-105 transition-all focus:outline-none" data-view="servers">SERVERS</button>
                     <!-- Segundo botão de admin removido da barra secundária para evitar redundância com a Master Sovereign Bar -->
                     <button id="adminNavBtn" class="hidden" style="display: none !important;" aria-hidden="true" data-view="admin"></button>
                 </div>

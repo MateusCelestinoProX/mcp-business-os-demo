@@ -9,7 +9,8 @@ import {
   IMAGEKIT_PUBLIC_KEY,
   getCanonicalImageKitFolder,
 } from '@/lib/storage/imagekit';
-import { verifyAdminRequest, unauthorizedResponse } from '@/lib/auth/admin-guard';
+import { verifyAdminRequest, denyAdminRequest } from '@/lib/auth/admin-guard';
+import { assertSafeExternalUrl } from '@/lib/security/url-guard';
 
 export const dynamic = 'force-dynamic';
 
@@ -21,7 +22,7 @@ export async function GET(request: NextRequest) {
     if (action === 'auth') {
       const authReq = await verifyAdminRequest(request);
       if (!authReq.authorized) {
-        return unauthorizedResponse(authReq.error);
+        return denyAdminRequest(authReq);
       }
       const auth = getImageKitAuthParams();
       return NextResponse.json({ success: true, ...auth });
@@ -40,7 +41,7 @@ export async function GET(request: NextRequest) {
     if (action === 'list') {
       const authReq = await verifyAdminRequest(request);
       if (!authReq.authorized) {
-        return unauthorizedResponse(authReq.error);
+        return denyAdminRequest(authReq);
       }
       const pathParam = searchParams.get('path') || undefined;
       const limit = Number(searchParams.get('limit')) || 50;
@@ -61,7 +62,7 @@ export async function GET(request: NextRequest) {
   } catch (error: any) {
     console.error('Erro na rota GET /api/storage/imagekit:', error);
     return NextResponse.json(
-      { success: false, error: error?.message || 'Falha na consulta ImageKit' },
+      { success: false, error: 'Falha na consulta ImageKit' },
       { status: 500 }
     );
   }
@@ -71,7 +72,7 @@ export async function POST(request: NextRequest) {
   try {
     const auth = await verifyAdminRequest(request);
     if (!auth.authorized) {
-      return unauthorizedResponse(auth.error);
+      return denyAdminRequest(auth);
     }
 
     const contentType = request.headers.get('content-type') || '';
@@ -110,7 +111,7 @@ export async function POST(request: NextRequest) {
 
     // Upload via JSON (Base64 ou URL remota)
     if (contentType.includes('application/json')) {
-      const body = await request.json();
+      const body = await request.json().catch(() => ({}));
       const { file, fileName, folder, tags } = body;
 
       if (!file || !fileName) {
@@ -118,6 +119,17 @@ export async function POST(request: NextRequest) {
           { success: false, error: 'Campos file e fileName são obrigatórios' },
           { status: 400 }
         );
+      }
+
+      if (typeof file === 'string' && (file.startsWith('http://') || file.startsWith('https://'))) {
+        try {
+          await assertSafeExternalUrl(file);
+        } catch (ssrfErr: any) {
+          return NextResponse.json(
+            { success: false, error: 'URL remota rejeitada pela proteção anti-SSRF' },
+            { status: 400 }
+          );
+        }
       }
 
       const result = await uploadToImageKit({
@@ -141,7 +153,7 @@ export async function POST(request: NextRequest) {
   } catch (error: any) {
     console.error('Erro na rota POST /api/storage/imagekit:', error);
     return NextResponse.json(
-      { success: false, error: error?.message || 'Falha no upload para o ImageKit' },
+      { success: false, error: 'Falha no upload para o ImageKit' },
       { status: 500 }
     );
   }
@@ -151,7 +163,7 @@ export async function DELETE(request: NextRequest) {
   try {
     const auth = await verifyAdminRequest(request);
     if (!auth.authorized) {
-      return unauthorizedResponse(auth.error);
+      return denyAdminRequest(auth);
     }
 
     const { searchParams } = new URL(request.url);
@@ -172,7 +184,7 @@ export async function DELETE(request: NextRequest) {
   } catch (error: any) {
     console.error('Erro na rota DELETE /api/storage/imagekit:', error);
     return NextResponse.json(
-      { success: false, error: error?.message || 'Falha ao deletar arquivo no ImageKit' },
+      { success: false, error: 'Falha ao deletar arquivo no ImageKit' },
       { status: 500 }
     );
   }

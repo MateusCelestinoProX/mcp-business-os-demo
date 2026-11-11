@@ -4,6 +4,9 @@ import path from 'path';
 import { getResourceById, recordDownload } from '@/lib/library/catalog';
 import { getSession } from '@/lib/auth/session';
 import { verifyToken, type SessionPayload } from '@/lib/auth/jwt';
+import { safeContentDispositionFilename } from '@/lib/security/sanitize';
+import { checkRateLimit } from '@/lib/auth/rate-limit';
+import { getClientIp } from '@/lib/security/request-ip';
 
 export const dynamic = 'force-dynamic';
 
@@ -45,6 +48,15 @@ function getMimeType(filename: string): string {
 // POST: Registra telemetria de download e devolve metadados
 export async function POST(request: NextRequest) {
   try {
+    const ip = getClientIp(request);
+    const rateCheck = checkRateLimit(`download_telemetry_${ip}`, 30, 60 * 1000);
+    if (!rateCheck.allowed) {
+      return NextResponse.json(
+        { success: false, error: 'Muitas requisições de download. Aguarde um momento.' },
+        { status: 429 }
+      );
+    }
+
     const body = await request.json().catch(() => ({}));
     const id = body.id || body.resourceId;
 
@@ -76,7 +88,7 @@ export async function POST(request: NextRequest) {
   } catch (error: any) {
     console.error('Erro ao processar telemetria de download:', error);
     return NextResponse.json(
-      { success: false, error: error?.message || 'Falha ao registrar download' },
+      { success: false, error: 'Falha ao registrar download' },
       { status: 500 }
     );
   }
@@ -136,6 +148,8 @@ export async function GET(request: NextRequest) {
       const hasPrivilege =
         role === 'admin' ||
         role === 'editor' ||
+        role === 'moder' ||
+        role === 'moderator' ||
         tier === 'vip' ||
         tier === 'pro' ||
         (tier as string) === 'master';
@@ -217,17 +231,16 @@ export async function GET(request: NextRequest) {
     if (fs.existsSync(absoluteFilePath)) {
       const fileBuffer = fs.readFileSync(absoluteFilePath);
       const mimeType = getMimeType(resource.file);
-
-      // Limpeza do filename para o header Content-Disposition
-      const safeFilename = encodeURIComponent(resource.file).replace(/['()]/g, escape);
+      const contentDisposition = safeContentDispositionFilename(resource.file);
 
       return new NextResponse(fileBuffer, {
         status: 200,
         headers: {
           'Content-Type': mimeType,
-          'Content-Disposition': `attachment; filename="${resource.file}"; filename*=UTF-8''${safeFilename}`,
+          'Content-Disposition': contentDisposition,
           'Content-Length': fileBuffer.length.toString(),
           'X-Download-Count': newCount.toString(),
+          'X-Content-Type-Options': 'nosniff',
           'Cache-Control': 'public, max-age=3600',
         },
       });
@@ -236,20 +249,22 @@ export async function GET(request: NextRequest) {
     // Fallback gracioso: gera conteúdo a partir do preview de texto
     const textContent = resource.text_preview || `# ${resource.title}\n\n${resource.description}`;
     const textBuffer = Buffer.from(textContent, 'utf-8');
+    const fallbackDisposition = safeContentDispositionFilename(`${resource.file}.txt`);
 
     return new NextResponse(textBuffer, {
       status: 200,
       headers: {
         'Content-Type': 'text/plain; charset=utf-8',
-        'Content-Disposition': `attachment; filename="${resource.file}.txt"`,
+        'Content-Disposition': fallbackDisposition,
         'Content-Length': textBuffer.length.toString(),
         'X-Download-Count': newCount.toString(),
+        'X-Content-Type-Options': 'nosniff',
       },
     });
   } catch (error: any) {
     console.error('Erro no download do recurso:', error);
     return NextResponse.json(
-      { success: false, error: error?.message || 'Falha ao processar download do recurso' },
+      { success: false, error: 'Falha ao processar download do recurso' },
       { status: 500 }
     );
   }

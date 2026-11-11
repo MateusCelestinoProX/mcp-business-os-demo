@@ -224,7 +224,8 @@ export async function POST(request: NextRequest) {
     const finalSummary = summary && summary.trim() ? summary.trim() : extractExcerpt(content, 180);
     const finalReadingTime = readingTime && readingTime.trim() ? readingTime.trim() : calculateReadingTime(content);
     const finalCategory = category && category.trim() ? category.trim().toUpperCase() : 'INTELIGÊNCIA ARTIFICIAL';
-    const finalCover = coverUrl && coverUrl.trim() ? sanitizeSafeUrl(coverUrl.trim(), '/assets/recursos_cover.webp') : '/assets/recursos_cover.webp';
+    const sanitizedCover = coverUrl && coverUrl.trim() ? sanitizeSafeUrl(coverUrl.trim(), { allowRelative: true }) : '';
+    const finalCover = sanitizedCover && sanitizedCover !== '#' ? sanitizedCover : '/assets/recursos_cover.webp';
     const publishedFlag = typeof isPublished === 'boolean' ? isPublished : true;
 
     // Inserção no Supabase com Drizzle ORM
@@ -294,7 +295,10 @@ export async function PUT(request: NextRequest) {
     if (summary) updateData.summary = summary.trim();
     if (readingTime) updateData.readingTime = readingTime.trim();
     if (category) updateData.category = category.trim().toUpperCase();
-    if (coverUrl !== undefined) updateData.coverUrl = sanitizeSafeUrl(coverUrl.trim(), '/assets/recursos_cover.webp');
+    if (coverUrl !== undefined) {
+      const sanitizedCover = sanitizeSafeUrl(coverUrl.trim(), { allowRelative: true });
+      updateData.coverUrl = sanitizedCover && sanitizedCover !== '#' ? sanitizedCover : '/assets/recursos_cover.webp';
+    }
     if (isPublished !== undefined) updateData.isPublished = Boolean(isPublished);
 
     let updatedRows: any[] = [];

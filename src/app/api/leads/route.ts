@@ -3,7 +3,9 @@ import { db } from '@/lib/db';
 import { leads } from '@/lib/db/schema';
 import { desc, eq } from 'drizzle-orm';
 import { randomUUID } from 'crypto';
-import { verifyAdminRequest, unauthorizedResponse } from '@/lib/auth/admin-guard';
+import { verifyAdminRequest, denyAdminRequest } from '@/lib/auth/admin-guard';
+import { checkRateLimit } from '@/lib/auth/rate-limit';
+import { getClientIp } from '@/lib/security/request-ip';
 
 // Regex para validação de e-mail corporativo / pessoal
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -37,6 +39,15 @@ function resolveLeadSource(
  */
 export async function POST(request: Request) {
   try {
+    const ip = getClientIp(request);
+    const rateCheck = checkRateLimit(`leads_${ip}`, 10, 60 * 1000);
+    if (!rateCheck.allowed) {
+      return NextResponse.json(
+        { success: false, error: 'Muitas requisições. Aguarde um momento antes de enviar novamente.' },
+        { status: 429 }
+      );
+    }
+
     const body = await request.json().catch(() => null);
 
     if (!body || typeof body !== 'object') {
@@ -142,12 +153,14 @@ export async function GET(request: Request) {
   try {
     const auth = await verifyAdminRequest(request);
     if (!auth.authorized) {
-      return unauthorizedResponse(auth.error);
+      return denyAdminRequest(auth);
     }
 
     const { searchParams } = new URL(request.url);
-    const page = Math.max(1, parseInt(searchParams.get('page') || '1', 10));
-    const limit = Math.min(100, Math.max(1, parseInt(searchParams.get('limit') || '20', 10)));
+    const rawPage = parseInt(searchParams.get('page') || '1', 10);
+    const rawLimit = parseInt(searchParams.get('limit') || '20', 10);
+    const page = Number.isFinite(rawPage) && rawPage >= 1 ? rawPage : 1;
+    const limit = Number.isFinite(rawLimit) && rawLimit >= 1 ? Math.min(100, rawLimit) : 20;
     const offset = (page - 1) * limit;
     const statusFilter = searchParams.get('status');
     const sourceFilter = searchParams.get('source');

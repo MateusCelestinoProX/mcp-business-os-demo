@@ -3,6 +3,7 @@ import { db } from '@/lib/db';
 import { leads } from '@/lib/db/schema';
 import { randomUUID } from 'crypto';
 import { checkRateLimit } from '@/lib/auth/rate-limit';
+import { getClientIp } from '@/lib/security/request-ip';
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -14,8 +15,7 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 export async function POST(request: Request) {
   try {
     // Proteção contra brute-force / spam de contatos por IP
-    const forwarded = request.headers.get('x-forwarded-for');
-    const ip = forwarded ? forwarded.split(',')[0].trim() : '127.0.0.1';
+    const ip = getClientIp(request);
     const rateCheck = checkRateLimit(`contact_${ip}`, 10, 15 * 60 * 1000);
 
     if (!rateCheck.allowed) {

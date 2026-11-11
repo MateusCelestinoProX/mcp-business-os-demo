@@ -1,10 +1,14 @@
+import crypto from 'node:crypto';
 import { NextResponse } from 'next/server';
 import { authenticateMember, authenticateAdmin } from '@/lib/auth/auth';
 import { checkRateLimit, resetRateLimit } from '@/lib/auth/rate-limit';
 import { getClientIp } from '@/lib/security/request-ip';
-import { hashDigestHex } from '@/lib/security/sanitize';
 import { isTrustedOrigin } from '@/lib/security/url-guard';
 import { NO_STORE_HEADERS } from '@/lib/auth/admin-guard';
+
+function hashDigestHex(input: string): string {
+  return crypto.createHash('sha256').update(input).digest('hex');
+}
 
 export async function POST(req: Request) {
   try {

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { db, systemSettings } from '@/lib/db';
+import { db, systemSettings, isDbConfigured } from '@/lib/db';
 import { eq } from 'drizzle-orm';
-import { verifyAdminRequest, unauthorizedResponse } from '@/lib/auth/admin-guard';
+import { verifyAdminRequest, authErrorResponse, verifySameOriginRequest, unauthorizedResponse } from '@/lib/auth/admin-guard';
 import siteData from '@/data/siteData.json';
 import { memoryCache } from '@/lib/cache/memory-cache';
 
@@ -294,7 +294,13 @@ function normalizeShopResourcesConfig(raw: any) {
   };
 }
 
-export async function GET() {
+export async function GET(request?: NextRequest) {
+  if (request) {
+    const auth = await verifyAdminRequest(request);
+    if (!auth.authorized) {
+      return authErrorResponse(auth);
+    }
+  }
   try {
     const cacheKey = 'shop:resources:config';
     const cached = memoryCache.get<any>(cacheKey);
@@ -386,9 +392,16 @@ export async function GET() {
 
 export async function POST(request: NextRequest) {
   try {
+    if (!verifySameOriginRequest(request)) {
+      return NextResponse.json(
+        { success: false, error: 'Origem não autorizada (violação CSRF).' },
+        { status: 403 }
+      );
+    }
+
     const auth = await verifyAdminRequest(request);
     if (!auth.authorized) {
-      return unauthorizedResponse(auth.error);
+      return authErrorResponse(auth);
     }
 
     const body = await request.json();
@@ -402,21 +415,27 @@ export async function POST(request: NextRequest) {
 
     const normalized = normalizeShopResourcesConfig(body);
 
-    // Upsert no Supabase (systemSettings)
-    await db
-      .insert(systemSettings)
-      .values({
-        key: SETTINGS_KEY,
-        value: normalized,
-        updatedAt: new Date(),
-      })
-      .onConflictDoUpdate({
-        target: systemSettings.key,
-        set: {
-          value: normalized,
-          updatedAt: new Date(),
-        },
-      });
+    // Upsert no Supabase (systemSettings) quando banco estiver configurado
+    if (isDbConfigured) {
+      try {
+        await db
+          .insert(systemSettings)
+          .values({
+            key: SETTINGS_KEY,
+            value: normalized,
+            updatedAt: new Date(),
+          })
+          .onConflictDoUpdate({
+            target: systemSettings.key,
+            set: {
+              value: normalized,
+              updatedAt: new Date(),
+            },
+          });
+      } catch (dbErr) {
+        console.warn('[AdminShop] Erro ao persistir no DB:', dbErr);
+      }
+    }
 
     // Sincronização segura de fallback local em siteData.json
     try {

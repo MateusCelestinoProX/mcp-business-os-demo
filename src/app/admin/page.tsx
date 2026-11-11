@@ -234,25 +234,23 @@ export default function AdminPanelPage() {
     }
   };
 
-  // Carrega e valida autenticação inicial diretamente no servidor via /api/auth/me
+  // Carrega e valida autenticação inicial diretamente no servidor via /api/auth/me (Strict Admin)
   useEffect(() => {
     async function verifyServerSession() {
       try {
-        const res = await fetch("/api/auth/me");
+        const res = await fetch("/api/auth/me", { cache: "no-store", credentials: "same-origin" });
         if (res.ok) {
           const data = await res.json();
           const target = data.user || data.member;
-          const isAllowedRole = target && (target.role === 'admin' || target.role === "moder" || target.role === "moderator");
-          if (data.authenticated && target && (target.role === 'admin' || isAllowedRole)) {
-            const role: UserRole = target.role === "admin" ? "admin" : "moder";
+          if (data.authenticated && target && target.role === 'admin') {
             const user: UnifiedUser = {
               id: target.id,
               isLoggedIn: true,
-              role: role,
-              name: target.name || (role === "admin" ? "Mateus Celestino Pro X" : "Moderador Oficial"),
+              role: 'admin',
+              name: target.name || "Mateus Celestino Pro X",
               email: target.email,
               avatar: "",
-              tier: role === "admin" ? "max" : "vip",
+              tier: "max",
             };
             setCurrentUser(user);
             setStoredUser(user);
@@ -266,6 +264,9 @@ export default function AdminPanelPage() {
       setCurrentUser(DEFAULT_GUEST_USER);
       setStoredUser(DEFAULT_GUEST_USER);
       setIsClientReady(true);
+      if (typeof window !== "undefined") {
+        window.location.replace("/comunidade/login?redirectUrl=/admin");
+      }
     }
     verifyServerSession();
 
@@ -466,7 +467,7 @@ export default function AdminPanelPage() {
   };
 
   useEffect(() => {
-    if (currentUser && hasAdminOrModerAccess(currentUser)) {
+    if (currentUser && hasAdminAccess(currentUser)) {
       fetchDashboardData();
     }
   }, [currentUser]);
@@ -723,96 +724,44 @@ export default function AdminPanelPage() {
   }
 
   // GATEWAY DE SEGURANÇA EXECUTIVO (QUANDO NÃO AUTENTICADO)
-  if (!currentUser || (!hasAdminAccess(currentUser) && currentUser.role !== "moder")) {
+  if (!currentUser || !hasAdminAccess(currentUser)) {
     return (
       <div className="relative min-h-[85vh] flex items-center justify-center px-4 py-12 overflow-hidden">
         <AdminRedShader opacity={0.88} speed={0.45} brightness={1.4} interactive={true} />
 
-        <div className="relative z-10 max-w-md w-full bg-white/[0.06] backdrop-blur-3xl rounded-3xl p-8 border border-white/20 shadow-[0_25px_70px_rgba(0,0,0,0.65)] overflow-hidden">
+        <div className="relative z-10 max-w-md w-full bg-white/[0.06] backdrop-blur-3xl rounded-3xl p-8 border border-white/20 shadow-[0_25px_70px_rgba(0,0,0,0.65)] overflow-hidden text-center space-y-4">
           <div className="absolute -top-24 -right-24 w-48 h-48 bg-red-600/25 rounded-full blur-3xl pointer-events-none" />
 
-          <div className="flex items-center justify-center mb-6">
-            <div className="w-14 h-14 rounded-2xl bg-red-600/20 border border-red-500/40 flex items-center justify-center text-red-500 shadow-[0_0_25px_rgba(255,7,58,0.35)] backdrop-blur-md">
-              <Shield className="w-7 h-7" />
-            </div>
+          <div className="w-14 h-14 mx-auto rounded-2xl bg-red-600/20 border border-red-500/40 flex items-center justify-center text-red-500 shadow-[0_0_25px_rgba(255,7,58,0.35)] backdrop-blur-md">
+            <Lock className="w-7 h-7" />
           </div>
 
-          <div className="text-center space-y-1.5 mb-6">
+          <div className="space-y-1.5">
             <h1 className="text-xl font-bold tracking-tight text-white">
               Painel de Comando Executivo
             </h1>
             <p className="text-xs text-neutral-300 font-medium">
-              Acesso restrito para administradores e operadores da plataforma.
+              Esta área exige autenticação soberana de nível Administrador.
             </p>
           </div>
 
-          <form onSubmit={handleAdminLogin} className="space-y-4">
-            {loginError && (
-              <div className="p-3 rounded-xl bg-red-950/60 border border-red-500/50 flex items-start gap-2.5 text-xs text-red-200 backdrop-blur-md">
-                <AlertTriangle className="w-4 h-4 text-red-400 flex-shrink-0 mt-0.5" />
-                <span>{loginError}</span>
-              </div>
-            )}
+          <Button
+            type="button"
+            variant="fired"
+            size="lg"
+            onClick={() => {
+              window.location.href = "/comunidade/login?redirectUrl=/admin";
+            }}
+            className="w-full justify-center gap-2 text-xs font-semibold shadow-[0_0_25px_rgba(255,7,58,0.45)] hover:shadow-[0_0_35px_rgba(255,7,58,0.6)] cursor-pointer"
+          >
+            <Shield className="w-4 h-4" />
+            <span>Fazer Login como Administrador</span>
+          </Button>
 
-            <div>
-              <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-300 mb-1.5 font-semibold">
-                Identificador de Administrador
-              </label>
-              <div className="relative">
-                <Mail className="w-4 h-4 absolute left-3.5 top-3 text-neutral-400" />
-                <input
-                  type="email"
-                  value={loginEmail}
-                  onChange={(e) => setLoginEmail(e.target.value)}
-                  placeholder="mcp6667@proton.me"
-                  required
-                  className="w-full bg-black/40 border border-white/20 rounded-xl pl-10 pr-4 py-2.5 text-xs text-white placeholder-neutral-500 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-colors backdrop-blur-md"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-300 mb-1.5 font-semibold">
-                Chave de Acesso Mestre
-              </label>
-              <div className="relative">
-                <KeyRound className="w-4 h-4 absolute left-3.5 top-3 text-neutral-400" />
-                <input
-                  type="password"
-                  value={loginPassword}
-                  onChange={(e) => setLoginPassword(e.target.value)}
-                  placeholder="••••••••••••"
-                  required
-                  className="w-full bg-black/40 border border-white/20 rounded-xl pl-10 pr-4 py-2.5 text-xs text-white placeholder-neutral-500 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-colors backdrop-blur-md"
-                />
-              </div>
-            </div>
-
-            <Button
-              type="submit"
-              variant="fired"
-              size="lg"
-              disabled={isAuthenticating}
-              className="w-full justify-center gap-2 text-xs font-semibold mt-2 shadow-[0_0_25px_rgba(255,7,58,0.45)] hover:shadow-[0_0_35px_rgba(255,7,58,0.6)] cursor-pointer"
-            >
-              {isAuthenticating ? (
-                <>
-                  <RefreshCw className="w-4 h-4 animate-spin" />
-                  <span>Validando Credenciais...</span>
-                </>
-              ) : (
-                <>
-                  <Lock className="w-4 h-4" />
-                  <span>Autenticar no Painel Soberano</span>
-                </>
-              )}
-            </Button>
-          </form>
-
-          <div className="mt-6 text-center">
+          <div className="mt-4 text-center">
             <Link
               href="/"
-              className="text-xs text-neutral-300 hover:text-white transition-colors inline-flex items-center gap-1.5"
+              className="text-xs text-neutral-400 hover:text-white transition-colors inline-flex items-center gap-1.5"
             >
               <span>← Voltar para a Home Page</span>
             </Link>

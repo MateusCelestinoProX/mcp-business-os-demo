@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { addItemToLibrary, determineFileType } from '@/lib/library/library-manager';
 import { uploadToImageKit, isImageKitConfigured, getCanonicalImageKitFolder } from '@/lib/storage/imagekit';
-import { verifyAdminRequest, unauthorizedResponse } from '@/lib/auth/admin-guard';
+import { verifyAdminRequest, denyAdminRequest, verifySameOriginRequest } from '@/lib/auth/admin-guard';
 
 export const dynamic = 'force-dynamic';
 
@@ -14,15 +14,21 @@ const ALLOWED_EXTENSIONS = new Set([
   '.mp4', '.mov', '.webm', '.mkv', '.avi',
   '.mp3', '.wav', '.ogg', '.m4a', '.flac',
   '.pdf', '.docx', '.txt', '.md', '.markdown', '.json', '.csv',
-  '.zip', '.rar', '.7z', '.tar', '.gz', '.apk',
-  '.py', '.js', '.ts', '.css', '.sql'
+  '.zip', '.rar', '.7z', '.tar', '.gz', '.apk'
 ]);
 
 export async function POST(request: NextRequest) {
   try {
+    if (!verifySameOriginRequest(request)) {
+      return NextResponse.json(
+        { success: false, error: 'Origem não autorizada (violação CSRF).' },
+        { status: 403 }
+      );
+    }
+
     const auth = await verifyAdminRequest(request);
     if (!auth.authorized) {
-      return unauthorizedResponse(auth.error);
+      return denyAdminRequest(auth);
     }
 
     // Garantir que a pasta de uploads exista
@@ -48,7 +54,7 @@ export async function POST(request: NextRequest) {
 
     if (targetFiles.length === 0) {
       return NextResponse.json(
-        { success: false, error: 'Nenhum arquivo enviado para upload do Mac' },
+        { success: false, error: 'Nenhum arquivo enviado para upload' },
         { status: 400 }
       );
     }
@@ -146,13 +152,13 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      message: `${uploadedItems.length} arquivo(s) enviado(s) com sucesso diretamente do Mac`,
+      message: `${uploadedItems.length} arquivo(s) enviado(s) com sucesso`,
       items: uploadedItems,
     });
   } catch (error: any) {
     console.error('Erro na rota POST /api/admin/libraries/upload:', error);
     return NextResponse.json(
-      { success: false, error: error?.message || 'Falha no upload de arquivos do Mac' },
+      { success: false, error: 'Falha no upload de arquivos' },
       { status: 500 }
     );
   }

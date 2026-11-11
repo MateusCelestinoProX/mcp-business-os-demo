@@ -15,7 +15,6 @@ export async function GET() {
         rssMB: Math.round(mem.rss / 1024 / 1024),
         heapUsedMB: Math.round(mem.heapUsed / 1024 / 1024),
       },
-      nodeVersion: process.version,
     },
     {
       status: 200,

@@ -14,7 +14,7 @@
  * =========================================================================
  */
 
-const CACHE_VERSION = 'mcp-business-os-v1.0.2';
+const CACHE_VERSION = 'mcp-business-os-v1.0.3';
 const STATIC_CACHE = `mcp-static-${CACHE_VERSION}`;
 const PAGES_CACHE = `mcp-pages-${CACHE_VERSION}`;
 const API_CACHE = `mcp-api-${CACHE_VERSION}`;
@@ -75,7 +75,11 @@ self.addEventListener('fetch', (event) => {
   if (!url.protocol.startsWith('http')) return;
   if (
     url.pathname.startsWith('/admin') ||
+    url.pathname.startsWith('/api/admin') ||
     url.pathname.startsWith('/api/auth') ||
+    url.pathname.startsWith('/api/members') ||
+    url.pathname.startsWith('/api/finance') ||
+    url.pathname.startsWith('/api/leads') ||
     url.pathname.startsWith('/api/payment') ||
     url.pathname.startsWith('/api/checkout') ||
     url.hostname.includes('umami') ||
@@ -189,7 +193,7 @@ self.addEventListener('fetch', (event) => {
   const isPublicApi =
     url.pathname.startsWith('/api/articles') ||
     url.pathname.startsWith('/api/library') ||
-    url.pathname.startsWith('/api/admin/shop-resources');
+    url.pathname.startsWith('/api/shop');
 
   if (isPublicApi) {
     event.respondWith(

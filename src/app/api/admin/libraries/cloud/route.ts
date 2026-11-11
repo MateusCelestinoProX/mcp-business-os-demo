@@ -1,25 +1,40 @@
 import { NextRequest, NextResponse } from 'next/server';
 import path from 'node:path';
 import { addItemToLibrary, determineFileType } from '@/lib/library/library-manager';
-import { verifyAdminRequest, unauthorizedResponse } from '@/lib/auth/admin-guard';
+import { verifyAdminRequest, denyAdminRequest, verifySameOriginRequest } from '@/lib/auth/admin-guard';
+import { assertSafeExternalUrl } from '@/lib/security/url-guard';
 
 export const dynamic = 'force-dynamic';
 
 export async function POST(request: NextRequest) {
   try {
-    const auth = await verifyAdminRequest(request);
-    if (!auth.authorized) {
-      return unauthorizedResponse(auth.error);
+    if (!verifySameOriginRequest(request)) {
+      return NextResponse.json(
+        { success: false, error: 'Origem não autorizada (violação CSRF).' },
+        { status: 403 }
+      );
     }
 
-    const body = await request.json();
+    const auth = await verifyAdminRequest(request);
+    if (!auth.authorized) {
+      return denyAdminRequest(auth);
+    }
+
+    const body = await request.json().catch(() => ({}));
     const { url, title, description, categoryName, categorySlug, tags, customType } = body;
 
-    if (!url || !url.trim()) {
+    if (!url || typeof url !== 'string' || !url.trim()) {
       return NextResponse.json({ success: false, error: 'URL do arquivo na nuvem é obrigatória' }, { status: 400 });
     }
 
     const cleanUrl = url.trim();
+
+    // Validação estrita anti-SSRF para URLs remotas
+    try {
+      await assertSafeExternalUrl(cleanUrl);
+    } catch (urlErr: any) {
+      return NextResponse.json({ success: false, error: 'URL fornecida rejeitada pela proteção anti-SSRF.' }, { status: 400 });
+    }
 
     // Dedução do nome do arquivo a partir da URL
     let inferredFilename = 'arquivo-nuvem';
@@ -61,7 +76,7 @@ export async function POST(request: NextRequest) {
   } catch (error: any) {
     console.error('Erro na rota POST /api/admin/libraries/cloud:', error);
     return NextResponse.json(
-      { success: false, error: error?.message || 'Falha ao importar ativo da nuvem' },
+      { success: false, error: 'Falha ao importar ativo da nuvem' },
       { status: 500 }
     );
   }

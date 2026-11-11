@@ -1,11 +1,10 @@
-import crypto from 'node:crypto';
-
 /**
  * ============================================================
  * MÓDULO SOBERANO DE SANITIZAÇÃO DE HTML, URL, XML E HEADERS
  * ============================================================
  * Proteção em profundidade contra Stored/Reflected XSS, DOM XSS,
  * XML Injection, JSON-LD Script Breakout e CRLF Header Injection.
+ * Safe for client-side and server-side runtimes (no node:crypto).
  */
 
 const NAMED_HTML_ENTITIES: Record<string, string> = {
@@ -331,6 +330,4 @@ export function sanitizeDangerousHtml(html: string | null | undefined): string {
   return clean;
 }
 
-export function hashDigestHex(input: string): string {
-  return crypto.createHash('sha256').update(input).digest('hex');
-}
+

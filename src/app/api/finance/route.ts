@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { verifyAdminRequest, unauthorizedResponse, forbiddenResponse } from '@/lib/auth/admin-guard';
+import { verifyAdminRequest, denyAdminRequest } from '@/lib/auth/admin-guard';
 
 export const dynamic = 'force-dynamic';
 
@@ -11,7 +11,7 @@ export async function GET(request: Request) {
   try {
     const auth = await verifyAdminRequest(request);
     if (!auth.authorized) {
-      return unauthorizedResponse(auth.error);
+      return denyAdminRequest(auth);
     }
 
     // Por enquanto, sem webhooks de pagamentos reais concluídos na base, retorna array vazio e faturamento zerado
