@@ -300,6 +300,42 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  function formatMarkdown(content) {
+    if (!content) return '';
+    let html = escapeHtml(content);
+
+    // Code blocks ```code```
+    html = html.replace(/```([a-zA-Z0-9_-]*)\n([\s\S]*?)```/g, function(_, lang, code) {
+      return `<pre class="my-2.5 p-3.5 rounded-xl bg-black/90 border border-white/10 font-mono text-xs text-red-200 overflow-x-auto whitespace-pre-wrap">${code}</pre>`;
+    });
+
+    // Inline code `code`
+    html = html.replace(/`([^`\n]+)`/g, '<code class="px-1.5 py-0.5 rounded bg-white/10 border border-white/10 text-red-300 font-mono text-xs">$1</code>');
+
+    // Bold **text**
+    html = html.replace(/\*\*([^*]+)\*\*/g, '<strong class="font-bold text-white">$1</strong>');
+
+    // Italic *text*
+    html = html.replace(/\*([^*]+)\*/g, '<em class="italic text-gray-200">$1</em>');
+
+    // Headers ### Title and ## Title
+    html = html.replace(/^### (.*$)/gim, '<h3 class="text-sm font-bold text-white mt-2.5 mb-1">$1</h3>');
+    html = html.replace(/^## (.*$)/gim, '<h2 class="text-base font-bold text-white mt-3 mb-1">$1</h2>');
+
+    // Blockquote > quote
+    html = html.replace(/^> (.*$)/gim, '<blockquote class="border-l-2 border-red-500/80 pl-3 py-1 my-2 text-gray-300 italic bg-white/[0.02] rounded-r">$1</blockquote>');
+
+    // Bullet points - item or * item
+    html = html.replace(/^[•\-\*] (.*$)/gim, '<div class="flex items-start space-x-2 my-1"><span class="text-red-400 leading-relaxed">•</span><span class="flex-1">$1</span></div>');
+
+    // Markdown Links [title](url)
+    html = html.replace(/\[([^\]]+)\]\((https?:\/\/[^\s\)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-red-400 hover:text-red-300 underline underline-offset-2">$1 ↗</a>');
+
+    // Line breaks
+    html = html.replace(/\n/g, '<br>');
+    return html;
+  }
+
   function convertToEmbedUrl(url) {
     if (!url || !url.trim()) return '';
     url = url.trim();
@@ -659,6 +695,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   ];
 
+  const DEFAULT_SOVEREIGN_POSTS = [
+    {
+      id: 'post_welcome_admin',
+      user_id: 'admin_official',
+      user_name: 'Mateus Celestino',
+      user_avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=AdminBoss',
+      role: 'admin',
+      title: 'Boas-vindas ao Hub da Comunidade A.I Visuals!',
+      content: 'Espaço soberano dedicado ao compartilhamento de prompts de alta fidelidade e networking criativo.',
+      likes: 42,
+      tag: 'official',
+      created_at: new Date().toISOString()
+    }
+  ];
+
   // ──────────────────────────────────────────────────────────────────────────
   // 6. SOVEREIGN SESSION SYNCHRONIZER (Bi-direcional e Resiliente)
   // ──────────────────────────────────────────────────────────────────────────
@@ -736,7 +787,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const headers = {};
       if (token) headers['Authorization'] = `Bearer ${token}`;
 
-      const res = await fetch('/api/auth/me', { headers });
+      const res = await fetch('/api/auth/me', {
+        headers,
+        credentials: 'same-origin',
+        cache: 'no-store'
+      });
       const data = await res.json().catch(() => null);
 
       if (res.ok && data?.authenticated && data?.user) {
@@ -759,7 +814,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         localStorage.setItem('mcp_session_user', JSON.stringify(sessionUser));
         localStorage.setItem('mcp_user_role', sessionUser.role);
-        localStorage.setItem('mcp_admin_auth', (role === 'admin' || role === 'moder') ? 'true' : 'false');
+        localStorage.setItem('mcp_admin_auth', role === 'admin' ? 'true' : 'false');
         syncSovereignSession();
         return true;
       } else {
@@ -774,7 +829,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
           } catch(e) {}
         }
-        if (!hasSbSession && isLoggedIn) {
+        if (!hasSbSession) {
           localStorage.removeItem('mcp_session_user');
           localStorage.removeItem('mcp_auth_token');
           localStorage.setItem('mcp_user_role', 'visitante');
@@ -2787,7 +2842,7 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
     const loginDropBtn = document.getElementById('loginDropdownBtn');
     const logoutDropBtn = document.getElementById('logoutDropdownBtn');
 
-    const hasAdminAccess = isLoggedIn && (currentUserRole === 'admin' || currentUserRole === 'moderator' || currentUserRole === 'moder');
+    const hasAdminAccess = isLoggedIn && currentUserRole === 'admin';
     if (adminBtn) {
       adminBtn.classList.add('hidden');
       adminBtn.style.display = 'none';
@@ -3320,12 +3375,15 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
   // ──────────────────────────────────────────────────────────────────────────
   // VIEW 5: COMMUNITY — RED SHADER ATELIER & VIP CREATOR ECOSYSTEM
   // ──────────────────────────────────────────────────────────────────────────
-  let communityActiveTab = 'feed'; // 'feed' | 'prompts' | 'ranking' | 'challenges' | 'saved' | 'tag-editor'
+  let communityActiveTab = 'feed'; // 'feed' | 'prompts' | 'challenges' | 'saved' | 'tag-editor'
   let communityActiveFilter = 'all'; // 'all' | tag.id
   let communityPromptModelFilter = 'all'; // 'all' | 'Flux.1' | 'Midjourney' | 'ComfyUI' | 'SD 3.5'
   let communitySearchQuery = '';
   let communitySelectedCategory = 'prompts';
+  let communitySelectedSubtags = [];
+  let communityComposerMode = 'write'; // 'write' | 'preview'
   let communityPromptBoxOpen = false;
+  let communityLinkBoxOpen = false;
 
   const DEFAULT_COMMUNITY_TAGS = [
     { id: 'prompts', name: 'Prompts & Workflows', icon: '⚡', color: 'red', desc: 'Prompts, pipelines e fluxos no Flux.1, Midjourney e ComfyUI' },
@@ -3482,6 +3540,9 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
     if (communityActiveTab === 'prompts') {
       return renderCommunityPromptsTab();
     }
+    if (communityActiveTab === 'ranking') {
+      return renderCommunityRankingTab();
+    }
     if (communityActiveTab === 'challenges') {
       return renderCommunityChallengesTab();
     }
@@ -3559,84 +3620,308 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-7">
         <div class="lg:col-span-2 space-y-4 sm:space-y-5">
 
-          <!-- POST COMPOSER ORIGINAL APRIMORADO -->
-          <div class="glass-card rounded-3xl overflow-hidden p-4 sm:p-5 border border-white/10">
-            <div class="flex items-start space-x-3 sm:space-x-3.5">
-              <img src="${currentUserAvatarUrl}" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-white/20 flex-shrink-0 cursor-pointer object-cover" onclick="window.appGoProfile()" title="Ver perfil">
-              <div class="flex-1 space-y-3 min-w-0">
-                <input type="text" id="newPostTitle" placeholder="Título do post (opcional)..."
-                  class="w-full bg-transparent border-b border-white/10 pb-2 text-base sm:text-sm font-bold text-white placeholder-white/30 focus:outline-none focus:border-white/30 transition-colors">
-                <textarea id="newPostContent" rows="3" placeholder="Compartilhe uma ideia, prompt ou dúvida com a comunidade..."
-                  class="w-full bg-white/5 border border-white/10 rounded-2xl p-3 sm:p-3.5 text-base sm:text-sm text-white focus:outline-none focus:border-white/25 focus:bg-white/10 transition-all resize-none placeholder-white/30 leading-relaxed"></textarea>
+          <!-- POST COMPOSER SOBERANO DE ELITE REFORMULADO -->
+          <div class="glass-card rounded-3xl overflow-hidden p-5 sm:p-6 border border-white/15 relative shadow-2xl transition-all hover:border-red-500/30">
+            <div class="absolute -top-12 -right-12 w-48 h-48 bg-red-600/10 rounded-full blur-3xl pointer-events-none"></div>
 
-                <!-- AI Prompt Studio Module (Expansível) -->
-                <div id="composerPromptBox" class="${communityPromptBoxOpen ? '' : 'hidden'} p-3.5 rounded-2xl bg-black/70 border border-white/10 space-y-2.5">
-                  <div class="flex items-center justify-between border-b border-white/10 pb-2">
-                    <span class="text-xs font-bold text-white/80 flex items-center space-x-1.5 font-mono">
-                      <span>🔮</span><span>AI Prompt Studio</span>
+            <!-- Top Composer Header: Author & Mode Switcher -->
+            <div class="flex items-center justify-between pb-3.5 mb-3.5 border-b border-white/10 gap-2 relative z-10">
+              <div class="flex items-center space-x-3 min-w-0">
+                <div class="relative flex-shrink-0 cursor-pointer" onclick="window.appGoProfile()" title="Ver seu perfil">
+                  <img src="${currentUserAvatarUrl}" class="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-white/20 object-cover ${currentUserRole === 'admin' ? 'border-red-500 shadow-[0_0_12px_rgba(239,68,68,0.45)]' : ''}">
+                  ${currentUserRole === 'admin' ? '<span class="absolute -top-1 -right-1 text-xs">👑</span>' : ''}
+                </div>
+                <div class="min-w-0">
+                  <div class="flex items-center space-x-2">
+                    <span class="text-xs sm:text-sm font-extrabold text-white truncate max-w-[140px] sm:max-w-none">${currentUserNameStr}</span>
+                    ${getBadge(currentUserRole)}
+                  </div>
+                  <div class="flex items-center space-x-2 mt-0.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span class="text-[10px] text-gray-400 font-mono">Editor Soberano</span>
+                    <span id="composerDraftIndicator" class="text-[10px] font-mono text-emerald-400/90 hidden sm:inline-flex items-center space-x-1 opacity-0 transition-opacity">
+                      <span>•</span><span>💾 Rascunho salvo</span>
                     </span>
-                    <select id="newPostPromptModel" class="bg-black/80 border border-white/20 rounded-lg px-2 py-0.5 text-xs sm:text-[11px] text-white focus:outline-none">
-                      <option value="Flux.1 Dev">Flux.1 Dev</option>
-                      <option value="Flux.1 Schnell">Flux.1 Schnell</option>
-                      <option value="Midjourney v6.1">Midjourney v6.1</option>
-                      <option value="Midjourney v7">Midjourney v7</option>
-                      <option value="Ideogram 2.0">Ideogram 2.0</option>
-                      <option value="ComfyUI Pipeline">ComfyUI Pipeline</option>
-                      <option value="Stable Diffusion 3.5">Stable Diffusion 3.5</option>
-                    </select>
                   </div>
-                  <textarea id="newPostPromptCode" rows="2" placeholder="Cole aqui o prompt textual exato..."
-                    class="w-full bg-white/5 border border-white/10 rounded-xl p-2.5 text-base sm:text-xs font-mono text-gray-200 placeholder-white/30 focus:outline-none"></textarea>
-                  <input type="text" id="newPostPromptParams" placeholder="Parâmetros ou flags (ex: --ar 16:9 --v 6.1 --stylize 350)"
-                    class="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-1.5 text-base sm:text-xs font-mono text-gray-300 placeholder-white/30 focus:outline-none">
                 </div>
+              </div>
 
-                <!-- Preview de Upload de Imagens -->
-                <div id="postImageUploadPreview" class="hidden grid grid-cols-4 sm:grid-cols-5 gap-2 pt-1"></div>
+              <!-- Switcher Escrever / Prévia -->
+              <div class="flex items-center space-x-1 bg-black/60 p-1 rounded-xl border border-white/10 text-xs font-bold flex-shrink-0">
+                <button type="button" id="composerModeWriteBtn" onclick="window.setComposerMode('write')"
+                  class="px-3 py-1.5 rounded-lg transition-all flex items-center space-x-1.5 bg-white text-black shadow-sm font-bold">
+                  <span>✏️</span><span>Escrever</span>
+                </button>
+                <button type="button" id="composerModePreviewBtn" onclick="window.setComposerMode('preview')"
+                  class="px-3 py-1.5 rounded-lg transition-all flex items-center space-x-1.5 text-gray-400 hover:text-white hover:bg-white/5 font-bold">
+                  <span>👁️</span><span>Prévia</span>
+                </button>
+              </div>
+            </div>
 
-                <!-- Campo de Link -->
-                <div id="postLinkField" class="hidden p-3 bg-white/5 rounded-2xl border border-white/10 space-y-2">
-                  <input type="url" id="newPostLinkUrl" placeholder="URL do link (https://...)" class="w-full bg-transparent text-base sm:text-xs text-white placeholder-white/30 focus:outline-none border-b border-white/10 pb-1">
-                  <input type="text" id="newPostLinkTitle" placeholder="Título do link (opcional)" class="w-full bg-transparent text-base sm:text-xs text-white placeholder-white/30 focus:outline-none">
-                </div>
+            <!-- Toolbar de Formatação Markdown Rápida -->
+            <div id="composerFormattingToolbar" class="flex items-center justify-between gap-1 pb-2.5 mb-3 border-b border-white/5 overflow-x-auto no-scrollbar text-xs relative z-10">
+              <div class="flex items-center space-x-1">
+                <button type="button" onclick="window.insertMarkdownFormat('**', '**')" title="Negrito (**texto**)"
+                  class="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/10 active:scale-95 border border-white/10 text-gray-200 hover:text-white font-bold transition-all text-xs font-mono min-h-[30px] flex items-center justify-center">
+                  <strong>B</strong>
+                </button>
+                <button type="button" onclick="window.insertMarkdownFormat('*', '*')" title="Itálico (*texto*)"
+                  class="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/10 active:scale-95 border border-white/10 text-gray-200 hover:text-white italic transition-all text-xs font-mono min-h-[30px] flex items-center justify-center">
+                  <em>I</em>
+                </button>
+                <button type="button" onclick="window.insertMarkdownFormat('### ', '')" title="Título de Seção (### Título)"
+                  class="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/10 active:scale-95 border border-white/10 text-gray-200 hover:text-white font-bold transition-all text-xs font-mono min-h-[30px] flex items-center justify-center">
+                  H3
+                </button>
+                <button type="button" onclick="window.insertMarkdownFormat('\`', '\`')" title="Código Inline (\`código\`)"
+                  class="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/10 active:scale-95 border border-white/10 text-gray-200 hover:text-white transition-all text-xs font-mono min-h-[30px] flex items-center justify-center">
+                  &lt;/&gt;
+                </button>
+                <button type="button" onclick="window.insertMarkdownFormat('\`\`\`\\n', '\\n\`\`\`')" title="Bloco de Código"
+                  class="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/10 active:scale-95 border border-white/10 text-gray-200 hover:text-white transition-all text-xs font-mono min-h-[30px] flex items-center justify-center">
+                  { }
+                </button>
+                <button type="button" onclick="window.insertMarkdownFormat('> ', '')" title="Citação em Destaque"
+                  class="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/10 active:scale-95 border border-white/10 text-gray-200 hover:text-white transition-all text-xs font-mono min-h-[30px] flex items-center justify-center">
+                  “ ”
+                </button>
+                <button type="button" onclick="window.insertMarkdownFormat('- ', '')" title="Lista com Marcadores"
+                  class="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/10 active:scale-95 border border-white/10 text-gray-200 hover:text-white transition-all text-xs font-mono min-h-[30px] flex items-center justify-center">
+                  • Lista
+                </button>
+              </div>
 
-                <!-- Seleção de Tag no Composer -->
-                <div class="pt-2 border-t border-white/5 flex items-center space-x-2">
-                  <span class="text-[11px] font-mono font-bold text-gray-400 whitespace-nowrap">🏷️ Tag:</span>
-                  <div class="flex items-center space-x-1.5 overflow-x-auto no-scrollbar pb-1 text-xs" id="composerTagPills">
-                    ${tags.map(t => {
-                      const isSel = (communitySelectedCategory || (tags[0] && tags[0].id)) === t.id;
-                      return `
-                        <button type="button" onclick="window.selectPostCategory('${t.id}', this)"
-                          class="post-cat-btn px-2.5 py-1 rounded-lg border font-bold transition-all text-xs flex items-center space-x-1 whitespace-nowrap active:scale-95 ${isSel ? 'bg-red-500/20 text-red-200 border-red-500/40 shadow-sm' : 'bg-white/5 text-gray-400 border-white/10 hover:text-white'}">
-                          <span>${t.icon || '🏷️'}</span>
-                          <span>${escapeHtml(t.name)}</span>
-                        </button>
-                      `;
-                    }).join('')}
-                  </div>
+              <div class="hidden sm:flex items-center space-x-1 pl-2 border-l border-white/10">
+                ${['✨', '🔥', '🚀', '💡', '🎨', '⚡'].map(emoji => `
+                  <button type="button" onclick="window.insertEmoji('${emoji}')" class="px-1.5 py-0.5 rounded hover:bg-white/10 transition-colors text-xs active:scale-90" title="Inserir emoji ${emoji}">${emoji}</button>
+                `).join('')}
+              </div>
+            </div>
+
+            <!-- Área de Escrita (Editor) -->
+            <div id="composerWriteArea" class="space-y-3 relative z-10">
+              <div class="relative">
+                <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-xs pointer-events-none">✍️</span>
+                <input type="text" id="newPostTitle" placeholder="Título marcante para sua publicação (opcional)..."
+                  oninput="window.handleComposerInput()"
+                  class="w-full bg-black/40 border border-white/15 focus:border-red-500/50 focus:ring-1 focus:ring-red-500/30 rounded-2xl pl-9 pr-4 py-2.5 text-base sm:text-sm font-bold text-white placeholder-white/30 focus:outline-none transition-all">
+              </div>
+
+              <div class="relative">
+                <textarea id="newPostContent" rows="4" placeholder="Compartilhe uma ideia, prompt, análise visual ou dúvida com a comunidade... (suporta Markdown completo)"
+                  oninput="window.handleComposerInput()"
+                  class="w-full bg-black/40 border border-white/15 focus:border-red-500/50 focus:ring-1 focus:ring-red-500/30 rounded-2xl p-4 pb-8 text-base sm:text-sm text-white focus:outline-none transition-all resize-none placeholder-white/30 leading-relaxed min-h-[110px]"></textarea>
+                <div class="absolute right-3.5 bottom-2.5 text-[10px] font-mono text-gray-400 pointer-events-none" id="composerWordCount">
+                  0 caracteres • 0 palavras
                 </div>
               </div>
             </div>
 
+            <!-- Área de Pré-visualização em Tempo Real (Inicialmente Oculta) -->
+            <div id="composerPreviewArea" class="hidden p-4 rounded-2xl bg-black/60 border border-white/15 space-y-3 relative z-10">
+              <div class="flex items-center justify-between border-b border-white/10 pb-2">
+                <span class="text-xs font-mono font-bold text-emerald-400 flex items-center space-x-1.5">
+                  <span>👁️</span><span>Prévia em Tempo Real da Publicação</span>
+                </span>
+                <span class="text-[10px] text-gray-400 font-mono">Simulação fiel do Feed</span>
+              </div>
+              <div id="composerLivePreviewCard"></div>
+            </div>
+
+            <!-- AI Prompt Studio Module (Expansível) -->
+            <div id="composerPromptBox" class="${communityPromptBoxOpen ? '' : 'hidden'} mt-3 p-4 rounded-2xl bg-black/85 border border-red-500/35 space-y-3 relative z-10 shadow-xl">
+              <div class="flex items-center justify-between border-b border-red-500/20 pb-2.5">
+                <span class="text-xs font-bold text-red-400 flex items-center space-x-1.5 font-mono">
+                  <span>🔮</span><span>AI Prompt Studio (Engine de Geração)</span>
+                </span>
+                <select id="newPostPromptModel" onchange="window.saveComposerDraft()" class="bg-black/90 border border-red-500/30 rounded-lg px-2.5 py-1 text-xs sm:text-[11px] text-white focus:outline-none font-mono">
+                  <option value="Flux.1 Dev">Flux.1 Dev</option>
+                  <option value="Flux.1 Schnell">Flux.1 Schnell</option>
+                  <option value="Midjourney v6.1">Midjourney v6.1</option>
+                  <option value="Midjourney v7">Midjourney v7</option>
+                  <option value="Ideogram 2.0">Ideogram 2.0</option>
+                  <option value="ComfyUI Pipeline">ComfyUI Pipeline</option>
+                  <option value="Stable Diffusion 3.5">Stable Diffusion 3.5</option>
+                  <option value="DALL-E 3">DALL-E 3</option>
+                  <option value="Recraft V3">Recraft V3</option>
+                </select>
+              </div>
+              <textarea id="newPostPromptCode" rows="2" placeholder="Cole aqui o prompt textual exato..."
+                oninput="window.handleComposerInput()"
+                class="w-full bg-white/5 border border-white/10 rounded-xl p-3 text-base sm:text-xs font-mono text-gray-200 placeholder-white/30 focus:outline-none focus:border-red-500/40 leading-relaxed"></textarea>
+              <div class="space-y-1.5">
+                <input type="text" id="newPostPromptParams" placeholder="Parâmetros ou flags (ex: --ar 16:9 --v 6.1 --stylize 350)"
+                  oninput="window.handleComposerInput()"
+                  class="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-base sm:text-xs font-mono text-gray-300 placeholder-white/30 focus:outline-none focus:border-red-500/40">
+                <div class="flex flex-wrap items-center gap-1 text-[10px] font-mono text-gray-400 pt-0.5">
+                  <span class="mr-1">Flags rápidas:</span>
+                  ${['--ar 16:9', '--ar 9:16', '--v 6.1', '--stylize 250', '--chaos 15', '--quality 2'].map(fl => `
+                    <button type="button" onclick="window.appendPromptParam('${fl}')" class="px-1.5 py-0.5 rounded bg-white/5 hover:bg-white/15 border border-white/10 text-red-300 transition-colors">${fl}</button>
+                  `).join('')}
+                </div>
+              </div>
+            </div>
+
+            <!-- Preview de Upload de Imagens -->
+            <div id="postImageUploadPreview" class="hidden grid grid-cols-3 sm:grid-cols-5 gap-2 pt-2 relative z-10"></div>
+
+            <!-- Campo de Link -->
+            <div id="postLinkField" class="hidden mt-3 p-3.5 bg-white/5 rounded-2xl border border-white/10 space-y-2 relative z-10">
+              <input type="url" id="newPostLinkUrl" placeholder="URL do link (https://...)" oninput="window.handleComposerInput()" class="w-full bg-transparent text-base sm:text-xs text-white placeholder-white/30 focus:outline-none border-b border-white/10 pb-1.5 font-mono">
+              <input type="text" id="newPostLinkTitle" placeholder="Título do link (opcional, ex: Repositório GitHub / Artigo)" oninput="window.handleComposerInput()" class="w-full bg-transparent text-base sm:text-xs text-white placeholder-white/30 focus:outline-none">
+            </div>
+
+            <!-- PAINEL REFORMULADO DE TAXONOMIA & ATRIBUIÇÃO DE TAGS (ESTRUTURA COMPLETA) -->
+            <div class="mt-4 pt-3.5 border-t border-white/10 rounded-2xl bg-white/[0.02] p-4 border border-white/10 space-y-3.5 relative z-10 shadow-inner">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/10 pb-2.5">
+                <div class="flex items-center space-x-2">
+                  <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                  <span class="text-xs font-mono font-extrabold text-white uppercase tracking-wider flex items-center space-x-1.5">
+                    <span>🏷️</span>
+                    <span>Atribuição de Categoria & Tags</span>
+                  </span>
+                  <span class="text-[11px] text-gray-400 font-mono hidden md:inline">• Taxonomia de indexação</span>
+                </div>
+
+                <div class="flex items-center space-x-2 self-start sm:self-auto">
+                  <div id="composerActiveTagBadge" class="flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold border transition-all">
+                    <!-- Renderizado dinamicamente -->
+                  </div>
+                  ${(currentUserRole === 'admin' || currentUserRole === 'moderator') ? `
+                    <button type="button" onclick="window.appOpenTagModal()" title="Criar ou editar taxonomias oficiais"
+                      class="px-2.5 py-1 rounded-lg text-[11px] font-mono font-bold text-red-300 bg-red-500/15 hover:bg-red-500/25 border border-red-500/30 hover:border-red-500/50 transition-all flex items-center space-x-1 active:scale-95">
+                      <span>+</span><span>Nova Tag</span>
+                    </button>
+                  ` : ''}
+                </div>
+              </div>
+
+              <!-- Seletor 1: Categoria Principal -->
+              <div>
+                <label class="block text-[11px] font-mono text-gray-300 font-bold mb-2">
+                  1. Categoria Principal do Post (Obrigatória):
+                </label>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2" id="composerPrimaryTagGrid">
+                  ${tags.map(t => {
+                    const isSel = (communitySelectedCategory || (tags[0] && tags[0].id)) === t.id;
+                    const count = getTagPostCount(t.id);
+                    const colMap = TAG_COLOR_MAP[t.color] || TAG_COLOR_MAP.red;
+                    return `
+                      <button type="button" data-tag-id="${t.id}" data-tag-color="${t.color || 'red'}" onclick="window.selectPostCategory('${t.id}')"
+                        class="post-cat-card p-3 rounded-2xl border text-left transition-all active:scale-95 cursor-pointer relative overflow-hidden ${isSel ? `${colMap.badge} shadow-lg ring-1 ring-white/20` : 'bg-white/[0.03] text-gray-400 border-white/10 hover:border-white/25 hover:bg-white/[0.06] hover:text-white'}">
+                        <div class="flex items-center justify-between mb-1">
+                          <span class="text-base">${t.icon || '🏷️'}</span>
+                          <span class="cat-check-indicator text-xs font-bold ${isSel ? '' : 'hidden'}">✓</span>
+                        </div>
+                        <p class="text-xs font-bold text-white truncate leading-tight">${escapeHtml(t.name)}</p>
+                        <p class="text-[10px] text-gray-400 truncate mt-0.5">${count} posts</p>
+                      </button>
+                    `;
+                  }).join('')}
+                </div>
+              </div>
+
+              <!-- Seletor 2: Sub-tópicos e Palavras-chave Adicionais (Multi-tags) -->
+              <div class="pt-2 border-t border-white/5 space-y-2">
+                <div class="flex items-center justify-between">
+                  <label class="text-[11px] font-mono text-gray-300 font-bold flex items-center space-x-1.5">
+                    <span>⚡</span>
+                    <span>2. Sub-tópicos & Palavras-chave Adicionais (Multi-tagging):</span>
+                  </label>
+                  <span class="text-[10px] text-gray-400 font-mono">Indexação inteligente</span>
+                </div>
+
+                <div id="composerSelectedSubtagsList" class="flex flex-wrap items-center gap-1.5 empty:hidden">
+                  <!-- Chips das subtags ativas -->
+                </div>
+
+                <div class="flex flex-wrap items-center gap-1.5 text-xs">
+                  <span class="text-[10px] font-mono text-gray-400 mr-1">Sugestões:</span>
+                  ${['#Flux1Dev', '#MidjourneyV6', '#ComfyUI', '#PromptStudio', '#Photorealism', '#Workflow', '#DicaRápida', '#Render4K', '#Cyberpunk'].map(st => `
+                    <button type="button" onclick="window.toggleSubtag('${st}')"
+                      class="composer-subtag-preset px-2 py-0.5 rounded-md border text-[11px] font-mono transition-all active:scale-95 bg-white/5 text-gray-300 border-white/10 hover:border-white/20 hover:text-white">
+                      ${st}
+                    </button>
+                  `).join('')}
+                </div>
+
+                <!-- Input para sub-tag customizada -->
+                <div class="flex items-center space-x-2 pt-1 max-w-sm">
+                  <div class="relative flex-1">
+                    <span class="absolute left-2.5 top-1/2 -translate-y-1/2 text-gray-400 font-mono text-xs">#</span>
+                    <input type="text" id="composerCustomSubtagInput" placeholder="Adicionar sub-tag personalizada..."
+                      onkeydown="if(event.key==='Enter'){event.preventDefault();window.addCustomSubtag();}"
+                      class="w-full bg-black/50 border border-white/10 rounded-xl pl-6 pr-3 py-1.5 text-xs text-white placeholder-white/30 focus:outline-none focus:border-red-500/40 font-mono">
+                  </div>
+                  <button type="button" onclick="window.addCustomSubtag()"
+                    class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-xs font-mono font-bold text-white transition-all active:scale-95">
+                    + Adicionar
+                  </button>
+                </div>
+              </div>
+
+              <!-- Destino de Indexação -->
+              <p id="composerTagDestinationNote" class="text-[11px] font-mono text-gray-400 pt-1 border-t border-white/5 flex items-center space-x-1.5">
+                <!-- Injetado dinamicamente -->
+              </p>
+            </div>
+
+            <!-- Controles Exclusivos para Administração Soberana -->
+            ${currentUserRole === 'admin' ? `
+              <div class="mt-3.5 p-3 rounded-2xl bg-gradient-to-r from-red-950/40 to-black/60 border border-red-500/30 flex items-center justify-between relative z-10">
+                <div class="flex items-center space-x-2.5">
+                  <span class="text-base">📌</span>
+                  <div>
+                    <p class="text-xs font-bold text-white">Fixar esta publicação no topo do Feed Soberano</p>
+                    <p class="text-[10px] text-gray-400">Ativa o banner de destaque de comunicado no feed</p>
+                  </div>
+                </div>
+                <label class="relative inline-flex items-center cursor-pointer">
+                  <input type="checkbox" id="newPostPinnedToggle" onchange="window.saveComposerDraft()" class="sr-only peer">
+                  <div class="w-9 h-5 bg-white/10 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-red-600"></div>
+                </label>
+              </div>
+            ` : ''}
+
             <input type="file" id="communityFileInput" multiple accept="image/*" class="hidden">
 
-            <!-- Composer Toolbar -->
-            <div class="flex flex-wrap sm:flex-nowrap items-center justify-between gap-2.5 pt-3 mt-3 border-t border-white/10">
+            <!-- Composer Footer Action Toolbar -->
+            <div class="flex flex-wrap sm:flex-nowrap items-center justify-between gap-3 pt-3.5 mt-3.5 border-t border-white/10 relative z-10">
               <div class="flex items-center space-x-1.5 sm:space-x-2 overflow-x-auto no-scrollbar py-1">
-                <button type="button" onclick="document.getElementById('communityFileInput').click()" class="flex items-center space-x-1.5 text-xs text-white/80 hover:text-white bg-white/5 hover:bg-white/10 active:scale-95 border border-white/10 px-3 py-2 rounded-full transition-all whitespace-nowrap min-h-[36px]">
-                  <span>📷</span><span class="hidden sm:inline">Upload Imagem</span><span class="sm:hidden">Foto</span>
+                <button type="button" onclick="document.getElementById('communityFileInput').click()"
+                  class="flex items-center space-x-1.5 text-xs text-white/80 hover:text-white bg-white/5 hover:bg-white/10 active:scale-95 border border-white/10 px-3.5 py-2 rounded-full transition-all whitespace-nowrap min-h-[36px]">
+                  <span>📷</span>
+                  <span class="hidden sm:inline">Upload Imagens</span>
+                  <span class="sm:hidden">Fotos</span>
+                  <span id="composerImageCountBadge" class="hidden px-1.5 py-0.2 rounded-full text-[10px] bg-red-600 text-white font-bold font-mono">0</span>
                 </button>
-                <button type="button" onclick="window.toggleComposerPromptBox()" class="flex items-center space-x-1.5 text-xs text-white/80 hover:text-white bg-white/5 hover:bg-white/10 active:scale-95 border border-white/10 px-3 py-2 rounded-full transition-all whitespace-nowrap min-h-[36px]">
-                  <span>🔮</span><span>Prompt Studio</span>
+                <button type="button" onclick="window.toggleComposerPromptBox()"
+                  class="flex items-center space-x-1.5 text-xs text-white/80 hover:text-white bg-white/5 hover:bg-white/10 active:scale-95 border border-white/10 px-3.5 py-2 rounded-full transition-all whitespace-nowrap min-h-[36px]">
+                  <span>🔮</span>
+                  <span>Prompt Studio</span>
+                  <span id="composerPromptDot" class="${communityPromptBoxOpen ? '' : 'hidden'} w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
                 </button>
-                <button type="button" onclick="window.togglePostLink()" class="flex items-center space-x-1.5 text-xs text-white/80 hover:text-white bg-white/5 hover:bg-white/10 active:scale-95 border border-white/10 px-3 py-2 rounded-full transition-all whitespace-nowrap min-h-[36px]">
-                  <span>🔗</span><span>Link</span>
+                <button type="button" onclick="window.togglePostLink()"
+                  class="flex items-center space-x-1.5 text-xs text-white/80 hover:text-white bg-white/5 hover:bg-white/10 active:scale-95 border border-white/10 px-3.5 py-2 rounded-full transition-all whitespace-nowrap min-h-[36px]">
+                  <span>🔗</span>
+                  <span>Link</span>
+                  <span id="composerLinkDot" class="${communityLinkBoxOpen ? '' : 'hidden'} w-2 h-2 rounded-full bg-blue-400"></span>
+                </button>
+                <button type="button" onclick="window.clearComposerDraft()" title="Limpar rascunho do editor"
+                  class="flex items-center space-x-1 text-xs text-gray-400 hover:text-red-400 bg-white/5 hover:bg-white/10 active:scale-95 border border-white/10 px-2.5 py-2 rounded-full transition-all whitespace-nowrap min-h-[36px]">
+                  <span>🗑️</span>
                 </button>
               </div>
-              <button id="submitPostBtn" onclick="window.appCreatePost()" class="w-full sm:w-auto px-6 py-2.5 rounded-full font-bold bg-white text-black text-xs shadow-xl hover:scale-105 active:scale-95 transition-all min-h-[40px] flex items-center justify-center">
-                Publicar
-              </button>
+
+              <div class="flex items-center space-x-2.5 w-full sm:w-auto justify-end">
+                <span class="text-[10px] font-mono text-gray-400 hidden lg:inline">⌘ + Enter para publicar</span>
+                <button id="submitPostBtn" onclick="window.appCreatePost()"
+                  class="w-full sm:w-auto px-7 py-2.5 rounded-full font-extrabold bg-gradient-to-r from-white via-gray-100 to-gray-200 text-black text-xs shadow-[0_0_20px_rgba(255,255,255,0.25)] hover:shadow-[0_0_25px_rgba(255,255,255,0.4)] hover:scale-105 active:scale-95 transition-all min-h-[42px] flex items-center justify-center space-x-2">
+                  <span>Publicar Post</span>
+                  <span>🚀</span>
+                </button>
+              </div>
             </div>
           </div>
 
@@ -3731,6 +4016,26 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
                   <span class="text-[10px] text-gray-400">${t.count} ${t.count === 1 ? 'post' : 'posts'}</span>
                 </div>
               `).join('')}
+            </div>
+          </div>
+
+          <!-- Top Criadores da Semana (Leaderboard) -->
+          <div class="glass-card rounded-3xl p-5 border border-white/10">
+            <div class="flex items-center justify-between mb-3">
+              <h3 class="text-sm font-bold text-white flex items-center space-x-2">
+                <span>🏆</span><span>Top Criadores da Semana</span>
+              </h3>
+              <button onclick="window.appSwitchCommunityTab('ranking')" class="text-[10px] font-mono text-red-300 hover:underline">Ver Todos →</button>
+            </div>
+            <div class="space-y-2 text-xs">
+              <div class="flex items-center justify-between p-2 rounded-xl bg-white/5">
+                <div class="flex items-center space-x-2 min-w-0">
+                  <span class="font-bold text-amber-400">1º</span>
+                  <img src="https://api.dicebear.com/7.x/bottts/svg?seed=AdminBoss" class="w-6 h-6 rounded-full border border-white/20">
+                  <span class="text-white truncate font-medium">Mateus Celestino</span>
+                </div>
+                <span class="font-mono text-amber-400 font-bold">3.450 XP</span>
+              </div>
             </div>
           </div>
 
@@ -4172,6 +4477,11 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
   }
 
   function renderCommunityChallengesTab() {
+    const challengePosts = (communityPosts || []).filter(p => {
+      const text = `${p.title || ''} ${p.content || ''}`.toLowerCase();
+      return text.includes('#desafio') || text.includes('#desafiocarmesim') || p.tag === 'showcase';
+    });
+
     return `
       <div class="space-y-8 anim-element anim-fade-up">
         <!-- Main Challenge Spotlight -->
@@ -4198,7 +4508,7 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs font-mono">
                 <div class="p-3 bg-black/60 rounded-xl border border-white/10">
                   <span class="text-red-400 font-bold block mb-0.5">🏆 Premiação:</span>
-                  <span class="text-white">+500 XP Soberano • Destaque na Home VIP • Badge Exclusivo</span>
+                  <span class="text-white">Destaque na Home VIP • Badge Exclusivo de Criador</span>
                 </div>
                 <div class="p-3 bg-black/60 rounded-xl border border-white/10">
                   <span class="text-red-400 font-bold block mb-0.5">📋 Requisitos:</span>
@@ -4232,34 +4542,27 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
             </button>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-            <div class="glass-card-community rounded-3xl overflow-hidden border border-white/15">
-              <img src="./public/assets/images/opt_0375_img_exact_604f4.webp" class="w-full h-48 object-cover">
-              <div class="p-4 space-y-2">
-                <span class="px-2 py-0.5 rounded text-[9px] font-mono bg-red-500/20 text-red-300">Flux.1 Dev</span>
-                <h4 class="text-xs font-bold text-white">Retrato Biomecânico Carmesim</h4>
-                <p class="text-[10px] text-gray-400 font-mono">Por Mateus Celestino • 74 likes</p>
-              </div>
+          ${challengePosts.length === 0 ? `
+            <div class="text-center py-16 glass-card-community rounded-3xl border border-white/10">
+              <div class="text-4xl mb-3">🎨</div>
+              <h4 class="text-sm font-bold text-white mb-1">Nenhuma submissão enviada ainda</h4>
+              <p class="text-xs text-gray-400 max-w-sm mx-auto">Seja o primeiro a submeter sua criação com a hashtag #DesafioCarmesim no feed!</p>
+              <button onclick="window.appJoinChallenge('#DesafioCarmesim')" class="mt-4 px-5 py-2.5 rounded-full bg-red-600 hover:bg-red-500 text-xs font-bold text-white shadow-lg transition-all">Participar do Desafio</button>
             </div>
-
-            <div class="glass-card-community rounded-3xl overflow-hidden border border-white/15">
-              <img src="./public/assets/images/opt_0008_img_exact_87ca3.webp" class="w-full h-48 object-cover">
-              <div class="p-4 space-y-2">
-                <span class="px-2 py-0.5 rounded text-[9px] font-mono bg-red-500/20 text-red-300">Midjourney v6.1</span>
-                <h4 class="text-xs font-bold text-white">Reflexos Escarlates em Vidro Líquido</h4>
-                <p class="text-[10px] text-gray-400 font-mono">Por Elena Digital Art • 51 likes</p>
-              </div>
+          ` : `
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+              ${challengePosts.slice(0, 6).map(p => `
+                <div class="glass-card-community rounded-3xl overflow-hidden border border-white/15">
+                  ${p.images && p.images[0] ? `<img src="${escapeHtml(p.images[0])}" class="w-full h-48 object-cover">` : `<div class="w-full h-48 bg-black/40 flex items-center justify-center text-3xl">🎨</div>`}
+                  <div class="p-4 space-y-2">
+                    <span class="px-2 py-0.5 rounded text-[9px] font-mono bg-red-500/20 text-red-300">${escapeHtml(p.tag || 'Showcase')}</span>
+                    <h4 class="text-xs font-bold text-white line-clamp-1">${escapeHtml(p.title || 'Criação da Comunidade')}</h4>
+                    <p class="text-[10px] text-gray-400 font-mono">Por ${escapeHtml(p.user_name || 'Membro')} • ${p.likes || 0} curtidas</p>
+                  </div>
+                </div>
+              `).join('')}
             </div>
-
-            <div class="glass-card-community rounded-3xl overflow-hidden border border-white/15">
-              <img src="./public/assets/images/opt_0740_img_exact_666ee.webp" class="w-full h-48 object-cover">
-              <div class="p-4 space-y-2">
-                <span class="px-2 py-0.5 rounded text-[9px] font-mono bg-red-500/20 text-red-300">ComfyUI SDXL</span>
-                <h4 class="text-xs font-bold text-white">Cyberpunk City Carmesim 8k</h4>
-                <p class="text-[10px] text-gray-400 font-mono">Por Lucas Rocha • 39 likes</p>
-              </div>
-            </div>
-          </div>
+          `}
         </div>
       </div>`;
   }
@@ -4298,7 +4601,7 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
     const cCount = post.comments?.length || 0;
     const safeUserName = escapeHtml(post.user_name || 'Membro VIP');
     const safeTitle = escapeHtml(post.title || '');
-    const safeContent = escapeHtml(post.content || '').replace(/\n/g, '<br>');
+    const safeContent = formatMarkdown(post.content || '');
     const safeLinkUrl = escapeHtml(post.link_url || '');
     const safeLinkTitle = escapeHtml(post.link_title || post.link_url || '');
 
@@ -4351,7 +4654,25 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
         ${post.title ? `<h3 class="text-base sm:text-lg font-extrabold text-white mb-2 leading-snug">${safeTitle}</h3>` : ''}
 
         <!-- Post Content -->
-        ${post.content ? `<p class="text-xs sm:text-sm text-gray-200 leading-relaxed mb-3 sm:mb-4 font-normal">${safeContent}</p>` : ''}
+        ${post.content ? `<div class="text-xs sm:text-sm text-gray-200 leading-relaxed mb-3 sm:mb-4 font-normal">${safeContent}</div>` : ''}
+
+        <!-- Sub-Tags & Palavras-chave do Post -->
+        ${(() => {
+          const postTags = Array.isArray(post.tags) ? post.tags : (post.tag ? [post.tag] : []);
+          const secondary = postTags.filter(t => t !== postTagId && t !== post.category && t !== (matchedTag && matchedTag.id));
+          if (!secondary.length) return '';
+          return `
+            <div class="flex flex-wrap items-center gap-1.5 mb-3 sm:mb-4">
+              ${secondary.map(st => `
+                <button type="button" onclick="window.appSearchCommunity('${escapeJs(st)}'); event.stopPropagation();"
+                  class="text-[10px] font-mono text-gray-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 px-2.5 py-1 rounded-lg transition-all active:scale-95 flex items-center space-x-1"
+                  title="Filtrar posts por #${escapeHtml(st)}">
+                  <span class="text-red-400">#</span><span>${escapeHtml(st)}</span>
+                </button>
+              `).join('')}
+            </div>
+          `;
+        })()}
 
         <!-- AI PROMPT STUDIO CARD (IF AVAILABLE) -->
         ${post.ai_prompt ? `
@@ -4572,15 +4893,45 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
         : filteredPosts.map(renderPostCard).join('');
     };
 
-    // Category Selector in Composer
-    window.selectPostCategory = function(cat, btn) {
+    // Category & Tag Selector in Composer (Completo e Reativo)
+    window.selectPostCategory = function(cat) {
       communitySelectedCategory = cat;
-      document.querySelectorAll('.post-cat-btn').forEach(b => {
-        b.className = 'post-cat-btn px-2.5 py-1 rounded-lg border font-bold transition-all text-xs flex items-center space-x-1 whitespace-nowrap bg-white/5 text-gray-400 border-white/10 hover:text-white';
+      const allTags = getCommunityTags();
+      const activeTag = allTags.find(t => t.id === cat) || allTags[0];
+      const color = activeTag?.color || 'red';
+      const colMap = TAG_COLOR_MAP[color] || TAG_COLOR_MAP.red;
+
+      // Atualiza visual de todos os cards da Categoria Principal
+      document.querySelectorAll('.post-cat-card').forEach(card => {
+        const cId = card.getAttribute('data-tag-id');
+        const cColor = card.getAttribute('data-tag-color') || 'red';
+        const cardColMap = TAG_COLOR_MAP[cColor] || TAG_COLOR_MAP.red;
+        if (cId === cat) {
+          card.className = `post-cat-card p-3 rounded-2xl border text-left transition-all active:scale-95 cursor-pointer relative overflow-hidden ${cardColMap.badge} shadow-lg ring-1 ring-white/20`;
+          const checkEl = card.querySelector('.cat-check-indicator');
+          if (checkEl) checkEl.classList.remove('hidden');
+        } else {
+          card.className = `post-cat-card p-3 rounded-2xl border text-left transition-all active:scale-95 cursor-pointer relative overflow-hidden bg-white/[0.03] text-gray-400 border-white/10 hover:border-white/25 hover:bg-white/[0.06] hover:text-white`;
+          const checkEl = card.querySelector('.cat-check-indicator');
+          if (checkEl) checkEl.classList.add('hidden');
+        }
       });
-      if (btn) {
-        btn.className = 'post-cat-btn px-2.5 py-1 rounded-lg border font-bold transition-all text-xs flex items-center space-x-1 whitespace-nowrap bg-red-500/20 text-red-200 border-red-500/40 shadow-sm';
+
+      // Atualiza badge de tag ativa no cabeçalho do painel
+      const activeBadge = document.getElementById('composerActiveTagBadge');
+      if (activeBadge && activeTag) {
+        activeBadge.className = `flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold border transition-all ${colMap.badge}`;
+        activeBadge.innerHTML = `<span>${activeTag.icon || '🏷️'}</span><span>${escapeHtml(activeTag.name)}</span>`;
       }
+
+      // Atualiza nota descritiva de destino
+      const noteEl = document.getElementById('composerTagDestinationNote');
+      if (noteEl && activeTag) {
+        noteEl.innerHTML = `<span>📍</span><span>Este post será indexado na aba <strong>${escapeHtml(activeTag.name)}</strong> (${activeTag.desc || 'Tópico especializado'}).</span>`;
+      }
+
+      window.saveComposerDraft();
+      if (communityComposerMode === 'preview') window.updateComposerPreview();
     };
 
     // ────────────────────────────────────────────────────────────────────────
@@ -4850,7 +5201,11 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
       showToast('🔖 Publicação salva nos seus favoritos VIP!');
     };
 
-    // File Input change
+    // ────────────────────────────────────────────────────────────────────────
+    // SUÍTE DE COMPOSIÇÃO DE POSTS & TAXONOMIA VIP
+    // ────────────────────────────────────────────────────────────────────────
+
+    // File Input change & Imagens
     const fileInput = document.getElementById('communityFileInput');
     if (fileInput) {
       fileInput.onchange = (e) => {
@@ -4869,41 +5224,391 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
 
         selectedFilesToUpload = files;
         const previewContainer = document.getElementById('postImageUploadPreview');
+        const countBadge = document.getElementById('composerImageCountBadge');
+        if (countBadge) {
+          countBadge.textContent = files.length;
+          countBadge.classList.remove('hidden');
+        }
         if (previewContainer) {
           previewContainer.classList.remove('hidden');
           previewContainer.innerHTML = files.map((f, idx) => `
-            <div class="h-16 rounded-xl overflow-hidden border border-white/20 bg-black/60 relative group">
+            <div class="h-16 sm:h-20 rounded-xl overflow-hidden border border-white/20 bg-black/60 relative group shadow-md">
               <img src="${URL.createObjectURL(f)}" class="w-full h-full object-cover">
-              <button onclick="window.removeUploadFile(${idx})" class="absolute top-1 right-1 w-4 h-4 rounded-full bg-red-600 text-white text-[9px] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">✕</button>
+              <button type="button" onclick="window.removeUploadFile(${idx})" class="absolute top-1 right-1 w-5 h-5 rounded-full bg-red-600/90 hover:bg-red-500 text-white text-[10px] flex items-center justify-center shadow-lg transition-all" title="Remover imagem">✕</button>
             </div>`).join('');
         }
+        if (communityComposerMode === 'preview') window.updateComposerPreview();
       };
     }
 
     window.removeUploadFile = function(idx) {
       selectedFilesToUpload.splice(idx, 1);
       const previewContainer = document.getElementById('postImageUploadPreview');
+      const countBadge = document.getElementById('composerImageCountBadge');
+      if (countBadge) {
+        if (selectedFilesToUpload.length > 0) {
+          countBadge.textContent = selectedFilesToUpload.length;
+          countBadge.classList.remove('hidden');
+        } else {
+          countBadge.classList.add('hidden');
+        }
+      }
       if (!previewContainer) return;
       if (!selectedFilesToUpload.length) {
         previewContainer.classList.add('hidden');
         previewContainer.innerHTML = '';
       } else {
         previewContainer.innerHTML = selectedFilesToUpload.map((f, i) => `
-          <div class="h-16 rounded-xl overflow-hidden border border-white/20 bg-black/60 relative group">
+          <div class="h-16 sm:h-20 rounded-xl overflow-hidden border border-white/20 bg-black/60 relative group shadow-md">
             <img src="${URL.createObjectURL(f)}" class="w-full h-full object-cover">
-            <button onclick="window.removeUploadFile(${i})" class="absolute top-1 right-1 w-4 h-4 rounded-full bg-red-600 text-white text-[9px] flex items-center justify-center">✕</button>
+            <button type="button" onclick="window.removeUploadFile(${i})" class="absolute top-1 right-1 w-5 h-5 rounded-full bg-red-600/90 hover:bg-red-500 text-white text-[10px] flex items-center justify-center shadow-lg transition-all" title="Remover imagem">✕</button>
           </div>`).join('');
+      }
+      if (communityComposerMode === 'preview') window.updateComposerPreview();
+    };
+
+    window.togglePostLink = function() {
+      communityLinkBoxOpen = !communityLinkBoxOpen;
+      const field = document.getElementById('postLinkField');
+      const dot = document.getElementById('composerLinkDot');
+      if (field) field.classList.toggle('hidden');
+      if (dot) dot.classList.toggle('hidden', !communityLinkBoxOpen);
+      if (communityLinkBoxOpen) {
+        setTimeout(() => document.getElementById('newPostLinkUrl')?.focus(), 50);
       }
     };
 
-    window.togglePostLink = () => {
-      document.getElementById('postLinkField')?.classList.toggle('hidden');
+    window.toggleComposerPromptBox = function() {
+      communityPromptBoxOpen = !communityPromptBoxOpen;
+      const box = document.getElementById('composerPromptBox');
+      const dot = document.getElementById('composerPromptDot');
+      if (box) box.classList.toggle('hidden');
+      if (dot) dot.classList.toggle('hidden', !communityPromptBoxOpen);
+      if (communityPromptBoxOpen) {
+        setTimeout(() => document.getElementById('newPostPromptCode')?.focus(), 50);
+      }
+    };
+
+    window.appendPromptParam = function(param) {
+      const input = document.getElementById('newPostPromptParams');
+      if (!input) return;
+      const cur = input.value.trim();
+      if (!cur.includes(param)) {
+        input.value = cur ? `${cur} ${param}` : param;
+      }
+      window.handleComposerInput();
+    };
+
+    // Formatação de Markdown rápida no textarea
+    window.insertMarkdownFormat = function(prefix, suffix) {
+      const textarea = document.getElementById('newPostContent');
+      if (!textarea) return;
+      textarea.focus();
+      const start = textarea.selectionStart || 0;
+      const end = textarea.selectionEnd || 0;
+      const text = textarea.value;
+      const selected = text.substring(start, end);
+      const replacement = prefix + (selected || 'texto') + suffix;
+      textarea.value = text.substring(0, start) + replacement + text.substring(end);
+      const newCursor = start + prefix.length + (selected ? selected.length : 'texto'.length);
+      textarea.setSelectionRange(newCursor, newCursor);
+      window.handleComposerInput();
+    };
+
+    window.insertEmoji = function(emoji) {
+      const textarea = document.getElementById('newPostContent');
+      if (!textarea) return;
+      textarea.focus();
+      const start = textarea.selectionStart || 0;
+      const end = textarea.selectionEnd || 0;
+      const text = textarea.value;
+      textarea.value = text.substring(0, start) + emoji + text.substring(end);
+      const newCursor = start + emoji.length;
+      textarea.setSelectionRange(newCursor, newCursor);
+      window.handleComposerInput();
+    };
+
+    // Sub-tags e Multi-tagging
+    window.toggleSubtag = function(tagStr) {
+      const clean = tagStr.replace(/^#/, '').trim();
+      if (!clean) return;
+      const idx = communitySelectedSubtags.indexOf(clean);
+      if (idx >= 0) {
+        communitySelectedSubtags.splice(idx, 1);
+      } else {
+        if (communitySelectedSubtags.length >= 6) {
+          showToast('⚠️ Limite de 6 sub-tags por publicação atingido.');
+          return;
+        }
+        communitySelectedSubtags.push(clean);
+      }
+      window.renderSubtagsUI();
+      window.saveComposerDraft();
+      if (communityComposerMode === 'preview') window.updateComposerPreview();
+    };
+
+    window.addCustomSubtag = function() {
+      const input = document.getElementById('composerCustomSubtagInput');
+      if (!input) return;
+      const val = input.value.replace(/^[#\s]+|[#\s]+$/g, '').trim();
+      if (!val) return;
+      if (communitySelectedSubtags.includes(val)) {
+        showToast('ℹ️ Esta sub-tag já foi adicionada.');
+        input.value = '';
+        return;
+      }
+      if (communitySelectedSubtags.length >= 6) {
+        showToast('⚠️ Limite de 6 sub-tags por publicação atingido.');
+        return;
+      }
+      communitySelectedSubtags.push(val);
+      input.value = '';
+      window.renderSubtagsUI();
+      window.saveComposerDraft();
+      if (communityComposerMode === 'preview') window.updateComposerPreview();
+    };
+
+    window.removeSubtag = function(val) {
+      communitySelectedSubtags = communitySelectedSubtags.filter(s => s !== val);
+      window.renderSubtagsUI();
+      window.saveComposerDraft();
+      if (communityComposerMode === 'preview') window.updateComposerPreview();
+    };
+
+    window.renderSubtagsUI = function() {
+      const container = document.getElementById('composerSelectedSubtagsList');
+      if (!container) return;
+      if (!communitySelectedSubtags.length) {
+        container.innerHTML = '';
+        container.classList.add('hidden');
+      } else {
+        container.classList.remove('hidden');
+        container.innerHTML = communitySelectedSubtags.map(st => `
+          <span class="inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-white/10 text-white border border-white/20 shadow-sm animate-fade-in">
+            <span>#${escapeHtml(st)}</span>
+            <button type="button" onclick="window.removeSubtag('${escapeJs(st)}')" class="text-white/60 hover:text-white hover:bg-white/20 rounded-full w-4 h-4 flex items-center justify-center text-[10px] transition-colors">✕</button>
+          </span>
+        `).join('');
+      }
+
+      document.querySelectorAll('.composer-subtag-preset').forEach(btn => {
+        const txt = btn.textContent.trim().replace(/^#/, '');
+        if (communitySelectedSubtags.includes(txt)) {
+          btn.className = 'composer-subtag-preset px-2 py-0.5 rounded-md border text-[11px] font-mono transition-all active:scale-95 bg-red-500/20 text-red-200 border-red-500/40 shadow-sm font-bold';
+        } else {
+          btn.className = 'composer-subtag-preset px-2 py-0.5 rounded-md border text-[11px] font-mono transition-all active:scale-95 bg-white/5 text-gray-300 border-white/10 hover:border-white/20 hover:text-white';
+        }
+      });
+    };
+
+    // Modo do Composer: Escrever vs Prévia
+    window.setComposerMode = function(mode) {
+      communityComposerMode = mode;
+      const writeArea = document.getElementById('composerWriteArea');
+      const previewArea = document.getElementById('composerPreviewArea');
+      const toolbar = document.getElementById('composerFormattingToolbar');
+      const writeBtn = document.getElementById('composerModeWriteBtn');
+      const prevBtn = document.getElementById('composerModePreviewBtn');
+
+      if (mode === 'preview') {
+        if (writeArea) writeArea.classList.add('hidden');
+        if (toolbar) toolbar.classList.add('hidden');
+        if (previewArea) previewArea.classList.remove('hidden');
+        if (writeBtn) writeBtn.className = 'px-3 py-1.5 rounded-lg transition-all flex items-center space-x-1.5 text-gray-400 hover:text-white hover:bg-white/5 font-bold';
+        if (prevBtn) prevBtn.className = 'px-3 py-1.5 rounded-lg transition-all flex items-center space-x-1.5 bg-white text-black shadow-sm font-bold';
+        window.updateComposerPreview();
+      } else {
+        if (writeArea) writeArea.classList.remove('hidden');
+        if (toolbar) toolbar.classList.remove('hidden');
+        if (previewArea) previewArea.classList.add('hidden');
+        if (writeBtn) writeBtn.className = 'px-3 py-1.5 rounded-lg transition-all flex items-center space-x-1.5 bg-white text-black shadow-sm font-bold';
+        if (prevBtn) prevBtn.className = 'px-3 py-1.5 rounded-lg transition-all flex items-center space-x-1.5 text-gray-400 hover:text-white hover:bg-white/5 font-bold';
+      }
+    };
+
+    window.updateComposerPreview = function() {
+      const container = document.getElementById('composerLivePreviewCard');
+      if (!container) return;
+
+      const title = document.getElementById('newPostTitle')?.value?.trim() || '';
+      const content = document.getElementById('newPostContent')?.value?.trim() || '';
+      const promptCode = document.getElementById('newPostPromptCode')?.value?.trim() || '';
+      const promptParams = document.getElementById('newPostPromptParams')?.value?.trim() || '';
+      const promptModel = document.getElementById('newPostPromptModel')?.value || 'Flux.1 Dev';
+      const linkUrl = document.getElementById('newPostLinkUrl')?.value?.trim() || '';
+      const linkTitle = document.getElementById('newPostLinkTitle')?.value?.trim() || '';
+      const isPinned = document.getElementById('newPostPinnedToggle')?.checked || false;
+
+      const allTags = getCommunityTags();
+      const activeTag = allTags.find(t => t.id === communitySelectedCategory) || allTags[0];
+      const color = activeTag?.color || 'red';
+      const colMap = TAG_COLOR_MAP[color] || TAG_COLOR_MAP.red;
+
+      const formattedHtml = formatMarkdown(content);
+
+      container.innerHTML = `
+        <article class="glass-card-community rounded-3xl p-4 sm:p-6 border border-white/15 bg-black/70 relative">
+          ${isPinned ? `
+            <div class="mb-3.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-red-950/60 to-red-900/30 border border-red-500/40 text-red-200 text-xs font-bold flex items-center space-x-2">
+              <span>📌</span><span>POST FIXADO PELA ADMINISTRAÇÃO SOBERANA</span>
+            </div>` : ''}
+
+          <div class="flex items-center space-x-3 mb-3.5">
+            <div class="relative flex-shrink-0">
+              <img src="${currentUserAvatarUrl}" class="w-10 h-10 rounded-full border border-white/20 object-cover ${currentUserRole === 'admin' ? 'border-red-500 shadow-[0_0_10px_rgba(239,68,68,0.4)]' : ''}">
+              ${currentUserRole === 'admin' ? '<span class="absolute -top-1 -right-1 text-xs">👑</span>' : ''}
+            </div>
+            <div>
+              <div class="flex items-center flex-wrap gap-1.5">
+                <span class="text-xs sm:text-sm font-bold text-white">${escapeHtml(currentUserNameStr)}</span>
+                ${getBadge(currentUserRole)}
+                <span class="px-2 py-0.5 rounded-full text-[10px] font-mono border font-bold flex items-center space-x-1 ${colMap.badge}">
+                  <span>${activeTag.icon || '🏷️'}</span>
+                  <span>${escapeHtml(activeTag.name)}</span>
+                </span>
+              </div>
+              <span class="text-[10px] text-gray-400 font-mono">Agora (Pré-visualização)</span>
+            </div>
+          </div>
+
+          ${title ? `<h3 class="text-base sm:text-lg font-extrabold text-white mb-2 leading-snug">${escapeHtml(title)}</h3>` : ''}
+
+          ${content ? `<div class="text-xs sm:text-sm text-gray-200 leading-relaxed mb-3 font-normal">${formattedHtml}</div>` : '<p class="text-xs text-gray-500 italic mb-3">Nenhum texto inserido ainda.</p>'}
+
+          ${communitySelectedSubtags.length > 0 ? `
+            <div class="flex flex-wrap items-center gap-1.5 mb-3">
+              ${communitySelectedSubtags.map(st => `<span class="text-[10px] font-mono text-gray-300 bg-white/5 border border-white/10 px-2 py-0.5 rounded-md">#${escapeHtml(st)}</span>`).join('')}
+            </div>` : ''}
+
+          ${promptCode ? `
+            <div class="my-3 p-3.5 rounded-2xl bg-black/90 border border-red-500/35">
+              <div class="flex items-center justify-between pb-2 mb-2 border-b border-red-500/20 text-xs font-mono text-red-400 font-bold">
+                <span>🔮 MODELO: ${escapeHtml(promptModel)}</span>
+                <span class="text-[10px] text-gray-400">AI Prompt Studio</span>
+              </div>
+              <pre class="text-xs text-gray-200 font-mono whitespace-pre-wrap select-all bg-white/5 p-2.5 rounded-xl border border-white/5">${escapeHtml(promptCode)}</pre>
+              ${promptParams ? `<div class="mt-2 text-[10px] font-mono text-red-300 flex items-center space-x-1.5"><span class="font-bold">⚙️ Flags:</span><span>${escapeHtml(promptParams)}</span></div>` : ''}
+            </div>` : ''}
+
+          ${linkUrl ? `
+            <div class="mb-3 flex items-center space-x-3 p-2.5 rounded-xl bg-white/5 border border-white/10 text-xs">
+              <span class="text-red-300">🔗</span>
+              <div class="min-w-0 flex-1">
+                <p class="font-bold text-white truncate">${escapeHtml(linkTitle || linkUrl)}</p>
+                <p class="text-[10px] text-gray-400 truncate">${escapeHtml(linkUrl)}</p>
+              </div>
+            </div>` : ''}
+
+          ${selectedFilesToUpload.length > 0 ? `
+            <div class="grid grid-cols-3 sm:grid-cols-4 gap-2 my-2">
+              ${selectedFilesToUpload.map(f => `<img src="${URL.createObjectURL(f)}" class="h-20 w-full object-cover rounded-xl border border-white/10">`).join('')}
+            </div>` : ''}
+        </article>
+      `;
+    };
+
+    // Contador de palavras e caracteres + Salvamento de rascunho
+    window.handleComposerInput = function() {
+      const content = document.getElementById('newPostContent')?.value || '';
+      const charCount = content.length;
+      const wordCount = content.trim() ? content.trim().split(/\s+/).length : 0;
+
+      const countEl = document.getElementById('composerWordCount');
+      if (countEl) countEl.textContent = `${charCount} caracteres • ${wordCount} palavras`;
+
+      window.saveComposerDraft();
+      if (communityComposerMode === 'preview') window.updateComposerPreview();
+    };
+
+    window.saveComposerDraft = function() {
+      try {
+        const draft = {
+          title: document.getElementById('newPostTitle')?.value || '',
+          content: document.getElementById('newPostContent')?.value || '',
+          category: communitySelectedCategory,
+          subtags: communitySelectedSubtags,
+          promptModel: document.getElementById('newPostPromptModel')?.value || 'Flux.1 Dev',
+          promptCode: document.getElementById('newPostPromptCode')?.value || '',
+          promptParams: document.getElementById('newPostPromptParams')?.value || '',
+          linkUrl: document.getElementById('newPostLinkUrl')?.value || '',
+          linkTitle: document.getElementById('newPostLinkTitle')?.value || '',
+          isPinned: document.getElementById('newPostPinnedToggle')?.checked || false
+        };
+        localStorage.setItem('mcp_composer_draft', JSON.stringify(draft));
+        const ind = document.getElementById('composerDraftIndicator');
+        if (ind) {
+          ind.classList.remove('opacity-0');
+        }
+      } catch(e) {}
+    };
+
+    window.restoreComposerDraft = function() {
+      try {
+        const raw = localStorage.getItem('mcp_composer_draft');
+        if (!raw) return;
+        const draft = JSON.parse(raw);
+        if (draft.title && document.getElementById('newPostTitle')) document.getElementById('newPostTitle').value = draft.title;
+        if (draft.content && document.getElementById('newPostContent')) {
+          document.getElementById('newPostContent').value = draft.content;
+          const charCount = draft.content.length;
+          const wordCount = draft.content.trim().split(/\s+/).length;
+          const countEl = document.getElementById('composerWordCount');
+          if (countEl) countEl.textContent = `${charCount} caracteres • ${wordCount} palavras`;
+        }
+        if (draft.category) communitySelectedCategory = draft.category;
+        if (Array.isArray(draft.subtags)) communitySelectedSubtags = draft.subtags;
+        if (draft.promptModel && document.getElementById('newPostPromptModel')) document.getElementById('newPostPromptModel').value = draft.promptModel;
+        if (draft.promptCode && document.getElementById('newPostPromptCode')) {
+          document.getElementById('newPostPromptCode').value = draft.promptCode;
+          communityPromptBoxOpen = true;
+          document.getElementById('composerPromptBox')?.classList.remove('hidden');
+          document.getElementById('composerPromptDot')?.classList.remove('hidden');
+        }
+        if (draft.promptParams && document.getElementById('newPostPromptParams')) document.getElementById('newPostPromptParams').value = draft.promptParams;
+        if (draft.linkUrl && document.getElementById('newPostLinkUrl')) {
+          document.getElementById('newPostLinkUrl').value = draft.linkUrl;
+          communityLinkBoxOpen = true;
+          document.getElementById('postLinkField')?.classList.remove('hidden');
+          document.getElementById('composerLinkDot')?.classList.remove('hidden');
+        }
+        if (draft.linkTitle && document.getElementById('newPostLinkTitle')) document.getElementById('newPostLinkTitle').value = draft.linkTitle;
+        if (draft.isPinned && document.getElementById('newPostPinnedToggle')) document.getElementById('newPostPinnedToggle').checked = true;
+
+        window.renderSubtagsUI();
+        window.selectPostCategory(communitySelectedCategory);
+      } catch(e) {}
+    };
+
+    window.clearComposerDraft = function() {
+      localStorage.removeItem('mcp_composer_draft');
+      if (document.getElementById('newPostTitle')) document.getElementById('newPostTitle').value = '';
+      if (document.getElementById('newPostContent')) document.getElementById('newPostContent').value = '';
+      if (document.getElementById('newPostPromptCode')) document.getElementById('newPostPromptCode').value = '';
+      if (document.getElementById('newPostPromptParams')) document.getElementById('newPostPromptParams').value = '';
+      if (document.getElementById('newPostLinkUrl')) document.getElementById('newPostLinkUrl').value = '';
+      if (document.getElementById('newPostLinkTitle')) document.getElementById('newPostLinkTitle').value = '';
+      if (document.getElementById('newPostPinnedToggle')) document.getElementById('newPostPinnedToggle').checked = false;
+      const countEl = document.getElementById('composerWordCount');
+      if (countEl) countEl.textContent = '0 caracteres • 0 palavras';
+      const ind = document.getElementById('composerDraftIndicator');
+      if (ind) ind.classList.add('opacity-0');
+
+      communitySelectedSubtags = [];
+      selectedFilesToUpload = [];
+      const prev = document.getElementById('postImageUploadPreview');
+      if (prev) { prev.classList.add('hidden'); prev.innerHTML = ''; }
+      const countBadge = document.getElementById('composerImageCountBadge');
+      if (countBadge) countBadge.classList.add('hidden');
+
+      window.renderSubtagsUI();
+      window.selectPostCategory(getCommunityTags()[0]?.id || 'prompts');
+      window.setComposerMode('write');
+      showToast('🗑️ Rascunho limpo com sucesso.');
     };
 
     function saveLocalCommunityPosts() {
       try {
-        const customPosts = communityPosts.filter(p => !DEFAULT_SOVEREIGN_POSTS.some(dp => dp.id === p.id));
-        localStorage.setItem('mcp_local_community_posts', JSON.stringify(customPosts));
+        localStorage.setItem('mcp_local_community_posts', JSON.stringify(communityPosts));
       } catch(e) {}
     }
 
@@ -4921,6 +5626,7 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
       const promptCode = document.getElementById('newPostPromptCode')?.value?.trim();
       const promptParams = document.getElementById('newPostPromptParams')?.value?.trim();
       const promptModel = document.getElementById('newPostPromptModel')?.value || 'Flux.1 Dev';
+      const isPinned = currentUserRole === 'admin' ? (document.getElementById('newPostPinnedToggle')?.checked || false) : false;
       const btn = document.getElementById('submitPostBtn');
 
       if (!content && !title && !promptCode && !selectedFilesToUpload.length) {
@@ -4928,7 +5634,7 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
         return;
       }
 
-      if (btn) { btn.textContent = 'Enviando...'; btn.disabled = true; }
+      if (btn) { btn.innerHTML = '<span>Enviando...</span><span class="animate-spin">⏳</span>'; btn.disabled = true; }
 
       let uploadedImageUrls = [];
       if (selectedFilesToUpload.length > 0) {
@@ -4939,6 +5645,13 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
         }
       }
 
+      // Constrói array completo de tags (Categoria Primária + Sub-tags)
+      const combinedTags = [communitySelectedCategory || 'prompts'];
+      (communitySelectedSubtags || []).forEach(st => {
+        const clean = st.replace(/^#/, '').trim();
+        if (clean && !combinedTags.includes(clean)) combinedTags.push(clean);
+      });
+
       const newPostId = 'post_' + Date.now();
       const newPostObj = {
         id: newPostId,
@@ -4948,7 +5661,7 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
         user_role: currentUserRole,
         category: communitySelectedCategory || 'prompts',
         tag: communitySelectedCategory || 'prompts',
-        tags: [communitySelectedCategory || 'prompts'],
+        tags: combinedTags,
         title: title || '',
         content: content || '',
         ai_prompt: promptCode || '',
@@ -4957,7 +5670,7 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
         link_url: link_url || '',
         link_title: link_title || '',
         images: uploadedImageUrls.length > 0 ? uploadedImageUrls : [],
-        is_pinned: currentUserRole === 'admin',
+        is_pinned: isPinned,
         likes: 1,
         likedBy: [currentUserId],
         created_at: new Date().toISOString(),
@@ -4973,7 +5686,10 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
             content: content || '',
             link_url: link_url || null,
             link_title: link_title || null,
-            images: uploadedImageUrls.length > 0 ? uploadedImageUrls : null
+            images: uploadedImageUrls.length > 0 ? uploadedImageUrls : null,
+            is_pinned: isPinned,
+            category: communitySelectedCategory || 'prompts',
+            tag: communitySelectedCategory || 'prompts'
           });
         } catch(sbPostErr) {
           console.warn('[A.I VISUALS] Post salvo localmente:', sbPostErr.message);
@@ -4983,8 +5699,14 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
       communityPosts.unshift(newPostObj);
       saveLocalCommunityPosts();
 
+      // Limpeza de estado e rascunho
+      localStorage.removeItem('mcp_composer_draft');
       selectedFilesToUpload = [];
+      communitySelectedSubtags = [];
       communityPromptBoxOpen = false;
+      communityLinkBoxOpen = false;
+      communityComposerMode = 'write';
+
       showToast('🚀 Publicação VIP compartilhada com sucesso!');
       renderCommunityView();
     };
@@ -5089,6 +5811,27 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
       renderCommunityView();
       showToast('🗑️ Comentário excluído!');
     };
+
+    // Restaura rascunho salvo do composer e inicializa atalhos de teclado
+    setTimeout(() => {
+      window.restoreComposerDraft();
+    }, 40);
+
+    // Atalho global Cmd+Enter ou Ctrl+Enter para publicar direto do composer
+    if (!window._composerKeyboardListenerAttached) {
+      window._composerKeyboardListenerAttached = true;
+      document.addEventListener('keydown', (e) => {
+        if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') {
+          const contentEl = document.getElementById('newPostContent');
+          const titleEl = document.getElementById('newPostTitle');
+          const activeEl = document.activeElement;
+          if (activeEl === contentEl || activeEl === titleEl || activeEl?.id === 'newPostPromptCode' || activeEl?.id === 'newPostPromptParams') {
+            e.preventDefault();
+            window.appCreatePost();
+          }
+        }
+      });
+    }
   }
 // ──────────────────────────────────────────────────────────────────────────
   // VIEW 6: SERVERS GRID
@@ -5419,21 +6162,14 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
           </div>
         </div>
 
-        <!-- MERCADO PAGO API KEY CONFIGURATION (ADMIN / USER) -->
+        <!-- MERCADO PAGO STATUS -->
         <div class="glass-card rounded-3xl p-5 sm:p-6 mb-6">
-          <h3 class="text-sm font-bold text-white mb-2">💳 Configuração do Mercado Pago</h3>
-          <p class="text-xs text-graphite mb-4">Insira suas chaves do Mercado Pago para receber vendas diretamente na sua conta.</p>
-          <div class="space-y-3.5 text-xs">
-            <div>
-              <label class="block text-graphite mb-1">Public Key (Chave Pública):</label>
-              <input type="text" id="mpPublicKey" placeholder="APP_USR-..." value="${localStorage.getItem('mp_public_key')||''}" class="w-full bg-white/5 border border-white/10 rounded-xl px-3.5 py-2.5 text-base sm:text-xs text-white focus:outline-none">
-            </div>
-            <div>
-              <label class="block text-graphite mb-1">Access Token (Token de Acesso):</label>
-              <input type="password" id="mpAccessToken" placeholder="APP_USR-..." value="${localStorage.getItem('mp_access_token')||''}" class="w-full bg-white/5 border border-white/10 rounded-xl px-3.5 py-2.5 text-base sm:text-xs text-white focus:outline-none">
-            </div>
-            <button onclick="window.appSaveMPKeys()" class="px-5 py-2.5 min-h-[44px] flex items-center justify-center bg-white/10 hover:bg-white/20 border border-white/15 rounded-xl text-white font-bold active:scale-95 transition-all">Salvar Credenciais Mercado Pago</button>
-          </div>
+          <h3 class="text-sm font-bold text-white mb-2">💳 Gateway Mercado Pago</h3>
+          <p class="text-xs text-graphite mb-2">Os pagamentos são processados com segurança diretamente pelo backend oficial.</p>
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            Checkout Pro & Pix Ativos
+          </span>
         </div>
 
         <!-- ACCOUNT LOGOUT -->
@@ -5497,17 +6233,17 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
     };
 
     window.appSaveMPKeys = () => {
-      const pk = document.getElementById('mpPublicKey')?.value?.trim();
-      const at = document.getElementById('mpAccessToken')?.value?.trim();
-      if (pk) localStorage.setItem('mp_public_key', pk);
-      if (at) localStorage.setItem('mp_access_token', at);
-      showToast('✅ Credenciais do Mercado Pago salvas com sucesso!');
+      localStorage.removeItem('mp_access_token');
+      localStorage.removeItem('mp_public_key');
+      showToast('ℹ️ O Mercado Pago é gerenciado com segurança nas variáveis de ambiente do servidor.');
     };
 
     window.appLogout = async () => {
       try {
         localStorage.removeItem('mcp_session_user');
         localStorage.removeItem('mcp_auth_token');
+        localStorage.removeItem('mp_access_token');
+        localStorage.removeItem('mp_public_key');
         localStorage.setItem('mcp_user_role', 'visitante');
         localStorage.setItem('mcp_admin_auth', 'false');
 
@@ -5679,9 +6415,9 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
 
   async function _deprecatedAdminViewLegacy() {
     syncSovereignSession();
-    const hasAdminAccess = (currentUserRole === 'admin' || currentUserRole === 'moderator' || currentUserRole === 'moder');
+    const hasAdminAccess = currentUserRole === 'admin';
     if (!isLoggedIn || !hasAdminAccess) {
-      showToast('⚠️ Acesso restrito a Administradores e Moderadores.');
+      showToast('⚠️ Acesso restrito exclusivamente a Administradores.');
       navigateToHome();
       return;
     }
@@ -5762,13 +6498,13 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
       const d7 = new Date(now.getTime() - 7 * 86400000);
       const d30 = new Date(now.getTime() - 30 * 86400000);
 
-      const countToday = Math.max(1, profiles.filter(p => p.created_at && p.created_at.startsWith(todayStr)).length);
-      const count7d    = Math.max(3, profiles.filter(p => p.created_at && new Date(p.created_at) >= d7).length);
-      const count30d   = Math.max(8, profiles.filter(p => p.created_at && new Date(p.created_at) >= d30).length);
-      const countTotal = Math.max(12, profiles.length);
+      const countToday = profiles.filter(p => p.created_at && p.created_at.startsWith(todayStr)).length;
+      const count7d    = profiles.filter(p => p.created_at && new Date(p.created_at) >= d7).length;
+      const count30d   = profiles.filter(p => p.created_at && new Date(p.created_at) >= d30).length;
+      const countTotal = profiles.length;
 
-      const freeMembers = Math.max(5, profiles.filter(p => p.role === 'free' || !p.role).length);
-      const paidMembers = Math.max(7, profiles.filter(p => ['level_0','level_1','level_2','full','admin'].includes(p.role)).length);
+      const freeMembers = profiles.filter(p => p.role === 'free' || !p.role).length;
+      const paidMembers = profiles.filter(p => ['level_0','level_1','level_2','full','admin'].includes(p.role)).length;
 
       container.innerHTML = `
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -5853,11 +6589,9 @@ hyperrealistic portrait, cinematic volumetric lighting, 85mm f/1.8 lens, detaile
         } catch(e) {}
       }
 
-      if (profiles.length === 0) {
+      if (profiles.length === 0 && isLoggedIn && currentUserId) {
         profiles = [
-          { id: 'usr_admin', name: 'Mateus Celestino Pro', email: 'mateus@mateuscelestinopro.com', role: 'admin', created_at: new Date().toISOString() },
-          { id: 'usr_mod', name: 'Moderador Oficial', email: 'moderador@mateuscelestinopro.com', role: 'moderator', created_at: new Date().toISOString() },
-          { id: 'usr_vip', name: 'Lucas Rocha (Aluno VIP)', email: 'aluno@mateuscelestinopro.com', role: 'full', created_at: new Date().toISOString() }
+          { id: currentUserId, name: currentUserNameStr || 'Mateus Celestino Pro', email: currentUserEmailStr || 'mateus@mateuscelestinopro.com', role: currentUserRole || 'admin', created_at: new Date().toISOString() }
         ];
       }
 
