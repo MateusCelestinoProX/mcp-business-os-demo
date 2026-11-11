@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { COMMUNITY_PLANS, type PlanConfig } from '@/lib/plans';
+import { COMMUNITY_PLANS } from '@/lib/plans';
+import { getTrustedSiteUrl } from '@/lib/security/url-guard';
 
 export const dynamic = 'force-dynamic';
 
@@ -50,16 +51,13 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json().catch(() => ({}));
-    const rawSlug = body.planSlug || body.planId || body.productSlug || 'membership-vip';
-    const email = body.memberEmail || body.userEmail || body.email || 'membro@mateuscelestinopro.com';
-    const name = body.memberName || body.userName || body.name || 'Membro Soberano';
-    const customTitle = body.customTitle;
+    const rawSlug = typeof body.planSlug === 'string' ? body.planSlug : typeof body.planId === 'string' ? body.planId : 'membership-vip';
+    const email = typeof body.memberEmail === 'string' ? body.memberEmail.trim().slice(0, 255) : typeof body.email === 'string' ? body.email.trim().slice(0, 255) : 'membro@mateuscelestinopro.com';
+    const name = typeof body.memberName === 'string' ? body.memberName.trim().slice(0, 100) : 'Membro Soberano';
 
     const plan = EXTENDED_PLANS[rawSlug] || COMMUNITY_PLANS[rawSlug] || COMMUNITY_PLANS['membership-vip'];
-
-    const host = req.headers.get('host') || 'localhost:3000';
-    const protocol = host.includes('localhost') ? 'http' : 'https';
-    const siteUrl = process.env.NEXT_PUBLIC_APP_URL || `${protocol}://${host}`;
+    const isProd = process.env.NODE_ENV === 'production';
+    const siteUrl = getTrustedSiteUrl(req);
 
     const externalRef = `ref_${plan.slug}_${Date.now()}`;
     const mpAccessToken =
@@ -67,14 +65,16 @@ export async function POST(req: NextRequest) {
       process.env.MERCADOPAGO_ACCESS_TOKEN ||
       process.env.MERCADO_LIVRE_TOKEN;
 
+    const isMockToken = !mpAccessToken || mpAccessToken.includes('TEST-DEFAULT-TOKEN-PLACEHOLDER') || mpAccessToken.includes('placeholder');
+
     // 1. Processamento via API Oficial Mercado Pago caso token esteja configurado
-    if (mpAccessToken && mpAccessToken !== 'TEST-DEFAULT-TOKEN-PLACEHOLDER') {
+    if (mpAccessToken && !isMockToken) {
       try {
         const preferencePayload = {
           items: [
             {
               id: plan.slug,
-              title: customTitle || plan.title,
+              title: plan.title,
               description: plan.description,
               quantity: 1,
               currency_id: 'BRL',
@@ -120,12 +120,32 @@ export async function POST(req: NextRequest) {
             external_reference: externalRef,
           });
         }
+
+        if (isProd) {
+          return NextResponse.json(
+            { success: false, error: 'Falha na comunicação com o provedor de pagamento.' },
+            { status: 502 }
+          );
+        }
       } catch (mpErr: any) {
         console.warn('⚠️ [Checkout API] Aviso ao conectar com Mercado Pago:', mpErr?.message);
+        if (isProd) {
+          return NextResponse.json(
+            { success: false, error: 'Provedor de pagamento temporariamente indisponível.' },
+            { status: 503 }
+          );
+        }
       }
     }
 
-    // 2. Modo Sandbox Simulado Localhost de Alta Fidelidade
+    if (isProd) {
+      return NextResponse.json(
+        { success: false, error: 'Configuração de pagamento indisponível no momento.' },
+        { status: 503 }
+      );
+    }
+
+    // 2. Modo Sandbox Simulado Localhost de Alta Fidelidade (apenas dev/test)
     const simulatedId = `SOBERANO_PREF_${Math.random().toString(36).substring(2, 9).toUpperCase()}`;
     const returnUrl = `${siteUrl}/comunidade?payment=success&sandbox=true&plan=${plan.slug}&email=${encodeURIComponent(email)}&ref=${externalRef}`;
 

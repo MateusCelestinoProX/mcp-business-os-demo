@@ -1,20 +1,32 @@
 import { SignJWT } from 'jose/jwt/sign';
 import { jwtVerify } from 'jose/jwt/verify';
 import type { JWTPayload } from 'jose';
+import { isTokenRevoked } from './token-revocation';
 
 /**
  * ============================================================
- * AUTENTICAÇÃO JWT EDGE-COMPATIBLE COM JOSE
+ * AUTENTICAÇÃO JWT EDGE-COMPATIBLE COM JOSE (HS256 ESTRITO)
  * ============================================================
+ * 100% compatível com Edge Runtime (src/middleware.ts) e Node.js.
+ * Zero dependências `node:*` para preservar compatibilidade Edge.
  */
+
+export const JWT_ISSUER = 'mcp-business-os';
+export const JWT_AUDIENCE = 'mcp-platform';
+const DEV_FALLBACK_SECRET = 'mcp-soberana-dev-secret-minimum-64-characters-random-key-2026-prod-guard';
 
 function getJwtSecret(): Uint8Array {
   const secret = process.env.JWT_SECRET;
+  const isProdOrVercel =
+    process.env.NODE_ENV === 'production' ||
+    Boolean(process.env.VERCEL) ||
+    Boolean(process.env.NEXT_PUBLIC_VERCEL_ENV === 'production');
+
   if (!secret) {
-    if (process.env.NODE_ENV === 'production') {
-      throw new Error('FATAL: JWT_SECRET não configurado nas variáveis de ambiente!');
+    if (isProdOrVercel) {
+      throw new Error('FATAL: JWT_SECRET não configurado nas variáveis de ambiente em produção!');
     }
-    return new TextEncoder().encode('mcp-soberana-dev-secret-minimum-64-characters-random-key-2026-prod-guard');
+    return new TextEncoder().encode(DEV_FALLBACK_SECRET);
   }
   return new TextEncoder().encode(secret);
 }
@@ -24,34 +36,80 @@ export interface SessionPayload extends JWTPayload {
   email: string;
   name: string;
   role: 'admin' | 'moder' | 'moderator' | 'editor' | 'member';
-  tier?: 'free' | 'pro' | 'vip';
+  tier?: 'free' | 'pro' | 'vip' | 'max';
 }
 
 /**
- * Assina e gera um JWT assinado com algoritmo HS256
+ * Assina e gera um JWT assinado com algoritmo HS256, jti único, issuer e audience.
  */
 export async function signToken(
   payload: SessionPayload,
   expiresIn: string = '7d'
 ): Promise<string> {
-  return await new SignJWT(payload)
-    .setProtectedHeader({ alg: 'HS256' })
+  const jti =
+    typeof payload.jti === 'string' && payload.jti.length > 0
+      ? payload.jti
+      : globalThis.crypto?.randomUUID?.() ||
+        `${Date.now()}-${Math.random().toString(36).slice(2)}-${Math.random().toString(36).slice(2)}`;
+
+  return await new SignJWT({ ...payload, jti })
+    .setProtectedHeader({ alg: 'HS256', typ: 'JWT' })
+    .setIssuer(JWT_ISSUER)
+    .setAudience(JWT_AUDIENCE)
+    .setJti(jti)
     .setIssuedAt()
     .setExpirationTime(expiresIn)
     .sign(getJwtSecret());
 }
 
 /**
- * Verifica e decodifica um token JWT
- * Retorna o payload se válido ou null se inválido/expirado
+ * Validação rigorosa e decodificação do token JWT:
+ * - Algoritmo restrito a HS256 (rejeita 'none' e algoritmos assimétricos não previstos)
+ * - Verificação de revogação de token (via jti e hash do token)
+ * - Validação de claims essenciais (userId, email, role)
  */
 export async function verifyToken<T extends SessionPayload = SessionPayload>(
   token: string
 ): Promise<T | null> {
+  if (!token || typeof token !== 'string') return null;
+
+  // Sanitização estrutural do formato JWT (3 partes base64url)
+  const parts = token.trim().split('.');
+  if (parts.length !== 3) return null;
+
   try {
-    const { payload } = await jwtVerify(token, getJwtSecret());
-    return payload as unknown as T;
-  } catch (error) {
+    const { payload, protectedHeader } = await jwtVerify(token.trim(), getJwtSecret(), {
+      algorithms: ['HS256'],
+    });
+
+    if (!protectedHeader || protectedHeader.alg !== 'HS256') {
+      return null;
+    }
+
+    // Se o token especificar issuer ou audience, validar correspondência estrita
+    if (payload.iss && payload.iss !== JWT_ISSUER) {
+      return null;
+    }
+    if (payload.aud) {
+      const auds = Array.isArray(payload.aud) ? payload.aud : [payload.aud];
+      if (!auds.includes(JWT_AUDIENCE)) {
+        return null;
+      }
+    }
+
+    const typed = payload as unknown as T;
+
+    if (!typed.userId || !typed.email || !typed.role) {
+      return null;
+    }
+
+    // Checa blacklist de revogação em memória/Edge
+    if (await isTokenRevoked({ jti: typed.jti, token })) {
+      return null;
+    }
+
+    return typed;
+  } catch {
     return null;
   }
 }

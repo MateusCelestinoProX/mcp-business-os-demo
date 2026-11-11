@@ -1,33 +1,35 @@
 import { NextResponse } from 'next/server';
 import { checkRateLimit } from '@/lib/auth/rate-limit';
-import { verifyAdminRequest } from '@/lib/auth/admin-guard';
+import { verifyAdminRequest, denyAdminRequest } from '@/lib/auth/admin-guard';
+import { getClientIp } from '@/lib/security/request-ip';
+import { isTrustedOrigin } from '@/lib/security/url-guard';
+import { escapeHtml, stripCrlf } from '@/lib/security/sanitize';
 
 export const dynamic = 'force-dynamic';
 
-function escapeHtml(str: string): string {
-  return String(str || '')
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;');
-}
+export async function OPTIONS(req: Request) {
+  const origin = req.headers.get('origin') || '';
+  const allowed = isTrustedOrigin(origin);
 
-export async function OPTIONS() {
+  const headers: Record<string, string> = {
+    'Access-Control-Allow-Headers': 'Content-Type, Authorization, x-internal-secret',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Vary': 'Origin',
+  };
+
+  if (allowed && origin) {
+    headers['Access-Control-Allow-Origin'] = origin;
+  }
+
   return new NextResponse(null, {
     status: 200,
-    headers: {
-      'Access-Control-Allow-Origin': process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000',
-      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-      'Access-Control-Allow-Methods': 'POST, OPTIONS',
-    },
+    headers,
   });
 }
 
 export async function POST(req: Request) {
   try {
-    const forwarded = req.headers.get('x-forwarded-for');
-    const ip = forwarded ? forwarded.split(',')[0].trim() : '127.0.0.1';
+    const ip = getClientIp(req);
     const rateCheck = checkRateLimit(`email_${ip}`, 10, 60 * 1000);
     if (!rateCheck.allowed) {
       return NextResponse.json(
@@ -39,14 +41,16 @@ export async function POST(req: Request) {
     const body = await req.json().catch(() => ({}));
     const { type, to, userName, productName } = body;
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!to || typeof to !== 'string' || !emailRegex.test(to.trim())) {
+    const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+$/;
+    if (!to || typeof to !== 'string' || !emailRegex.test(to.trim()) || /[\r\n]/.test(to)) {
       return NextResponse.json({ error: 'Destinatário (to) inválido ou ausente' }, { status: 400 });
     }
 
-    const safeUserName = escapeHtml(userName || 'Criador');
-    const safeProductName = escapeHtml(productName || 'VIP Pack');
+    const cleanTo = stripCrlf(to.trim());
+    const safeUserName = escapeHtml(stripCrlf(userName || 'Criador'));
+    const safeProductName = escapeHtml(stripCrlf(productName || 'VIP Pack'));
 
+    const isProd = process.env.NODE_ENV === 'production';
     const RESEND_API_KEY = process.env.RESEND_API_KEY;
     const SENDER = process.env.SENDER_EMAIL_ADDRESS || 'onboarding@resend.dev';
 
@@ -54,6 +58,17 @@ export async function POST(req: Request) {
     let htmlContent = '';
 
     if (type === 'welcome') {
+      // Em produção, disparos transacionais exigem autenticação admin ou chave interna de serviço
+      if (isProd) {
+        const auth = await verifyAdminRequest(req);
+        const internalKey = process.env.INTERNAL_SERVICE_KEY;
+        const reqSecret = req.headers.get('x-internal-secret');
+        const isInternalAuthorized = internalKey && reqSecret === internalKey;
+        if (!auth.authorized && !isInternalAuthorized) {
+          return denyAdminRequest(auth);
+        }
+      }
+
       subject = '🎨 Seja bem-vindo à plataforma A.I VISUALS!';
       htmlContent = `
         <div style="font-family: 'Segoe UI', Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #0b0c10; color: #ffffff; border-radius: 20px; padding: 40px; border: 1px solid rgba(255,255,255,0.15);">
@@ -72,6 +87,16 @@ export async function POST(req: Request) {
         </div>
       `;
     } else if (type === 'purchase_success') {
+      if (isProd) {
+        const auth = await verifyAdminRequest(req);
+        const internalKey = process.env.INTERNAL_SERVICE_KEY;
+        const reqSecret = req.headers.get('x-internal-secret');
+        const isInternalAuthorized = internalKey && reqSecret === internalKey;
+        if (!auth.authorized && !isInternalAuthorized) {
+          return denyAdminRequest(auth);
+        }
+      }
+
       subject = `🎉 Acesso Liberado: ${safeProductName}`;
       htmlContent = `
         <div style="font-family: 'Segoe UI', Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #0b0c10; color: #ffffff; border-radius: 20px; padding: 40px; border: 1px solid rgba(255,255,255,0.15);">
@@ -89,18 +114,15 @@ export async function POST(req: Request) {
       // O envio de e-mails customizados com assunto ou HTML livre exige estritamente autenticação de administrador
       const auth = await verifyAdminRequest(req);
       if (!auth.authorized) {
-        return NextResponse.json(
-          { error: 'Envio de e-mails customizados restrito a administradores autenticados.' },
-          { status: 401 }
-        );
+        return denyAdminRequest(auth);
       }
-      subject = escapeHtml(body.subject || 'Notificação A.I VISUALS');
+      subject = escapeHtml(stripCrlf(body.subject || 'Notificação A.I VISUALS'));
       htmlContent = body.html || `<p>${escapeHtml(body.text || 'Notificação do sistema')}</p>`;
     }
 
     if (!RESEND_API_KEY) {
-      console.warn('RESEND_API_KEY ausente. E-mail simulado com sucesso para:', to);
-      return NextResponse.json({ success: true, simulated: true, to, subject });
+      console.warn('RESEND_API_KEY ausente. E-mail simulado com sucesso para:', cleanTo);
+      return NextResponse.json({ success: true, simulated: true, to: cleanTo, subject });
     }
 
     const response = await fetch('https://api.resend.com/emails', {
@@ -111,7 +133,7 @@ export async function POST(req: Request) {
       },
       body: JSON.stringify({
         from: `A.I VISUALS <${SENDER}>`,
-        to: [to],
+        to: [cleanTo],
         subject,
         html: htmlContent,
       }),
@@ -120,6 +142,7 @@ export async function POST(req: Request) {
     const data = await response.json();
     return NextResponse.json({ success: true, data }, { status: 200 });
   } catch (err: any) {
-    return NextResponse.json({ error: 'Erro ao enviar e-mail: ' + err.message }, { status: 500 });
+    console.error('❌ [Send Email] Erro interno:', err);
+    return NextResponse.json({ error: 'Erro interno ao enviar e-mail' }, { status: 500 });
   }
 }

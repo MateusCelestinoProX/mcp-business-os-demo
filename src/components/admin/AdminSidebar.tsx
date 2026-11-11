@@ -77,7 +77,7 @@ export function AdminSidebar({
   leadsCount = 0,
   membersCount = 0,
   transactionsCount = 0,
-  userEmail = "mcp6667@proton.me",
+  userEmail = "",
   onRefresh,
   isLoadingData = false,
   onLogout,
@@ -275,7 +275,7 @@ export function AdminSidebar({
           <div className="p-2.5 rounded-xl bg-black/50 border border-white/10 flex items-center justify-between text-[11px] font-mono text-neutral-300">
             <div className="flex items-center gap-1.5 min-w-0 pr-2">
               <Shield className="w-3.5 h-3.5 text-red-400 flex-shrink-0" />
-              <span className="truncate">{userEmail}</span>
+              <span className="truncate">{userEmail || "Sessão Administrativa"}</span>
             </div>
             <span className="text-[10px] px-2 py-0.5 rounded-md bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 flex-shrink-0 font-bold flex items-center gap-1">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />

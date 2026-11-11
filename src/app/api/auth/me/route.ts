@@ -1,13 +1,16 @@
 import { NextResponse } from 'next/server';
 import { eq } from 'drizzle-orm';
-import { getSession, destroySession } from '@/lib/auth/session';
-import { verifyToken } from '@/lib/auth/jwt';
+import { getSession, destroySession, verifyTokenWithRevocation } from '@/lib/auth/session';
 import { db, isDbConfigured } from '@/lib/db';
 import { adminUsers, members } from '@/lib/db/schema';
+import { isTrustedOrigin } from '@/lib/security/url-guard';
+import { NO_STORE_HEADERS } from '@/lib/auth/admin-guard';
+
+const UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
 export async function GET(req: Request) {
   try {
-    // 1. Tenta recuperar sessão via cookie HTTP-Only
+    // 1. Tenta recuperar sessão via cookie HTTP-Only seguro
     let session = await getSession();
 
     // 2. Se não houver cookie, tenta o header Authorization: Bearer <token>
@@ -15,18 +18,18 @@ export async function GET(req: Request) {
       const authHeader = req.headers.get('authorization');
       if (authHeader?.startsWith('Bearer ')) {
         const token = authHeader.substring(7).trim();
-        session = await verifyToken(token);
+        session = await verifyTokenWithRevocation(token);
       }
     }
 
     if (!session) {
       return NextResponse.json(
-        { authenticated: false, member: null, error: 'Nenhuma sessão ativa encontrada.' },
-        { status: 401 }
+        { authenticated: false, member: null, user: null, error: 'Nenhuma sessão ativa encontrada.' },
+        { status: 401, headers: NO_STORE_HEADERS }
       );
     }
 
-    // 3. Sincroniza informações atualizadas diretamente do banco de dados Supabase
+    // 3. Monta dados padrão a partir do JWT autenticado
     let memberDetails = {
       id: session.userId,
       email: session.email,
@@ -36,56 +39,97 @@ export async function GET(req: Request) {
       status: 'active',
     };
 
+    // 4. Sincroniza informações atualizadas diretamente do banco de dados quando configurado
     if (isDbConfigured && session.userId) {
       try {
-        if (session.role === 'admin') {
-          const adminRows = await db
-            .select({
-              id: adminUsers.id,
-              email: adminUsers.email,
-              name: adminUsers.name,
-              role: adminUsers.role,
-            })
-            .from(adminUsers)
-            .where(eq(adminUsers.id, session.userId))
-            .limit(1);
+        if (session.role === 'admin' || session.role === 'moder' || session.role === 'moderator') {
+          let adminRows: Array<{ id: string; email: string; name: string; role: string }> = [];
+
+          if (UUID_REGEX.test(session.userId)) {
+            adminRows = await db
+              .select({
+                id: adminUsers.id,
+                email: adminUsers.email,
+                name: adminUsers.name,
+                role: adminUsers.role,
+              })
+              .from(adminUsers)
+              .where(eq(adminUsers.id, session.userId))
+              .limit(1);
+          }
+
+          if (adminRows.length === 0 && session.email) {
+            adminRows = await db
+              .select({
+                id: adminUsers.id,
+                email: adminUsers.email,
+                name: adminUsers.name,
+                role: adminUsers.role,
+              })
+              .from(adminUsers)
+              .where(eq(adminUsers.email, session.email.toLowerCase().trim()))
+              .limit(1);
+          }
 
           if (adminRows.length > 0) {
             const a = adminRows[0];
+            const resolvedRole = a.role === 'admin' ? 'admin' : 'moder';
             memberDetails = {
               id: a.id,
               email: a.email,
               name: a.name,
-              role: 'admin',
+              role: resolvedRole,
               tier: 'vip',
               status: 'active',
             };
           } else {
-            return NextResponse.json(
-              { authenticated: false, member: null, error: 'Conta administrativa não encontrada.' },
-              { status: 401 }
-            );
+            // Se o usuário não está cadastrado na tabela admin_users, verifica se é o mestre Soberano
+            const masterEmail = (process.env.ADMIN_EMAIL || 'mcp6667@proton.me').toLowerCase().trim();
+            if (session.email.toLowerCase().trim() !== masterEmail) {
+              return NextResponse.json(
+                { authenticated: false, member: null, user: null, error: 'Conta administrativa não encontrada.' },
+                { status: 401, headers: NO_STORE_HEADERS }
+              );
+            }
           }
         } else {
-          const rows = await db
-            .select({
-              id: members.id,
-              email: members.email,
-              name: members.name,
-              tier: members.tier,
-              status: members.status,
-              createdAt: members.createdAt,
-            })
-            .from(members)
-            .where(eq(members.id, session.userId))
-            .limit(1);
+          // Membro comum
+          let rows: Array<any> = [];
+          if (UUID_REGEX.test(session.userId)) {
+            rows = await db
+              .select({
+                id: members.id,
+                email: members.email,
+                name: members.name,
+                tier: members.tier,
+                status: members.status,
+                createdAt: members.createdAt,
+              })
+              .from(members)
+              .where(eq(members.id, session.userId))
+              .limit(1);
+          }
+          if (rows.length === 0 && session.email) {
+            rows = await db
+              .select({
+                id: members.id,
+                email: members.email,
+                name: members.name,
+                tier: members.tier,
+                status: members.status,
+                createdAt: members.createdAt,
+              })
+              .from(members)
+              .where(eq(members.email, session.email.toLowerCase().trim()))
+              .limit(1);
+          }
 
           if (rows.length > 0) {
             const m = rows[0];
             if (m.status !== 'active') {
               return NextResponse.json(
-                { authenticated: false, member: null, error: 'Conta de membro inativa.' },
-                { status: 403 }
+                { authenticated: false, member: null, user: null, error: 'Conta de membro inativa.' },
+                { status: 403, headers: NO_STORE_HEADERS }
               );
             }
             memberDetails = {
@@ -99,7 +143,7 @@ export async function GET(req: Request) {
           }
         }
       } catch (dbErr) {
-        console.warn('⚠️ [Auth Me] Erro ao sincronizar dados com o banco:', dbErr);
+        console.warn('⚠️ [Auth Me] Erro ao sincronizar dados com o banco (modo contingência):', dbErr);
       }
     }
 
@@ -109,28 +153,39 @@ export async function GET(req: Request) {
         member: memberDetails,
         user: memberDetails,
       },
-      { status: 200 }
+      { status: 200, headers: NO_STORE_HEADERS }
     );
   } catch (error: any) {
     console.error('❌ [Auth Me] Erro ao obter perfil:', error);
     return NextResponse.json(
       { authenticated: false, error: 'Erro interno ao consultar sessão' },
-      { status: 500 }
+      { status: 500, headers: NO_STORE_HEADERS }
     );
   }
 }
 
-export async function DELETE() {
+export async function DELETE(req?: Request) {
   try {
-    await destroySession();
+    if (req) {
+      const origin = req.headers.get('origin');
+      if (origin && !isTrustedOrigin(origin)) {
+        return NextResponse.json(
+          { success: false, error: 'Origem não autorizada (violação CSRF).' },
+          { status: 403, headers: NO_STORE_HEADERS }
+        );
+      }
+    }
+
+    await destroySession(req);
+
     return NextResponse.json(
       { success: true, message: 'Sessão encerrada com sucesso.' },
-      { status: 200 }
+      { status: 200, headers: NO_STORE_HEADERS }
     );
   } catch (error: any) {
     return NextResponse.json(
       { success: false, error: 'Falha ao encerrar sessão.' },
-      { status: 500 }
+      { status: 500, headers: NO_STORE_HEADERS }
     );
   }
 }

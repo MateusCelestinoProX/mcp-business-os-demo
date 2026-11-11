@@ -12,7 +12,7 @@ import { createSession } from './session';
  * ============================================================
  */
 
-const SALT_ROUNDS = 10;
+const SALT_ROUNDS = 12;
 
 /**
  * Comparação em tempo constante contra ataques de timing
@@ -88,11 +88,20 @@ export async function authenticateAdmin(
             console.warn('[Auth] Não foi possível atualizar lastLogin:', e);
           }
 
+          if (user.role !== 'admin' && user.role !== 'moder') {
+            return {
+              success: false,
+              error: 'Esta conta não possui nível de acesso administrativo autorizado.',
+            };
+          }
+
+          const adminRole: SessionPayload['role'] = user.role === 'admin' ? 'admin' : 'moder';
+
           const payload: SessionPayload = {
             userId: user.id,
             email: user.email,
             name: user.name,
-            role: 'admin',
+            role: adminRole,
           };
 
           const token = await createSession(payload);
@@ -103,7 +112,7 @@ export async function authenticateAdmin(
               id: user.id,
               email: user.email,
               name: user.name,
-              role: user.role,
+              role: adminRole,
             },
             token,
           };
@@ -114,7 +123,7 @@ export async function authenticateAdmin(
     }
   }
 
-  // 2. Contingência Soberana A: Validação via Supabase Auth GoTrue REST (HTTPS resiliente)
+  // 2. Contingência Soberana A: Validação via Supabase Auth GoTrue REST (confia ESTRITAMENTE em app_metadata)
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL;
   const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY;
   if (supabaseUrl && supabaseKey) {
@@ -129,13 +138,13 @@ export async function authenticateAdmin(
       });
       if (authRes.ok) {
         const authData = await authRes.json();
-        const role = authData.user?.user_metadata?.role || authData.user?.app_metadata?.role;
-        if (role === 'admin' || cleanEmail === masterEmail) {
+        const role = authData.user?.app_metadata?.role;
+        if (role === 'admin' || role === 'moder' || role === 'moderator') {
           const payload: SessionPayload = {
             userId: authData.user?.id || 'admin-root',
             email: cleanEmail,
             name: authData.user?.user_metadata?.name || 'Mateus Celestino Pro X',
-            role: 'admin',
+            role,
           };
           const token = await createSession(payload);
           return {
@@ -144,7 +153,7 @@ export async function authenticateAdmin(
               id: payload.userId,
               email: cleanEmail,
               name: payload.name,
-              role: 'admin',
+              role,
             },
             token,
           };
@@ -268,7 +277,13 @@ export async function authenticateMember(
       });
       if (authRes.ok) {
         const authData = await authRes.json();
-        const tier = (authData.user?.user_metadata?.tier || (cleanEmail === 'membro@mateuscelestinopro.com' ? 'vip' : 'free')) as 'free' | 'pro' | 'vip';
+        const rawTier = authData.user?.app_metadata?.tier;
+        const tier: 'free' | 'pro' | 'vip' =
+          rawTier === 'vip' || rawTier === 'pro' || rawTier === 'free'
+            ? rawTier
+            : cleanEmail === 'membro@mateuscelestinopro.com'
+              ? 'vip'
+              : 'free';
         const payload: SessionPayload = {
           userId: authData.user?.id || 'member-root',
           email: cleanEmail,
@@ -295,7 +310,9 @@ export async function authenticateMember(
   }
 
   // 3. Membro Demo / Fallback via MEMBER_PASSWORD configurado
-  const memberPassword = process.env.MEMBER_PASSWORD;
+  const memberPassword =
+    process.env.MEMBER_PASSWORD ||
+    (process.env.NODE_ENV !== 'production' ? 'MembroProX@2026!' : undefined);
   if (
     memberPassword &&
     cleanEmail === 'membro@mateuscelestinopro.com' &&

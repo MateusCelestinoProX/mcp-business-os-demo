@@ -180,8 +180,8 @@ export function PortalNavbar({
           aria-label="Dock Móvel de Navegação Tátil Mateus Celestino Pro X"
           className="lg:hidden fixed top-16 inset-x-2 z-30 max-w-md mx-auto pointer-events-auto select-none touch-manipulation pt-1.5 animate-in fade-in slide-in-from-top-2 duration-300"
         >
-          <div className="glass-crystal rounded-2xl p-1 shadow-[0_15px_40px_rgba(0,0,0,0.95),0_0_25px_rgba(255,7,58,0.25)] border border-white/20 flex items-center justify-between gap-1">
-            <div className="flex items-center gap-1 flex-1 min-w-0 overflow-x-auto no-scrollbar touch-pan-x">
+          <div className="glass-crystal rounded-2xl p-1 shadow-[0_15px_40px_rgba(0,0,0,0.95),0_0_25px_rgba(255,7,58,0.25)] border border-white/20 flex items-center justify-between gap-0.5 sm:gap-1">
+            <div className="flex items-center gap-0.5 flex-1 min-w-0 overflow-x-auto no-scrollbar touch-pan-x">
               {navItems.map((item) => {
                 const Icon = item.icon;
                 const isActive = currentSection === item.id;
@@ -189,7 +189,7 @@ export function PortalNavbar({
                   <button
                     key={item.id}
                     onClick={() => handleTabClick(item.id)}
-                    className={`shrink-0 min-w-[52px] flex-1 min-h-[36px] sm:min-h-[48px] py-1 px-1.5 rounded-xl flex flex-col items-center justify-center gap-0.5 transition-all duration-200 active:scale-95 relative cursor-pointer touch-manipulation ${
+                    className={`shrink-0 min-w-[44px] sm:min-w-[52px] flex-1 min-h-[36px] sm:min-h-[48px] py-1 px-0.5 sm:px-1.5 rounded-xl flex flex-col items-center justify-center gap-0.5 transition-all duration-200 active:scale-95 relative cursor-pointer touch-manipulation ${
                       isActive
                         ? 'text-white glass-pill-red shadow-[0_0_15px_rgba(255,7,58,0.4)] font-bold'
                         : 'text-zinc-400 hover:text-zinc-200 active:bg-white/5'
@@ -200,7 +200,7 @@ export function PortalNavbar({
                         isActive ? 'text-white scale-110 drop-shadow-[0_0_8px_#ff073a]' : 'text-zinc-400'
                       }`}
                     />
-                    <span className="text-[9px] font-mono leading-none tracking-tight whitespace-nowrap">
+                    <span className="text-[8.5px] sm:text-[9px] font-mono leading-none tracking-tight whitespace-nowrap">
                       {item.shortLabel}
                     </span>
                     {isActive && (
@@ -218,10 +218,10 @@ export function PortalNavbar({
               rel="noopener noreferrer"
               title="Quero Automatizar Tudo (WhatsApp Oficial)"
               aria-label="AUTOMATIZAR"
-              className="glass-button-fired min-h-[36px] sm:min-h-[48px] min-w-[48px] px-3 rounded-xl flex flex-col items-center justify-center gap-0.5 text-white shadow-lg active:scale-95 transition-transform touch-manipulation shrink-0 ml-0.5 cursor-pointer"
+              className="glass-button-fired min-h-[36px] sm:min-h-[48px] min-w-[48px] px-2 sm:px-3 rounded-xl flex flex-col items-center justify-center gap-0.5 text-white shadow-lg active:scale-95 transition-transform touch-manipulation shrink-0 ml-0.5 cursor-pointer"
             >
-              <MessageSquare className="w-4 h-4 fill-white/20" />
-              <span className="text-[8px] font-mono font-bold leading-none uppercase tracking-wider">
+              <MessageSquare className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-white/20" />
+              <span className="text-[7.5px] sm:text-[8px] font-mono font-bold leading-none uppercase tracking-wider">
                 AUTOMATIZAR
               </span>
             </a>

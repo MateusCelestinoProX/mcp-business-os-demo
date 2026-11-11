@@ -502,8 +502,8 @@ export default function AdminPanelPage() {
           avatar: "",
           tier: userRole === "admin" ? "max" : "vip",
         };
-        if (data.token && typeof window !== "undefined") {
-          localStorage.setItem("mcp_auth_token", data.token);
+        if (typeof window !== "undefined") {
+          localStorage.removeItem("mcp_auth_token");
         }
         setStoredUser(authenticatedUser);
         setCurrentUser(authenticatedUser);

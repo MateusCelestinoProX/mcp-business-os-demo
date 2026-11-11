@@ -391,14 +391,14 @@ A unificação desses dois projetos necessita das seguintes variáveis de ambien
 
 | Variável | Módulo | Descrição | Exemplo / Padrão |
 | :--- | :--- | :--- | :--- |
-| `DATABASE_URL` | Global / Drizzle | String de conexão PostgreSQL (Neon ou Supabase) | `postgresql://postgres:postgres@localhost:5432/soberano` |
-| `MP_ACCESS_TOKEN` | Comunidade / Checkout | Token de Acesso de Produção do Mercado Pago | `APP_USR-6268276789394780-...` |
-| `MP_PUBLIC_KEY` | Comunidade / Frontend | Chave pública do Mercado Pago para SDK client-side | `APP_USR-77fe0fd7-600a-4b1e-8bd2-25007f12a351` |
-| `ADMIN_PASSWORD` | Builder / Admin | Senha mestra com proteção crypto timing-safe | `MCP_SuperSecure_Admin_2026!#LiquidGlass` |
-| `RESEND_API_KEY` | Builder & Comunidade | Chave de API de envio de e-mails transacionais | `re_efgVfaN2_J2UTVcQXEkGyzmpvxHa1i2Zq` |
+| `DATABASE_URL` | Global / Drizzle | String de conexão PostgreSQL (Neon ou Supabase) | `postgresql://postgres:<SENHA>@localhost:5432/soberano` |
+| `MP_ACCESS_TOKEN` | Comunidade / Checkout | Token de Acesso de Produção do Mercado Pago | `APP_USR-<SEU_MP_ACCESS_TOKEN_AQUI>` |
+| `MP_PUBLIC_KEY` | Comunidade / Frontend | Chave pública do Mercado Pago para SDK client-side | `APP_USR-<SUA_MP_PUBLIC_KEY_AQUI>` |
+| `ADMIN_PASSWORD` | Builder / Admin | Senha mestra com proteção crypto timing-safe | `<DEFINA_ADMIN_PASSWORD_FORTE>` |
+| `RESEND_API_KEY` | Builder & Comunidade | Chave de API de envio de e-mails transacionais | `re_<SUA_RESEND_API_KEY_AQUI>` |
 | `SENDER_EMAIL_ADDRESS`| Builder & Comunidade | Remetente verificado do Resend | `onboarding@resend.dev` *(ou domínio próprio)* |
-| `NOTION_TOKEN` | Form Builder / Server | Token de integração padrão com Notion Business | `ntn_3ad8112a6332804699c9d77ff9537746` |
-| `NOTION_PARENT_PAGE_ID`| Form Builder / Server | ID da página-mãe de preenchimentos no Notion | `3ad8112a6332804699c9d77ff9537746` |
+| `NOTION_TOKEN` | Form Builder / Server | Token de integração padrão com Notion Business | `ntn_<SEU_NOTION_TOKEN_AQUI>` |
+| `NOTION_PARENT_PAGE_ID`| Form Builder / Server | ID da página-mãe de preenchimentos no Notion | `<SEU_NOTION_PARENT_PAGE_ID>` |
 | `JWT_SECRET` | Global Auth | Segredo criptográfico para emissão de JWTs seguros | Chave aleatória de 64 bytes hex |
 
 ---

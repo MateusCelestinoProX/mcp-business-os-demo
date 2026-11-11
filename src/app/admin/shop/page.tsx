@@ -7,6 +7,9 @@ import { ShopControlSuite } from '@/components/admin/ShopControlSuite';
 import { AdminSidebar } from '@/components/admin/AdminSidebar';
 import { getSession } from '@/lib/auth/session';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export const metadata: Metadata = {
   title: 'Shop & Cards Manager — Painel Admin | Mateus Celestino Pro X',
   description: 'Gerenciador soberano da Loja Virtual, heros, banners alternados e criador de cards com Markdown e botão único Saiba mais.',
@@ -14,11 +17,7 @@ export const metadata: Metadata = {
 
 export default async function AdminShopPage() {
   const session = await getSession();
-  const isAllowed = session && (
-    session.role === 'admin' ||
-    (session as any).role === 'moder' ||
-    (session as any).role === 'moderator'
-  );
+  const isAllowed = Boolean(session && session.role === 'admin');
 
   if (!isAllowed) {
     redirect('/comunidade/login?redirectUrl=/admin/shop');

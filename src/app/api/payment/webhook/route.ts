@@ -1,9 +1,13 @@
 import { NextResponse } from 'next/server';
-import crypto from 'node:crypto';
 import { eq } from 'drizzle-orm';
 import { db, isDbConfigured } from '@/lib/db';
 import { members } from '@/lib/db/schema';
 import { COMMUNITY_PLANS } from '@/lib/plans';
+import {
+  verifyMercadoPagoWebhookSignature,
+  hasProcessedPayment,
+  markPaymentProcessed,
+} from '@/lib/payments/mp-webhook';
 
 export async function POST(req: Request) {
   try {
@@ -17,33 +21,31 @@ export async function POST(req: Request) {
       url.searchParams.get('id') ||
       url.searchParams.get('data.id');
 
-    const topic = body?.type || body?.topic || url.searchParams.get('topic') || 'payment';
+    const paymentIdStr = paymentId ? String(paymentId) : '';
 
-    // 0. Validação de Assinatura Criptográfica HMAC (x-signature) se configurado
-    const webhookSecret = process.env.MERCADOPAGO_WEBHOOK_SECRET;
-    const xSignature = req.headers.get('x-signature');
-    if (webhookSecret && xSignature) {
-      try {
-        const parts = xSignature.split(',');
-        let ts = '';
-        let hash = '';
-        for (const p of parts) {
-          const [k, v] = p.split('=');
-          if (k.trim() === 'ts') ts = v.trim();
-          if (k.trim() === 'v1') hash = v.trim();
-        }
-        const dataId = paymentId ? String(paymentId) : '';
-        const manifest = `id:${dataId};request-id:${req.headers.get('x-request-id') || ''};ts:${ts};`;
-        const expectedHash = crypto.createHmac('sha256', webhookSecret).update(manifest).digest('hex');
-        if (hash !== expectedHash) {
-          return NextResponse.json({ success: false, error: 'Violação de assinatura HMAC do webhook.' }, { status: 403 });
-        }
-      } catch (sigErr) {
-        console.warn('⚠️ [Webhook] Falha ao processar assinatura HMAC:', sigErr);
-      }
+    // 0. Validação de Assinatura Criptográfica HMAC (x-signature)
+    const verification = verifyMercadoPagoWebhookSignature({
+      xSignature: req.headers.get('x-signature'),
+      xRequestId: req.headers.get('x-request-id'),
+      dataId: paymentIdStr,
+    });
+
+    if (!verification.ok) {
+      return NextResponse.json(
+        { success: false, error: verification.reason || 'Violação de assinatura HMAC do webhook.' },
+        { status: verification.status }
+      );
     }
 
-    // 1. Tratamento de simulação de sandbox ou ativação direta
+    // Idempotência
+    if (paymentIdStr && hasProcessedPayment(paymentIdStr)) {
+      return NextResponse.json(
+        { received: true, status: 'already_processed', paymentId: paymentIdStr },
+        { status: 200 }
+      );
+    }
+
+    // 1. Tratamento de plano e tier
     const targetEmail = body?.email || body?.memberEmail || url.searchParams.get('email');
     const targetPlan = body?.planSlug || url.searchParams.get('plan') || 'membership-vip';
 
@@ -62,7 +64,7 @@ export async function POST(req: Request) {
       process.env.MERCADO_LIVRE_TOKEN;
 
     const isMockToken = !mpAccessToken || mpAccessToken.includes('1234567890123456') || mpAccessToken.includes('placeholder');
-    const isTestPayment = !paymentId || paymentId.toString().startsWith('SANDBOX') || paymentId.toString().startsWith('TEST_');
+    const isTestPayment = !paymentId || paymentIdStr.startsWith('SANDBOX') || paymentIdStr.startsWith('TEST_');
 
     if (mpAccessToken && !isMockToken && !isTestPayment) {
       try {
@@ -95,7 +97,8 @@ export async function POST(req: Request) {
 
     // 3. Atualizar status e tier do membro no banco de dados se o pagamento foi aprovado
     if (isPaymentApproved) {
-      // Tenta extrair e-mail da external_reference (formato: planSlug__memberEmail__timestamp)
+      if (paymentIdStr) markPaymentProcessed(paymentIdStr);
+
       let memberEmail = targetEmail;
       if (!memberEmail && externalRef.includes('__')) {
         const parts = externalRef.split('__');
@@ -136,14 +139,13 @@ export async function POST(req: Request) {
   } catch (error: any) {
     console.error('❌ [Webhook] Erro ao processar notificação:', error);
     return NextResponse.json(
-      { received: false, error: 'Falha no processamento: ' + error.message },
+      { received: false, error: 'Falha no processamento do webhook' },
       { status: 500 }
     );
   }
 }
 
 export async function GET(req: Request) {
-  // Verificação de saúde do webhook pelo Mercado Pago
   return NextResponse.json({
     status: 'online',
     endpoint: '/api/payment/webhook',

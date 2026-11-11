@@ -7,6 +7,9 @@ import { BannersControlSuite } from '@/components/admin/BannersControlSuite';
 import { AdminSidebar } from '@/components/admin/AdminSidebar';
 import { getSession } from '@/lib/auth/session';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export const metadata: Metadata = {
   title: 'Banners & Exit-Intent — Painel Admin | Mateus Celestino Pro X',
   description: 'Gerenciador soberano de banners inteligentes, gatilhos de saída (Exit-Intent) e popups de onboarding por rotas.',
@@ -14,11 +17,7 @@ export const metadata: Metadata = {
 
 export default async function AdminBannersPage() {
   const session = await getSession();
-  const isAllowed = session && (
-    session.role === 'admin' ||
-    (session as any).role === 'moder' ||
-    (session as any).role === 'moderator'
-  );
+  const isAllowed = Boolean(session && session.role === 'admin');
 
   if (!isAllowed) {
     redirect('/comunidade/login?redirectUrl=/admin/banners');

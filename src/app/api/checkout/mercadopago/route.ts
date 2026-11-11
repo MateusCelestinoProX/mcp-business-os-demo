@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import crypto from 'node:crypto';
+import { getTrustedSiteUrl } from '@/lib/security/url-guard';
+import { verifyMercadoPagoWebhookSignature, hasProcessedPayment, markPaymentProcessed } from '@/lib/payments/mp-webhook';
 
 interface PlanDefinition {
   id: string;
@@ -79,7 +80,7 @@ export async function POST(req: NextRequest) {
     }
 
     // Fluxo de Criação de Checkout / Preference
-    const { planId, productSlug, userEmail, userName, redirectUrl } = body;
+    const { planId, productSlug, userEmail, userName } = body;
     const selectedId = planId || productSlug;
 
     if (!selectedId) {
@@ -97,18 +98,19 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    const isProd = process.env.NODE_ENV === 'production';
     const MP_ACCESS_TOKEN = 
       process.env.MP_ACCESS_TOKEN || 
       process.env.MERCADO_LIVRE_TOKEN || 
-      process.env.MERCADOPAGO_ACCESS_TOKEN ||
-      'TEST-DEFAULT-TOKEN-PLACEHOLDER';
+      process.env.MERCADOPAGO_ACCESS_TOKEN;
 
-    // Determina URL base do site
-    const host = req.headers.get('host') || 'localhost:3000';
-    const protocol = host.includes('localhost') ? 'http' : 'https';
-    const origin = process.env.NEXT_PUBLIC_APP_URL || `${protocol}://${host}`;
+    const isMockToken = !MP_ACCESS_TOKEN || MP_ACCESS_TOKEN === 'TEST-DEFAULT-TOKEN-PLACEHOLDER' || MP_ACCESS_TOKEN.includes('placeholder');
 
+    // Determina URL base do site de forma estrita
+    const origin = getTrustedSiteUrl(req);
     const externalRef = `order_${plan.id}_${Date.now()}`;
+    const safeEmail = typeof userEmail === 'string' ? userEmail.trim().slice(0, 255) : 'membro@soberano.com.br';
+    const safeName = typeof userName === 'string' ? userName.trim().slice(0, 100) : 'Membro Soberano';
 
     const preferencePayload = {
       items: [
@@ -122,8 +124,8 @@ export async function POST(req: NextRequest) {
         }
       ],
       payer: {
-        name: userName || 'Membro Soberano',
-        email: userEmail || 'membro@soberano.com.br'
+        name: safeName,
+        email: safeEmail
       },
       payment_methods: {
         excluded_payment_methods: [],
@@ -142,51 +144,62 @@ export async function POST(req: NextRequest) {
     };
 
     // Chamada à API Oficial do Mercado Pago
-    try {
-      const mpResponse = await fetch('https://api.mercadopago.com/checkout/preferences', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${MP_ACCESS_TOKEN}`,
-          'Content-Type': 'application/json',
-          'X-Idempotency-Key': externalRef
-        },
-        body: JSON.stringify(preferencePayload)
-      });
-
-      if (mpResponse.ok) {
-        const data = await mpResponse.json();
-        return NextResponse.json({
-          success: true,
-          id: data.id,
-          init_point: data.init_point,
-          sandbox_init_point: data.sandbox_init_point,
-          external_reference: externalRef
+    if (MP_ACCESS_TOKEN && !isMockToken) {
+      try {
+        const mpResponse = await fetch('https://api.mercadopago.com/checkout/preferences', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${MP_ACCESS_TOKEN}`,
+            'Content-Type': 'application/json',
+            'X-Idempotency-Key': externalRef
+          },
+          body: JSON.stringify(preferencePayload)
         });
-      }
 
-      // Se falhar a comunicação externa (token inválido ou sandbox sem credencial),
-      // retornamos simulação de alta fidelidade para desenvolvimento local seguro
-      console.warn('[MercadoPago] API externa retornou status', mpResponse.status, '- acionando mock seguro para ambiente dev');
-      return NextResponse.json({
-        success: true,
-        id: `mock_pref_${Date.now()}`,
-        init_point: `${origin}/comunidade?payment=success&plan=${plan.id}&mock=true`,
-        sandbox_init_point: `${origin}/comunidade?payment=success&plan=${plan.id}&mock=true`,
-        external_reference: externalRef,
-        is_mock: true
-      });
-    } catch (networkErr: any) {
-      console.error('[MercadoPago] Falha na rede:', networkErr?.message);
-      // Fallback gracioso
-      return NextResponse.json({
-        success: true,
-        id: `mock_fallback_${Date.now()}`,
-        init_point: `${origin}/comunidade?payment=success&plan=${plan.id}&mock=true`,
-        sandbox_init_point: `${origin}/comunidade?payment=success&plan=${plan.id}&mock=true`,
-        external_reference: externalRef,
-        is_mock: true
-      });
+        if (mpResponse.ok) {
+          const data = await mpResponse.json();
+          return NextResponse.json({
+            success: true,
+            id: data.id,
+            init_point: data.init_point,
+            sandbox_init_point: data.sandbox_init_point,
+            external_reference: externalRef
+          });
+        }
+
+        if (isProd) {
+          return NextResponse.json(
+            { error: 'Falha na comunicação com o provedor de pagamento.' },
+            { status: 502 }
+          );
+        }
+      } catch (networkErr: any) {
+        console.error('[MercadoPago] Falha na rede:', networkErr?.message);
+        if (isProd) {
+          return NextResponse.json(
+            { error: 'Provedor de pagamento temporariamente indisponível.' },
+            { status: 503 }
+          );
+        }
+      }
     }
+
+    if (isProd) {
+      return NextResponse.json(
+        { error: 'Configuração de pagamento indisponível no momento.' },
+        { status: 503 }
+      );
+    }
+
+    // Modo Sandbox Simulado Localhost de Alta Fidelidade (apenas dev/test)
+    return NextResponse.json({
+      success: true,
+      id: `mock_pref_${Date.now()}`,
+      init_point: `${origin}/comunidade?payment=success&plan=${plan.id}&mock=true`,
+      sandbox_init_point: `${origin}/comunidade?payment=success&plan=${plan.id}&mock=true`,
+      external_reference: externalRef,
+      is_mock: true
+    });
 
   } catch (error: any) {
     console.error('[API Checkout MP] Erro geral:', error);
@@ -231,30 +244,25 @@ async function handleMercadoPagoWebhook(req: NextRequest, parsedBody?: any) {
       searchParams.get('data.id') || 
       searchParams.get('id');
 
+    const paymentIdStr = paymentId ? String(paymentId) : '';
     const topic = body?.type || searchParams.get('topic') || searchParams.get('type') || 'payment';
 
     // Validação estrita de Assinatura Criptográfica HMAC (x-signature)
-    const webhookSecret = process.env.MERCADOPAGO_WEBHOOK_SECRET;
-    const xSignature = req.headers.get('x-signature');
-    if (webhookSecret && xSignature) {
-      try {
-        const parts = xSignature.split(',');
-        let ts = '';
-        let hash = '';
-        for (const p of parts) {
-          const [k, v] = p.split('=');
-          if (k.trim() === 'ts') ts = v.trim();
-          if (k.trim() === 'v1') hash = v.trim();
-        }
-        const dataId = paymentId ? String(paymentId) : '';
-        const manifest = `id:${dataId};request-id:${req.headers.get('x-request-id') || ''};ts:${ts};`;
-        const expectedHash = crypto.createHmac('sha256', webhookSecret).update(manifest).digest('hex');
-        if (hash !== expectedHash) {
-          return NextResponse.json({ success: false, error: 'Violação de assinatura HMAC do webhook.' }, { status: 403 });
-        }
-      } catch (sigErr) {
-        console.warn('⚠️ [Webhook MP] Falha ao processar assinatura HMAC:', sigErr);
-      }
+    const verification = verifyMercadoPagoWebhookSignature({
+      xSignature: req.headers.get('x-signature'),
+      xRequestId: req.headers.get('x-request-id'),
+      dataId: paymentIdStr,
+    });
+
+    if (!verification.ok) {
+      return NextResponse.json(
+        { success: false, error: verification.reason || 'Violação de assinatura HMAC do webhook.' },
+        { status: 403 }
+      );
+    }
+
+    if (paymentIdStr && hasProcessedPayment(paymentIdStr)) {
+      return NextResponse.json({ success: true, received: true, alreadyProcessed: true, paymentId: paymentIdStr });
     }
 
     console.log(`[MercadoPago Webhook] Evento recebido: ${topic} | ID: ${paymentId}`);
@@ -273,6 +281,7 @@ async function handleMercadoPagoWebhook(req: NextRequest, parsedBody?: any) {
 
           if (verifyRes.ok) {
             const paymentDetails = await verifyRes.json();
+            if (paymentIdStr) markPaymentProcessed(paymentIdStr);
             console.log(`[MercadoPago Payment Verified] Status: ${paymentDetails.status} | Valor: R$ ${paymentDetails.transaction_amount}`);
             
             return NextResponse.json({
@@ -289,6 +298,7 @@ async function handleMercadoPagoWebhook(req: NextRequest, parsedBody?: any) {
     }
 
     // Confirmação para evitar retentativas desnecessárias do Mercado Pago
+    if (paymentIdStr) markPaymentProcessed(paymentIdStr);
     return NextResponse.json({ success: true, received: true, paymentId });
   } catch (err: any) {
     console.error('[MercadoPago Webhook] Erro:', err);

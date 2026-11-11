@@ -1,10 +1,11 @@
 import { NextResponse } from 'next/server';
-import { COMMUNITY_PLANS, type PlanConfig } from '@/lib/plans';
+import { COMMUNITY_PLANS } from '@/lib/plans';
+import { getTrustedSiteUrl } from '@/lib/security/url-guard';
 
 export async function POST(req: Request) {
   try {
     const body = await req.json().catch(() => ({}));
-    const { planSlug, memberEmail, memberName, customTitle } = body;
+    const { planSlug, memberEmail, memberName } = body;
 
     if (!planSlug || !COMMUNITY_PLANS[planSlug]) {
       return NextResponse.json(
@@ -17,18 +18,16 @@ export async function POST(req: Request) {
     }
 
     const plan = COMMUNITY_PLANS[planSlug];
+    const isProd = process.env.NODE_ENV === 'production';
     const mpAccessToken =
       process.env.MP_ACCESS_TOKEN ||
       process.env.MERCADOPAGO_ACCESS_TOKEN ||
       process.env.MERCADO_LIVRE_TOKEN;
 
-    const siteUrl =
-      process.env.NEXT_PUBLIC_SITE_URL ||
-      process.env.VERCEL_URL
-        ? (process.env.VERCEL_URL?.startsWith('http') ? process.env.VERCEL_URL : `https://${process.env.VERCEL_URL}`)
-        : 'http://localhost:3000';
-
-    const externalReference = `${plan.slug}__${memberEmail || 'anon'}__${Date.now()}`;
+    const siteUrl = getTrustedSiteUrl(req);
+    const safeEmail = typeof memberEmail === 'string' ? memberEmail.trim().slice(0, 255) : undefined;
+    const safeName = typeof memberName === 'string' ? memberName.trim().slice(0, 100) : 'Membro Soberano';
+    const externalReference = `${plan.slug}__${safeEmail || 'anon'}__${Date.now()}`;
 
     // 1. Caso haja token configurado do Mercado Pago, cria a preferência real via API oficial
     if (mpAccessToken) {
@@ -37,17 +36,17 @@ export async function POST(req: Request) {
           items: [
             {
               id: plan.slug,
-              title: customTitle || plan.title,
+              title: plan.title,
               description: plan.description,
               quantity: 1,
               currency_id: 'BRL',
               unit_price: plan.price,
             },
           ],
-          payer: memberEmail
+          payer: safeEmail
             ? {
-                email: memberEmail,
-                name: memberName || 'Membro Soberano',
+                email: safeEmail,
+                name: safeName,
               }
             : undefined,
           payment_methods: {
@@ -78,13 +77,19 @@ export async function POST(req: Request) {
 
         if (!mpRes.ok) {
           console.warn('⚠️ [Mercado Pago] Erro retornado pela API MP:', mpData);
-          // Fallback para sandbox simulado se a API do MP falhar com token de teste
+          if (isProd) {
+            return NextResponse.json(
+              { success: false, error: 'Falha na comunicação com o gateway de pagamento.' },
+              { status: 502 }
+            );
+          }
+          // Fallback para sandbox simulado apenas em ambiente de desenvolvimento
           return NextResponse.json({
             success: true,
             mode: 'sandbox_fallback',
             id: `MP_ERR_FALLBACK_${Date.now()}`,
-            init_point: `${siteUrl}/comunidade?payment=success&sandbox=true&plan=${plan.slug}&email=${encodeURIComponent(memberEmail || '')}`,
-            sandbox_init_point: `${siteUrl}/comunidade?payment=success&sandbox=true&plan=${plan.slug}&email=${encodeURIComponent(memberEmail || '')}`,
+            init_point: `${siteUrl}/comunidade?payment=success&sandbox=true&plan=${plan.slug}&email=${encodeURIComponent(safeEmail || '')}`,
+            sandbox_init_point: `${siteUrl}/comunidade?payment=success&sandbox=true&plan=${plan.slug}&email=${encodeURIComponent(safeEmail || '')}`,
             details: mpData,
           });
         }
@@ -98,12 +103,25 @@ export async function POST(req: Request) {
         });
       } catch (mpFetchError: any) {
         console.warn('⚠️ [Checkout] Erro de rede com Mercado Pago:', mpFetchError);
+        if (isProd) {
+          return NextResponse.json(
+            { success: false, error: 'Gateway de pagamento temporariamente indisponível.' },
+            { status: 503 }
+          );
+        }
       }
     }
 
-    // 2. Modo Sandbox Simulado Localhost (Sem necessidade de credenciais de produção)
+    if (isProd) {
+      return NextResponse.json(
+        { success: false, error: 'Configuração de pagamento indisponível no momento.' },
+        { status: 503 }
+      );
+    }
+
+    // 2. Modo Sandbox Simulado Localhost (Sem necessidade de credenciais de produção em dev/test)
     const simulatedId = `SANDBOX_PREF_${Math.random().toString(36).substring(2, 9).toUpperCase()}`;
-    const simulatedReturnUrl = `${siteUrl}/comunidade?payment=success&sandbox=true&plan=${plan.slug}&email=${encodeURIComponent(memberEmail || '')}&ref=${externalReference}`;
+    const simulatedReturnUrl = `${siteUrl}/comunidade?payment=success&sandbox=true&plan=${plan.slug}&email=${encodeURIComponent(safeEmail || '')}&ref=${externalReference}`;
 
     return NextResponse.json({
       success: true,
@@ -122,7 +140,7 @@ export async function POST(req: Request) {
   } catch (error: any) {
     console.error('❌ [Checkout] Erro interno:', error);
     return NextResponse.json(
-      { success: false, error: 'Erro interno ao gerar checkout: ' + error.message },
+      { success: false, error: 'Erro interno ao processar checkout.' },
       { status: 500 }
     );
   }

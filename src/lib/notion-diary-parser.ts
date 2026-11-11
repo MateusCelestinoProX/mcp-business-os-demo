@@ -1,4 +1,5 @@
 import { marked } from 'marked';
+import { sanitizeDangerousHtml, escapeHtml, sanitizeSafeUrl } from '@/lib/security/sanitize';
 
 /**
  * ==============================================================================
@@ -19,35 +20,6 @@ marked.setOptions({
   gfm: true,
   breaks: true,
 });
-
-function escapeHtml(str: string): string {
-  return str
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;');
-}
-
-/**
- * Sanitiza HTML gerado eliminando scripts executáveis, handlers de eventos e vetores XSS
- */
-function sanitizeDangerousHtml(html: string): string {
-  if (!html) return '';
-  return html
-    // Remove tags de script e seu conteúdo
-    .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
-    // Remove inline event handlers (ex: onerror=, onclick=, onload=, onmouseover=)
-    .replace(/\s+on[a-z]+\s*=\s*(?:'[^']*'|"[^"]*"|[^\s>]+)/gi, '')
-    // Desarma esquemas perigosos de URL (javascript:, vbscript:, data:text/html, etc.)
-    .replace(/href\s*=\s*(?:'[\s]*(?:javascript|vbscript|data):[^']*'|"[\s]*(?:javascript|vbscript|data):[^"]*"|[\s]*(?:javascript|vbscript|data):[^\s>]+)/gi, 'href="#"')
-    .replace(/src\s*=\s*(?:'[\s]*(?:javascript|vbscript|data):[^']*'|"[\s]*(?:javascript|vbscript|data):[^"]*"|[\s]*(?:javascript|vbscript|data):[^\s>]+)/gi, 'src=""')
-    // Remove iframes que não sejam dos reprodutores confiáveis (YouTube e Vimeo)
-    .replace(/<iframe\b(?![^>]*src="https:\/\/(?:www\.youtube\.com\/embed\/|player\.vimeo\.com\/video\/))[^>]*>.*?<\/iframe>/gis, '')
-    // Remove tags potencialmente maliciosas de formulários, objetos e metadados
-    .replace(/<(object|embed|applet|meta|base|form|input|button)\b[^>]*>/gi, '')
-    .replace(/<\/(object|embed|applet|meta|base|form|input|button)>/gi, '');
-}
 
 /**
  * Renderiza um vídeo ou mídia embedada de forma responsiva

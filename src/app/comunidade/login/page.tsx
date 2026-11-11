@@ -69,8 +69,8 @@ export default function LoginPage() {
         tier: role === 'admin' ? 'max' : (data.user?.tier || 'vip'),
       };
 
-      if (data.token && typeof window !== 'undefined') {
-        localStorage.setItem('mcp_auth_token', data.token);
+      if (typeof window !== 'undefined') {
+        localStorage.removeItem('mcp_auth_token');
       }
 
       const targetUrl = data.redirectUrl || (role === 'admin' ? '/admin' : '/comunidade');

@@ -3,8 +3,9 @@ import { db, articles } from '@/lib/db';
 import { eq, desc, ilike, or } from 'drizzle-orm';
 import { parseNotionMarkdown, calculateReadingTime, extractExcerpt } from '@/lib/notion-diary-parser';
 import rawArticles from '@/data/articles-summary.json';
-import { verifyAdminRequest, unauthorizedResponse } from '@/lib/auth/admin-guard';
+import { verifyAdminRequest, denyAdminRequest } from '@/lib/auth/admin-guard';
 import { memoryCache } from '@/lib/cache/memory-cache';
+import { sanitizeSafeUrl } from '@/lib/security/sanitize';
 
 export const dynamic = 'force-dynamic';
 
@@ -31,18 +32,23 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
     const search = searchParams.get('search') || '';
     const category = searchParams.get('category') || 'TODOS';
-    const limit = Math.min(500, Math.max(1, parseInt(searchParams.get('limit') || '100', 10)));
-    const page = Math.max(1, parseInt(searchParams.get('page') || '1', 10));
+    const rawLimit = parseInt(searchParams.get('limit') || '100', 10);
+    const rawPage = parseInt(searchParams.get('page') || '1', 10);
+    const limit = Number.isFinite(rawLimit) ? Math.min(500, Math.max(1, rawLimit)) : 100;
+    const page = Number.isFinite(rawPage) ? Math.max(1, rawPage) : 1;
     const offset = (page - 1) * limit;
 
-    const cacheKey = `articles:list:${category}:${search}:${page}:${limit}`;
+    const auth = await verifyAdminRequest(request);
+    const isAdmin = auth.authorized;
+
+    const cacheKey = `articles:list:${isAdmin ? 'admin' : 'pub'}:${category}:${search}:${page}:${limit}`;
     const cached = memoryCache.get<any>(cacheKey);
     if (cached) {
       return NextResponse.json(
         { ...cached, source: 'memory_cache' },
         {
           headers: {
-            'Cache-Control': 'public, s-maxage=120, stale-while-revalidate=600, max-age=60',
+            'Cache-Control': isAdmin ? 'private, no-store' : 'public, s-maxage=120, stale-while-revalidate=600, max-age=60',
             'X-Cache': 'HIT',
           },
         }
@@ -65,7 +71,7 @@ export async function GET(request: NextRequest) {
 
     if (dbArticles.length > 0) {
       // Normaliza retorno para o formato padrão do portal
-      const normalized = dbArticles.map((a) => {
+      let normalized = dbArticles.map((a) => {
         const cover = a.coverUrl || '/assets/hero_cover.webp';
         const summary = a.summary || '';
         const readingTime = typeof a.readingTime === 'number' ? `${a.readingTime} min` : String(a.readingTime || '5 min');
@@ -91,6 +97,11 @@ export async function GET(request: NextRequest) {
         };
       });
 
+      // Usuários públicos veem exclusivamente artigos publicados
+      if (!isAdmin) {
+        normalized = normalized.filter((a) => a.isPublished !== false);
+      }
+
       // Aplica filtros se houver
       let filtered = normalized;
       if (category && category !== 'TODOS' && category !== 'all') {
@@ -115,7 +126,7 @@ export async function GET(request: NextRequest) {
 
       return NextResponse.json(supabasePayload, {
         headers: {
-          'Cache-Control': 'public, s-maxage=120, stale-while-revalidate=600, max-age=60',
+          'Cache-Control': isAdmin ? 'private, no-store' : 'public, s-maxage=120, stale-while-revalidate=600, max-age=60',
           'X-Cache': 'MISS',
         },
       });
@@ -143,6 +154,10 @@ export async function GET(request: NextRequest) {
       };
     });
 
+    if (!isAdmin) {
+      staticList = staticList.filter((a) => a.isPublished !== false);
+    }
+
     if (category && category !== 'TODOS' && category !== 'all') {
       staticList = staticList.filter((a) => a.category.toLowerCase().includes(category.toLowerCase()));
     }
@@ -165,13 +180,13 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json(localPayload, {
       headers: {
-        'Cache-Control': 'public, s-maxage=120, stale-while-revalidate=600, max-age=60',
+        'Cache-Control': isAdmin ? 'private, no-store' : 'public, s-maxage=120, stale-while-revalidate=600, max-age=60',
         'X-Cache': 'MISS',
       },
     });
   } catch (error: any) {
     return NextResponse.json(
-      { success: false, error: error?.message || 'Erro ao consultar artigos.' },
+      { success: false, error: 'Erro ao consultar artigos do acervo.' },
       { status: 500 }
     );
   }
@@ -185,10 +200,10 @@ export async function POST(request: NextRequest) {
   try {
     const auth = await verifyAdminRequest(request);
     if (!auth.authorized) {
-      return unauthorizedResponse(auth.error);
+      return denyAdminRequest(auth);
     }
 
-    const body = await request.json();
+    const body = await request.json().catch(() => ({}));
     const { title, content, category, coverUrl, summary, readingTime, isPublished } = body;
 
     if (!title || !title.trim()) {
@@ -209,7 +224,7 @@ export async function POST(request: NextRequest) {
     const finalSummary = summary && summary.trim() ? summary.trim() : extractExcerpt(content, 180);
     const finalReadingTime = readingTime && readingTime.trim() ? readingTime.trim() : calculateReadingTime(content);
     const finalCategory = category && category.trim() ? category.trim().toUpperCase() : 'INTELIGÊNCIA ARTIFICIAL';
-    const finalCover = coverUrl && coverUrl.trim() ? coverUrl.trim() : '/assets/recursos_cover.webp';
+    const finalCover = coverUrl && coverUrl.trim() ? sanitizeSafeUrl(coverUrl.trim(), '/assets/recursos_cover.webp') : '/assets/recursos_cover.webp';
     const publishedFlag = typeof isPublished === 'boolean' ? isPublished : true;
 
     // Inserção no Supabase com Drizzle ORM
@@ -255,10 +270,10 @@ export async function PUT(request: NextRequest) {
   try {
     const auth = await verifyAdminRequest(request);
     if (!auth.authorized) {
-      return unauthorizedResponse(auth.error);
+      return denyAdminRequest(auth);
     }
 
-    const body = await request.json();
+    const body = await request.json().catch(() => ({}));
     const { id, title, slug, content, category, coverUrl, summary, readingTime, isPublished } = body;
 
     if (!id && !slug) {
@@ -279,7 +294,7 @@ export async function PUT(request: NextRequest) {
     if (summary) updateData.summary = summary.trim();
     if (readingTime) updateData.readingTime = readingTime.trim();
     if (category) updateData.category = category.trim().toUpperCase();
-    if (coverUrl !== undefined) updateData.coverUrl = coverUrl.trim();
+    if (coverUrl !== undefined) updateData.coverUrl = sanitizeSafeUrl(coverUrl.trim(), '/assets/recursos_cover.webp');
     if (isPublished !== undefined) updateData.isPublished = Boolean(isPublished);
 
     let updatedRows: any[] = [];
@@ -314,7 +329,7 @@ export async function PUT(request: NextRequest) {
     });
   } catch (error: any) {
     return NextResponse.json(
-      { success: false, error: error?.message || 'Falha ao atualizar artigo.' },
+      { success: false, error: 'Falha ao atualizar artigo.' },
       { status: 500 }
     );
   }
@@ -328,7 +343,7 @@ export async function DELETE(request: NextRequest) {
   try {
     const auth = await verifyAdminRequest(request);
     if (!auth.authorized) {
-      return unauthorizedResponse(auth.error);
+      return denyAdminRequest(auth);
     }
 
     const { searchParams } = new URL(request.url);

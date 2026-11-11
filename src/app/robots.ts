@@ -8,6 +8,7 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: '*',
         allow: '/',
         disallow: [
+          '/admin',
           '/admin/',
           '/api/',
           '/builder/',
@@ -29,6 +30,7 @@ export default function robots(): MetadataRoute.Robots {
           '/*.css$',
         ],
         disallow: [
+          '/admin',
           '/admin/',
           '/api/',
           '/builder/',
@@ -37,13 +39,13 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: 'Googlebot-Image',
         allow: ['/assets/', '/*.png$', '/*.jpg$', '/*.webp$', '/*.gif$'],
-        disallow: ['/admin/'],
+        disallow: ['/admin', '/admin/'],
       },
       {
         // Garante visibilidade e citação no Google AI Overviews & Search Generative Experience
         userAgent: ['Google-Extended', 'GPTBot', 'PerplexityBot', 'ClaudeBot', 'Applebot-Extended'],
         allow: ['/', '/artigos/', '/shop/', '/biblioteca/'],
-        disallow: ['/admin/', '/api/', '/builder/'],
+        disallow: ['/admin', '/admin/', '/api/', '/builder/'],
       },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,
