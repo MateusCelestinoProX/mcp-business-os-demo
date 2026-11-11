@@ -14,7 +14,7 @@
  * =========================================================================
  */
 
-const CACHE_VERSION = 'mcp-business-os-v1.0.3';
+const CACHE_VERSION = 'mcp-business-os-v1.0.4';
 const STATIC_CACHE = `mcp-static-${CACHE_VERSION}`;
 const PAGES_CACHE = `mcp-pages-${CACHE_VERSION}`;
 const API_CACHE = `mcp-api-${CACHE_VERSION}`;
@@ -101,21 +101,17 @@ self.addEventListener('fetch', (event) => {
 
   if (isMutableHubAsset) {
     event.respondWith(
-      caches.match(request).then((cachedResponse) => {
-        const fetchPromise = fetch(request)
-          .then((networkResponse) => {
-            if (networkResponse && networkResponse.status === 200 && networkResponse.type !== 'opaque') {
-              const responseToCache = networkResponse.clone();
-              caches.open(STATIC_CACHE).then((cache) => {
-                cache.put(request, responseToCache);
-              });
-            }
-            return networkResponse;
-          })
-          .catch(() => cachedResponse);
-
-        return cachedResponse || fetchPromise;
-      })
+      fetch(request)
+        .then((networkResponse) => {
+          if (networkResponse && networkResponse.status === 200 && networkResponse.type !== 'opaque') {
+            const responseToCache = networkResponse.clone();
+            caches.open(STATIC_CACHE).then((cache) => {
+              cache.put(request, responseToCache);
+            });
+          }
+          return networkResponse;
+        })
+        .catch(() => caches.match(request))
     );
     return;
   }
