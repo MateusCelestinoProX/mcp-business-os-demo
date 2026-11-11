@@ -44,13 +44,13 @@ export function MemberCard({
 
   // Perfil padrão caso o usuário esteja navegando em modo visitante / preview
   const currentMember: MemberProfile = member || {
-    id: 'mcp-demo-vip-001',
-    name: 'Mateus Celestino (Preview)',
+    id: '',
+    name: 'Visitante',
     email: 'membro@mateuscelestinopro.com',
-    tier: 'vip',
-    role: 'VIP Member',
+    tier: 'free',
+    role: 'Membro',
     status: 'active',
-    createdAt: '2026-10-14',
+    createdAt: new Date().toISOString().split('T')[0],
   };
 
   const copyMemberId = () => {
@@ -165,11 +165,11 @@ export function MemberCard({
         </div>
 
         <div className="rounded-xl border border-white/5 bg-white/[0.02] p-2.5 text-center">
-          <div className="flex items-center justify-center gap-1 text-purple-400">
-            <Award className="h-3 w-3" />
-            <span className="text-xs font-bold text-white">Nível 8</span>
+          <div className="flex items-center justify-center gap-1 text-emerald-400">
+            <ShieldCheck className="h-3 w-3" />
+            <span className="text-xs font-bold text-white">Ativo</span>
           </div>
-          <span className="text-[0.62rem] sm:text-[0.65rem] text-neutral-400 block truncate">Reputação</span>
+          <span className="text-[0.62rem] sm:text-[0.65rem] text-neutral-400 block truncate">Status</span>
         </div>
       </div>
 

@@ -2,6 +2,7 @@
 
 import React, { useEffect } from 'react';
 import { X, Shield } from 'lucide-react';
+import { sanitizeDangerousHtml } from '@/lib/security/sanitize';
 
 export interface LegalModalProps {
   title: string;
@@ -23,6 +24,8 @@ export function LegalModal({ title, contentHtml, onClose }: LegalModalProps) {
   }, [onClose]);
 
   if (!contentHtml) return null;
+
+  const safeHtml = sanitizeDangerousHtml(contentHtml);
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-0 sm:p-6 overflow-y-auto bg-black/90 backdrop-blur-3xl animate-in fade-in duration-200">
@@ -48,7 +51,7 @@ export function LegalModal({ title, contentHtml, onClose }: LegalModalProps) {
         {/* Legal Text */}
         <div 
           className="article-prose text-xs sm:text-sm text-zinc-300 space-y-4 flex-1 leading-relaxed"
-          dangerouslySetInnerHTML={{ __html: contentHtml }}
+          dangerouslySetInnerHTML={{ __html: safeHtml }}
         />
 
         {/* Bottom Bar */}

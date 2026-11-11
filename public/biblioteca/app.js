@@ -506,13 +506,24 @@
     return html;
   }
 
+  function sanitizeHref(url) {
+    if (!url) return '#';
+    const trimmed = String(url).trim();
+    if (/^(https?:\/\/|\/|mailto:)/i.test(trimmed) && !/^(javascript|vbscript|data):/i.test(trimmed)) {
+      return escapeHtml(trimmed);
+    }
+    return '#';
+  }
+
   function inlineMarkdown(text) {
     text = text.replace(/`([^`]+)`/g, '<code>$1</code>');
     text = text.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
     text = text.replace(/__([^_]+)__/g, '<strong>$1</strong>');
     text = text.replace(/\*([^*]+)\*/g, '<em>$1</em>');
     text = text.replace(/_([^_]+)_/g, '<em>$1</em>');
-    text = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+    text = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, function(_, linkText, linkUrl) {
+      return '<a href="' + sanitizeHref(linkUrl) + '" target="_blank" rel="noopener noreferrer">' + linkText + '</a>';
+    });
     text = text.replace(/(?<!href=")(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
     return text;
   }

@@ -80,10 +80,13 @@ self.addEventListener('fetch', (event) => {
     url.pathname.startsWith('/api/members') ||
     url.pathname.startsWith('/api/finance') ||
     url.pathname.startsWith('/api/leads') ||
+    url.pathname.startsWith('/api/storage') ||
+    url.pathname.startsWith('/api/library/download') ||
     url.pathname.startsWith('/api/payment') ||
     url.pathname.startsWith('/api/checkout') ||
+    url.pathname.includes('/api/send') ||
     url.hostname.includes('umami') ||
-    url.pathname.includes('/api/send')
+    request.headers.has('authorization')
   ) {
     return;
   }

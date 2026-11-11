@@ -212,8 +212,11 @@
         align-items: center !important;
         gap: 12px !important;
       }
-      .msb-btn-admin {
-        display: none;
+      /* BOTÃO PAINEL ADMIN: visível SOMENTE para admin autenticado e validado pelo servidor */
+      .msb-btn-admin,
+      #msb-admin-btn,
+      #msb-mobile-admin-btn {
+        display: none !important;
         align-items: center !important;
         gap: 6px !important;
         padding: 6px 13px !important;
@@ -228,10 +231,16 @@
         transition: all 0.2s ease !important;
         white-space: nowrap !important;
       }
-      .msb-btn-admin.visible {
+      .msb-btn-admin.visible,
+      #msb-admin-btn.visible {
         display: inline-flex !important;
       }
-      .msb-btn-admin:hover {
+      #msb-mobile-admin-btn.visible {
+        display: flex !important;
+      }
+      .msb-btn-admin:hover,
+      #msb-admin-btn:hover,
+      #msb-mobile-admin-btn:hover {
         background: linear-gradient(135deg, rgba(245, 158, 11, 0.35), rgba(180, 83, 9, 0.45)) !important;
         box-shadow: 0 0 20px rgba(245, 158, 11, 0.4) !important;
         transform: translateY(-1px) !important;
@@ -591,7 +600,7 @@
 
         <!-- Status, Painel Admin (apenas moder/admin) & Role Pill -->
         <div class="msb-actions-desktop">
-          <a href="/admin" target="_top" id="msb-admin-btn" class="msb-btn-admin" title="Painel de Gestão e Form Builder">
+          <a href="/admin" target="_top" id="msb-admin-btn" class="msb-btn-admin" style="display: none !important;" title="Painel de Gestão e Form Builder">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"/></svg>
             <span>👑 Painel Admin</span>
           </a>
@@ -648,7 +657,7 @@
           <svg class="msb-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 20H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H20a2 2 0 0 1 2 2v2"/><circle cx="13" cy="12" r="2"/><path d="M18 19c-2.8 0-5-2.2-5-5v8"/><circle cx="20" cy="19" r="2"/></svg>
           <span>Free Resources</span>
         </a>
-        <a href="/admin" target="_top" id="msb-mobile-admin-btn" class="msb-btn-admin" style="margin-top: 6px; justify-content: center;">
+        <a href="/admin" target="_top" id="msb-mobile-admin-btn" class="msb-btn-admin" style="display: none !important; margin-top: 6px; justify-content: center;">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"/></svg>
           <span>👑 Painel Admin</span>
         </a>
@@ -740,7 +749,7 @@
           try {
             localStorage.setItem(STORAGE_KEY, JSON.stringify(u));
             localStorage.setItem('mcp_user_role', u.role);
-            localStorage.setItem('mcp_admin_auth', (u.role === 'admin' || u.role === 'moder') ? 'true' : 'false');
+            localStorage.setItem('mcp_admin_auth', u.role === 'admin' ? 'true' : 'false');
             window.dispatchEvent(new CustomEvent('mcp_auth_changed', { detail: u }));
           } catch(e) {}
         }
@@ -761,11 +770,22 @@
 
           var isAdmin = Boolean(u && u.isLoggedIn === true && u.role === 'admin');
           if (adminBtn) {
-            if (isAdmin) adminBtn.classList.add('visible');
-            else adminBtn.classList.remove('visible');
+            if (isAdmin) {
+              adminBtn.classList.add('visible');
+              adminBtn.style.setProperty('display', 'inline-flex', 'important');
+            } else {
+              adminBtn.classList.remove('visible');
+              adminBtn.style.setProperty('display', 'none', 'important');
+            }
           }
           if (mobileAdminBtn) {
-            mobileAdminBtn.style.display = isAdmin ? 'flex' : 'none';
+            if (isAdmin) {
+              mobileAdminBtn.classList.add('visible');
+              mobileAdminBtn.style.setProperty('display', 'flex', 'important');
+            } else {
+              mobileAdminBtn.classList.remove('visible');
+              mobileAdminBtn.style.setProperty('display', 'none', 'important');
+            }
           }
           var dockAdminLink = document.getElementById('msb-dock-admin-link');
           if (dockAdminLink) {
@@ -776,6 +796,32 @@
               dockAdminLink.classList.remove('is-admin-active');
               dockAdminLink.style.setProperty('display', 'none', 'important');
             }
+          }
+
+          if (isAdmin) {
+            fetch('/api/auth/me', { method: 'GET', cache: 'no-store', credentials: 'same-origin' })
+              .then(function(res) {
+                if (!res.ok) throw new Error('Unauthenticated');
+                return res.json();
+              })
+              .then(function(data) {
+                if (!data || !data.authenticated || !data.user || data.user.role !== 'admin') {
+                  if (adminBtn) { adminBtn.classList.remove('visible'); adminBtn.style.setProperty('display', 'none', 'important'); }
+                  if (mobileAdminBtn) { mobileAdminBtn.classList.remove('visible'); mobileAdminBtn.style.setProperty('display', 'none', 'important'); }
+                  if (dockAdminLink) { dockAdminLink.classList.remove('is-admin-active'); dockAdminLink.style.setProperty('display', 'none', 'important'); }
+                  localStorage.removeItem('mcp_session_user');
+                  localStorage.removeItem('mcp_admin_auth');
+                  localStorage.setItem('mcp_user_role', data && data.user ? data.user.role : 'visitante');
+                }
+              })
+              .catch(function() {
+                if (adminBtn) { adminBtn.classList.remove('visible'); adminBtn.style.setProperty('display', 'none', 'important'); }
+                if (mobileAdminBtn) { mobileAdminBtn.classList.remove('visible'); mobileAdminBtn.style.setProperty('display', 'none', 'important'); }
+                if (dockAdminLink) { dockAdminLink.classList.remove('is-admin-active'); dockAdminLink.style.setProperty('display', 'none', 'important'); }
+                localStorage.removeItem('mcp_session_user');
+                localStorage.removeItem('mcp_admin_auth');
+                localStorage.setItem('mcp_user_role', 'visitante');
+              });
           }
 
           if (userName) userName.textContent = u.name;
@@ -2438,6 +2484,20 @@
               if (isAdmin) {
                 adminLink.classList.add('is-admin-active');
                 adminLink.style.setProperty('display', 'flex', 'important');
+
+                fetch('/api/auth/me', { method: 'GET', cache: 'no-store', credentials: 'same-origin' })
+                  .then(function(r) { return r.ok ? r.json() : null; })
+                  .then(function(d) {
+                    if (!d || !d.authenticated || !d.user || d.user.role !== 'admin') {
+                      adminLink.classList.remove('is-admin-active');
+                      adminLink.style.setProperty('display', 'none', 'important');
+                      localStorage.removeItem('mcp_session_user');
+                      localStorage.removeItem('mcp_admin_auth');
+                    }
+                  }).catch(function() {
+                    adminLink.classList.remove('is-admin-active');
+                    adminLink.style.setProperty('display', 'none', 'important');
+                  });
               } else {
                 adminLink.classList.remove('is-admin-active');
                 adminLink.style.setProperty('display', 'none', 'important');

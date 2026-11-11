@@ -12,12 +12,7 @@ import {
   Crown,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import {
-  UnifiedUser,
-  DEFAULT_GUEST_USER,
-  getStoredUser,
-  hasAdminAccess,
-} from "@/lib/auth/unified-auth";
+import { useVerifiedAuth } from "@/components/auth/VerifiedAuthProvider";
 
 export interface MobileNavItem {
   name: string;
@@ -40,29 +35,7 @@ export function MobileBottomNav() {
   const pathname = usePathname();
   const containerRef = useRef<HTMLDivElement>(null);
   const activeItemRef = useRef<HTMLAnchorElement>(null);
-  const [currentUser, setCurrentUser] = useState<UnifiedUser>(DEFAULT_GUEST_USER);
-
-  useEffect(() => {
-    setCurrentUser(getStoredUser());
-
-    const handleAuthChange = (e: Event) => {
-      const customEvent = e as CustomEvent<UnifiedUser>;
-      if (customEvent.detail) {
-        setCurrentUser(customEvent.detail);
-      } else {
-        setCurrentUser(getStoredUser());
-      }
-    };
-
-    window.addEventListener("mcp_auth_changed", handleAuthChange);
-    window.addEventListener("storage", handleAuthChange);
-    return () => {
-      window.removeEventListener("mcp_auth_changed", handleAuthChange);
-      window.removeEventListener("storage", handleAuthChange);
-    };
-  }, []);
-
-  const isUserAdmin = hasAdminAccess(currentUser);
+  const { isUserAdmin } = useVerifiedAuth();
 
   // Filtra itens dinamicamente: Admin só aparece se admin estiver autenticado
   const visibleNavItems = mobileNavItems.filter(

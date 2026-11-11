@@ -18,11 +18,10 @@ import {
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
+import { useVerifiedAuth } from "@/components/auth/VerifiedAuthProvider";
 import {
   UnifiedUser,
   DEFAULT_GUEST_USER,
-  getStoredUser,
-  setStoredUser,
   hasAdminAccess,
 } from "@/lib/auth/unified-auth";
 
@@ -44,34 +43,7 @@ export const navLinks: NavLinkItem[] = [
 export function Navbar() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [currentUser, setCurrentUser] = useState<UnifiedUser>(DEFAULT_GUEST_USER);
-
-  useEffect(() => {
-    setCurrentUser(getStoredUser());
-
-    const handleAuthChange = (e: Event) => {
-      const customEvent = e as CustomEvent<UnifiedUser>;
-      if (customEvent.detail) {
-        setCurrentUser(customEvent.detail);
-      } else {
-        setCurrentUser(getStoredUser());
-      }
-    };
-
-    window.addEventListener("mcp_auth_changed", handleAuthChange);
-    window.addEventListener("storage", handleAuthChange);
-    return () => {
-      window.removeEventListener("mcp_auth_changed", handleAuthChange);
-      window.removeEventListener("storage", handleAuthChange);
-    };
-  }, []);
-
-  const handleLogout = () => {
-    setStoredUser(DEFAULT_GUEST_USER);
-    setCurrentUser(DEFAULT_GUEST_USER);
-  };
-
-  const isUserAdmin = hasAdminAccess(currentUser);
+  const { user: currentUser, isUserAdmin, logout: handleLogout } = useVerifiedAuth();
 
   return (
     <header

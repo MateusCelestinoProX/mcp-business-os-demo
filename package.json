@@ -30,7 +30,7 @@
     "jose": "^6.2.12",
     "lucide-react": "^1.16.0",
     "marked": "^18.1.1",
-    "next": "^15.2.0",
+    "next": "^15.5.29",
     "ogl": "^1.0.11",
     "pg": "^8.13.3",
     "react": "^19.0.0",
@@ -47,10 +47,13 @@
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
     "@types/three": "^0.186.0",
-    "drizzle-kit": "^0.30.0",
-    "postcss": "^8.5.1",
+    "drizzle-kit": "^0.31.11",
+    "postcss": "^8.5.32",
     "tailwindcss": "^4.0.0",
     "tsx": "^4.19.2",
     "typescript": "^5.7.3"
+  },
+  "overrides": {
+    "postcss": "^8.5.32"
   }
 }

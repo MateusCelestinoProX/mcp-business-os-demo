@@ -1,10 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db, systemSettings } from '@/lib/db';
 import { eq } from 'drizzle-orm';
-import { verifyAdminRequest, unauthorizedResponse } from '@/lib/auth/admin-guard';
+import { verifyAdminRequest, denyAdminRequest } from '@/lib/auth/admin-guard';
 import defaultBannersData from '@/data/banners.json';
 import { memoryCache } from '@/lib/cache/memory-cache';
 import { BannersConfig, SmartBanner } from '@/types/banners';
+import { sanitizeSafeUrl } from '@/lib/security/sanitize';
 
 export const dynamic = 'force-dynamic';
 
@@ -21,7 +22,7 @@ const LEGACY_MOCK_BANNER_IDS = new Set([
 export async function GET(req: NextRequest) {
   const auth = await verifyAdminRequest(req);
   if (!auth.authorized) {
-    return unauthorizedResponse(auth.error);
+    return denyAdminRequest(auth);
   }
 
   try {
@@ -78,7 +79,7 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
   const auth = await verifyAdminRequest(req);
   if (!auth.authorized) {
-    return unauthorizedResponse(auth.error);
+    return denyAdminRequest(auth);
   }
 
   try {
@@ -216,7 +217,7 @@ export async function POST(req: NextRequest) {
 export async function DELETE(req: NextRequest) {
   const auth = await verifyAdminRequest(req);
   if (!auth.authorized) {
-    return unauthorizedResponse(auth.error);
+    return denyAdminRequest(auth);
   }
 
   try {

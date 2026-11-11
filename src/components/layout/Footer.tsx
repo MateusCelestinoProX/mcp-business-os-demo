@@ -18,39 +18,12 @@ import {
 } from "lucide-react";
 import SilkShader from "@/components/shaders/SilkShader";
 import { openCookiePreferences } from "@/lib/cookies";
-import {
-  UnifiedUser,
-  DEFAULT_GUEST_USER,
-  getStoredUser,
-  hasAdminAccess,
-} from "@/lib/auth/unified-auth";
+import { useVerifiedAuth } from "@/components/auth/VerifiedAuthProvider";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
   const pathname = usePathname();
-  const [currentUser, setCurrentUser] = useState<UnifiedUser>(DEFAULT_GUEST_USER);
-
-  useEffect(() => {
-    setCurrentUser(getStoredUser());
-
-    const handleAuthChange = (e: Event) => {
-      const customEvent = e as CustomEvent<UnifiedUser>;
-      if (customEvent.detail) {
-        setCurrentUser(customEvent.detail);
-      } else {
-        setCurrentUser(getStoredUser());
-      }
-    };
-
-    window.addEventListener("mcp_auth_changed", handleAuthChange);
-    window.addEventListener("storage", handleAuthChange);
-    return () => {
-      window.removeEventListener("mcp_auth_changed", handleAuthChange);
-      window.removeEventListener("storage", handleAuthChange);
-    };
-  }, []);
-
-  const isUserAdmin = hasAdminAccess(currentUser);
+  const { isUserAdmin } = useVerifiedAuth();
 
   const headerNavButtons = [
     { name: "Home Page", href: "/", icon: Shield },

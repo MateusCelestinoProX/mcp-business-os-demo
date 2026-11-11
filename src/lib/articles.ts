@@ -1,4 +1,5 @@
 import rawArticles from '@/data/articles.json';
+import { sanitizeDangerousHtml } from '@/lib/security/sanitize';
 
 export interface Article {
   id: string;
@@ -16,6 +17,7 @@ export interface Article {
 const articlesList: Article[] = (rawArticles as any[]).map((a) => ({
   ...a,
   readingTime: typeof a.readingTime === 'number' ? `${a.readingTime} min` : String(a.readingTime || '5 min'),
+  contentHtml: a.contentHtml ? sanitizeDangerousHtml(a.contentHtml) : '',
 }));
 
 export function getAllArticles(): Article[] {

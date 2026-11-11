@@ -73,8 +73,20 @@ export default function LoginPage() {
         localStorage.removeItem('mcp_auth_token');
       }
 
-      const targetUrl = data.redirectUrl || (role === 'admin' ? '/admin' : '/comunidade');
-      executeLoginSuccess(userPayload, targetUrl);
+      let safeRedirect = role === 'admin' ? '/admin' : '/comunidade';
+      if (typeof window !== 'undefined') {
+        const searchParams = new URLSearchParams(window.location.search);
+        const requested = searchParams.get('redirectUrl') || data.redirectUrl;
+        if (requested && requested.startsWith('/') && !requested.startsWith('//') && !requested.startsWith('/\\')) {
+          if (requested.startsWith('/admin') && role !== 'admin') {
+            safeRedirect = '/comunidade';
+          } else {
+            safeRedirect = requested;
+          }
+        }
+      }
+
+      executeLoginSuccess(userPayload, safeRedirect);
     } catch (err: any) {
       setErrorMessage(err.message || 'Erro ao realizar login.');
       setIsLoading(false);

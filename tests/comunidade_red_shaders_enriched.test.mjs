@@ -66,9 +66,10 @@ test('Blindagem da Suíte de Shaders Vermelhos de Personal OS & Comunidade Enriq
     assert.ok(indexHtml.includes('id="communityImageLightbox"'), 'index.html deve conter modal lightbox');
     assert.ok(appJs.includes('window.openCommunityLightbox'), 'app.js deve permitir zoom em tela cheia');
 
-    // Sidebar enriquecida
+    // Sidebar enriquecida (sem rankings mockados ou XP)
     assert.ok(appJs.includes('Trending Prompts'), 'Sidebar deve conter Trending Prompts');
-    assert.ok(appJs.includes('Top Criadores da Semana'), 'Sidebar deve conter Leaderboard');
+    assert.ok(!appJs.includes('Top Criadores da Semana'), 'Sidebar não deve conter dados mockup ou Top Criadores');
+    assert.ok(!appJs.includes('renderCommunityRankingTab'), 'Aba de ranking/gamificação deve estar completamente removida');
     assert.ok(appJs.includes('Salas Rápidas'), 'Sidebar deve conter atalhos para canais');
   });
 });

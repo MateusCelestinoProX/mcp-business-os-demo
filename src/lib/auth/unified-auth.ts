@@ -69,6 +69,19 @@ export function setStoredUser(user: UnifiedUser): void {
   }
 }
 
+export function sanitizeClientAuthStorage(): void {
+  if (typeof window === 'undefined') return;
+  try {
+    localStorage.removeItem(AUTH_STORAGE_KEY);
+    localStorage.removeItem('mcp_user_role');
+    localStorage.removeItem('mcp_admin_auth');
+    localStorage.removeItem('mcp_auth_token');
+    sessionStorage.removeItem('mcp_admin_auth');
+  } catch (err) {
+    console.warn('[UnifiedAuth] Erro ao sanitizar storage:', err);
+  }
+}
+
 export function hasAdminOrModerAccess(user: UnifiedUser): boolean {
   return Boolean(user && user.isLoggedIn && (user.role === 'admin' || user.role === 'moder'));
 }

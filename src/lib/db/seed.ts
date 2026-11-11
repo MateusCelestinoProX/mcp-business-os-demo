@@ -34,7 +34,14 @@ export async function runSeed() {
     const connStr = (process.env.DATABASE_URL || '').replace(/[?&]sslmode=[^&]+/g, '').replace(/\?$/, '');
     if (connStr) {
       const { Pool } = await import('pg');
-      const pool = new Pool({ connectionString: connStr, ssl: { rejectUnauthorized: false } });
+      const allowInsecureSsl = process.env.PG_SSL_ALLOW_INSECURE === 'true';
+      const pool = new Pool({
+        connectionString: connStr,
+        ssl: {
+          rejectUnauthorized: !allowInsecureSsl,
+          ...(process.env.PG_CA_CERT ? { ca: process.env.PG_CA_CERT } : {}),
+        },
+      });
       const client = await pool.connect();
       try {
         // Remover eventuais linhas residuais de testes automatizados / XSS
@@ -246,7 +253,8 @@ export async function runSeed() {
                   email: acc.email,
                   password: acc.password,
                   email_confirm: true,
-                  user_metadata: { name: acc.name, role: acc.role },
+                  user_metadata: { name: acc.name },
+                  app_metadata: { role: acc.role, tier: acc.tier },
                 }),
               });
               if (createRes.ok) {
@@ -266,7 +274,8 @@ export async function runSeed() {
                 body: JSON.stringify({
                   password: acc.password,
                   email_confirm: true,
-                  user_metadata: { name: acc.name, role: acc.role },
+                  user_metadata: { name: acc.name },
+                  app_metadata: { role: acc.role, tier: acc.tier },
                 }),
               });
               console.log(`✅ [Seed] Sincronizado em Supabase Auth (auth.users): ${acc.email}`);

@@ -341,3 +341,13 @@ export async function authenticateMember(
 
   return { success: false, error: 'Credenciais de membro inválidas.' };
 }
+
+/**
+ * Extração de identidade soberana: ignora estritamente user_metadata
+ * e extrai privilégios exclusivamente de app_metadata gerenciado pelo backend
+ */
+export function extractUserRoleAndTier(user: any): { role: string; tier: string } {
+  const role = typeof user?.app_metadata?.role === 'string' ? user.app_metadata.role : 'member';
+  const tier = typeof user?.app_metadata?.tier === 'string' ? user.app_metadata.tier : 'free';
+  return { role, tier };
+}

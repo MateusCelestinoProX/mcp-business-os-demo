@@ -17,10 +17,20 @@ import { BreadcrumbItem, FaqItem, BaseJsonLd } from '@/types/seo';
 import { Article } from '@/lib/articles';
 
 /**
- * Sanitiza o JSON-LD contra injeções XSS (substitui `<` por `\u003c`)
+ * Sanitiza o JSON-LD contra injeções XSS (substitui `<` por `\u003c`, `>` por `\u003e`, `&` por `\u0026`)
  */
 export function sanitizeJsonLd(data: unknown): string {
-  return JSON.stringify(data).replace(/</g, '\\u003c');
+  try {
+    const json = typeof data === 'string' ? data : JSON.stringify(data);
+    return json
+      .replace(/</g, '\\u003c')
+      .replace(/>/g, '\\u003e')
+      .replace(/&/g, '\\u0026')
+      .replace(/\u2028/g, '\\u2028')
+      .replace(/\u2029/g, '\\u2029');
+  } catch {
+    return '{}';
+  }
 }
 
 /**

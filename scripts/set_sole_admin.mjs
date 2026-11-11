@@ -36,7 +36,8 @@ async function setSoleAdmin() {
           body: JSON.stringify({
             password: password,
             email_confirm: true,
-            user_metadata: { name: 'Mateus Celestino Pro X', role: 'admin' },
+            user_metadata: { name: 'Mateus Celestino Pro X' },
+            app_metadata: { role: 'admin', tier: 'vip' },
           }),
         });
         console.log(`✅ Atualização de senha GoTrue status: ${updateRes.status}`);
@@ -52,7 +53,8 @@ async function setSoleAdmin() {
             email: email,
             password: password,
             email_confirm: true,
-            user_metadata: { name: 'Mateus Celestino Pro X', role: 'admin' },
+            user_metadata: { name: 'Mateus Celestino Pro X' },
+            app_metadata: { role: 'admin', tier: 'vip' },
           }),
         });
         console.log(`✅ Criação GoTrue status: ${createRes.status}`);
@@ -64,7 +66,7 @@ async function setSoleAdmin() {
 
       // Remover flag de admin nos outros usuários no GoTrue se houver
       for (const u of data?.users || []) {
-        if (u.email?.toLowerCase() !== email && u.user_metadata?.role === 'admin') {
+        if (u.email?.toLowerCase() !== email && (u.user_metadata?.role === 'admin' || u.app_metadata?.role === 'admin')) {
           await fetch(`${supabaseUrl}/auth/v1/admin/users/${u.id}`, {
             method: 'PUT',
             headers: {
@@ -74,6 +76,7 @@ async function setSoleAdmin() {
             },
             body: JSON.stringify({
               user_metadata: { ...u.user_metadata, role: 'member' },
+              app_metadata: { ...u.app_metadata, role: 'member' },
             }),
           });
           console.log(`ℹ️ Role admin removida de metadata em auth.users: ${u.email}`);

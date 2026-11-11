@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const { execSync } = require('child_process');
+const { execFileSync } = require('child_process');
 const sharp = require('sharp');
 
 const PUBLIC_DIR = path.join(__dirname, '..', 'public');
@@ -121,7 +121,13 @@ async function run() {
     const tmpOut = mp4 + '.tmp.mp4';
     try {
       console.log(`Processando vídeo: ${path.relative(PUBLIC_DIR, mp4)} (${formatBytes(origSize)})...`);
-      execSync(`ffmpeg -y -i "${mp4}" -c:v libx264 -crf 26 -preset slow -c:a aac -b:a 128k -movflags +faststart "${tmpOut}" 2>/dev/null`);
+      execFileSync('ffmpeg', [
+        '-y', '-i', mp4,
+        '-c:v', 'libx264', '-crf', '26', '-preset', 'slow',
+        '-c:a', 'aac', '-b:a', '128k',
+        '-movflags', '+faststart',
+        tmpOut
+      ], { stdio: 'ignore' });
       if (fs.existsSync(tmpOut)) {
         const newSize = fs.statSync(tmpOut).size;
         if (newSize < origSize) {
@@ -149,7 +155,11 @@ async function run() {
     const tmpOut = gif + '.tmp.gif';
     try {
       console.log(`Otimizando GIF: ${path.relative(PUBLIC_DIR, gif)} (${formatBytes(origSize)})...`);
-      execSync(`ffmpeg -y -i "${gif}" -filter_complex "[0:v] fps=12,scale=min(iw\\,800):-1:flags=lanczos,split [a][b];[a] palettegen=max_colors=128:reserve_transparent=on [p];[b][p] paletteuse=dither=bayer:bayer_scale=3" "${tmpOut}" 2>/dev/null`);
+      execFileSync('ffmpeg', [
+        '-y', '-i', gif,
+        '-filter_complex', '[0:v] fps=12,scale=min(iw\\,800):-1:flags=lanczos,split [a][b];[a] palettegen=max_colors=128:reserve_transparent=on [p];[b][p] paletteuse=dither=bayer:bayer_scale=3',
+        tmpOut
+      ], { stdio: 'ignore' });
       if (fs.existsSync(tmpOut)) {
         const newSize = fs.statSync(tmpOut).size;
         if (newSize < origSize) {

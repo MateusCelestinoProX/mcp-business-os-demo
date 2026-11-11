@@ -6,30 +6,24 @@ import { ShoppingBag, ArrowLeft, ShieldCheck, Sparkles } from 'lucide-react';
 import LiquidGlassBackground from '@/components/portal/LiquidGlassBackground';
 import ShopSection, { ShopData } from '@/components/portal/ShopSection';
 import siteData from '@/data/siteData.json';
-import { getStoredUser, hasAdminAccess } from '@/lib/auth/unified-auth';
+import { useVerifiedAuth } from '@/components/auth/VerifiedAuthProvider';
 
 export default function ShopPage() {
   const [shopData, setShopData] = useState<ShopData>(siteData?.shop || {});
-  const [isUserAdmin, setIsUserAdmin] = useState(false);
-
-  useEffect(() => {
-    setIsUserAdmin(hasAdminAccess(getStoredUser()));
-
-    const handleAuthChange = () => {
-      setIsUserAdmin(hasAdminAccess(getStoredUser()));
-    };
-
-    window.addEventListener('mcp_auth_changed', handleAuthChange);
-    window.addEventListener('storage', handleAuthChange);
-    return () => {
-      window.removeEventListener('mcp_auth_changed', handleAuthChange);
-      window.removeEventListener('storage', handleAuthChange);
-    };
-  }, []);
+  const { isUserAdmin } = useVerifiedAuth();
 
   useEffect(() => {
     let isMounted = true;
-    fetch('/api/admin/shop-resources')
+    // Sincroniza catálogo público via /api/shop (com compatibilidade soberana a /api/admin/shop-resources)
+    const endpoint = '/api/shop';
+    fetch(endpoint)
+      .then((res) => {
+        if (!res.ok) {
+          // Se necessário, consulta /api/admin/shop-resources
+          return fetch('/api/admin/shop-resources').then(r => r.json());
+        }
+        return res.json();
+      })
       .then((res) => res.json())
       .then((data) => {
         if (isMounted && data.success && data.config?.shop) {

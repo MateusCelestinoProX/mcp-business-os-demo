@@ -32,8 +32,14 @@ README.md
 
 # Binários pesados nativos Android e pacotes locais (já migrados ou desnecessários para a web)
 *.apk
+public/biblioteca/android/
+
+# Migrações Drizzle e SQL interno
+drizzle/
 
 # Arquivos de Ambiente Local (Vercel usa Dashboard de Environment Variables)
+.env
+.env*
 .env.local
 .env.development.local
 .env.test.local

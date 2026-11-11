@@ -44,81 +44,8 @@ export interface CommunityPost {
   createdAt: string;
 }
 
-const INITIAL_POSTS: CommunityPost[] = [
-  {
-    id: 'post_1',
-    authorName: 'Mateus Celestino Pro',
-    authorRole: 'Founder & Visionary Architect',
-    authorTier: 'vip',
-    category: 'Comunicado Oficial',
-    isPinned: true,
-    content:
-      '🚀 Sejam bem-vindos à Área de Membros Soberana! O motor visual e a camada unificada de dados em PostgreSQL já estão em plena operação. Disponibilizamos hoje a nova masterclass com o pipeline completo de Midjourney v6 + Kling para vídeos hiper-realistas.',
-    promptSnippet:
-      'cinematic film still, high-contrast chiaroscuro lighting, anamorphic 35mm lens, atmospheric haze, deep crimson shadows, hyper-realistic skin texture, 8k resolution, shot on Arri Alexa 65 --ar 16:9 --style raw',
-    likesCount: 142,
-    isLiked: false,
-    tags: ['Oficial', 'Masterclass', 'Kling', 'Midjourney'],
-    createdAt: 'Há 2 horas',
-    comments: [
-      {
-        id: 'c1',
-        authorName: 'Lucas Albuquerque',
-        authorTier: 'vip',
-        content: 'Sensacional Mateus! A fidelidade dos shaders na plataforma nova ficou impecável.',
-        createdAt: 'Há 1 hora',
-      },
-      {
-        id: 'c2',
-        authorName: 'Camila Drummond',
-        authorTier: 'pro',
-        content: 'O prompt anamórfico testado aqui no Midjourney deu uma profundidade absurda!',
-        createdAt: 'Há 45 minutos',
-      },
-    ],
-  },
-  {
-    id: 'post_2',
-    authorName: 'Gabriel Siqueira',
-    authorRole: 'AI Motion Designer',
-    authorTier: 'pro',
-    category: 'Trilhas & Prompts',
-    content:
-      'Compartilhando com vocês a fórmula de câmera lenta e renderização líquida que usei no teaser de lançamento da marca:',
-    promptSnippet:
-      'liquid obsidian and red laser refractive particles colliding in zero gravity, ray tracing, macro lens, glassmorphism caustics, ultra high-speed camera 1000fps, photorealistic render in Octane --v 6.0',
-    likesCount: 58,
-    isLiked: false,
-    tags: ['Motion', 'Octane', 'PromptShare'],
-    createdAt: 'Há 4 horas',
-    comments: [
-      {
-        id: 'c3',
-        authorName: 'Rodrigo Fontes',
-        authorTier: 'vip',
-        content: 'Muito bom! Vou aplicar no nosso próximo comercial.',
-        createdAt: 'Há 2 horas',
-      },
-    ],
-  },
-  {
-    id: 'post_3',
-    authorName: 'Ana Beatriz Mendes',
-    authorRole: 'Creative Director',
-    authorTier: 'vip',
-    category: 'Showcase',
-    content:
-      'Acabei de fechar um contrato internacional de branding e usei os presets de vidros cinemáticos e cards interativos que aprendemos aqui na comunidade. A percepção de valor dos gringos explodiu!',
-    likesCount: 89,
-    isLiked: false,
-    tags: ['Showcase', 'Cases', 'BrandingSoberano'],
-    createdAt: 'Há 7 horas',
-    comments: [],
-  },
-];
-
-export function CommunityFeed() {
-  const [posts, setPosts] = useState<CommunityPost[]>(INITIAL_POSTS);
+export function CommunityFeed({ initialPosts = [] }: { initialPosts?: CommunityPost[] } = {}) {
+  const [posts, setPosts] = useState<CommunityPost[]>(initialPosts);
   const [selectedFilter, setSelectedFilter] = useState<string>('Todos');
   const [newPostContent, setNewPostContent] = useState('');
   const [newPostCategory, setNewPostCategory] = useState<CommunityPost['category']>('Trilhas & Prompts');
@@ -308,8 +235,14 @@ export function CommunityFeed() {
 
       {/* Lista de Publicações em 1 Coluna */}
       <div className="space-y-4">
-        {filteredPosts.map((post) => (
-          <GlassCard
+        {filteredPosts.length === 0 ? (
+          <GlassCard className="p-8 sm:p-12 text-center border-white/5">
+            <p className="text-sm font-semibold text-white">Nenhuma publicação encontrada</p>
+            <p className="text-xs text-neutral-400 mt-1">Seja o primeiro a compartilhar um prompt ou projeto com a comunidade!</p>
+          </GlassCard>
+        ) : (
+          filteredPosts.map((post) => (
+            <GlassCard
             key={post.id}
             className={cn(
               'p-4 sm:p-5 md:p-6 transition-all duration-200 hover:border-white/15 overflow-hidden',
@@ -486,7 +419,8 @@ export function CommunityFeed() {
               </div>
             )}
           </GlassCard>
-        ))}
+          ))
+        )}
       </div>
     </div>
   );

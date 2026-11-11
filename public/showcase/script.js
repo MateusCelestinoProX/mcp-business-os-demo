@@ -570,10 +570,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     loader.classList.remove('hidden');
 
-    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-    const targetSrc = isLocal ? `/proxy?url=${encodeURIComponent(selected.url)}` : selected.url;
-
-    iframe.src = targetSrc;
+    iframe.src = selected.url;
   };
 
   window.reloadNotionPreview = function() {

@@ -22,7 +22,7 @@ import {
   ArrowRight
 } from 'lucide-react';
 import GridScanShader from '@/components/shaders/GridScanShader';
-import { getStoredUser, hasAdminAccess } from '@/lib/auth/unified-auth';
+import { useVerifiedAuth } from '@/components/auth/VerifiedAuthProvider';
 
 export interface UniversalSitemapModalProps {
   isOpen: boolean;
@@ -37,20 +37,7 @@ export function UniversalSitemapModal({
 }: UniversalSitemapModalProps) {
   const [activeFilter, setActiveFilter] = useState<'all' | 'site' | 'vault' | 'comunidade'>('all');
   const [searchTerm, setSearchTerm] = useState('');
-  const [isUserAdmin, setIsUserAdmin] = useState(false);
-
-  useEffect(() => {
-    setIsUserAdmin(hasAdminAccess(getStoredUser()));
-    const handleAuthChange = () => {
-      setIsUserAdmin(hasAdminAccess(getStoredUser()));
-    };
-    window.addEventListener('mcp_auth_changed', handleAuthChange);
-    window.addEventListener('storage', handleAuthChange);
-    return () => {
-      window.removeEventListener('mcp_auth_changed', handleAuthChange);
-      window.removeEventListener('storage', handleAuthChange);
-    };
-  }, []);
+  const { isUserAdmin } = useVerifiedAuth();
 
   // Trava scroll da página quando modal estiver aberto
   useEffect(() => {

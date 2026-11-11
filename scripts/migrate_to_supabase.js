@@ -193,10 +193,10 @@ async function migrate() {
       -- admin_users: apenas service_role e postgres
       CREATE POLICY "admin_users_service_role_all" ON admin_users FOR ALL TO service_role USING (true) WITH CHECK (true);
 
-      -- members: leitura autenticada / backend total
+      -- members: acesso exclusivo via service_role backend (zero exposição pública via anon PostgREST)
       CREATE POLICY "members_service_role_all" ON members FOR ALL TO service_role USING (true) WITH CHECK (true);
-      CREATE POLICY "members_insert_public" ON members FOR INSERT TO anon, authenticated WITH CHECK (true);
-      CREATE POLICY "members_select_public" ON members FOR SELECT TO anon, authenticated USING (true);
+      DROP POLICY IF EXISTS "members_insert_public" ON members;
+      DROP POLICY IF EXISTS "members_select_public" ON members;
 
       -- leads: inserção pública de leads / gestão apenas backend
       CREATE POLICY "leads_insert_public" ON leads FOR INSERT TO anon, authenticated WITH CHECK (true);

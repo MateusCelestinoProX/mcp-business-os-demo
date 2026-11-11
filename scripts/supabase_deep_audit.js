@@ -23,9 +23,13 @@ async function runSuperAudit() {
   console.log('='.repeat(80));
 
   const cleanUrl = DATABASE_URL.split('?')[0];
+  const allowInsecureSsl = process.env.PG_SSL_ALLOW_INSECURE === 'true';
   const client = new Client({
     connectionString: cleanUrl,
-    ssl: { rejectUnauthorized: false }
+    ssl: {
+      rejectUnauthorized: !allowInsecureSsl,
+      ...(process.env.PG_CA_CERT ? { ca: process.env.PG_CA_CERT } : {}),
+    }
   });
 
   await client.connect();

@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { X, Clock, Calendar, Share2, Check, MessageSquare, ArrowLeft, ArrowRight, BookOpen } from 'lucide-react';
+import { sanitizeDangerousHtml } from '@/lib/security/sanitize';
 
 export interface ArticleData {
   id: string | number;
@@ -186,7 +187,7 @@ export function ArticleModal({
               </div>
             ) : fullContent ? (
               <div
-                dangerouslySetInnerHTML={{ __html: fullContent }}
+                dangerouslySetInnerHTML={{ __html: sanitizeDangerousHtml(fullContent) }}
                 className="article-body font-sans leading-relaxed break-words"
               />
             ) : (

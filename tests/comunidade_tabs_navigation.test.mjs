@@ -12,7 +12,7 @@ test('Comunidade - Validação de Abas Internas e Ausência de Erros de Execuç�
   assert.ok(code.includes("let communityActiveTab = 'feed'"), 'communityActiveTab deve estar inicializado');
   assert.ok(code.includes('window.appSwitchCommunityTab'), 'window.appSwitchCommunityTab deve estar implementado');
   assert.ok(code.includes('renderCommunityPromptsTab'), 'renderCommunityPromptsTab deve existir');
-  assert.ok(code.includes('renderCommunityRankingTab'), 'renderCommunityRankingTab deve existir');
+  assert.ok(!code.includes('renderCommunityRankingTab'), 'renderCommunityRankingTab deve ter sido completamente removido');
   assert.ok(code.includes('renderCommunityChallengesTab'), 'renderCommunityChallengesTab deve existir');
   assert.ok(code.includes('renderCommunitySavedTab'), 'renderCommunitySavedTab deve existir');
 
@@ -83,9 +83,10 @@ test('Comunidade - Validação de Abas Internas e Ausência de Erros de Execuç�
   window.appSwitchCommunityTab('prompts');
   assert.ok(document.getElementById('mainAppContainer').innerHTML.includes('Acervo de Prompts VIP Exclusivos'));
 
-  // Aba Ranking
+  // Fallback seguro da aba descontinuada Ranking para o Feed
   window.appSwitchCommunityTab('ranking');
-  assert.ok(document.getElementById('mainAppContainer').innerHTML.includes('Hall da Fama & Ranking VIP'));
+  assert.ok(document.getElementById('mainAppContainer').innerHTML.includes('Feed & Discussões'));
+  assert.ok(!document.getElementById('mainAppContainer').innerHTML.includes('Hall da Fama'));
 
   // Aba Desafios
   window.appSwitchCommunityTab('challenges');

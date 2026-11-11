@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db, systemSettings, isDbConfigured } from '@/lib/db';
 import { eq } from 'drizzle-orm';
-import { verifyAdminRequest, authErrorResponse, verifySameOriginRequest, unauthorizedResponse } from '@/lib/auth/admin-guard';
+import { verifyAdminRequest, denyAdminRequest, verifySameOriginRequest, authErrorResponse } from '@/lib/auth/admin-guard';
 import siteData from '@/data/siteData.json';
 import { memoryCache } from '@/lib/cache/memory-cache';
 
@@ -298,7 +298,7 @@ export async function GET(request?: NextRequest) {
   if (request) {
     const auth = await verifyAdminRequest(request);
     if (!auth.authorized) {
-      return authErrorResponse(auth);
+      return denyAdminRequest(auth);
     }
   }
   try {
@@ -401,7 +401,7 @@ export async function POST(request: NextRequest) {
 
     const auth = await verifyAdminRequest(request);
     if (!auth.authorized) {
-      return authErrorResponse(auth);
+      return denyAdminRequest(auth);
     }
 
     const body = await request.json();

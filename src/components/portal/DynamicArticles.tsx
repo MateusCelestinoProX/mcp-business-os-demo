@@ -22,6 +22,7 @@ import { GlassCard } from "@/components/ui/GlassCard";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { Input } from "@/components/ui/Input";
+import { sanitizeDangerousHtml } from "@/lib/security/sanitize";
 
 export interface ArticleItem {
   id: string | number;
@@ -439,7 +440,7 @@ export function DynamicArticles() {
               <div
                 className="prose-soberana prose prose-invert max-w-none text-neutral-300 leading-relaxed space-y-4 text-sm sm:text-base selection:bg-red-500/30 font-light break-words [&_pre]:overflow-x-auto [&_pre]:p-4 [&_pre]:rounded-2xl [&_pre]:bg-black/80 [&_pre]:border [&_pre]:border-white/10 [&_pre]:text-xs [&_pre]:sm:text-sm [&_code]:break-words sm:[&_code]:break-normal [&_img]:rounded-2xl [&_img]:max-w-full [&_table]:w-full [&_table]:overflow-x-auto [&_table]:block"
                 dangerouslySetInnerHTML={{
-                  __html: activeArticle.contentHtml || `<p>${activeArticle.excerpt}</p>`,
+                  __html: sanitizeDangerousHtml(activeArticle.contentHtml || `<p>${activeArticle.excerpt}</p>`),
                 }}
               />
 

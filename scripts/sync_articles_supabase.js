@@ -24,7 +24,14 @@ async function syncAllArticles() {
   }
 
   const connStr = dbUrl.replace(/[?&]sslmode=[^&]+/g, '').replace(/\?$/, '');
-  const pool = new Pool({ connectionString: connStr, ssl: { rejectUnauthorized: false } });
+  const allowInsecureSsl = process.env.PG_SSL_ALLOW_INSECURE === 'true';
+  const pool = new Pool({
+    connectionString: connStr,
+    ssl: {
+      rejectUnauthorized: !allowInsecureSsl,
+      ...(process.env.PG_CA_CERT ? { ca: process.env.PG_CA_CERT } : {}),
+    },
+  });
   const client = await pool.connect();
 
   try {

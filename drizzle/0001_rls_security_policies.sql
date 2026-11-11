@@ -21,7 +21,7 @@ CREATE POLICY "admin_users_service_role_all" ON admin_users
   USING (true)
   WITH CHECK (true);
 
--- 3. members: Leitura e escrita via backend / registro seguro
+-- 3. members: Apenas backend (service_role e conexões diretas do servidor)
 DROP POLICY IF EXISTS "members_service_role_all" ON members;
 CREATE POLICY "members_service_role_all" ON members
   FOR ALL
@@ -29,11 +29,9 @@ CREATE POLICY "members_service_role_all" ON members
   USING (true)
   WITH CHECK (true);
 
+-- Garante que políticas públicas inseguras antigas sejam removidas
 DROP POLICY IF EXISTS "members_insert_public" ON members;
-CREATE POLICY "members_insert_public" ON members
-  FOR INSERT
-  TO anon, authenticated
-  WITH CHECK (true);
+DROP POLICY IF EXISTS "members_select_public" ON members;
 
 -- 4. leads: Inserção pública permitida (captação de tráfego TikTok / Meta Ads)
 DROP POLICY IF EXISTS "leads_insert_public" ON leads;

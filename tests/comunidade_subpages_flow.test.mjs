@@ -26,9 +26,9 @@ describe('Suite de Testes de Fluxo & Subpáginas da Comunidade A.I Visuals', () 
     assert.ok(appJsContent.includes("window.addEventListener('hashchange'"), 'Deve ouvir hashchange para navegação em subpáginas');
   });
 
-  test('3. app.js deve conter dados de contingência resilientes para servidores e comunidade', () => {
+  test('3. app.js deve conter contingência para servidores e posts sem dados mockados legados', () => {
     assert.ok(appJsContent.includes('DEFAULT_SOVEREIGN_SERVERS'), 'Deve ter DEFAULT_SOVEREIGN_SERVERS');
-    assert.ok(appJsContent.includes('DEFAULT_SOVEREIGN_POSTS'), 'Deve ter DEFAULT_SOVEREIGN_POSTS');
+    assert.ok(!appJsContent.includes('DEFAULT_SOVEREIGN_POSTS'), 'DEFAULT_SOVEREIGN_POSTS mockados devem ter sido removidos');
     assert.ok(appJsContent.includes('srv_art_pro'), 'Deve conter servidor A.I Art Pro de demonstração');
     assert.ok(appJsContent.includes('srv_prompts_mastery'), 'Deve conter servidor Engenharia de Prompts');
     assert.ok(appJsContent.includes('srv_effects_commercial'), 'Deve conter servidor A.I Effects Comercial');

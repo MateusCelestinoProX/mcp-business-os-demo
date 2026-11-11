@@ -1,16 +1,16 @@
 # Graph Report - mcp-business-os  (2026-11-10)
 
 ## Corpus Check
-- 292 files · ~9,771,310 words
+- 294 files · ~9,773,496 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2264 nodes · 4728 edges · 152 communities (101 shown, 36 thin omitted)
+- 2269 nodes · 4762 edges · 153 communities (99 shown, 39 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 74 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `f5b092c0`
+- Built from commit: `dca85763`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -59,78 +59,80 @@
 - package.json
 - dependencies
 - compilerOptions
-- download/route.ts
-- isWebGLSupported
+- catalog.ts
+- .copy
 - app.js
 - it
 - ShaderBackground.tsx
 - BRIEFING — 2026-10-14T15:40:00Z
 - BRIEFING — 2026-10-14T15:54:00Z
 - BRIEFING — 2026-10-14T15:55:00Z
-- url-guard.ts
+- cloud/route.ts
 - Progress — Form Builder SaaS Specialist
 - pg
 - Progress — Growth Engineer & Portal Institucional Specialist
 - Progress — Members Area & Community Engineer (agent-members)
-- W
-- shaders/index.ts
+- K
+- en
 - Relatório de Handoff — WebGL & Shaders Specialist (agent-shaders)
 - devDependencies
 - Relatório de Handoff — Members Area & Community Engineer (agent-members)
-- Badge.tsx
+- cn
 - Relatório de Handoff — Lead Frontend & Glassmorphism Architect (agent-foundations)
 - scripts
 - library.test.mjs
 - admin/page.tsx
 - server-guardian.js
 - Relatório de Handoff — Database Architect & Drizzle Master (agent-database)
-- login/route.ts
+- download/route.ts
 - lucide-react
-- verifyAdminRequest
+- shop-resources/route.ts
 - Relatório de Handoff — Growth Engineer & Portal Institucional Specialist (agent-marketing)
 - auth_feedback_comunidade.test.mjs
-- imagekit/route.ts
+- l
 - articles/route.ts
 - tn
-- pt
-- webhook/route.ts
+- W
+- mantis_security_hardening.test.ts
 - super_compress.js
 - .update
 - community-shaders.js
-- upload/route.ts
+- .x
 - _
 - biblioteca/route.ts
 - comunidade/route.ts
-- security_audit.test.ts
-- .copy
+- auth.ts
+- ke
 - tailwindcss
 - U
 - ar
 - q
 - .z
-- webgl-utils.ts
-- RippleGridShader.tsx
+- imagekit/route.ts
+- .addAttribute
 - library-manager.ts
 - ks
 - le
 - V
 - react
 - script.js
-- zt
-- Beams.tsx
+- sr
+- j
 - MCP Business OS — Plataforma Unificada Soberana
 - ResourceCard.tsx
-- admin/layout.tsx
-- sync_articles_supabase.js
-- drizzle-kit
-- admin-guard.ts
-- shop-resources/route.ts
-- initSingularity
+- library-control/page.tsx
+- useVerifiedAuth
+- MainNotionLayout.tsx
+- schema.ts
+- verifyAdminRequest
+- .getRenderList
 - ShopControlSuite.tsx
-- health/route.ts
+- gr
 - vercel.json
-- galaxy.js
+- SearchHeader.tsx
+- health/route.ts
 - showcase/route.ts
+- drizzle-kit
 - visual_stability.test.mjs
 - comunidade_red_shaders_enriched.test.mjs
 - scroll-probe.mjs
@@ -140,10 +142,9 @@
 - 5. Especificação das Rotas de API (REST / JSON)
 - 🚀 Os 6 Pilares do Sistema
 - 3. Acervos de Dados Embutidos & Ativos Intelectuais
-- library-control/page.tsx
 - sw.js
 - admin_vertical_sidebar_layout.test.ts
-- session.ts
+- admin-guard.ts
 - PhotografyContactHub.tsx
 - portal_home_mobile.test.ts
 - banners/page.tsx
@@ -157,7 +158,7 @@
 1. `_` - 208 edges
 2. `react` - 89 edges
 3. `lucide-react` - 56 edges
-4. `verifyAdminRequest()` - 52 edges
+4. `verifyAdminRequest()` - 53 edges
 5. `cn()` - 41 edges
 6. `requestAnimationFrame()` - 39 edges
 7. `setupEventListeners()` - 36 edges
@@ -180,7 +181,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (152 total, 36 thin omitted)
+## Communities (153 total, 39 thin omitted)
 
 ### Community 0 - "Relatório de Survey Técnico — Explorer 2"
 Cohesion: 0.08
@@ -284,7 +285,7 @@ Nodes (6): 1. Observation (Observações Diretas), 2. Logic Chain (Cadeia de Rac
 
 ### Community 41 - "package.json"
 Cohesion: 0.08
-Nodes (23): description, name, private, version, clsx, framer-motion, jose, @neondatabase/serverless (+15 more)
+Nodes (23): description, name, overrides, postcss, private, version, clsx, framer-motion (+15 more)
 
 ### Community 42 - "dependencies"
 Cohesion: 0.11
@@ -294,25 +295,25 @@ Nodes (19): dependencies, bcryptjs, clsx, drizzle-orm, framer-motion, jose, luci
 Cohesion: 0.11
 Nodes (18): compilerOptions, allowJs, esModuleInterop, incremental, isolatedModules, jsx, lib, module (+10 more)
 
-### Community 44 - "download/route.ts"
-Cohesion: 0.15
-Nodes (25): AdminLibraryControlPage(), AdminShopPage(), dynamic, GET(), getMimeType(), POST(), dynamic, GET() (+17 more)
+### Community 44 - "catalog.ts"
+Cohesion: 0.21
+Nodes (14): dynamic, GET(), isResourcePremium(), sanitizeResourceForTier(), BibliotecaItemPage(), generateStaticParams(), classifyQuickCategories(), cleanTitle() (+6 more)
 
-### Community 45 - "isWebGLSupported"
-Cohesion: 0.18
-Nodes (17): ogl, AdminRedShader(), AdminRedShaderProps, BalatroShader(), FaultyTerminalShader(), FaultyTerminalShaderProps, LightningShader(), LineWavesShader() (+9 more)
+### Community 45 - ".copy"
+Cohesion: 0.13
+Nodes (6): he(), Lt, Ot, ri(), ui(), ur()
 
 ### Community 47 - "app.js"
 Cohesion: 0.07
 Nodes (95): applyBgSettingsUI(), clearAuthAlert(), convertToEmbedUrl(), _deprecatedAdminViewLegacy(), embedLessonMetadata(), escapeHtml(), escapeJs(), extractLessonMetadata() (+87 more)
 
 ### Community 48 - "it"
-Cohesion: 0.17
+Cohesion: 0.16
 Nodes (3): Ds(), it, St
 
 ### Community 49 - "ShaderBackground.tsx"
-Cohesion: 0.21
-Nodes (15): three, CinematicCanvas(), ColorBends, Galaxy, GridScanShader, resolveEffectiveStep(), ShaderMode, ColorBends() (+7 more)
+Cohesion: 0.05
+Nodes (67): initGalaxy(), initSingularity(), ogl, @react-three/drei, @react-three/fiber, three, StackItem, STACKS (+59 more)
 
 ### Community 50 - "BRIEFING — 2026-10-14T15:40:00Z"
 Cohesion: 0.18
@@ -326,25 +327,21 @@ Nodes (10): Artifact Index, BRIEFING — 2026-10-14T15:54:00Z, Current Parent, �
 Cohesion: 0.18
 Nodes (10): Artifact Index, BRIEFING — 2026-10-14T15:55:00Z, Current Parent, 🔒 Key Constraints, Key Decisions Made, Loaded Skills, Mission, 🔒 My Identity (+2 more)
 
-### Community 53 - "url-guard.ts"
-Cohesion: 0.27
-Nodes (10): dynamic, OPTIONS(), POST(), assertSafeExternalUrl(), BLOCKED_HOSTNAMES, getTrustedOrigins(), ipv4ToInt(), isBlockedHostname() (+2 more)
+### Community 53 - "cloud/route.ts"
+Cohesion: 0.29
+Nodes (10): dynamic, POST(), dynamic, POST(), verifySameOriginRequest(), addItemToLibrary(), createNewDocumentInLibrary(), determineFileType() (+2 more)
 
 ### Community 54 - "Progress — Form Builder SaaS Specialist"
 Cohesion: 0.50
 Nodes (3): Progress — Form Builder SaaS Specialist, Status Atual: Build & Verificação Final, Tarefas
 
 ### Community 55 - "pg"
-Cohesion: 0.15
-Nodes (8): bcryptjs, pg, bcrypt, fs, migrate(), path, { Pool }, { Client }
+Cohesion: 0.11
+Nodes (11): bcryptjs, pg, bcrypt, fs, migrate(), path, { Pool }, { Client } (+3 more)
 
-### Community 58 - "W"
-Cohesion: 0.07
-Nodes (13): be(), br, K, kr, nr, on, rn, l() (+5 more)
-
-### Community 59 - "shaders/index.ts"
-Cohesion: 0.13
-Nodes (15): BalatroShaderProps, CinematicCanvasProps, CinematicShaderMode, ColorBendsProps, GalaxyProps, GridScanShaderProps, LightningShaderProps, ShaderBackgroundMode (+7 more)
+### Community 58 - "K"
+Cohesion: 0.22
+Nodes (3): br, K, kr
 
 ### Community 60 - "Relatório de Handoff — WebGL & Shaders Specialist (agent-shaders)"
 Cohesion: 0.29
@@ -358,9 +355,9 @@ Nodes (13): devDependencies, drizzle-kit, postcss, tailwindcss, @tailwindcss/pos
 Cohesion: 0.29
 Nodes (6): 1. Observation (Observações Diretas), 2. Logic Chain (Cadeia de Raciocínio), 3. Caveats (Ressalvas e Limitações), 4. Conclusion (Conclusão), 5. Verification Method (Método de Verificação), Relatório de Handoff — Members Area & Community Engineer (agent-members)
 
-### Community 63 - "Badge.tsx"
-Cohesion: 0.10
-Nodes (25): COVER_PRESETS, PostEditorModalProps, CheckoutModal(), CheckoutModalProps, CommunityPost, PostComment, MemberCardProps, MemberProfile (+17 more)
+### Community 63 - "cn"
+Cohesion: 0.11
+Nodes (30): MEDIA_CATALOG, MediaItem, MidiasPage(), LibraryControlSuite(), CheckoutModal(), CheckoutModalProps, CommunityFeed(), CommunityPost (+22 more)
 
 ### Community 64 - "Relatório de Handoff — Lead Frontend & Glassmorphism Architect (agent-foundations)"
 Cohesion: 0.29
@@ -375,8 +372,8 @@ Cohesion: 0.29
 Nodes (4): PROJECT_ROOT, PUBLIC_CATALOG_PATH, SOURCE_DIR, SRC_CATALOG_PATH
 
 ### Community 67 - "admin/page.tsx"
-Cohesion: 0.10
-Nodes (30): AdminPanelPage(), verifyServerSession(), ArticleItem, EndpointLatency, LeadItem, MemberItem, ShopHeroConfig, ShopProductConfig (+22 more)
+Cohesion: 0.09
+Nodes (31): AdminPanelPage(), verifyServerSession(), ArticleItem, EndpointLatency, LeadItem, MemberItem, ShopHeroConfig, ShopProductConfig (+23 more)
 
 ### Community 68 - "server-guardian.js"
 Cohesion: 0.20
@@ -386,97 +383,89 @@ Nodes (17): checkHealthThreshold(), cleanNextCache(), freePort(), fs, gracefulSh
 Cohesion: 0.29
 Nodes (6): 1. Observation (Observações Diretas), 2. Logic Chain (Cadeia de Raciocínio), 3. Caveats (Ressalvas), 4. Conclusion (Conclusão), 5. Verification Method (Método de Verificação), Relatório de Handoff — Database Architect & Drizzle Master (agent-database)
 
-### Community 70 - "login/route.ts"
-Cohesion: 0.12
-Nodes (25): hashDigestHex(), POST(), POST(), GET(), POST(), resolveLeadSource(), dynamic, OPTIONS() (+17 more)
+### Community 70 - "download/route.ts"
+Cohesion: 0.11
+Nodes (28): hashDigestHex(), POST(), POST(), GET(), POST(), resolveLeadSource(), dynamic, GET() (+20 more)
 
 ### Community 71 - "lucide-react"
-Cohesion: 0.09
-Nodes (29): lucide-react, dynamicParams, PageProps, MEDIA_CATALOG, MediaItem, MidiasPage(), LibraryControlSuite(), CommunityFeed() (+21 more)
+Cohesion: 0.14
+Nodes (15): lucide-react, dynamicParams, PageProps, CatalogGrid(), CatalogGridProps, getExtensionBadge(), DownloadButton(), DownloadButtonProps (+7 more)
 
-### Community 72 - "verifyAdminRequest"
-Cohesion: 0.19
-Nodes (17): DELETE(), dynamic, GET(), LEGACY_MOCK_BANNER_IDS, POST(), GET(), DELETE(), GET() (+9 more)
+### Community 72 - "shop-resources/route.ts"
+Cohesion: 0.08
+Nodes (16): DEFAULT_CONFIG, dynamic, GET(), normalizeShopResourcesConfig(), POST(), dynamic, GET(), LEGACY_MOCK_BANNER_IDS (+8 more)
 
 ### Community 73 - "Relatório de Handoff — Growth Engineer & Portal Institucional Specialist (agent-marketing)"
 Cohesion: 0.29
 Nodes (6): 1. Observation (Observações Diretas), 2. Logic Chain (Cadeia Lógica), 3. Caveats (Ressalvas), 4. Conclusion (Conclusão), 5. Verification Method (Método de Verificação), Relatório de Handoff — Growth Engineer & Portal Institucional Specialist (agent-marketing)
 
-### Community 75 - "imagekit/route.ts"
-Cohesion: 0.15
-Nodes (25): asyncPool(), CATALOG_PATH, MANIFEST_PATH, ManifestEntry, PUBLIC_CATALOG_PATH, runCompleteMigration(), uploadWithRetry(), DELETE() (+17 more)
+### Community 75 - "l"
+Cohesion: 0.31
+Nodes (5): be(), gt, l(), h(), l()
 
 ### Community 76 - "articles/route.ts"
-Cohesion: 0.16
-Nodes (23): marked, dynamic, POST(), PUT(), slugify(), PostEditorModal(), ArticleModal(), ArticleModalProps (+15 more)
+Cohesion: 0.15
+Nodes (25): marked, dynamic, GET(), POST(), PUT(), slugify(), PostEditorModal(), ArticleModal() (+17 more)
 
-### Community 78 - "pt"
-Cohesion: 0.09
-Nodes (9): bi(), _i(), pn, pt, Se(), Si(), Ti(), vi() (+1 more)
+### Community 77 - "tn"
+Cohesion: 0.15
+Nodes (6): fr(), A(), E(), m(), ns(), tn
 
-### Community 79 - "webhook/route.ts"
-Cohesion: 0.16
-Nodes (17): handleMercadoPagoWebhook(), PlanDefinition, PLANS, POST(), dynamic, EXTENDED_PLANS, POST(), POST() (+9 more)
+### Community 78 - "W"
+Cohesion: 0.06
+Nodes (14): bi(), Fs(), _i(), on, pn, pt, rn, Se() (+6 more)
+
+### Community 79 - "mantis_security_hardening.test.ts"
+Cohesion: 0.11
+Nodes (27): DELETE(), handleMercadoPagoWebhook(), PlanDefinition, PLANS, POST(), dynamic, EXTENDED_PLANS, POST() (+19 more)
 
 ### Community 80 - "super_compress.js"
 Cohesion: 0.29
 Nodes (9): { execFileSync }, formatBytes(), fs, getAllFiles(), getDirSize(), path, PUBLIC_DIR, run() (+1 more)
 
 ### Community 81 - ".update"
-Cohesion: 0.12
-Nodes (5): cs, Fs(), is, rr, Ys()
+Cohesion: 0.16
+Nodes (4): cs, is, rr, Ys()
 
 ### Community 82 - "community-shaders.js"
 Cohesion: 0.07
-Nodes (61): buildStrandsPalette(), easePower2InOut(), getOptimizedDPR(), hexToRgb(), hexToRgbArr(), initAntigravity(), initAurora(), initBalatro() (+53 more)
-
-### Community 83 - "upload/route.ts"
-Cohesion: 0.35
-Nodes (9): dynamic, POST(), ALLOWED_EXTENSIONS, dynamic, POST(), UPLOAD_DIR, verifySameOriginRequest(), addItemToLibrary() (+1 more)
+Nodes (60): buildStrandsPalette(), easePower2InOut(), getOptimizedDPR(), hexToRgb(), hexToRgbArr(), initAntigravity(), initAurora(), initBalatro() (+52 more)
 
 ### Community 84 - "_"
 Cohesion: 0.03
-Nodes (53): _, ae(), at, bs(), bt(), ce(), ct(), dt (+45 more)
+Nodes (52): _, ae(), As(), at, bs(), bt(), ce(), ct() (+44 more)
 
-### Community 89 - "security_audit.test.ts"
-Cohesion: 0.19
-Nodes (15): AdminVerificationResult, authenticateAdmin(), authenticateMember(), safeCompare(), verifyPassword(), getJwtSecret(), JWT_AUDIENCE, JWT_ISSUER (+7 more)
+### Community 89 - "auth.ts"
+Cohesion: 0.23
+Nodes (15): authenticateAdmin(), authenticateMember(), extractUserRoleAndTier(), safeCompare(), verifyPassword(), getJwtSecret(), JWT_AUDIENCE, JWT_ISSUER (+7 more)
 
-### Community 90 - ".copy"
-Cohesion: 0.05
-Nodes (24): cr, Ee(), er, v(), he(), ke, ki(), Lt (+16 more)
+### Community 90 - "ke"
+Cohesion: 0.07
+Nodes (11): cr, dr(), Ee(), er, ke, ki(), pr(), ue() (+3 more)
 
 ### Community 92 - "U"
-Cohesion: 0.04
-Nodes (19): ai(), ci(), di(), fi(), gi(), hi(), ii(), li() (+11 more)
+Cohesion: 0.05
+Nodes (19): ai(), ci(), di(), _e(), fi(), gi(), hi(), ii() (+11 more)
 
 ### Community 95 - "ar"
-Cohesion: 0.08
-Nodes (8): ar, dr(), kt(), mr, Ot, pr(), Ut(), yr
+Cohesion: 0.09
+Nodes (5): ar, kt(), mr, Ut(), yr
 
 ### Community 96 - "q"
-Cohesion: 0.07
-Nodes (13): As(), en, fr(), A(), E(), m(), p(), gr (+5 more)
+Cohesion: 0.21
+Nodes (4): p(), q, ze, zi()
 
 ### Community 97 - ".z"
 Cohesion: 0.08
 Nodes (4): Gs(), Hs(), qs(), Xs()
 
-### Community 98 - "webgl-utils.ts"
-Cohesion: 0.17
-Nodes (7): StackItem, STACKS, StacksSection(), getAdaptiveDPR(), isMobileViewport(), safeDisposeMesh(), safeDisposeRenderer()
-
-### Community 100 - "RippleGridShader.tsx"
-Cohesion: 0.31
-Nodes (5): ArticleData, CategoryItem, MainNotionLayoutProps, RippleGridShader(), RippleGridShaderProps
+### Community 98 - "imagekit/route.ts"
+Cohesion: 0.12
+Nodes (30): asyncPool(), CATALOG_PATH, MANIFEST_PATH, ManifestEntry, PUBLIC_CATALOG_PATH, runCompleteMigration(), uploadWithRetry(), ALLOWED_EXTENSIONS (+22 more)
 
 ### Community 101 - "library-manager.ts"
-Cohesion: 0.13
-Nodes (37): dynamic, POST(), dynamic, POST(), DELETE(), dynamic, GET(), PUT() (+29 more)
-
-### Community 102 - "ks"
-Cohesion: 0.10
-Nodes (3): ge(), ks, me()
+Cohesion: 0.15
+Nodes (32): dynamic, POST(), DELETE(), dynamic, GET(), PUT(), DELETE(), dynamic (+24 more)
 
 ### Community 104 - "V"
 Cohesion: 0.08
@@ -484,51 +473,59 @@ Nodes (4): De(), ji(), qi(), V
 
 ### Community 105 - "react"
 Cohesion: 0.07
-Nodes (25): react, ErrorProps, GlobalErrorProps, HOME_FAQS, HomePage(), AlternatingHeroShaders(), ContatoSection(), ContatoSectionProps (+17 more)
+Nodes (23): react, ErrorProps, GlobalErrorProps, HOME_FAQS, HomePage(), AlternatingHeroShaders(), ContatoSection(), ContatoSectionProps (+15 more)
 
 ### Community 106 - "script.js"
 Cohesion: 0.15
 Nodes (6): animate(), closeMobileMenu(), initParticles(), openMobileMenu(), Particle, toggleMobileMenu()
 
-### Community 108 - "zt"
-Cohesion: 0.24
-Nodes (4): Ie(), Ne(), or, zt
+### Community 108 - "sr"
+Cohesion: 0.11
+Nodes (12): Ie(), Ne(), nn(), or, sr(), C(), et(), L() (+4 more)
 
-### Community 109 - "Beams.tsx"
-Cohesion: 0.25
-Nodes (9): Beams(), BeamsProps, createStackedPlanesBufferGeometry(), degToRad(), extendMaterial(), hexToNormalizedRGB(), MergedPlanes, MergedPlanesProps (+1 more)
+### Community 109 - "j"
+Cohesion: 0.33
+Nodes (4): v(), j(), tr, R()
 
 ### Community 110 - "MCP Business OS — Plataforma Unificada Soberana"
 Cohesion: 0.20
 Nodes (7): 📚 Documentação Especializada, 🛠️ Instalação e Execução Local, MCP Business OS — Plataforma Unificada Soberana, Passo a Passo, Pré-requisitos, 🔒 Segurança e Governança, 🏛️ Visão Geral da Arquitetura
 
 ### Community 112 - "ResourceCard.tsx"
-Cohesion: 0.29
+Cohesion: 0.32
 Nodes (5): ResourceCardProps, ResourceDetailViewerProps, LibraryCategoryGroup, LibraryItem, LibraryResponse
 
-### Community 113 - "admin/layout.tsx"
-Cohesion: 0.40
-Nodes (5): AdminLayout(), dynamic, metadata, revalidate, requireAdminSession()
+### Community 113 - "library-control/page.tsx"
+Cohesion: 0.15
+Nodes (12): dynamic, metadata, revalidate, dynamic, metadata, revalidate, AdminSidebar(), AdminSidebarProps (+4 more)
 
-### Community 114 - "sync_articles_supabase.js"
-Cohesion: 0.40
-Nodes (3): fs, path, { Pool }
+### Community 114 - "useVerifiedAuth"
+Cohesion: 0.28
+Nodes (7): ShopPage(), useVerifiedAuth(), Footer(), MobileBottomNav(), MobileNavItem, mobileNavItems, Navbar()
 
-### Community 116 - "admin-guard.ts"
+### Community 115 - "MainNotionLayout.tsx"
+Cohesion: 0.38
+Nodes (4): ArticleData, ArticleModalProps, CategoryItem, MainNotionLayoutProps
+
+### Community 116 - "schema.ts"
 Cohesion: 0.10
-Nodes (33): drizzle-orm, dynamic, DELETE(), GET(), POST(), dynamic, dynamic, dynamic (+25 more)
+Nodes (30): drizzle-orm, dynamic, POST(), dynamic, dynamic, dynamic, hashPassword(), checkDatabaseHealth() (+22 more)
 
-### Community 117 - "shop-resources/route.ts"
-Cohesion: 0.09
-Nodes (12): DEFAULT_CONFIG, dynamic, GET(), normalizeShopResourcesConfig(), POST(), authErrorResponse(), forbiddenResponse(), CacheEntry (+4 more)
+### Community 117 - "verifyAdminRequest"
+Cohesion: 0.14
+Nodes (20): DELETE(), dynamic, GET(), LEGACY_MOCK_BANNER_IDS, POST(), GET(), DELETE(), dynamic (+12 more)
 
 ### Community 119 - "ShopControlSuite.tsx"
-Cohesion: 0.18
-Nodes (14): ShopPage(), PRESET_COVERS, ShopControlSuiteProps, AlternatingHeroBanner(), AlternatingHeroBannerProps, BannerMetricItem, DEFAULT_BANNER_METRICS, ShopData (+6 more)
+Cohesion: 0.19
+Nodes (13): PRESET_COVERS, ShopControlSuiteProps, AlternatingHeroBanner(), AlternatingHeroBannerProps, BannerMetricItem, DEFAULT_BANNER_METRICS, ShopData, ShopFeature (+5 more)
 
 ### Community 121 - "vercel.json"
 Cohesion: 0.29
 Nodes (6): buildCommand, cleanUrls, framework, headers, installCommand, $schema
+
+### Community 122 - "SearchHeader.tsx"
+Cohesion: 0.50
+Nodes (4): CATEGORY_ITEMS, SearchHeader(), SearchHeaderProps, QuickCategory
 
 ### Community 127 - "visual_stability.test.mjs"
 Cohesion: 0.38
@@ -558,17 +555,13 @@ Nodes (7): 1. Portal Institucional (`/`), 2. Shop Oficial (`/shop`), 3. Comunida
 Cohesion: 0.50
 Nodes (4): 3.1. Acervo de 176 Artigos Técnicos, 3.2. Cofre com 406 Recursos Intelectuais, 3.3. Dados do Shop e Perfil Institucional, 3. Acervos de Dados Embutidos & Ativos Intelectuais
 
-### Community 137 - "library-control/page.tsx"
-Cohesion: 0.15
-Nodes (12): dynamic, metadata, revalidate, dynamic, metadata, revalidate, AdminSidebar(), AdminSidebarProps (+4 more)
-
-### Community 140 - "session.ts"
-Cohesion: 0.21
-Nodes (14): destroySession(), isRevokedInDb(), persistRevocationInDb(), SESSION_COOKIE_NAME, sha256Hex(), verifyTokenWithRevocation(), isTokenRevoked(), pruneMap() (+6 more)
+### Community 140 - "admin-guard.ts"
+Cohesion: 0.12
+Nodes (25): AdminLayout(), dynamic, metadata, revalidate, AdminLibraryControlPage(), AdminShopPage(), GET(), AdminVerificationResult (+17 more)
 
 ### Community 146 - "banners/page.tsx"
-Cohesion: 0.14
-Nodes (15): AdminBannersPage(), dynamic, metadata, revalidate, dynamic, GET(), LEGACY_MOCK_BANNER_IDS, BannersControlSuite() (+7 more)
+Cohesion: 0.18
+Nodes (12): AdminBannersPage(), dynamic, metadata, revalidate, BannersControlSuite(), BannersControlSuiteProps, SmartBannerSystem(), BannerFrequency (+4 more)
 
 ### Community 147 - "cookies.ts"
 Cohesion: 0.15
@@ -587,21 +580,21 @@ Cohesion: 0.05
 Nodes (85): nextConfig, next, AuditCheck, runSeoDeepAudit(), ArtigosLayout(), metadata, ArtigosPortalPage(), ArtigoDetailPage() (+77 more)
 
 ## Knowledge Gaps
-- **689 isolated node(s):** `nextConfig`, `name`, `version`, `private`, `description` (+684 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 966 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **36 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **690 isolated node(s):** `nextConfig`, `name`, `version`, `private`, `description` (+685 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 967 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **39 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `_` connect `_` to `q`, `.z`, `.copy`, `ks`, `le`, `V`, `zt`, `tn`, `pt`, `it`, `.update`, `community-shaders.js`, `W`, `U`, `ar`?**
-  _High betweenness centrality (0.277) - this node is a cross-community bridge._
-- **Why does `cn()` connect `lucide-react` to `admin/page.tsx`, `library-control/page.tsx`, `ResourceCard.tsx`, `ShopControlSuite.tsx`, `W`, `Badge.tsx`?**
-  _High betweenness centrality (0.234) - this node is a cross-community bridge._
+- **Why does `_` connect `_` to `.copy`, `it`, `K`, `en`, `l`, `tn`, `W`, `.update`, `community-shaders.js`, `.x`, `ke`, `U`, `ar`, `q`, `.z`, `.addAttribute`, `ks`, `le`, `V`, `sr`, `j`, `.getRenderList`, `gr`?**
+  _High betweenness centrality (0.279) - this node is a cross-community bridge._
+- **Why does `cn()` connect `cn` to `admin/page.tsx`, `lucide-react`, `W`, `ResourceCard.tsx`, `library-control/page.tsx`, `useVerifiedAuth`, `ShopControlSuite.tsx`, `SearchHeader.tsx`?**
+  _High betweenness centrality (0.238) - this node is a cross-community bridge._
 - **Why does `on` connect `W` to `_`?**
-  _High betweenness centrality (0.231) - this node is a cross-community bridge._
+  _High betweenness centrality (0.233) - this node is a cross-community bridge._
 - **What connects `nextConfig`, `name`, `version` to the rest of the system?**
-  _689 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _690 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Relatório de Survey Técnico — Explorer 2` be split into smaller, more focused modules?**
   _Cohesion score 0.08 - nodes in this community are weakly interconnected._
 - **Should `3. Investigação Detalhada: Projeto 4 — Biblioteca Oculta de Recursos (`s-a-a-s-full-hidden-library`)` be split into smaller, more focused modules?**

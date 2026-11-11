@@ -178,11 +178,19 @@ export async function checkDatabaseHealth() {
       const cleanConnStr = connectionString
         .replace(/[?&]sslmode=[^&]+/g, '')
         .replace(/\?$/, '');
+      const isSupabaseOrSsl = isSupabase || connectionString.includes('sslmode=require');
+      const allowInsecureSsl = process.env.PG_SSL_ALLOW_INSECURE === 'true';
+      const healthSslConfig = isSupabaseOrSsl
+        ? {
+            rejectUnauthorized: !allowInsecureSsl,
+            ...(process.env.PG_CA_CERT ? { ca: process.env.PG_CA_CERT } : {}),
+          }
+        : undefined;
       const pool =
         globalThis.__mcp_pg_pool ||
         new Pool({
           connectionString: cleanConnStr,
-          ssl: isSupabase || connectionString.includes('sslmode=require') ? { rejectUnauthorized: false } : undefined,
+          ssl: healthSslConfig,
         });
       const client = await pool.connect();
       try {

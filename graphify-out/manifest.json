@@ -246,15 +246,15 @@
     "semantic_hash": ""
   },
   "next.config.ts": {
-    "mtime": 1794355638.0185068,
-    "seen": 1794355685.762582,
-    "ast_hash": "43be450d25132cc0faa3afeb7aa3d7b5",
+    "mtime": 1794357109.4837244,
+    "seen": 1794357117.61902,
+    "ast_hash": "e0be03a95da43f47cd3823fd64a0db7e",
     "semantic_hash": ""
   },
   "package.json": {
-    "mtime": 1793983170.9162264,
-    "seen": 1794099300.233643,
-    "ast_hash": "8f1b3789a066930c4c905142a658f459",
+    "mtime": 1794357270.0594592,
+    "seen": 1794357781.947078,
+    "ast_hash": "9ec382903f3b4dc86e566c92a4bbb6a1",
     "semantic_hash": ""
   },
   "postcss.config.mjs": {
@@ -1476,15 +1476,15 @@
     "semantic_hash": ""
   },
   "src/data/library_catalog_index.json": {
-    "mtime": 1794356809.143078,
-    "seen": 1794356836.781874,
+    "mtime": 1794357077.043618,
+    "seen": 1794357117.6221702,
     "ast_hash": "a3760edacaa85f7d3460a01e9fdb65f6",
     "semantic_hash": ""
   },
   "src/lib/auth/auth.ts": {
-    "mtime": 1794355580.0425425,
-    "seen": 1794355685.765652,
-    "ast_hash": "31ce50db847cbcc5919ffdce6f537235",
+    "mtime": 1794357484.280177,
+    "seen": 1794357781.952236,
+    "ast_hash": "3035e6f6da28ce2c807def4b6bd50470",
     "semantic_hash": ""
   },
   "src/lib/auth/jwt.ts": {
@@ -1938,9 +1938,9 @@
     "semantic_hash": ""
   },
   "public/comunidade/app.js": {
-    "mtime": 1794356813.0442288,
-    "seen": 1794356836.778674,
-    "ast_hash": "428acb05b3e20ac5bba729e89317a6aa",
+    "mtime": 1794357641.9254594,
+    "seen": 1794357781.947098,
+    "ast_hash": "655d6220d85e6a8dacc7a318925cef03",
     "semantic_hash": ""
   },
   "src/app/api/checkout/route.ts": {
@@ -2766,9 +2766,9 @@
     "semantic_hash": ""
   },
   "public/comunidade/index.html": {
-    "mtime": 1794356776.8220904,
-    "seen": 1794356800.257239,
-    "ast_hash": "b1b4c95a4a6c96890fd64e29700d89bd",
+    "mtime": 1794357425.522604,
+    "seen": 1794357781.958323,
+    "ast_hash": "0c494ee916367144e5e58e31fa8f0563",
     "semantic_hash": ""
   },
   "public/comunidade/effects/CREATIVE EFFECT's/ANCESTRAL HAND STATUE RENDER/ChatGPT_Image_17_de_jul._de_2025_15_25_13.webp": {
@@ -14532,9 +14532,9 @@
     "semantic_hash": ""
   },
   "tests/comunidade_subpages_flow.test.mjs": {
-    "mtime": 1793983171.9604404,
-    "seen": 1794099300.233818,
-    "ast_hash": "808e012a8a716912b4883360a2548eb0",
+    "mtime": 1794356845.1387484,
+    "seen": 1794357117.6230059,
+    "ast_hash": "0ac7c793b59667ef514bff872a8298b7",
     "semantic_hash": ""
   },
   "tests/auth_feedback_comunidade.test.mjs": {
@@ -14646,9 +14646,9 @@
     "semantic_hash": ""
   },
   "tests/comunidade_tabs_navigation.test.mjs": {
-    "mtime": 1794356812.7744133,
-    "seen": 1794356836.783092,
-    "ast_hash": "43c537f8f6dc58baa75a733bd52c532e",
+    "mtime": 1794356837.4845548,
+    "seen": 1794357117.623007,
+    "ast_hash": "2f6d7b3dc73433b8301904e8b676c8ba",
     "semantic_hash": ""
   },
   "public/comunidade/js/community-shaders.js": {
@@ -14730,8 +14730,8 @@
     "semantic_hash": ""
   },
   "src/data/libraries.json": {
-    "mtime": 1794356809.1537151,
-    "seen": 1794356836.781872,
+    "mtime": 1794357077.054045,
+    "seen": 1794357117.622169,
     "ast_hash": "3e79a0df86ee6f7eb3acd51fbf5fad31",
     "semantic_hash": ""
   },
@@ -14790,9 +14790,9 @@
     "semantic_hash": ""
   },
   "public/showcase/index.html": {
-    "mtime": 1794354230.3827183,
-    "seen": 1794354421.5710862,
-    "ast_hash": "c3c274638bf4b7926f244aaf998e350d",
+    "mtime": 1794357269.8801477,
+    "seen": 1794357781.958347,
+    "ast_hash": "2924844c974b862f938532c782e08a26",
     "semantic_hash": ""
   },
   "public/showcase/cv-itens/api1.webp": {
@@ -17739,6 +17739,18 @@
     "mtime": 1794356309.8124528,
     "seen": 1794356800.2507432,
     "ast_hash": "aabc4d36ed6159c812061ab26023783d",
+    "semantic_hash": ""
+  },
+  "tests/adversarial_admin_security.test.ts": {
+    "mtime": 1794357581.281385,
+    "seen": 1794357781.953185,
+    "ast_hash": "cd593d7c9a2027afac38d1dd19457943",
+    "semantic_hash": ""
+  },
+  "tests/mantis_security_hardening.test.ts": {
+    "mtime": 1794357568.4858956,
+    "seen": 1794357781.953494,
+    "ast_hash": "3734ff24f84939ea88fa938f3a08a985",
     "semantic_hash": ""
   }
 }

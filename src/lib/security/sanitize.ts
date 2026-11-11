@@ -68,9 +68,11 @@ export function stripCrlf(input: string | null | undefined): string {
 
 export function safeContentDispositionFilename(name: string | null | undefined): string {
   const base = stripCrlf(name || 'resource')
+    .replace(/\.\.+[/\\]*/g, '')
     .replace(/[/\\]+/g, '_')
     .replace(/["';]+/g, '_')
     .replace(/[^\w.\-()\s[\]]+/g, '_')
+    .replace(/^\.+/, '')
     .trim();
   return base || 'resource';
 }
