@@ -9,24 +9,24 @@ const EXTENDED_PLANS: Record<string, { slug: string; title: string; price: numbe
   ...COMMUNITY_PLANS,
   'comunidade-mensal': {
     slug: 'comunidade-mensal',
-    title: 'Comunidade Soberana — Plano Mensal VIP',
+    title: 'Infoprodutos — Plano Mensal Demo',
     price: 47.90,
     tier: 'vip',
-    description: 'Acesso mensal integral à comunidade Visuals VIP, Discord e acervo 8K.',
+    description: 'Acesso mensal aos infoprodutos e recursos da plataforma demo.',
   },
   'comunidade-anual': {
     slug: 'comunidade-anual',
-    title: 'Comunidade Soberana — Passe Anual VIP Pro',
+    title: 'Infoprodutos — Passe Anual Demo',
     price: 397.00,
     tier: 'vip',
-    description: 'Acesso anual com desconto exclusivo, suporte prioritário e mentorias.',
+    description: 'Acesso anual com desconto exclusivo e atualizações contínuas de infoprodutos.',
   },
   'comunidade-vitalicio': {
     slug: 'comunidade-vitalicio',
-    title: 'Comunidade Soberana — Acesso Vitalício Master',
+    title: 'Infoprodutos — Acesso Vitalício Demo',
     price: 697.00,
     tier: 'master',
-    description: 'Acesso vitalício irrestrito a todos os packs presentes e futuros.',
+    description: 'Acesso vitalício irrestrito a todos os infoprodutos da demo.',
   },
 };
 
@@ -38,7 +38,7 @@ export async function GET(req: NextRequest) {
   return NextResponse.json({
     success: true,
     status: 'online',
-    service: 'Checkout Soberano Unificado — Mateus Celestino Pro',
+    service: 'Checkout Demo Unificado',
     gateways: ['mercadopago', 'pix', 'cartao_credito', 'sandbox_local'],
     plans: Object.values(EXTENDED_PLANS),
   });
@@ -52,8 +52,8 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json().catch(() => ({}));
     const rawSlug = typeof body.planSlug === 'string' ? body.planSlug : typeof body.planId === 'string' ? body.planId : 'membership-vip';
-    const email = typeof body.memberEmail === 'string' ? body.memberEmail.trim().slice(0, 255) : typeof body.email === 'string' ? body.email.trim().slice(0, 255) : 'membro@mateuscelestinopro.com';
-    const name = typeof body.memberName === 'string' ? body.memberName.trim().slice(0, 100) : 'Membro Soberano';
+    const email = typeof body.memberEmail === 'string' ? body.memberEmail.trim().slice(0, 255) : typeof body.email === 'string' ? body.email.trim().slice(0, 255) : 'membro@demo.local';
+    const name = typeof body.memberName === 'string' ? body.memberName.trim().slice(0, 100) : 'Membro Demo';
 
     const plan = EXTENDED_PLANS[rawSlug] || COMMUNITY_PLANS[rawSlug] || COMMUNITY_PLANS['membership-vip'];
     const isProd = process.env.NODE_ENV === 'production';

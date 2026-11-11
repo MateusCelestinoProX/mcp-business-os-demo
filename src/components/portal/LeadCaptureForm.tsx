@@ -179,8 +179,7 @@ export function LeadCaptureForm() {
       formData.message || "Quero automatizar meus processos e escalar meu negócio."
     )}`;
 
-    const url = `https://api.whatsapp.com/send/?phone=553197724257&text=${text}&type=phone_number&app_absent=0`;
-    window.open(url, "_blank");
+    window.location.href = "/contato";
   };
 
   return (
@@ -202,7 +201,7 @@ export function LeadCaptureForm() {
               Vamos Automatizar Seu Negócio?
             </h2>
             <p className="text-xs sm:text-base text-neutral-300 font-light leading-relaxed">
-              Solicite uma arquitetura personalizada com Mateus Celestino Pro. Da automação de atendimento
+              Solicite uma arquitetura personalizada na plataforma Business OS Demo. Da automação de atendimento
               com inteligência artificial até a blindagem completa de servidores corporativos.
             </p>
           </div>
@@ -219,12 +218,10 @@ export function LeadCaptureForm() {
             </div>
           )}
 
-          {/* Cards de Contato Rápido em Vidro com WhatsApp Destacado */}
+          {/* Cards de Contato Rápido em Vidro */}
           <div className="space-y-3.5 sm:space-y-4 pt-1 sm:pt-2">
             <a
-              href="https://api.whatsapp.com/send/?phone=553197724257&text=QUERO%20AUTOMATIZAR%20TUDO"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/contato"
               className="glass-crystal glass-interactive p-4 sm:p-5 rounded-2xl flex items-center gap-4 group transition-all border border-[#ff073a]/50 bg-[#ff073a]/10 hover:border-[#ff073a] hover:bg-[#ff073a]/20 shadow-[0_0_25px_rgba(255,7,58,0.25)] relative overflow-hidden min-h-[72px]"
             >
               <div className="w-12 h-12 rounded-xl bg-[#ff073a]/20 border border-[#ff073a]/40 flex items-center justify-center text-[#ff073a] group-hover:scale-105 group-hover:bg-[#ff073a]/30 transition-all shrink-0">
@@ -233,23 +230,23 @@ export function LeadCaptureForm() {
               <div className="flex-1 min-w-0">
                 <div className="flex items-center justify-between gap-1">
                   <span className="text-[10px] font-mono text-[#ff073a] font-bold uppercase tracking-wider">
-                    WHATSAPP COMERCIAL OFICIAL
+                    ATENDIMENTO DEMO
                   </span>
                   <span className="text-[9px] font-mono font-bold text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded-full border border-emerald-500/50 shrink-0">
                     &lt; 15 MIN
                   </span>
                 </div>
                 <div className="text-base font-bold text-white group-hover:text-[#ff073a] transition-colors">
-                  +55 (11) 99999-0000
+                  Atendimento Comercial Demo
                 </div>
                 <p className="text-xs text-neutral-300 truncate">
-                  Atendimento comercial Business OS Demo
+                  Fale com a equipe Business OS Demo
                 </p>
               </div>
             </a>
 
             <a
-              href="mailto:contato@business-os.demo"
+              href="mailto:contato@demo.local"
               className="glass-crystal glass-interactive p-4 sm:p-5 rounded-2xl flex items-center gap-4 group transition-all border border-white/10 hover:border-white/20 min-h-[72px]"
             >
               <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-neutral-300 group-hover:text-[#ff073a] transition-colors shrink-0">
@@ -263,7 +260,7 @@ export function LeadCaptureForm() {
                   <ExternalLink className="w-3.5 h-3.5 text-neutral-500 group-hover:text-white transition-colors" />
                 </div>
                 <div className="text-sm sm:text-base font-bold text-white group-hover:text-[#ff073a] transition-colors truncate">
-                  contato@mateuscelestinopro.com
+                  contato@demo.local
                 </div>
                 <p className="text-xs text-neutral-400 truncate">
                   Propostas, parcerias B2B e contratos de engenharia

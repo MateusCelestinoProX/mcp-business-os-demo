@@ -54,7 +54,7 @@ export async function POST(req: Request) {
     const RESEND_API_KEY = process.env.RESEND_API_KEY;
     const SENDER = process.env.SENDER_EMAIL_ADDRESS || 'onboarding@resend.dev';
 
-    let subject = 'Bem-vindo à A.I VISUALS 🎨';
+    let subject = 'Bem-vindo ao Business OS Demo 🎨';
     let htmlContent = '';
 
     if (type === 'welcome') {
@@ -69,17 +69,17 @@ export async function POST(req: Request) {
         }
       }
 
-      subject = '🎨 Seja bem-vindo à plataforma A.I VISUALS!';
+      subject = '🎨 Seja bem-vindo ao Business OS Demo!';
       htmlContent = `
         <div style="font-family: 'Segoe UI', Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #0b0c10; color: #ffffff; border-radius: 20px; padding: 40px; border: 1px solid rgba(255,255,255,0.15);">
           <div style="text-align: center; margin-bottom: 30px;">
-            <h1 style="font-size: 28px; font-weight: 900; letter-spacing: -0.5px; background: linear-gradient(135deg, #ffffff 0%, #a1a1aa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0;">A.I VISUALS</h1>
-            <p style="color: #71717a; font-size: 12px; font-weight: 700; text-transform: uppercase; margin-top: 5px;">Plataforma de Prompts de Alta Performance</p>
+            <h1 style="font-size: 28px; font-weight: 900; letter-spacing: -0.5px; background: linear-gradient(135deg, #ffffff 0%, #a1a1aa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0;">BUSINESS OS DEMO</h1>
+            <p style="color: #71717a; font-size: 12px; font-weight: 700; text-transform: uppercase; margin-top: 5px;">Plataforma de Infoprodutos e Software Demo</p>
           </div>
           <div style="background-color: rgba(255,255,255,0.05); border-radius: 16px; padding: 25px; margin-bottom: 25px; border: 1px solid rgba(255,255,255,0.1);">
             <h2 style="font-size: 20px; margin-top: 0; color: #00f2fe;">Olá, ${safeUserName}! 👋</h2>
-            <p style="color: #d4d4d8; font-size: 14px; line-height: 1.6;">Sua conta foi criada com sucesso na plataforma <strong>A.I VISUALS</strong>.</p>
-            <p style="color: #d4d4d8; font-size: 14px; line-height: 1.6;">Agora você tem acesso aos acervos de prompts, servidores de aulas de IA e à comunidade exclusiva de criadores.</p>
+            <p style="color: #d4d4d8; font-size: 14px; line-height: 1.6;">Sua conta foi criada com sucesso na plataforma <strong>Business OS Demo</strong>.</p>
+            <p style="color: #d4d4d8; font-size: 14px; line-height: 1.6;">Agora você tem acesso aos infoprodutos, recursos e experiências da plataforma.</p>
           </div>
           <div style="text-align: center; margin-top: 30px;">
             <a href="/comunidade" style="display: inline-block; background-color: #ffffff; color: #000000; font-weight: 800; font-size: 14px; text-decoration: none; padding: 14px 32px; border-radius: 12px;">Acessar Plataforma</a>
@@ -101,7 +101,7 @@ export async function POST(req: Request) {
       htmlContent = `
         <div style="font-family: 'Segoe UI', Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #0b0c10; color: #ffffff; border-radius: 20px; padding: 40px; border: 1px solid rgba(255,255,255,0.15);">
           <div style="text-align: center; margin-bottom: 30px;">
-            <h1 style="font-size: 28px; font-weight: 900; margin: 0; color: #ffffff;">A.I VISUALS</h1>
+            <h1 style="font-size: 28px; font-weight: 900; margin: 0; color: #ffffff;">BUSINESS OS DEMO</h1>
             <p style="color: #00f2fe; font-size: 12px; font-weight: 700; text-transform: uppercase; margin-top: 5px;">Pagamento Confirmado ✅</p>
           </div>
           <div style="background-color: rgba(0, 242, 254, 0.08); border-radius: 16px; padding: 25px; margin-bottom: 25px; border: 1px solid rgba(0, 242, 254, 0.2);">
@@ -116,7 +116,7 @@ export async function POST(req: Request) {
       if (!auth.authorized) {
         return denyAdminRequest(auth);
       }
-      subject = escapeHtml(stripCrlf(body.subject || 'Notificação A.I VISUALS'));
+      subject = escapeHtml(stripCrlf(body.subject || 'Notificação Business OS Demo'));
       htmlContent = body.html || `<p>${escapeHtml(body.text || 'Notificação do sistema')}</p>`;
     }
 
@@ -132,7 +132,7 @@ export async function POST(req: Request) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: `A.I VISUALS <${SENDER}>`,
+        from: `Business OS Demo <${SENDER}>`,
         to: [cleanTo],
         subject,
         html: htmlContent,

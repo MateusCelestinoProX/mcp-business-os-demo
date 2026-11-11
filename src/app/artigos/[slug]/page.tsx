@@ -198,12 +198,10 @@ export default async function ArtigoDetailPage({ params }: PageProps) {
             </p>
             <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 pt-2">
               <a
-                href="https://api.whatsapp.com/send/?phone=553197724257&text=Olá+Mateus!+Li+seu+artigo+e+gostaria+de+conversar.&type=phone_number&app_absent=0"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/contato"
                 className="text-xs text-red-400 hover:text-red-300 font-semibold flex items-center gap-1 min-h-[44px] px-2 touch-manipulation active:scale-95"
               >
-                <span>Falar no WhatsApp</span>
+                <span>Falar com Atendimento</span>
                 <ExternalLink className="w-3 h-3" />
               </a>
               <span className="text-neutral-700 hidden sm:inline">•</span>

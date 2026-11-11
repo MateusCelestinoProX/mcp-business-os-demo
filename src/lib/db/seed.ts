@@ -213,8 +213,8 @@ export async function runSeed() {
             avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=AdminBoss',
           },
           {
-            email: 'membro@mateuscelestinopro.com',
-            name: 'Membro Fundador Pro',
+            email: 'membro@demo.local',
+            name: 'Membro Fundador Demo',
             password: memberPass,
             hash: memberPasswordHash,
             isAdmin: false,

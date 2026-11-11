@@ -46,7 +46,7 @@ export function MemberCard({
   const currentMember: MemberProfile = member || {
     id: '',
     name: 'Visitante',
-    email: 'membro@mateuscelestinopro.com',
+    email: 'membro@demo.local',
     tier: 'free',
     role: 'Membro',
     status: 'active',

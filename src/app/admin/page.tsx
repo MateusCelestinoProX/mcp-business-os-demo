@@ -696,7 +696,7 @@ export default function AdminPanelPage() {
       icon: Users,
     },
     members: {
-      title: "Membros da Comunidade VIP",
+      title: "Membros & Clientes da Plataforma",
       subtitle: "Assinantes & Controle de Acesso Soberano",
       description: "Histórico de membros cadastrados, tiers de assinatura, cargos administrativos e permissões de segurança.",
       icon: Shield,
@@ -1326,25 +1326,25 @@ export default function AdminPanelPage() {
                       </Link>
                     </div>
 
-                    {/* Comunidade VIP */}
+                    {/* Infoprodutos */}
                     <div className="p-4 rounded-xl bg-white/[0.03] hover:bg-white/[0.06] border border-white/10 hover:border-red-500/40 backdrop-blur-md shadow-sm space-y-2 transition-all group">
                       <div className="flex items-center justify-between">
                         <span className="text-xs font-bold text-white group-hover:text-red-300 transition-colors">
-                          Comunidade VIP
+                          Infoprodutos
                         </span>
                         <Badge variant="success" dot className="text-[9px]">
                           ONLINE
                         </Badge>
                       </div>
                       <p className="text-[11px] text-neutral-300">
-                        Área restrita de membros com player e feeds de IA
+                        Área de entrega de infoprodutos e recursos digitais
                       </p>
                       <Link
                         href="/comunidade"
                         target="_blank"
                         className="text-[11px] text-red-400 hover:text-red-300 inline-flex items-center gap-1 font-medium pt-1"
                       >
-                        <span>Abrir Comunidade</span>
+                        <span>Abrir Infoprodutos</span>
                         <ExternalLink className="w-3 h-3" />
                       </Link>
                     </div>
@@ -1634,7 +1634,7 @@ export default function AdminPanelPage() {
                   <div>
                     <h2 className="text-lg font-bold text-white flex items-center gap-2">
                       <Shield className="w-5 h-5 text-red-500" />
-                      <span>Membros da Comunidade VIP & Operadores</span>
+                      <span>Membros & Clientes da Plataforma</span>
                     </h2>
                     <p className="text-xs text-neutral-400">
                       Lista oficial sincronizada diretamente com o banco de dados Supabase.

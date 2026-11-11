@@ -105,25 +105,23 @@ export function HeroSection({ onExploreArticles, onOpenLeadForm }: HeroSectionPr
               <ArrowRight className="w-4 h-4 shrink-0" />
             </Button>
 
-            {/* 2. WhatsApp / Falar com Mateus Pro */}
-            <a
-              href="https://api.whatsapp.com/send/?phone=553197724257&text=QUERO+AUTOMATIZAR+TUDO.&type=phone_number&app_absent=0"
-              target="_blank"
-              rel="noopener noreferrer"
+            {/* 2. Contato / Demonstração */}
+            <Link
+              href="/contato"
               className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl glass-crystal border border-red-500/30 text-white hover:text-white hover:border-red-500/60 shadow-[0_0_25px_rgba(255,7,58,0.25)] min-h-[44px] text-xs sm:text-sm font-mono font-bold uppercase tracking-wider active:scale-95 transition-all w-full sm:w-auto"
             >
               <MessageSquare className="w-4 h-4 text-red-400 shrink-0" />
-              <span>FALAR NO WHATSAPP</span>
+              <span>ATENDIMENTO & CONTATO</span>
               <Zap className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-            </a>
+            </Link>
 
-            {/* 3. Comunidade VIP */}
+            {/* 3. Infoprodutos */}
             <Link
               href="/comunidade"
               className="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-amber-500/40 text-amber-300 hover:text-white min-h-[44px] text-xs sm:text-sm font-mono font-bold uppercase tracking-wider active:scale-95 transition-all w-full sm:w-auto"
             >
               <Sparkles className="w-4 h-4 text-amber-400 shrink-0" />
-              <span>COMUNIDADE VIP</span>
+              <span>INFOPRODUTOS</span>
             </Link>
           </div>
         </div>

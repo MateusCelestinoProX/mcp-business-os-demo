@@ -82,7 +82,7 @@ export function CheckoutModal({
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           id: data.id || 'SANDBOX_CHECKOUT_SUCCESS',
-          email: email.trim() || 'membro@mateuscelestinopro.com',
+          email: email.trim() || 'membro@demo.local',
           planSlug: currentPlan.slug,
           status: 'approved',
         }),
@@ -127,7 +127,7 @@ export function CheckoutModal({
 
               <p className="text-xs sm:text-sm text-neutral-300 max-w-md mx-auto leading-relaxed">
                 Seu plano <strong className="text-white">{currentPlan.title}</strong> foi ativado com
-                sucesso na Comunidade Soberana. Seu status foi atualizado para{' '}
+                sucesso na Plataforma Demo. Seu status foi atualizado para{' '}
                 <span className="text-red-400 font-bold uppercase">{currentPlan.tier}</span>.
               </p>
 
@@ -154,7 +154,7 @@ export function CheckoutModal({
                   Mercado Pago Checkout Seguro
                 </Badge>
                 <h3 className="text-lg sm:text-xl md:text-2xl font-black text-white tracking-tight leading-snug">
-                  Eleve seu Acesso à Comunidade Soberana
+                  Desbloqueie Acesso aos Infoprodutos
                 </h3>
                 <p className="text-xs sm:text-sm text-neutral-400 mt-1 leading-relaxed">
                   Tenha acesso vitalício ao acervo completo de prompts, vídeos 4K e ecossistema de software.

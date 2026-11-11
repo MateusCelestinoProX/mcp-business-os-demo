@@ -45,9 +45,9 @@ export async function POST(req: Request) {
     const isMockToken = !MP_ACCESS_TOKEN || MP_ACCESS_TOKEN === 'TEST-MOCK-TOKEN' || MP_ACCESS_TOKEN.includes('placeholder');
 
     const PRODUCTS: Record<string, { title: string; price: number }> = {
-      'ai-art': { title: 'A.I ART PRO', price: 120.0 },
-      'ai-portraits-pro': { title: 'A.I PORTRAIT PRO', price: 120.0 },
-      'ai-effects-pro': { title: 'A.I EFFECT PRO', price: 120.0 },
+      'ai-art': { title: 'Seu Infoproduto 1 (Demo)', price: 120.0 },
+      'ai-portraits-pro': { title: 'Seu Infoproduto 2 (Demo)', price: 120.0 },
+      'ai-effects-pro': { title: 'Seu Infoproduto 3 (Demo)', price: 120.0 },
     };
 
     const product = PRODUCTS[productSlug];

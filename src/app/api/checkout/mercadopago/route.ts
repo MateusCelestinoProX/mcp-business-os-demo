@@ -11,47 +11,47 @@ interface PlanDefinition {
 }
 
 const PLANS: Record<string, PlanDefinition> = {
-  // Planos de Assinatura da Comunidade Soberana
+  // Planos de Assinatura Demo
   'comunidade-mensal': {
     id: 'comunidade-mensal',
-    title: 'Comunidade Soberana — Plano Mensal VIP',
-    description: 'Acesso mensal integral à comunidade Visuals App, 1.170+ ativos 8K, Discord e atualizações semanais.',
+    title: 'Infoprodutos — Plano Mensal Demo',
+    description: 'Acesso mensal aos infoprodutos, recursos e atualizações contínuas.',
     price: 47.90,
     tier: 'vip'
   },
   'comunidade-anual': {
     id: 'comunidade-anual',
-    title: 'Comunidade Soberana — Passe Anual VIP Pro',
-    description: 'Acesso anual com desconto exclusivo, suporte prioritário, prompts inéditos e aulas de IA generativa.',
+    title: 'Infoprodutos — Passe Anual Demo',
+    description: 'Acesso anual com suporte prioritário e novos infoprodutos.',
     price: 397.00,
     tier: 'vip'
   },
   'comunidade-vitalicio': {
     id: 'comunidade-vitalicio',
-    title: 'Comunidade Soberana — Acesso Vitalício Master (All-In)',
-    description: 'Acesso vitalício irrestrito a todos os packs presentes e futuros, Discord VIP exclusivo e mentoria.',
+    title: 'Infoprodutos — Acesso Vitalício Demo',
+    description: 'Acesso vitalício irrestrito a todos os infoprodutos da plataforma demo.',
     price: 697.00,
     tier: 'master'
   },
-  // Produtos de Coleção Autoral (compatibilidade retroativa com visuals-app-saas)
+  // Produtos de Coleção Autoral Demo
   'ai-art': {
     id: 'ai-art',
-    title: 'A.I ART PRO — Edição Artística Ultra Premium',
-    description: 'A maior coleção autoral de estilos visuais surreais, fotográficos e cinematográficos do mundo.',
+    title: 'Seu Infoproduto 1 (Demo)',
+    description: 'Coleção demonstrativa de recursos digitais e infoprodutos.',
     price: 120.00,
     tier: 'vip'
   },
   'ai-portraits-pro': {
     id: 'ai-portraits-pro',
-    title: 'A.I PORTRAIT PRO — Retratos Hiper-Realistas & Moda',
-    description: 'Retratos editoriais e iluminação de cinema para estúdios e criadores de conteúdo.',
+    title: 'Seu Infoproduto 2 (Demo)',
+    description: 'Materiais e recursos digitais para criadores e profissionais.',
     price: 120.00,
     tier: 'vip'
   },
   'ai-effects-pro': {
     id: 'ai-effects-pro',
-    title: 'A.I EFFECT PRO — Texturas 3D e Renderizações Conceituais',
-    description: 'Efeitos volumétricos, materiais 3D complexos e shaders fotorealistas.',
+    title: 'Seu Infoproduto 3 (Demo)',
+    description: 'Efeitos cinemáticos, materiais digitais e templates conceituais.',
     price: 120.00,
     tier: 'vip'
   }

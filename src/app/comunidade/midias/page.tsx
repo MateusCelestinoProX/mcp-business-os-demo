@@ -168,7 +168,7 @@ export default function MidiasPage() {
             className="inline-flex items-center gap-1.5 text-xs text-neutral-400 hover:text-white transition-colors mb-2 py-1 min-h-[36px] touch-manipulation"
           >
             <ArrowLeft className="h-3.5 w-3.5" />
-            <span>Voltar ao Dashboard da Comunidade</span>
+            <span>Voltar para Infoprodutos</span>
           </Link>
           <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
             <h1 className="text-xl sm:text-2xl md:text-3xl font-black text-white tracking-tight">

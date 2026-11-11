@@ -17,7 +17,7 @@ export async function GET() {
       },
     });
   } catch (error) {
-    console.error('Erro ao servir a Comunidade A.I Visuals original:', error);
-    return new NextResponse('Erro ao carregar a interface da comunidade.', { status: 500 });
+    console.error('Erro ao servir a interface de Infoprodutos demo:', error);
+    return new NextResponse('Erro ao carregar a interface de infoprodutos.', { status: 500 });
   }
 }

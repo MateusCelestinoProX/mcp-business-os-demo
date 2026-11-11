@@ -459,16 +459,12 @@ export function DynamicArticles() {
                 </div>
 
                 <a
-                  href={`https://api.whatsapp.com/send/?phone=553197724257&text=${encodeURIComponent(
-                    `Olá Mateus! Li o artigo "${activeArticle.title}" e gostaria de implementar essa automação em meu negócio.`
-                  )}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="/contato"
                   className="w-full sm:w-auto shrink-0"
                 >
                   <Button variant="fired" size="md" className="w-full sm:w-auto min-h-[44px] gap-2 justify-center">
                     <MessageSquare className="w-4 h-4" />
-                    <span>Falar no WhatsApp</span>
+                    <span>Solicitar Atendimento</span>
                   </Button>
                 </a>
               </div>

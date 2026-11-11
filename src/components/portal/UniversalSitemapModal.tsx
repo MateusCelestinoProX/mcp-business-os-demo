@@ -157,7 +157,7 @@ export function UniversalSitemapModal({
                 { id: 'all', label: 'Tudo' },
                 { id: 'site', label: 'Site' },
                 { id: 'vault', label: 'Vault' },
-                { id: 'comunidade', label: 'VIP' },
+                { id: 'comunidade', label: 'Infoprodutos' },
               ].map((tab) => (
                 <button
                   key={tab.id}
@@ -198,7 +198,7 @@ export function UniversalSitemapModal({
               <div className="w-8 h-8 rounded-xl overflow-hidden bg-black border border-white/20 p-0.5 shrink-0">
                 <img
                   src="/assets/site_icon.webp"
-                  alt="Mateus Celestino Pro X Logo"
+                  alt="Business OS Demo Logo"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -210,7 +210,7 @@ export function UniversalSitemapModal({
                   <span className="w-1.5 h-1.5 rounded-full bg-[#ff073a] shadow-[0_0_6px_#ff073a] animate-pulse" />
                 </div>
                 <span className="text-sm font-extrabold text-white tracking-wide">
-                  MATEUS CELESTINO <span className="text-[#ff073a]">PRO X</span>
+                  BUSINESS OS <span className="text-[#ff073a]">DEMO</span>
                 </span>
               </div>
             </div>
@@ -383,7 +383,7 @@ export function UniversalSitemapModal({
             )}
 
             {/* ---------------------------------------------------------------------
-                PILAR 3: COMUNIDADE PRIVADA (A.I VISUALS)
+                PILAR 3: INFOPRODUTOS (DEMO)
                 --------------------------------------------------------------------- */}
             {(activeFilter === 'all' || activeFilter === 'comunidade') && (
               <div className="rounded-2xl p-5 bg-[#09090f]/70 border border-white/[0.08] hover:border-red-500/40 backdrop-blur-xl shadow-[0_15px_35px_rgba(0,0,0,0.6)] space-y-4 transition-all">
@@ -394,41 +394,36 @@ export function UniversalSitemapModal({
                     </div>
                     <div>
                       <h4 className="font-extrabold text-sm text-white flex items-center gap-2">
-                        <span>3. Comunidade Privada (A.I Visuals)</span>
+                        <span>3. Infoprodutos (Demo)</span>
                         <span className="text-[10px] px-2 py-0.2 rounded-full bg-red-500/20 text-red-300 font-mono border border-red-500/30">
                           /comunidade
                         </span>
                       </h4>
-                      <p className="text-[11px] text-zinc-400">Área de membros restrita & biblioteca multimídia cinematográfica</p>
+                      <p className="text-[11px] text-zinc-400">Área de distribuição de infoprodutos digitais e materiais de apoio</p>
                     </div>
                   </div>
 
                   <button
                     onClick={() => handleAction('route', '/comunidade')}
                     className="p-1.5 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-300 transition-all cursor-pointer flex items-center gap-1 text-xs font-mono"
-                    title="Acessar Comunidade"
+                    title="Acessar Infoprodutos"
                   >
                     <span>Abrir</span>
                     <ExternalLink className="w-3.5 h-3.5" />
                   </button>
                 </div>
 
-                <div className="grid grid-cols-2 gap-2">
-                  {[
-                    { title: 'Feed & Aulas', desc: 'Vídeos e postagens em tempo real' },
-                    { title: 'AI Art Pro', desc: 'Prompts e composições estéticas' },
-                    { title: 'AI Portraits Pro', desc: 'Retratos e modelos hiper-realistas' },
-                    { title: 'AI Effects & VIP', desc: 'Shaders e checkout Mercado Pago' },
-                  ].map((item, i) => (
-                    <button
-                      key={i}
-                      onClick={() => handleAction('route', '/comunidade')}
-                      className="p-3 rounded-xl bg-white/[0.02] hover:bg-red-950/30 border border-white/[0.05] hover:border-red-500/30 text-left transition-all cursor-pointer"
-                    >
-                      <span className="text-xs font-bold text-white block">{item.title}</span>
-                      <span className="text-[10px] text-zinc-500 font-mono block mt-0.5 truncate">{item.desc}</span>
-                    </button>
-                  ))}
+                <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.05] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                  <div>
+                    <span className="text-xs font-bold text-white block">Seus infoprodutos free e pagos aqui</span>
+                    <span className="text-[10px] text-zinc-500 font-mono block mt-0.5">Catálogo unificado e vitrine interativa demonstrativa.</span>
+                  </div>
+                  <button
+                    onClick={() => handleAction('route', '/comunidade')}
+                    className="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-semibold transition-all shrink-0 cursor-pointer"
+                  >
+                    Acessar Página →
+                  </button>
                 </div>
               </div>
             )}

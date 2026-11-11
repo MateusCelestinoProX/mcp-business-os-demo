@@ -10,6 +10,7 @@ import {
   Sparkles,
   ShoppingBag,
   Users,
+  Layers,
   FolderGit2,
   Crown,
   Mail,
@@ -29,7 +30,7 @@ export function Footer() {
     { name: "Home Page", href: "/", icon: Shield },
     { name: "Showcase", href: "/showcase", icon: Sparkles },
     { name: "Shop Oficial", href: "/shop", icon: ShoppingBag },
-    { name: "Comunidade VIP", href: "/comunidade", icon: Users },
+    { name: "Infoprodutos", href: "/comunidade", icon: Layers },
     { name: "Free Resources", href: "/biblioteca", icon: FolderGit2 },
     { name: "Contato Direto", href: "/contato", icon: Mail },
   ];

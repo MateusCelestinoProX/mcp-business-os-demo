@@ -46,8 +46,7 @@ export function OriginalHeader({ profile, onNavigate }: OriginalHeaderProps) {
   };
 
   const whatsappUrl =
-    profile?.whatsapp ||
-    'https://api.whatsapp.com/send/?phone=553197724257&text=QUERO+AUTOMATIZAR+TUDO.&type=phone_number&app_absent=0';
+    profile?.whatsapp || '/contato';
 
   return (
     <header

@@ -268,8 +268,8 @@ export function DemoExperienceWrapper({ children }: DemoExperienceWrapperProps) 
                 href="/comunidade"
                 className="flex items-center gap-2 p-2 rounded-xl bg-white/5 hover:bg-white/10 text-neutral-300 hover:text-white border border-white/10 transition-all text-[11px]"
               >
-                <Users className="w-3.5 h-3.5 text-purple-400 shrink-0" />
-                <span>Comunidade Demo</span>
+                <Layers className="w-3.5 h-3.5 text-purple-400 shrink-0" />
+                <span>Infoprodutos Demo</span>
               </Link>
 
               <Link

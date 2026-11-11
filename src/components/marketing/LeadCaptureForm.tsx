@@ -210,16 +210,12 @@ function LeadCaptureFormInternal() {
 
           <div className="pt-4 flex flex-col sm:flex-row gap-3 justify-center items-center">
             <a
-              href={`https://api.whatsapp.com/send/?phone=553197724257&text=${encodeURIComponent(
-                `Olá Mateus Celestino! Acabei de registrar meu projeto na plataforma (Protocolo: ${leadResultId || "PRO"}). Gostaria de agilizar o atendimento sobre: ${formData.service}`
-              )}&type=phone_number&app_absent=0`}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/contato"
               className="w-full sm:w-auto"
             >
               <Button variant="primary" size="lg" className="w-full gap-2 shadow-xl">
                 <PhoneCall className="w-4 h-4" />
-                <span>Agilizar Atendimento no WhatsApp</span>
+                <span>Prosseguir para Atendimento</span>
               </Button>
             </a>
 

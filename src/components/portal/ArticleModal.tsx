@@ -213,13 +213,11 @@ export function ArticleModal({
               </p>
             </div>
             <a
-              href="https://api.whatsapp.com/send/?phone=553197724257&text=QUERO+AUTOMATIZAR+TUDO.&type=phone_number&app_absent=0"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/contato"
               className="glass-button-fired min-h-[48px] w-full sm:w-auto px-5 py-3 rounded-xl text-xs font-mono font-bold text-white flex items-center justify-center gap-2 shadow-lg active:scale-95 transition-transform touch-manipulation cursor-pointer shrink-0"
             >
               <MessageSquare className="w-4 h-4 fill-white/20" />
-              <span>QUERO AUTOMATIZAR TUDO</span>
+              <span>SOLICITAR PROJETO</span>
             </a>
           </div>
 

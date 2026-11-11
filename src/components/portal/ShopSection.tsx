@@ -246,7 +246,7 @@ export function ShopSection({ shopData, onOpenContact }: ShopSectionProps) {
         'Módulos práticos do básico ao avançado',
         'Projetos reais e desafios de implementação',
         'Como criar e vender soluções de automação',
-        'Comunidade exclusiva em Web-App para networking',
+        'Área exclusiva em Web-App para networking',
         'Certificado oficial de conclusão do treinamento'
       ],
       details: {

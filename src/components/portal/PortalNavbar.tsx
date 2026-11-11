@@ -108,8 +108,7 @@ export function PortalNavbar({
   };
 
   const whatsappUrl =
-    profileWhatsapp ||
-    'https://api.whatsapp.com/send/?phone=553197724257&text=QUERO+AUTOMATIZAR+TUDO.&type=phone_number&app_absent=0';
+    profileWhatsapp || '/contato';
 
   // O PortalNavbar (sub-header com Início, Artigos, Sobre, Contato) pertence exclusivamente à Home do Portal (/)
   if (pathname !== '/') {

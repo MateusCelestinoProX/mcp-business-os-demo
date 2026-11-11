@@ -111,7 +111,7 @@ export function AdminSidebar({
         },
         {
           id: "members",
-          label: "Membros da Comunidade",
+          label: "Membros & Clientes",
           sublabel: "Assinantes & Cargos",
           icon: Shield,
           count: membersCount,
@@ -197,7 +197,7 @@ export function AdminSidebar({
     { label: "Home Page", href: "/", icon: Globe },
     { label: "Loja Pública (/shop)", href: "/shop", icon: ShoppingBag },
     { label: "Hidden Library (/biblioteca)", href: "/biblioteca", icon: BookOpen },
-    { label: "Comunidade VIP (/comunidade)", href: "/comunidade", icon: Sparkles },
+    { label: "Infoprodutos (/comunidade)", href: "/comunidade", icon: Sparkles },
   ];
 
   const handlePageClick = (tabId: AdminTabId) => {
