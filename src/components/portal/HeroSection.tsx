@@ -9,6 +9,7 @@ import {
   Shield,
   Layers,
   Sparkles,
+  Users,
   Terminal,
   MessageSquare,
   CheckCircle2,
@@ -120,8 +121,8 @@ export function HeroSection({ onExploreArticles, onOpenLeadForm }: HeroSectionPr
               href="/comunidade"
               className="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-amber-500/40 text-amber-300 hover:text-white min-h-[44px] text-xs sm:text-sm font-mono font-bold uppercase tracking-wider active:scale-95 transition-all w-full sm:w-auto"
             >
-              <Sparkles className="w-4 h-4 text-amber-400 shrink-0" />
-              <span>INFOPRODUTOS</span>
+              <Users className="w-4 h-4 text-amber-400 shrink-0" />
+              <span>COMUNIDADE VIP</span>
             </Link>
           </div>
         </div>

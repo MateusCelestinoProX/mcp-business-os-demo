@@ -157,7 +157,7 @@ export function UniversalSitemapModal({
                 { id: 'all', label: 'Tudo' },
                 { id: 'site', label: 'Site' },
                 { id: 'vault', label: 'Vault' },
-                { id: 'comunidade', label: 'Infoprodutos' },
+                { id: 'comunidade', label: 'Comunidade' },
               ].map((tab) => (
                 <button
                   key={tab.id}
@@ -394,19 +394,19 @@ export function UniversalSitemapModal({
                     </div>
                     <div>
                       <h4 className="font-extrabold text-sm text-white flex items-center gap-2">
-                        <span>3. Infoprodutos (Demo)</span>
+                        <span>3. Comunidade VIP & Infoprodutos (Demo)</span>
                         <span className="text-[10px] px-2 py-0.2 rounded-full bg-red-500/20 text-red-300 font-mono border border-red-500/30">
                           /comunidade
                         </span>
                       </h4>
-                      <p className="text-[11px] text-zinc-400">Área de distribuição de infoprodutos digitais e materiais de apoio</p>
+                      <p className="text-[11px] text-zinc-400">Feed de membros, fórum, masterclasses e infoprodutos</p>
                     </div>
                   </div>
 
                   <button
                     onClick={() => handleAction('route', '/comunidade')}
                     className="p-1.5 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-300 transition-all cursor-pointer flex items-center gap-1 text-xs font-mono"
-                    title="Acessar Infoprodutos"
+                    title="Acessar Comunidade"
                   >
                     <span>Abrir</span>
                     <ExternalLink className="w-3.5 h-3.5" />

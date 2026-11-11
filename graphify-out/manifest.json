@@ -1434,15 +1434,15 @@
     "semantic_hash": ""
   },
   "src/components/layout/Footer.tsx": {
-    "mtime": 1794411493.313022,
-    "seen": 1794412851.0155158,
-    "ast_hash": "284f657c9a5d68e0175ae40281a0baa2",
+    "mtime": 1794416142.2328835,
+    "seen": 1794416795.98959,
+    "ast_hash": "d14913a61554ab9ce628374a433cd68a",
     "semantic_hash": ""
   },
   "src/components/layout/Navbar.tsx": {
-    "mtime": 1794411419.328858,
-    "seen": 1794412851.015518,
-    "ast_hash": "6e46eeb55fe2d664143d58cd5990f613",
+    "mtime": 1794416119.6599028,
+    "seen": 1794416795.989592,
+    "ast_hash": "f24be4c3ac185f3604df8183359208ea",
     "semantic_hash": ""
   },
   "src/components/shaders/ColorBends.tsx": {
@@ -1638,9 +1638,9 @@
     "semantic_hash": ""
   },
   "src/components/portal/HeroSection.tsx": {
-    "mtime": 1794411573.7201948,
-    "seen": 1794412851.015744,
-    "ast_hash": "b45df353b50f86c348be634bbd4c9706",
+    "mtime": 1794416673.2565587,
+    "seen": 1794416795.989887,
+    "ast_hash": "3b5d500ac22025ce8b2a3dda586000f1",
     "semantic_hash": ""
   },
   "src/components/portal/MetricsBanner.tsx": {
@@ -1938,9 +1938,9 @@
     "semantic_hash": ""
   },
   "public/comunidade/app.js": {
-    "mtime": 1794411336.3028214,
-    "seen": 1794412851.013485,
-    "ast_hash": "20f5a47d64da84560249fdc14bb6b71b",
+    "mtime": 1794416613.1889434,
+    "seen": 1794416795.987259,
+    "ast_hash": "68ee5818b6b5fe6e2c1c961cde22845b",
     "semantic_hash": ""
   },
   "src/app/api/checkout/route.ts": {
@@ -2766,9 +2766,9 @@
     "semantic_hash": ""
   },
   "public/comunidade/index.html": {
-    "mtime": 1794411279.4675817,
-    "seen": 1794412851.022627,
-    "ast_hash": "ef29e86495792c1ea2922a7d712afb43",
+    "mtime": 1794416429.4336295,
+    "seen": 1794416795.9970372,
+    "ast_hash": "9561c33a986ee94b88c6deed4f16ebce",
     "semantic_hash": ""
   },
   "public/comunidade/effects/CREATIVE EFFECT's/ANCESTRAL HAND STATUE RENDER/ChatGPT_Image_17_de_jul._de_2025_15_25_13.webp": {
@@ -14760,9 +14760,9 @@
     "semantic_hash": ""
   },
   "src/components/portal/UniversalSitemapModal.tsx": {
-    "mtime": 1794411642.70408,
-    "seen": 1794412851.015946,
-    "ast_hash": "c43d6c045a8e9819280c51737c57c8c3",
+    "mtime": 1794416325.8620636,
+    "seen": 1794416795.990175,
+    "ast_hash": "49b812c400aeeb9ec1abc348c0fefe16",
     "semantic_hash": ""
   },
   "public/showcase/galaxy.js": {
@@ -15126,9 +15126,9 @@
     "semantic_hash": ""
   },
   "src/components/layout/MobileBottomNav.tsx": {
-    "mtime": 1794411467.2479603,
-    "seen": 1794412851.015517,
-    "ast_hash": "c6742d50d106f36f6cc56eada3c15ee9",
+    "mtime": 1794416127.9284809,
+    "seen": 1794416795.9895911,
+    "ast_hash": "3429e1c0f72a91c249613e6a973fdab1",
     "semantic_hash": ""
   },
   "tests/mobile_navigation.test.ts": {
@@ -17754,9 +17754,9 @@
     "semantic_hash": ""
   },
   "src/components/demo/DemoExperienceWrapper.tsx": {
-    "mtime": 1794411542.487425,
-    "seen": 1794412851.0155158,
-    "ast_hash": "e7d819feb050f948bffb21f39d4d8a95",
+    "mtime": 1794416189.7693408,
+    "seen": 1794416795.989589,
+    "ast_hash": "88fb9bbd415536b8a2117b7aff424656",
     "semantic_hash": ""
   }
 }

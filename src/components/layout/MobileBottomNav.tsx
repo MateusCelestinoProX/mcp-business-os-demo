@@ -27,7 +27,7 @@ export const mobileNavItems: MobileNavItem[] = [
   { name: "Home Page", href: "/", icon: Shield },
   { name: "Showcase", href: "/showcase", icon: Sparkles },
   { name: "Shop", href: "/shop", icon: ShoppingBag },
-  { name: "Infoprodutos", href: "/comunidade", icon: Layers },
+  { name: "Comunidade", href: "/comunidade", icon: Users },
   { name: "Free Resources", href: "/biblioteca", icon: FolderGit2 },
   { name: "Admin", href: "/admin", icon: Crown, adminOnly: true },
 ];
