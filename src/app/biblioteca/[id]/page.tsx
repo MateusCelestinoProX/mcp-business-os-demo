@@ -44,7 +44,7 @@ export async function generateMetadata({ params }: PageProps) {
   }
 
   return {
-    title: `${resource.title} — Free Resources | Mateus Celestino Pro`,
+    title: `${resource.title} — Free Resources | Business OS Demo`,
     description: resource.description,
   };
 }
